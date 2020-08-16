@@ -18,10 +18,10 @@ class ZugferdReader
     public static function ReadContent($xmlcontent)
     {
         $serializerBuilder = SerializerBuilder::create();
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . './yaml/qdt', 'horstoeko\zugferd\qdt');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . './yaml/ram', 'horstoeko\zugferd\ram');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . './yaml/rsm', 'horstoeko\zugferd\rsm');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . './yaml/udt', 'horstoeko\zugferd\udt');
+        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/qdt', 'horstoeko\zugferd\qdt');
+        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/ram', 'horstoeko\zugferd\ram');
+        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/rsm', 'horstoeko\zugferd\rsm');
+        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/udt', 'horstoeko\zugferd\udt');
         $serializerBuilder->addDefaultListeners();
         $serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
             $serializerBuilder->addDefaultHandlers();
