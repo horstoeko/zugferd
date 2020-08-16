@@ -19,7 +19,7 @@
             "horstoeko\\zugferd\\ram\\": "src/entities/ram",
             "horstoeko\\zugferd\\udt\\": "src/entities/udt"
         }
-    }
+    },
     "require": {
         "goetas/xsd2php": "^2.1",
         "goetas-webservices/xsd2php-runtime": "^0.2.12"
