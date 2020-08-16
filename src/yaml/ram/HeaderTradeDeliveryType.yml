@@ -1,0 +1,87 @@
+horstoeko\zugferd\ram\HeaderTradeDeliveryType:
+    properties:
+        relatedSupplyChainConsignment:
+            expose: true
+            access_type: public_method
+            serialized_name: RelatedSupplyChainConsignment
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getRelatedSupplyChainConsignment
+                setter: setRelatedSupplyChainConsignment
+            type: array<horstoeko\zugferd\ram\LogisticsTransportMovementType>
+            xml_list:
+                inline: false
+                skip_when_empty: true
+                entry_name: SpecifiedLogisticsTransportMovement
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+        shipToTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: ShipToTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getShipToTradeParty
+                setter: setShipToTradeParty
+            type: horstoeko\zugferd\ram\TradePartyType
+        ultimateShipToTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: UltimateShipToTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getUltimateShipToTradeParty
+                setter: setUltimateShipToTradeParty
+            type: horstoeko\zugferd\ram\TradePartyType
+        shipFromTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: ShipFromTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getShipFromTradeParty
+                setter: setShipFromTradeParty
+            type: horstoeko\zugferd\ram\TradePartyType
+        actualDeliverySupplyChainEvent:
+            expose: true
+            access_type: public_method
+            serialized_name: ActualDeliverySupplyChainEvent
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getActualDeliverySupplyChainEvent
+                setter: setActualDeliverySupplyChainEvent
+            type: horstoeko\zugferd\ram\SupplyChainEventType
+        despatchAdviceReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: DespatchAdviceReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDespatchAdviceReferencedDocument
+                setter: setDespatchAdviceReferencedDocument
+            type: horstoeko\zugferd\ram\ReferencedDocumentType
+        receivingAdviceReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: ReceivingAdviceReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getReceivingAdviceReferencedDocument
+                setter: setReceivingAdviceReferencedDocument
+            type: horstoeko\zugferd\ram\ReferencedDocumentType
+        deliveryNoteReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: DeliveryNoteReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDeliveryNoteReferencedDocument
+                setter: setDeliveryNoteReferencedDocument
+            type: horstoeko\zugferd\ram\ReferencedDocumentType

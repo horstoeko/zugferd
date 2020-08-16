@@ -1,0 +1,86 @@
+horstoeko\zugferd\ram\ReferencedDocumentType:
+    properties:
+        issuerAssignedID:
+            expose: true
+            access_type: public_method
+            serialized_name: IssuerAssignedID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIssuerAssignedID
+                setter: setIssuerAssignedID
+            type: horstoeko\zugferd\udt\IDType
+        uRIID:
+            expose: true
+            access_type: public_method
+            serialized_name: URIID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getURIID
+                setter: setURIID
+            type: horstoeko\zugferd\udt\IDType
+        lineID:
+            expose: true
+            access_type: public_method
+            serialized_name: LineID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineID
+                setter: setLineID
+            type: horstoeko\zugferd\udt\IDType
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getName
+                setter: setName
+            xml_list:
+                inline: true
+                entry_name: Name
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<string>
+        attachmentBinaryObject:
+            expose: true
+            access_type: public_method
+            serialized_name: AttachmentBinaryObject
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAttachmentBinaryObject
+                setter: setAttachmentBinaryObject
+            type: horstoeko\zugferd\udt\BinaryObjectType
+        referenceTypeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ReferenceTypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getReferenceTypeCode
+                setter: setReferenceTypeCode
+            type: string
+        formattedIssueDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: FormattedIssueDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getFormattedIssueDateTime
+                setter: setFormattedIssueDateTime
+            type: horstoeko\zugferd\qdt\FormattedDateTimeType

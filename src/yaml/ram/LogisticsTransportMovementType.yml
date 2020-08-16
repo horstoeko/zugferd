@@ -1,0 +1,12 @@
+horstoeko\zugferd\ram\LogisticsTransportMovementType:
+    properties:
+        modeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ModeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getModeCode
+                setter: setModeCode
+            type: string

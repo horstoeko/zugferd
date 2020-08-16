@@ -1,0 +1,52 @@
+horstoeko\zugferd\ram\TradeContactType:
+    properties:
+        personName:
+            expose: true
+            access_type: public_method
+            serialized_name: PersonName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPersonName
+                setter: setPersonName
+            type: string
+        departmentName:
+            expose: true
+            access_type: public_method
+            serialized_name: DepartmentName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDepartmentName
+                setter: setDepartmentName
+            type: string
+        telephoneUniversalCommunication:
+            expose: true
+            access_type: public_method
+            serialized_name: TelephoneUniversalCommunication
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTelephoneUniversalCommunication
+                setter: setTelephoneUniversalCommunication
+            type: horstoeko\zugferd\ram\UniversalCommunicationType
+        faxUniversalCommunication:
+            expose: true
+            access_type: public_method
+            serialized_name: FaxUniversalCommunication
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getFaxUniversalCommunication
+                setter: setFaxUniversalCommunication
+            type: horstoeko\zugferd\ram\UniversalCommunicationType
+        emailURIUniversalCommunication:
+            expose: true
+            access_type: public_method
+            serialized_name: EmailURIUniversalCommunication
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getEmailURIUniversalCommunication
+                setter: setEmailURIUniversalCommunication
+            type: horstoeko\zugferd\ram\UniversalCommunicationType

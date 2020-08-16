@@ -1,0 +1,62 @@
+horstoeko\zugferd\ram\TradePaymentTermsType:
+    properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        dueDateDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: DueDateDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDueDateDateTime
+                setter: setDueDateDateTime
+            type: horstoeko\zugferd\udt\DateTimeType
+        directDebitMandateID:
+            expose: true
+            access_type: public_method
+            serialized_name: DirectDebitMandateID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDirectDebitMandateID
+                setter: setDirectDebitMandateID
+            type: horstoeko\zugferd\udt\IDType
+        partialPaymentAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: PartialPaymentAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPartialPaymentAmount
+                setter: setPartialPaymentAmount
+            type: horstoeko\zugferd\udt\AmountType
+        applicableTradePaymentPenaltyTerms:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradePaymentPenaltyTerms
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradePaymentPenaltyTerms
+                setter: setApplicableTradePaymentPenaltyTerms
+            type: horstoeko\zugferd\ram\TradePaymentPenaltyTermsType
+        applicableTradePaymentDiscountTerms:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradePaymentDiscountTerms
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradePaymentDiscountTerms
+                setter: setApplicableTradePaymentDiscountTerms
+            type: horstoeko\zugferd\ram\TradePaymentDiscountTermsType

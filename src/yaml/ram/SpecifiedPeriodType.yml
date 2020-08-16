@@ -1,0 +1,42 @@
+horstoeko\zugferd\ram\SpecifiedPeriodType:
+    properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        startDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: StartDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getStartDateTime
+                setter: setStartDateTime
+            type: horstoeko\zugferd\udt\DateTimeType
+        endDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: EndDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getEndDateTime
+                setter: setEndDateTime
+            type: horstoeko\zugferd\udt\DateTimeType
+        completeDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: CompleteDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCompleteDateTime
+                setter: setCompleteDateTime
+            type: horstoeko\zugferd\udt\DateTimeType

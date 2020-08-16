@@ -1,0 +1,22 @@
+horstoeko\zugferd\ram\UniversalCommunicationType:
+    properties:
+        uRIID:
+            expose: true
+            access_type: public_method
+            serialized_name: URIID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getURIID
+                setter: setURIID
+            type: horstoeko\zugferd\udt\IDType
+        completeNumber:
+            expose: true
+            access_type: public_method
+            serialized_name: CompleteNumber
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCompleteNumber
+                setter: setCompleteNumber
+            type: string

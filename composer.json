@@ -1,0 +1,30 @@
+{
+    "name": " horstoeko/zugferd",
+    "keywords": ["zugferd","xrechnung","electronic","invoice"], 
+    "description": "A library for creating and reading european electronic invoices",
+    "homepage": "https://github.com/horstoeko/zugferd",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Horst Oeko",
+            "email": "horst@volloeko.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "horstoeko\\zugferd\\": "src",
+            "horstoeko\\zugferd\\rsm\\": "src/entities/rsm",
+            "horstoeko\\zugferd\\qdt\\": "src/entities/qdt",
+            "horstoeko\\zugferd\\ram\\": "src/entities/ram",
+            "horstoeko\\zugferd\\udt\\": "src/entities/udt"
+        }
+    }
+    "require": {
+        "goetas/xsd2php": "^2.1",
+        "goetas-webservices/xsd2php-runtime": "^0.2.12"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.2"
+    }
+}

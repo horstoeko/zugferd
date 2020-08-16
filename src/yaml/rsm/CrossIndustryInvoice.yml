@@ -1,0 +1,3 @@
+horstoeko\zugferd\rsm\CrossIndustryInvoice:
+    xml_root_name: CrossIndustryInvoice
+    xml_root_namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'

@@ -1,0 +1,62 @@
+horstoeko\zugferd\ram\TradeSettlementPaymentMeansType:
+    properties:
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: string
+        information:
+            expose: true
+            access_type: public_method
+            serialized_name: Information
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getInformation
+                setter: setInformation
+            type: string
+        applicableTradeSettlementFinancialCard:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradeSettlementFinancialCard
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradeSettlementFinancialCard
+                setter: setApplicableTradeSettlementFinancialCard
+            type: horstoeko\zugferd\ram\TradeSettlementFinancialCardType
+        payerPartyDebtorFinancialAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: PayerPartyDebtorFinancialAccount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayerPartyDebtorFinancialAccount
+                setter: setPayerPartyDebtorFinancialAccount
+            type: horstoeko\zugferd\ram\DebtorFinancialAccountType
+        payeePartyCreditorFinancialAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: PayeePartyCreditorFinancialAccount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayeePartyCreditorFinancialAccount
+                setter: setPayeePartyCreditorFinancialAccount
+            type: horstoeko\zugferd\ram\CreditorFinancialAccountType
+        payeeSpecifiedCreditorFinancialInstitution:
+            expose: true
+            access_type: public_method
+            serialized_name: PayeeSpecifiedCreditorFinancialInstitution
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayeeSpecifiedCreditorFinancialInstitution
+                setter: setPayeeSpecifiedCreditorFinancialInstitution
+            type: horstoeko\zugferd\ram\CreditorFinancialInstitutionType
