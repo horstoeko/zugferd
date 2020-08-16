@@ -1,2 +1,3 @@
-# zugferd
-ZUGFeRD/XRechnung Library
+# ZUGFeRD/XRechnung
+
+A simple ZUGFeRD/XRechnung Library
