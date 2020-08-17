@@ -1,0 +1,7 @@
+horstoeko\zugferd\basicwl\udt\DateTimeType\DateTimeStringAType:
+    properties:
+        format:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

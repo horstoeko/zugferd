@@ -1,0 +1,12 @@
+horstoeko\zugferd\basic\ram\LineTradeAgreementType:
+    properties:
+        netPriceProductTradePrice:
+            expose: true
+            access_type: public_method
+            serialized_name: NetPriceProductTradePrice
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getNetPriceProductTradePrice
+                setter: setNetPriceProductTradePrice
+            type: horstoeko\zugferd\basic\ram\TradePriceType

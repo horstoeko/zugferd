@@ -1,0 +1,9 @@
+horstoeko\zugferd\basic\ram\LineTradeAgreementType:
+    properties:
+        netPriceProductTradePrice:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

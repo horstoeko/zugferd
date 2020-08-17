@@ -1,0 +1,82 @@
+horstoeko\zugferd\basic\ram\TradeSettlementHeaderMonetarySummationType:
+    properties:
+        lineTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: LineTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineTotalAmount
+                setter: setLineTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        chargeTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ChargeTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getChargeTotalAmount
+                setter: setChargeTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        allowanceTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowanceTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAllowanceTotalAmount
+                setter: setAllowanceTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        taxBasisTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxBasisTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxBasisTotalAmount
+                setter: setTaxBasisTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        taxTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxTotalAmount
+                setter: setTaxTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        grandTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: GrandTotalAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGrandTotalAmount
+                setter: setGrandTotalAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        totalPrepaidAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TotalPrepaidAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTotalPrepaidAmount
+                setter: setTotalPrepaidAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        duePayableAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: DuePayableAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDuePayableAmount
+                setter: setDuePayableAmount
+            type: horstoeko\zugferd\basic\udt\AmountType

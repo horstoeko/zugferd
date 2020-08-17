@@ -1,7 +1,0 @@
-horstoeko\zugferd\ram\LogisticsTransportMovementType:
-    properties:
-        modeCode:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules

@@ -1,0 +1,72 @@
+horstoeko\zugferd\entities\en16931\ram\TradeAddressType:
+    properties:
+        postcodeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: PostcodeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPostcodeCode
+                setter: setPostcodeCode
+            type: horstoeko\zugferd\entities\en16931\udt\CodeType
+        lineOne:
+            expose: true
+            access_type: public_method
+            serialized_name: LineOne
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineOne
+                setter: setLineOne
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        lineTwo:
+            expose: true
+            access_type: public_method
+            serialized_name: LineTwo
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineTwo
+                setter: setLineTwo
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        lineThree:
+            expose: true
+            access_type: public_method
+            serialized_name: LineThree
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineThree
+                setter: setLineThree
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        cityName:
+            expose: true
+            access_type: public_method
+            serialized_name: CityName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCityName
+                setter: setCityName
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        countryID:
+            expose: true
+            access_type: public_method
+            serialized_name: CountryID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCountryID
+                setter: setCountryID
+            type: horstoeko\zugferd\entities\en16931\qdt\CountryIDType
+        countrySubDivisionName:
+            expose: true
+            access_type: public_method
+            serialized_name: CountrySubDivisionName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCountrySubDivisionName
+                setter: setCountrySubDivisionName
+            type: horstoeko\zugferd\entities\en16931\udt\TextType

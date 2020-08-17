@@ -1,0 +1,36 @@
+horstoeko\zugferd\basic\ram\LineTradeSettlementType:
+    properties:
+        applicableTradeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradeTax
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradeTax
+                setter: setApplicableTradeTax
+            type: horstoeko\zugferd\basic\ram\TradeTaxType
+        specifiedTradeAllowanceCharge:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeAllowanceCharge
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeAllowanceCharge
+                setter: setSpecifiedTradeAllowanceCharge
+            xml_list:
+                inline: true
+                entry_name: SpecifiedTradeAllowanceCharge
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basic\ram\TradeAllowanceChargeType>
+        specifiedTradeSettlementLineMonetarySummation:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeSettlementLineMonetarySummation
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeSettlementLineMonetarySummation
+                setter: setSpecifiedTradeSettlementLineMonetarySummation
+            type: horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType

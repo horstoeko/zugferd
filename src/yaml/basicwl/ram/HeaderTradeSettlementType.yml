@@ -1,0 +1,138 @@
+horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType:
+    properties:
+        creditorReferenceID:
+            expose: true
+            access_type: public_method
+            serialized_name: CreditorReferenceID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCreditorReferenceID
+                setter: setCreditorReferenceID
+            type: horstoeko\zugferd\basicwl\udt\IDType
+        paymentReference:
+            expose: true
+            access_type: public_method
+            serialized_name: PaymentReference
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPaymentReference
+                setter: setPaymentReference
+            type: horstoeko\zugferd\basicwl\udt\TextType
+        invoiceCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceCurrencyCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getInvoiceCurrencyCode
+                setter: setInvoiceCurrencyCode
+            type: horstoeko\zugferd\basicwl\qdt\CurrencyCodeType
+        payeeTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: PayeeTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayeeTradeParty
+                setter: setPayeeTradeParty
+            type: horstoeko\zugferd\basicwl\ram\TradePartyType
+        specifiedTradeSettlementPaymentMeans:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeSettlementPaymentMeans
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeSettlementPaymentMeans
+                setter: setSpecifiedTradeSettlementPaymentMeans
+            xml_list:
+                inline: true
+                entry_name: SpecifiedTradeSettlementPaymentMeans
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType>
+        applicableTradeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradeTax
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradeTax
+                setter: setApplicableTradeTax
+            xml_list:
+                inline: true
+                entry_name: ApplicableTradeTax
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basicwl\ram\TradeTaxType>
+        billingSpecifiedPeriod:
+            expose: true
+            access_type: public_method
+            serialized_name: BillingSpecifiedPeriod
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBillingSpecifiedPeriod
+                setter: setBillingSpecifiedPeriod
+            type: horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType
+        specifiedTradeAllowanceCharge:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeAllowanceCharge
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeAllowanceCharge
+                setter: setSpecifiedTradeAllowanceCharge
+            xml_list:
+                inline: true
+                entry_name: SpecifiedTradeAllowanceCharge
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType>
+        specifiedTradePaymentTerms:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradePaymentTerms
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradePaymentTerms
+                setter: setSpecifiedTradePaymentTerms
+            type: horstoeko\zugferd\basicwl\ram\TradePaymentTermsType
+        specifiedTradeSettlementHeaderMonetarySummation:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeSettlementHeaderMonetarySummation
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeSettlementHeaderMonetarySummation
+                setter: setSpecifiedTradeSettlementHeaderMonetarySummation
+            type: horstoeko\zugferd\basicwl\ram\TradeSettlementHeaderMonetarySummationType
+        invoiceReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getInvoiceReferencedDocument
+                setter: setInvoiceReferencedDocument
+            type: horstoeko\zugferd\basicwl\ram\ReferencedDocumentType
+        receivableSpecifiedTradeAccountingAccount:
+            expose: true
+            access_type: public_method
+            serialized_name: ReceivableSpecifiedTradeAccountingAccount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getReceivableSpecifiedTradeAccountingAccount
+                setter: setReceivableSpecifiedTradeAccountingAccount
+            xml_list:
+                inline: true
+                entry_name: ReceivableSpecifiedTradeAccountingAccount
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType>

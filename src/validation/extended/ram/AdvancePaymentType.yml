@@ -1,0 +1,17 @@
+horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
+    properties:
+        paidAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        formattedReceivedDateTime:
+            -
+                Valid: null
+        includedTradeTax:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

@@ -1,0 +1,52 @@
+horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
+    properties:
+        associatedDocumentLineDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: AssociatedDocumentLineDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAssociatedDocumentLineDocument
+                setter: setAssociatedDocumentLineDocument
+            type: horstoeko\zugferd\basic\ram\DocumentLineDocumentType
+        specifiedTradeProduct:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeProduct
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeProduct
+                setter: setSpecifiedTradeProduct
+            type: horstoeko\zugferd\basic\ram\TradeProductType
+        specifiedLineTradeAgreement:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLineTradeAgreement
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLineTradeAgreement
+                setter: setSpecifiedLineTradeAgreement
+            type: horstoeko\zugferd\basic\ram\LineTradeAgreementType
+        specifiedLineTradeDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLineTradeDelivery
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLineTradeDelivery
+                setter: setSpecifiedLineTradeDelivery
+            type: horstoeko\zugferd\basic\ram\LineTradeDeliveryType
+        specifiedLineTradeSettlement:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLineTradeSettlement
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLineTradeSettlement
+                setter: setSpecifiedLineTradeSettlement
+            type: horstoeko\zugferd\basic\ram\LineTradeSettlementType

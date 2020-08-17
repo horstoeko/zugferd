@@ -1,0 +1,11 @@
+horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType:
+    properties:
+        startDateTime:
+            -
+                Valid: null
+        endDateTime:
+            -
+                Valid: null
+        completeDateTime:
+            -
+                Valid: null

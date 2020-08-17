@@ -1,0 +1,5 @@
+horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType:
+    properties:
+        basisDateTime:
+            -
+                Valid: null

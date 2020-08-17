@@ -1,0 +1,10 @@
+horstoeko\zugferd\basic\ram\ReferencedDocumentType:
+    properties:
+        issuerAssignedID:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        formattedIssueDateTime:
+            -
+                Valid: null

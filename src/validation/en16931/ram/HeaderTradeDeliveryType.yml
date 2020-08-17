@@ -1,0 +1,14 @@
+horstoeko\zugferd\entities\en16931\ram\HeaderTradeDeliveryType:
+    properties:
+        shipToTradeParty:
+            -
+                Valid: null
+        actualDeliverySupplyChainEvent:
+            -
+                Valid: null
+        despatchAdviceReferencedDocument:
+            -
+                Valid: null
+        receivingAdviceReferencedDocument:
+            -
+                Valid: null

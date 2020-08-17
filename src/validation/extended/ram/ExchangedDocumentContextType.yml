@@ -1,0 +1,15 @@
+horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType:
+    properties:
+        testIndicator:
+            -
+                Valid: null
+        businessProcessSpecifiedDocumentContextParameter:
+            -
+                Valid: null
+        guidelineSpecifiedDocumentContextParameter:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

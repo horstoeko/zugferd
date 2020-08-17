@@ -1,0 +1,10 @@
+horstoeko\zugferd\entities\en16931\ram\TradePriceType:
+    properties:
+        chargeAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        appliedTradeAllowanceCharge:
+            -
+                Valid: null

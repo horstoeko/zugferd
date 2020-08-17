@@ -1,0 +1,19 @@
+horstoeko\zugferd\basic\udt\QuantityType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: float
+        unitCode:
+            expose: true
+            access_type: public_method
+            serialized_name: unitCode
+            accessor:
+                getter: getUnitCode
+                setter: setUnitCode
+            xml_attribute: true
+            type: string

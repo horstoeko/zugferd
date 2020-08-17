@@ -1,0 +1,12 @@
+horstoeko\zugferd\basic\ram\LineTradeDeliveryType:
+    properties:
+        billedQuantity:
+            expose: true
+            access_type: public_method
+            serialized_name: BilledQuantity
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBilledQuantity
+                setter: setBilledQuantity
+            type: horstoeko\zugferd\basic\udt\QuantityType

@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType:
+    properties:
+        lineTotalAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

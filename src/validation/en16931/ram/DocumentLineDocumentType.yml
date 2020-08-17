@@ -1,0 +1,10 @@
+horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType:
+    properties:
+        lineID:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        includedNote:
+            -
+                Valid: null

@@ -1,0 +1,7 @@
+horstoeko\zugferd\basic\ram\LineTradeDeliveryType:
+    properties:
+        billedQuantity:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

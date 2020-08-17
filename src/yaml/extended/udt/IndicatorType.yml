@@ -1,0 +1,12 @@
+horstoeko\zugferd\entities\extended\udt\IndicatorType:
+    properties:
+        indicator:
+            expose: true
+            access_type: public_method
+            serialized_name: Indicator
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100'
+            accessor:
+                getter: getIndicator
+                setter: setIndicator
+            type: bool

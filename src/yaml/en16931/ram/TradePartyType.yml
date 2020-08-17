@@ -1,0 +1,104 @@
+horstoeko\zugferd\entities\en16931\ram\TradePartyType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            xml_list:
+                inline: true
+                entry_name: ID
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\en16931\udt\IDType>
+        globalID:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGlobalID
+                setter: setGlobalID
+            xml_list:
+                inline: true
+                entry_name: GlobalID
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\en16931\udt\IDType>
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getName
+                setter: setName
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        specifiedLegalOrganization:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLegalOrganization
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLegalOrganization
+                setter: setSpecifiedLegalOrganization
+            type: horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType
+        definedTradeContact:
+            expose: true
+            access_type: public_method
+            serialized_name: DefinedTradeContact
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDefinedTradeContact
+                setter: setDefinedTradeContact
+            type: horstoeko\zugferd\entities\en16931\ram\TradeContactType
+        postalTradeAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: PostalTradeAddress
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPostalTradeAddress
+                setter: setPostalTradeAddress
+            type: horstoeko\zugferd\entities\en16931\ram\TradeAddressType
+        uRIUniversalCommunication:
+            expose: true
+            access_type: public_method
+            serialized_name: URIUniversalCommunication
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getURIUniversalCommunication
+                setter: setURIUniversalCommunication
+            type: horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType
+        specifiedTaxRegistration:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTaxRegistration
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTaxRegistration
+                setter: setSpecifiedTaxRegistration
+            xml_list:
+                inline: true
+                entry_name: SpecifiedTaxRegistration
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType>

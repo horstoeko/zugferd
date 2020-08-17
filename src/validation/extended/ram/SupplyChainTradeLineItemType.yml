@@ -1,0 +1,33 @@
+horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType:
+    properties:
+        associatedDocumentLineDocument:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        specifiedTradeProduct:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        specifiedLineTradeAgreement:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        specifiedLineTradeDelivery:
+            -
+                Valid: null
+        specifiedLineTradeSettlement:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

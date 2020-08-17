@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\en16931\ram\NoteType:
+    properties:
+        content:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

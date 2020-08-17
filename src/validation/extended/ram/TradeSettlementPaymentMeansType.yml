@@ -1,0 +1,19 @@
+horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType:
+    properties:
+        typeCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        applicableTradeSettlementFinancialCard:
+            -
+                Valid: null
+        payerPartyDebtorFinancialAccount:
+            -
+                Valid: null
+        payeePartyCreditorFinancialAccount:
+            -
+                Valid: null
+        payeeSpecifiedCreditorFinancialInstitution:
+            -
+                Valid: null

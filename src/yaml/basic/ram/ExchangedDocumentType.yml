@@ -1,0 +1,46 @@
+horstoeko\zugferd\basic\ram\ExchangedDocumentType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            type: horstoeko\zugferd\basic\udt\IDType
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: horstoeko\zugferd\basic\qdt\DocumentCodeType
+        issueDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: IssueDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIssueDateTime
+                setter: setIssueDateTime
+            type: horstoeko\zugferd\basic\udt\DateTimeType
+        includedNote:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludedNote
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIncludedNote
+                setter: setIncludedNote
+            xml_list:
+                inline: true
+                entry_name: IncludedNote
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\basic\ram\NoteType>

@@ -1,0 +1,5 @@
+horstoeko\zugferd\entities\extended\ram\SupplyChainConsignmentType:
+    properties:
+        specifiedLogisticsTransportMovement:
+            -
+                Valid: null

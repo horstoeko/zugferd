@@ -1,7 +1,0 @@
-horstoeko\zugferd\ram\TaxRegistrationType:
-    properties:
-        iD:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules

@@ -1,0 +1,22 @@
+horstoeko\zugferd\entities\en16931\ram\TradeSettlementHeaderMonetarySummationType:
+    properties:
+        lineTotalAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        taxBasisTotalAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        grandTotalAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        duePayableAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

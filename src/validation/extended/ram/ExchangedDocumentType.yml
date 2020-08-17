@@ -1,0 +1,28 @@
+horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
+    properties:
+        iD:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        typeCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        issueDateTime:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        copyIndicator:
+            -
+                Valid: null
+        includedNote:
+            -
+                Valid: null
+        effectiveSpecifiedPeriod:
+            -
+                Valid: null

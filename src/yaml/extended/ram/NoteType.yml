@@ -1,0 +1,32 @@
+horstoeko\zugferd\entities\extended\ram\NoteType:
+    properties:
+        contentCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ContentCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getContentCode
+                setter: setContentCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType
+        content:
+            expose: true
+            access_type: public_method
+            serialized_name: Content
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getContent
+                setter: setContent
+            type: horstoeko\zugferd\entities\extended\udt\TextType
+        subjectCode:
+            expose: true
+            access_type: public_method
+            serialized_name: SubjectCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSubjectCode
+                setter: setSubjectCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType

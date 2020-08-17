@@ -1,7 +1,0 @@
-horstoeko\zugferd\ram\CreditorFinancialInstitutionType:
-    properties:
-        bICID:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules

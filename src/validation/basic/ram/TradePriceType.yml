@@ -1,0 +1,7 @@
+horstoeko\zugferd\basic\ram\TradePriceType:
+    properties:
+        chargeAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

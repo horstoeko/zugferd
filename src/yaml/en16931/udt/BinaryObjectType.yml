@@ -1,0 +1,28 @@
+horstoeko\zugferd\entities\en16931\udt\BinaryObjectType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: \AnySimpleType
+        mimeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: mimeCode
+            accessor:
+                getter: getMimeCode
+                setter: setMimeCode
+            xml_attribute: true
+            type: string
+        filename:
+            expose: true
+            access_type: public_method
+            serialized_name: filename
+            accessor:
+                getter: getFilename
+                setter: setFilename
+            xml_attribute: true
+            type: string

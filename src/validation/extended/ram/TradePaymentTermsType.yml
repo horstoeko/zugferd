@@ -1,0 +1,11 @@
+horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
+    properties:
+        dueDateDateTime:
+            -
+                Valid: null
+        applicableTradePaymentPenaltyTerms:
+            -
+                Valid: null
+        applicableTradePaymentDiscountTerms:
+            -
+                Valid: null

@@ -1,0 +1,7 @@
+horstoeko\zugferd\basic\ram\UniversalCommunicationType:
+    properties:
+        uRIID:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

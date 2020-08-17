@@ -1,7 +1,0 @@
-horstoeko\zugferd\ram\DebtorFinancialAccountType:
-    properties:
-        iBANID:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules

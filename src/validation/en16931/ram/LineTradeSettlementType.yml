@@ -1,0 +1,28 @@
+horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
+    properties:
+        applicableTradeTax:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        billingSpecifiedPeriod:
+            -
+                Valid: null
+        specifiedTradeAllowanceCharge:
+            -
+                Valid: null
+        specifiedTradeSettlementLineMonetarySummation:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        additionalReferencedDocument:
+            -
+                Valid: null
+        receivableSpecifiedTradeAccountingAccount:
+            -
+                Valid: null

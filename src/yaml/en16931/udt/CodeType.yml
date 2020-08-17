@@ -1,0 +1,28 @@
+horstoeko\zugferd\entities\en16931\udt\CodeType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: string
+        listID:
+            expose: true
+            access_type: public_method
+            serialized_name: listID
+            accessor:
+                getter: getListID
+                setter: setListID
+            xml_attribute: true
+            type: string
+        listVersionID:
+            expose: true
+            access_type: public_method
+            serialized_name: listVersionID
+            accessor:
+                getter: getListVersionID
+                setter: setListVersionID
+            xml_attribute: true
+            type: string

@@ -1,0 +1,46 @@
+horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType:
+    properties:
+        lineID:
+            expose: true
+            access_type: public_method
+            serialized_name: LineID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineID
+                setter: setLineID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
+        lineStatusCode:
+            expose: true
+            access_type: public_method
+            serialized_name: LineStatusCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineStatusCode
+                setter: setLineStatusCode
+            type: horstoeko\zugferd\entities\extended\qdt\LineStatusCodeType
+        lineStatusReasonCode:
+            expose: true
+            access_type: public_method
+            serialized_name: LineStatusReasonCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineStatusReasonCode
+                setter: setLineStatusReasonCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType
+        includedNote:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludedNote
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIncludedNote
+                setter: setIncludedNote
+            xml_list:
+                inline: true
+                entry_name: IncludedNote
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\NoteType>

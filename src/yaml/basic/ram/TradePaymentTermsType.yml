@@ -1,0 +1,22 @@
+horstoeko\zugferd\basic\ram\TradePaymentTermsType:
+    properties:
+        dueDateDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: DueDateDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDueDateDateTime
+                setter: setDueDateDateTime
+            type: horstoeko\zugferd\basic\udt\DateTimeType
+        directDebitMandateID:
+            expose: true
+            access_type: public_method
+            serialized_name: DirectDebitMandateID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDirectDebitMandateID
+                setter: setDirectDebitMandateID
+            type: horstoeko\zugferd\basic\udt\IDType

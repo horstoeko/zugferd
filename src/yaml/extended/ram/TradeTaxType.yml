@@ -1,0 +1,112 @@
+horstoeko\zugferd\entities\extended\ram\TradeTaxType:
+    properties:
+        calculatedAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculatedAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCalculatedAmount
+                setter: setCalculatedAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
+        exemptionReason:
+            expose: true
+            access_type: public_method
+            serialized_name: ExemptionReason
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getExemptionReason
+                setter: setExemptionReason
+            type: horstoeko\zugferd\entities\extended\udt\TextType
+        basisAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: BasisAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBasisAmount
+                setter: setBasisAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        lineTotalBasisAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: LineTotalBasisAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getLineTotalBasisAmount
+                setter: setLineTotalBasisAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        allowanceChargeBasisAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowanceChargeBasisAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAllowanceChargeBasisAmount
+                setter: setAllowanceChargeBasisAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        categoryCode:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCategoryCode
+                setter: setCategoryCode
+            type: horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
+        exemptionReasonCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ExemptionReasonCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getExemptionReasonCode
+                setter: setExemptionReasonCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType
+        taxPointDate:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxPointDate
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxPointDate
+                setter: setTaxPointDate
+            type: horstoeko\zugferd\entities\extended\udt\DateType
+        dueDateTypeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: DueDateTypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDueDateTypeCode
+                setter: setDueDateTypeCode
+            type: horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
+        rateApplicablePercent:
+            expose: true
+            access_type: public_method
+            serialized_name: RateApplicablePercent
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getRateApplicablePercent
+                setter: setRateApplicablePercent
+            type: horstoeko\zugferd\entities\extended\udt\PercentType

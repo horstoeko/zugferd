@@ -1,0 +1,7 @@
+horstoeko\zugferd\basic\ram\DocumentLineDocumentType:
+    properties:
+        lineID:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

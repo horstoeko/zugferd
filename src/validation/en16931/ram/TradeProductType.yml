@@ -1,0 +1,16 @@
+horstoeko\zugferd\entities\en16931\ram\TradeProductType:
+    properties:
+        name:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        applicableProductCharacteristic:
+            -
+                Valid: null
+        designatedProductClassification:
+            -
+                Valid: null
+        originTradeCountry:
+            -
+                Valid: null

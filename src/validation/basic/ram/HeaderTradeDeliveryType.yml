@@ -1,0 +1,11 @@
+horstoeko\zugferd\basic\ram\HeaderTradeDeliveryType:
+    properties:
+        shipToTradeParty:
+            -
+                Valid: null
+        actualDeliverySupplyChainEvent:
+            -
+                Valid: null
+        despatchAdviceReferencedDocument:
+            -
+                Valid: null

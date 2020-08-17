@@ -1,7 +1,0 @@
-horstoeko\zugferd\ram\TradeCountryType:
-    properties:
-        iD:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules

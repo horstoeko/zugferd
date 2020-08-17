@@ -1,0 +1,62 @@
+horstoeko\zugferd\basic\ram\HeaderTradeAgreementType:
+    properties:
+        buyerReference:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerReference
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerReference
+                setter: setBuyerReference
+            type: horstoeko\zugferd\basic\udt\TextType
+        sellerTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSellerTradeParty
+                setter: setSellerTradeParty
+            type: horstoeko\zugferd\basic\ram\TradePartyType
+        buyerTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerTradeParty
+                setter: setBuyerTradeParty
+            type: horstoeko\zugferd\basic\ram\TradePartyType
+        sellerTaxRepresentativeTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerTaxRepresentativeTradeParty
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSellerTaxRepresentativeTradeParty
+                setter: setSellerTaxRepresentativeTradeParty
+            type: horstoeko\zugferd\basic\ram\TradePartyType
+        buyerOrderReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerOrderReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerOrderReferencedDocument
+                setter: setBuyerOrderReferencedDocument
+            type: horstoeko\zugferd\basic\ram\ReferencedDocumentType
+        contractReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: ContractReferencedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getContractReferencedDocument
+                setter: setContractReferencedDocument
+            type: horstoeko\zugferd\basic\ram\ReferencedDocumentType

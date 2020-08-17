@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\extended\ram\TaxRegistrationType:
+    properties:
+        iD:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

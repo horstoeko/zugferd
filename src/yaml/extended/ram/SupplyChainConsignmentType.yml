@@ -1,0 +1,16 @@
+horstoeko\zugferd\entities\extended\ram\SupplyChainConsignmentType:
+    properties:
+        specifiedLogisticsTransportMovement:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLogisticsTransportMovement
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLogisticsTransportMovement
+                setter: setSpecifiedLogisticsTransportMovement
+            xml_list:
+                inline: true
+                entry_name: SpecifiedLogisticsTransportMovement
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType>

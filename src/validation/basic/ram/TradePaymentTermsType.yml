@@ -1,0 +1,5 @@
+horstoeko\zugferd\basic\ram\TradePaymentTermsType:
+    properties:
+        dueDateDateTime:
+            -
+                Valid: null

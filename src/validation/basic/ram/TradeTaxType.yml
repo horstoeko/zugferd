@@ -1,0 +1,12 @@
+horstoeko\zugferd\basic\ram\TradeTaxType:
+    properties:
+        typeCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        categoryCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

@@ -1,0 +1,25 @@
+horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
+    properties:
+        billedQuantity:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        shipToTradeParty:
+            -
+                Valid: null
+        ultimateShipToTradeParty:
+            -
+                Valid: null
+        actualDeliverySupplyChainEvent:
+            -
+                Valid: null
+        despatchAdviceReferencedDocument:
+            -
+                Valid: null
+        receivingAdviceReferencedDocument:
+            -
+                Valid: null
+        deliveryNoteReferencedDocument:
+            -
+                Valid: null

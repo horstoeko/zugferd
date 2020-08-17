@@ -1,0 +1,32 @@
+horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType:
+    properties:
+        exchangedDocumentContext:
+            expose: true
+            access_type: public_method
+            serialized_name: ExchangedDocumentContext
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getExchangedDocumentContext
+                setter: setExchangedDocumentContext
+            type: horstoeko\zugferd\entities\en16931\ram\ExchangedDocumentContextType
+        exchangedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: ExchangedDocument
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getExchangedDocument
+                setter: setExchangedDocument
+            type: horstoeko\zugferd\entities\en16931\ram\ExchangedDocumentType
+        supplyChainTradeTransaction:
+            expose: true
+            access_type: public_method
+            serialized_name: SupplyChainTradeTransaction
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getSupplyChainTradeTransaction
+                setter: setSupplyChainTradeTransaction
+            type: horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeTransactionType

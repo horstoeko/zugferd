@@ -1,0 +1,72 @@
+horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
+    properties:
+        chargeIndicator:
+            expose: true
+            access_type: public_method
+            serialized_name: ChargeIndicator
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getChargeIndicator
+                setter: setChargeIndicator
+            type: horstoeko\zugferd\basic\udt\IndicatorType
+        calculationPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculationPercent
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCalculationPercent
+                setter: setCalculationPercent
+            type: horstoeko\zugferd\basic\udt\PercentType
+        basisAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: BasisAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBasisAmount
+                setter: setBasisAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        actualAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ActualAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getActualAmount
+                setter: setActualAmount
+            type: horstoeko\zugferd\basic\udt\AmountType
+        reasonCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ReasonCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getReasonCode
+                setter: setReasonCode
+            type: horstoeko\zugferd\basic\qdt\AllowanceChargeReasonCodeType
+        reason:
+            expose: true
+            access_type: public_method
+            serialized_name: Reason
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getReason
+                setter: setReason
+            type: horstoeko\zugferd\basic\udt\TextType
+        categoryTradeTax:
+            expose: true
+            access_type: public_method
+            serialized_name: CategoryTradeTax
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCategoryTradeTax
+                setter: setCategoryTradeTax
+            type: horstoeko\zugferd\basic\ram\TradeTaxType

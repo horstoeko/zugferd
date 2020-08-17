@@ -1,0 +1,7 @@
+horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType:
+    properties:
+        iD:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

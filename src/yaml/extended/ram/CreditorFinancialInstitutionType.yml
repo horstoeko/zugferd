@@ -1,0 +1,12 @@
+horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType:
+    properties:
+        bICID:
+            expose: true
+            access_type: public_method
+            serialized_name: BICID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBICID
+                setter: setBICID
+            type: horstoeko\zugferd\entities\extended\udt\IDType

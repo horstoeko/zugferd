@@ -1,0 +1,12 @@
+horstoeko\zugferd\entities\en16931\ram\ExchangedDocumentContextType:
+    properties:
+        businessProcessSpecifiedDocumentContextParameter:
+            -
+                Valid: null
+        guidelineSpecifiedDocumentContextParameter:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

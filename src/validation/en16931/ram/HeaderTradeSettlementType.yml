@@ -1,0 +1,42 @@
+horstoeko\zugferd\entities\en16931\ram\HeaderTradeSettlementType:
+    properties:
+        invoiceCurrencyCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        payeeTradeParty:
+            -
+                Valid: null
+        specifiedTradeSettlementPaymentMeans:
+            -
+                Valid: null
+        applicableTradeTax:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        billingSpecifiedPeriod:
+            -
+                Valid: null
+        specifiedTradeAllowanceCharge:
+            -
+                Valid: null
+        specifiedTradePaymentTerms:
+            -
+                Valid: null
+        specifiedTradeSettlementHeaderMonetarySummation:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        invoiceReferencedDocument:
+            -
+                Valid: null
+        receivableSpecifiedTradeAccountingAccount:
+            -
+                Valid: null

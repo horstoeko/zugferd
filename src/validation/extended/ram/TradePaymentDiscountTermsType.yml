@@ -1,0 +1,5 @@
+horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
+    properties:
+        basisDateTime:
+            -
+                Valid: null

@@ -1,0 +1,46 @@
+horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType:
+    properties:
+        includedSupplyChainTradeLineItem:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludedSupplyChainTradeLineItem
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIncludedSupplyChainTradeLineItem
+                setter: setIncludedSupplyChainTradeLineItem
+            xml_list:
+                inline: true
+                entry_name: IncludedSupplyChainTradeLineItem
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType>
+        applicableHeaderTradeAgreement:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeAgreement
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeAgreement
+                setter: setApplicableHeaderTradeAgreement
+            type: horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType
+        applicableHeaderTradeDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeDelivery
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeDelivery
+                setter: setApplicableHeaderTradeDelivery
+            type: horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType
+        applicableHeaderTradeSettlement:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeSettlement
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeSettlement
+                setter: setApplicableHeaderTradeSettlement
+            type: horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType

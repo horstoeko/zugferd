@@ -1,0 +1,21 @@
+horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType:
+    properties:
+        chargeIndicator:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        actualAmount:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        categoryTradeTax:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

@@ -1,0 +1,90 @@
+horstoeko\zugferd\entities\en16931\ram\TradeProductType:
+    properties:
+        globalID:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGlobalID
+                setter: setGlobalID
+            type: horstoeko\zugferd\entities\en16931\udt\IDType
+        sellerAssignedID:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerAssignedID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSellerAssignedID
+                setter: setSellerAssignedID
+            type: horstoeko\zugferd\entities\en16931\udt\IDType
+        buyerAssignedID:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerAssignedID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerAssignedID
+                setter: setBuyerAssignedID
+            type: horstoeko\zugferd\entities\en16931\udt\IDType
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getName
+                setter: setName
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        applicableProductCharacteristic:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableProductCharacteristic
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableProductCharacteristic
+                setter: setApplicableProductCharacteristic
+            xml_list:
+                inline: true
+                entry_name: ApplicableProductCharacteristic
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType>
+        designatedProductClassification:
+            expose: true
+            access_type: public_method
+            serialized_name: DesignatedProductClassification
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDesignatedProductClassification
+                setter: setDesignatedProductClassification
+            xml_list:
+                inline: true
+                entry_name: DesignatedProductClassification
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\en16931\ram\ProductClassificationType>
+        originTradeCountry:
+            expose: true
+            access_type: public_method
+            serialized_name: OriginTradeCountry
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getOriginTradeCountry
+                setter: setOriginTradeCountry
+            type: horstoeko\zugferd\entities\en16931\ram\TradeCountryType

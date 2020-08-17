@@ -1,0 +1,20 @@
+horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
+    properties:
+        sourceCurrencyCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        targetCurrencyCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        conversionRate:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        conversionRateDateTime:
+            -
+                Valid: null

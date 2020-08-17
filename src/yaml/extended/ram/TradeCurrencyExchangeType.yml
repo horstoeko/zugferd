@@ -1,0 +1,42 @@
+horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
+    properties:
+        sourceCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: SourceCurrencyCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSourceCurrencyCode
+                setter: setSourceCurrencyCode
+            type: horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType
+        targetCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TargetCurrencyCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTargetCurrencyCode
+                setter: setTargetCurrencyCode
+            type: horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType
+        conversionRate:
+            expose: true
+            access_type: public_method
+            serialized_name: ConversionRate
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getConversionRate
+                setter: setConversionRate
+            type: horstoeko\zugferd\entities\extended\udt\RateType
+        conversionRateDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: ConversionRateDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getConversionRateDateTime
+                setter: setConversionRateDateTime
+            type: horstoeko\zugferd\entities\extended\udt\DateTimeType

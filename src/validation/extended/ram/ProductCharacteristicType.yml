@@ -1,0 +1,12 @@
+horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
+    properties:
+        description:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        value:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\extended\ram\ReferencedProductType:
+    properties:
+        name:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

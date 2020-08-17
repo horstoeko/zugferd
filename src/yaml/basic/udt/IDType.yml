@@ -1,0 +1,19 @@
+horstoeko\zugferd\basic\udt\IDType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: string
+        schemeID:
+            expose: true
+            access_type: public_method
+            serialized_name: schemeID
+            accessor:
+                getter: getSchemeID
+                setter: setSchemeID
+            xml_attribute: true
+            type: string

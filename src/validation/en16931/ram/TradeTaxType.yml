@@ -1,0 +1,15 @@
+horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
+    properties:
+        typeCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        categoryCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        taxPointDate:
+            -
+                Valid: null

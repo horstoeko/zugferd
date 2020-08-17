@@ -1,0 +1,10 @@
+horstoeko\zugferd\entities\extended\udt\RateType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: float

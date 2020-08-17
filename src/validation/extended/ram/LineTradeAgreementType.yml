@@ -1,0 +1,24 @@
+horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
+    properties:
+        buyerOrderReferencedDocument:
+            -
+                Valid: null
+        contractReferencedDocument:
+            -
+                Valid: null
+        additionalReferencedDocument:
+            -
+                Valid: null
+        grossPriceProductTradePrice:
+            -
+                Valid: null
+        netPriceProductTradePrice:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        ultimateCustomerOrderReferencedDocument:
+            -
+                Valid: null

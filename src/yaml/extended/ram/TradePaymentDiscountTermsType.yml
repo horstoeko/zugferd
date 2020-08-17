@@ -1,0 +1,52 @@
+horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
+    properties:
+        basisDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: BasisDateTime
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBasisDateTime
+                setter: setBasisDateTime
+            type: horstoeko\zugferd\entities\extended\udt\DateTimeType
+        basisPeriodMeasure:
+            expose: true
+            access_type: public_method
+            serialized_name: BasisPeriodMeasure
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBasisPeriodMeasure
+                setter: setBasisPeriodMeasure
+            type: horstoeko\zugferd\entities\extended\udt\MeasureType
+        basisAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: BasisAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBasisAmount
+                setter: setBasisAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        calculationPercent:
+            expose: true
+            access_type: public_method
+            serialized_name: CalculationPercent
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getCalculationPercent
+                setter: setCalculationPercent
+            type: horstoeko\zugferd\entities\extended\udt\PercentType
+        actualDiscountAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ActualDiscountAmount
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getActualDiscountAmount
+                setter: setActualDiscountAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType

@@ -1,0 +1,22 @@
+horstoeko\zugferd\entities\extended\ram\ProductClassificationType:
+    properties:
+        classCode:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getClassCode
+                setter: setClassCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType
+        className:
+            expose: true
+            access_type: public_method
+            serialized_name: ClassName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getClassName
+                setter: setClassName
+            type: horstoeko\zugferd\entities\extended\udt\TextType

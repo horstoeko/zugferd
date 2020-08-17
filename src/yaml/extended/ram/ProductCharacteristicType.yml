@@ -1,0 +1,42 @@
+horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
+    properties:
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: horstoeko\zugferd\entities\extended\udt\CodeType
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: horstoeko\zugferd\entities\extended\udt\TextType
+        valueMeasure:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueMeasure
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getValueMeasure
+                setter: setValueMeasure
+            type: horstoeko\zugferd\entities\extended\udt\MeasureType
+        value:
+            expose: true
+            access_type: public_method
+            serialized_name: Value
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getValue
+                setter: setValue
+            type: horstoeko\zugferd\entities\extended\udt\TextType

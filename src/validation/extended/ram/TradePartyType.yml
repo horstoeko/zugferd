@@ -1,0 +1,17 @@
+horstoeko\zugferd\entities\extended\ram\TradePartyType:
+    properties:
+        specifiedLegalOrganization:
+            -
+                Valid: null
+        definedTradeContact:
+            -
+                Valid: null
+        postalTradeAddress:
+            -
+                Valid: null
+        uRIUniversalCommunication:
+            -
+                Valid: null
+        specifiedTaxRegistration:
+            -
+                Valid: null

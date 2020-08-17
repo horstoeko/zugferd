@@ -1,0 +1,22 @@
+horstoeko\zugferd\basic\ram\TradeProductType:
+    properties:
+        globalID:
+            expose: true
+            access_type: public_method
+            serialized_name: GlobalID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGlobalID
+                setter: setGlobalID
+            type: horstoeko\zugferd\basic\udt\IDType
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getName
+                setter: setName
+            type: horstoeko\zugferd\basic\udt\TextType

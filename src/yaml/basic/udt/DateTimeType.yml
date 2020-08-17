@@ -1,0 +1,12 @@
+horstoeko\zugferd\basic\udt\DateTimeType:
+    properties:
+        dateTimeString:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTimeString
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100'
+            accessor:
+                getter: getDateTimeString
+                setter: setDateTimeString
+            type: horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType

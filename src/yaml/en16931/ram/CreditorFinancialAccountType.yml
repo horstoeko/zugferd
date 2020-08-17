@@ -1,0 +1,32 @@
+horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType:
+    properties:
+        iBANID:
+            expose: true
+            access_type: public_method
+            serialized_name: IBANID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIBANID
+                setter: setIBANID
+            type: horstoeko\zugferd\entities\en16931\udt\IDType
+        accountName:
+            expose: true
+            access_type: public_method
+            serialized_name: AccountName
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAccountName
+                setter: setAccountName
+            type: horstoeko\zugferd\entities\en16931\udt\TextType
+        proprietaryID:
+            expose: true
+            access_type: public_method
+            serialized_name: ProprietaryID
+            xml_element:
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getProprietaryID
+                setter: setProprietaryID
+            type: horstoeko\zugferd\entities\en16931\udt\IDType

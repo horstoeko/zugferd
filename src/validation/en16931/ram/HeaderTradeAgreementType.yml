@@ -1,0 +1,34 @@
+horstoeko\zugferd\entities\en16931\ram\HeaderTradeAgreementType:
+    properties:
+        sellerTradeParty:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        buyerTradeParty:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        sellerTaxRepresentativeTradeParty:
+            -
+                Valid: null
+        sellerOrderReferencedDocument:
+            -
+                Valid: null
+        buyerOrderReferencedDocument:
+            -
+                Valid: null
+        contractReferencedDocument:
+            -
+                Valid: null
+        additionalReferencedDocument:
+            -
+                Valid: null
+        specifiedProcuringProject:
+            -
+                Valid: null

@@ -1,0 +1,12 @@
+horstoeko\zugferd\entities\extended\ram\ProcuringProjectType:
+    properties:
+        iD:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        name:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

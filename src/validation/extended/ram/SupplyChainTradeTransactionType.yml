@@ -1,0 +1,30 @@
+horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType:
+    properties:
+        includedSupplyChainTradeLineItem:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        applicableHeaderTradeAgreement:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        applicableHeaderTradeDelivery:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        applicableHeaderTradeSettlement:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
