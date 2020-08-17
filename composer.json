@@ -21,8 +21,8 @@
         }
     },
     "require": {
-        "goetas/xsd2php": "^2.1",
-        "goetas-webservices/xsd2php-runtime": "^0.2.12"
+        "goetas-webservices/xsd2php": "^0.2.12",
+        "jms/serializer": "^3"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.2"
