@@ -2,34 +2,33 @@
 
 namespace horstoeko\zugferd;
 
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use \JMS\Serializer\Handler\HandlerRegistryInterface;
-use \JMS\Serializer\SerializerBuilder;
+use horstoeko\zugferd\ZugferdBase;
 
-class ZugferdReader
+class ZugferdReader extends ZugferdBase
 {
     /**
-     * Read content of a zuferd/xrechnung xml file
+     * Read content of a zuferd/xrechnung xml from a string
      *
      * @param string $xmlcontent
      * @return \horstoeko\zugferd\rsm\CrossIndustryInvoice
      */
-    public static function ReadContent($xmlcontent)
+    public function ReadContent($xmlcontent)
     {
-        $serializerBuilder = SerializerBuilder::create();
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/qdt', 'horstoeko\zugferd\qdt');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/ram', 'horstoeko\zugferd\ram');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/rsm', 'horstoeko\zugferd\rsm');
-        $serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/udt', 'horstoeko\zugferd\udt');
-        $serializerBuilder->addDefaultListeners();
-        $serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
-            $serializerBuilder->addDefaultHandlers();
-            $handler->registerSubscribingHandler(new BaseTypesHandler());
-            $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
-        });
-        $serializer = $serializerBuilder->build();
-        $object = $serializer->deserialize($xmlcontent, 'horstoeko\zugferd\rsm\CrossIndustryInvoice', 'xml');
-        return $object;
+        return $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\rsm\CrossIndustryInvoice', 'xml');
+    }
+
+    /**
+     * Read content of a zuferd/xrechnung xml from a file
+     *
+     * @param string $xmlfilename
+     * @return \horstoeko\zugferd\rsm\CrossIndustryInvoice
+     */
+    public function ReadFile($xmlfilename)
+    {
+        if (!file_exists($xmlfilename)) {
+            throw new \Exception("File {$xmlfilename} does not exist...");
+        }
+
+        return $this->ReadContent(file_get_contents($xmlfilename));
     }
 }
