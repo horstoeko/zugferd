@@ -1,0 +1,7 @@
+horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType:
+    properties:
+        format:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

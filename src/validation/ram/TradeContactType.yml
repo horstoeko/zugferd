@@ -1,0 +1,11 @@
+horstoeko\zugferd\ram\TradeContactType:
+    properties:
+        telephoneUniversalCommunication:
+            -
+                Valid: null
+        faxUniversalCommunication:
+            -
+                Valid: null
+        emailURIUniversalCommunication:
+            -
+                Valid: null

@@ -1,0 +1,7 @@
+horstoeko\zugferd\ram\ProductClassificationType:
+    properties:
+        classCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

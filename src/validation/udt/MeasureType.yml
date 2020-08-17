@@ -1,0 +1,7 @@
+horstoeko\zugferd\udt\MeasureType:
+    properties:
+        unitCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
