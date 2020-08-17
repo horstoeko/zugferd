@@ -21,7 +21,6 @@
         }
     },
     "require": {
-        "goetas-webservices/xsd2php": "^0.2.12",
         "jms/serializer": "^3"
     },
     "require-dev": {
