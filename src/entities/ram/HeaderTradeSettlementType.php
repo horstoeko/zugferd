@@ -12,107 +12,113 @@ class HeaderTradeSettlementType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $creditorReferenceID
+     * @var \horstoeko\zugferd\udt\IDType $creditorReferenceID
      */
     private $creditorReferenceID = null;
 
     /**
-     * @property string $paymentReference
+     * @var string $paymentReference
      */
     private $paymentReference = null;
 
     /**
-     * @property string $taxCurrencyCode
+     * @var string $taxCurrencyCode
      */
     private $taxCurrencyCode = null;
 
     /**
-     * @property string $invoiceCurrencyCode
+     * @var string $invoiceCurrencyCode
      */
     private $invoiceCurrencyCode = null;
 
     /**
-     * @property string $invoiceIssuerReference
+     * @var string $invoiceIssuerReference
      */
     private $invoiceIssuerReference = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $invoicerTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $invoicerTradeParty
      */
     private $invoicerTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $invoiceeTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $invoiceeTradeParty
      */
     private $invoiceeTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $payeeTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $payeeTradeParty
      */
     private $payeeTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeCurrencyExchangeType
-     * $taxApplicableTradeCurrencyExchange
+     * @var \horstoeko\zugferd\ram\TradeCurrencyExchangeType $taxApplicableTradeCurrencyExchange
      */
     private $taxApplicableTradeCurrencyExchange = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType[]
-     * $specifiedTradeSettlementPaymentMeans
+     * @var \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
      */
-    private $specifiedTradeSettlementPaymentMeans = null;
+    private $specifiedTradeSettlementPaymentMeans = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeTaxType[] $applicableTradeTax
+     * @var \horstoeko\zugferd\ram\TradeTaxType[] $applicableTradeTax
      */
-    private $applicableTradeTax = null;
+    private $applicableTradeTax = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @var \horstoeko\zugferd\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      */
     private $billingSpecifiedPeriod = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeAllowanceChargeType[]
-     * $specifiedTradeAllowanceCharge
+     * @var \horstoeko\zugferd\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      */
-    private $specifiedTradeAllowanceCharge = null;
+    private $specifiedTradeAllowanceCharge = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\LogisticsServiceChargeType[]
-     * $specifiedLogisticsServiceCharge
+     * @var \horstoeko\zugferd\ram\LogisticsServiceChargeType[] $specifiedLogisticsServiceCharge
      */
-    private $specifiedLogisticsServiceCharge = null;
+    private $specifiedLogisticsServiceCharge = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePaymentTermsType[]
-     * $specifiedTradePaymentTerms
+     * @var \horstoeko\zugferd\ram\TradePaymentTermsType[] $specifiedTradePaymentTerms
      */
-    private $specifiedTradePaymentTerms = null;
+    private $specifiedTradePaymentTerms = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeSettlementHeaderMonetarySummationType
-     * $specifiedTradeSettlementHeaderMonetarySummation
+     * @var \horstoeko\zugferd\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
      */
     private $specifiedTradeSettlementHeaderMonetarySummation = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $invoiceReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $invoiceReferencedDocument
      */
     private $invoiceReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeAccountingAccountType[]
-     * $receivableSpecifiedTradeAccountingAccount
+     * @var \horstoeko\zugferd\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
      */
-    private $receivableSpecifiedTradeAccountingAccount = null;
+    private $receivableSpecifiedTradeAccountingAccount = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\AdvancePaymentType[] $specifiedAdvancePayment
+     * @var \horstoeko\zugferd\ram\AdvancePaymentType[] $specifiedAdvancePayment
      */
-    private $specifiedAdvancePayment = null;
+    private $specifiedAdvancePayment = [
+        
+    ];
 
     /**
      * Gets as creditorReferenceID
@@ -303,8 +309,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new taxApplicableTradeCurrencyExchange
      *
-     * @param \horstoeko\zugferd\ram\TradeCurrencyExchangeType
-     * $taxApplicableTradeCurrencyExchange
+     * @param \horstoeko\zugferd\ram\TradeCurrencyExchangeType $taxApplicableTradeCurrencyExchange
      * @return self
      */
     public function setTaxApplicableTradeCurrencyExchange(\horstoeko\zugferd\ram\TradeCurrencyExchangeType $taxApplicableTradeCurrencyExchange)
@@ -317,8 +322,7 @@ class HeaderTradeSettlementType
      * Adds as specifiedTradeSettlementPaymentMeans
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType
-     * $specifiedTradeSettlementPaymentMeans
+     * @param \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
      */
     public function addToSpecifiedTradeSettlementPaymentMeans(\horstoeko\zugferd\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans)
     {
@@ -329,8 +333,8 @@ class HeaderTradeSettlementType
     /**
      * isset specifiedTradeSettlementPaymentMeans
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedTradeSettlementPaymentMeans($index)
     {
@@ -340,7 +344,7 @@ class HeaderTradeSettlementType
     /**
      * unset specifiedTradeSettlementPaymentMeans
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedTradeSettlementPaymentMeans($index)
@@ -361,8 +365,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementPaymentMeans
      *
-     * @param \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType[]
-     * $specifiedTradeSettlementPaymentMeans
+     * @param \horstoeko\zugferd\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
      * @return self
      */
     public function setSpecifiedTradeSettlementPaymentMeans(array $specifiedTradeSettlementPaymentMeans)
@@ -386,8 +389,8 @@ class HeaderTradeSettlementType
     /**
      * isset applicableTradeTax
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetApplicableTradeTax($index)
     {
@@ -397,7 +400,7 @@ class HeaderTradeSettlementType
     /**
      * unset applicableTradeTax
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetApplicableTradeTax($index)
@@ -453,8 +456,7 @@ class HeaderTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType
-     * $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
     public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
@@ -465,8 +467,8 @@ class HeaderTradeSettlementType
     /**
      * isset specifiedTradeAllowanceCharge
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedTradeAllowanceCharge($index)
     {
@@ -476,7 +478,7 @@ class HeaderTradeSettlementType
     /**
      * unset specifiedTradeAllowanceCharge
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedTradeAllowanceCharge($index)
@@ -497,8 +499,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType[]
-     * $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -511,8 +512,7 @@ class HeaderTradeSettlementType
      * Adds as specifiedLogisticsServiceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\LogisticsServiceChargeType
-     * $specifiedLogisticsServiceCharge
+     * @param \horstoeko\zugferd\ram\LogisticsServiceChargeType $specifiedLogisticsServiceCharge
      */
     public function addToSpecifiedLogisticsServiceCharge(\horstoeko\zugferd\ram\LogisticsServiceChargeType $specifiedLogisticsServiceCharge)
     {
@@ -523,8 +523,8 @@ class HeaderTradeSettlementType
     /**
      * isset specifiedLogisticsServiceCharge
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedLogisticsServiceCharge($index)
     {
@@ -534,7 +534,7 @@ class HeaderTradeSettlementType
     /**
      * unset specifiedLogisticsServiceCharge
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedLogisticsServiceCharge($index)
@@ -555,8 +555,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedLogisticsServiceCharge
      *
-     * @param \horstoeko\zugferd\ram\LogisticsServiceChargeType[]
-     * $specifiedLogisticsServiceCharge
+     * @param \horstoeko\zugferd\ram\LogisticsServiceChargeType[] $specifiedLogisticsServiceCharge
      * @return self
      */
     public function setSpecifiedLogisticsServiceCharge(array $specifiedLogisticsServiceCharge)
@@ -580,8 +579,8 @@ class HeaderTradeSettlementType
     /**
      * isset specifiedTradePaymentTerms
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedTradePaymentTerms($index)
     {
@@ -591,7 +590,7 @@ class HeaderTradeSettlementType
     /**
      * unset specifiedTradePaymentTerms
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedTradePaymentTerms($index)
@@ -612,8 +611,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradePaymentTerms
      *
-     * @param \horstoeko\zugferd\ram\TradePaymentTermsType[]
-     * $specifiedTradePaymentTerms
+     * @param \horstoeko\zugferd\ram\TradePaymentTermsType[] $specifiedTradePaymentTerms
      * @return self
      */
     public function setSpecifiedTradePaymentTerms(array $specifiedTradePaymentTerms)
@@ -635,8 +633,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementHeaderMonetarySummation
      *
-     * @param \horstoeko\zugferd\ram\TradeSettlementHeaderMonetarySummationType
-     * $specifiedTradeSettlementHeaderMonetarySummation
+     * @param \horstoeko\zugferd\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementHeaderMonetarySummation(\horstoeko\zugferd\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation)
@@ -671,8 +668,7 @@ class HeaderTradeSettlementType
      * Adds as receivableSpecifiedTradeAccountingAccount
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\TradeAccountingAccountType
-     * $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\zugferd\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      */
     public function addToReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
     {
@@ -683,8 +679,8 @@ class HeaderTradeSettlementType
     /**
      * isset receivableSpecifiedTradeAccountingAccount
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetReceivableSpecifiedTradeAccountingAccount($index)
     {
@@ -694,7 +690,7 @@ class HeaderTradeSettlementType
     /**
      * unset receivableSpecifiedTradeAccountingAccount
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetReceivableSpecifiedTradeAccountingAccount($index)
@@ -715,8 +711,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param \horstoeko\zugferd\ram\TradeAccountingAccountType[]
-     * $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\zugferd\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(array $receivableSpecifiedTradeAccountingAccount)
@@ -740,8 +735,8 @@ class HeaderTradeSettlementType
     /**
      * isset specifiedAdvancePayment
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedAdvancePayment($index)
     {
@@ -751,7 +746,7 @@ class HeaderTradeSettlementType
     /**
      * unset specifiedAdvancePayment
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedAdvancePayment($index)

@@ -12,7 +12,7 @@ class TradeCountryType
 {
 
     /**
-     * @property string $iD
+     * @var string $iD
      */
     private $iD = null;
 

@@ -12,12 +12,12 @@ class ProcuringProjectType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 
     /**
-     * @property string $name
+     * @var string $name
      */
     private $name = null;
 

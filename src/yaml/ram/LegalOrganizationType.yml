@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\LegalOrganizationType:
             accessor:
                 getter: getTradingBusinessName
                 setter: setTradingBusinessName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         postalTradeAddress:
             expose: true
             access_type: public_method

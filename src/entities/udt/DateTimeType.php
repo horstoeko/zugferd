@@ -12,13 +12,12 @@ class DateTimeType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType\DateTimeStringAType
-     * $dateTimeString
+     * @var \horstoeko\zugferd\udt\DateTimeType\DateTimeStringAType $dateTimeString
      */
     private $dateTimeString = null;
 
     /**
-     * @property \DateTime $dateTime
+     * @var \DateTime $dateTime
      */
     private $dateTime = null;
 

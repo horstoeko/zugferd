@@ -12,7 +12,7 @@ class LogisticsTransportMovementType
 {
 
     /**
-     * @property string $modeCode
+     * @var string $modeCode
      */
     private $modeCode = null;
 

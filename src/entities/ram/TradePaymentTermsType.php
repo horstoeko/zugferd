@@ -12,34 +12,32 @@ class TradePaymentTermsType
 {
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $dueDateDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $dueDateDateTime
      */
     private $dueDateDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $directDebitMandateID
+     * @var \horstoeko\zugferd\udt\IDType $directDebitMandateID
      */
     private $directDebitMandateID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $partialPaymentAmount
+     * @var \horstoeko\zugferd\udt\AmountType $partialPaymentAmount
      */
     private $partialPaymentAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePaymentPenaltyTermsType
-     * $applicableTradePaymentPenaltyTerms
+     * @var \horstoeko\zugferd\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
      */
     private $applicableTradePaymentPenaltyTerms = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePaymentDiscountTermsType
-     * $applicableTradePaymentDiscountTerms
+     * @var \horstoeko\zugferd\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
      */
     private $applicableTradePaymentDiscountTerms = null;
 
@@ -144,8 +142,7 @@ class TradePaymentTermsType
     /**
      * Sets a new applicableTradePaymentPenaltyTerms
      *
-     * @param \horstoeko\zugferd\ram\TradePaymentPenaltyTermsType
-     * $applicableTradePaymentPenaltyTerms
+     * @param \horstoeko\zugferd\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
      * @return self
      */
     public function setApplicableTradePaymentPenaltyTerms(\horstoeko\zugferd\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms)
@@ -167,8 +164,7 @@ class TradePaymentTermsType
     /**
      * Sets a new applicableTradePaymentDiscountTerms
      *
-     * @param \horstoeko\zugferd\ram\TradePaymentDiscountTermsType
-     * $applicableTradePaymentDiscountTerms
+     * @param \horstoeko\zugferd\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
      * @return self
      */
     public function setApplicableTradePaymentDiscountTerms(\horstoeko\zugferd\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms)

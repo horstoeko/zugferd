@@ -39,7 +39,7 @@ horstoeko\zugferd\ram\TradeProductType:
             accessor:
                 getter: getName
                 setter: setName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         description:
             expose: true
             access_type: public_method
@@ -49,7 +49,7 @@ horstoeko\zugferd\ram\TradeProductType:
             accessor:
                 getter: getDescription
                 setter: setDescription
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         applicableProductCharacteristic:
             expose: true
             access_type: public_method

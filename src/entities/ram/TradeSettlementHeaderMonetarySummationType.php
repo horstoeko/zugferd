@@ -12,47 +12,53 @@ class TradeSettlementHeaderMonetarySummationType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $chargeTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType $chargeTotalAmount
      */
     private $chargeTotalAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $allowanceTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType $allowanceTotalAmount
      */
     private $allowanceTotalAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType[] $taxBasisTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType[] $taxBasisTotalAmount
      */
-    private $taxBasisTotalAmount = null;
+    private $taxBasisTotalAmount = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType[] $taxTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType[] $taxTotalAmount
      */
-    private $taxTotalAmount = null;
+    private $taxTotalAmount = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $roundingAmount
+     * @var \horstoeko\zugferd\udt\AmountType $roundingAmount
      */
     private $roundingAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType[] $grandTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType[] $grandTotalAmount
      */
-    private $grandTotalAmount = null;
+    private $grandTotalAmount = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $totalPrepaidAmount
+     * @var \horstoeko\zugferd\udt\AmountType $totalPrepaidAmount
      */
     private $totalPrepaidAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $duePayableAmount
+     * @var \horstoeko\zugferd\udt\AmountType $duePayableAmount
      */
     private $duePayableAmount = null;
 
@@ -137,8 +143,8 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset taxBasisTotalAmount
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetTaxBasisTotalAmount($index)
     {
@@ -148,7 +154,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset taxBasisTotalAmount
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetTaxBasisTotalAmount($index)
@@ -193,8 +199,8 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset taxTotalAmount
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetTaxTotalAmount($index)
     {
@@ -204,7 +210,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset taxTotalAmount
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetTaxTotalAmount($index)
@@ -271,8 +277,8 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset grandTotalAmount
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetGrandTotalAmount($index)
     {
@@ -282,7 +288,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset grandTotalAmount
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetGrandTotalAmount($index)

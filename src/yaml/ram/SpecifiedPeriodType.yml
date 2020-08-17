@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\SpecifiedPeriodType:
             accessor:
                 getter: getDescription
                 setter: setDescription
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         startDateTime:
             expose: true
             access_type: public_method

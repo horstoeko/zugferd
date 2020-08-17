@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\TradeContactType:
             accessor:
                 getter: getPersonName
                 setter: setPersonName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         departmentName:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\TradeContactType:
             accessor:
                 getter: getDepartmentName
                 setter: setDepartmentName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         telephoneUniversalCommunication:
             expose: true
             access_type: public_method

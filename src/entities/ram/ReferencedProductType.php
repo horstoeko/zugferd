@@ -12,32 +12,32 @@ class ReferencedProductType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $globalID
+     * @var \horstoeko\zugferd\udt\IDType $globalID
      */
     private $globalID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $sellerAssignedID
+     * @var \horstoeko\zugferd\udt\IDType $sellerAssignedID
      */
     private $sellerAssignedID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $buyerAssignedID
+     * @var \horstoeko\zugferd\udt\IDType $buyerAssignedID
      */
     private $buyerAssignedID = null;
 
     /**
-     * @property string $name
+     * @var string $name
      */
     private $name = null;
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $unitQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $unitQuantity
      */
     private $unitQuantity = null;
 

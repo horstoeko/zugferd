@@ -12,8 +12,8 @@ horstoeko\zugferd\ram\HeaderTradeDeliveryType:
             type: array<horstoeko\zugferd\ram\LogisticsTransportMovementType>
             xml_list:
                 inline: false
-                skip_when_empty: true
                 entry_name: SpecifiedLogisticsTransportMovement
+                skip_when_empty: true
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
         shipToTradeParty:
             expose: true

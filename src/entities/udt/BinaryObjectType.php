@@ -12,17 +12,17 @@ class BinaryObjectType
 {
 
     /**
-     * @property mixed $__value
+     * @var mixed $__value
      */
     private $__value = null;
 
     /**
-     * @property string $mimeCode
+     * @var string $mimeCode
      */
     private $mimeCode = null;
 
     /**
-     * @property string $filename
+     * @var string $filename
      */
     private $filename = null;
 

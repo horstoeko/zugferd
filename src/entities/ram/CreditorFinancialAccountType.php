@@ -12,17 +12,17 @@ class CreditorFinancialAccountType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\udt\IDType $iBANID
      */
     private $iBANID = null;
 
     /**
-     * @property string $accountName
+     * @var string $accountName
      */
     private $accountName = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $proprietaryID
+     * @var \horstoeko\zugferd\udt\IDType $proprietaryID
      */
     private $proprietaryID = null;
 

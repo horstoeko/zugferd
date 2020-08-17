@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\TradeTaxType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\TaxTypeCodeType
         exemptionReason:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\ram\TradeTaxType:
             accessor:
                 getter: getExemptionReason
                 setter: setExemptionReason
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         basisAmount:
             expose: true
             access_type: public_method
@@ -69,7 +69,7 @@ horstoeko\zugferd\ram\TradeTaxType:
             accessor:
                 getter: getCategoryCode
                 setter: setCategoryCode
-            type: string
+            type: horstoeko\zugferd\qdt\TaxCategoryCodeType
         exemptionReasonCode:
             expose: true
             access_type: public_method
@@ -99,7 +99,7 @@ horstoeko\zugferd\ram\TradeTaxType:
             accessor:
                 getter: getDueDateTypeCode
                 setter: setDueDateTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\TimeReferenceCodeType
         rateApplicablePercent:
             expose: true
             access_type: public_method
@@ -109,4 +109,4 @@ horstoeko\zugferd\ram\TradeTaxType:
             accessor:
                 getter: getRateApplicablePercent
                 setter: setRateApplicablePercent
-            type: float
+            type: horstoeko\zugferd\udt\PercentType

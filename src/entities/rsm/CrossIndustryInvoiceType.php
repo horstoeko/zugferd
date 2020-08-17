@@ -12,19 +12,17 @@ class CrossIndustryInvoiceType
 {
 
     /**
-     * @property \horstoeko\zugferd\ram\ExchangedDocumentContextType
-     * $exchangedDocumentContext
+     * @var \horstoeko\zugferd\ram\ExchangedDocumentContextType $exchangedDocumentContext
      */
     private $exchangedDocumentContext = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ExchangedDocumentType $exchangedDocument
+     * @var \horstoeko\zugferd\ram\ExchangedDocumentType $exchangedDocument
      */
     private $exchangedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\SupplyChainTradeTransactionType
-     * $supplyChainTradeTransaction
+     * @var \horstoeko\zugferd\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      */
     private $supplyChainTradeTransaction = null;
 
@@ -41,8 +39,7 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocumentContext
      *
-     * @param \horstoeko\zugferd\ram\ExchangedDocumentContextType
-     * $exchangedDocumentContext
+     * @param \horstoeko\zugferd\ram\ExchangedDocumentContextType $exchangedDocumentContext
      * @return self
      */
     public function setExchangedDocumentContext(\horstoeko\zugferd\ram\ExchangedDocumentContextType $exchangedDocumentContext)
@@ -86,8 +83,7 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new supplyChainTradeTransaction
      *
-     * @param \horstoeko\zugferd\ram\SupplyChainTradeTransactionType
-     * $supplyChainTradeTransaction
+     * @param \horstoeko\zugferd\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      * @return self
      */
     public function setSupplyChainTradeTransaction(\horstoeko\zugferd\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)

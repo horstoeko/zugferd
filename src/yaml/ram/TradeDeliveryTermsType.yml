@@ -9,4 +9,4 @@ horstoeko\zugferd\ram\TradeDeliveryTermsType:
             accessor:
                 getter: getDeliveryTypeCode
                 setter: setDeliveryTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\DeliveryTermsCodeType

@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\TradePaymentTermsType:
             accessor:
                 getter: getDescription
                 setter: setDescription
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         dueDateDateTime:
             expose: true
             access_type: public_method

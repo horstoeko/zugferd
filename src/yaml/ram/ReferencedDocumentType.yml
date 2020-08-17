@@ -39,7 +39,7 @@ horstoeko\zugferd\ram\ReferencedDocumentType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\DocumentCodeType
         name:
             expose: true
             access_type: public_method
@@ -53,7 +53,7 @@ horstoeko\zugferd\ram\ReferencedDocumentType:
                 inline: true
                 entry_name: Name
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<string>
+            type: array<horstoeko\zugferd\udt\TextType>
         attachmentBinaryObject:
             expose: true
             access_type: public_method
@@ -73,7 +73,7 @@ horstoeko\zugferd\ram\ReferencedDocumentType:
             accessor:
                 getter: getReferenceTypeCode
                 setter: setReferenceTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\ReferenceCodeType
         formattedIssueDateTime:
             expose: true
             access_type: public_method

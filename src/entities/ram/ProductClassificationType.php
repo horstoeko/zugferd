@@ -12,12 +12,12 @@ class ProductClassificationType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $classCode
+     * @var \horstoeko\zugferd\udt\CodeType $classCode
      */
     private $classCode = null;
 
     /**
-     * @property string $className
+     * @var string $className
      */
     private $className = null;
 

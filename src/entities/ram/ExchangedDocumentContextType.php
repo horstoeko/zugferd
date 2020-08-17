@@ -12,19 +12,17 @@ class ExchangedDocumentContextType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IndicatorType $testIndicator
+     * @var \horstoeko\zugferd\udt\IndicatorType $testIndicator
      */
     private $testIndicator = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\DocumentContextParameterType
-     * $businessProcessSpecifiedDocumentContextParameter
+     * @var \horstoeko\zugferd\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      */
     private $businessProcessSpecifiedDocumentContextParameter = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\DocumentContextParameterType
-     * $guidelineSpecifiedDocumentContextParameter
+     * @var \horstoeko\zugferd\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
      */
     private $guidelineSpecifiedDocumentContextParameter = null;
 
@@ -63,8 +61,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new businessProcessSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\ram\DocumentContextParameterType
-     * $businessProcessSpecifiedDocumentContextParameter
+     * @param \horstoeko\zugferd\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(\horstoeko\zugferd\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter)
@@ -86,8 +83,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new guidelineSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\ram\DocumentContextParameterType
-     * $guidelineSpecifiedDocumentContextParameter
+     * @param \horstoeko\zugferd\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(\horstoeko\zugferd\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter)

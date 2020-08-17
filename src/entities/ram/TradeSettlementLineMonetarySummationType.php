@@ -12,12 +12,12 @@ class TradeSettlementLineMonetarySummationType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\udt\AmountType $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $totalAllowanceChargeAmount
+     * @var \horstoeko\zugferd\udt\AmountType $totalAllowanceChargeAmount
      */
     private $totalAllowanceChargeAmount = null;
 

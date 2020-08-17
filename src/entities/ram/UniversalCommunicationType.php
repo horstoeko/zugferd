@@ -12,12 +12,12 @@ class UniversalCommunicationType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\udt\IDType $uRIID
      */
     private $uRIID = null;
 
     /**
-     * @property string $completeNumber
+     * @var string $completeNumber
      */
     private $completeNumber = null;
 

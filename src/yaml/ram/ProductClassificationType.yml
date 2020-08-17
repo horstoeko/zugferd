@@ -19,4 +19,4 @@ horstoeko\zugferd\ram\ProductClassificationType:
             accessor:
                 getter: getClassName
                 setter: setClassName
-            type: string
+            type: horstoeko\zugferd\udt\TextType

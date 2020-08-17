@@ -12,27 +12,27 @@ class TradePaymentPenaltyTermsType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $basisDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $basisDateTime
      */
     private $basisDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\MeasureType $basisPeriodMeasure
+     * @var \horstoeko\zugferd\udt\MeasureType $basisPeriodMeasure
      */
     private $basisPeriodMeasure = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\udt\AmountType $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @property float $calculationPercent
+     * @var float $calculationPercent
      */
     private $calculationPercent = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $actualPenaltyAmount
+     * @var \horstoeko\zugferd\udt\AmountType $actualPenaltyAmount
      */
     private $actualPenaltyAmount = null;
 

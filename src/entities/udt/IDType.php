@@ -12,12 +12,12 @@ class IDType
 {
 
     /**
-     * @property string $__value
+     * @var string $__value
      */
     private $__value = null;
 
     /**
-     * @property string $schemeID
+     * @var string $schemeID
      */
     private $schemeID = null;
 

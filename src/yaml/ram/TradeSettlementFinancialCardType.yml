@@ -19,4 +19,4 @@ horstoeko\zugferd\ram\TradeSettlementFinancialCardType:
             accessor:
                 getter: getCardholderName
                 setter: setCardholderName
-            type: string
+            type: horstoeko\zugferd\udt\TextType

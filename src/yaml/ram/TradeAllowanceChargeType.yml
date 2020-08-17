@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getSequenceNumeric
                 setter: setSequenceNumeric
-            type: float
+            type: horstoeko\zugferd\udt\NumericType
         calculationPercent:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getCalculationPercent
                 setter: setCalculationPercent
-            type: float
+            type: horstoeko\zugferd\udt\PercentType
         basisAmount:
             expose: true
             access_type: public_method
@@ -69,7 +69,7 @@ horstoeko\zugferd\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getReasonCode
                 setter: setReasonCode
-            type: string
+            type: horstoeko\zugferd\qdt\AllowanceChargeReasonCodeType
         reason:
             expose: true
             access_type: public_method
@@ -79,7 +79,7 @@ horstoeko\zugferd\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getReason
                 setter: setReason
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         categoryTradeTax:
             expose: true
             access_type: public_method

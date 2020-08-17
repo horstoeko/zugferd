@@ -12,17 +12,17 @@ class CodeType
 {
 
     /**
-     * @property string $__value
+     * @var string $__value
      */
     private $__value = null;
 
     /**
-     * @property string $listID
+     * @var string $listID
      */
     private $listID = null;
 
     /**
-     * @property string $listVersionID
+     * @var string $listVersionID
      */
     private $listVersionID = null;
 

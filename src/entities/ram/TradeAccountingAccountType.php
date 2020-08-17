@@ -12,12 +12,12 @@ class TradeAccountingAccountType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 
     /**
-     * @property string $typeCode
+     * @var string $typeCode
      */
     private $typeCode = null;
 

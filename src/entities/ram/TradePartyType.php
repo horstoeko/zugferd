@@ -12,51 +12,55 @@ class TradePartyType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType[] $iD
+     * @var \horstoeko\zugferd\udt\IDType[] $iD
      */
-    private $iD = null;
+    private $iD = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType[] $globalID
+     * @var \horstoeko\zugferd\udt\IDType[] $globalID
      */
-    private $globalID = null;
+    private $globalID = [
+        
+    ];
 
     /**
-     * @property string $name
+     * @var string $name
      */
     private $name = null;
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\LegalOrganizationType
-     * $specifiedLegalOrganization
+     * @var \horstoeko\zugferd\ram\LegalOrganizationType $specifiedLegalOrganization
      */
     private $specifiedLegalOrganization = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeContactType $definedTradeContact
+     * @var \horstoeko\zugferd\ram\TradeContactType $definedTradeContact
      */
     private $definedTradeContact = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeAddressType $postalTradeAddress
+     * @var \horstoeko\zugferd\ram\TradeAddressType $postalTradeAddress
      */
     private $postalTradeAddress = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $uRIUniversalCommunication
+     * @var \horstoeko\zugferd\ram\UniversalCommunicationType $uRIUniversalCommunication
      */
     private $uRIUniversalCommunication = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TaxRegistrationType[] $specifiedTaxRegistration
+     * @var \horstoeko\zugferd\ram\TaxRegistrationType[] $specifiedTaxRegistration
      */
-    private $specifiedTaxRegistration = null;
+    private $specifiedTaxRegistration = [
+        
+    ];
 
     /**
      * Adds as iD
@@ -73,8 +77,8 @@ class TradePartyType
     /**
      * isset iD
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetID($index)
     {
@@ -84,7 +88,7 @@ class TradePartyType
     /**
      * unset iD
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetID($index)
@@ -129,8 +133,8 @@ class TradePartyType
     /**
      * isset globalID
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetGlobalID($index)
     {
@@ -140,7 +144,7 @@ class TradePartyType
     /**
      * unset globalID
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetGlobalID($index)
@@ -293,8 +297,7 @@ class TradePartyType
     /**
      * Sets a new uRIUniversalCommunication
      *
-     * @param \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $uRIUniversalCommunication
+     * @param \horstoeko\zugferd\ram\UniversalCommunicationType $uRIUniversalCommunication
      * @return self
      */
     public function setURIUniversalCommunication(\horstoeko\zugferd\ram\UniversalCommunicationType $uRIUniversalCommunication)
@@ -318,8 +321,8 @@ class TradePartyType
     /**
      * isset specifiedTaxRegistration
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetSpecifiedTaxRegistration($index)
     {
@@ -329,7 +332,7 @@ class TradePartyType
     /**
      * unset specifiedTaxRegistration
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetSpecifiedTaxRegistration($index)

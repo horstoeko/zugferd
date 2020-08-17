@@ -12,19 +12,21 @@ class LogisticsServiceChargeType
 {
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $appliedAmount
+     * @var \horstoeko\zugferd\udt\AmountType $appliedAmount
      */
     private $appliedAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeTaxType[] $appliedTradeTax
+     * @var \horstoeko\zugferd\ram\TradeTaxType[] $appliedTradeTax
      */
-    private $appliedTradeTax = null;
+    private $appliedTradeTax = [
+        
+    ];
 
     /**
      * Gets as description
@@ -85,8 +87,8 @@ class LogisticsServiceChargeType
     /**
      * isset appliedTradeTax
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetAppliedTradeTax($index)
     {
@@ -96,7 +98,7 @@ class LogisticsServiceChargeType
     /**
      * unset appliedTradeTax
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetAppliedTradeTax($index)

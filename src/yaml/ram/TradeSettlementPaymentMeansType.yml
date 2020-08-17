@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\TradeSettlementPaymentMeansType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\PaymentMeansCodeType
         information:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\TradeSettlementPaymentMeansType:
             accessor:
                 getter: getInformation
                 setter: setInformation
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         applicableTradeSettlementFinancialCard:
             expose: true
             access_type: public_method

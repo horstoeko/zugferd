@@ -12,7 +12,7 @@ class SupplyChainEventType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $occurrenceDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $occurrenceDateTime
      */
     private $occurrenceDateTime = null;
 

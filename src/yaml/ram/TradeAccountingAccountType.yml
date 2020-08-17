@@ -19,4 +19,4 @@ horstoeko\zugferd\ram\TradeAccountingAccountType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: string
+            type: horstoeko\zugferd\qdt\AccountingAccountTypeCodeType

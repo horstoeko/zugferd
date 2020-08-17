@@ -9,4 +9,4 @@ horstoeko\zugferd\ram\TradeCountryType:
             accessor:
                 getter: getID
                 setter: setID
-            type: string
+            type: horstoeko\zugferd\qdt\CountryIDType

@@ -12,24 +12,26 @@ class DocumentLineDocumentType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $lineID
+     * @var \horstoeko\zugferd\udt\IDType $lineID
      */
     private $lineID = null;
 
     /**
-     * @property string $lineStatusCode
+     * @var string $lineStatusCode
      */
     private $lineStatusCode = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $lineStatusReasonCode
+     * @var \horstoeko\zugferd\udt\CodeType $lineStatusReasonCode
      */
     private $lineStatusReasonCode = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\NoteType[] $includedNote
+     * @var \horstoeko\zugferd\ram\NoteType[] $includedNote
      */
-    private $includedNote = null;
+    private $includedNote = [
+        
+    ];
 
     /**
      * Gets as lineID
@@ -112,8 +114,8 @@ class DocumentLineDocumentType
     /**
      * isset includedNote
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetIncludedNote($index)
     {
@@ -123,7 +125,7 @@ class DocumentLineDocumentType
     /**
      * unset includedNote
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetIncludedNote($index)

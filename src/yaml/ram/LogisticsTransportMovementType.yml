@@ -9,4 +9,4 @@ horstoeko\zugferd\ram\LogisticsTransportMovementType:
             accessor:
                 getter: getModeCode
                 setter: setModeCode
-            type: string
+            type: horstoeko\zugferd\qdt\TransportModeCodeType

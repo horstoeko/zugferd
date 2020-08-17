@@ -12,17 +12,17 @@ class LegalOrganizationType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 
     /**
-     * @property string $tradingBusinessName
+     * @var string $tradingBusinessName
      */
     private $tradingBusinessName = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeAddressType $postalTradeAddress
+     * @var \horstoeko\zugferd\ram\TradeAddressType $postalTradeAddress
      */
     private $postalTradeAddress = null;
 

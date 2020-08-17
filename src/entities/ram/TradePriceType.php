@@ -12,23 +12,24 @@ class TradePriceType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $chargeAmount
+     * @var \horstoeko\zugferd\udt\AmountType $chargeAmount
      */
     private $chargeAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $basisQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $basisQuantity
      */
     private $basisQuantity = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeAllowanceChargeType[]
-     * $appliedTradeAllowanceCharge
+     * @var \horstoeko\zugferd\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
      */
-    private $appliedTradeAllowanceCharge = null;
+    private $appliedTradeAllowanceCharge = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeTaxType $includedTradeTax
+     * @var \horstoeko\zugferd\ram\TradeTaxType $includedTradeTax
      */
     private $includedTradeTax = null;
 
@@ -80,8 +81,7 @@ class TradePriceType
      * Adds as appliedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType
-     * $appliedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
      */
     public function addToAppliedTradeAllowanceCharge(\horstoeko\zugferd\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge)
     {
@@ -92,8 +92,8 @@ class TradePriceType
     /**
      * isset appliedTradeAllowanceCharge
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetAppliedTradeAllowanceCharge($index)
     {
@@ -103,7 +103,7 @@ class TradePriceType
     /**
      * unset appliedTradeAllowanceCharge
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetAppliedTradeAllowanceCharge($index)
@@ -124,8 +124,7 @@ class TradePriceType
     /**
      * Sets a new appliedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType[]
-     * $appliedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
      * @return self
      */
     public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge)

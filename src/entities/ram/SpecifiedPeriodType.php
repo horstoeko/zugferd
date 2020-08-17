@@ -12,22 +12,22 @@ class SpecifiedPeriodType
 {
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $startDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $startDateTime
      */
     private $startDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $endDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $endDateTime
      */
     private $endDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $completeDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $completeDateTime
      */
     private $completeDateTime = null;
 

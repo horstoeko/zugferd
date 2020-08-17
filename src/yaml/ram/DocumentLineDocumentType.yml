@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\DocumentLineDocumentType:
             accessor:
                 getter: getLineStatusCode
                 setter: setLineStatusCode
-            type: string
+            type: horstoeko\zugferd\qdt\LineStatusCodeType
         lineStatusReasonCode:
             expose: true
             access_type: public_method

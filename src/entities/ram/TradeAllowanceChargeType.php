@@ -12,47 +12,47 @@ class TradeAllowanceChargeType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IndicatorType $chargeIndicator
+     * @var \horstoeko\zugferd\udt\IndicatorType $chargeIndicator
      */
     private $chargeIndicator = null;
 
     /**
-     * @property float $sequenceNumeric
+     * @var float $sequenceNumeric
      */
     private $sequenceNumeric = null;
 
     /**
-     * @property float $calculationPercent
+     * @var float $calculationPercent
      */
     private $calculationPercent = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\udt\AmountType $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $basisQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $basisQuantity
      */
     private $basisQuantity = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $actualAmount
+     * @var \horstoeko\zugferd\udt\AmountType $actualAmount
      */
     private $actualAmount = null;
 
     /**
-     * @property string $reasonCode
+     * @var string $reasonCode
      */
     private $reasonCode = null;
 
     /**
-     * @property string $reason
+     * @var string $reason
      */
     private $reason = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeTaxType $categoryTradeTax
+     * @var \horstoeko\zugferd\ram\TradeTaxType $categoryTradeTax
      */
     private $categoryTradeTax = null;
 

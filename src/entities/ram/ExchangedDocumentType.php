@@ -12,42 +12,46 @@ class ExchangedDocumentType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 
     /**
-     * @property string $name
+     * @var string $name
      */
     private $name = null;
 
     /**
-     * @property string $typeCode
+     * @var string $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $issueDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $issueDateTime
      */
     private $issueDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IndicatorType $copyIndicator
+     * @var \horstoeko\zugferd\udt\IndicatorType $copyIndicator
      */
     private $copyIndicator = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType[] $languageID
+     * @var \horstoeko\zugferd\udt\IDType[] $languageID
      */
-    private $languageID = null;
+    private $languageID = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\NoteType[] $includedNote
+     * @var \horstoeko\zugferd\ram\NoteType[] $includedNote
      */
-    private $includedNote = null;
+    private $includedNote = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
+     * @var \horstoeko\zugferd\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
      */
     private $effectiveSpecifiedPeriod = null;
 
@@ -176,8 +180,8 @@ class ExchangedDocumentType
     /**
      * isset languageID
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetLanguageID($index)
     {
@@ -187,7 +191,7 @@ class ExchangedDocumentType
     /**
      * unset languageID
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetLanguageID($index)
@@ -232,8 +236,8 @@ class ExchangedDocumentType
     /**
      * isset includedNote
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetIncludedNote($index)
     {
@@ -243,7 +247,7 @@ class ExchangedDocumentType
     /**
      * unset includedNote
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetIncludedNote($index)

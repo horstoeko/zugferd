@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\NoteType:
             accessor:
                 getter: getContent
                 setter: setContent
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         subjectCode:
             expose: true
             access_type: public_method

@@ -12,39 +12,41 @@ class TradeAddressType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $postcodeCode
+     * @var \horstoeko\zugferd\udt\CodeType $postcodeCode
      */
     private $postcodeCode = null;
 
     /**
-     * @property string $lineOne
+     * @var string $lineOne
      */
     private $lineOne = null;
 
     /**
-     * @property string $lineTwo
+     * @var string $lineTwo
      */
     private $lineTwo = null;
 
     /**
-     * @property string $lineThree
+     * @var string $lineThree
      */
     private $lineThree = null;
 
     /**
-     * @property string $cityName
+     * @var string $cityName
      */
     private $cityName = null;
 
     /**
-     * @property string $countryID
+     * @var string $countryID
      */
     private $countryID = null;
 
     /**
-     * @property string[] $countrySubDivisionName
+     * @var string[] $countrySubDivisionName
      */
-    private $countrySubDivisionName = null;
+    private $countrySubDivisionName = [
+        
+    ];
 
     /**
      * Gets as postcodeCode
@@ -193,8 +195,8 @@ class TradeAddressType
     /**
      * isset countrySubDivisionName
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetCountrySubDivisionName($index)
     {
@@ -204,7 +206,7 @@ class TradeAddressType
     /**
      * unset countrySubDivisionName
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetCountrySubDivisionName($index)

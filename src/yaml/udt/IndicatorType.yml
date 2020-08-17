@@ -9,4 +9,4 @@ horstoeko\zugferd\udt\IndicatorType:
             accessor:
                 getter: getIndicator
                 setter: setIndicator
-            type: boolean
+            type: bool

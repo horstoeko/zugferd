@@ -12,12 +12,12 @@ class AmountType
 {
 
     /**
-     * @property float $__value
+     * @var float $__value
      */
     private $__value = null;
 
     /**
-     * @property string $currencyID
+     * @var string $currencyID
      */
     private $currencyID = null;
 

@@ -12,30 +12,27 @@ class TradeContactType
 {
 
     /**
-     * @property string $personName
+     * @var string $personName
      */
     private $personName = null;
 
     /**
-     * @property string $departmentName
+     * @var string $departmentName
      */
     private $departmentName = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $telephoneUniversalCommunication
+     * @var \horstoeko\zugferd\ram\UniversalCommunicationType $telephoneUniversalCommunication
      */
     private $telephoneUniversalCommunication = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $faxUniversalCommunication
+     * @var \horstoeko\zugferd\ram\UniversalCommunicationType $faxUniversalCommunication
      */
     private $faxUniversalCommunication = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $emailURIUniversalCommunication
+     * @var \horstoeko\zugferd\ram\UniversalCommunicationType $emailURIUniversalCommunication
      */
     private $emailURIUniversalCommunication = null;
 
@@ -96,8 +93,7 @@ class TradeContactType
     /**
      * Sets a new telephoneUniversalCommunication
      *
-     * @param \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $telephoneUniversalCommunication
+     * @param \horstoeko\zugferd\ram\UniversalCommunicationType $telephoneUniversalCommunication
      * @return self
      */
     public function setTelephoneUniversalCommunication(\horstoeko\zugferd\ram\UniversalCommunicationType $telephoneUniversalCommunication)
@@ -119,8 +115,7 @@ class TradeContactType
     /**
      * Sets a new faxUniversalCommunication
      *
-     * @param \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $faxUniversalCommunication
+     * @param \horstoeko\zugferd\ram\UniversalCommunicationType $faxUniversalCommunication
      * @return self
      */
     public function setFaxUniversalCommunication(\horstoeko\zugferd\ram\UniversalCommunicationType $faxUniversalCommunication)
@@ -142,8 +137,7 @@ class TradeContactType
     /**
      * Sets a new emailURIUniversalCommunication
      *
-     * @param \horstoeko\zugferd\ram\UniversalCommunicationType
-     * $emailURIUniversalCommunication
+     * @param \horstoeko\zugferd\ram\UniversalCommunicationType $emailURIUniversalCommunication
      * @return self
      */
     public function setEmailURIUniversalCommunication(\horstoeko\zugferd\ram\UniversalCommunicationType $emailURIUniversalCommunication)

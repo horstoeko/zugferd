@@ -12,17 +12,17 @@ class NoteType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $contentCode
+     * @var \horstoeko\zugferd\udt\CodeType $contentCode
      */
     private $contentCode = null;
 
     /**
-     * @property string $content
+     * @var string $content
      */
     private $content = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $subjectCode
+     * @var \horstoeko\zugferd\udt\CodeType $subjectCode
      */
     private $subjectCode = null;
 

@@ -39,7 +39,7 @@ horstoeko\zugferd\ram\TradePaymentDiscountTermsType:
             accessor:
                 getter: getCalculationPercent
                 setter: setCalculationPercent
-            type: float
+            type: horstoeko\zugferd\udt\PercentType
         actualDiscountAmount:
             expose: true
             access_type: public_method

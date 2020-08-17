@@ -12,22 +12,22 @@ class TradeCurrencyExchangeType
 {
 
     /**
-     * @property string $sourceCurrencyCode
+     * @var string $sourceCurrencyCode
      */
     private $sourceCurrencyCode = null;
 
     /**
-     * @property string $targetCurrencyCode
+     * @var string $targetCurrencyCode
      */
     private $targetCurrencyCode = null;
 
     /**
-     * @property float $conversionRate
+     * @var float $conversionRate
      */
     private $conversionRate = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateTimeType $conversionRateDateTime
+     * @var \horstoeko\zugferd\udt\DateTimeType $conversionRateDateTime
      */
     private $conversionRateDateTime = null;
 

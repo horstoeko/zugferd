@@ -12,12 +12,12 @@ class QuantityType
 {
 
     /**
-     * @property float $__value
+     * @var float $__value
      */
     private $__value = null;
 
     /**
-     * @property string $unitCode
+     * @var string $unitCode
      */
     private $unitCode = null;
 

@@ -12,7 +12,7 @@ class CurrencyCodeType
 {
 
     /**
-     * @property string $__value
+     * @var string $__value
      */
     private $__value = null;
 

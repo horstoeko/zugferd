@@ -12,7 +12,7 @@ class DocumentContextParameterType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 

@@ -19,4 +19,4 @@ horstoeko\zugferd\ram\UniversalCommunicationType:
             accessor:
                 getter: getCompleteNumber
                 setter: setCompleteNumber
-            type: string
+            type: horstoeko\zugferd\udt\TextType

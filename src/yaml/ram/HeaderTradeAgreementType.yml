@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getBuyerReference
                 setter: setBuyerReference
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         sellerTradeParty:
             expose: true
             access_type: public_method

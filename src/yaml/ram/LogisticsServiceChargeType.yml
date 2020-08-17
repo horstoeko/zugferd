@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\LogisticsServiceChargeType:
             accessor:
                 getter: getDescription
                 setter: setDescription
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         appliedAmount:
             expose: true
             access_type: public_method

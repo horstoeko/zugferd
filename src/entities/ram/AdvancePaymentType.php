@@ -12,20 +12,21 @@ class AdvancePaymentType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $paidAmount
+     * @var \horstoeko\zugferd\udt\AmountType $paidAmount
      */
     private $paidAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\qdt\FormattedDateTimeType
-     * $formattedReceivedDateTime
+     * @var \horstoeko\zugferd\qdt\FormattedDateTimeType $formattedReceivedDateTime
      */
     private $formattedReceivedDateTime = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeTaxType[] $includedTradeTax
+     * @var \horstoeko\zugferd\ram\TradeTaxType[] $includedTradeTax
      */
-    private $includedTradeTax = null;
+    private $includedTradeTax = [
+        
+    ];
 
     /**
      * Gets as paidAmount
@@ -86,8 +87,8 @@ class AdvancePaymentType
     /**
      * isset includedTradeTax
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetIncludedTradeTax($index)
     {
@@ -97,7 +98,7 @@ class AdvancePaymentType
     /**
      * unset includedTradeTax
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetIncludedTradeTax($index)

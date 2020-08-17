@@ -12,7 +12,7 @@ class DebtorFinancialAccountType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\udt\IDType $iBANID
      */
     private $iBANID = null;
 

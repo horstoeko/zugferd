@@ -12,42 +12,44 @@ class ReferencedDocumentType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $issuerAssignedID
+     * @var \horstoeko\zugferd\udt\IDType $issuerAssignedID
      */
     private $issuerAssignedID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\udt\IDType $uRIID
      */
     private $uRIID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $lineID
+     * @var \horstoeko\zugferd\udt\IDType $lineID
      */
     private $lineID = null;
 
     /**
-     * @property string $typeCode
+     * @var string $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @property string[] $name
+     * @var string[] $name
      */
-    private $name = null;
+    private $name = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\udt\BinaryObjectType $attachmentBinaryObject
+     * @var \horstoeko\zugferd\udt\BinaryObjectType $attachmentBinaryObject
      */
     private $attachmentBinaryObject = null;
 
     /**
-     * @property string $referenceTypeCode
+     * @var string $referenceTypeCode
      */
     private $referenceTypeCode = null;
 
     /**
-     * @property \horstoeko\zugferd\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @var \horstoeko\zugferd\qdt\FormattedDateTimeType $formattedIssueDateTime
      */
     private $formattedIssueDateTime = null;
 
@@ -154,8 +156,8 @@ class ReferencedDocumentType
     /**
      * isset name
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetName($index)
     {
@@ -165,7 +167,7 @@ class ReferencedDocumentType
     /**
      * unset name
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetName($index)

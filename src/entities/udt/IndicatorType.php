@@ -12,14 +12,14 @@ class IndicatorType
 {
 
     /**
-     * @property boolean $indicator
+     * @var bool $indicator
      */
     private $indicator = null;
 
     /**
      * Gets as indicator
      *
-     * @return boolean
+     * @return bool
      */
     public function getIndicator()
     {
@@ -29,7 +29,7 @@ class IndicatorType
     /**
      * Sets a new indicator
      *
-     * @param boolean $indicator
+     * @param bool $indicator
      * @return self
      */
     public function setIndicator($indicator)

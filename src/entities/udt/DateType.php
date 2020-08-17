@@ -12,7 +12,7 @@ class DateType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\DateType\DateStringAType $dateString
+     * @var \horstoeko\zugferd\udt\DateType\DateStringAType $dateString
      */
     private $dateString = null;
 

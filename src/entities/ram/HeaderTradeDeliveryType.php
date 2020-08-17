@@ -12,47 +12,42 @@ class HeaderTradeDeliveryType
 {
 
     /**
-     * @property \horstoeko\zugferd\ram\LogisticsTransportMovementType[]
-     * $relatedSupplyChainConsignment
+     * @var \horstoeko\zugferd\ram\LogisticsTransportMovementType[] $relatedSupplyChainConsignment
      */
     private $relatedSupplyChainConsignment = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $shipToTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $shipToTradeParty
      */
     private $shipToTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $ultimateShipToTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $ultimateShipToTradeParty
      */
     private $ultimateShipToTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $shipFromTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $shipFromTradeParty
      */
     private $shipFromTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\SupplyChainEventType
-     * $actualDeliverySupplyChainEvent
+     * @var \horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      */
     private $actualDeliverySupplyChainEvent = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $despatchAdviceReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      */
     private $despatchAdviceReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $receivingAdviceReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      */
     private $receivingAdviceReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $deliveryNoteReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      */
     private $deliveryNoteReferencedDocument = null;
 
@@ -60,8 +55,7 @@ class HeaderTradeDeliveryType
      * Adds as specifiedLogisticsTransportMovement
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\LogisticsTransportMovementType
-     * $specifiedLogisticsTransportMovement
+     * @param \horstoeko\zugferd\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
      */
     public function addToRelatedSupplyChainConsignment(\horstoeko\zugferd\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement)
     {
@@ -72,8 +66,8 @@ class HeaderTradeDeliveryType
     /**
      * isset relatedSupplyChainConsignment
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetRelatedSupplyChainConsignment($index)
     {
@@ -83,7 +77,7 @@ class HeaderTradeDeliveryType
     /**
      * unset relatedSupplyChainConsignment
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetRelatedSupplyChainConsignment($index)
@@ -104,8 +98,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new relatedSupplyChainConsignment
      *
-     * @param \horstoeko\zugferd\ram\LogisticsTransportMovementType[]
-     * $relatedSupplyChainConsignment
+     * @param \horstoeko\zugferd\ram\LogisticsTransportMovementType[] $relatedSupplyChainConsignment
      * @return self
      */
     public function setRelatedSupplyChainConsignment(array $relatedSupplyChainConsignment)
@@ -193,8 +186,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\ram\SupplyChainEventType
-     * $actualDeliverySupplyChainEvent
+     * @param \horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -216,8 +208,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $despatchAdviceReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
@@ -239,8 +230,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $receivingAdviceReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)
@@ -262,8 +252,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new deliveryNoteReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $deliveryNoteReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      * @return self
      */
     public function setDeliveryNoteReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument)

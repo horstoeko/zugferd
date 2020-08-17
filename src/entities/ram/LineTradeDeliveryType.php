@@ -12,51 +12,47 @@ class LineTradeDeliveryType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $billedQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $billedQuantity
      */
     private $billedQuantity = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $chargeFreeQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $chargeFreeQuantity
      */
     private $chargeFreeQuantity = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\QuantityType $packageQuantity
+     * @var \horstoeko\zugferd\udt\QuantityType $packageQuantity
      */
     private $packageQuantity = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $shipToTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $shipToTradeParty
      */
     private $shipToTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $ultimateShipToTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $ultimateShipToTradeParty
      */
     private $ultimateShipToTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\SupplyChainEventType
-     * $actualDeliverySupplyChainEvent
+     * @var \horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      */
     private $actualDeliverySupplyChainEvent = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $despatchAdviceReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      */
     private $despatchAdviceReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $receivingAdviceReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      */
     private $receivingAdviceReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $deliveryNoteReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      */
     private $deliveryNoteReferencedDocument = null;
 
@@ -183,8 +179,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\ram\SupplyChainEventType
-     * $actualDeliverySupplyChainEvent
+     * @param \horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -206,8 +201,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $despatchAdviceReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
@@ -229,8 +223,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $receivingAdviceReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)
@@ -252,8 +245,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new deliveryNoteReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $deliveryNoteReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      * @return self
      */
     public function setDeliveryNoteReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument)

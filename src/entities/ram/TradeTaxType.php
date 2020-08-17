@@ -12,57 +12,57 @@ class TradeTaxType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $calculatedAmount
+     * @var \horstoeko\zugferd\udt\AmountType $calculatedAmount
      */
     private $calculatedAmount = null;
 
     /**
-     * @property string $typeCode
+     * @var string $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @property string $exemptionReason
+     * @var string $exemptionReason
      */
     private $exemptionReason = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\udt\AmountType $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $lineTotalBasisAmount
+     * @var \horstoeko\zugferd\udt\AmountType $lineTotalBasisAmount
      */
     private $lineTotalBasisAmount = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\AmountType $allowanceChargeBasisAmount
+     * @var \horstoeko\zugferd\udt\AmountType $allowanceChargeBasisAmount
      */
     private $allowanceChargeBasisAmount = null;
 
     /**
-     * @property string $categoryCode
+     * @var string $categoryCode
      */
     private $categoryCode = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $exemptionReasonCode
+     * @var \horstoeko\zugferd\udt\CodeType $exemptionReasonCode
      */
     private $exemptionReasonCode = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\DateType $taxPointDate
+     * @var \horstoeko\zugferd\udt\DateType $taxPointDate
      */
     private $taxPointDate = null;
 
     /**
-     * @property string $dueDateTypeCode
+     * @var string $dueDateTypeCode
      */
     private $dueDateTypeCode = null;
 
     /**
-     * @property float $rateApplicablePercent
+     * @var float $rateApplicablePercent
      */
     private $rateApplicablePercent = null;
 

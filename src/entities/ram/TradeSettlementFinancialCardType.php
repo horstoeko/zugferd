@@ -12,12 +12,12 @@ class TradeSettlementFinancialCardType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $iD
+     * @var \horstoeko\zugferd\udt\IDType $iD
      */
     private $iD = null;
 
     /**
-     * @property string $cardholderName
+     * @var string $cardholderName
      */
     private $cardholderName = null;
 

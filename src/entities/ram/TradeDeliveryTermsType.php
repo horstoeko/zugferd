@@ -12,7 +12,7 @@ class TradeDeliveryTermsType
 {
 
     /**
-     * @property string $deliveryTypeCode
+     * @var string $deliveryTypeCode
      */
     private $deliveryTypeCode = null;
 

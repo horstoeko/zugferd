@@ -12,52 +12,55 @@ class TradeProductType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $globalID
+     * @var \horstoeko\zugferd\udt\IDType $globalID
      */
     private $globalID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $sellerAssignedID
+     * @var \horstoeko\zugferd\udt\IDType $sellerAssignedID
      */
     private $sellerAssignedID = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $buyerAssignedID
+     * @var \horstoeko\zugferd\udt\IDType $buyerAssignedID
      */
     private $buyerAssignedID = null;
 
     /**
-     * @property string $name
+     * @var string $name
      */
     private $name = null;
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ProductCharacteristicType[]
-     * $applicableProductCharacteristic
+     * @var \horstoeko\zugferd\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      */
-    private $applicableProductCharacteristic = null;
+    private $applicableProductCharacteristic = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\ProductClassificationType[]
-     * $designatedProductClassification
+     * @var \horstoeko\zugferd\ram\ProductClassificationType[] $designatedProductClassification
      */
-    private $designatedProductClassification = null;
+    private $designatedProductClassification = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeCountryType $originTradeCountry
+     * @var \horstoeko\zugferd\ram\TradeCountryType $originTradeCountry
      */
     private $originTradeCountry = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedProductType[]
-     * $includedReferencedProduct
+     * @var \horstoeko\zugferd\ram\ReferencedProductType[] $includedReferencedProduct
      */
-    private $includedReferencedProduct = null;
+    private $includedReferencedProduct = [
+        
+    ];
 
     /**
      * Gets as globalID
@@ -173,8 +176,7 @@ class TradeProductType
      * Adds as applicableProductCharacteristic
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\ProductCharacteristicType
-     * $applicableProductCharacteristic
+     * @param \horstoeko\zugferd\ram\ProductCharacteristicType $applicableProductCharacteristic
      */
     public function addToApplicableProductCharacteristic(\horstoeko\zugferd\ram\ProductCharacteristicType $applicableProductCharacteristic)
     {
@@ -185,8 +187,8 @@ class TradeProductType
     /**
      * isset applicableProductCharacteristic
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetApplicableProductCharacteristic($index)
     {
@@ -196,7 +198,7 @@ class TradeProductType
     /**
      * unset applicableProductCharacteristic
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetApplicableProductCharacteristic($index)
@@ -217,8 +219,7 @@ class TradeProductType
     /**
      * Sets a new applicableProductCharacteristic
      *
-     * @param \horstoeko\zugferd\ram\ProductCharacteristicType[]
-     * $applicableProductCharacteristic
+     * @param \horstoeko\zugferd\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      * @return self
      */
     public function setApplicableProductCharacteristic(array $applicableProductCharacteristic)
@@ -231,8 +232,7 @@ class TradeProductType
      * Adds as designatedProductClassification
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\ProductClassificationType
-     * $designatedProductClassification
+     * @param \horstoeko\zugferd\ram\ProductClassificationType $designatedProductClassification
      */
     public function addToDesignatedProductClassification(\horstoeko\zugferd\ram\ProductClassificationType $designatedProductClassification)
     {
@@ -243,8 +243,8 @@ class TradeProductType
     /**
      * isset designatedProductClassification
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetDesignatedProductClassification($index)
     {
@@ -254,7 +254,7 @@ class TradeProductType
     /**
      * unset designatedProductClassification
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetDesignatedProductClassification($index)
@@ -275,8 +275,7 @@ class TradeProductType
     /**
      * Sets a new designatedProductClassification
      *
-     * @param \horstoeko\zugferd\ram\ProductClassificationType[]
-     * $designatedProductClassification
+     * @param \horstoeko\zugferd\ram\ProductClassificationType[] $designatedProductClassification
      * @return self
      */
     public function setDesignatedProductClassification(array $designatedProductClassification)
@@ -322,8 +321,8 @@ class TradeProductType
     /**
      * isset includedReferencedProduct
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetIncludedReferencedProduct($index)
     {
@@ -333,7 +332,7 @@ class TradeProductType
     /**
      * unset includedReferencedProduct
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetIncludedReferencedProduct($index)

@@ -9,12 +9,12 @@ class DateStringAType
 {
 
     /**
-     * @property string $__value
+     * @var string $__value
      */
     private $__value = null;
 
     /**
-     * @property string $format
+     * @var string $format
      */
     private $format = null;
 

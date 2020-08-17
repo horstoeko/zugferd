@@ -39,7 +39,7 @@ horstoeko\zugferd\ram\TradePaymentPenaltyTermsType:
             accessor:
                 getter: getCalculationPercent
                 setter: setCalculationPercent
-            type: float
+            type: horstoeko\zugferd\udt\PercentType
         actualPenaltyAmount:
             expose: true
             access_type: public_method

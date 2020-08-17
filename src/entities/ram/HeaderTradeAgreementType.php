@@ -12,71 +12,68 @@ class HeaderTradeAgreementType
 {
 
     /**
-     * @property string $buyerReference
+     * @var string $buyerReference
      */
     private $buyerReference = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $sellerTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $sellerTradeParty
      */
     private $sellerTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $buyerTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $buyerTradeParty
      */
     private $buyerTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType
-     * $sellerTaxRepresentativeTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $sellerTaxRepresentativeTradeParty
      */
     private $sellerTaxRepresentativeTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradePartyType $productEndUserTradeParty
+     * @var \horstoeko\zugferd\ram\TradePartyType $productEndUserTradeParty
      */
     private $productEndUserTradeParty = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeDeliveryTermsType
-     * $applicableTradeDeliveryTerms
+     * @var \horstoeko\zugferd\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms
      */
     private $applicableTradeDeliveryTerms = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $sellerOrderReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $sellerOrderReferencedDocument
      */
     private $sellerOrderReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $buyerOrderReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      */
     private $buyerOrderReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $contractReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType $contractReferencedDocument
      */
     private $contractReferencedDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType[]
-     * $additionalReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType[] $additionalReferencedDocument
      */
-    private $additionalReferencedDocument = null;
+    private $additionalReferencedDocument = [
+        
+    ];
 
     /**
-     * @property \horstoeko\zugferd\ram\ProcuringProjectType $specifiedProcuringProject
+     * @var \horstoeko\zugferd\ram\ProcuringProjectType $specifiedProcuringProject
      */
     private $specifiedProcuringProject = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\ReferencedDocumentType[]
-     * $ultimateCustomerOrderReferencedDocument
+     * @var \horstoeko\zugferd\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
      */
-    private $ultimateCustomerOrderReferencedDocument = null;
+    private $ultimateCustomerOrderReferencedDocument = [
+        
+    ];
 
     /**
      * Gets as buyerReference
@@ -201,8 +198,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new applicableTradeDeliveryTerms
      *
-     * @param \horstoeko\zugferd\ram\TradeDeliveryTermsType
-     * $applicableTradeDeliveryTerms
+     * @param \horstoeko\zugferd\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms
      * @return self
      */
     public function setApplicableTradeDeliveryTerms(\horstoeko\zugferd\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms)
@@ -224,8 +220,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new sellerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $sellerOrderReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $sellerOrderReferencedDocument
      * @return self
      */
     public function setSellerOrderReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $sellerOrderReferencedDocument)
@@ -247,8 +242,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $buyerOrderReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
@@ -283,8 +277,7 @@ class HeaderTradeAgreementType
      * Adds as additionalReferencedDocument
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $additionalReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $additionalReferencedDocument
      */
     public function addToAdditionalReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $additionalReferencedDocument)
     {
@@ -295,8 +288,8 @@ class HeaderTradeAgreementType
     /**
      * isset additionalReferencedDocument
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetAdditionalReferencedDocument($index)
     {
@@ -306,7 +299,7 @@ class HeaderTradeAgreementType
     /**
      * unset additionalReferencedDocument
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetAdditionalReferencedDocument($index)
@@ -327,8 +320,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new additionalReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType[]
-     * $additionalReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
@@ -363,8 +355,7 @@ class HeaderTradeAgreementType
      * Adds as ultimateCustomerOrderReferencedDocument
      *
      * @return self
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType
-     * $ultimateCustomerOrderReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
      */
     public function addToUltimateCustomerOrderReferencedDocument(\horstoeko\zugferd\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument)
     {
@@ -375,8 +366,8 @@ class HeaderTradeAgreementType
     /**
      * isset ultimateCustomerOrderReferencedDocument
      *
-     * @param scalar $index
-     * @return boolean
+     * @param int|string $index
+     * @return bool
      */
     public function issetUltimateCustomerOrderReferencedDocument($index)
     {
@@ -386,7 +377,7 @@ class HeaderTradeAgreementType
     /**
      * unset ultimateCustomerOrderReferencedDocument
      *
-     * @param scalar $index
+     * @param int|string $index
      * @return void
      */
     public function unsetUltimateCustomerOrderReferencedDocument($index)
@@ -407,8 +398,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new ultimateCustomerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\ram\ReferencedDocumentType[]
-     * $ultimateCustomerOrderReferencedDocument
+     * @param \horstoeko\zugferd\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
      * @return self
      */
     public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument)

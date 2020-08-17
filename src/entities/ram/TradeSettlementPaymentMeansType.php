@@ -12,36 +12,32 @@ class TradeSettlementPaymentMeansType
 {
 
     /**
-     * @property string $typeCode
+     * @var string $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @property string $information
+     * @var string $information
      */
     private $information = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeSettlementFinancialCardType
-     * $applicableTradeSettlementFinancialCard
+     * @var \horstoeko\zugferd\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
      */
     private $applicableTradeSettlementFinancialCard = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\DebtorFinancialAccountType
-     * $payerPartyDebtorFinancialAccount
+     * @var \horstoeko\zugferd\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      */
     private $payerPartyDebtorFinancialAccount = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\CreditorFinancialAccountType
-     * $payeePartyCreditorFinancialAccount
+     * @var \horstoeko\zugferd\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      */
     private $payeePartyCreditorFinancialAccount = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\CreditorFinancialInstitutionType
-     * $payeeSpecifiedCreditorFinancialInstitution
+     * @var \horstoeko\zugferd\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
      */
     private $payeeSpecifiedCreditorFinancialInstitution = null;
 
@@ -102,8 +98,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new applicableTradeSettlementFinancialCard
      *
-     * @param \horstoeko\zugferd\ram\TradeSettlementFinancialCardType
-     * $applicableTradeSettlementFinancialCard
+     * @param \horstoeko\zugferd\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
      * @return self
      */
     public function setApplicableTradeSettlementFinancialCard(\horstoeko\zugferd\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard)
@@ -125,8 +120,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payerPartyDebtorFinancialAccount
      *
-     * @param \horstoeko\zugferd\ram\DebtorFinancialAccountType
-     * $payerPartyDebtorFinancialAccount
+     * @param \horstoeko\zugferd\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(\horstoeko\zugferd\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount)
@@ -148,8 +142,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payeePartyCreditorFinancialAccount
      *
-     * @param \horstoeko\zugferd\ram\CreditorFinancialAccountType
-     * $payeePartyCreditorFinancialAccount
+     * @param \horstoeko\zugferd\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(\horstoeko\zugferd\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount)
@@ -171,8 +164,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payeeSpecifiedCreditorFinancialInstitution
      *
-     * @param \horstoeko\zugferd\ram\CreditorFinancialInstitutionType
-     * $payeeSpecifiedCreditorFinancialInstitution
+     * @param \horstoeko\zugferd\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
      * @return self
      */
     public function setPayeeSpecifiedCreditorFinancialInstitution(\horstoeko\zugferd\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution)

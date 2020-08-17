@@ -12,31 +12,27 @@ class SupplyChainTradeLineItemType
 {
 
     /**
-     * @property \horstoeko\zugferd\ram\DocumentLineDocumentType
-     * $associatedDocumentLineDocument
+     * @var \horstoeko\zugferd\ram\DocumentLineDocumentType $associatedDocumentLineDocument
      */
     private $associatedDocumentLineDocument = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\TradeProductType $specifiedTradeProduct
+     * @var \horstoeko\zugferd\ram\TradeProductType $specifiedTradeProduct
      */
     private $specifiedTradeProduct = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\LineTradeAgreementType
-     * $specifiedLineTradeAgreement
+     * @var \horstoeko\zugferd\ram\LineTradeAgreementType $specifiedLineTradeAgreement
      */
     private $specifiedLineTradeAgreement = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\LineTradeDeliveryType
-     * $specifiedLineTradeDelivery
+     * @var \horstoeko\zugferd\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
      */
     private $specifiedLineTradeDelivery = null;
 
     /**
-     * @property \horstoeko\zugferd\ram\LineTradeSettlementType
-     * $specifiedLineTradeSettlement
+     * @var \horstoeko\zugferd\ram\LineTradeSettlementType $specifiedLineTradeSettlement
      */
     private $specifiedLineTradeSettlement = null;
 
@@ -53,8 +49,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new associatedDocumentLineDocument
      *
-     * @param \horstoeko\zugferd\ram\DocumentLineDocumentType
-     * $associatedDocumentLineDocument
+     * @param \horstoeko\zugferd\ram\DocumentLineDocumentType $associatedDocumentLineDocument
      * @return self
      */
     public function setAssociatedDocumentLineDocument(\horstoeko\zugferd\ram\DocumentLineDocumentType $associatedDocumentLineDocument)
@@ -98,8 +93,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedLineTradeAgreement
      *
-     * @param \horstoeko\zugferd\ram\LineTradeAgreementType
-     * $specifiedLineTradeAgreement
+     * @param \horstoeko\zugferd\ram\LineTradeAgreementType $specifiedLineTradeAgreement
      * @return self
      */
     public function setSpecifiedLineTradeAgreement(\horstoeko\zugferd\ram\LineTradeAgreementType $specifiedLineTradeAgreement)
@@ -143,8 +137,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedLineTradeSettlement
      *
-     * @param \horstoeko\zugferd\ram\LineTradeSettlementType
-     * $specifiedLineTradeSettlement
+     * @param \horstoeko\zugferd\ram\LineTradeSettlementType $specifiedLineTradeSettlement
      * @return self
      */
     public function setSpecifiedLineTradeSettlement(\horstoeko\zugferd\ram\LineTradeSettlementType $specifiedLineTradeSettlement)

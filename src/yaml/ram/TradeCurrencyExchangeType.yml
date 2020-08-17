@@ -9,7 +9,7 @@ horstoeko\zugferd\ram\TradeCurrencyExchangeType:
             accessor:
                 getter: getSourceCurrencyCode
                 setter: setSourceCurrencyCode
-            type: string
+            type: horstoeko\zugferd\qdt\CurrencyCodeType
         targetCurrencyCode:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\TradeCurrencyExchangeType:
             accessor:
                 getter: getTargetCurrencyCode
                 setter: setTargetCurrencyCode
-            type: string
+            type: horstoeko\zugferd\qdt\CurrencyCodeType
         conversionRate:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\ram\TradeCurrencyExchangeType:
             accessor:
                 getter: getConversionRate
                 setter: setConversionRate
-            type: float
+            type: horstoeko\zugferd\udt\RateType
         conversionRateDateTime:
             expose: true
             access_type: public_method

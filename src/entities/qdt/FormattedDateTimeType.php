@@ -12,8 +12,7 @@ class FormattedDateTimeType
 {
 
     /**
-     * @property \horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType
-     * $dateTimeString
+     * @var \horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
      */
     private $dateTimeString = null;
 
@@ -30,8 +29,7 @@ class FormattedDateTimeType
     /**
      * Sets a new dateTimeString
      *
-     * @param \horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType
-     * $dateTimeString
+     * @param \horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
     public function setDateTimeString(\horstoeko\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString)

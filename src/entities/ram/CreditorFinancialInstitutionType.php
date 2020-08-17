@@ -12,7 +12,7 @@ class CreditorFinancialInstitutionType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\IDType $bICID
+     * @var \horstoeko\zugferd\udt\IDType $bICID
      */
     private $bICID = null;
 

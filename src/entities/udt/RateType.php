@@ -12,7 +12,7 @@ class RateType
 {
 
     /**
-     * @property float $__value
+     * @var float $__value
      */
     private $__value = null;
 

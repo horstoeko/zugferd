@@ -12,22 +12,22 @@ class ProductCharacteristicType
 {
 
     /**
-     * @property \horstoeko\zugferd\udt\CodeType $typeCode
+     * @var \horstoeko\zugferd\udt\CodeType $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @property string $description
+     * @var string $description
      */
     private $description = null;
 
     /**
-     * @property \horstoeko\zugferd\udt\MeasureType $valueMeasure
+     * @var \horstoeko\zugferd\udt\MeasureType $valueMeasure
      */
     private $valueMeasure = null;
 
     /**
-     * @property string $value
+     * @var string $value
      */
     private $value = null;
 

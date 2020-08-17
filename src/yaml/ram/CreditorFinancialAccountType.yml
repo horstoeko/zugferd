@@ -19,7 +19,7 @@ horstoeko\zugferd\ram\CreditorFinancialAccountType:
             accessor:
                 getter: getAccountName
                 setter: setAccountName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
         proprietaryID:
             expose: true
             access_type: public_method

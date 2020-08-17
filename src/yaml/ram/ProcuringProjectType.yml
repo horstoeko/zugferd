@@ -19,4 +19,4 @@ horstoeko\zugferd\ram\ProcuringProjectType:
             accessor:
                 getter: getName
                 setter: setName
-            type: string
+            type: horstoeko\zugferd\udt\TextType
