@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
+horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
     properties:
         invoiceCurrencyCode:
             -

@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType:
+horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType:
     properties:
         typeCode:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: horstoeko\zugferd\basicwl\qdt\PaymentMeansCodeType
+            type: horstoeko\zugferd\entities\basicwl\qdt\PaymentMeansCodeType
         payerPartyDebtorFinancialAccount:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType:
             accessor:
                 getter: getPayerPartyDebtorFinancialAccount
                 setter: setPayerPartyDebtorFinancialAccount
-            type: horstoeko\zugferd\basicwl\ram\DebtorFinancialAccountType
+            type: horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType
         payeePartyCreditorFinancialAccount:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType:
             accessor:
                 getter: getPayeePartyCreditorFinancialAccount
                 setter: setPayeePartyCreditorFinancialAccount
-            type: horstoeko\zugferd\basicwl\ram\CreditorFinancialAccountType
+            type: horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType

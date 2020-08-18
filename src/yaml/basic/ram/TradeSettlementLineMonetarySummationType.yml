@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType:
+horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType:
     properties:
         lineTotalAmount:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType:
             accessor:
                 getter: getLineTotalAmount
                 setter: setLineTotalAmount
-            type: horstoeko\zugferd\basic\udt\AmountType
+            type: horstoeko\zugferd\entities\basic\udt\AmountType

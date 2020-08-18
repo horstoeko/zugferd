@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SpecifiedPeriodType:
+horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType:
     properties:
         startDateTime:
             -

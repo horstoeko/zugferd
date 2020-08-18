@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing ExchangedDocumentType
@@ -12,7 +12,7 @@ class ExchangedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType $iD
      */
     private $iD = null;
 
@@ -22,12 +22,12 @@ class ExchangedDocumentType
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\DateTimeType $issueDateTime
+     * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType $issueDateTime
      */
     private $issueDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\NoteType[] $includedNote
+     * @var \horstoeko\zugferd\entities\basic\ram\NoteType[] $includedNote
      */
     private $includedNote = [
         
@@ -36,7 +36,7 @@ class ExchangedDocumentType
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType
      */
     public function getID()
     {
@@ -46,10 +46,10 @@ class ExchangedDocumentType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\basic\udt\IDType $iD
+     * @param \horstoeko\zugferd\entities\basic\udt\IDType $iD
      * @return self
      */
-    public function setID(\horstoeko\zugferd\basic\udt\IDType $iD)
+    public function setID(\horstoeko\zugferd\entities\basic\udt\IDType $iD)
     {
         $this->iD = $iD;
         return $this;
@@ -80,7 +80,7 @@ class ExchangedDocumentType
     /**
      * Gets as issueDateTime
      *
-     * @return \horstoeko\zugferd\basic\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basic\udt\DateTimeType
      */
     public function getIssueDateTime()
     {
@@ -90,10 +90,10 @@ class ExchangedDocumentType
     /**
      * Sets a new issueDateTime
      *
-     * @param \horstoeko\zugferd\basic\udt\DateTimeType $issueDateTime
+     * @param \horstoeko\zugferd\entities\basic\udt\DateTimeType $issueDateTime
      * @return self
      */
-    public function setIssueDateTime(\horstoeko\zugferd\basic\udt\DateTimeType $issueDateTime)
+    public function setIssueDateTime(\horstoeko\zugferd\entities\basic\udt\DateTimeType $issueDateTime)
     {
         $this->issueDateTime = $issueDateTime;
         return $this;
@@ -103,9 +103,9 @@ class ExchangedDocumentType
      * Adds as includedNote
      *
      * @return self
-     * @param \horstoeko\zugferd\basic\ram\NoteType $includedNote
+     * @param \horstoeko\zugferd\entities\basic\ram\NoteType $includedNote
      */
-    public function addToIncludedNote(\horstoeko\zugferd\basic\ram\NoteType $includedNote)
+    public function addToIncludedNote(\horstoeko\zugferd\entities\basic\ram\NoteType $includedNote)
     {
         $this->includedNote[] = $includedNote;
         return $this;
@@ -136,7 +136,7 @@ class ExchangedDocumentType
     /**
      * Gets as includedNote
      *
-     * @return \horstoeko\zugferd\basic\ram\NoteType[]
+     * @return \horstoeko\zugferd\entities\basic\ram\NoteType[]
      */
     public function getIncludedNote()
     {
@@ -146,7 +146,7 @@ class ExchangedDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param \horstoeko\zugferd\basic\ram\NoteType[] $includedNote
+     * @param \horstoeko\zugferd\entities\basic\ram\NoteType[] $includedNote
      * @return self
      */
     public function setIncludedNote(array $includedNote)

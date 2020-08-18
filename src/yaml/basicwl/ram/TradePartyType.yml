@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\TradePartyType:
+horstoeko\zugferd\entities\basicwl\ram\TradePartyType:
     properties:
         iD:
             expose: true
@@ -13,7 +13,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
                 inline: true
                 entry_name: ID
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basicwl\udt\IDType>
+            type: array<horstoeko\zugferd\entities\basicwl\udt\IDType>
         globalID:
             expose: true
             access_type: public_method
@@ -27,7 +27,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
                 inline: true
                 entry_name: GlobalID
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basicwl\udt\IDType>
+            type: array<horstoeko\zugferd\entities\basicwl\udt\IDType>
         name:
             expose: true
             access_type: public_method
@@ -37,7 +37,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
             accessor:
                 getter: getName
                 setter: setName
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         specifiedLegalOrganization:
             expose: true
             access_type: public_method
@@ -47,7 +47,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
             accessor:
                 getter: getSpecifiedLegalOrganization
                 setter: setSpecifiedLegalOrganization
-            type: horstoeko\zugferd\basicwl\ram\LegalOrganizationType
+            type: horstoeko\zugferd\entities\basicwl\ram\LegalOrganizationType
         postalTradeAddress:
             expose: true
             access_type: public_method
@@ -57,7 +57,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
             accessor:
                 getter: getPostalTradeAddress
                 setter: setPostalTradeAddress
-            type: horstoeko\zugferd\basicwl\ram\TradeAddressType
+            type: horstoeko\zugferd\entities\basicwl\ram\TradeAddressType
         uRIUniversalCommunication:
             expose: true
             access_type: public_method
@@ -67,7 +67,7 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
             accessor:
                 getter: getURIUniversalCommunication
                 setter: setURIUniversalCommunication
-            type: horstoeko\zugferd\basicwl\ram\UniversalCommunicationType
+            type: horstoeko\zugferd\entities\basicwl\ram\UniversalCommunicationType
         specifiedTaxRegistration:
             expose: true
             access_type: public_method
@@ -81,4 +81,4 @@ horstoeko\zugferd\basicwl\ram\TradePartyType:
                 inline: true
                 entry_name: SpecifiedTaxRegistration
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basicwl\ram\TaxRegistrationType>
+            type: array<horstoeko\zugferd\entities\basicwl\ram\TaxRegistrationType>

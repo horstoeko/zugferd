@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
+horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
     properties:
         chargeIndicator:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getChargeIndicator
                 setter: setChargeIndicator
-            type: horstoeko\zugferd\basic\udt\IndicatorType
+            type: horstoeko\zugferd\entities\basic\udt\IndicatorType
         calculationPercent:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getCalculationPercent
                 setter: setCalculationPercent
-            type: horstoeko\zugferd\basic\udt\PercentType
+            type: horstoeko\zugferd\entities\basic\udt\PercentType
         basisAmount:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getBasisAmount
                 setter: setBasisAmount
-            type: horstoeko\zugferd\basic\udt\AmountType
+            type: horstoeko\zugferd\entities\basic\udt\AmountType
         actualAmount:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getActualAmount
                 setter: setActualAmount
-            type: horstoeko\zugferd\basic\udt\AmountType
+            type: horstoeko\zugferd\entities\basic\udt\AmountType
         reasonCode:
             expose: true
             access_type: public_method
@@ -49,7 +49,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getReasonCode
                 setter: setReasonCode
-            type: horstoeko\zugferd\basic\qdt\AllowanceChargeReasonCodeType
+            type: horstoeko\zugferd\entities\basic\qdt\AllowanceChargeReasonCodeType
         reason:
             expose: true
             access_type: public_method
@@ -59,7 +59,7 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getReason
                 setter: setReason
-            type: horstoeko\zugferd\basic\udt\TextType
+            type: horstoeko\zugferd\entities\basic\udt\TextType
         categoryTradeTax:
             expose: true
             access_type: public_method
@@ -69,4 +69,4 @@ horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
             accessor:
                 getter: getCategoryTradeTax
                 setter: setCategoryTradeTax
-            type: horstoeko\zugferd\basic\ram\TradeTaxType
+            type: horstoeko\zugferd\entities\basic\ram\TradeTaxType

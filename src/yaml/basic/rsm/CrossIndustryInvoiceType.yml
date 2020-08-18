@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\rsm\CrossIndustryInvoiceType:
+horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType:
     properties:
         exchangedDocumentContext:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\rsm\CrossIndustryInvoiceType:
             accessor:
                 getter: getExchangedDocumentContext
                 setter: setExchangedDocumentContext
-            type: horstoeko\zugferd\basic\ram\ExchangedDocumentContextType
+            type: horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType
         exchangedDocument:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basic\rsm\CrossIndustryInvoiceType:
             accessor:
                 getter: getExchangedDocument
                 setter: setExchangedDocument
-            type: horstoeko\zugferd\basic\ram\ExchangedDocumentType
+            type: horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType
         supplyChainTradeTransaction:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ horstoeko\zugferd\basic\rsm\CrossIndustryInvoiceType:
             accessor:
                 getter: getSupplyChainTradeTransaction
                 setter: setSupplyChainTradeTransaction
-            type: horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType
+            type: horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType

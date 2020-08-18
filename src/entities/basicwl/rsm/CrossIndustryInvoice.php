@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\rsm;
+namespace horstoeko\zugferd\entities\basicwl\rsm;
 
 /**
  * Class representing CrossIndustryInvoice

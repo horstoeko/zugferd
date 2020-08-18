@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradePaymentTermsType:
+horstoeko\zugferd\entities\basic\ram\TradePaymentTermsType:
     properties:
         dueDateDateTime:
             -

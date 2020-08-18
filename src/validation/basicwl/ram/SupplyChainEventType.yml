@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\SupplyChainEventType:
+horstoeko\zugferd\entities\basicwl\ram\SupplyChainEventType:
     properties:
         occurrenceDateTime:
             -

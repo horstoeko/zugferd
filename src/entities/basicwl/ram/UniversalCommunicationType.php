@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing UniversalCommunicationType
@@ -12,14 +12,14 @@ class UniversalCommunicationType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $uRIID
      */
     private $uRIID = null;
 
     /**
      * Gets as uRIID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getURIID()
     {
@@ -29,10 +29,10 @@ class UniversalCommunicationType
     /**
      * Sets a new uRIID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $uRIID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $uRIID
      * @return self
      */
-    public function setURIID(\horstoeko\zugferd\basicwl\udt\IDType $uRIID)
+    public function setURIID(\horstoeko\zugferd\entities\basicwl\udt\IDType $uRIID)
     {
         $this->uRIID = $uRIID;
         return $this;

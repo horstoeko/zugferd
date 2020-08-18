@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TaxRegistrationType:
+horstoeko\zugferd\entities\basic\ram\TaxRegistrationType:
     properties:
         iD:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\TaxRegistrationType:
             accessor:
                 getter: getID
                 setter: setID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType

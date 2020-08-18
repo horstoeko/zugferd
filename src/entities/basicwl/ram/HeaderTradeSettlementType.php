@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing HeaderTradeSettlementType
@@ -12,7 +12,7 @@ class HeaderTradeSettlementType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $creditorReferenceID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $creditorReferenceID
      */
     private $creditorReferenceID = null;
 
@@ -27,53 +27,53 @@ class HeaderTradeSettlementType
     private $invoiceCurrencyCode = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradePartyType $payeeTradeParty
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradePartyType $payeeTradeParty
      */
     private $payeeTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
      */
     private $specifiedTradeSettlementPaymentMeans = [
         
     ];
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradeTaxType[] $applicableTradeTax
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType[] $applicableTradeTax
      */
     private $applicableTradeTax = [
         
     ];
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @var \horstoeko\zugferd\entities\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      */
     private $billingSpecifiedPeriod = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      */
     private $specifiedTradeAllowanceCharge = [
         
     ];
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms
      */
     private $specifiedTradePaymentTerms = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
      */
     private $specifiedTradeSettlementHeaderMonetarySummation = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument
+     * @var \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument
      */
     private $invoiceReferencedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
      */
     private $receivableSpecifiedTradeAccountingAccount = [
         
@@ -82,7 +82,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as creditorReferenceID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getCreditorReferenceID()
     {
@@ -92,10 +92,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new creditorReferenceID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $creditorReferenceID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $creditorReferenceID
      * @return self
      */
-    public function setCreditorReferenceID(\horstoeko\zugferd\basicwl\udt\IDType $creditorReferenceID)
+    public function setCreditorReferenceID(\horstoeko\zugferd\entities\basicwl\udt\IDType $creditorReferenceID)
     {
         $this->creditorReferenceID = $creditorReferenceID;
         return $this;
@@ -148,7 +148,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as payeeTradeParty
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradePartyType
      */
     public function getPayeeTradeParty()
     {
@@ -158,10 +158,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new payeeTradeParty
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradePartyType $payeeTradeParty
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradePartyType $payeeTradeParty
      * @return self
      */
-    public function setPayeeTradeParty(\horstoeko\zugferd\basicwl\ram\TradePartyType $payeeTradeParty)
+    public function setPayeeTradeParty(\horstoeko\zugferd\entities\basicwl\ram\TradePartyType $payeeTradeParty)
     {
         $this->payeeTradeParty = $payeeTradeParty;
         return $this;
@@ -171,9 +171,9 @@ class HeaderTradeSettlementType
      * Adds as specifiedTradeSettlementPaymentMeans
      *
      * @return self
-     * @param \horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
      */
-    public function addToSpecifiedTradeSettlementPaymentMeans(\horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans)
+    public function addToSpecifiedTradeSettlementPaymentMeans(\horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans)
     {
         $this->specifiedTradeSettlementPaymentMeans[] = $specifiedTradeSettlementPaymentMeans;
         return $this;
@@ -204,7 +204,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as specifiedTradeSettlementPaymentMeans
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType[]
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType[]
      */
     public function getSpecifiedTradeSettlementPaymentMeans()
     {
@@ -214,7 +214,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementPaymentMeans
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
      * @return self
      */
     public function setSpecifiedTradeSettlementPaymentMeans(array $specifiedTradeSettlementPaymentMeans)
@@ -227,9 +227,9 @@ class HeaderTradeSettlementType
      * Adds as applicableTradeTax
      *
      * @return self
-     * @param \horstoeko\zugferd\basicwl\ram\TradeTaxType $applicableTradeTax
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $applicableTradeTax
      */
-    public function addToApplicableTradeTax(\horstoeko\zugferd\basicwl\ram\TradeTaxType $applicableTradeTax)
+    public function addToApplicableTradeTax(\horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $applicableTradeTax)
     {
         $this->applicableTradeTax[] = $applicableTradeTax;
         return $this;
@@ -260,7 +260,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as applicableTradeTax
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradeTaxType[]
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType[]
      */
     public function getApplicableTradeTax()
     {
@@ -270,7 +270,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new applicableTradeTax
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradeTaxType[] $applicableTradeTax
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType[] $applicableTradeTax
      * @return self
      */
     public function setApplicableTradeTax(array $applicableTradeTax)
@@ -282,7 +282,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as billingSpecifiedPeriod
      *
-     * @return \horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\SpecifiedPeriodType
      */
     public function getBillingSpecifiedPeriod()
     {
@@ -292,10 +292,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new billingSpecifiedPeriod
      *
-     * @param \horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param \horstoeko\zugferd\entities\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
-    public function setBillingSpecifiedPeriod(\horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
+    public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\basicwl\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
     {
         $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
         return $this;
@@ -305,9 +305,9 @@ class HeaderTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
-    public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
+    public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
         $this->specifiedTradeAllowanceCharge[] = $specifiedTradeAllowanceCharge;
         return $this;
@@ -338,7 +338,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as specifiedTradeAllowanceCharge
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType[]
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType[]
      */
     public function getSpecifiedTradeAllowanceCharge()
     {
@@ -348,7 +348,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -360,7 +360,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as specifiedTradePaymentTerms
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradePaymentTermsType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradePaymentTermsType
      */
     public function getSpecifiedTradePaymentTerms()
     {
@@ -370,10 +370,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradePaymentTerms
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms
      * @return self
      */
-    public function setSpecifiedTradePaymentTerms(\horstoeko\zugferd\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms)
+    public function setSpecifiedTradePaymentTerms(\horstoeko\zugferd\entities\basicwl\ram\TradePaymentTermsType $specifiedTradePaymentTerms)
     {
         $this->specifiedTradePaymentTerms = $specifiedTradePaymentTerms;
         return $this;
@@ -382,7 +382,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as specifiedTradeSettlementHeaderMonetarySummation
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradeSettlementHeaderMonetarySummationType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementHeaderMonetarySummationType
      */
     public function getSpecifiedTradeSettlementHeaderMonetarySummation()
     {
@@ -392,10 +392,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementHeaderMonetarySummation
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
      * @return self
      */
-    public function setSpecifiedTradeSettlementHeaderMonetarySummation(\horstoeko\zugferd\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation)
+    public function setSpecifiedTradeSettlementHeaderMonetarySummation(\horstoeko\zugferd\entities\basicwl\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation)
     {
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
         return $this;
@@ -404,7 +404,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as invoiceReferencedDocument
      *
-     * @return \horstoeko\zugferd\basicwl\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType
      */
     public function getInvoiceReferencedDocument()
     {
@@ -414,10 +414,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new invoiceReferencedDocument
      *
-     * @param \horstoeko\zugferd\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument
+     * @param \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument
      * @return self
      */
-    public function setInvoiceReferencedDocument(\horstoeko\zugferd\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument)
+    public function setInvoiceReferencedDocument(\horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $invoiceReferencedDocument)
     {
         $this->invoiceReferencedDocument = $invoiceReferencedDocument;
         return $this;
@@ -427,9 +427,9 @@ class HeaderTradeSettlementType
      * Adds as receivableSpecifiedTradeAccountingAccount
      *
      * @return self
-     * @param \horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      */
-    public function addToReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
+    public function addToReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
     {
         $this->receivableSpecifiedTradeAccountingAccount[] = $receivableSpecifiedTradeAccountingAccount;
         return $this;
@@ -460,7 +460,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as receivableSpecifiedTradeAccountingAccount
      *
-     * @return \horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType[]
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType[]
      */
     public function getReceivableSpecifiedTradeAccountingAccount()
     {
@@ -470,7 +470,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param \horstoeko\zugferd\basicwl\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(array $receivableSpecifiedTradeAccountingAccount)

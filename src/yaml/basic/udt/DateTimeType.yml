@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\udt\DateTimeType:
+horstoeko\zugferd\entities\basic\udt\DateTimeType:
     properties:
         dateTimeString:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\udt\DateTimeType:
             accessor:
                 getter: getDateTimeString
                 setter: setDateTimeString
-            type: horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType
+            type: horstoeko\zugferd\entities\basic\udt\DateTimeType\DateTimeStringAType

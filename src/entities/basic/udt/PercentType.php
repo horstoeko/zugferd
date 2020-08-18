@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\udt;
+namespace horstoeko\zugferd\entities\basic\udt;
 
 /**
  * Class representing PercentType

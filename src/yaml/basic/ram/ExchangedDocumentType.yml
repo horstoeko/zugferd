@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\ExchangedDocumentType:
+horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType:
     properties:
         iD:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentType:
             accessor:
                 getter: getID
                 setter: setID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType
         typeCode:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: horstoeko\zugferd\basic\qdt\DocumentCodeType
+            type: horstoeko\zugferd\entities\basic\qdt\DocumentCodeType
         issueDateTime:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentType:
             accessor:
                 getter: getIssueDateTime
                 setter: setIssueDateTime
-            type: horstoeko\zugferd\basic\udt\DateTimeType
+            type: horstoeko\zugferd\entities\basic\udt\DateTimeType
         includedNote:
             expose: true
             access_type: public_method
@@ -43,4 +43,4 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentType:
                 inline: true
                 entry_name: IncludedNote
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\NoteType>
+            type: array<horstoeko\zugferd\entities\basic\ram\NoteType>

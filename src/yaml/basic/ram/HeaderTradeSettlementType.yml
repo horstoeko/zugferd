@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
+horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
     properties:
         creditorReferenceID:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getCreditorReferenceID
                 setter: setCreditorReferenceID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType
         paymentReference:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getPaymentReference
                 setter: setPaymentReference
-            type: horstoeko\zugferd\basic\udt\TextType
+            type: horstoeko\zugferd\entities\basic\udt\TextType
         invoiceCurrencyCode:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getInvoiceCurrencyCode
                 setter: setInvoiceCurrencyCode
-            type: horstoeko\zugferd\basic\qdt\CurrencyCodeType
+            type: horstoeko\zugferd\entities\basic\qdt\CurrencyCodeType
         payeeTradeParty:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getPayeeTradeParty
                 setter: setPayeeTradeParty
-            type: horstoeko\zugferd\basic\ram\TradePartyType
+            type: horstoeko\zugferd\entities\basic\ram\TradePartyType
         specifiedTradeSettlementPaymentMeans:
             expose: true
             access_type: public_method
@@ -53,7 +53,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
                 inline: true
                 entry_name: SpecifiedTradeSettlementPaymentMeans
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\TradeSettlementPaymentMeansType>
+            type: array<horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType>
         applicableTradeTax:
             expose: true
             access_type: public_method
@@ -67,7 +67,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
                 inline: true
                 entry_name: ApplicableTradeTax
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\TradeTaxType>
+            type: array<horstoeko\zugferd\entities\basic\ram\TradeTaxType>
         billingSpecifiedPeriod:
             expose: true
             access_type: public_method
@@ -77,7 +77,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getBillingSpecifiedPeriod
                 setter: setBillingSpecifiedPeriod
-            type: horstoeko\zugferd\basic\ram\SpecifiedPeriodType
+            type: horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType
         specifiedTradeAllowanceCharge:
             expose: true
             access_type: public_method
@@ -91,7 +91,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
                 inline: true
                 entry_name: SpecifiedTradeAllowanceCharge
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\TradeAllowanceChargeType>
+            type: array<horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType>
         specifiedTradePaymentTerms:
             expose: true
             access_type: public_method
@@ -101,7 +101,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradePaymentTerms
                 setter: setSpecifiedTradePaymentTerms
-            type: horstoeko\zugferd\basic\ram\TradePaymentTermsType
+            type: horstoeko\zugferd\entities\basic\ram\TradePaymentTermsType
         specifiedTradeSettlementHeaderMonetarySummation:
             expose: true
             access_type: public_method
@@ -111,7 +111,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradeSettlementHeaderMonetarySummation
                 setter: setSpecifiedTradeSettlementHeaderMonetarySummation
-            type: horstoeko\zugferd\basic\ram\TradeSettlementHeaderMonetarySummationType
+            type: horstoeko\zugferd\entities\basic\ram\TradeSettlementHeaderMonetarySummationType
         invoiceReferencedDocument:
             expose: true
             access_type: public_method
@@ -121,7 +121,7 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getInvoiceReferencedDocument
                 setter: setInvoiceReferencedDocument
-            type: horstoeko\zugferd\basic\ram\ReferencedDocumentType
+            type: horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType
         receivableSpecifiedTradeAccountingAccount:
             expose: true
             access_type: public_method
@@ -131,4 +131,4 @@ horstoeko\zugferd\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getReceivableSpecifiedTradeAccountingAccount
                 setter: setReceivableSpecifiedTradeAccountingAccount
-            type: horstoeko\zugferd\basic\ram\TradeAccountingAccountType
+            type: horstoeko\zugferd\entities\basic\ram\TradeAccountingAccountType

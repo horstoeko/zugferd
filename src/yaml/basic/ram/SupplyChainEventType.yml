@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SupplyChainEventType:
+horstoeko\zugferd\entities\basic\ram\SupplyChainEventType:
     properties:
         occurrenceDateTime:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\SupplyChainEventType:
             accessor:
                 getter: getOccurrenceDateTime
                 setter: setOccurrenceDateTime
-            type: horstoeko\zugferd\basic\udt\DateTimeType
+            type: horstoeko\zugferd\entities\basic\udt\DateTimeType

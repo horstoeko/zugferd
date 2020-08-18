@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\ExchangedDocumentContextType:
+horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType:
     properties:
         businessProcessSpecifiedDocumentContextParameter:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentContextType:
             accessor:
                 getter: getBusinessProcessSpecifiedDocumentContextParameter
                 setter: setBusinessProcessSpecifiedDocumentContextParameter
-            type: horstoeko\zugferd\basic\ram\DocumentContextParameterType
+            type: horstoeko\zugferd\entities\basic\ram\DocumentContextParameterType
         guidelineSpecifiedDocumentContextParameter:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basic\ram\ExchangedDocumentContextType:
             accessor:
                 getter: getGuidelineSpecifiedDocumentContextParameter
                 setter: setGuidelineSpecifiedDocumentContextParameter
-            type: horstoeko\zugferd\basic\ram\DocumentContextParameterType
+            type: horstoeko\zugferd\entities\basic\ram\DocumentContextParameterType

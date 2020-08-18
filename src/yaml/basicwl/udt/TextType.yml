@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\udt\TextType:
+horstoeko\zugferd\entities\basicwl\udt\TextType:
     properties:
         __value:
             expose: true

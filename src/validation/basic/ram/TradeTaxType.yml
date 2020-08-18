@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeTaxType:
+horstoeko\zugferd\entities\basic\ram\TradeTaxType:
     properties:
         typeCode:
             -

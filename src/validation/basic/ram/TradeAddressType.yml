@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeAddressType:
+horstoeko\zugferd\entities\basic\ram\TradeAddressType:
     properties:
         countryID:
             -

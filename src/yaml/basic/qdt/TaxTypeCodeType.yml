@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\qdt\TaxTypeCodeType:
+horstoeko\zugferd\entities\basic\qdt\TaxTypeCodeType:
     properties:
         __value:
             expose: true

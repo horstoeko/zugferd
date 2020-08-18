@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\TradeSettlementPaymentMeansType:
+horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType:
     properties:
         typeCode:
             -

@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\qdt\DocumentCodeType:
+horstoeko\zugferd\entities\basicwl\qdt\DocumentCodeType:
     properties:
         __value:
             expose: true

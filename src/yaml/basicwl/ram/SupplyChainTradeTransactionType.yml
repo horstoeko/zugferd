@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType:
+horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType:
     properties:
         applicableHeaderTradeAgreement:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeAgreement
                 setter: setApplicableHeaderTradeAgreement
-            type: horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType
+            type: horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType
         applicableHeaderTradeDelivery:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeDelivery
                 setter: setApplicableHeaderTradeDelivery
-            type: horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType
+            type: horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType
         applicableHeaderTradeSettlement:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeSettlement
                 setter: setApplicableHeaderTradeSettlement
-            type: horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType
+            type: horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType

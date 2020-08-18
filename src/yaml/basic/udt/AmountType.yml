@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\udt\AmountType:
+horstoeko\zugferd\entities\basic\udt\AmountType:
     properties:
         __value:
             expose: true

@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LegalOrganizationType:
+horstoeko\zugferd\entities\basic\ram\LegalOrganizationType:
     properties:
         iD:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\LegalOrganizationType:
             accessor:
                 getter: getID
                 setter: setID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType
         tradingBusinessName:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basic\ram\LegalOrganizationType:
             accessor:
                 getter: getTradingBusinessName
                 setter: setTradingBusinessName
-            type: horstoeko\zugferd\basic\udt\TextType
+            type: horstoeko\zugferd\entities\basic\udt\TextType

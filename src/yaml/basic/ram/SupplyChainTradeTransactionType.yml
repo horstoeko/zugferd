@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
+horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType:
     properties:
         includedSupplyChainTradeLineItem:
             expose: true
@@ -13,7 +13,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
                 inline: true
                 entry_name: IncludedSupplyChainTradeLineItem
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType>
+            type: array<horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType>
         applicableHeaderTradeAgreement:
             expose: true
             access_type: public_method
@@ -23,7 +23,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeAgreement
                 setter: setApplicableHeaderTradeAgreement
-            type: horstoeko\zugferd\basic\ram\HeaderTradeAgreementType
+            type: horstoeko\zugferd\entities\basic\ram\HeaderTradeAgreementType
         applicableHeaderTradeDelivery:
             expose: true
             access_type: public_method
@@ -33,7 +33,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeDelivery
                 setter: setApplicableHeaderTradeDelivery
-            type: horstoeko\zugferd\basic\ram\HeaderTradeDeliveryType
+            type: horstoeko\zugferd\entities\basic\ram\HeaderTradeDeliveryType
         applicableHeaderTradeSettlement:
             expose: true
             access_type: public_method
@@ -43,4 +43,4 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
             accessor:
                 getter: getApplicableHeaderTradeSettlement
                 setter: setApplicableHeaderTradeSettlement
-            type: horstoeko\zugferd\basic\ram\HeaderTradeSettlementType
+            type: horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType

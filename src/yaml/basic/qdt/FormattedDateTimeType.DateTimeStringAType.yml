@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\qdt\FormattedDateTimeType\DateTimeStringAType:
+horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType\DateTimeStringAType:
     properties:
         __value:
             expose: true

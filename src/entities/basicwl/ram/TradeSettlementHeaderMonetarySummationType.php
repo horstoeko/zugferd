@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing TradeSettlementHeaderMonetarySummationType
@@ -12,49 +12,49 @@ class TradeSettlementHeaderMonetarySummationType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $chargeTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $chargeTotalAmount
      */
     private $chargeTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $allowanceTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $allowanceTotalAmount
      */
     private $allowanceTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $taxBasisTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $taxBasisTotalAmount
      */
     private $taxBasisTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $taxTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $taxTotalAmount
      */
     private $taxTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $grandTotalAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $grandTotalAmount
      */
     private $grandTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $totalPrepaidAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $totalPrepaidAmount
      */
     private $totalPrepaidAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\AmountType $duePayableAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $duePayableAmount
      */
     private $duePayableAmount = null;
 
     /**
      * Gets as lineTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getLineTotalAmount()
     {
@@ -64,10 +64,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new lineTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $lineTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $lineTotalAmount
      * @return self
      */
-    public function setLineTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $lineTotalAmount)
+    public function setLineTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $lineTotalAmount)
     {
         $this->lineTotalAmount = $lineTotalAmount;
         return $this;
@@ -76,7 +76,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as chargeTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getChargeTotalAmount()
     {
@@ -86,10 +86,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new chargeTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $chargeTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $chargeTotalAmount
      * @return self
      */
-    public function setChargeTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $chargeTotalAmount)
+    public function setChargeTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $chargeTotalAmount)
     {
         $this->chargeTotalAmount = $chargeTotalAmount;
         return $this;
@@ -98,7 +98,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as allowanceTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getAllowanceTotalAmount()
     {
@@ -108,10 +108,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new allowanceTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $allowanceTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $allowanceTotalAmount
      * @return self
      */
-    public function setAllowanceTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $allowanceTotalAmount)
+    public function setAllowanceTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $allowanceTotalAmount)
     {
         $this->allowanceTotalAmount = $allowanceTotalAmount;
         return $this;
@@ -120,7 +120,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as taxBasisTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getTaxBasisTotalAmount()
     {
@@ -130,10 +130,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxBasisTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $taxBasisTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $taxBasisTotalAmount
      * @return self
      */
-    public function setTaxBasisTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $taxBasisTotalAmount)
+    public function setTaxBasisTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $taxBasisTotalAmount)
     {
         $this->taxBasisTotalAmount = $taxBasisTotalAmount;
         return $this;
@@ -142,7 +142,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as taxTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getTaxTotalAmount()
     {
@@ -152,10 +152,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $taxTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $taxTotalAmount)
+    public function setTaxTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $taxTotalAmount)
     {
         $this->taxTotalAmount = $taxTotalAmount;
         return $this;
@@ -164,7 +164,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as grandTotalAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getGrandTotalAmount()
     {
@@ -174,10 +174,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new grandTotalAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $grandTotalAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $grandTotalAmount
      * @return self
      */
-    public function setGrandTotalAmount(\horstoeko\zugferd\basicwl\udt\AmountType $grandTotalAmount)
+    public function setGrandTotalAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $grandTotalAmount)
     {
         $this->grandTotalAmount = $grandTotalAmount;
         return $this;
@@ -186,7 +186,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as totalPrepaidAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getTotalPrepaidAmount()
     {
@@ -196,10 +196,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new totalPrepaidAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $totalPrepaidAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $totalPrepaidAmount
      * @return self
      */
-    public function setTotalPrepaidAmount(\horstoeko\zugferd\basicwl\udt\AmountType $totalPrepaidAmount)
+    public function setTotalPrepaidAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $totalPrepaidAmount)
     {
         $this->totalPrepaidAmount = $totalPrepaidAmount;
         return $this;
@@ -208,7 +208,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as duePayableAmount
      *
-     * @return \horstoeko\zugferd\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
      */
     public function getDuePayableAmount()
     {
@@ -218,10 +218,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new duePayableAmount
      *
-     * @param \horstoeko\zugferd\basicwl\udt\AmountType $duePayableAmount
+     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $duePayableAmount
      * @return self
      */
-    public function setDuePayableAmount(\horstoeko\zugferd\basicwl\udt\AmountType $duePayableAmount)
+    public function setDuePayableAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $duePayableAmount)
     {
         $this->duePayableAmount = $duePayableAmount;
         return $this;

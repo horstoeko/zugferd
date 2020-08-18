@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\TradeAddressType:
+horstoeko\zugferd\entities\basicwl\ram\TradeAddressType:
     properties:
         postcodeCode:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getPostcodeCode
                 setter: setPostcodeCode
-            type: horstoeko\zugferd\basicwl\udt\CodeType
+            type: horstoeko\zugferd\entities\basicwl\udt\CodeType
         lineOne:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getLineOne
                 setter: setLineOne
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         lineTwo:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getLineTwo
                 setter: setLineTwo
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         lineThree:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getLineThree
                 setter: setLineThree
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         cityName:
             expose: true
             access_type: public_method
@@ -49,7 +49,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getCityName
                 setter: setCityName
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         countryID:
             expose: true
             access_type: public_method
@@ -59,7 +59,7 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getCountryID
                 setter: setCountryID
-            type: horstoeko\zugferd\basicwl\qdt\CountryIDType
+            type: horstoeko\zugferd\entities\basicwl\qdt\CountryIDType
         countrySubDivisionName:
             expose: true
             access_type: public_method
@@ -69,4 +69,4 @@ horstoeko\zugferd\basicwl\ram\TradeAddressType:
             accessor:
                 getter: getCountrySubDivisionName
                 setter: setCountrySubDivisionName
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType

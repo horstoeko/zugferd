@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\DebtorFinancialAccountType:
+horstoeko\zugferd\entities\basic\ram\DebtorFinancialAccountType:
     properties:
         iBANID:
             -

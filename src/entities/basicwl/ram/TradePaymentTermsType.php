@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing TradePaymentTermsType
@@ -12,19 +12,19 @@ class TradePaymentTermsType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\DateTimeType $dueDateDateTime
+     * @var \horstoeko\zugferd\entities\basicwl\udt\DateTimeType $dueDateDateTime
      */
     private $dueDateDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $directDebitMandateID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $directDebitMandateID
      */
     private $directDebitMandateID = null;
 
     /**
      * Gets as dueDateDateTime
      *
-     * @return \horstoeko\zugferd\basicwl\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\DateTimeType
      */
     public function getDueDateDateTime()
     {
@@ -34,10 +34,10 @@ class TradePaymentTermsType
     /**
      * Sets a new dueDateDateTime
      *
-     * @param \horstoeko\zugferd\basicwl\udt\DateTimeType $dueDateDateTime
+     * @param \horstoeko\zugferd\entities\basicwl\udt\DateTimeType $dueDateDateTime
      * @return self
      */
-    public function setDueDateDateTime(\horstoeko\zugferd\basicwl\udt\DateTimeType $dueDateDateTime)
+    public function setDueDateDateTime(\horstoeko\zugferd\entities\basicwl\udt\DateTimeType $dueDateDateTime)
     {
         $this->dueDateDateTime = $dueDateDateTime;
         return $this;
@@ -46,7 +46,7 @@ class TradePaymentTermsType
     /**
      * Gets as directDebitMandateID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getDirectDebitMandateID()
     {
@@ -56,10 +56,10 @@ class TradePaymentTermsType
     /**
      * Sets a new directDebitMandateID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $directDebitMandateID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $directDebitMandateID
      * @return self
      */
-    public function setDirectDebitMandateID(\horstoeko\zugferd\basicwl\udt\IDType $directDebitMandateID)
+    public function setDirectDebitMandateID(\horstoeko\zugferd\entities\basicwl\udt\IDType $directDebitMandateID)
     {
         $this->directDebitMandateID = $directDebitMandateID;
         return $this;

@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeSettlementType:
+horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
     properties:
         applicableTradeTax:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\LineTradeSettlementType:
             accessor:
                 getter: getApplicableTradeTax
                 setter: setApplicableTradeTax
-            type: horstoeko\zugferd\basic\ram\TradeTaxType
+            type: horstoeko\zugferd\entities\basic\ram\TradeTaxType
         specifiedTradeAllowanceCharge:
             expose: true
             access_type: public_method
@@ -23,7 +23,7 @@ horstoeko\zugferd\basic\ram\LineTradeSettlementType:
                 inline: true
                 entry_name: SpecifiedTradeAllowanceCharge
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\basic\ram\TradeAllowanceChargeType>
+            type: array<horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType>
         specifiedTradeSettlementLineMonetarySummation:
             expose: true
             access_type: public_method
@@ -33,4 +33,4 @@ horstoeko\zugferd\basic\ram\LineTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradeSettlementLineMonetarySummation
                 setter: setSpecifiedTradeSettlementLineMonetarySummation
-            type: horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType
+            type: horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType

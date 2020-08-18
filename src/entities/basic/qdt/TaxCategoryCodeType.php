@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\qdt;
+namespace horstoeko\zugferd\entities\basic\qdt;
 
 /**
  * Class representing TaxCategoryCodeType

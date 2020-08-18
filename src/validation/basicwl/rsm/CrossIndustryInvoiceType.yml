@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\rsm\CrossIndustryInvoiceType:
+horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType:
     properties:
         exchangedDocumentContext:
             -

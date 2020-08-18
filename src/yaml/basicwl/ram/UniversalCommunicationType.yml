@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\UniversalCommunicationType:
+horstoeko\zugferd\entities\basicwl\ram\UniversalCommunicationType:
     properties:
         uRIID:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basicwl\ram\UniversalCommunicationType:
             accessor:
                 getter: getURIID
                 setter: setURIID
-            type: horstoeko\zugferd\basicwl\udt\IDType
+            type: horstoeko\zugferd\entities\basicwl\udt\IDType

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\udt;
+namespace horstoeko\zugferd\entities\basicwl\udt;
 
 /**
  * Class representing AmountType

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing HeaderTradeDeliveryType
@@ -12,24 +12,24 @@ class HeaderTradeDeliveryType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradePartyType $shipToTradeParty
+     * @var \horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty
      */
     private $shipToTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @var \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      */
     private $actualDeliverySupplyChainEvent = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @var \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      */
     private $despatchAdviceReferencedDocument = null;
 
     /**
      * Gets as shipToTradeParty
      *
-     * @return \horstoeko\zugferd\basic\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradePartyType
      */
     public function getShipToTradeParty()
     {
@@ -39,10 +39,10 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param \horstoeko\zugferd\basic\ram\TradePartyType $shipToTradeParty
+     * @param \horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty
      * @return self
      */
-    public function setShipToTradeParty(\horstoeko\zugferd\basic\ram\TradePartyType $shipToTradeParty)
+    public function setShipToTradeParty(\horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty)
     {
         $this->shipToTradeParty = $shipToTradeParty;
         return $this;
@@ -51,7 +51,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as actualDeliverySupplyChainEvent
      *
-     * @return \horstoeko\zugferd\basic\ram\SupplyChainEventType
+     * @return \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType
      */
     public function getActualDeliverySupplyChainEvent()
     {
@@ -61,10 +61,10 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
+    public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
     {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
         return $this;
@@ -73,7 +73,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as despatchAdviceReferencedDocument
      *
-     * @return \horstoeko\zugferd\basic\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType
      */
     public function getDespatchAdviceReferencedDocument()
     {
@@ -83,10 +83,10 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
-    public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
+    public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
     {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
         return $this;

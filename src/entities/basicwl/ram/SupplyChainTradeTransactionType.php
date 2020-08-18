@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing SupplyChainTradeTransactionType
@@ -12,24 +12,24 @@ class SupplyChainTradeTransactionType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
      */
     private $applicableHeaderTradeAgreement = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
      */
     private $applicableHeaderTradeDelivery = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
      */
     private $applicableHeaderTradeSettlement = null;
 
     /**
      * Gets as applicableHeaderTradeAgreement
      *
-     * @return \horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType
      */
     public function getApplicableHeaderTradeAgreement()
     {
@@ -39,10 +39,10 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeAgreement
      *
-     * @param \horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
      * @return self
      */
-    public function setApplicableHeaderTradeAgreement(\horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement)
+    public function setApplicableHeaderTradeAgreement(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement)
     {
         $this->applicableHeaderTradeAgreement = $applicableHeaderTradeAgreement;
         return $this;
@@ -51,7 +51,7 @@ class SupplyChainTradeTransactionType
     /**
      * Gets as applicableHeaderTradeDelivery
      *
-     * @return \horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType
      */
     public function getApplicableHeaderTradeDelivery()
     {
@@ -61,10 +61,10 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeDelivery
      *
-     * @param \horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
      * @return self
      */
-    public function setApplicableHeaderTradeDelivery(\horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery)
+    public function setApplicableHeaderTradeDelivery(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery)
     {
         $this->applicableHeaderTradeDelivery = $applicableHeaderTradeDelivery;
         return $this;
@@ -73,7 +73,7 @@ class SupplyChainTradeTransactionType
     /**
      * Gets as applicableHeaderTradeSettlement
      *
-     * @return \horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType
      */
     public function getApplicableHeaderTradeSettlement()
     {
@@ -83,10 +83,10 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeSettlement
      *
-     * @param \horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
      * @return self
      */
-    public function setApplicableHeaderTradeSettlement(\horstoeko\zugferd\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement)
+    public function setApplicableHeaderTradeSettlement(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement)
     {
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
         return $this;

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing DebtorFinancialAccountType
@@ -12,14 +12,14 @@ class DebtorFinancialAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID
      */
     private $iBANID = null;
 
     /**
      * Gets as iBANID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getIBANID()
     {
@@ -29,10 +29,10 @@ class DebtorFinancialAccountType
     /**
      * Sets a new iBANID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $iBANID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID
      * @return self
      */
-    public function setIBANID(\horstoeko\zugferd\basicwl\udt\IDType $iBANID)
+    public function setIBANID(\horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID)
     {
         $this->iBANID = $iBANID;
         return $this;

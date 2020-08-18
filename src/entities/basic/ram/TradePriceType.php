@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing TradePriceType
@@ -12,19 +12,19 @@ class TradePriceType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $chargeAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $chargeAmount
      */
     private $chargeAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\QuantityType $basisQuantity
+     * @var \horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity
      */
     private $basisQuantity = null;
 
     /**
      * Gets as chargeAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getChargeAmount()
     {
@@ -34,10 +34,10 @@ class TradePriceType
     /**
      * Sets a new chargeAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $chargeAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $chargeAmount
      * @return self
      */
-    public function setChargeAmount(\horstoeko\zugferd\basic\udt\AmountType $chargeAmount)
+    public function setChargeAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $chargeAmount)
     {
         $this->chargeAmount = $chargeAmount;
         return $this;
@@ -46,7 +46,7 @@ class TradePriceType
     /**
      * Gets as basisQuantity
      *
-     * @return \horstoeko\zugferd\basic\udt\QuantityType
+     * @return \horstoeko\zugferd\entities\basic\udt\QuantityType
      */
     public function getBasisQuantity()
     {
@@ -56,10 +56,10 @@ class TradePriceType
     /**
      * Sets a new basisQuantity
      *
-     * @param \horstoeko\zugferd\basic\udt\QuantityType $basisQuantity
+     * @param \horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity
      * @return self
      */
-    public function setBasisQuantity(\horstoeko\zugferd\basic\udt\QuantityType $basisQuantity)
+    public function setBasisQuantity(\horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity)
     {
         $this->basisQuantity = $basisQuantity;
         return $this;

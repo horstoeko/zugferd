@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\qdt\PaymentMeansCodeType:
+horstoeko\zugferd\entities\basicwl\qdt\PaymentMeansCodeType:
     properties:
         __value:
             expose: true

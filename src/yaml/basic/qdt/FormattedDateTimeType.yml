@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\qdt\FormattedDateTimeType:
+horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType:
     properties:
         dateTimeString:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\qdt\FormattedDateTimeType:
             accessor:
                 getter: getDateTimeString
                 setter: setDateTimeString
-            type: horstoeko\zugferd\basic\qdt\FormattedDateTimeType\DateTimeStringAType
+            type: horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType\DateTimeStringAType

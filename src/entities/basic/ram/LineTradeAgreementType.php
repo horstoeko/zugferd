@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing LineTradeAgreementType
@@ -12,14 +12,14 @@ class LineTradeAgreementType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradePriceType $netPriceProductTradePrice
+     * @var \horstoeko\zugferd\entities\basic\ram\TradePriceType $netPriceProductTradePrice
      */
     private $netPriceProductTradePrice = null;
 
     /**
      * Gets as netPriceProductTradePrice
      *
-     * @return \horstoeko\zugferd\basic\ram\TradePriceType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradePriceType
      */
     public function getNetPriceProductTradePrice()
     {
@@ -29,10 +29,10 @@ class LineTradeAgreementType
     /**
      * Sets a new netPriceProductTradePrice
      *
-     * @param \horstoeko\zugferd\basic\ram\TradePriceType $netPriceProductTradePrice
+     * @param \horstoeko\zugferd\entities\basic\ram\TradePriceType $netPriceProductTradePrice
      * @return self
      */
-    public function setNetPriceProductTradePrice(\horstoeko\zugferd\basic\ram\TradePriceType $netPriceProductTradePrice)
+    public function setNetPriceProductTradePrice(\horstoeko\zugferd\entities\basic\ram\TradePriceType $netPriceProductTradePrice)
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
         return $this;

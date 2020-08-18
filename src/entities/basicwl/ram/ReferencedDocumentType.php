@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing ReferencedDocumentType
@@ -12,19 +12,19 @@ class ReferencedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $issuerAssignedID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $issuerAssignedID
      */
     private $issuerAssignedID = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @var \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime
      */
     private $formattedIssueDateTime = null;
 
     /**
      * Gets as issuerAssignedID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getIssuerAssignedID()
     {
@@ -34,10 +34,10 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $issuerAssignedID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(\horstoeko\zugferd\basicwl\udt\IDType $issuerAssignedID)
+    public function setIssuerAssignedID(\horstoeko\zugferd\entities\basicwl\udt\IDType $issuerAssignedID)
     {
         $this->issuerAssignedID = $issuerAssignedID;
         return $this;
@@ -46,7 +46,7 @@ class ReferencedDocumentType
     /**
      * Gets as formattedIssueDateTime
      *
-     * @return \horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType
+     * @return \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType
      */
     public function getFormattedIssueDateTime()
     {
@@ -56,10 +56,10 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param \horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(\horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime)
+    public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime)
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
         return $this;

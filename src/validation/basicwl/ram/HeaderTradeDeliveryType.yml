@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType:
+horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType:
     properties:
         shipToTradeParty:
             -

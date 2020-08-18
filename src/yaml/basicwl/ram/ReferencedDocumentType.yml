@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\ReferencedDocumentType:
+horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType:
     properties:
         issuerAssignedID:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\ReferencedDocumentType:
             accessor:
                 getter: getIssuerAssignedID
                 setter: setIssuerAssignedID
-            type: horstoeko\zugferd\basicwl\udt\IDType
+            type: horstoeko\zugferd\entities\basicwl\udt\IDType
         formattedIssueDateTime:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basicwl\ram\ReferencedDocumentType:
             accessor:
                 getter: getFormattedIssueDateTime
                 setter: setFormattedIssueDateTime
-            type: horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType
+            type: horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType

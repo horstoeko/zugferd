@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\udt\IDType:
+horstoeko\zugferd\entities\basicwl\udt\IDType:
     properties:
         __value:
             expose: true

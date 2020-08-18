@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeSettlementType:
+horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
     properties:
         applicableTradeTax:
             -

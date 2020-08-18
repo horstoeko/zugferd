@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
+horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType:
     properties:
         sellerTradeParty:
             -

@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\NoteType:
+horstoeko\zugferd\entities\basicwl\ram\NoteType:
     properties:
         content:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\NoteType:
             accessor:
                 getter: getContent
                 setter: setContent
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         subjectCode:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basicwl\ram\NoteType:
             accessor:
                 getter: getSubjectCode
                 setter: setSubjectCode
-            type: horstoeko\zugferd\basicwl\udt\CodeType
+            type: horstoeko\zugferd\entities\basicwl\udt\CodeType

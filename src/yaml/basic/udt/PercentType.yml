@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\udt\PercentType:
+horstoeko\zugferd\entities\basic\udt\PercentType:
     properties:
         __value:
             expose: true

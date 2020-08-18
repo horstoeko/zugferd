@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\qdt\FormattedDateTimeType;
+namespace horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType;
 
 /**
  * Class representing DateTimeStringAType

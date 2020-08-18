@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\qdt\AllowanceChargeReasonCodeType:
+horstoeko\zugferd\entities\basicwl\qdt\AllowanceChargeReasonCodeType:
     properties:
         __value:
             expose: true

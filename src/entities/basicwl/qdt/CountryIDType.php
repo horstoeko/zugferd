@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\qdt;
+namespace horstoeko\zugferd\entities\basicwl\qdt;
 
 /**
  * Class representing CountryIDType

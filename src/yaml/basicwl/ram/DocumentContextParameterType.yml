@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\DocumentContextParameterType:
+horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType:
     properties:
         iD:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basicwl\ram\DocumentContextParameterType:
             accessor:
                 getter: getID
                 setter: setID
-            type: horstoeko\zugferd\basicwl\udt\IDType
+            type: horstoeko\zugferd\entities\basicwl\udt\IDType

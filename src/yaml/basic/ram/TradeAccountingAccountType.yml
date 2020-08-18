@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeAccountingAccountType:
+horstoeko\zugferd\entities\basic\ram\TradeAccountingAccountType:
     properties:
         iD:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\TradeAccountingAccountType:
             accessor:
                 getter: getID
                 setter: setID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType

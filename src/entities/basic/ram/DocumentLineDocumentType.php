@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing DocumentLineDocumentType
@@ -12,14 +12,14 @@ class DocumentLineDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\IDType $lineID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType $lineID
      */
     private $lineID = null;
 
     /**
      * Gets as lineID
      *
-     * @return \horstoeko\zugferd\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType
      */
     public function getLineID()
     {
@@ -29,10 +29,10 @@ class DocumentLineDocumentType
     /**
      * Sets a new lineID
      *
-     * @param \horstoeko\zugferd\basic\udt\IDType $lineID
+     * @param \horstoeko\zugferd\entities\basic\udt\IDType $lineID
      * @return self
      */
-    public function setLineID(\horstoeko\zugferd\basic\udt\IDType $lineID)
+    public function setLineID(\horstoeko\zugferd\entities\basic\udt\IDType $lineID)
     {
         $this->lineID = $lineID;
         return $this;

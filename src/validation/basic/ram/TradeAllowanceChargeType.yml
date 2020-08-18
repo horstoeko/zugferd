@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeAllowanceChargeType:
+horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
     properties:
         chargeIndicator:
             -

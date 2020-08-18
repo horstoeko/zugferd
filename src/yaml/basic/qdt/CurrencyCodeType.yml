@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\qdt\CurrencyCodeType:
+horstoeko\zugferd\entities\basic\qdt\CurrencyCodeType:
     properties:
         __value:
             expose: true

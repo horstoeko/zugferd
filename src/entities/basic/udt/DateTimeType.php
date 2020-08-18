@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\udt;
+namespace horstoeko\zugferd\entities\basic\udt;
 
 /**
  * Class representing DateTimeType
@@ -12,14 +12,14 @@ class DateTimeType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString
+     * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString
      */
     private $dateTimeString = null;
 
     /**
      * Gets as dateTimeString
      *
-     * @return \horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType
+     * @return \horstoeko\zugferd\entities\basic\udt\DateTimeType\DateTimeStringAType
      */
     public function getDateTimeString()
     {
@@ -29,10 +29,10 @@ class DateTimeType
     /**
      * Sets a new dateTimeString
      *
-     * @param \horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString
+     * @param \horstoeko\zugferd\entities\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
-    public function setDateTimeString(\horstoeko\zugferd\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString)
+    public function setDateTimeString(\horstoeko\zugferd\entities\basic\udt\DateTimeType\DateTimeStringAType $dateTimeString)
     {
         $this->dateTimeString = $dateTimeString;
         return $this;

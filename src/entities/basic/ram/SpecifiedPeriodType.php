@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing SpecifiedPeriodType
@@ -12,19 +12,19 @@ class SpecifiedPeriodType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\DateTimeType $startDateTime
+     * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType $startDateTime
      */
     private $startDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\DateTimeType $endDateTime
+     * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType $endDateTime
      */
     private $endDateTime = null;
 
     /**
      * Gets as startDateTime
      *
-     * @return \horstoeko\zugferd\basic\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basic\udt\DateTimeType
      */
     public function getStartDateTime()
     {
@@ -34,10 +34,10 @@ class SpecifiedPeriodType
     /**
      * Sets a new startDateTime
      *
-     * @param \horstoeko\zugferd\basic\udt\DateTimeType $startDateTime
+     * @param \horstoeko\zugferd\entities\basic\udt\DateTimeType $startDateTime
      * @return self
      */
-    public function setStartDateTime(\horstoeko\zugferd\basic\udt\DateTimeType $startDateTime)
+    public function setStartDateTime(\horstoeko\zugferd\entities\basic\udt\DateTimeType $startDateTime)
     {
         $this->startDateTime = $startDateTime;
         return $this;
@@ -46,7 +46,7 @@ class SpecifiedPeriodType
     /**
      * Gets as endDateTime
      *
-     * @return \horstoeko\zugferd\basic\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basic\udt\DateTimeType
      */
     public function getEndDateTime()
     {
@@ -56,10 +56,10 @@ class SpecifiedPeriodType
     /**
      * Sets a new endDateTime
      *
-     * @param \horstoeko\zugferd\basic\udt\DateTimeType $endDateTime
+     * @param \horstoeko\zugferd\entities\basic\udt\DateTimeType $endDateTime
      * @return self
      */
-    public function setEndDateTime(\horstoeko\zugferd\basic\udt\DateTimeType $endDateTime)
+    public function setEndDateTime(\horstoeko\zugferd\entities\basic\udt\DateTimeType $endDateTime)
     {
         $this->endDateTime = $endDateTime;
         return $this;

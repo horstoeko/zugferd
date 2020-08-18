@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradePriceType:
+horstoeko\zugferd\entities\basic\ram\TradePriceType:
     properties:
         chargeAmount:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\TradePriceType:
             accessor:
                 getter: getChargeAmount
                 setter: setChargeAmount
-            type: horstoeko\zugferd\basic\udt\AmountType
+            type: horstoeko\zugferd\entities\basic\udt\AmountType
         basisQuantity:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basic\ram\TradePriceType:
             accessor:
                 getter: getBasisQuantity
                 setter: setBasisQuantity
-            type: horstoeko\zugferd\basic\udt\QuantityType
+            type: horstoeko\zugferd\entities\basic\udt\QuantityType

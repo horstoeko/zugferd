@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing TradeProductType
@@ -12,7 +12,7 @@ class TradeProductType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\IDType $globalID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType $globalID
      */
     private $globalID = null;
 
@@ -24,7 +24,7 @@ class TradeProductType
     /**
      * Gets as globalID
      *
-     * @return \horstoeko\zugferd\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType
      */
     public function getGlobalID()
     {
@@ -34,10 +34,10 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\basic\udt\IDType $globalID
+     * @param \horstoeko\zugferd\entities\basic\udt\IDType $globalID
      * @return self
      */
-    public function setGlobalID(\horstoeko\zugferd\basic\udt\IDType $globalID)
+    public function setGlobalID(\horstoeko\zugferd\entities\basic\udt\IDType $globalID)
     {
         $this->globalID = $globalID;
         return $this;

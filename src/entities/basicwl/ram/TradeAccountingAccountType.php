@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing TradeAccountingAccountType
@@ -12,14 +12,14 @@ class TradeAccountingAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
      */
     private $iD = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getID()
     {
@@ -29,10 +29,10 @@ class TradeAccountingAccountType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $iD
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
      * @return self
      */
-    public function setID(\horstoeko\zugferd\basicwl\udt\IDType $iD)
+    public function setID(\horstoeko\zugferd\entities\basicwl\udt\IDType $iD)
     {
         $this->iD = $iD;
         return $this;

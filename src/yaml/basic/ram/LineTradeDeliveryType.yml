@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeDeliveryType:
+horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType:
     properties:
         billedQuantity:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\LineTradeDeliveryType:
             accessor:
                 getter: getBilledQuantity
                 setter: setBilledQuantity
-            type: horstoeko\zugferd\basic\udt\QuantityType
+            type: horstoeko\zugferd\entities\basic\udt\QuantityType

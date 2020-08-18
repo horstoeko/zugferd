@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType:
+horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType:
     properties:
         shipToTradeParty:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType:
             accessor:
                 getter: getShipToTradeParty
                 setter: setShipToTradeParty
-            type: horstoeko\zugferd\basicwl\ram\TradePartyType
+            type: horstoeko\zugferd\entities\basicwl\ram\TradePartyType
         actualDeliverySupplyChainEvent:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType:
             accessor:
                 getter: getActualDeliverySupplyChainEvent
                 setter: setActualDeliverySupplyChainEvent
-            type: horstoeko\zugferd\basicwl\ram\SupplyChainEventType
+            type: horstoeko\zugferd\entities\basicwl\ram\SupplyChainEventType
         despatchAdviceReferencedDocument:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeDeliveryType:
             accessor:
                 getter: getDespatchAdviceReferencedDocument
                 setter: setDespatchAdviceReferencedDocument
-            type: horstoeko\zugferd\basicwl\ram\ReferencedDocumentType
+            type: horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType

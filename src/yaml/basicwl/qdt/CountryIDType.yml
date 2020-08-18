@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\qdt\CountryIDType:
+horstoeko\zugferd\entities\basicwl\qdt\CountryIDType:
     properties:
         __value:
             expose: true

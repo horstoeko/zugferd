@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
+horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType:
     properties:
         buyerReference:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getBuyerReference
                 setter: setBuyerReference
-            type: horstoeko\zugferd\basicwl\udt\TextType
+            type: horstoeko\zugferd\entities\basicwl\udt\TextType
         sellerTradeParty:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getSellerTradeParty
                 setter: setSellerTradeParty
-            type: horstoeko\zugferd\basicwl\ram\TradePartyType
+            type: horstoeko\zugferd\entities\basicwl\ram\TradePartyType
         buyerTradeParty:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getBuyerTradeParty
                 setter: setBuyerTradeParty
-            type: horstoeko\zugferd\basicwl\ram\TradePartyType
+            type: horstoeko\zugferd\entities\basicwl\ram\TradePartyType
         sellerTaxRepresentativeTradeParty:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getSellerTaxRepresentativeTradeParty
                 setter: setSellerTaxRepresentativeTradeParty
-            type: horstoeko\zugferd\basicwl\ram\TradePartyType
+            type: horstoeko\zugferd\entities\basicwl\ram\TradePartyType
         buyerOrderReferencedDocument:
             expose: true
             access_type: public_method
@@ -49,7 +49,7 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getBuyerOrderReferencedDocument
                 setter: setBuyerOrderReferencedDocument
-            type: horstoeko\zugferd\basicwl\ram\ReferencedDocumentType
+            type: horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType
         contractReferencedDocument:
             expose: true
             access_type: public_method
@@ -59,4 +59,4 @@ horstoeko\zugferd\basicwl\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getContractReferencedDocument
                 setter: setContractReferencedDocument
-            type: horstoeko\zugferd\basicwl\ram\ReferencedDocumentType
+            type: horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType

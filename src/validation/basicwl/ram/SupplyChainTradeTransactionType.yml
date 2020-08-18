@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType:
+horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType:
     properties:
         applicableHeaderTradeAgreement:
             -

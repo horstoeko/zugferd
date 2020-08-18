@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
+horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
     properties:
         associatedDocumentLineDocument:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
             accessor:
                 getter: getAssociatedDocumentLineDocument
                 setter: setAssociatedDocumentLineDocument
-            type: horstoeko\zugferd\basic\ram\DocumentLineDocumentType
+            type: horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType
         specifiedTradeProduct:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
             accessor:
                 getter: getSpecifiedTradeProduct
                 setter: setSpecifiedTradeProduct
-            type: horstoeko\zugferd\basic\ram\TradeProductType
+            type: horstoeko\zugferd\entities\basic\ram\TradeProductType
         specifiedLineTradeAgreement:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
             accessor:
                 getter: getSpecifiedLineTradeAgreement
                 setter: setSpecifiedLineTradeAgreement
-            type: horstoeko\zugferd\basic\ram\LineTradeAgreementType
+            type: horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType
         specifiedLineTradeDelivery:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
             accessor:
                 getter: getSpecifiedLineTradeDelivery
                 setter: setSpecifiedLineTradeDelivery
-            type: horstoeko\zugferd\basic\ram\LineTradeDeliveryType
+            type: horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType
         specifiedLineTradeSettlement:
             expose: true
             access_type: public_method
@@ -49,4 +49,4 @@ horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
             accessor:
                 getter: getSpecifiedLineTradeSettlement
                 setter: setSpecifiedLineTradeSettlement
-            type: horstoeko\zugferd\basic\ram\LineTradeSettlementType
+            type: horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\rsm;
+namespace horstoeko\zugferd\entities\basic\rsm;
 
 /**
  * Class representing CrossIndustryInvoiceType
@@ -12,24 +12,24 @@ class CrossIndustryInvoiceType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @var \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext
      */
     private $exchangedDocumentContext = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\ExchangedDocumentType $exchangedDocument
+     * @var \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType $exchangedDocument
      */
     private $exchangedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @var \horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      */
     private $supplyChainTradeTransaction = null;
 
     /**
      * Gets as exchangedDocumentContext
      *
-     * @return \horstoeko\zugferd\basic\ram\ExchangedDocumentContextType
+     * @return \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType
      */
     public function getExchangedDocumentContext()
     {
@@ -39,10 +39,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocumentContext
      *
-     * @param \horstoeko\zugferd\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @param \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext
      * @return self
      */
-    public function setExchangedDocumentContext(\horstoeko\zugferd\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext)
+    public function setExchangedDocumentContext(\horstoeko\zugferd\entities\basic\ram\ExchangedDocumentContextType $exchangedDocumentContext)
     {
         $this->exchangedDocumentContext = $exchangedDocumentContext;
         return $this;
@@ -51,7 +51,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as exchangedDocument
      *
-     * @return \horstoeko\zugferd\basic\ram\ExchangedDocumentType
+     * @return \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType
      */
     public function getExchangedDocument()
     {
@@ -61,10 +61,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocument
      *
-     * @param \horstoeko\zugferd\basic\ram\ExchangedDocumentType $exchangedDocument
+     * @param \horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType $exchangedDocument
      * @return self
      */
-    public function setExchangedDocument(\horstoeko\zugferd\basic\ram\ExchangedDocumentType $exchangedDocument)
+    public function setExchangedDocument(\horstoeko\zugferd\entities\basic\ram\ExchangedDocumentType $exchangedDocument)
     {
         $this->exchangedDocument = $exchangedDocument;
         return $this;
@@ -73,7 +73,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as supplyChainTradeTransaction
      *
-     * @return \horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType
+     * @return \horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType
      */
     public function getSupplyChainTradeTransaction()
     {
@@ -83,10 +83,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new supplyChainTradeTransaction
      *
-     * @param \horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @param \horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      * @return self
      */
-    public function setSupplyChainTradeTransaction(\horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)
+    public function setSupplyChainTradeTransaction(\horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)
     {
         $this->supplyChainTradeTransaction = $supplyChainTradeTransaction;
         return $this;

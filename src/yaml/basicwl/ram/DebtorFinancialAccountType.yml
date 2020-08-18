@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\DebtorFinancialAccountType:
+horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType:
     properties:
         iBANID:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basicwl\ram\DebtorFinancialAccountType:
             accessor:
                 getter: getIBANID
                 setter: setIBANID
-            type: horstoeko\zugferd\basicwl\udt\IDType
+            type: horstoeko\zugferd\entities\basicwl\udt\IDType

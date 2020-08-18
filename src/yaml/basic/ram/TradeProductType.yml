@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeProductType:
+horstoeko\zugferd\entities\basic\ram\TradeProductType:
     properties:
         globalID:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basic\ram\TradeProductType:
             accessor:
                 getter: getGlobalID
                 setter: setGlobalID
-            type: horstoeko\zugferd\basic\udt\IDType
+            type: horstoeko\zugferd\entities\basic\udt\IDType
         name:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basic\ram\TradeProductType:
             accessor:
                 getter: getName
                 setter: setName
-            type: horstoeko\zugferd\basic\udt\TextType
+            type: horstoeko\zugferd\entities\basic\udt\TextType

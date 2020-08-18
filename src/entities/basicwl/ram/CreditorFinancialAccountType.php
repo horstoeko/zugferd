@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\ram;
+namespace horstoeko\zugferd\entities\basicwl\ram;
 
 /**
  * Class representing CreditorFinancialAccountType
@@ -12,19 +12,19 @@ class CreditorFinancialAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID
      */
     private $iBANID = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\udt\IDType $proprietaryID
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $proprietaryID
      */
     private $proprietaryID = null;
 
     /**
      * Gets as iBANID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getIBANID()
     {
@@ -34,10 +34,10 @@ class CreditorFinancialAccountType
     /**
      * Sets a new iBANID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $iBANID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID
      * @return self
      */
-    public function setIBANID(\horstoeko\zugferd\basicwl\udt\IDType $iBANID)
+    public function setIBANID(\horstoeko\zugferd\entities\basicwl\udt\IDType $iBANID)
     {
         $this->iBANID = $iBANID;
         return $this;
@@ -46,7 +46,7 @@ class CreditorFinancialAccountType
     /**
      * Gets as proprietaryID
      *
-     * @return \horstoeko\zugferd\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
      */
     public function getProprietaryID()
     {
@@ -56,10 +56,10 @@ class CreditorFinancialAccountType
     /**
      * Sets a new proprietaryID
      *
-     * @param \horstoeko\zugferd\basicwl\udt\IDType $proprietaryID
+     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $proprietaryID
      * @return self
      */
-    public function setProprietaryID(\horstoeko\zugferd\basicwl\udt\IDType $proprietaryID)
+    public function setProprietaryID(\horstoeko\zugferd\entities\basicwl\udt\IDType $proprietaryID)
     {
         $this->proprietaryID = $proprietaryID;
         return $this;

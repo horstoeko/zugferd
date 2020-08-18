@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\udt\QuantityType:
+horstoeko\zugferd\entities\basic\udt\QuantityType:
     properties:
         unitCode:
             -

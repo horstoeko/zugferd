@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeDeliveryType:
+horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType:
     properties:
         billedQuantity:
             -

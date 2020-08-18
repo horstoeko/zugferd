@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SupplyChainTradeLineItemType:
+horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
     properties:
         associatedDocumentLineDocument:
             -

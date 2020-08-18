@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing LineTradeDeliveryType
@@ -12,14 +12,14 @@ class LineTradeDeliveryType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\QuantityType $billedQuantity
+     * @var \horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity
      */
     private $billedQuantity = null;
 
     /**
      * Gets as billedQuantity
      *
-     * @return \horstoeko\zugferd\basic\udt\QuantityType
+     * @return \horstoeko\zugferd\entities\basic\udt\QuantityType
      */
     public function getBilledQuantity()
     {
@@ -29,10 +29,10 @@ class LineTradeDeliveryType
     /**
      * Sets a new billedQuantity
      *
-     * @param \horstoeko\zugferd\basic\udt\QuantityType $billedQuantity
+     * @param \horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity
      * @return self
      */
-    public function setBilledQuantity(\horstoeko\zugferd\basic\udt\QuantityType $billedQuantity)
+    public function setBilledQuantity(\horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity)
     {
         $this->billedQuantity = $billedQuantity;
         return $this;

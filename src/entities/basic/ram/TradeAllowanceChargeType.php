@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing TradeAllowanceChargeType
@@ -12,7 +12,7 @@ class TradeAllowanceChargeType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\IndicatorType $chargeIndicator
+     * @var \horstoeko\zugferd\entities\basic\udt\IndicatorType $chargeIndicator
      */
     private $chargeIndicator = null;
 
@@ -22,12 +22,12 @@ class TradeAllowanceChargeType
     private $calculationPercent = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $actualAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $actualAmount
      */
     private $actualAmount = null;
 
@@ -42,14 +42,14 @@ class TradeAllowanceChargeType
     private $reason = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradeTaxType $categoryTradeTax
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeTaxType $categoryTradeTax
      */
     private $categoryTradeTax = null;
 
     /**
      * Gets as chargeIndicator
      *
-     * @return \horstoeko\zugferd\basic\udt\IndicatorType
+     * @return \horstoeko\zugferd\entities\basic\udt\IndicatorType
      */
     public function getChargeIndicator()
     {
@@ -59,10 +59,10 @@ class TradeAllowanceChargeType
     /**
      * Sets a new chargeIndicator
      *
-     * @param \horstoeko\zugferd\basic\udt\IndicatorType $chargeIndicator
+     * @param \horstoeko\zugferd\entities\basic\udt\IndicatorType $chargeIndicator
      * @return self
      */
-    public function setChargeIndicator(\horstoeko\zugferd\basic\udt\IndicatorType $chargeIndicator)
+    public function setChargeIndicator(\horstoeko\zugferd\entities\basic\udt\IndicatorType $chargeIndicator)
     {
         $this->chargeIndicator = $chargeIndicator;
         return $this;
@@ -93,7 +93,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as basisAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getBasisAmount()
     {
@@ -103,10 +103,10 @@ class TradeAllowanceChargeType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $basisAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\basic\udt\AmountType $basisAmount)
+    public function setBasisAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount)
     {
         $this->basisAmount = $basisAmount;
         return $this;
@@ -115,7 +115,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as actualAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getActualAmount()
     {
@@ -125,10 +125,10 @@ class TradeAllowanceChargeType
     /**
      * Sets a new actualAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $actualAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $actualAmount
      * @return self
      */
-    public function setActualAmount(\horstoeko\zugferd\basic\udt\AmountType $actualAmount)
+    public function setActualAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $actualAmount)
     {
         $this->actualAmount = $actualAmount;
         return $this;
@@ -181,7 +181,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as categoryTradeTax
      *
-     * @return \horstoeko\zugferd\basic\ram\TradeTaxType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeTaxType
      */
     public function getCategoryTradeTax()
     {
@@ -191,10 +191,10 @@ class TradeAllowanceChargeType
     /**
      * Sets a new categoryTradeTax
      *
-     * @param \horstoeko\zugferd\basic\ram\TradeTaxType $categoryTradeTax
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeTaxType $categoryTradeTax
      * @return self
      */
-    public function setCategoryTradeTax(\horstoeko\zugferd\basic\ram\TradeTaxType $categoryTradeTax)
+    public function setCategoryTradeTax(\horstoeko\zugferd\entities\basic\ram\TradeTaxType $categoryTradeTax)
     {
         $this->categoryTradeTax = $categoryTradeTax;
         return $this;

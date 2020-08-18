@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing SupplyChainEventType
@@ -12,14 +12,14 @@ class SupplyChainEventType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\DateTimeType $occurrenceDateTime
+     * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType $occurrenceDateTime
      */
     private $occurrenceDateTime = null;
 
     /**
      * Gets as occurrenceDateTime
      *
-     * @return \horstoeko\zugferd\basic\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basic\udt\DateTimeType
      */
     public function getOccurrenceDateTime()
     {
@@ -29,10 +29,10 @@ class SupplyChainEventType
     /**
      * Sets a new occurrenceDateTime
      *
-     * @param \horstoeko\zugferd\basic\udt\DateTimeType $occurrenceDateTime
+     * @param \horstoeko\zugferd\entities\basic\udt\DateTimeType $occurrenceDateTime
      * @return self
      */
-    public function setOccurrenceDateTime(\horstoeko\zugferd\basic\udt\DateTimeType $occurrenceDateTime)
+    public function setOccurrenceDateTime(\horstoeko\zugferd\entities\basic\udt\DateTimeType $occurrenceDateTime)
     {
         $this->occurrenceDateTime = $occurrenceDateTime;
         return $this;

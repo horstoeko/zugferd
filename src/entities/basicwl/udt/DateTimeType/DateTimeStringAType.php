@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\udt\DateTimeType;
+namespace horstoeko\zugferd\entities\basicwl\udt\DateTimeType;
 
 /**
  * Class representing DateTimeStringAType

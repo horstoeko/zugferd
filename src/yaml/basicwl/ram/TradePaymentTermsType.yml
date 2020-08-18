@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\TradePaymentTermsType:
+horstoeko\zugferd\entities\basicwl\ram\TradePaymentTermsType:
     properties:
         dueDateDateTime:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\TradePaymentTermsType:
             accessor:
                 getter: getDueDateDateTime
                 setter: setDueDateDateTime
-            type: horstoeko\zugferd\basicwl\udt\DateTimeType
+            type: horstoeko\zugferd\entities\basicwl\udt\DateTimeType
         directDebitMandateID:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basicwl\ram\TradePaymentTermsType:
             accessor:
                 getter: getDirectDebitMandateID
                 setter: setDirectDebitMandateID
-            type: horstoeko\zugferd\basicwl\udt\IDType
+            type: horstoeko\zugferd\entities\basicwl\udt\IDType

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing TradeSettlementLineMonetarySummationType
@@ -12,14 +12,14 @@ class TradeSettlementLineMonetarySummationType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
      * Gets as lineTotalAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getLineTotalAmount()
     {
@@ -29,10 +29,10 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new lineTotalAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $lineTotalAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $lineTotalAmount
      * @return self
      */
-    public function setLineTotalAmount(\horstoeko\zugferd\basic\udt\AmountType $lineTotalAmount)
+    public function setLineTotalAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $lineTotalAmount)
     {
         $this->lineTotalAmount = $lineTotalAmount;
         return $this;

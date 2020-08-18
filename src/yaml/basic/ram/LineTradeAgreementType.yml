@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeAgreementType:
+horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType:
     properties:
         netPriceProductTradePrice:
             expose: true
@@ -9,4 +9,4 @@ horstoeko\zugferd\basic\ram\LineTradeAgreementType:
             accessor:
                 getter: getNetPriceProductTradePrice
                 setter: setNetPriceProductTradePrice
-            type: horstoeko\zugferd\basic\ram\TradePriceType
+            type: horstoeko\zugferd\entities\basic\ram\TradePriceType

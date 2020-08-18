@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\LineTradeAgreementType:
+horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType:
     properties:
         netPriceProductTradePrice:
             -

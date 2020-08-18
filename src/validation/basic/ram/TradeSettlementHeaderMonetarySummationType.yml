@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeSettlementHeaderMonetarySummationType:
+horstoeko\zugferd\entities\basic\ram\TradeSettlementHeaderMonetarySummationType:
     properties:
         lineTotalAmount:
             -

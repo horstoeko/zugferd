@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\SupplyChainTradeTransactionType:
+horstoeko\zugferd\entities\basic\ram\SupplyChainTradeTransactionType:
     properties:
         includedSupplyChainTradeLineItem:
             -

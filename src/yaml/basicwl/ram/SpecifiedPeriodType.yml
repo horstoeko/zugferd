@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType:
+horstoeko\zugferd\entities\basicwl\ram\SpecifiedPeriodType:
     properties:
         startDateTime:
             expose: true
@@ -9,7 +9,7 @@ horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType:
             accessor:
                 getter: getStartDateTime
                 setter: setStartDateTime
-            type: horstoeko\zugferd\basicwl\udt\DateTimeType
+            type: horstoeko\zugferd\entities\basicwl\udt\DateTimeType
         endDateTime:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ horstoeko\zugferd\basicwl\ram\SpecifiedPeriodType:
             accessor:
                 getter: getEndDateTime
                 setter: setEndDateTime
-            type: horstoeko\zugferd\basicwl\udt\DateTimeType
+            type: horstoeko\zugferd\entities\basicwl\udt\DateTimeType

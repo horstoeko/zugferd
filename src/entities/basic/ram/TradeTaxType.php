@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing TradeTaxType
@@ -12,7 +12,7 @@ class TradeTaxType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $calculatedAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount
      */
     private $calculatedAmount = null;
 
@@ -27,7 +27,7 @@ class TradeTaxType
     private $exemptionReason = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
      */
     private $basisAmount = null;
 
@@ -54,7 +54,7 @@ class TradeTaxType
     /**
      * Gets as calculatedAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getCalculatedAmount()
     {
@@ -64,10 +64,10 @@ class TradeTaxType
     /**
      * Sets a new calculatedAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $calculatedAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount
      * @return self
      */
-    public function setCalculatedAmount(\horstoeko\zugferd\basic\udt\AmountType $calculatedAmount)
+    public function setCalculatedAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount)
     {
         $this->calculatedAmount = $calculatedAmount;
         return $this;
@@ -120,7 +120,7 @@ class TradeTaxType
     /**
      * Gets as basisAmount
      *
-     * @return \horstoeko\zugferd\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
      */
     public function getBasisAmount()
     {
@@ -130,10 +130,10 @@ class TradeTaxType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\basic\udt\AmountType $basisAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\basic\udt\AmountType $basisAmount)
+    public function setBasisAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount)
     {
         $this->basisAmount = $basisAmount;
         return $this;

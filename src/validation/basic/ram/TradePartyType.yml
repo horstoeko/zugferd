@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradePartyType:
+horstoeko\zugferd\entities\basic\ram\TradePartyType:
     properties:
         specifiedLegalOrganization:
             -

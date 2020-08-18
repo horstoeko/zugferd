@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basic\ram;
+namespace horstoeko\zugferd\entities\basic\ram;
 
 /**
  * Class representing LineTradeSettlementType
@@ -12,26 +12,26 @@ class LineTradeSettlementType
 {
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradeTaxType $applicableTradeTax
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax
      */
     private $applicableTradeTax = null;
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      */
     private $specifiedTradeAllowanceCharge = [
         
     ];
 
     /**
-     * @var \horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      */
     private $specifiedTradeSettlementLineMonetarySummation = null;
 
     /**
      * Gets as applicableTradeTax
      *
-     * @return \horstoeko\zugferd\basic\ram\TradeTaxType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeTaxType
      */
     public function getApplicableTradeTax()
     {
@@ -41,10 +41,10 @@ class LineTradeSettlementType
     /**
      * Sets a new applicableTradeTax
      *
-     * @param \horstoeko\zugferd\basic\ram\TradeTaxType $applicableTradeTax
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax
      * @return self
      */
-    public function setApplicableTradeTax(\horstoeko\zugferd\basic\ram\TradeTaxType $applicableTradeTax)
+    public function setApplicableTradeTax(\horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax)
     {
         $this->applicableTradeTax = $applicableTradeTax;
         return $this;
@@ -54,9 +54,9 @@ class LineTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
-    public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
+    public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
         $this->specifiedTradeAllowanceCharge[] = $specifiedTradeAllowanceCharge;
         return $this;
@@ -87,7 +87,7 @@ class LineTradeSettlementType
     /**
      * Gets as specifiedTradeAllowanceCharge
      *
-     * @return \horstoeko\zugferd\basic\ram\TradeAllowanceChargeType[]
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[]
      */
     public function getSpecifiedTradeAllowanceCharge()
     {
@@ -97,7 +97,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -109,7 +109,7 @@ class LineTradeSettlementType
     /**
      * Gets as specifiedTradeSettlementLineMonetarySummation
      *
-     * @return \horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType
      */
     public function getSpecifiedTradeSettlementLineMonetarySummation()
     {
@@ -119,10 +119,10 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementLineMonetarySummation
      *
-     * @param \horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
-    public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)
+    public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)
     {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
         return $this;

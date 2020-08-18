@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\ram\TradeProductType:
+horstoeko\zugferd\entities\basic\ram\TradeProductType:
     properties:
         name:
             -

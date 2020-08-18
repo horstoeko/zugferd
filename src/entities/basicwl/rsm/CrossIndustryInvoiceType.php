@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\basicwl\rsm;
+namespace horstoeko\zugferd\entities\basicwl\rsm;
 
 /**
  * Class representing CrossIndustryInvoiceType
@@ -12,24 +12,24 @@ class CrossIndustryInvoiceType
 {
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @var \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext
      */
     private $exchangedDocumentContext = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\ExchangedDocumentType $exchangedDocument
+     * @var \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentType $exchangedDocument
      */
     private $exchangedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @var \horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      */
     private $supplyChainTradeTransaction = null;
 
     /**
      * Gets as exchangedDocumentContext
      *
-     * @return \horstoeko\zugferd\basicwl\ram\ExchangedDocumentContextType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentContextType
      */
     public function getExchangedDocumentContext()
     {
@@ -39,10 +39,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocumentContext
      *
-     * @param \horstoeko\zugferd\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @param \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext
      * @return self
      */
-    public function setExchangedDocumentContext(\horstoeko\zugferd\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext)
+    public function setExchangedDocumentContext(\horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext)
     {
         $this->exchangedDocumentContext = $exchangedDocumentContext;
         return $this;
@@ -51,7 +51,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as exchangedDocument
      *
-     * @return \horstoeko\zugferd\basicwl\ram\ExchangedDocumentType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentType
      */
     public function getExchangedDocument()
     {
@@ -61,10 +61,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocument
      *
-     * @param \horstoeko\zugferd\basicwl\ram\ExchangedDocumentType $exchangedDocument
+     * @param \horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentType $exchangedDocument
      * @return self
      */
-    public function setExchangedDocument(\horstoeko\zugferd\basicwl\ram\ExchangedDocumentType $exchangedDocument)
+    public function setExchangedDocument(\horstoeko\zugferd\entities\basicwl\ram\ExchangedDocumentType $exchangedDocument)
     {
         $this->exchangedDocument = $exchangedDocument;
         return $this;
@@ -73,7 +73,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as supplyChainTradeTransaction
      *
-     * @return \horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType
      */
     public function getSupplyChainTradeTransaction()
     {
@@ -83,10 +83,10 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new supplyChainTradeTransaction
      *
-     * @param \horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @param \horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      * @return self
      */
-    public function setSupplyChainTradeTransaction(\horstoeko\zugferd\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)
+    public function setSupplyChainTradeTransaction(\horstoeko\zugferd\entities\basicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)
     {
         $this->supplyChainTradeTransaction = $supplyChainTradeTransaction;
         return $this;

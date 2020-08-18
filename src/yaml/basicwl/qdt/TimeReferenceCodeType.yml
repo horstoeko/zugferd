@@ -1,4 +1,4 @@
-horstoeko\zugferd\basicwl\qdt\TimeReferenceCodeType:
+horstoeko\zugferd\entities\basicwl\qdt\TimeReferenceCodeType:
     properties:
         __value:
             expose: true

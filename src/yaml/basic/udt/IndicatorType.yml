@@ -1,4 +1,4 @@
-horstoeko\zugferd\basic\udt\IndicatorType:
+horstoeko\zugferd\entities\basic\udt\IndicatorType:
     properties:
         indicator:
             expose: true
