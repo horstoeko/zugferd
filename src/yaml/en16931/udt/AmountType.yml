@@ -8,6 +8,8 @@ horstoeko\zugferd\entities\en16931\udt\AmountType:
                 getter: value
                 setter: value
             type: float
+            xml_element:
+                cdata: false
         currencyID:
             expose: true
             access_type: public_method

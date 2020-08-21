@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: CalculatedAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCalculatedAmount
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: TypeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTypeCode
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: ExemptionReason
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getExemptionReason
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: BasisAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisAmount
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: CategoryCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCategoryCode
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: ExemptionReasonCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getExemptionReasonCode
@@ -65,6 +71,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: TaxPointDate
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTaxPointDate
@@ -75,6 +82,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: DueDateTypeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDueDateTypeCode
@@ -85,6 +93,7 @@ horstoeko\zugferd\entities\en16931\ram\TradeTaxType:
             access_type: public_method
             serialized_name: RateApplicablePercent
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getRateApplicablePercent

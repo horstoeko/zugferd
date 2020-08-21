@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: ApplicableTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradeTax
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: BillingSpecifiedPeriod
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBillingSpecifiedPeriod
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeAllowanceCharge
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeAllowanceCharge
@@ -39,6 +42,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeSettlementLineMonetarySummation
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeSettlementLineMonetarySummation
@@ -49,6 +53,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: AdditionalReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getAdditionalReferencedDocument
@@ -59,6 +64,7 @@ horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: ReceivableSpecifiedTradeAccountingAccount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReceivableSpecifiedTradeAccountingAccount

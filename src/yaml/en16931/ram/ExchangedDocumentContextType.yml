@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\en16931\ram\ExchangedDocumentContextType:
             access_type: public_method
             serialized_name: BusinessProcessSpecifiedDocumentContextParameter
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBusinessProcessSpecifiedDocumentContextParameter
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\en16931\ram\ExchangedDocumentContextType:
             access_type: public_method
             serialized_name: GuidelineSpecifiedDocumentContextParameter
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getGuidelineSpecifiedDocumentContextParameter

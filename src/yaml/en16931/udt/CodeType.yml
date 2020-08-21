@@ -8,6 +8,8 @@ horstoeko\zugferd\entities\en16931\udt\CodeType:
                 getter: value
                 setter: value
             type: string
+            xml_element:
+                cdata: false
         listID:
             expose: true
             access_type: public_method

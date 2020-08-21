@@ -7,4 +7,6 @@ horstoeko\zugferd\entities\en16931\qdt\ReferenceCodeType:
             accessor:
                 getter: value
                 setter: value
+            xml_element:
+                cdata: false
             type: string
