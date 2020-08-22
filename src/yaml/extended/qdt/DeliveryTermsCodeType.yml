@@ -7,4 +7,6 @@ horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType:
             accessor:
                 getter: value
                 setter: value
+            xml_element:
+                cdata: false
             type: string

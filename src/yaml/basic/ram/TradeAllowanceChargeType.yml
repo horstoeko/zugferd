@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: ChargeIndicator
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getChargeIndicator
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: CalculationPercent
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCalculationPercent
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: BasisAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisAmount
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: ActualAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getActualAmount
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: ReasonCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReasonCode
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: Reason
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReason
@@ -65,6 +71,7 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
             access_type: public_method
             serialized_name: CategoryTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCategoryTradeTax

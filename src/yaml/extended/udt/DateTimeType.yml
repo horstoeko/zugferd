@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\udt\DateTimeType:
             access_type: public_method
             serialized_name: DateTimeString
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100'
             accessor:
                 getter: getDateTimeString
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\udt\DateTimeType:
             access_type: public_method
             serialized_name: DateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100'
             accessor:
                 getter: getDateTime

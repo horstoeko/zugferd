@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: LineTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getLineTotalAmount
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: ChargeTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getChargeTotalAmount
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: AllowanceTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getAllowanceTotalAmount
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: TaxBasisTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTaxBasisTotalAmount
@@ -49,6 +53,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: TaxTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTaxTotalAmount
@@ -63,6 +68,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: RoundingAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getRoundingAmount
@@ -73,6 +79,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: GrandTotalAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getGrandTotalAmount
@@ -87,6 +94,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: TotalPrepaidAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTotalPrepaidAmount
@@ -97,6 +105,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             access_type: public_method
             serialized_name: DuePayableAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDuePayableAmount

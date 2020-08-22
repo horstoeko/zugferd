@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: CreditorReferenceID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCreditorReferenceID
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: PaymentReference
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPaymentReference
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: InvoiceCurrencyCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getInvoiceCurrencyCode
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: PayeeTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPayeeTradeParty
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeSettlementPaymentMeans
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeSettlementPaymentMeans
@@ -59,6 +64,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: ApplicableTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradeTax
@@ -73,6 +79,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: BillingSpecifiedPeriod
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBillingSpecifiedPeriod
@@ -83,6 +90,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeAllowanceCharge
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeAllowanceCharge
@@ -97,6 +105,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradePaymentTerms
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradePaymentTerms
@@ -107,6 +116,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeSettlementHeaderMonetarySummation
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeSettlementHeaderMonetarySummation
@@ -117,6 +127,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: InvoiceReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getInvoiceReferencedDocument
@@ -127,6 +138,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             access_type: public_method
             serialized_name: ReceivableSpecifiedTradeAccountingAccount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReceivableSpecifiedTradeAccountingAccount

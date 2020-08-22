@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: BilledQuantity
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBilledQuantity
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: ChargeFreeQuantity
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getChargeFreeQuantity
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: PackageQuantity
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPackageQuantity
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: ShipToTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getShipToTradeParty
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: UltimateShipToTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getUltimateShipToTradeParty
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: ActualDeliverySupplyChainEvent
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getActualDeliverySupplyChainEvent
@@ -65,6 +71,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: DespatchAdviceReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDespatchAdviceReferencedDocument
@@ -75,6 +82,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: ReceivingAdviceReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReceivingAdviceReferencedDocument
@@ -85,6 +93,7 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
             access_type: public_method
             serialized_name: DeliveryNoteReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDeliveryNoteReferencedDocument

@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType:
             access_type: public_method
             serialized_name: ExchangedDocumentContext
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
             accessor:
                 getter: getExchangedDocumentContext
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType:
             access_type: public_method
             serialized_name: ExchangedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
             accessor:
                 getter: getExchangedDocument
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType:
             access_type: public_method
             serialized_name: SupplyChainTradeTransaction
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
             accessor:
                 getter: getSupplyChainTradeTransaction

@@ -32,6 +32,118 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Creates an instance of IDType
+     *
+     * @param string $value
+     * @param string $schemeId
+     * @return object
+     */
+    public function GetIdType($value, $schemeId = ""): ?object
+    {
+        $idType = $this->CreateClassInstanceIf('udt\IDType', $value, $value);
+
+        $this->TryCall($idType, "setSchemeID", $schemeId);
+
+        return $idType;
+    }
+
+    /**
+     * Creates an instance of TextType
+     *
+     * @param string $value
+     * @param string $schemeId
+     * @return object
+     */
+    public function GetTextType($value): ?object
+    {
+        return $this->CreateClassInstanceIf('udt\TextType', $value, $value);
+    }
+
+    /**
+     * Creates an instance of CodeType
+     *
+     * @param string $value
+     * @param string $schemeId
+     * @return object
+     */
+    public function GetCodeType($value): ?object
+    {
+        return $this->CreateClassInstanceIf('udt\CodeType', $value, $value);
+    }
+
+    /**
+     * Get formatted issue date
+     *
+     * @param \DateTime $datetime
+     * @return object|null
+     */
+    public function GetFormattedDateTimeType(?\DateTime $datetime): ?object
+    {
+        if ($datetime == null) {
+            return null;
+        }
+
+        $date2 = $this->CreateClassInstance('qdt\FormattedDateTimeType\DateTimeStringAType');
+        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "setFormat", "102");
+
+        $date = $this->CreateClassInstance('qdt\FormattedDateTimeType');
+        $this->TryCall($date, "setDateTimeString", $date2);
+
+        return $date;
+    }
+
+    /**
+     * Get a BinaryObjectType object
+     *
+     * @param [type] $value
+     * @param [type] $mimetype
+     * @param [type] $filename
+     * @return void
+     */
+    public function GetBinaryObjectType($binarydata, $mimetype, $filename)
+    {
+        $binaryobject = $this->CreateClassInstance('udt\BinaryObjectType');
+
+        $this->TryCall($binaryobject, "value", $binarydata);
+        $this->TryCall($binaryobject, "setMimeCode", $mimetype);
+        $this->TryCall($binaryobject, "setFilename", $filename);
+
+        return $binaryobject;
+    }
+
+    /**
+     * Get a reference document object
+     *
+     * @param string $issuerassignedid
+     * @param string|null $uriid
+     * @param string|null $lineid
+     * @param string|null $typecode
+     * @param string|null $name
+     * @param string|null $reftypecode
+     * @param \DateTime|null $issueddate
+     * @param string|null $binarydatafilename
+     * @return void
+     */
+    public function ReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, ?\DateTime $issueddate, $binarydatafilename)
+    {
+        $refdoctype = $this->CreateClassInstance('ram\ReferencedDocumentType', $issuerassignedid);
+
+        $this->TryCall($refdoctype, 'setIssuerAssignedID', $this->GetIdType($issuerassignedid));
+        $this->TryCall($refdoctype, 'setURIID', $this->GetIdType($uriid));
+        $this->TryCall($refdoctype, 'setLineID', $this->GetIdType($lineid));
+        $this->TryCall($refdoctype, 'setTypeCode', $this->GetCodeType($typecode));
+        $this->TryCall($refdoctype, 'setReferenceTypeCode', $this->GetCodeType($reftypecode));
+        $this->TryCall($refdoctype, 'setFormattedIssueDateTime', $this->GetFormattedDateTimeType($issueddate));
+
+        foreach ($this->EnsureStringArray($name) as $name) {
+            $this->TryCall($refdoctype, 'addToName', $this->GetTextType($name));
+        }
+
+        return $refdoctype;
+    }
+
+    /**
      * Undocumented function
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType
@@ -44,6 +156,9 @@ class ZugferdObjectHelper
         $result->setSupplyChainTradeTransaction($this->CreateClassInstance('ram\SupplyChainTradeTransactionType'));
         $result->getExchangedDocumentContext()->setGuidelineSpecifiedDocumentContextParameter($this->CreateClassInstance('ram\DocumentContextParameterType'));
         $result->getExchangedDocumentContext()->getGuidelineSpecifiedDocumentContextParameter()->setID($this->GetIdType($this->profiledef['contextparameter']));
+        $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeAgreement($this->CreateClassInstance('ram\HeaderTradeAgreementType'));
+        $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeDelivery($this->CreateClassInstance('ram\HeaderTradeDeliveryType'));
+        $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeSettlement($this->CreateClassInstance('ram\HeaderTradeSettlementType'));
 
         return $result;
     }
@@ -53,12 +168,13 @@ class ZugferdObjectHelper
      *
      * @return object
      */
-    public function GetTradeParty($ID, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactemailaddr): object
+    public function GetTradeParty($ID, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid): object
     {
         $tradeParty = $this->CreateClassInstance('ram\TradePartyType');
         $address = $this->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
-        $legalorg = $this->GetLegalOrganization($legalorgid, $legalorgname);
-        $contact = $this->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactemailaddr);
+        $legalorg = $this->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $contact = $this->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr);
+        $taxreg = $this->GetTaxRegistrationType($taxregtype, $taxregid);
 
         $this->TryCall($tradeParty, "addToID", $this->GetIdType($ID));
         $this->TryCall($tradeParty, "addToGlobalID", $this->GetIdType($globalID, $globalIDType));
@@ -67,6 +183,7 @@ class ZugferdObjectHelper
         $this->TryCall($tradeParty, "setPostalTradeAddress", $address);
         $this->TryCall($tradeParty, "setSpecifiedLegalOrganization", $legalorg);
         $this->TryCall($tradeParty, "setDefinedTradeContact", $contact);
+        $this->TryCall($tradeParty, "addToSpecifiedTaxRegistration", $taxreg);
 
         return $tradeParty;
     }
@@ -81,51 +198,73 @@ class ZugferdObjectHelper
         $this->TryCall($address, "setPostcodeCode", $this->GetCodeType($postcode));
         $this->TryCall($address, "setCityName", $this->GetTextType($city));
         $this->TryCall($address, "setCountryID", $this->GetCodeType($country));
-        $this->TryCall($address, "setCountrySubDivisionName", $this->GetTextType($subdivision));
+        $this->TryCall($address, "addToCountrySubDivisionName", $this->GetTextType($subdivision));
 
         return $address;
     }
 
-    public function GetLegalOrganization($legalorgid, $legalorgname)
+    public function GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname)
     {
         $legalorg = $this->CreateClassInstance('ram\LegalOrganizationType', $legalorgname);
 
-        $this->TryCall($legalorg, "setID", $this->GetIdType($legalorgid));
+        $this->TryCall($legalorg, "setID", $this->GetIdType($legalorgid, $legalorgtype));
         $this->TryCall($legalorg, "setTradingBusinessName", $this->GetTextType($legalorgname));
 
         return $legalorg;
     }
 
-    public function GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactemailaddr)
+    public function GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr)
     {
         $contact = $this->CreateClassInstance('ram\TradeContactType', $contactpersonname);
-        $contactphone = $this->GetUniversalCommunicationType($contactphoneno);
-        $contactemail = $this->GetUniversalCommunicationType($contactemailaddr);
+        $contactphone = $this->GetUniversalCommunicationType($contactphoneno, null);
+        $contactfax = $this->GetUniversalCommunicationType($contactfaxno, null);
+        $contactemail = $this->GetUniversalCommunicationType(null, $contactemailaddr);
 
         $this->TryCall($contact, "setPersonName", $this->GetTextType($contactpersonname));
         $this->TryCall($contact, "setDepartmentName", $this->GetTextType($contactdepartmentname));
         $this->TryCall($contact, "setTelephoneUniversalCommunication", $contactphone);
+        $this->TryCall($contact, "setFaxUniversalCommunication", $contactfax);
         $this->TryCall($contact, "setEmailURIUniversalCommunication", $contactemail);
 
         return $contact;
     }
 
-    public function GetUniversalCommunicationType($value)
+    public function GetUniversalCommunicationType($number, $uriid, $urischeme = "SMTP")
     {
-        $communication = $this->CreateClassInstanceIf('ram\UniversalCommunicationType', $value);
+        $communication = $this->CreateClassInstanceIf('ram\UniversalCommunicationType', null, $number || $uriid);
 
-        $this->TryCall($communication, "setCompleteNumber", $this->GetTextType($value));
+        $this->TryCall($communication, "setCompleteNumber", $this->GetTextType($number));
+        $this->TryCall($communication, "setURIID", $this->GetIdType($uriid, $urischeme));
 
         return $communication;
+    }
+
+    public function GetTaxRegistrationType($taxregtype, $taxregid)
+    {
+        $taxreg = $this->CreateClassInstanceIf('ram\TaxRegistrationType', null, $taxregtype && $taxregid);
+
+        $this->TryCall($taxreg, "setID", $this->GetIdType($taxregid, $taxregtype));
+
+        return $taxreg;
+    }
+
+    public function GetTradeDeliveryTermsType($code)
+    {
+        $deliveryterms = $this->CreateClassInstanceIf('ram\TradeDeliveryTermsType', null, $code);
+
+        $this->TryCall($deliveryterms, "setDeliveryTypeCode", $this->GetCodeType($code));
+
+        return $deliveryterms;
     }
 
     /**
      * Creates an instance of a class needed by $invoiceObject
      *
      * @param string $className
+     * @param mixed $constructorvalue
      * @return object|null
      */
-    public function CreateClassInstance($classname): object
+    public function CreateClassInstance($classname, $constructorvalue = null): ?object
     {
         $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\' . $classname;
 
@@ -133,7 +272,7 @@ class ZugferdObjectHelper
             return null;
         }
 
-        return new $className;
+        return new $className($constructorvalue);
     }
 
     /**
@@ -143,12 +282,12 @@ class ZugferdObjectHelper
      * @param boolean $condition
      * @return object|null
      */
-    public function CreateClassInstanceIf($classname, $condition = true)
+    public function CreateClassInstanceIf($classname, $constructorvalue = null, $condition = true): ?object
     {
         if (!$condition) {
             return null;
         }
-        return $this->CreateClassInstance($classname);
+        return $this->CreateClassInstance($classname, $constructorvalue);
     }
 
     /**
@@ -176,57 +315,11 @@ class ZugferdObjectHelper
         return $this;
     }
 
-    /**
-     * Creates an instance of IDType
-     *
-     * @param string $value
-     * @param string $schemeId
-     * @return object
-     */
-    public function GetIdType($value, $schemeId = ""): ?object
+    public function EnsureStringArray($input): array
     {
-        if (!$value) {
-            return null;
+        if (is_array($input)) {
+            return $input;
         }
-        $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\udt\IDType';
-        $idType = new $className($value);
-        if ($schemeId) {
-            $idType->setSchemeID($schemeId);
-        }
-        return $idType;
-    }
-
-    /**
-     * Creates an instance of TextType
-     *
-     * @param string $value
-     * @param string $schemeId
-     * @return object
-     */
-    public function GetTextType($value): ?object
-    {
-        if (!$value) {
-            return null;
-        }
-        $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\udt\TextType';
-        $textType = new $className($value);
-        return $textType;
-    }
-
-    /**
-     * Creates an instance of CodeType
-     *
-     * @param string $value
-     * @param string $schemeId
-     * @return object
-     */
-    public function GetCodeType($value): ?object
-    {
-        if (!$value) {
-            return null;
-        }
-        $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\udt\CodeType';
-        $textType = new $className($value);
-        return $textType;
+        return [(string) $input];
     }
 }

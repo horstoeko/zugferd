@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType:
             access_type: public_method
             serialized_name: ModeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getModeCode

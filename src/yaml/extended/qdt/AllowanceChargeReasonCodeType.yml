@@ -7,4 +7,6 @@ horstoeko\zugferd\entities\extended\qdt\AllowanceChargeReasonCodeType:
             accessor:
                 getter: value
                 setter: value
+            xml_element:
+                cdata: false
             type: string

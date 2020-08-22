@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: Description
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDescription
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: DueDateDateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDueDateDateTime
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: DirectDebitMandateID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDirectDebitMandateID
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: PartialPaymentAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPartialPaymentAmount
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: ApplicableTradePaymentPenaltyTerms
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradePaymentPenaltyTerms
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
             access_type: public_method
             serialized_name: ApplicableTradePaymentDiscountTerms
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradePaymentDiscountTerms

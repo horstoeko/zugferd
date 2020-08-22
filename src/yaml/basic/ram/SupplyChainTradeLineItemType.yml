@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
             access_type: public_method
             serialized_name: AssociatedDocumentLineDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getAssociatedDocumentLineDocument
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
             access_type: public_method
             serialized_name: SpecifiedTradeProduct
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeProduct
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
             access_type: public_method
             serialized_name: SpecifiedLineTradeAgreement
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedLineTradeAgreement
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
             access_type: public_method
             serialized_name: SpecifiedLineTradeDelivery
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedLineTradeDelivery
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\basic\ram\SupplyChainTradeLineItemType:
             access_type: public_method
             serialized_name: SpecifiedLineTradeSettlement
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedLineTradeSettlement

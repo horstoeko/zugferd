@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: ApplicableTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradeTax
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeAllowanceCharge
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeAllowanceCharge
@@ -29,6 +31,7 @@ horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
             access_type: public_method
             serialized_name: SpecifiedTradeSettlementLineMonetarySummation
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTradeSettlementLineMonetarySummation

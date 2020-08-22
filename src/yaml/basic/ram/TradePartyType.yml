@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: ID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getID
@@ -19,6 +20,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: GlobalID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getGlobalID
@@ -33,6 +35,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: Name
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getName
@@ -43,6 +46,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: SpecifiedLegalOrganization
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedLegalOrganization
@@ -53,6 +57,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: PostalTradeAddress
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPostalTradeAddress
@@ -63,6 +68,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: URIUniversalCommunication
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getURIUniversalCommunication
@@ -73,6 +79,7 @@ horstoeko\zugferd\entities\basic\ram\TradePartyType:
             access_type: public_method
             serialized_name: SpecifiedTaxRegistration
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedTaxRegistration

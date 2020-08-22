@@ -8,3 +8,5 @@ horstoeko\zugferd\entities\extended\udt\RateType:
                 getter: value
                 setter: value
             type: float
+            xml_element:
+                cdata: false

@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradePriceType:
             access_type: public_method
             serialized_name: ChargeAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getChargeAmount
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradePriceType:
             access_type: public_method
             serialized_name: BasisQuantity
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisQuantity
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradePriceType:
             access_type: public_method
             serialized_name: AppliedTradeAllowanceCharge
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getAppliedTradeAllowanceCharge
@@ -39,6 +42,7 @@ horstoeko\zugferd\entities\extended\ram\TradePriceType:
             access_type: public_method
             serialized_name: IncludedTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getIncludedTradeTax

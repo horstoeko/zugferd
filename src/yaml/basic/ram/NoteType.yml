@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\basic\ram\NoteType:
             access_type: public_method
             serialized_name: Content
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getContent
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\basic\ram\NoteType:
             access_type: public_method
             serialized_name: SubjectCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSubjectCode

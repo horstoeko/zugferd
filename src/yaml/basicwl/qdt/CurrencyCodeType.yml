@@ -7,4 +7,6 @@ horstoeko\zugferd\entities\basicwl\qdt\CurrencyCodeType:
             accessor:
                 getter: value
                 setter: value
+            xml_element:
+                cdata: false
             type: string

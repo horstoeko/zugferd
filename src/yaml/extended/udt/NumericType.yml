@@ -8,3 +8,5 @@ horstoeko\zugferd\entities\extended\udt\NumericType:
                 getter: value
                 setter: value
             type: float
+            xml_element:
+                cdata: false

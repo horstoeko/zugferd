@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: BuyerReference
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBuyerReference
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: SellerTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSellerTradeParty
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: BuyerTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBuyerTradeParty
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: SellerTaxRepresentativeTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSellerTaxRepresentativeTradeParty
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: ProductEndUserTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getProductEndUserTradeParty
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: ApplicableTradeDeliveryTerms
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getApplicableTradeDeliveryTerms
@@ -65,6 +71,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: SellerOrderReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSellerOrderReferencedDocument
@@ -75,6 +82,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: BuyerOrderReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBuyerOrderReferencedDocument
@@ -85,6 +93,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: ContractReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getContractReferencedDocument
@@ -95,6 +104,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: AdditionalReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getAdditionalReferencedDocument
@@ -109,6 +119,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: SpecifiedProcuringProject
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSpecifiedProcuringProject
@@ -119,6 +130,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
             access_type: public_method
             serialized_name: UltimateCustomerOrderReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getUltimateCustomerOrderReferencedDocument

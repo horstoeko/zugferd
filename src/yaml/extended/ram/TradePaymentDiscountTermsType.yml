@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
             access_type: public_method
             serialized_name: BasisDateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisDateTime
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
             access_type: public_method
             serialized_name: BasisPeriodMeasure
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisPeriodMeasure
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
             access_type: public_method
             serialized_name: BasisAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getBasisAmount
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
             access_type: public_method
             serialized_name: CalculationPercent
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCalculationPercent
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType:
             access_type: public_method
             serialized_name: ActualDiscountAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getActualDiscountAmount

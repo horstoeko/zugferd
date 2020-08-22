@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: ID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getID
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: Name
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getName
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: TypeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTypeCode
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: IssueDateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getIssueDateTime
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: CopyIndicator
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCopyIndicator
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: LanguageID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getLanguageID
@@ -69,6 +75,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: IncludedNote
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getIncludedNote
@@ -83,6 +90,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             access_type: public_method
             serialized_name: EffectiveSpecifiedPeriod
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getEffectiveSpecifiedPeriod

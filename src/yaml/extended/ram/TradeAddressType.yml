@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: PostcodeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPostcodeCode
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: LineOne
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getLineOne
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: LineTwo
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getLineTwo
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: LineThree
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getLineThree
@@ -45,6 +49,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: CityName
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCityName
@@ -55,6 +60,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: CountryID
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCountryID
@@ -65,6 +71,7 @@ horstoeko\zugferd\entities\extended\ram\TradeAddressType:
             access_type: public_method
             serialized_name: CountrySubDivisionName
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getCountrySubDivisionName

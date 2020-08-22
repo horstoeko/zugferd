@@ -7,6 +7,8 @@ horstoeko\zugferd\entities\extended\udt\BinaryObjectType:
             accessor:
                 getter: value
                 setter: value
+            xml_element:
+                cdata: false
             type: \AnySimpleType
         mimeCode:
             expose: true

@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
             access_type: public_method
             serialized_name: SourceCurrencyCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getSourceCurrencyCode
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
             access_type: public_method
             serialized_name: TargetCurrencyCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTargetCurrencyCode
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
             access_type: public_method
             serialized_name: ConversionRate
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getConversionRate
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType:
             access_type: public_method
             serialized_name: ConversionRateDateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getConversionRateDateTime

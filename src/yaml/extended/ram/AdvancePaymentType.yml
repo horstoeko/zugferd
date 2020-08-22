@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
             access_type: public_method
             serialized_name: PaidAmount
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getPaidAmount
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
             access_type: public_method
             serialized_name: FormattedReceivedDateTime
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getFormattedReceivedDateTime
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
             access_type: public_method
             serialized_name: IncludedTradeTax
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getIncludedTradeTax

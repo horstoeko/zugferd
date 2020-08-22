@@ -8,3 +8,5 @@ horstoeko\zugferd\entities\extended\udt\TextType:
                 getter: value
                 setter: value
             type: string
+            xml_element:
+                cdata: false

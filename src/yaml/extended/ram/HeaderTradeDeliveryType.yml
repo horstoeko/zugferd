@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: RelatedSupplyChainConsignment
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getRelatedSupplyChainConsignment
@@ -20,6 +21,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: ShipToTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getShipToTradeParty
@@ -30,6 +32,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: UltimateShipToTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getUltimateShipToTradeParty
@@ -40,6 +43,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: ShipFromTradeParty
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getShipFromTradeParty
@@ -50,6 +54,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: ActualDeliverySupplyChainEvent
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getActualDeliverySupplyChainEvent
@@ -60,6 +65,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: DespatchAdviceReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDespatchAdviceReferencedDocument
@@ -70,6 +76,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: ReceivingAdviceReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getReceivingAdviceReferencedDocument
@@ -80,6 +87,7 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeDeliveryType:
             access_type: public_method
             serialized_name: DeliveryNoteReferencedDocument
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDeliveryNoteReferencedDocument

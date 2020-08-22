@@ -8,6 +8,8 @@ horstoeko\zugferd\entities\extended\udt\DateTimeType\DateTimeStringAType:
                 getter: value
                 setter: value
             type: string
+            xml_element:
+                cdata: false
         format:
             expose: true
             access_type: public_method

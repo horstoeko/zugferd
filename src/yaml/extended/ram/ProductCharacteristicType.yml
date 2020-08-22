@@ -5,6 +5,7 @@ horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
             access_type: public_method
             serialized_name: TypeCode
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getTypeCode
@@ -15,6 +16,7 @@ horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
             access_type: public_method
             serialized_name: Description
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getDescription
@@ -25,6 +27,7 @@ horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
             access_type: public_method
             serialized_name: ValueMeasure
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getValueMeasure
@@ -35,6 +38,7 @@ horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
             access_type: public_method
             serialized_name: Value
             xml_element:
+                cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
                 getter: getValue
