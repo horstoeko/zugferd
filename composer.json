@@ -23,7 +23,8 @@
     "require": {
         "jms/serializer": "^3",
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
-        "goetas-webservices/xsd2php": "^0.3"
+        "goetas-webservices/xsd2php": "^0.3",
+        "adrienrn/php-mimetyper": "^0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.2"
