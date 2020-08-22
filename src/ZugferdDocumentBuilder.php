@@ -72,6 +72,43 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set main information about this document
+     *
+     * @param string $documentno
+     * @param string $documenttypecode
+     * @param \DateTime $documentdate
+     * @param string|null $documentname
+     * @param boolean|null $copyindicator
+     * @param string|null $documentlanguage
+     * @param \DateTime|null $effectiveSpecifiedPeriod
+     * @return void
+     */
+    public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, ?string $documentname = null, ?bool $copyindicator = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod)
+    {
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setID", $this->objectHelper->GetIdType($documentno));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setName", $this->objectHelper->GetTextType($documentname));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setTypeCode", $this->objectHelper->GetCodeType($documenttypecode));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setIssueDateTime", $this->objectHelper->GetDateTimeType($documentdate));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setCopyIndicator", $this->objectHelper->GetIndicatorType($copyindicator));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "addToLanguageID", $this->objectHelper->GetIdType($documentlanguage));
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setEffectiveSpecifiedPeriod", $this->objectHelper->GetSpecifiedPeriodType(null, null, $effectiveSpecifiedPeriod, null));
+    }
+
+    /**
+     * Add a note to the docuzment
+     *
+     * @param string $content
+     * @param string|null $contentCode
+     * @param string|null $subjectCode
+     * @return void
+     */
+    public function AddDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null)
+    {
+        $note = $this->objectHelper->GetNoteType($content, $contentCode, $subjectCode);
+        $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "addToIncludedNote", $note);
+    }
+
+    /**
      * Seller
      *
      * @param string $name
