@@ -3,6 +3,7 @@
 namespace horstoeko\zugferd;
 
 use horstoeko\zugferd\ZUgferdProfiles;
+use MimeTyper\Repository\MimeDbRepository;
 
 class ZugferdObjectHelper
 {
@@ -94,6 +95,28 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get formatted issue date
+     *
+     * @param \DateTime $datetime
+     * @return object|null
+     */
+    public function GetDateTimeType(?\DateTime $datetime): ?object
+    {
+        if ($datetime == null) {
+            return null;
+        }
+
+        $date2 = $this->CreateClassInstance('udt\DateTimeType\DateTimeStringAType');
+        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "setFormat", "102");
+
+        $date = $this->CreateClassInstance('udt\DateTimeType');
+        $this->TryCall($date, "setDateTimeString", $date2);
+
+        return $date;
+    }
+
+    /**
      * Get a BinaryObjectType object
      *
      * @param [type] $value
@@ -119,13 +142,13 @@ class ZugferdObjectHelper
      * @param string|null $uriid
      * @param string|null $lineid
      * @param string|null $typecode
-     * @param string|null $name
+     * @param string|array|null $name
      * @param string|null $reftypecode
      * @param \DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return void
      */
-    public function ReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, ?\DateTime $issueddate, $binarydatafilename)
+    public function GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, ?\DateTime $issueddate, $binarydatafilename)
     {
         $refdoctype = $this->CreateClassInstance('ram\ReferencedDocumentType', $issuerassignedid);
 
@@ -138,6 +161,18 @@ class ZugferdObjectHelper
 
         foreach ($this->EnsureStringArray($name) as $name) {
             $this->TryCall($refdoctype, 'addToName', $this->GetTextType($name));
+        }
+
+        if ($binarydatafilename) {
+            if (file_exists($binarydatafilename) && is_readable($binarydatafilename)) {
+                $mimetyper = new MimeDbRepository();
+                $content = base64_encode(file_get_contents($binarydatafilename));
+                $pathParts = pathinfo($binarydatafilename);
+                $this->TryCall(
+                    $refdoctype,
+                    'setAttachmentBinaryObject',
+                    $this->GetBinaryObjectType($content, $mimetyper->findType($pathParts["extension"]), $pathParts["basename"]));
+            }
         }
 
         return $refdoctype;
@@ -164,11 +199,33 @@ class ZugferdObjectHelper
     }
 
     /**
-     * TradeParty creator
+     * Tradeparty type
      *
+     * @param [type] $ID
+     * @param [type] $globalID
+     * @param [type] $globalIDType
+     * @param [type] $name
+     * @param [type] $description
+     * @param [type] $lineone
+     * @param [type] $linetwo
+     * @param [type] $linethree
+     * @param [type] $postcode
+     * @param [type] $city
+     * @param [type] $country
+     * @param [type] $subdivision
+     * @param [type] $legalorgid
+     * @param [type] $legalorgtype
+     * @param [type] $legalorgname
+     * @param [type] $contactpersonname
+     * @param [type] $contactdepartmentname
+     * @param [type] $contactphoneno
+     * @param [type] $contactfaxno
+     * @param [type] $contactemailaddr
+     * @param [type] $taxregtype
+     * @param [type] $taxregid
      * @return object
      */
-    public function GetTradeParty($ID, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid): object
+    public function GetTradeParty($ID, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid): ?object
     {
         $tradeParty = $this->CreateClassInstance('ram\TradePartyType');
         $address = $this->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
@@ -188,7 +245,19 @@ class ZugferdObjectHelper
         return $tradeParty;
     }
 
-    public function GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision)
+    /**
+     * Address type
+     *
+     * @param [type] $lineone
+     * @param [type] $linetwo
+     * @param [type] $linethree
+     * @param [type] $postcode
+     * @param [type] $city
+     * @param [type] $country
+     * @param [type] $subdivision
+     * @return object
+     */
+    public function GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision): ?object
     {
         $address = $this->CreateClassInstance('ram\TradeAddressType');
 
@@ -203,7 +272,15 @@ class ZugferdObjectHelper
         return $address;
     }
 
-    public function GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname)
+    /**
+     * Legal organization type
+     *
+     * @param [type] $legalorgid
+     * @param [type] $legalorgtype
+     * @param [type] $legalorgname
+     * @return object
+     */
+    public function GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname): ?object
     {
         $legalorg = $this->CreateClassInstance('ram\LegalOrganizationType', $legalorgname);
 
@@ -213,7 +290,17 @@ class ZugferdObjectHelper
         return $legalorg;
     }
 
-    public function GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr)
+    /**
+     * Contact type
+     *
+     * @param [type] $contactpersonname
+     * @param [type] $contactdepartmentname
+     * @param [type] $contactphoneno
+     * @param [type] $contactfaxno
+     * @param [type] $contactemailaddr
+     * @return object
+     */
+    public function GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr): ?object
     {
         $contact = $this->CreateClassInstance('ram\TradeContactType', $contactpersonname);
         $contactphone = $this->GetUniversalCommunicationType($contactphoneno, null);
@@ -229,7 +316,15 @@ class ZugferdObjectHelper
         return $contact;
     }
 
-    public function GetUniversalCommunicationType($number, $uriid, $urischeme = "SMTP")
+    /**
+     * Communication type
+     *
+     * @param [type] $number
+     * @param [type] $uriid
+     * @param string $urischeme
+     * @return object
+     */
+    public function GetUniversalCommunicationType($number, $uriid, $urischeme = "SMTP"): ?object
     {
         $communication = $this->CreateClassInstanceIf('ram\UniversalCommunicationType', null, $number || $uriid);
 
@@ -239,7 +334,14 @@ class ZugferdObjectHelper
         return $communication;
     }
 
-    public function GetTaxRegistrationType($taxregtype, $taxregid)
+    /**
+     * Tax registration type
+     *
+     * @param [type] $taxregtype
+     * @param [type] $taxregid
+     * @return object
+     */
+    public function GetTaxRegistrationType($taxregtype, $taxregid): ?object
     {
         $taxreg = $this->CreateClassInstanceIf('ram\TaxRegistrationType', null, $taxregtype && $taxregid);
 
@@ -248,13 +350,51 @@ class ZugferdObjectHelper
         return $taxreg;
     }
 
-    public function GetTradeDeliveryTermsType($code)
+    /**
+     * Delivery terms type
+     *
+     * @param [type] $code
+     * @return object
+     */
+    public function GetTradeDeliveryTermsType($code): ?object
     {
         $deliveryterms = $this->CreateClassInstanceIf('ram\TradeDeliveryTermsType', null, $code);
 
         $this->TryCall($deliveryterms, "setDeliveryTypeCode", $this->GetCodeType($code));
 
         return $deliveryterms;
+    }
+
+    /**
+     * Procuring project type
+     *
+     * @param string $id
+     * @param string $name
+     * @return object
+     */
+    public function GetProcuringProjectType($id, $name): ?object
+    {
+        $procuringproject = $this->CreateClassInstanceIf('ram\ProcuringProjectType', null, $id && $name);
+
+        $this->TryCall($procuringproject, "setID", $this->GetIdType($id));
+        $this->TryCall($procuringproject, "setName", $this->GetTextType($name));
+
+        return $procuringproject;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param \DateTime|null $date
+     * @return object
+     */
+    public function GetSupplyChainEventType(?\DateTime $date): ?object
+    {
+        $supplychainevent = $this->CreateClassInstanceIf('ram\SupplyChainEventType', null, $date);
+
+        $this->TryCall($supplychainevent, "setOccurrenceDateTime", $this->GetDateTimeType($date));
+
+        return $supplychainevent;
     }
 
     /**
