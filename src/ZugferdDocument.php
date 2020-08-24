@@ -117,7 +117,7 @@ class ZugferdDocument
             }
         }
 
-        throw new \Exception('Coult not determine the profile...');
+        throw new \Exception('Could not determine the profile...');
     }
 
     /**

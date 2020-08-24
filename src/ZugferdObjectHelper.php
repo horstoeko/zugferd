@@ -41,7 +41,7 @@ class ZugferdObjectHelper
      */
     public function GetIdType(?string $value, ?string $schemeId = null): ?object
     {
-        $idType = $this->CreateClassInstanceIf('udt\IDType', $value, $value);
+        $idType = $this->CreateClassInstanceIf('udt\IDType', $value, !is_null($value) && ($value != ""));
 
         $this->TryCall($idType, "setSchemeID", $schemeId);
 
@@ -56,7 +56,7 @@ class ZugferdObjectHelper
      */
     public function GetTextType(?string $value): ?object
     {
-        return $this->CreateClassInstanceIf('udt\TextType', $value, $value);
+        return $this->CreateClassInstanceIf('udt\TextType', $value, !is_null($value) && ($value != ""));
     }
 
     /**
@@ -68,7 +68,7 @@ class ZugferdObjectHelper
      */
     public function GetCodeType(?string $value): ?object
     {
-        return $this->CreateClassInstanceIf('udt\CodeType', $value, $value);
+        return $this->CreateClassInstanceIf('udt\CodeType', $value, !is_null($value) && ($value != ""));
     }
 
     /**
@@ -89,14 +89,14 @@ class ZugferdObjectHelper
     /**
      * Get Note type
      *
-     * @param string $content
+     * @param string|null $content
      * @param string|null $contentCode
      * @param string|null $subjectCode
      * @return void
      */
-    public function GetNoteType(string $content, ?string $contentCode, ?string $subjectCode): ?object
+    public function GetNoteType(?string $content, ?string $contentCode, ?string $subjectCode): ?object
     {
-        $note = $this->CreateClassInstanceIf('ram\NoteType', null, $content);
+        $note = $this->CreateClassInstanceIf('ram\NoteType', null, !is_null($content) && ($content != ""));
 
         $this->TryCall($note, 'setContentCode', $this->GetCodeType($contentCode));
         $this->TryCall($note, 'setSubjectCode', $this->GetCodeType($subjectCode));
@@ -117,11 +117,11 @@ class ZugferdObjectHelper
             return null;
         }
 
-        $date2 = $this->CreateClassInstance('qdt\FormattedDateTimeType\DateTimeStringAType');
+        $date2 = $this->CreateClassInstanceIf('qdt\FormattedDateTimeType\DateTimeStringAType', null, !is_null($datetime));
         $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
         $this->TryCall($date2, "setFormat", "102");
 
-        $date = $this->CreateClassInstance('qdt\FormattedDateTimeType');
+        $date = $this->CreateClassInstanceIf('qdt\FormattedDateTimeType', null, !is_null($datetime));
         $this->TryCall($date, "setDateTimeString", $date2);
 
         return $date;
@@ -139,14 +139,113 @@ class ZugferdObjectHelper
             return null;
         }
 
-        $date2 = $this->CreateClassInstance('udt\DateTimeType\DateTimeStringAType');
+        $date2 = $this->CreateClassInstanceIf('udt\DateTimeType\DateTimeStringAType', null, !is_null($datetime));
         $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
         $this->TryCall($date2, "setFormat", "102");
 
-        $date = $this->CreateClassInstance('udt\DateTimeType');
+        $date = $this->CreateClassInstanceIf('udt\DateTimeType', null, !is_null($datetime));
         $this->TryCall($date, "setDateTimeString", $date2);
 
         return $date;
+    }
+
+    /**
+     * Get date
+     *
+     * @param \DateTime|null $datetime
+     * @return object|null
+     */
+    public function GetDateType(?\DateTime $datetime): ?object
+    {
+        if ($datetime == null) {
+            return null;
+        }
+
+        $date2 = $this->CreateClassInstanceIf('udt\DateType\DateStringAType', null, !is_null($datetime));
+        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "setFormat", "102");
+
+        $date = $this->CreateClassInstanceIf('udt\DateType', null, !is_null($datetime));
+        $this->TryCall($date, "setDateString", $date2);
+
+        return $date;
+    }
+
+    /**
+     * Representation of Amount
+     *
+     * @param float|null $value
+     * @param string|null $currencyCode
+     * @return object|null
+     */
+    public function GetAmountType(?float $value = 0, ?string $currencyCode = null): ?object
+    {
+        $amount = $this->CreateClassInstanceIf('udt\AmountType', null, !is_null($value));
+
+        $this->TryCall($amount, "value", $value);
+        $this->TryCall($amount, "setCurrencyID", $currencyCode);
+
+        return $amount;
+    }
+
+    /**
+     * Representation of Percdnt
+     *
+     * @param float|null $value
+     * @return object|null
+     */
+    public function GetPercentType(?float $value = 0): ?object
+    {
+        $amount = $this->CreateClassInstanceIf('udt\PercentType', null, !is_null($value));
+
+        $this->TryCall($amount, "value", $value);
+
+        return $amount;
+    }
+
+    /**
+     * Representation of Tax Category
+     *
+     * @param string|null $categoryCode
+     * @return object|null
+     */
+    public function GetTaxCategoryCodeType(?string $taxCategoryCode): ?object
+    {
+        $category = $this->CreateClassInstanceIf('udt\PercentType', null, !is_null($taxCategoryCode) && ($taxCategoryCode != ""));
+
+        $this->TryCall($category, "value", $taxCategoryCode);
+
+        return $category;
+    }
+
+    /**
+     * Representation of Tax Type
+     *
+     * @param string|null $taxTypeCode
+     * @return object|null
+     */
+    public function GetTaxTypeCodeType(?string $taxTypeCode): ?object
+    {
+        $category = $this->CreateClassInstanceIf('qdt\TaxTypeCodeType', null, !is_null($taxTypeCode) && ($taxTypeCode != ""));
+
+        $this->TryCall($category, "value", $taxTypeCode);
+
+        return $category;
+    }
+
+    /**
+     * Representation of Time Reference Code
+     *
+     * @param string|null $timerefCode
+     * @return object|null
+     */
+    public function GetTimeReferenceCodeType(?string $timerefCode): ?object
+    {
+        $category = $this->CreateClassInstanceIf('qdt\TimeReferenceCodeType', null, !is_null($timerefCode) && ($timerefCode != ""));
+
+        $this->TryCall($category, "value", $timerefCode);
+
+        return $category;
     }
 
     /**
@@ -161,7 +260,7 @@ class ZugferdObjectHelper
     public function GetSpecifiedPeriodType(?\DateTime $startdate, ?\DateTime $endDate, ?\DateTime $completedate, ?string $description): ?object
     {
         $period = $this->CreateClassInstanceIf('ram\SpecifiedPeriodType', null, (($startdate && $endDate) || $completedate));
-        
+
         $this->TryCall($period, 'setDescription', $description);
         $this->TryCall($period, 'getStartDateTime', $this->GetDateTimeType($startdate));
         $this->TryCall($period, 'setEndDateTime', $this->GetDateTimeType($endDate));
@@ -452,6 +551,124 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get instance of TradeSettlementFinancialCardType
+     *
+     * @param string|null $type
+     * @param string|null $id
+     * @param string|null $holderName
+     * @return object|null
+     */
+    public function GetTradeSettlementFinancialCardType(?string $type, ?string $id, ?string $holderName): ?object
+    {
+        $card = $this->CreateClassInstanceIf('ram\TradeSettlementFinancialCardType', null, $id);
+
+        $this->TryCall($card, "setID", $this->GetIdType($id, $type));
+        $this->TryCall($card, "setCardholderName", $this->GetTextType($holderName));
+
+        return $card;
+    }
+
+    /**
+     * Get instance of DebtorFinancialAccountType
+     *
+     * @param string|null $iban
+     * @return object|null
+     */
+    public function GetDebtorFinancialAccountType(?string $iban): ?object
+    {
+        $card = $this->CreateClassInstanceIf('ram\DebtorFinancialAccountType', null, $iban);
+
+        $this->TryCall($card, "setIBANID", $this->GetIdType($iban));
+
+        return $card;
+    }
+
+    /**
+     * Get instance of CreditorFinancialAccountType
+     *
+     * @param string|null $iban
+     * @param string|null $accountName
+     * @param string|null $proprietaryID
+     * @return object|null
+     */
+    public function GetCreditorFinancialAccountType(?string $iban, ?string $accountName, ?string $proprietaryID): ?object
+    {
+        $account = $this->CreateClassInstanceIf('ram\CreditorFinancialAccountType', null, $iban);
+
+        $this->TryCall($account, "setIBANID", $this->GetIdType($iban));
+        $this->TryCall($account, "setAccountName", $this->GetTextType($accountName));
+        $this->TryCall($account, "setProprietaryID", $this->GetIdType($proprietaryID));
+
+        return $account;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string|null $bic
+     * @return object|null
+     */
+    public function GetCreditorFinancialInstitutionType(?string $bic): ?object
+    {
+        $institution = $this->CreateClassInstanceIf('ram\CreditorFinancialInstitutionType', null, $bic);
+
+        $this->TryCall($institution, "setBICID", $this->GetIdType($bic));
+
+        return $institution;
+    }
+
+    /**
+     * Get instance of TradeSettlementPaymentMeansType
+     *
+     * @return objeect|null
+     */
+    public function GetTradeSettlementPaymentMeansType(string $code, ?string $information): ?object
+    {
+        $paymentMeans = $this->CreateClassInstanceIf('ram\TradeSettlementPaymentMeansType', null, $code);
+
+        $this->TryCall($paymentMeans, "setTypeCode", $this->GetCodeType($code));
+        $this->TryCall($paymentMeans, "setInformation", $this->GetTextType($information));
+
+        return $paymentMeans;
+    }
+
+    /**
+     * Get instance of TradeTaxType
+     * Sales tax breakdown, Umsatzsteueraufschlüsselung
+     *
+     * @param string $categoryCode
+     * @param string $typeCode
+     * @param float $basisAmount
+     * @param float $calculatedAmount
+     * @param string|null $exemptionReasonCode
+     * @param string|null $exemptionReason
+     * @param float|null $lineTotalBasisAmount
+     * @param float|null $allowanceChargeBasisAmount
+     * @param \DateTime|null $taxPointDate
+     * @param string|null $dueDateTypeCode
+     * @param string|null $rateApplicablePercent
+     * @return object|null
+     */
+    public function GetTradeTaxType(string $categoryCode, string $typeCode, float $basisAmount = 0, float $calculatedAmount = 0, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
+    {
+        $taxBreakdown = $this->CreateClassInstanceIf('ram\TradeTaxType', null, $categoryCode && $typeCode);
+
+        $this->TryCall($taxBreakdown, "setCalculatedAmount", $this->GetAmountType($calculatedAmount));
+        $this->TryCall($taxBreakdown, "setTypeCode", $this->GetTaxTypeCodeType($typeCode));
+        $this->TryCall($taxBreakdown, "setExemptionReason", $this->GetTextType($exemptionReason));
+        $this->TryCall($taxBreakdown, "setBasisAmount", $this->GetAmountType($basisAmount));
+        $this->TryCall($taxBreakdown, "setLineTotalBasisAmount", $this->GetAmountType($lineTotalBasisAmount));
+        $this->TryCall($taxBreakdown, "setAllowanceChargeBasisAmount", $this->GetAmountType($allowanceChargeBasisAmount));
+        $this->TryCall($taxBreakdown, "setCategoryCode", $this->GetTaxCategoryCodeType($categoryCode));
+        $this->TryCall($taxBreakdown, "setExemptionReasonCode", $this->GetCodeType($exemptionReasonCode));
+        $this->TryCall($taxBreakdown, "setTaxPointDate", $this->GetDateType($taxPointDate));
+        $this->TryCall($taxBreakdown, "setDueDateTypeCode", $this->GetTimeReferenceCodeType($dueDateTypeCode));
+        $this->TryCall($taxBreakdown, "setRateApplicablePercent", $this->GetPercentType($rateApplicablePercent));
+
+        return $taxBreakdown;
+    }
+
+    /**
      * Creates an instance of a class needed by $invoiceObject
      *
      * @param string $className
@@ -509,6 +726,12 @@ class ZugferdObjectHelper
         return $this;
     }
 
+    /**
+     * Ensure that $input is an array
+     *
+     * @param mixed $input
+     * @return array
+     */
     public function EnsureStringArray($input): array
     {
         if (is_array($input)) {
