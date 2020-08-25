@@ -204,6 +204,22 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Representation of Quantity
+     *
+     * @param float|null $value
+     * @return object|null
+     */
+    public function GetQuantityType(?float $value = 0, ?string $unitCode = null): ?object
+    {
+        $amount = $this->CreateClassInstanceIf('udt\QuantityType', null, !is_null($value));
+
+        $this->TryCall($amount, "value", $value);
+        $this->TryCall($amount, "setUnitCode", $unitCode);
+
+        return $amount;
+    }
+
+    /**
      * Representation of Tax Category
      *
      * @param string|null $categoryCode
@@ -261,12 +277,27 @@ class ZugferdObjectHelper
     {
         $period = $this->CreateClassInstanceIf('ram\SpecifiedPeriodType', null, (($startdate && $endDate) || $completedate));
 
-        $this->TryCall($period, 'setDescription', $description);
-        $this->TryCall($period, 'getStartDateTime', $this->GetDateTimeType($startdate));
+        $this->TryCall($period, 'setDescription', $this->GetTextType($description));
+        $this->TryCall($period, 'setStartDateTime', $this->GetDateTimeType($startdate));
         $this->TryCall($period, 'setEndDateTime', $this->GetDateTimeType($endDate));
         $this->TryCall($period, 'setCompleteDateTime', $this->GetDateTimeType($completedate));
 
         return $period;
+    }
+
+    /**
+     * Get an instance of GetNumericType
+     *
+     * @param float|null $number
+     * @return object|null
+     */
+    public function GetNumericType(?float $number = null): ?object
+    {
+        $numericType = $this->CreateClassInstanceIf('udt\NumericType', null, !is_null($number));
+
+        $this->TryCall($numericType, 'value', $number);
+
+        return $numericType;
     }
 
     /**
@@ -633,6 +664,25 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get instance of TradePaymentTermsType
+     *
+     * @param string|null $description
+     * @param \DateTime|null $dueDate
+     * @param string|null $directDebitMandateID
+     * @return object|null
+     */
+    public function GetTradePaymentTermsType(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ?object
+    {
+        $paymentTerms = $this->CreateClassInstance('ram\TradePaymentTermsType');
+
+        $this->TryCall($paymentTerms, "setDescription", $this->GetTextType($description));
+        $this->TryCall($paymentTerms, "setDueDateDateTime", $this->GetDateTimeType($dueDate));
+        $this->TryCall($paymentTerms, "setDirectDebitMandateID", $this->GetIdType($directDebitMandateID));
+
+        return $paymentTerms;
+    }
+
+    /**
      * Get instance of TradeTaxType
      * Sales tax breakdown, Umsatzsteueraufschlüsselung
      *
@@ -649,7 +699,7 @@ class ZugferdObjectHelper
      * @param string|null $rateApplicablePercent
      * @return object|null
      */
-    public function GetTradeTaxType(string $categoryCode, string $typeCode, float $basisAmount = 0, float $calculatedAmount = 0, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
+    public function GetTradeTaxType(string $categoryCode, string $typeCode, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
     {
         $taxBreakdown = $this->CreateClassInstanceIf('ram\TradeTaxType', null, $categoryCode && $typeCode);
 
@@ -666,6 +716,99 @@ class ZugferdObjectHelper
         $this->TryCall($taxBreakdown, "setRateApplicablePercent", $this->GetPercentType($rateApplicablePercent));
 
         return $taxBreakdown;
+    }
+
+    /**
+     * Get Allowance/Charge type
+     * Zu- und Abschläge
+     *
+     * @param float $actualAmount
+     * @param boolean $isCharge
+     * @param string $taxTypeCode
+     * @param string $taxCategoryCode
+     * @param float $rateApplicablePercent
+     * @param float|null $sequence
+     * @param float|null $calculationPercent
+     * @param float|null $basisAmount
+     * @param float|null $basisQuantity
+     * @param string|null $basisQuantityUnitCode
+     * @param string|null $reasonCode
+     * @param string|null $reason
+     * @return object|null
+     */
+    public function GetTradeAllowanceChargeType(float $actualAmount, bool $isCharge, string $taxTypeCode, string $taxCategoryCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ?object
+    {
+        $allowanceCharge = $this->CreateClassInstance('ram\TradeAllowanceChargeType');
+
+        $this->TryCall($allowanceCharge, "setChargeIndicator", $this->GetIndicatorType($isCharge));
+        $this->TryCall($allowanceCharge, "setSequenceNumeric", $this->GetNumericType($sequence));
+        $this->TryCall($allowanceCharge, "setCalculationPercent", $this->GetPercentType($calculationPercent));
+        $this->TryCall($allowanceCharge, "setBasisAmount", $this->GetAmountType($basisAmount));
+        $this->TryCall($allowanceCharge, "setBasisQuantity", $this->GetQuantityType($basisQuantity, $basisQuantityUnitCode));
+        $this->TryCall($allowanceCharge, "setActualAmount", $this->GetAmountType($actualAmount));
+        $this->TryCall($allowanceCharge, "setReasonCode", $this->GetCodeType($reasonCode));
+        $this->TryCall($allowanceCharge, "setReason", $this->GetTextType($reason));
+        $this->TryCall($allowanceCharge, "setCategoryTradeTax", $this->GetTradeTaxType($taxCategoryCode, $taxTypeCode, null, null, $rateApplicablePercent));
+
+        return $allowanceCharge;
+    }
+
+    /**
+     * Get instance of 
+     *
+     * @param string $description
+     * @param float $appliedAmount
+     * @param array|null $taxTypeCodes
+     * @param array|null $taxCategpryCodes
+     * @param array|null $rateApplicablePercents
+     * @return object|null
+     */
+    public function GetLogisticsServiceChargeType(string $description, float $appliedAmount, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ?object
+    {
+        $logCharge = $this->CreateClassInstance('ram\LogisticsServiceChargeType');
+
+        $this->TryCall($logCharge, "setDescription", $this->GetTextType($description));
+        $this->TryCall($logCharge, "setAppliedAmount", $this->GetAmountType($appliedAmount));
+
+        if (!is_null($taxCategpryCodes) && !is_null($taxTypeCodes) && !is_null($rateApplicablePercents)) {
+            foreach ($rateApplicablePercents as $index => $rateApplicablePercent) {
+                $taxBreakdown = $this->GetTradeTaxType($taxCategpryCodes[$index], $taxTypeCodes[$index], null, null, $rateApplicablePercent);
+                $this->TryCall($logCharge, "addToAppliedTradeTax", $taxBreakdown);
+            }
+        }
+
+        return $logCharge;
+    }
+
+    /**
+     * Get instance of TradeSettlementHeaderMonetarySummationType
+     *
+     * @param float $grandTotalAmount
+     * @param float $duePayableAmount
+     * @param float|null $lineTotalAmount
+     * @param float|null $chargeTotalAmount
+     * @param float|null $allowanceTotalAmount
+     * @param float|null $taxBasisTotalAmount
+     * @param float|null $taxTotalAmount
+     * @param float|null $roundingAmount
+     * @param float|null $totalPrepaidAmount
+     * @return object|null
+     */
+    public function GetTradeSettlementHeaderMonetarySummationType(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ?object
+    {
+        $summation = $this->CreateClassInstance('ram\TradeSettlementHeaderMonetarySummationType');
+
+        $this->TryCall($summation, "setLineTotalAmount", $this->GetAmountType($lineTotalAmount));
+        $this->TryCall($summation, "setChargeTotalAmount", $this->GetAmountType($chargeTotalAmount));
+        $this->TryCall($summation, "setAllowanceTotalAmount", $this->GetAmountType($allowanceTotalAmount));
+        $this->TryCall($summation, "addToTaxBasisTotalAmount", $this->GetAmountType($taxBasisTotalAmount));
+        $this->TryCall($summation, "addToTaxTotalAmount", $this->GetAmountType($taxTotalAmount));
+        $this->TryCall($summation, "setRoundingAmount", $this->GetAmountType($roundingAmount));
+        $this->TryCall($summation, "addToGrandTotalAmount", $this->GetAmountType($grandTotalAmount));
+        $this->TryCall($summation, "setTotalPrepaidAmount", $this->GetAmountType($totalPrepaidAmount));
+        $this->TryCall($summation, "setDuePayableAmount", $this->GetAmountType($duePayableAmount));
+
+        return $summation;
     }
 
     /**

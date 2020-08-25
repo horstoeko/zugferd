@@ -81,9 +81,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $documentname
      * @param string|null $documentlanguage
      * @param \DateTime|null $effectiveSpecifiedPeriod
-     * @return void
+     * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null)
+    public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, \DateTime $duedate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setID", $this->objectHelper->GetIdType($documentno));
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setName", $this->objectHelper->GetTextType($documentname));
@@ -93,6 +93,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setEffectiveSpecifiedPeriod", $this->objectHelper->GetSpecifiedPeriodType(null, null, $effectiveSpecifiedPeriod, null));
 
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceCurrencyCode", $this->objectHelper->GetIdType($invoiceCurrency));
+
+        $this->AddDocumentPaymentTerms(null, $duedate);
+        
+        return $this;
     }
 
     /**
@@ -100,32 +104,56 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string|null $creditorReferenceID
      * @param string|null $paymentReference
-     * @return void
+     * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null)
+    public function SetDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->objectHelper->GetIdType($creditorReferenceID));
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setPaymentReference", $this->objectHelper->GetIdType($paymentReference));
+        return $this;
     }
 
     /**
      * Mark document as a copy from the original one
      *
-     * @return void
+     * @return ZugferdDocumentBuilder
      */
-    public function SetIsDocumentCopy()
+    public function SetIsDocumentCopy(): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setCopyIndicator", $this->objectHelper->GetIndicatorType(true));
+        return $this;
     }
 
     /**
      * Mark document as a test document
      *
-     * @return void
+     * @return ZugferdDocumentBuilder
      */
-    public function SetIsTestDocument()
+    public function SetIsTestDocument(): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocumentContext(), "setTestIndicator", $this->objectHelper->GetIndicatorType(true));
+        return $this;
+    }
+
+    /**
+     * Document money summation
+     *
+     * @param float $grandTotalAmount
+     * @param float $duePayableAmount
+     * @param float|null $lineTotalAmount
+     * @param float|null $chargeTotalAmount
+     * @param float|null $allowanceTotalAmount
+     * @param float|null $taxBasisTotalAmount
+     * @param float|null $taxTotalAmount
+     * @param float|null $roundingAmount
+     * @param float|null $totalPrepaidAmount
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSummation(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ZugferdDocumentBuilder
+    {
+        $summation = $this->objectHelper->GetTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
+        return $this;
     }
 
     /**
@@ -134,12 +162,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string $content
      * @param string|null $contentCode
      * @param string|null $subjectCode
-     * @return void
+     * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null)
+    public function AddDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
     {
         $note = $this->objectHelper->GetNoteType($content, $contentCode, $subjectCode);
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "addToIncludedNote", $note);
+        return $this;
     }
 
     /**
@@ -169,7 +198,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetSeller(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentSeller(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerTradeParty", $sellerTradeParty);
@@ -204,7 +233,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $buyerrefno
      * @return ZugferdDocumentBuilder
      */
-    public function SetBuyer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null, ?string $buyerrefno): ZugferdDocumentBuilder
+    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null, ?string $buyerrefno): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $buyerReference = $this->objectHelper->GetCodeType($buyerrefno);
@@ -308,7 +337,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipToTradeParty", $shipToTradeParty);
@@ -342,7 +371,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetUltimateShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentUltimateShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
@@ -376,7 +405,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetShipFrom(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentShipFrom(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
@@ -410,7 +439,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetInvoicer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentInvoicer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoicerTradeParty", $invoicerTradeParty);
@@ -446,7 +475,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetInvoicee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentInvoicee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceeTradeParty", $invoiceeTradeParty);
@@ -482,7 +511,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetPayee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentPayee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setPayeeTradeParty", $payeeTradeParty);
@@ -495,7 +524,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $code
      * @return ZugferdDocumentBuilder
      */
-    public function SetDeliveryTerms(?string $code): ZugferdDocumentBuilder
+    public function SetDocumentDeliveryTerms(?string $code): ZugferdDocumentBuilder
     {
         $deliveryterms = $this->objectHelper->GetTradeDeliveryTermsType($code);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setApplicableTradeDeliveryTerms", $deliveryterms);
@@ -509,7 +538,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetSellerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $sellerorderrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerOrderReferencedDocument", $sellerorderrefdoc);
@@ -523,7 +552,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetBuyerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentBuyerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $buyerorderrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
@@ -537,7 +566,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetContractReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentContractReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setContractReferencedDocument", $contractrefdoc);
@@ -557,10 +586,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function AddAdditionalReferencedDocument(string $issuerassignedid, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function AddDocumentAdditionalReferencedDocument(string $issuerassignedid, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
+        return $this;
+    }
+
+    /**
+     * Details of the related order
+     *
+     * @param string $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoiceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $invoicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceReferencedDocument", $invoicerefdoc);
         return $this;
     }
 
@@ -571,7 +614,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string $name
      * @return ZugferdDocumentBuilder
      */
-    public function SetProcuringProject(string $id, string $name): ZugferdDocumentBuilder
+    public function SetDocumentProcuringProject(string $id, string $name): ZugferdDocumentBuilder
     {
         $procuringproject = $this->objectHelper->GetProcuringProjectType($id, $name);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setSpecifiedProcuringProject", $procuringproject);
@@ -591,7 +634,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function AddUltimateCustomerOrderReferencedDocument($issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function AddDocumentUltimateCustomerOrderReferencedDocument($issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
@@ -604,7 +647,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $date
      * @return ZugferdDocumentBuilder
      */
-    public function SetSupplyChainEvent(?\DateTime $date): ZugferdDocumentBuilder
+    public function SetDocumentSupplyChainEvent(?\DateTime $date): ZugferdDocumentBuilder
     {
         $supplyChainevent = $this->objectHelper->GetSupplyChainEventType($date);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setActualDeliverySupplyChainEvent", $supplyChainevent);
@@ -619,7 +662,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $despatchddvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
@@ -634,7 +677,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $receivingadvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
@@ -649,7 +692,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $deliverynoterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
@@ -671,7 +714,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $payeeFinInstitute
      * @return ZugferdDocumentBuilder
      */
-    public function AddPaymentMeans(string $code, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function AddDocumentPaymentMeans(string $code, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
         $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType($code, $information);
         $financialCard = $this->objectHelper->GetTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
@@ -725,5 +768,77 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function AddDocumentTaxSimple(string $categoryCode, string $typeCode, float $basisAmount = 0, float $calculatedAmount = 0, ?float $rateApplicablePercent = null): ZugferdDocumentBuilder
     {
         return $this->AddDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent);
+    }
+
+    /**
+     * Sets the billing period
+     *
+     * @param \DateTime|null $startdate
+     * @param \DateTime|null $endDate
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentBillingPeriod(?\DateTime $startdate, ?\DateTime $endDate, ?string $description): ZugferdDocumentBuilder
+    {
+        $period = $this->objectHelper->GetSpecifiedPeriodType($startdate, $endDate, null, $description);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setBillingSpecifiedPeriod", $period);
+        return $this;
+
+    }
+
+    /**
+     * Add a allowance/charge at document level
+     *
+     * @param float $actualAmount
+     * @param boolean $isCharge
+     * @param string $taxTypeCode
+     * @param string $taxCategoryCode
+     * @param float $rateApplicablePercent
+     * @param float|null $sequence
+     * @param float|null $calculationPercent
+     * @param float|null $basisAmount
+     * @param float|null $basisQuantity
+     * @param string|null $basisQuantityUnitCode
+     * @param string|null $reasonCode
+     * @param string|null $reason
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentTradeAllowanceCharge(float $actualAmount, bool $isCharge, string $taxTypeCode, string $taxCategoryCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    {
+        $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
+        return $this;
+    }
+
+    /**
+     * Add a logistic service charge
+     *
+     * @param string $description
+     * @param float $appliedAmount
+     * @param array|null $taxTypeCodes
+     * @param array|null $taxCategpryCodes
+     * @param array|null $rateApplicablePercents
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentLogisticsServiceCharge(string $description, float $appliedAmount, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ZugferdDocumentBuilder
+    {
+        $logcharge = $this->objectHelper->GetLogisticsServiceChargeType($description, $appliedAmount, $taxTypeCodes, $taxCategpryCodes, $rateApplicablePercents);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedLogisticsServiceCharge", $logcharge);
+        return $this;
+    }
+
+    /**
+     * Add a payment term
+     *
+     * @param string|null $description
+     * @param \DateTime|null $dueDate
+     * @param string|null $directDebitMandateID
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPaymentTerms(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
+    {
+        $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradePaymentTerms", $paymentTerms);
+        return $this;
     }
 }
