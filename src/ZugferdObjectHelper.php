@@ -812,6 +812,23 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get an instance of TradeAccountingAccountType
+     *
+     * @param string $id
+     * @param string|null $typeCode
+     * @return object|null
+     */
+    public function GetTradeAccountingAccountType(string $id, ?string $typeCode): ?object
+    {
+        $account = $this->CreateClassInstanceIf('ram\TradeAccountingAccountType', null, $id);
+
+        $this->TryCall($account, "setID", $this->GetIdType($id));
+        $this->TryCall($account, "setTypeCode", $this->GetCodeType($typeCode));
+
+        return $account;
+    }
+
+    /**
      * Creates an instance of a class needed by $invoiceObject
      *
      * @param string $className

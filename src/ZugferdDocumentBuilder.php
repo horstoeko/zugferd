@@ -577,16 +577,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the associated contract
      *
      * @param string $issuerassignedid
+     * @param string|null $typecode
      * @param string|null $uriid
      * @param string|null $lineid
-     * @param string|null $typecode
      * @param string|array|null $name
      * @param string|null $reftypecode
      * @param \DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentAdditionalReferencedDocument(string $issuerassignedid, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function AddDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
@@ -637,7 +637,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function AddDocumentUltimateCustomerOrderReferencedDocument($issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
-        $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
+        $this->objectHelper->TryCall($this->headerTradeAgreement, "addToUltimateCustomerOrderReferencedDocument", $additionalrefdoc);
         return $this;
     }
 
@@ -839,6 +839,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradePaymentTerms", $paymentTerms);
+        return $this;
+    }
+
+    /**
+     * Add an AccountingAccount
+     * Detailinformationen zur Buchungsreferenz
+     *
+     * @param string $id
+     * @param string|null $typeCode
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
+    {
+        $account = $this->objectHelper->GetTradeAccountingAccountType($id, $typeCode);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
         return $this;
     }
 }
