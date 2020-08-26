@@ -35,6 +35,27 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     protected $headerTradeSettlement = null;
 
     /**
+     * SupplyChainTradeTransactionType
+     *
+     * @var [type]
+     */
+    protected $headerSupplyChainTradeTransaction = null;
+
+    /**
+     * Last added payment terms
+     *
+     * @var object
+     */
+    protected $currentPaymentTerms = null;
+
+    /**
+     * Last added position (line) to the docuemnt
+     *
+     * @var object
+     */
+    protected $currentposition = null;
+
+    /**
      * Constructor
      */
     public function __construct(int $profile)
@@ -68,6 +89,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->headerTradeAgreement = $this->invoiceObject->getSupplyChainTradeTransaction()->getApplicableHeaderTradeAgreement();
         $this->headerTradeDelivery = $this->invoiceObject->getSupplyChainTradeTransaction()->getApplicableHeaderTradeDelivery();
         $this->headerTradeSettlement = $this->invoiceObject->getSupplyChainTradeTransaction()->getApplicableHeaderTradeSettlement();
+        $this->headerSupplyChainTradeTransaction = $this->invoiceObject->getSupplyChainTradeTransaction();
         return $this;
     }
 
@@ -839,6 +861,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradePaymentTerms", $paymentTerms);
+        $this->currentPaymentTerms = $paymentTerms;
+        return $this;
+    }
+
+    /**
+     * Add discount Terms to last added payment term
+     *
+     * @param float $calculationPercent
+     * @param \DateTime|null $basisDateTime
+     * @param float|null $basisPeriodMeasureValue
+     * @param string|null $basisPeriodMeasureUnitCode
+     * @param float|null $basisAmount
+     * @param float|null $actualDiscountAmount
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDiscountTermsToPaymentTerms(float $calculationPercent = null, ?\DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
+    {
+        $discountTerms = $this->objectHelper->GetTradePaymentDiscountTermsType($basisDateTime, $basisPeriodMeasureValue, $basisPeriodMeasureUnitCode, $basisAmount, $calculationPercent, $actualDiscountAmount);
+        $this->objectHelper->TryCall($this->currentPaymentTerms, "setApplicableTradePaymentDiscountTerms", $discountTerms);
         return $this;
     }
 
@@ -854,6 +895,38 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $account = $this->objectHelper->GetTradeAccountingAccountType($id, $typeCode);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
+        return $this;
+    }
+
+    /**
+     * Adds a new position (line) to document
+     *
+     * @param string $lineid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddNewPosition(string $lineid): ZugferdDocumentBuilder
+    {
+        $position = $this->objectHelper->GetSupplyChainTradeLineItemType($lineid);
+        $this->objectHelper->TryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
+        $this->currentposition = $position;
+        return $this;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $name
+     * @param string|null $description
+     * @param string|null $sellerAssignedID
+     * @param string|null $buyerAssignedID
+     * @param string|null $globalIDType
+     * @param string|null $globalID
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionProductDetails(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ZugferdDocumentBuilder
+    {
+        $product = $this->objectHelper->GetTradeProductType($name, $description, $sellerAssignedID, $buyerAssignedID, $globalIDType, $globalID);
+        $this->objectHelper->TryCall($this->currentposition, "setSpecifiedTradeProduct", $product);
         return $this;
     }
 }

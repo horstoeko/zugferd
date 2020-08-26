@@ -207,6 +207,7 @@ class ZugferdObjectHelper
      * Representation of Quantity
      *
      * @param float|null $value
+     * @param string|null $unitCode
      * @return object|null
      */
     public function GetQuantityType(?float $value = 0, ?string $unitCode = null): ?object
@@ -217,6 +218,23 @@ class ZugferdObjectHelper
         $this->TryCall($amount, "setUnitCode", $unitCode);
 
         return $amount;
+    }
+
+    /**
+     * Representation of Quantity Measure
+     *
+     * @param float|null $value
+     * @param string|null $unitCode
+     * @return object|null
+     */
+    public function GetMeasureType(?float $value = 0, ?string $unitCode = null): ?object
+    {
+        $measure = $this->CreateClassInstanceIf('udt\MeasureType', null, !is_null($value));
+
+        $this->TryCall($measure, "value", $value);
+        $this->TryCall($measure, "setUnitCode", $unitCode);
+
+        return $measure;
     }
 
     /**
@@ -683,6 +701,30 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get instance of TradePaymentDiscountTermsType
+     *
+     * @param \DateTime|null $basisDateTime
+     * @param float|null $basisPeriodMeasureValue
+     * @param string|null $basisPeriodMeasureUnitCode
+     * @param float|null $basisAmount
+     * @param float|null $calculationPercent
+     * @param float|null $actualDiscountAmount
+     * @return object|null
+     */
+    public function GetTradePaymentDiscountTermsType(?\DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
+    {
+        $discountTerms = $this->CreateClassInstance('ram\TradePaymentDiscountTermsType');
+
+        $this->TryCall($discountTerms, "setBasisDateTime", $this->GetDateTimeType($basisDateTime));
+        $this->TryCall($discountTerms, "setBasisPeriodMeasure", $this->GetMeasureType($basisPeriodMeasureValue, $basisPeriodMeasureUnitCode));
+        $this->TryCall($discountTerms, "setBasisAmount", $this->GetAmountType($basisAmount));
+        $this->TryCall($discountTerms, "setCalculationPercent", $this->GetPercentType($calculationPercent));
+        $this->TryCall($discountTerms, "setActualDiscountAmount", $this->GetAmountType($actualDiscountAmount));
+
+        return $discountTerms;
+    }
+
+    /**
      * Get instance of TradeTaxType
      * Sales tax breakdown, Umsatzsteueraufschlüsselung
      *
@@ -754,7 +796,7 @@ class ZugferdObjectHelper
     }
 
     /**
-     * Get instance of 
+     * Get instance of
      *
      * @param string $description
      * @param float $appliedAmount
@@ -826,6 +868,59 @@ class ZugferdObjectHelper
         $this->TryCall($account, "setTypeCode", $this->GetCodeType($typeCode));
 
         return $account;
+    }
+
+    /**
+     * Get Document line
+     *
+     * @param string $lineid
+     * @return object|null
+     */
+    public function GetDocumentLineDocumentType(string $lineid): ?object
+    {
+        $doclinedoc = $this->CreateClassInstance('ram\DocumentLineDocumentType');
+
+        $this->TryCall($doclinedoc, "setLineID", $this->GetIdType($lineid));
+
+        return $doclinedoc;
+    }
+
+    /**
+     * Get instance of SupplyChainTradeLineItemType
+     *
+     * @return object|null
+     */
+    public function GetSupplyChainTradeLineItemType(string $lineid): ?object
+    {
+        $line = $this->CreateClassInstance('ram\SupplyChainTradeLineItemType');
+
+        $this->TryCall($line, "setAssociatedDocumentLineDocument", $this->GetDocumentLineDocumentType($lineid));
+
+        return $line;
+    }
+
+    /**
+     * Get product specification
+     *
+     * @param string $name
+     * @param string|null $description
+     * @param string|null $sellerAssignedID
+     * @param string|null $buyerAssignedID
+     * @param string|null $globalIDType
+     * @param string|null $globalID
+     * @return object|null
+     */
+    public function GetTradeProductType(?string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ?object
+    {
+        $product = $this->CreateClassInstance('ram\TradeProductType');
+
+        $this->TryCall($product, "setGlobalID", $this->GetIdType($globalID, $globalIDType));
+        $this->TryCall($product, "setSellerAssignedID", $this->GetIdType($sellerAssignedID));
+        $this->TryCall($product, "setBuyerAssignedID", $this->GetIdType($buyerAssignedID));
+        $this->TryCall($product, "setName", $this->GetTextType($name));
+        $this->TryCall($product, "setDescription", $this->GetTextType($description));
+
+        return $product;
     }
 
     /**
