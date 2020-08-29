@@ -138,7 +138,7 @@ class ZugferdObjectHelper
         }
 
         $date2 = $this->CreateClassInstance('qdt\FormattedDateTimeType\DateTimeStringAType');
-        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "value", $datetime->format("Ymd"));
         $this->TryCall($date2, "setFormat", "102");
 
         $date = $this->CreateClassInstance('qdt\FormattedDateTimeType');
@@ -160,7 +160,7 @@ class ZugferdObjectHelper
         }
 
         $date2 = $this->CreateClassInstance('udt\DateTimeType\DateTimeStringAType');
-        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "value", $datetime->format("Ymd"));
         $this->TryCall($date2, "setFormat", "102");
 
         $date = $this->CreateClassInstance('udt\DateTimeType');
@@ -182,7 +182,7 @@ class ZugferdObjectHelper
         }
 
         $date2 = $this->CreateClassInstance('udt\DateType\DateStringAType');
-        $this->TryCall($date2, "value", $datetime->format("Y-m-d"));
+        $this->TryCall($date2, "value", $datetime->format("Ymd"));
         $this->TryCall($date2, "setFormat", "102");
 
         $date = $this->CreateClassInstance('udt\DateType');
@@ -990,10 +990,10 @@ class ZugferdObjectHelper
         $this->TryCall($summation, "setLineTotalAmount", $this->GetAmountType($lineTotalAmount));
         $this->TryCall($summation, "setChargeTotalAmount", $this->GetAmountType($chargeTotalAmount));
         $this->TryCall($summation, "setAllowanceTotalAmount", $this->GetAmountType($allowanceTotalAmount));
-        $this->TryCall($summation, "addToTaxBasisTotalAmount", $this->GetAmountType($taxBasisTotalAmount));
-        $this->TryCall($summation, "addToTaxTotalAmount", $this->GetAmountType($taxTotalAmount));
+        $this->TryCallAll($summation, ["addToTaxBasisTotalAmount", "setTaxBasisTotalAmount"], $this->GetAmountType($taxBasisTotalAmount));
+        $this->TryCallAll($summation, ["addToTaxTotalAmount", "setTaxTotalAmount"], $this->GetAmountType($taxTotalAmount));
         $this->TryCall($summation, "setRoundingAmount", $this->GetAmountType($roundingAmount));
-        $this->TryCall($summation, "addToGrandTotalAmount", $this->GetAmountType($grandTotalAmount));
+        $this->TryCallAll($summation, ["addToGrandTotalAmount", "setGrandTotalAmount"], $this->GetAmountType($grandTotalAmount));
         $this->TryCall($summation, "setTotalPrepaidAmount", $this->GetAmountType($totalPrepaidAmount));
         $this->TryCall($summation, "setDuePayableAmount", $this->GetAmountType($duePayableAmount));
 
@@ -1167,7 +1167,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return ZugferdObjectHelper
      */
-    public function TryCall($instance, $method, $value)
+    public function TryCall($instance, $method, $value): ZugferdObjectHelper
     {
         if (!$instance) {
             return $this;
@@ -1180,6 +1180,31 @@ class ZugferdObjectHelper
         }
         if (method_exists($instance, $method)) {
             $instance->$method($value);
+        }
+        return $this;
+    }
+
+    /**
+     * Try call all methods
+     *
+     * @param object $instance
+     * @param string[] $methods
+     * @param mixed $value
+     * @return ZugferdObjectHelper
+     */
+    public function TryCallAll($instance, array $methods, $value): ZugferdObjectHelper
+    {
+        if (!$instance) {
+            return $this;
+        }
+        if (!$value) {
+            return $this;
+        }
+        foreach ($methods as $method) {
+            if (method_exists($instance, $method)) {
+                $instance->$method($value);
+                return $this;
+            }
         }
         return $this;
     }

@@ -117,7 +117,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceCurrencyCode", $this->objectHelper->GetIdType($invoiceCurrency));
 
         $this->AddDocumentPaymentTerms(null, $duedate);
-        
+
         return $this;
     }
 
@@ -228,6 +228,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add Tax registration to seller Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentSellerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
      * Buyer
      *
      * @param string $name
@@ -255,12 +270,27 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $buyerrefno
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null, ?string $buyerrefno): ZugferdDocumentBuilder
+    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null, ?string $buyerrefno = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
         $buyerReference = $this->objectHelper->GetCodeType($buyerrefno);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerTradeParty", $buyerTradeParty);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerReference", $buyerReference);
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to buyer Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
         return $this;
     }
 
@@ -813,8 +843,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param float $actualAmount
      * @param boolean $isCharge
-     * @param string $taxTypeCode
      * @param string $taxCategoryCode
+     * @param string $taxTypeCode
      * @param float $rateApplicablePercent
      * @param float|null $sequence
      * @param float|null $calculationPercent
@@ -825,7 +855,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $reason
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentTradeAllowanceCharge(float $actualAmount, bool $isCharge, string $taxTypeCode, string $taxCategoryCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    public function AddDocumentTradeAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode, string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
@@ -860,7 +890,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function AddDocumentPaymentTerms(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
     {
         $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
-        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradePaymentTerms", $paymentTerms);
+        $this->objectHelper->TryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradePaymentTerms", "setSpecifiedTradePaymentTerms"], $paymentTerms);
         $this->currentPaymentTerms = $paymentTerms;
         return $this;
     }
@@ -935,6 +965,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $position = $this->objectHelper->GetSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode);
         $this->objectHelper->TryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
         $this->currentposition = $position;
+        return $this;
+    }
+
+    /**
+     * Set note on a document position (line)
+     *
+     * @param string $content
+     * @param string|null $contentCode
+     * @param string|null $subjectCode
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
+    {
+        $linedoc = $this->objectHelper->TryCallAndReturn($this->currentposition, "getAssociatedDocumentLineDocument");
+        $note = $this->objectHelper->GetNoteType($content, $contentCode, $subjectCode);
+        $this->objectHelper->TryCallAll($linedoc, ["addToIncludedNote", "setIncludedNote"], $note);
         return $this;
     }
 
@@ -1065,7 +1111,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeAgreement");
         $grossPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getGrossPriceProductTradePrice");
         $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
-        $this->objectHelper->TryCall($grossPrice, "addToAppliedTradeAllowanceCharge", $allowanceCharge);
+        $this->objectHelper->TryCall($grossPrice, "setAppliedTradeAllowanceCharge", $allowanceCharge);
         return $this;
     }
 
@@ -1083,6 +1129,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $netPrice = $this->objectHelper->GetTradePriceType($amount, $basisQuantity, $basisQuantityUnitCode);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeAgreement");
         $this->objectHelper->TryCall($positionagreement, "setNetPriceProductTradePrice", $netPrice);
+        return $this;
+    }
+
+    /**
+     * Tax included for B2C on position level
+     * Enthaltene Steuer für B2C auf Positionsebene
+     *
+     * @param float $amount
+     * @param float|null $basisQuantity
+     * @param string|null $basisQuantityUnitCode
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionNetPriceTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
+    {
+        $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeAgreement");
+        $netPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getNetPriceProductTradePrice");
+        $tax = $this->objectHelper->GetTradeTaxType($categoryCode, $typeCode, null, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, null, null, null, null);
+        $this->objectHelper->TryCall($netPrice, "setIncludedTradeTax", $tax);
         return $this;
     }
 
@@ -1241,7 +1305,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * A group of business terms that contains information about the sales tax that applies to 
+     * A group of business terms that contains information about the sales tax that applies to
      * the goods and services invoiced on the relevant invoice line
      *
      * @param string $categoryCode Information only for taxes that are not VAT.
@@ -1256,7 +1320,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeSettlement");
         $tax = $this->objectHelper->GetTradeTaxType($categoryCode, $typeCode, null, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, null, null, null, null);
-        $this->objectHelper->TryCall($positionsettlement, "addToApplicableTradeTax", $tax);
+        $this->objectHelper->TryCallAll($positionsettlement, ["addToApplicableTradeTax", "setApplicableTradeTax"], $tax);
         return $this;
     }
 
