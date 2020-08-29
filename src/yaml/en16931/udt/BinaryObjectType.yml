@@ -9,7 +9,7 @@ horstoeko\zugferd\entities\en16931\udt\BinaryObjectType:
                 setter: value
             xml_element:
                 cdata: false
-            type: \AnySimpleType
+            type: string
         mimeCode:
             expose: true
             access_type: public_method

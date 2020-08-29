@@ -12,7 +12,7 @@ class BinaryObjectType
 {
 
     /**
-     * @var mixed $__value
+     * @var string $__value
      */
     private $__value = null;
 
@@ -29,7 +29,7 @@ class BinaryObjectType
     /**
      * Construct
      *
-     * @param mixed $value
+     * @param string $value
      */
     public function __construct($value)
     {
@@ -39,8 +39,8 @@ class BinaryObjectType
     /**
      * Gets or sets the inner value
      *
-     * @param mixed $value
-     * @return mixed
+     * @param string $value
+     * @return string
      */
     public function value()
     {
