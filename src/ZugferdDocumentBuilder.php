@@ -194,36 +194,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Seller
+     * Sekker
      *
      * @param string $name
      * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
      * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentSeller(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentSeller(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $sellerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
+        $sellerTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerTradeParty", $sellerTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the seller
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentSellerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $this->objectHelper->TryCall($sellerTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
         return $this;
     }
 
@@ -239,6 +234,60 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
         $this->objectHelper->TryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the seller party
+     *
+     * @param string|null $lineone
+     * @param string|null $linetwo
+     * @param string|null $linethree
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $country
+     * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($sellerTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the seller party
+     *
+     * @param string|null $legalorgid
+     * @param string|null $legalorgtype
+     * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($sellerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the seller party
+     *
+     * @param string|null $contactpersonname
+     * @param string|null $contactdepartmentname
+     * @param string|null $contactphoneno
+     * @param string|null $contactfaxno
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($sellerTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -270,12 +319,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $buyerrefno
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null, ?string $buyerrefno = null): ZugferdDocumentBuilder
+    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $buyerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $buyerReference = $this->objectHelper->GetCodeType($buyerrefno);
+        $buyerTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerTradeParty", $buyerTradeParty);
-        $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerReference", $buyerReference);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the buyer
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $this->objectHelper->TryCall($buyerTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
         return $this;
     }
 
@@ -288,20 +349,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function AddDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
-        $sellerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
-        $this->objectHelper->TryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $this->objectHelper->TryCall($buyerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
         return $this;
     }
 
     /**
-     * Tax agent of the seller
+     * Sets the postal address of the buyer party
      *
-     * @param string $name
-     * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
-     * @param string|null $description
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -309,22 +365,145 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentBuyerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($buyerTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the buyer party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($buyerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the buyer party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($buyerTradeParty, "setDefinedTradeContact", $contact);
+        return $this;
+    }
+
+    /**
+     * Sets the sellers tax representative trade party
+     *
+     * @param string $name
+     * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerTaxRepresentativeTradeParty(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $sellerTaxRepresentativeTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerTaxRepresentativeTradeParty", $sellerTaxRepresentativeTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Tax representative party
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentSellerTaxRepresentativeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $taxrepresentativeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $this->objectHelper->TryCall($taxrepresentativeTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to tax representative party
+     *
      * @param string|null $taxregtype
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetSellerTaxRepresentativeTradeParty(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function AddDocumentSellerTaxRepresentativeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
-        $sellerTaxRepresentativeTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerTaxRepresentativeTradeParty", $sellerTaxRepresentativeTradeParty);
+        $taxrepresentativeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($taxrepresentativeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the tax representative party
+     *
+     * @param string|null $lineone
+     * @param string|null $linetwo
+     * @param string|null $linethree
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $country
+     * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerTaxRepresentativeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $taxrepresentativeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($taxrepresentativeTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the tax representative party
+     *
+     * @param string|null $legalorgid
+     * @param string|null $legalorgtype
+     * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerTaxRepresentativeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $taxrepresentativeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($taxrepresentativeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the tax representative party
+     *
+     * @param string|null $contactpersonname
+     * @param string|null $contactdepartmentname
+     * @param string|null $contactphoneno
+     * @param string|null $contactfaxno
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentSellerTaxRepresentativeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $taxrepresentativeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($taxrepresentativeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -333,9 +512,48 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetProductEndUserTradeParty(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($this->headerTradeAgreement, "setProductEndUserTradeParty", $productEndUserTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Product Enduser Trade Party
+     *
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentProductEndUserGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $this->objectHelper->TryCall($productEndUserTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Product Enduser Trade Party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentProductEndUserTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($productEndUserTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the Product Enduser party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -343,22 +561,47 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentProductEndUserAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($productEndUserTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the Product Enduser party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentProductEndUserLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($productEndUserTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the Product Enduser party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $contactemailadd
      * @return ZugferdDocumentBuilder
      */
-    public function SetProductEndUserTradeParty(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentProductEndUserContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
-        $productEndUserTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeAgreement, "setProductEndUserTradeParty", $productEndUserTradeParty);
+        $productEndUserTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($productEndUserTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -367,43 +610,48 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
      * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipToTradeParty", $shipToTradeParty);
         return $this;
     }
 
     /**
-     * Detailed information on the different end recipient
+     * Add a global id for the Ship-to Trade Party
      *
-     * @param string $name
-     * @param string|null $id
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $this->objectHelper->TryCall($shipToTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-To Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the Ship-To party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -411,22 +659,47 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($shipToTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the Ship-To party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the Ship-To party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $contactemailadd
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentUltimateShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($shipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -435,9 +708,48 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentUltimateShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Ship-to Trade Party
+     *
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentUltimateShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $this->objectHelper->TryCall($UltimateShipToTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-To Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($UltimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the ultimate Ship-To party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -445,22 +757,145 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentUltimateShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($UltimateShipToTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the ultimate Ship-To party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($UltimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the ultimate Ship-To party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($UltimateShipToTradeParty, "setDefinedTradeContact", $contact);
+        return $this;
+    }
+
+    /**
+     * Ship-From Tradeparty
+     *
+     * @param string $name
+     * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipFrom(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $name);
+        $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Ship-from Trade Party
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentShipFromGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $this->objectHelper->TryCall($shipFromTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-from Trade party
+     *
      * @param string|null $taxregtype
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentShipFrom(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function AddDocumentShipFromTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
+        $shipFromTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($shipFromTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the ultimate Ship-from party
+     *
+     * @param string|null $lineone
+     * @param string|null $linetwo
+     * @param string|null $linethree
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $country
+     * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipFromAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($shipFromTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the ultimate Ship-from party
+     *
+     * @param string|null $legalorgid
+     * @param string|null $legalorgtype
+     * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipFromLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($shipFromTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the ultimate Ship-from party
+     *
+     * @param string|null $contactpersonname
+     * @param string|null $contactdepartmentname
+     * @param string|null $contactphoneno
+     * @param string|null $contactfaxno
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentShipFromContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($shipFromTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -469,9 +904,48 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoicer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoicerTradeParty", $invoicerTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Invoicer Trade Party
+     *
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentInvoicerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $this->objectHelper->TryCall($invoicerTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-from Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentInvoicerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($invoicerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the ultimate Ship-from party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -479,22 +953,47 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoicerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($invoicerTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the ultimate Ship-from party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoicerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($invoicerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the ultimate Ship-from party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $contactemailadd
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentInvoicer(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentInvoicerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
-        $invoicerTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoicerTradeParty", $invoicerTradeParty);
+        $invoicerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($invoicerTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -527,10 +1026,93 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentInvoicee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentInvoicee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $invoiceeTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
+        $invoiceeTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceeTradeParty", $invoiceeTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Invoicee Trade Party
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentInvoiceeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $this->objectHelper->TryCall($invoiceeTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-from Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentInvoiceeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($invoiceeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the ultimate Ship-from party
+     *
+     * @param string|null $lineone
+     * @param string|null $linetwo
+     * @param string|null $linethree
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $country
+     * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoiceeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($invoiceeTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the ultimate Ship-from party
+     *
+     * @param string|null $legalorgid
+     * @param string|null $legalorgtype
+     * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoiceeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($invoiceeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the ultimate Ship-from party
+     *
+     * @param string|null $contactpersonname
+     * @param string|null $contactdepartmentname
+     * @param string|null $contactphoneno
+     * @param string|null $contactfaxno
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentInvoiceeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($invoiceeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -541,9 +1123,48 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPayee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setPayeeTradeParty", $payeeTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Payee Trade Party
+     *
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPayeeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $this->objectHelper->TryCall($payeeTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-from Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPayeeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($payeeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the ultimate Ship-from party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -551,22 +1172,47 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPayeeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($payeeTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the ultimate Ship-from party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPayeeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($payeeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the ultimate Ship-from party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $contactemailadd
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentPayee(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentPayeeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
-        $payeeTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($this->headerTradeSettlement, "setPayeeTradeParty", $payeeTradeParty);
+        $payeeTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($payeeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1111,7 +1757,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeAgreement");
         $grossPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getGrossPriceProductTradePrice");
         $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
-        $this->objectHelper->TryCall($grossPrice, "setAppliedTradeAllowanceCharge", $allowanceCharge);
+        $this->objectHelper->TryCallAll($grossPrice, ["addToAppliedTradeAllowanceCharge","setAppliedTradeAllowanceCharge"], $allowanceCharge);
         return $this;
     }
 
@@ -1176,9 +1822,51 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
+     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
+        $this->objectHelper->TryCall($positiondelivery, "setShipToTradeParty", $shipToTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add a global id for the Ship-to Trade Party
+     *
      * @param string|null $globalID
      * @param string|null $globalIDType
-     * @param string|null $description
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPositionShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $this->objectHelper->TryCall($shipToTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-To Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPositionShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the Ship-To party
+     *
      * @param string|null $lineone
      * @param string|null $linetwo
      * @param string|null $linethree
@@ -1186,23 +1874,50 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $city
      * @param string|null $country
      * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($shipToTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the Ship-To party
+     *
      * @param string|null $legalorgid
      * @param string|null $legalorgtype
      * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the Ship-To party
+     *
      * @param string|null $contactpersonname
      * @param string|null $contactdepartmentname
      * @param string|null $contactphoneno
      * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $contactemailadd
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentPositionShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentPositionShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
-        $this->objectHelper->TryCall($positiondelivery, "setShipToTradeParty", $shipToTradeParty);
+        $shipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($shipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1234,11 +1949,98 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentPositionUltimateShipTo(string $name, ?string $id = null, ?string $globalID = null, ?string $globalIDType = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentPositionUltimateShipTo(string $name, ?string $id = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($id, $globalID, $globalIDType, $name, $description, $lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision, $legalorgid, $legalorgtype, $legalorgname, $contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr, $taxregtype, $taxregid);
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($positiondelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+        return $this;
+    }
+    /**
+     * Add a global id for the Ship-to Trade Party
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPositionUltimateShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $this->objectHelper->TryCall($ultimateShipToTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to Ship-To Trade party
+     *
+     * @param string|null $taxregtype
+     * @param string|null $taxregid
+     * @return ZugferdDocumentBuilder
+     */
+    public function AddDocumentPositionUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
+        $this->objectHelper->TryCall($ultimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the Ship-To party
+     *
+     * @param string|null $lineone
+     * @param string|null $linetwo
+     * @param string|null $linethree
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $country
+     * @param string|null $subdivision
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionUltimateShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $this->objectHelper->TryCall($ultimateShipToTradeParty, "setPostalTradeAddress", $address);
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the Ship-To party
+     *
+     * @param string|null $legalorgid
+     * @param string|null $legalorgtype
+     * @param string|null $legalorgname
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
+        $this->objectHelper->TryCall($ultimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        return $this;
+    }
+
+    /**
+     * Set contact of the Ship-To party
+     *
+     * @param string|null $contactpersonname
+     * @param string|null $contactdepartmentname
+     * @param string|null $contactphoneno
+     * @param string|null $contactfaxno
+     * @param string|null $contactemailadd
+     * @return ZugferdDocumentBuilder
+     */
+    public function SetDocumentPositionUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentposition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->TryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->TryCall($ultimateShipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 

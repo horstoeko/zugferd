@@ -467,50 +467,22 @@ class ZugferdObjectHelper
     /**
      * Tradeparty type
      *
-     * @param string|null $ID
-     * @param string|null $globalID
-     * @param string|null $globalIDType
      * @param string $name
+     * @param string|null $ID
      * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
      * @return object|null
      */
-    public function GetTradeParty(?string $ID, ?string $globalID, ?string $globalIDType, string $name, ?string $description, ?string $lineone, ?string $linetwo, ?string $linethree, ?string $postcode, ?string $city, ?string $country, ?string $subdivision, ?string $legalorgid, ?string $legalorgtype, ?string $legalorgname, ?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailaddr, ?string $taxregtype, ?string $taxregid): ?object
+    public function GetTradeParty(string $name, ?string $ID, ?string $description): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
 
         $tradeParty = $this->CreateClassInstance('ram\TradePartyType');
-        $address = $this->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
-        $legalorg = $this->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $contact = $this->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailaddr);
-        $taxreg = $this->GetTaxRegistrationType($taxregtype, $taxregid);
 
         $this->TryCall($tradeParty, "addToID", $this->GetIdType($ID));
-        $this->TryCall($tradeParty, "addToGlobalID", $this->GetIdType($globalID, $globalIDType));
         $this->TryCall($tradeParty, "setName", $this->GetTextType($name));
         $this->TryCall($tradeParty, "setDescription", $this->GetTextType($description));
-        $this->TryCall($tradeParty, "setPostalTradeAddress", $address);
-        $this->TryCall($tradeParty, "setSpecifiedLegalOrganization", $legalorg);
-        $this->TryCall($tradeParty, "setDefinedTradeContact", $contact);
-        $this->TryCall($tradeParty, "addToSpecifiedTaxRegistration", $taxreg);
 
         return $tradeParty;
     }
@@ -585,9 +557,9 @@ class ZugferdObjectHelper
         }
 
         $contact = $this->CreateClassInstance('ram\TradeContactType', $contactpersonname);
-        $contactphone = $this->GetUniversalCommunicationType($contactphoneno, null);
-        $contactfax = $this->GetUniversalCommunicationType($contactfaxno, null);
-        $contactemail = $this->GetUniversalCommunicationType(null, $contactemailaddr);
+        $contactphone = $this->GetUniversalCommunicationType($contactphoneno, null, null);
+        $contactfax = $this->GetUniversalCommunicationType($contactfaxno, null, null);
+        $contactemail = $this->GetUniversalCommunicationType(null, $contactemailaddr, "SMTP");
 
         $this->TryCall($contact, "setPersonName", $this->GetTextType($contactpersonname));
         $this->TryCall($contact, "setDepartmentName", $this->GetTextType($contactdepartmentname));
@@ -606,9 +578,9 @@ class ZugferdObjectHelper
      * @param string $urischeme
      * @return object|null
      */
-    public function GetUniversalCommunicationType(?string $number, ?string $uriid, string $urischeme = "SMTP"): ?object
+    public function GetUniversalCommunicationType(?string $number, ?string $uriid, ?string $urischeme = "SMTP"): ?object
     {
-        if (self::IsNullOrEmpty($number)) {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
 
