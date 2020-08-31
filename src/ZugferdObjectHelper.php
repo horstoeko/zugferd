@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZUgferdProfiles;
+use horstoeko\zugferd\ZugferdProfiles;
 use MimeTyper\Repository\MimeDbRepository;
 
 class ZugferdObjectHelper
@@ -29,7 +29,7 @@ class ZugferdObjectHelper
     public function __construct(int $profile)
     {
         $this->profile = $profile;
-        $this->profiledef = ZUgferdProfiles::PROFILEDEF[$profile];
+        $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
     }
 
     /**

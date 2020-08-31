@@ -51,7 +51,7 @@ class ZugferdDocument
     public function __construct(int $profile)
     {
         $this->profile = $profile;
-        $this->profiledef = ZUgferdProfiles::PROFILEDEF[$profile];
+        $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
 
         $this->initSerialzer();
     }
@@ -111,7 +111,7 @@ class ZugferdDocument
             throw new \Exception('Coult not determaine the profile...');
         }
 
-        foreach (ZUgferdProfiles::PROFILEDEF as $profile => $profiledef) {
+        foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
             if ($typeelement[0] == $profiledef["contextparameter"]) {
                 return (new self($profile))->ReadContent($xmlcontent);
             }
