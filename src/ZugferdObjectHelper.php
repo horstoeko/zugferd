@@ -1147,7 +1147,7 @@ class ZugferdObjectHelper
         if (!$method) {
             return $this;
         }
-        if (!$value) {
+        if (is_null($value)) {
             return $this;
         }
         if (method_exists($instance, $method)) {
@@ -1169,7 +1169,7 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
-        if (!$value) {
+        if (is_null($value)) {
             return $this;
         }
         foreach ($methods as $method) {
@@ -1201,6 +1201,46 @@ class ZugferdObjectHelper
             return $instance->$method();
         }
         return null;
+    }
+
+    /**
+     * Try call methods in a form .object.method1.method2.method3
+     *
+     * @param [type] $instance
+     * @param string $methods
+     * @return void
+     */
+    public function TryCallByPath($instance, string $methods, $value)
+    {
+        $methods = explode(".", $methods);
+
+        foreach ($methods as $index => $method) {
+            if ($index == count($methods) - 1) {
+                $this->TryCall($instance, $method, $value);
+            } else {
+                $instance = $this->TryCallAndReturn($instance, $method, $value);
+            }
+        }
+    }
+
+    /**
+     * Try call methods in a form .object.method1.method2.method3
+     *
+     * @param object $instance
+     * @param string $methods
+     * @return mixed
+     */
+    public function TryCallByPathAndReturn($instance, string $methods)
+    {
+        $result = null;
+        $methods = explode(".", $methods);
+
+        foreach ($methods as $method) {
+            $result = $this->TryCallAndReturn($instance, $method);
+            $instance = $result;
+        }
+
+        return $result;
     }
 
     /**
