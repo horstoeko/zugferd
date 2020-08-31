@@ -7,6 +7,9 @@ use horstoeko\zugferd\ZugferdDocumentBasicWLProfile;
 use horstoeko\zugferd\ZugferdDocumentEn16931Profile;
 use horstoeko\zugferd\ZugferdDocumentExtendedProfile;
 
+/**
+ * Class representing the document profiles
+ */
 class ZugferdProfiles
 {
     const PROFILE_BASIC = 0;

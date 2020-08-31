@@ -7,7 +7,11 @@ use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use horstoeko\zugferd\ZugferdObjectHelper;
 
+/**
+ * Class representing the document basics
+ */
 class ZugferdDocument
 {
     /**
@@ -46,12 +50,20 @@ class ZugferdDocument
     protected $invoiceObject = null;
 
     /**
+     * Object Helper
+     *
+     * @var ZugferdObjectHelper
+     */
+    protected $objectHelper = null;
+
+    /**
      * Constructor
      */
     public function __construct(int $profile)
     {
         $this->profile = $profile;
         $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
+        $this->objectHelper = new ZugferdObjectHelper($profile);
 
         $this->initSerialzer();
     }
@@ -77,96 +89,6 @@ class ZugferdDocument
         });
 
         $this->serializer = $this->serializerBuilder->build();
-    }
-
-    /**
-     * Guess the profile type of a xml file
-     *
-     * @param string $xmlfilename
-     * @return ZugferdDocument
-     * @throws Exception
-     */
-    public static function ReadAndGuessFromFile(string $xmlfilename): ZugferdDocument
-    {
-        if (!file_exists($xmlfilename)) {
-            throw new \Exception("File {$xmlfilename} does not exist...");
-        }
-
-        return self::ReadAndGuessFromContent(file_get_contents($xmlfilename));
-    }
-
-    /**
-     * Guess the profile type of the readden xml document
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocument
-     * @throws Exception
-     */
-    public static function ReadAndGuessFromContent(string $xmlcontent): ZugferdDocument
-    {
-        $xmldocument = new \SimpleXMLElement($xmlcontent);
-        $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
-
-        if (!is_array($typeelement) || !isset($typeelement[0])) {
-            throw new \Exception('Coult not determaine the profile...');
-        }
-
-        foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
-            if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return (new self($profile))->ReadContent($xmlcontent);
-            }
-        }
-
-        throw new \Exception('Could not determine the profile...');
-    }
-
-    /**
-     * Read content of a zuferd/xrechnung xml from a string
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocument
-     */
-    public function ReadContent(string $xmlcontent): ZugferdDocument
-    {
-        $this->invoiceObject = $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\rsm\CrossIndustryInvoice', 'xml');
-        return $this;
-    }
-
-    /**
-     * Read content of a zuferd/xrechnung xml from a file
-     *
-     * @param string $xmlfilename
-     * @return ZugferdDocument
-     */
-    public function ReadFile(string $xmlfilename): ZugferdDocument
-    {
-        if (!file_exists($xmlfilename)) {
-            throw new \Exception("File {$xmlfilename} does not exist...");
-        }
-
-        return $this->ReadContent(file_get_contents($xmlfilename));
-    }
-
-    /**
-     * Write the content of a CrossIndustryInvoice object to a string
-     *
-     * @return string
-     */
-    public function GetContent(): string
-    {
-        return $this->serializer->serialize($this->invoiceObject, 'xml');
-    }
-
-    /**
-     * Write the content of a CrossIndustryInvoice object to a file
-     *
-     * @param string $xmlfilename
-     * @return ZugferdDocument
-     */
-    public function WriteFile(string $xmlfilename): ZugferdDocument
-    {
-        file_put_contents($xmlfilename, $this->GetContent());
-        return $this;
     }
 
     /**

@@ -5,6 +5,9 @@ namespace horstoeko\zugferd;
 use horstoeko\zugferd\ZugferdProfiles;
 use MimeTyper\Repository\MimeDbRepository;
 
+/**
+ * Class representing a collection of common helpers and class factories
+ */
 class ZugferdObjectHelper
 {
     /**
@@ -1111,6 +1114,22 @@ class ZugferdObjectHelper
         $this->TryCall($summation, "setTotalAllowanceChargeAmount", $this->GetAmountType($totalAllowanceChargeAmount));
 
         return $summation;
+    }
+
+    /**
+     * Create a datetime object
+     *
+     * @param string $dateTimeString
+     * @param string $format
+     * @throws \Exception
+     * @return \DateTime
+     */
+    public function ToDateTime(string $dateTimeString, string $format): \DateTime
+    {
+        if ($format == "102") {
+            return \DateTime::createFromFormat("Ymd", $dateTimeString);
+        }
+        throw new \Exception("Unknown format {$format}");
     }
 
     /**
