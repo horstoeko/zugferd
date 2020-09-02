@@ -976,6 +976,18 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Create summation class only
+     *
+     * @return object|null
+     */
+    public function GetTradeSettlementHeaderMonetarySummationTypeOnly(): ?object
+    {
+        $summation = $this->CreateClassInstance('ram\TradeSettlementHeaderMonetarySummationType');
+
+        return $summation;
+    }
+
+    /**
      * Get an instance of TradeAccountingAccountType
      *
      * @param string|null $id
@@ -1122,14 +1134,14 @@ class ZugferdObjectHelper
      * @param string $dateTimeString
      * @param string $format
      * @throws \Exception
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function ToDateTime(string $dateTimeString, string $format): \DateTime
+    public function ToDateTime(string $dateTimeString, string $format): ?\DateTime
     {
         if ($format == "102") {
             return \DateTime::createFromFormat("Ymd", $dateTimeString);
         }
-        throw new \Exception("Unknown format {$format}");
+        return null;
     }
 
     /**
