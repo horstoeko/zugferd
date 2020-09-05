@@ -1059,26 +1059,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
      * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentInvoicee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
