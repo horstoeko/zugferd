@@ -1325,6 +1325,195 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get the delivery terms
+     *
+     * @param string|null $code
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentDeliveryTerms(?string &$code): ZugferdDocumentReader
+    {
+        $code = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getApplicableTradeDeliveryTerms.setDeliveryTypeCode.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get Details of the associated confirmation of the order
+     *
+     * @param string $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentSellerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Details of the related order
+     *
+     * @param string $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentBuyerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Details of the related order
+     *
+     * @param string $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentContractReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get all additional referenced documents
+     *
+     * @param array|null $refdocs
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentAdditionalReferencedDocument(?array &$refdocs): ZugferdDocumentReader
+    {
+        $refdocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+        $refdocs = $this->convertToArray($refdocs, [
+            "IssuerAssignedID" => "getIssuerAssignedID.value",
+            "URIID" => "getURIID.value",
+            "LineID" => "getLineID.value",
+            "TypeCode" => "getTypeCode.value",
+            "ReferenceTypeCode" => "getReferenceTypeCode.value",
+            "FormattedIssueDateTime" => "getFormattedIssueDateTime.getDateTimeString.value",
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Get Details of a project reference
+     *
+     * @param string|null $id
+     * @param string|null $name
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentProcuringProject(?string &$id, ?string &$name): ZugferdDocumentReader
+    {
+        $id = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSpecifiedProcuringProject.getID.value", "");
+        $name = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSpecifiedProcuringProject.getName.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Details of the ultimate customer order
+     *
+     * @param array|null $refdocs
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentUltimateCustomerOrderReferencedDocument(?array $refdocs): ZugferdDocumentReader
+    {
+        //!! TODO
+        return $this;
+    }
+
+    /**
+     * Detailed information on the actual delivery
+     *
+     * @param \DateTime|null $date
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentSupplyChainEvent(?\DateTime &$date): ZugferdDocumentReader
+    {
+        $date = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime.getDateTimeString.getformat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on the associated shipping notification
+     *
+     * @param string|null $issuerassignedid
+     * @param string|null $lineid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getLineID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on the associated shipping notification
+     *
+     * @param string|null $issuerassignedid
+     * @param string|null $lineid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getLineID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on the associated delivery note
+     *
+     * @param string|null $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
      * Function to return a value from $invoiceObject by path
      *
      * @param string $methods

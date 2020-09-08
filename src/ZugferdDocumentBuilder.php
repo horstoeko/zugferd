@@ -1342,7 +1342,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Undocumented function
+     * Set Details of a project reference
      *
      * @param string $id
      * @param string $name
@@ -1356,7 +1356,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the associated contract
+     * Details of the ultimate customer order
      *
      * @param string $issuerassignedid
      * @param string|null $uriid
@@ -1422,13 +1422,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated delivery note
      *
      * @param string $issuerassignedid
-     * @param string|null $lineid
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
-        $deliverynoterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $deliverynoterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
         return $this;
     }
