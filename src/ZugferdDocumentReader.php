@@ -29,6 +29,20 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $paymentTermsPointer = 0;
 
     /**
+     * Internal pointer for the position
+     *
+     * @var integer
+     */
+    private $positionPointer = 0;
+
+    /**
+     * Internal pointer for the position note
+     *
+     * @var integer
+     */
+    private $positionNotePointer = 0;
+
+    /**
      * Guess the profile type of a xml file
      *
      * @param string $xmlfilename
@@ -1869,7 +1883,7 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->objectHelper->TryCallByPathAndReturn($paymentTerms, "getDueDateDateTime.getDateTimeString.getFormat")
         );
         $directDebitMandateID = $this->getInvoiceValueByPathFrom($paymentTerms, "getDirectDebitMandateID.value", "");
-       
+
         return $this;
     }
 
@@ -1898,6 +1912,182 @@ class ZugferdDocumentReader extends ZugferdDocument
         $basisPeriodMeasureUnitCode = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getBasisPeriodMeasure.getUnitCode", "");
         $basisAmount = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getBasisAmount.value", 0.0);
         $actualDiscountAmount = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getActualDiscountAmount.value", 0.0);
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function FirstDocumentPosition(): bool
+    {
+        $this->positionPointer = 0;
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        return isset($tradeLineItem[$this->positionPointer]);
+    }
+
+    /**
+     * Seek to the next document position
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function NextDocumentPosition(): bool
+    {
+        $this->positionPointer++;
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        return isset($tradeLineItem[$this->positionPointer]);
+    }
+
+    /**
+     * Get general information of the current position
+     *
+     * @param string|null $lineid
+     * @param string|null $lineStatusCode
+     * @param string|null $lineStatusReasonCode
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentPositionGenerals(?string &$lineid, ?string &$lineStatusCode, ?string &$lineStatusReasonCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineID", "");
+        $lineStatusCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusCode", "");
+        $lineStatusReasonCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusReasonCode", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function FirstDocumentPositionNote(): bool
+    {
+        $this->positionNotePointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemNote = $this->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getIncludedNote", []));
+
+        return isset($tradeLineItemNote[$this->positionNotePointer]);
+    }
+
+    /**
+     * Seek to the next document position
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function NextDocumentPositionNote(): bool
+    {
+        $this->positionNotePointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemNote = $this->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getIncludedNote", []));
+
+        return isset($tradeLineItemNote[$this->positionNotePointer]);
+    }
+
+    /**
+     * Get position note of the current position
+     *
+     * @param string|null $content
+     * @param string|null $contentCode
+     * @param string|null $subjectCode
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentPositionNote(?string &$content, ?string &$contentCode, ?string &$subjectCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+        $tradeLineItemNote = $this->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getIncludedNote", []));
+        $tradeLineItemNote = $tradeLineItemNote[$this->positionNotePointer];
+
+        $content = $this->getInvoiceValueByPathFrom($tradeLineItemNote, "getContent.value", "");
+        $contentCode = $this->getInvoiceValueByPathFrom($tradeLineItemNote, "getContentCode.value", "");
+        $subjectCode = $this->getInvoiceValueByPathFrom($tradeLineItemNote, "getSubjectCode.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get product details of the current position
+     *
+     * @param string|null $name
+     * @param string|null $description
+     * @param string|null $sellerAssignedID
+     * @param string|null $buyerAssignedID
+     * @param string|null $globalIDType
+     * @param string|null $globalID
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentPositionProductDetails(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?string &$globalIDType, ?string &$globalID): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $name = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getName.value", "");
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDescription.value", "");
+        $sellerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getSellerAssignedID.value", "");
+        $buyerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getBuyerAssignedID.value", "");
+        $globalIDType = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.getSchemeID", "");
+        $globalID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Details of the related order of the current position
+     *
+     * @param string|null $issuerassignedid
+     * @param string|null $lineid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentPositionBuyerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getLineID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.format", null)
+        );
+
+        return $this;
+    }
+
+    /**
+     * Details of the related contract of the current position
+     *
+     * @param string|null $issuerassignedid
+     * @param string|null $lineid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentPositionContractReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getLineID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.format", null)
+        );
 
         return $this;
     }
