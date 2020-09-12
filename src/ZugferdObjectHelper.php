@@ -1131,13 +1131,16 @@ class ZugferdObjectHelper
     /**
      * Create a datetime object
      *
-     * @param string $dateTimeString
-     * @param string $format
+     * @param string|null $dateTimeString
+     * @param string|null $format
      * @throws \Exception
      * @return \DateTime|null
      */
-    public function ToDateTime(string $dateTimeString, string $format): ?\DateTime
+    public function ToDateTime(?string $dateTimeString, ?string $format): ?\DateTime
     {
+        if (self::IsNullOrEmpty($dateTimeString) || self::IsNullOrEmpty($format)) {
+            return null;
+        }
         if ($format == "102") {
             return \DateTime::createFromFormat("Ymd", $dateTimeString);
         }

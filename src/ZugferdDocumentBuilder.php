@@ -119,7 +119,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param \DateTime|null $effectiveSpecifiedPeriod
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, \DateTime $duedate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
+    public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setID", $this->objectHelper->GetIdType($documentno));
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setName", $this->objectHelper->GetTextType($documentname));
@@ -129,8 +129,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setEffectiveSpecifiedPeriod", $this->objectHelper->GetSpecifiedPeriodType(null, null, $effectiveSpecifiedPeriod, null));
 
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceCurrencyCode", $this->objectHelper->GetIdType($invoiceCurrency));
-
-        $this->AddDocumentPaymentTerms(null, $duedate);
 
         return $this;
     }
@@ -1568,7 +1566,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $directDebitMandateID
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPaymentTerms(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
+    public function AddDocumentPaymentTerm(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
     {
         $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
         $this->objectHelper->TryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradePaymentTerms", "setSpecifiedTradePaymentTerms"], $paymentTerms);
