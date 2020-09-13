@@ -1534,7 +1534,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $reason
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentTradeAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode, string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    public function AddDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode, string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
@@ -1693,16 +1693,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailangaben zu einer zusätzlichen Dokumentenreferenz auf Positionsebene
      *
      * @param string $issuerassignedid
-     * @param string|null $typecode
+     * @param string $typecode
      * @param string|null $uriid
      * @param string|null $lineid
-     * @param [type] $name
+     * @param string|null $name
      * @param string|null $reftypecode
      * @param \DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPositionAdditionalReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?string $uriid = null, ?string $lineid = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function AddDocumentPositionAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, ?string $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
@@ -1761,7 +1761,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $reasonCode
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPositionAllowanceCharge(float $actualAmount, ?bool $isCharge = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reason = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null): ZugferdDocumentBuilder
+    public function AddDocumentPositionGrossPriceAllowanceCharge(float $actualAmount, ?bool $isCharge = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reason = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null): ZugferdDocumentBuilder
     {
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $grossPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getGrossPriceProductTradePrice");
@@ -1771,8 +1771,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the gross price of the item
-     * Detailinformationen zum Bruttopreis des Artikels
+     * Detailed information on the net price of the item
+     * Detailinformationen zum Nettopreis des Artikels
      *
      * @param float $amount
      * @param float|null $basisQuantity
@@ -1936,35 +1936,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $name
      * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
      * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentPositionUltimateShipTo(string $name, ?string $id = null, ?string $description = null, ?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null, ?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null, ?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null, ?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function SetDocumentPositionUltimateShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($positiondelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
         return $this;
     }
+
     /**
      * Add a global id for the Ship-to Trade Party
      *
@@ -2155,19 +2137,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param float $actualAmount
      * @param boolean $isCharge
-     * @param string $taxTypeCode
-     * @param string $taxCategoryCode
-     * @param float $rateApplicablePercent
-     * @param float|null $sequence
      * @param float|null $calculationPercent
      * @param float|null $basisAmount
-     * @param float|null $basisQuantity
-     * @param string|null $basisQuantityUnitCode
      * @param string|null $reasonCode
      * @param string|null $reason
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPositionTradeAllowanceCharge(float $actualAmount, bool $isCharge, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    public function AddDocumentPositionAllowanceCharge(float $actualAmount, bool $isCharge, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $allowanceCharge = $this->objectHelper->GetTradeAllowanceChargeType($actualAmount, $isCharge, null, null, null, null, $calculationPercent, $basisAmount, null, null, $reasonCode, $reason);
