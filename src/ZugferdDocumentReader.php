@@ -8,25 +8,60 @@ namespace horstoeko\zugferd;
 class ZugferdDocumentReader extends ZugferdDocument
 {
     /**
-     * Internal pointer for Allowance charges
+     * Undocumented variable
      *
      * @var integer
      */
-    private $allowanceChargePointer = 0;
+    private $documentAddRefDocPointer = 0;
 
     /**
-     * Internal pointer for logistic service charges
+     * Undocumented variable
      *
      * @var integer
      */
-    private $serviceChargePointer = 0;
+    private $documentUltimateCustomerOrderReferencedDocumentPointer = 0;
 
     /**
-     * Internal pointer for payment terms
+     * Internal pointer for documents allowance charges
      *
      * @var integer
      */
-    private $paymentTermsPointer = 0;
+    private $documentAllowanceChargePointer = 0;
+
+    /**
+     * Internal pointer for documents logistic service charges
+     *
+     * @var integer
+     */
+    private $documentServiceChargePointer = 0;
+
+    /**
+     * Internal pointer for documents payment terms
+     *
+     * @var integer
+     */
+    private $documentPaymentTermsPointer = 0;
+
+    /**
+     * Internal pointer for document payment means
+     *
+     * @var integer
+     */
+    private $documentPaymentMeansPointer = 0;
+
+    /**
+     * Internal pointer for document logistic service charges
+     *
+     * @var integer
+     */
+    private $documentLogisticChargePointer = 0;
+
+    /**
+     * Internal pointer for the document taxes
+     *
+     * @var integer
+     */
+    private $documentTaxPointer = 0;
 
     /**
      * Internal pointer for the position
@@ -1458,6 +1493,63 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get first additional referenced document for the document
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function FirstDocumentAdditionalReferencedDocument(): bool
+    {
+        $this->documentAddRefDocPointer = 0;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+        return isset($addRefDoc[$this->documentAddRefDocPointer]);
+    }
+
+    /**
+     * Get next additional referenced document for the document
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function NextDocumentAdditionalReferencedDocument(): bool
+    {
+        $this->documentAddRefDocPointer++;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+        return isset($addRefDoc[$this->documentAddRefDocPointer]);
+    }
+
+    /**
+     * Documents justifying the invoice
+     * Rechnungsbegründende Unterlagen
+     *
+     * @param string|null $issuerassignedid
+     * @param string|null $typecode
+     * @param string|null $uriid
+     * @param array|null $name
+     * @param string|null $reftypecode
+     * @param \DateTime|null $issueddate
+     * @param string|null $binarydatafilename
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid = null, ?array &$name = null, ?string &$reftypecode = null, ?\DateTime &$issueddate = null, ?string &$binarydatafilename = null): ZugferdDocumentReader
+    {
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+        $addRefDoc = $addRefDoc[$this->documentAddRefDocPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $typecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
+        $uriid = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
+        $name = $this->convertToArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName", []), ["value"]);
+        $reftypecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
      * Get all additional referenced documents
      *
      * @param array|null $refdocs
@@ -1489,6 +1581,53 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $id = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSpecifiedProcuringProject.getID.value", "");
         $name = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSpecifiedProcuringProject.getName.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get first additional referenced document for the document
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function FirstDocumentUltimateCustomerOrderReferencedDocument(): bool
+    {
+        $this->documentUltimateCustomerOrderReferencedDocumentPointer = 0;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+        return isset($addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer]);
+    }
+
+    /**
+     * Get next additional referenced document for the document
+     * Returns true if the first position is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function NextDocumentUltimateCustomerOrderReferencedDocument(): bool
+    {
+        $this->documentUltimateCustomerOrderReferencedDocumentPointer++;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+        return isset($addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer]);
+    }
+
+    /**
+     * Details of the ultimate customer order
+     *
+     * @param string|null $issuerassignedid
+     * @param \DateTime|null $issueddate
+     * @return ZugferdDocumentReader
+     */
+    public function GetDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+        $addRefDoc = $addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $issueddate = $this->objectHelper->ToDateTime(
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
 
         return $this;
     }
@@ -1580,57 +1719,122 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get available payment means
+     * Seek to the first payment means of the document
      *
-     * @param array|null $paymentMeans
+     * @return boolean
+     */
+    public function FirstGetDocumentPaymentMeans(): bool
+    {
+        $this->documentPaymentMeansPointer = 0;
+        $paymentMeans = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
+        return isset($paymentMeans[$this->documentPaymentMeansPointer]);
+    }
+
+    /**
+     * Seek to the next payment means of the document
+     *
+     * @return boolean
+     */
+    public function NextGetDocumentPaymentMeans(): bool
+    {
+        $this->documentPaymentMeansPointer++;
+        $paymentMeans = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
+        return isset($paymentMeans[$this->documentPaymentMeansPointer]);
+    }
+
+    /**
+     * Get current payment means
+     *
+     * @param string|null $typecode
+     * @param string|null $information
+     * @param string|null $cardType
+     * @param string|null $cardId
+     * @param string|null $cardHolderName
+     * @param string|null $buyerIban
+     * @param string|null $payeeIban
+     * @param string|null $payeeAccountName
+     * @param string|null $payeePropId
+     * @param string|null $payeeBic
      * @return ZugferdDocumentReader
      */
-    public function GetDocumentPaymentMeans(?array &$paymentMeans): ZugferdDocumentReader
+    public function GetDocumentPaymentMeans(?string &$typecode, ?string &$information, ?string &$cardType, ?string &$cardId, ?string &$cardHolderName, ?string &$buyerIban, ?string &$payeeIban, ?string &$payeeAccountName, ?string &$payeePropId, ?string &$payeeBic): ZugferdDocumentReader
     {
-        $paymentMeans = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []);
-        $paymentMeans = $this->convertToArray($paymentMeans, [
-            "code" => ["getTypeCode.value", ""],
-            "information" => ["getInformation.value", ""],
-            "financialcardtype" => ["getApplicableTradeSettlementFinancialCard.getID.getSchemeID", ""],
-            "financialcardid" => ["getApplicableTradeSettlementFinancialCard.getID.value", ""],
-            "financialcardholder" => ["getApplicableTradeSettlementFinancialCard.getCardholderName.value", ""],
-            "buyeriban" => ["getPayerPartyDebtorFinancialAccount.getIBANID.value", ""],
-            "payeeiban" => ["getPayeePartyCreditorFinancialAccount.getIBANID.value", ""],
-            "payeeaccountname" => ["getPayeePartyCreditorFinancialAccount.getAccountName.value", ""],
-            "payeeaccountpropid" => ["getPayeePartyCreditorFinancialAccount.getProprietaryID.value", ""],
-            "payeefinancialinstitute" => ["getPayeeSpecifiedCreditorFinancialInstitution.getBICID.value", ""],
-        ]);
+        $paymentMeans = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
+        $paymentMeans = $paymentMeans[$this->documentPaymentMeansPointer];
+
+        $typecode = $this->getInvoiceValueByPathFrom($paymentMeans, "getTypeCode.value", "");
+        $information = $this->getInvoiceValueByPathFrom($paymentMeans, "getInformation.value", "");
+        $cardType = $this->getInvoiceValueByPathFrom($paymentMeans, "getApplicableTradeSettlementFinancialCard.getID.getSchemeID", "");
+        $cardId = $this->getInvoiceValueByPathFrom($paymentMeans, "getApplicableTradeSettlementFinancialCard.getID.value", "");
+        $cardHolderName = $this->getInvoiceValueByPathFrom($paymentMeans, "getApplicableTradeSettlementFinancialCard.getCardholderName.value", "");
+        $buyerIban = $this->getInvoiceValueByPathFrom($paymentMeans, "getPayerPartyDebtorFinancialAccount.getIBANID.value", "");
+        $payeeIban = $this->getInvoiceValueByPathFrom($paymentMeans, "getPayeePartyCreditorFinancialAccount.getIBANID.value", "");
+        $payeeAccountName = $this->getInvoiceValueByPathFrom($paymentMeans, "getPayeePartyCreditorFinancialAccount.getAccountName.value", "");
+        $payeePropId = $this->getInvoiceValueByPathFrom($paymentMeans, "getPayeePartyCreditorFinancialAccount.getProprietaryID.value", "");
+        $payeeBic = $this->getInvoiceValueByPathFrom($paymentMeans, "getPayeeSpecifiedCreditorFinancialInstitution.getBICID.value", "");
 
         return $this;
     }
 
     /**
-     * Get taxes at document level
+     * Seek to the first document tax
      *
-     * @param array|null $taxes
+     * @return boolean
+     */
+    public function FirstDocumentTax(): bool
+    {
+        $this->documentTaxPointer = 0;
+        $taxes = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
+        return isset($taxes[$this->documentTaxPointer]);
+    }
+
+    /**
+     * Seek to the next document tax
+     *
+     * @return boolean
+     */
+    public function NextDocumentTax(): bool
+    {
+        $this->documentTaxPointer++;
+        $taxes = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
+        return isset($taxes[$this->documentTaxPointer]);
+    }
+
+    /**
+     * Get current tax
+     *
+     * @param string|null $categoryCode
+     * @param string|null $typeCode
+     * @param float|null $basisAmount
+     * @param float|null $calculatedAmount
+     * @param float|null $rateApplicablePercent
+     * @param string|null $exemptionReason
+     * @param string|null $exemptionReasonCode
+     * @param float|null $lineTotalBasisAmount
+     * @param float|null $allowanceChargeBasisAmount
+     * @param \DateTime|null $taxPointDate
+     * @param string|null $dueDateTypeCode
      * @return ZugferdDocumentReader
      */
-    public function GetDocumentTaxes(?array &$taxes): ZugferdDocumentReader
+    public function GetDocumentTax(?string &$categoryCode, ?string &$typeCode, ?float &$basisAmount, ?float &$calculatedAmount, ?float &$rateApplicablePercent, ?string &$exemptionReason, ?string &$exemptionReasonCode, ?float &$lineTotalBasisAmount, ?float &$allowanceChargeBasisAmount, ?\DateTime &$taxPointDate, ?string &$dueDateTypeCode): ZugferdDocumentReader
     {
-        $taxes = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []);
-        $taxes = $this->convertToArray($taxes, [
-            "calculatedamount" => ["getCalculatedAmount.value", 0.0],
-            "typecode" => ["getTypeCode.value", ""],
-            "exemptionreason" => ["getExemptionReason.value", ""],
-            "basisamount" => ["getBasisAmount.value", 0.0],
-            "linetotalbasisamount" => ["getLineTotalBasisAmount.value", 0.0],
-            "allowancechargebasisamount" => ["getAllowanceChargeBasisAmount.value", 0.0],
-            "categorycode" => ["getCategoryCode.value", ""],
-            "exemptionreasoncode" => ["getExemptionReasonCode.value", ""],
-            "taxpointdate" => function ($item) {
-                return $this->objectHelper->ToDateTime(
-                    $this->objectHelper->TryCallByPathAndReturn($item, "getTaxPointDate.getDateString.value"),
-                    $this->objectHelper->TryCallByPathAndReturn($item, "getTaxPointDate.getDateString.getFormat")
-                );
-            },
-            "duedatetypecode" => ["getDueDateTypeCode.value", ""],
-            "rateapplicablepercent" => ["getRateApplicablePercent.value", 0.0],
-        ]);
+        $taxes = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
+        $taxes = $taxes[$this->documentTaxPointer];
+
+        $categoryCode = $this->getInvoiceValueByPathFrom($taxes, "getCategoryCode.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($taxes, "getTypeCode.value", "");
+        $basisAmount = $this->getInvoiceValueByPathFrom($taxes, "getBasisAmount.value", 0.0);
+        $calculatedAmount = $this->getInvoiceValueByPathFrom($taxes, "getCalculatedAmount.value", 0.0);
+        $rateApplicablePercent = $this->getInvoiceValueByPathFrom($taxes, "getRateApplicablePercent.value", 0.0);
+        $exemptionReason = $this->getInvoiceValueByPathFrom($taxes, "getExemptionReason.value", "");
+        $exemptionReasonCode = $this->getInvoiceValueByPathFrom($taxes, "getExemptionReasonCode.value", "");
+        $lineTotalBasisAmount = $this->getInvoiceValueByPathFrom($taxes, "getLineTotalBasisAmount.value", 0.0);
+        $allowanceChargeBasisAmount = $this->getInvoiceValueByPathFrom($taxes, "getAllowanceChargeBasisAmount.value", 0.0);
+        $taxPointDate = $this->objectHelper->ToDateTime(
+            $this->objectHelper->TryCallByPathAndReturn($taxes, "getTaxPointDate.getDateString.value"),
+            $this->objectHelper->TryCallByPathAndReturn($taxes, "getTaxPointDate.getDateString.getFormat")
+        );
+        $dueDateTypeCode = $this->getInvoiceValueByPathFrom($taxes, "getDueDateTypeCode.value", "");
 
         return $this;
     }
@@ -1697,29 +1901,29 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first documents allowance charge position
+     * Seek to the first documents allowance charge
      * Returns true if the first position is available, otherwise false
      *
      * @return boolean
      */
     public function FirstDocumentAllowanceCharge(): bool
     {
-        $this->allowanceChargePointer = 0;
+        $this->documentAllowanceChargePointer = 0;
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
-        return isset($allowanceCharge[$this->allowanceChargePointer]);
+        return isset($allowanceCharge[$this->documentAllowanceChargePointer]);
     }
 
     /**
-     * Seek to the next documents allowance charge position
+     * Seek to the next documents allowance charge
      * Returns true if a other position is available, otherwise false
      *
      * @return boolean
      */
     public function NextDocumentAllowanceCharge(): bool
     {
-        $this->allowanceChargePointer++;
+        $this->documentAllowanceChargePointer++;
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
-        return isset($allowanceCharge[$this->allowanceChargePointer]);
+        return isset($allowanceCharge[$this->documentAllowanceChargePointer]);
     }
 
     /**
@@ -1742,7 +1946,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function GetDocumentAllowanceCharge(?float &$actualAmount, ?bool &$isCharge, ?string &$taxCategoryCode, ?string &$taxTypeCode, ?float &$rateApplicablePercent, ?float &$sequence, ?float &$calculationPercent, ?float &$basisAmount, ?float &$basisQuantity, ?string &$basisQuantityUnitCode, ?string &$reasonCode, ?string &$reason): ZugferdDocumentReader
     {
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
-        $allowanceCharge = $allowanceCharge[$this->allowanceChargePointer];
+        $allowanceCharge = $allowanceCharge[$this->documentAllowanceChargePointer];
 
         $actualAmount = $this->getInvoiceValueByPathFrom($allowanceCharge, "getActualAmount.value", 0.0);
         $isCharge = $this->getInvoiceValueByPathFrom($allowanceCharge, "getChargeIndicator.getIndicator", false);
@@ -1761,39 +1965,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get logistic service charges
-     *
-     * @param array|null $serviceCharges
-     * @return ZugferdDocumentReader
-     */
-    public function GetDocumentLogisticsServiceCharges(?array &$serviceCharges): ZugferdDocumentReader
-    {
-        $serviceCharges = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
-        $serviceCharges = $this->convertToArray($serviceCharges, [
-            "description" => ["getDescription.value", ""],
-            "appliedamount" => ["getAppliedAmount.value", 0.0],
-            "taxcalculatedamount" => ["getAppliedTradeTax.getCalculatedAmount.value", 0.0],
-            "taxtypecode" => ["getAppliedTradeTax.getTypeCode.value", ""],
-            "taxexemptionreason" => ["getAppliedTradeTax.getExemptionReason.value", ""],
-            "taxbasisamount" => ["getAppliedTradeTax.getBasisAmount.value", 0.0],
-            "taxlinetotalbasisamount" => ["getAppliedTradeTax.getLineTotalBasisAmount.value", 0.0],
-            "taxallowancechargebasisamount" => ["getAppliedTradeTax.getAllowanceChargeBasisAmount.value", 0.0],
-            "taxcategorycode" => ["getAppliedTradeTax.getCategoryCode.value", ""],
-            "taxexemptionreasoncode" => ["getAppliedTradeTax.getExemptionReasonCode.value", ""],
-            "taxpointdate" => function ($item) {
-                return $this->objectHelper->ToDateTime(
-                    $this->objectHelper->TryCallByPathAndReturn($item, "getAppliedTradeTax.getTaxPointDate.getDateString.value"),
-                    $this->objectHelper->TryCallByPathAndReturn($item, "getAppliedTradeTax.getTaxPointDate.getDateString.getFormat")
-                );
-            },
-            "taxduedatetypecode" => ["getAppliedTradeTax.getDueDateTypeCode.value", ""],
-            "taxrateapplicablepercent" => ["getAppliedTradeTax.getRateApplicablePercent.value", 0.0],
-        ]);
-
-        return $this;
-    }
-
-    /**
      * Seek to the first documents service charge position
      * Returns true if the first position is available, otherwise false
      *
@@ -1801,10 +1972,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function FirstDocumentLogisticsServiceCharge(): bool
     {
-        $this->serviceChargePointer = 0;
+        $this->documentServiceChargePointer = 0;
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
-        return isset($serviceCharge[$this->serviceChargePointer]);
+        return isset($serviceCharge[$this->documentServiceChargePointer]);
     }
 
     /**
@@ -1815,10 +1986,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function NextDocumentLogisticsServiceCharge(): bool
     {
-        $this->serviceChargePointer++;
+        $this->documentServiceChargePointer++;
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
-        return isset($serviceCharge[$this->serviceChargePointer]);
+        return isset($serviceCharge[$this->documentServiceChargePointer]);
     }
 
     /**
@@ -1834,7 +2005,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function GetDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategpryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
     {
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
-        $serviceCharge = $serviceCharge[$this->serviceChargePointer];
+        $serviceCharge = $serviceCharge[$this->documentServiceChargePointer];
 
         $description = $this->getInvoiceValueByPathFrom($serviceCharge, "getDescription.value", "");
         $appliedAmount = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedAmount.value", 0.0);
@@ -1874,9 +2045,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function FirstDocumentPaymentTerms(): bool
     {
-        $this->paymentTermsPointer = 0;
+        $this->documentPaymentTermsPointer = 0;
         $paymentTerms = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
-        return isset($paymentTerms[$this->paymentTermsPointer]);
+        return isset($paymentTerms[$this->documentPaymentTermsPointer]);
     }
 
     /**
@@ -1887,9 +2058,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function NextDocumentPaymentTerms(): bool
     {
-        $this->paymentTermsPointer++;
+        $this->documentPaymentTermsPointer++;
         $paymentTerms = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
-        return isset($paymentTerms[$this->paymentTermsPointer]);
+        return isset($paymentTerms[$this->documentPaymentTermsPointer]);
     }
 
     /**
@@ -1903,7 +2074,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function GetDocumentPaymentTerm(?string &$description, ?\DateTime &$dueDate, ?string &$directDebitMandateID): ZugferdDocumentReader
     {
         $paymentTerms = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
-        $paymentTerms = $paymentTerms[$this->paymentTermsPointer];
+        $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
 
         $description = $this->getInvoiceValueByPathFrom($paymentTerms, "getDescription.value", "");
         $dueDate = $this->objectHelper->ToDateTime(
@@ -1929,7 +2100,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function GetDiscountTermsFromPaymentTerm(?float &$calculationPercent, ?\DateTime &$basisDateTime, ?float &$basisPeriodMeasureValue, ?string &$basisPeriodMeasureUnitCode, ?float &$basisAmount, ?float &$actualDiscountAmount): ZugferdDocumentReader
     {
         $paymentTerms = $this->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
-        $paymentTerms = $paymentTerms[$this->paymentTermsPointer];
+        $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
 
         $calculationPercent = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getCalculationPercent", 0.0);
         $basisDateTime = $this->objectHelper->ToDateTime(
@@ -2167,7 +2338,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
-        
+
         $addRefDoc = $this->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getAdditionalReferencedDocument", []));
         $addRefDoc = $addRefDoc[$this->positionAddRefDocPointer];
 
@@ -2368,8 +2539,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
         $date = $this->objectHelper->ToDateTime(
-            $this->getInvoiceValueByPathFrom($tradeLineItem,"getSpecifiedLineTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime.getDateTimeString.value", ""),
-            $this->getInvoiceValueByPathFrom($tradeLineItem,"getSpecifiedLineTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime,getDateTimeString.getFormat", "")
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime,getDateTimeString.getFormat", "")
         );
 
         return $this;
@@ -2654,7 +2825,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         return $this;
     }
 
-    //TODO: TradeAccountingAccount
+    //TODO: Seeker for documents position TradeAccountingAccount
 
     /**
      * Function to return a value from $invoiceObject by path

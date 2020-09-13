@@ -1306,21 +1306,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the associated contract
+     * Documents justifying the invoice
+     * Rechnungsbegründende Unterlagen
      *
      * @param string $issuerassignedid
-     * @param string|null $typecode
+     * @param string $typecode
      * @param string|null $uriid
-     * @param string|null $lineid
      * @param string|array|null $name
      * @param string|null $reftypecode
      * @param \DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function AddDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
-        $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
+        $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, null, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
         return $this;
     }
@@ -1445,9 +1445,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $payeeFinInstitute
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPaymentMeans(string $code, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function AddDocumentPaymentMeans(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
-        $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType($code, $information);
+        $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType($typecode, $information);
         $financialCard = $this->objectHelper->GetTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
         $buyerfinancialaccount = $this->objectHelper->GetDebtorFinancialAccountType($buyerIban);
         $payeefinancialaccount = $this->objectHelper->GetCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);

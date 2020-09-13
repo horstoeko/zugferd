@@ -762,7 +762,7 @@ class ZugferdObjectHelper
      *
      * @return objeect|null
      */
-    public function GetTradeSettlementPaymentMeansType(string $code, ?string $information): ?object
+    public function GetTradeSettlementPaymentMeansType(string $typecode, ?string $information): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -770,7 +770,7 @@ class ZugferdObjectHelper
 
         $paymentMeans = $this->CreateClassInstance('ram\TradeSettlementPaymentMeansType');
 
-        $this->TryCall($paymentMeans, "setTypeCode", $this->GetCodeType($code));
+        $this->TryCall($paymentMeans, "setTypeCode", $this->GetCodeType($typecode));
         $this->TryCall($paymentMeans, "setInformation", $this->GetTextType($information));
 
         return $paymentMeans;
