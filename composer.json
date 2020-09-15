@@ -1,6 +1,6 @@
 {
     "name": "horstoeko/zugferd",
-    "keywords": ["zugferd","xrechnung","electronic","invoice"], 
+    "keywords": ["zugferd","xrechnung","electronic","invoice"],
     "description": "A library for creating and reading european electronic invoices",
     "homepage": "https://github.com/horstoeko/zugferd",
     "type": "package",
@@ -29,6 +29,12 @@
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
         "goetas-webservices/xsd2php": "^0.3"
     },
+    "scripts": {
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit -c ./test/phpunit.xml"
+        ]
+    },
     "minimum-stability": "dev",
-    "prefer-stable": true    
+    "prefer-stable": true
 }
