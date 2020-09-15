@@ -4,5 +4,8 @@
         <testsuite name="zugferd-general">
             <file>./GeneralTests.php</file>
         </testsuite>
+        <testsuite name="zugferd-reader">
+            <file>./ReaderEn16931Tests.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>
