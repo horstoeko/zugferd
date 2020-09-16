@@ -1,12 +1,4 @@
 horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType:
-    xml_namespaces:
-        a: urn:un:unece:uncefact:data:standard:QualifiedDataType:100
-        rsm: urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100
-        qdt: urn:un:unece:uncefact:data:standard:QualifiedDataType:10
-        ram: urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100
-        xs: http://www.w3.org/2001/XMLSchema
-        udt: urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100
-        xsi: http://www.w3.org/2001/XMLSchema-instance
     properties:
         exchangedDocumentContext:
             expose: true
