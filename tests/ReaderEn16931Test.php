@@ -31,5 +31,39 @@ class ReaderEn16931Tests extends TestCase
         $this->assertEquals('380', $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180305'))->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertNull($duedate);
+        $this->assertEquals("EUR", $invoiceCurrency);
+        $this->assertEquals("", $taxCurrency);
+        $this->assertEquals("", $documentname);
+        $this->assertEquals("", $documentlanguage);
+        $this->assertNull($effectiveSpecifiedPeriod);
+    }
+
+    public function testGeneralPaymentInformation()
+    {
+        $this->document->GetDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
+        $this->assertEquals("", $creditorReferenceID);
+        $this->assertEquals("", $paymentReference);
+    }
+
+    public function testIsCopy()
+    {
+        $this->document->GetIsDocumentCopy($iscopy);
+        $this->assertFalse($iscopy);
+    }
+
+    public function testIsTestDocument()
+    {
+        $this->document->GetIsTestDocument($istest);
+        $this->assertFalse($istest);
+    }
+
+    public function testDocumentSummation()
+    {
+        $this->document->GetDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
+        $this->assertEquals(529.87, $grandTotalAmount);
+        $this->assertEquals(529.87, $duePayableAmount);
+        $this->assertEquals(473.00, $lineTotalAmount);
+        $this->assertEquals(0.00, $chargeTotalAmount);
     }
 }
