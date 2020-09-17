@@ -28,13 +28,5 @@
     "require-dev": {
         "phpunit/phpunit": "^9",
         "goetas-webservices/xsd2php": "^0.3"
-    },
-    "scripts": {
-        "test": [
-            "Composer\\Config::disableProcessTimeout",
-            "phpunit -c ./test/phpunit.xml"
-        ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
