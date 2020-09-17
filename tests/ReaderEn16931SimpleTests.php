@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class ReaderEn16931Tests extends TestCase
+class ReaderEn16931SimpleTests extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
