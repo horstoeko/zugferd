@@ -316,8 +316,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @return ZugferdDocumentReader
      */
-    public function GetDocumentNotes(array &$notes): ZugferdDocumentReader
+    public function GetDocumentNotes(?array &$notes): ZugferdDocumentReader
     {
+        $notes = $this->getInvoiceValueByPath("getExchangedDocument.getIncludedNote", []);
+        $notes = $this->convertToArray($notes, [
+            "contentcode" => ["getContentCode.value", ""],
+            "subjectcode" => ["getSubjectCode.value", ""],
+            "content" => ["getContent.value", ""],
+        ]);
+
         return $this;
     }
 
