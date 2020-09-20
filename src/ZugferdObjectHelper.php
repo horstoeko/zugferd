@@ -47,6 +47,9 @@ class ZugferdObjectHelper
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
+        if (self::IsNullOrEmpty($value)) {
+            return null;
+        }
 
         $idType = $this->CreateClassInstance('udt\IDType', $value);
 
@@ -440,7 +443,8 @@ class ZugferdObjectHelper
                 $this->TryCall(
                     $refdoctype,
                     'setAttachmentBinaryObject',
-                    $this->GetBinaryObjectType($content, $mimetyper->findType($pathParts["extension"]), $pathParts["basename"]));
+                    $this->GetBinaryObjectType($content, $mimetyper->findType($pathParts["extension"]), $pathParts["basename"])
+                );
             }
         }
 
