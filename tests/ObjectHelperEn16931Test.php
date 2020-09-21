@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdObjectHelper;
 
-class ObjectHelperEn16931AllowanceChargeTest extends TestCase
+class ObjectHelperEn16931Test extends TestCase
 {
     /**
      * @var ZugferdObjectHelper
