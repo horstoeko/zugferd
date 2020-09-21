@@ -121,6 +121,9 @@ class ZugferdObjectHelper
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
+        if (self::IsNullOrEmpty($content)) {
+            return null;
+        }
 
         $note = $this->CreateClassInstance('ram\NoteType');
 
@@ -209,6 +212,9 @@ class ZugferdObjectHelper
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
+        if (self::IsNullOrEmpty($value)) {
+            return null;
+        }
 
         $amount = $this->CreateClassInstance('udt\AmountType');
 
@@ -249,6 +255,9 @@ class ZugferdObjectHelper
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
         }
+        if (self::IsNullOrEmpty($value)) {
+            return null;
+        }
 
         $amount = $this->CreateClassInstance('udt\QuantityType');
 
@@ -268,6 +277,9 @@ class ZugferdObjectHelper
     public function GetMeasureType(?float $value = 0, ?string $unitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+        if (self::IsNullOrEmpty($value)) {
             return null;
         }
 
