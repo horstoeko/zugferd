@@ -400,9 +400,9 @@ class ZugferdObjectHelper
      * @param string $filename
      * @return object|null
      */
-    public function GetBinaryObjectType(string $binarydata, string $mimetype, string $filename): ?object
+    public function GetBinaryObjectType(?string $binarydata, ?string $mimetype, ?string $filename): ?object
     {
-        if (self::IsAllNullOrEmpty(func_get_args())) {
+        if (self::IsNullOrEmpty($binarydata) || self::IsNullOrEmpty($mimetype) || self::IsNullOrEmpty($filename)) {
             return null;
         }
 
@@ -486,12 +486,12 @@ class ZugferdObjectHelper
     /**
      * Tradeparty type
      *
-     * @param string $name
+     * @param string|null $name
      * @param string|null $ID
      * @param string|null $description
      * @return object|null
      */
-    public function GetTradeParty(string $name, ?string $ID, ?string $description): ?object
+    public function GetTradeParty(?string $name, ?string $ID, ?string $description): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -532,7 +532,7 @@ class ZugferdObjectHelper
         $this->TryCall($address, "setPostcodeCode", $this->GetCodeType($postcode));
         $this->TryCall($address, "setCityName", $this->GetTextType($city));
         $this->TryCall($address, "setCountryID", $this->GetCodeType($country));
-        $this->TryCall($address, "addToCountrySubDivisionName", $this->GetTextType($subdivision));
+        $this->TryCallAll($address, ["addToCountrySubDivisionName", "setCountrySubDivisionName"], $this->GetTextType($subdivision));
 
         return $address;
     }

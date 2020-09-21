@@ -215,7 +215,7 @@ class ObjectHelperEn16931Test extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetNoteType
      */
-    public function testGetNoteTypeWithAllValues()
+    public function testGetNoteTypeAllValues()
     {
         /**
          * @var \horstoeko\zugferd\entities\en16931\ram\NoteType
@@ -229,7 +229,7 @@ class ObjectHelperEn16931Test extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetNoteType
      */
-    public function testGetNoteTypeWithAllNullValue()
+    public function testGetNoteTypeAllNullValue()
     {
         /**
          * @var \horstoeko\zugferd\entities\en16931\ram\NoteType
@@ -591,5 +591,221 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $taxtypecodetype = self::$objectHelper->GetTaxTypeCodeType(null);
         $this->assertNull($taxtypecodetype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTimeReferenceCodeType
+     */
+    public function testGetTimeReferenceCodeTypeWithValue()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\TimeReferenceCodeType
+         */
+        $timereferencecodetype = self::$objectHelper->GetTimeReferenceCodeType("REF");
+        $this->assertEquals("REF", $timereferencecodetype->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTimeReferenceCodeType
+     */
+    public function testGetTimeReferenceCodeTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\TimeReferenceCodeType
+         */
+        $timereferencecodetype = self::$objectHelper->GetTimeReferenceCodeType(null);
+        $this->assertNull($timereferencecodetype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSpecifiedPeriodType
+     */
+    public function testGetSpecifiedPeriodTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType
+         */
+        $periodtype = self::$objectHelper->GetSpecifiedPeriodType(new \DateTime(), new \DateTime(), new \DateTime(), "Description");
+        $this->assertFalse(method_exists($periodtype, "getDescription"));
+        $this->assertFalse(method_exists($periodtype, "getCompleteDateTime"));
+        $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getStartDateTime()->getDateTimeString());
+        $this->assertEquals("102", $periodtype->getStartDateTime()->getDateTimeString()->getFormat());
+        $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getEndDateTime()->getDateTimeString());
+        $this->assertEquals("102", $periodtype->getEndDateTime()->getDateTimeString()->getFormat());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSpecifiedPeriodType
+     */
+    public function testGetSpecifiedPeriodTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType
+         */
+        $periodtype = self::$objectHelper->GetSpecifiedPeriodType(null, null, null, null);
+        $this->assertNull($periodtype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetBinaryObjectType
+     */
+    public function testGetBinaryObjectTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType
+         */
+        $binaryobject = self::$objectHelper->GetBinaryObjectType("data", "application/pdf", "mypdf.pdf");
+        $this->assertEquals("data", $binaryobject->value());
+        $this->assertEquals("application/pdf", $binaryobject->getMimeCode());
+        $this->assertEquals("mypdf.pdf", $binaryobject->getFilename());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetBinaryObjectType
+     */
+    public function testGetBinaryObjectTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType
+         */
+        $binaryobject = self::$objectHelper->GetBinaryObjectType(null, null, null);
+        $this->assertNull($binaryobject);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetBinaryObjectType
+     */
+    public function testGetBinaryObjectTypeDataNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType
+         */
+        $binaryobject = self::$objectHelper->GetBinaryObjectType(null, "application/pdf", "mypdf.pdf");
+        $this->assertNull($binaryobject);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetBinaryObjectType
+     */
+    public function testGetBinaryObjectTypeMimeTypeNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType
+         */
+        $binaryobject = self::$objectHelper->GetBinaryObjectType("data", null, "mypdf.pdf");
+        $this->assertNull($binaryobject);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetBinaryObjectType
+     */
+    public function testGetBinaryObjectTypeFilenameNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType
+         */
+        $binaryobject = self::$objectHelper->GetBinaryObjectType("data", "application/pdf", null);
+        $this->assertNull($binaryobject);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetReferencedDocumentType
+     */
+    public function testGetReferencedDocumentTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
+         */
+        $refdoctype = self::$objectHelper->GetReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), dirname(__FILE__) . "/data/en16931_allowancecharge.xml");
+        $this->assertEquals("issuerid", $refdoctype->getIssuerAssignedID()->value());
+        $this->assertEquals("uriid", $refdoctype->getURIID()->value());
+        $this->assertEquals("lineid", $refdoctype->getLineID()->value());
+        $this->assertEquals("typecode", $refdoctype->getTypeCode());
+        $this->assertNull($refdoctype->getName());
+        $this->assertEquals("reftypcode", $refdoctype->getReferenceTypeCode());
+        $this->assertEquals((new \DateTime())->format("Ymd"), $refdoctype->getFormattedIssueDateTime()->getDateTimeString());
+        $this->assertEquals("102", $refdoctype->getFormattedIssueDateTime()->getDateTimeString()->getFormat());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetReferencedDocumentType
+     */
+    public function testGetReferencedDocumentTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
+         */
+        $refdoctype = self::$objectHelper->GetReferencedDocumentType(null, null, null, null, null, null, null, null, null);
+        $this->assertNull($refdoctype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetCrossIndustryInvoice
+     */
+    public function testCrossIndustryInvoice()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice
+         */
+        $crossindusty = self::$objectHelper->GetCrossIndustryInvoice();
+        $this->assertNotNull($crossindusty);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeParty
+     */
+    public function testGetTradePartyAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType
+         */
+        $tradeparty = self::$objectHelper->GetTradeParty("name", "id", "description");
+        $this->assertEquals("name", $tradeparty->getName());
+        $this->assertIsArray($tradeparty->getID());
+        $this->assertArrayHasKey(0, $tradeparty->getID());
+        $this->assertEquals("id", $tradeparty->getID()[0]);
+        $this->assertEquals("description", $tradeparty->getDescription());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeParty
+     */
+    public function testGetTradePartyNullValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType
+         */
+        $tradeparty = self::$objectHelper->GetTradeParty(null, null, null);
+        $this->assertNull($tradeparty);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAddress
+     */
+    public function testGetTradeAddressAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAddressType
+         */
+        $tradeaddress = self::$objectHelper->GetTradeAddress("lineone", "linetwo", "linethree", "00000", "city", "country", "county");
+        $this->assertEquals("lineone", $tradeaddress->getLineOne());
+        $this->assertEquals("linetwo", $tradeaddress->getLineTwo());
+        $this->assertEquals("linethree", $tradeaddress->getLineThree());
+        $this->assertEquals("00000", $tradeaddress->getPostcodeCode());
+        $this->assertEquals("city", $tradeaddress->getCityName());
+        $this->assertEquals("country", $tradeaddress->getCountryID()->value());
+        $this->assertEquals("county", $tradeaddress->getCountrySubDivisionName());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAddress
+     */
+    public function testGetTradeAddressAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAddressType
+         */
+        $tradeaddress = self::$objectHelper->GetTradeAddress(null, null, null, null, null, null, null);
+        $this->assertNull($tradeaddress);
     }
 }
