@@ -793,7 +793,7 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("linethree", $tradeaddress->getLineThree());
         $this->assertEquals("00000", $tradeaddress->getPostcodeCode());
         $this->assertEquals("city", $tradeaddress->getCityName());
-        $this->assertEquals("country", $tradeaddress->getCountryID()->value());
+        $this->assertEquals("country", $tradeaddress->getCountryID());
         $this->assertEquals("county", $tradeaddress->getCountrySubDivisionName());
     }
 
@@ -807,5 +807,725 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $tradeaddress = self::$objectHelper->GetTradeAddress(null, null, null, null, null, null, null);
         $this->assertNull($tradeaddress);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetLegalOrganization
+     */
+    public function testGetLegalOrganizationAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType
+         */
+        $legalorg = self::$objectHelper->GetLegalOrganization("orgid", "orgtype", "orgname");
+        $this->assertEquals("orgid", $legalorg->getID());
+        $this->assertEquals("orgtype", $legalorg->getID()->getSchemeID());
+        $this->assertEquals("orgname", $legalorg->getTradingBusinessName());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetLegalOrganization
+     */
+    public function testGetLegalOrganizationAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType
+         */
+        $legalorg = self::$objectHelper->GetLegalOrganization(null, null, null);
+        $this->assertNull($legalorg);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeContact
+     */
+    public function testGetTradeContactAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeContactType
+         */
+        $tradecontact = self::$objectHelper->GetTradeContact("personname", "departmentname", "phone", "fax", "mail");
+        $this->assertEquals("personname", $tradecontact->getPersonName());
+        $this->assertEquals("departmentname", $tradecontact->getDepartmentName());
+        $this->assertEquals("phone", $tradecontact->getTelephoneUniversalCommunication()->getCompleteNumber());
+        $this->assertFalse(method_exists($tradecontact, "getFaxUniversalCommunication"));
+        $this->assertEquals("mail", $tradecontact->getEmailURIUniversalCommunication()->getURIID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeContact
+     */
+    public function testGetTradeContactAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeContactType
+         */
+        $tradecontact = self::$objectHelper->GetTradeContact(null, null, null, null, null, null);
+        $this->assertNull($tradecontact);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetUniversalCommunicationType
+     */
+    public function testGetUniversalCommunicationTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType
+         */
+        $commtype = self::$objectHelper->GetUniversalCommunicationType("number", "uriid", "smtp");
+        $this->assertEquals("number", $commtype->getCompleteNumber());
+        $this->assertEquals("uriid", $commtype->getURIID());
+        $this->assertEquals("smtp", $commtype->getURIID()->getSchemeID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetUniversalCommunicationType
+     */
+    public function testGetUniversalCommunicationTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType
+         */
+        $commtype = self::$objectHelper->GetUniversalCommunicationType(null, null, null);
+        $this->assertNull($commtype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTaxRegistrationType
+     */
+    public function testGetTaxRegistrationTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType
+         */
+        $taxregtype = self::$objectHelper->GetTaxRegistrationType("taxregtype", "taxid");
+        $this->assertEquals("taxregtype", $taxregtype->getID()->getSchemeID());
+        $this->assertEquals("taxid", $taxregtype->getID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTaxRegistrationType
+     */
+    public function testGetTaxRegistrationTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType
+         */
+        $taxregtype = self::$objectHelper->GetTaxRegistrationType(null, null);
+        $this->assertNull($taxregtype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTaxRegistrationType
+     */
+    public function testGetTaxRegistrationTypeIdNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType
+         */
+        $taxregtype = self::$objectHelper->GetTaxRegistrationType("taxregtype", null);
+        $this->assertNull($taxregtype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTaxRegistrationType
+     */
+    public function testGetTaxRegistrationTypeTypeNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType
+         */
+        $taxregtype = self::$objectHelper->GetTaxRegistrationType(null, "taxid");
+        $this->assertNull($taxregtype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeDeliveryTermsType
+     */
+    public function testGetTradeDeliveryTermsTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeDeliveryTermsType
+         */
+        $devterms = self::$objectHelper->GetTradeDeliveryTermsType('code');
+        $this->assertNull($devterms);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeDeliveryTermsType
+     */
+    public function testGetTradeDeliveryTermsTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeDeliveryTermsType
+         */
+        $devterms = self::$objectHelper->GetTradeDeliveryTermsType(null);
+        $this->assertNull($devterms);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetProcuringProjectType
+     */
+    public function testGetProcuringProjectTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProcuringProjectType
+         */
+        $project = self::$objectHelper->GetProcuringProjectType("projectid", "projectname");
+        $this->assertEquals("projectid", $project->getID());
+        $this->assertEquals("projectname", $project->getName());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetProcuringProjectType
+     */
+    public function testGetProcuringProjectTypeIdNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProcuringProjectType
+         */
+        $project = self::$objectHelper->GetProcuringProjectType(null, "projectname");
+        $this->assertNull($project);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetProcuringProjectType
+     */
+    public function testGetProcuringProjectTypeNameNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProcuringProjectType
+         */
+        $project = self::$objectHelper->GetProcuringProjectType("projectid", null);
+        $this->assertNull($project);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetProcuringProjectType
+     */
+    public function testGetProcuringProjectTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProcuringProjectType
+         */
+        $project = self::$objectHelper->GetProcuringProjectType(null, null);
+        $this->assertNull($project);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSupplyChainEventType
+     */
+    public function testGetSupplyChainEventTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType
+         */
+        $supplychainevent = self::$objectHelper->GetSupplyChainEventType(new \DateTime());
+        $this->assertEquals((new \DateTime())->format("Ymd"), $supplychainevent->getOccurrenceDateTime()->getDateTimeString());
+        $this->assertEquals("102", $supplychainevent->getOccurrenceDateTime()->getDateTimeString()->getFormat());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSupplyChainEventType
+     */
+    public function testGetSupplyChainEventTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType
+         */
+        $supplychainevent = self::$objectHelper->GetSupplyChainEventType(null);
+        $this->assertNull($supplychainevent);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementFinancialCardType
+     */
+    public function testGetTradeSettlementFinancialCardTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType
+         */
+        $fincard = self::$objectHelper->GetTradeSettlementFinancialCardType("type", "id", "name");
+        $this->assertEquals("type", $fincard->getID()->getSchemeID());
+        $this->assertEquals("id", $fincard->getID());
+        $this->assertEquals("name", $fincard->getCardholderName());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementFinancialCardType
+     */
+    public function testGetTradeSettlementFinancialCardTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType
+         */
+        $fincard = self::$objectHelper->GetTradeSettlementFinancialCardType(null, null, null);
+        $this->assertNull($fincard);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetDebtorFinancialAccountType
+     */
+    public function testGetDebtorFinancialAccountTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\DebtorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->GetDebtorFinancialAccountType("iban");
+        $this->assertEquals("iban", $finacc->getIBANID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetDebtorFinancialAccountType
+     */
+    public function testGetDebtorFinancialAccountTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\DebtorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->GetDebtorFinancialAccountType(null);
+        $this->assertNull($finacc);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetCreditorFinancialAccountType
+     */
+    public function testGetCreditorFinancialAccountTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->GetCreditorFinancialAccountType("iban", "accname", "propid");
+        $this->assertEquals("iban", $finacc->getIBANID());
+        $this->assertEquals("accname", $finacc->getAccountName());
+        $this->assertEquals("propid", $finacc->getProprietaryID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetCreditorFinancialAccountType
+     */
+    public function testGetCreditorFinancialAccountTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->GetCreditorFinancialAccountType(null, null, null);
+        $this->assertNull($finacc);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetCreditorFinancialInstitutionType
+     */
+    public function testGetCreditorFinancialInstitutionTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialInstitutionType
+         */
+        $fininst = self::$objectHelper->GetCreditorFinancialInstitutionType("bic");
+        $this->assertEquals("bic", $fininst->getBICID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetCreditorFinancialInstitutionType
+     */
+    public function testGetCreditorFinancialInstitutionTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialInstitutionType
+         */
+        $fininst = self::$objectHelper->GetCreditorFinancialInstitutionType(null);
+        $this->assertNull($fininst);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementPaymentMeansType
+     */
+    public function testGetTradeSettlementPaymentMeansTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementPaymentMeansType
+         */
+        $paymentmeans = self::$objectHelper->GetTradeSettlementPaymentMeansType("code", "info");
+        $this->assertEquals("code", $paymentmeans->getTypeCode());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementPaymentMeansType
+     */
+    public function testGetTradeSettlementPaymentMeansTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementPaymentMeansType
+         */
+        $paymentmeans = self::$objectHelper->GetTradeSettlementPaymentMeansType(null, null);
+        $this->assertNull($paymentmeans);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePaymentTermsType
+     */
+    public function testGetTradePaymentTermsTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePaymentTermsType
+         */
+        $paymentterms = self::$objectHelper->GetTradePaymentTermsType("description", new \DateTime(), "mandate");
+        $this->assertEquals((new \DateTime())->format("Ymd"), $paymentterms->getDueDateDateTime()->getDateTimeString());
+        $this->assertEquals("102", $paymentterms->getDueDateDateTime()->getDateTimeString()->getFormat());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePaymentTermsType
+     */
+    public function testGetTradePaymentTermsTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePaymentTermsType
+         */
+        $paymentmeans = self::$objectHelper->GetTradePaymentTermsType(null, null, null);
+        $this->assertNull($paymentmeans);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePaymentDiscountTermsType
+     */
+    public function testGetTradePaymentDiscountTermsTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePaymentDiscountTermsType
+         */
+        $discountterms = self::$objectHelper->GetTradePaymentDiscountTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
+        $this->assertNull($discountterms);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePaymentDiscountTermsType
+     */
+    public function testGetTradePaymentDiscountTermsTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePaymentDiscountTermsType
+         */
+        $discountterms = self::$objectHelper->GetTradePaymentDiscountTermsType(null, null, null, null, null, null);
+        $this->assertNull($discountterms);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeTaxType
+     */
+    public function testGetTradeTaxTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeTaxType
+         */
+        $tax = self::$objectHelper->GetTradeTaxType("category", "type", 100, 19, 19, "reason", "reasoncode", 100, 10, new \DateTime(), "duedatecode");
+        $this->assertEquals("category", $tax->getCategoryCode());
+        $this->assertEquals("type", $tax->getTypeCode());
+        $this->assertEquals(100.0, $tax->getBasisAmount()->value());
+        $this->assertEquals(19.0, $tax->getCalculatedAmount()->value());
+        //$this->assertEquals(19.0, $tax->getRateApplicablePercent()->value());
+        $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
+        $this->assertEquals("reason", $tax->getExemptionReason());
+        $this->assertFalse(method_exists($tax, "getLineTotalBasisAmount"));
+        $this->assertFalse(method_exists($tax, "getAllowanceChargeBasisAmount"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeTaxType
+     */
+    public function testGetTradeTaxTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeTaxType
+         */
+        $tax = self::$objectHelper->GetTradeTaxType(null, null, null, null, null, null, null, null, null, null, null);
+        $this->assertNull($tax);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAllowanceChargeType
+     */
+    public function testGetTradeAllowanceChargeTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType
+         */
+        $allowancecharge = self::$objectHelper->GetTradeAllowanceChargeType(10, true, "taxtype", "taxcategory", 19.0, 1, 2.0, 1.0, 1.0, "C62", "reasoncode", "reason");
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\PercentType
+         */
+        $rateapplicablepercent = $allowancecharge->getCategoryTradeTax()->getRateApplicablePercent();
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\PercentType
+         */
+        $calculationpercent = $allowancecharge->getCalculationPercent();
+
+        $this->assertEquals(10.0, $allowancecharge->getActualAmount()->value());
+        $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
+        $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
+        $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
+        $this->assertEquals(19.0, $rateapplicablepercent->value());
+        $this->assertFalse(method_exists($allowancecharge, "getSequenceNumeric"));
+        $this->assertEquals(2.0, $calculationpercent->value());
+        $this->assertFalse(method_exists($allowancecharge, "getBasisQuantity"));
+        $this->assertFalse(method_exists($allowancecharge, "getBasisQuantity"));
+        $this->assertEquals("reason", $allowancecharge->getReason());
+        $this->assertEquals("reasoncode", $allowancecharge->getReasonCode());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAllowanceChargeType
+     */
+    public function testGetTradeAllowanceChargeTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType
+         */
+        $allowancecharge = self::$objectHelper->GetTradeAllowanceChargeType(null, null, null, null, null, null, null, null, null, null, null, null);
+        $this->assertNull($allowancecharge);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetLogisticsServiceChargeType
+     */
+    public function testGetLogisticsServiceChargeTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\LogisticsServiceChargeType
+         */
+        $logcharge = self::$objectHelper->GetLogisticsServiceChargeType("description", 10.0, ["taxtype"], ["taxcategpry"], [19]);
+        $this->assertFalse(method_exists($logcharge, "getDescription"));
+        $this->assertFalse(method_exists($logcharge, "getAppliedAmount"));
+        $this->assertFalse(method_exists($logcharge, "getAppliedTradeTax"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetLogisticsServiceChargeType
+     */
+    public function testGetLogisticsServiceChargeTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\LogisticsServiceChargeType
+         */
+        $logcharge = self::$objectHelper->GetLogisticsServiceChargeType(null, null, null, null, null);
+        $this->assertNull($logcharge);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementHeaderMonetarySummationType
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementHeaderMonetarySummationTypeOnly
+     */
+    public function testGetTradeSettlementHeaderMonetarySummationTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementHeaderMonetarySummationType
+         */
+        $summation = self::$objectHelper->GetTradeSettlementHeaderMonetarySummationType(119, 100, 100, 1, 2, 99, 99 * 0.19, 0.0, 10);
+        $this->assertEquals(119.0, $summation->getGrandTotalAmount()->value());
+        $this->assertEquals(100.0, $summation->getDuePayableAmount()->value());
+        $this->assertEquals(100.0, $summation->getLineTotalAmount()->value());
+        $this->assertEquals(1.0, $summation->getChargeTotalAmount()->value());
+        $this->assertEquals(2.0, $summation->getAllowanceTotalAmount()->value());
+        $this->assertEquals(99.0, $summation->getTaxBasisTotalAmount()->value());
+        $this->assertIsArray($summation->getTaxTotalAmount());
+        $this->assertArrayHasKey(0, $summation->getTaxTotalAmount());
+        $this->assertEquals(99.0 * 0.19, $summation->getTaxTotalAmount()[0]->value());
+        $this->assertEquals(0.0, $summation->getRoundingAmount()->value());
+        $this->assertEquals(10.0, $summation->getTotalPrepaidAmount()->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementHeaderMonetarySummationType
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementHeaderMonetarySummationTypeOnly
+     */
+    public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementHeaderMonetarySummationType
+         */
+        $summation = self::$objectHelper->GetTradeSettlementHeaderMonetarySummationType(null, null, null, null, null, null, null, null, null);
+        $this->assertNull($summation);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementHeaderMonetarySummationTypeOnly
+     */
+    public function testGetTradeSettlementHeaderMonetarySummationTypeOnly()
+    {
+        $summation = self::$objectHelper->GetTradeSettlementHeaderMonetarySummationTypeOnly();
+        $this->assertNotNull($summation);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAccountingAccountType
+     */
+    public function testGetTradeAccountingAccountTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAccountingAccountType
+         */
+        $accaccount = self::$objectHelper->GetTradeAccountingAccountType("accid", "acctype");
+        $this->assertEquals("accid", $accaccount->getID());
+        $this->assertFalse(method_exists($accaccount, "getTypeCode"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeAccountingAccountType
+     */
+    public function testGetTradeAccountingAccountTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeAccountingAccountType
+         */
+        $accaccount = self::$objectHelper->GetTradeAccountingAccountType(null, null);
+        $this->assertNull($accaccount);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetDocumentLineDocumentType
+     */
+    public function testGetDocumentLineDocumentTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType
+         */
+        $doclinedoctype = self::$objectHelper->GetDocumentLineDocumentType("lineid");
+        $this->assertEquals("lineid", $doclinedoctype->getLineID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetDocumentLineDocumentType
+     */
+    public function testGetDocumentLineDocumentTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType
+         */
+        $doclinedoctype = self::$objectHelper->GetDocumentLineDocumentType(null);
+        $this->assertNull($doclinedoctype);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSupplyChainTradeLineItemType
+     */
+    public function testGetSupplyChainTradeLineItemTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType
+         */
+        $line = self::$objectHelper->GetSupplyChainTradeLineItemType("lineid", "linestatuscode", "linestatusreasoncode");
+        $this->assertNotNull($line);
+        $this->assertEquals("lineid", $line->getAssociatedDocumentLineDocument()->getLineID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetSupplyChainTradeLineItemType
+     */
+    public function testGetSupplyChainTradeLineItemTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType
+         */
+        $line = self::$objectHelper->GetSupplyChainTradeLineItemType(null, null, null);
+        $this->assertNull($line);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeProductType
+     */
+    public function testGetTradeProductTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeProductType
+         */
+        $product = self::$objectHelper->GetTradeProductType("name", "description", "sellerid", "buyerid", "globalidtype", "globalid");
+        $this->assertEquals("name", $product->getName());
+        $this->assertEquals("description", $product->getDescription());
+        $this->assertEquals("sellerid", $product->getSellerAssignedID());
+        $this->assertEquals("buyerid", $product->getBuyerAssignedID());
+        $this->assertEquals("globalidtype", $product->getGlobalID()->getSchemeID());
+        $this->assertEquals("globalid", $product->getGlobalID());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeProductType
+     */
+    public function testGetTradeProductTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeProductType
+         */
+        $product = self::$objectHelper->GetTradeProductType(null, null, null, null, null, null);
+        $this->assertNull($product);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePriceType
+     */
+    public function testGetTradePriceTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType
+         */
+        $price = self::$objectHelper->GetTradePriceType(1.0, 2.0, "C62");
+        $this->assertEquals(1.0, $price->getChargeAmount()->value());
+        $this->assertEquals(2.0, $price->getBasisQuantity()->value());
+        $this->assertEquals("C62", $price->getBasisQuantity()->getUnitCode());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradePriceType
+     */
+    public function testGetTradePriceTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType
+         */
+        $price = self::$objectHelper->GetTradePriceType(null, null, null);
+        $this->assertNull($price);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementLineMonetarySummationType
+     */
+    public function testGetTradeSettlementLineMonetarySummationTypeAllValues()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType
+         */
+        $summation = self::$objectHelper->GetTradeSettlementLineMonetarySummationType(1.0, 2.0);
+        $this->assertEquals(1.0, $summation->getLineTotalAmount()->value());
+        $this->assertFalse(method_exists($summation, "getTotalAllowanceChargeAmount"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::GetTradeSettlementLineMonetarySummationType
+     */
+    public function testGetTradeSettlementLineMonetarySummationTypeAllNull()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType
+         */
+        $summation = self::$objectHelper->GetTradeSettlementLineMonetarySummationType(null, null);
+        $this->assertNull($summation);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime1()
+    {
+        $this->assertEquals("20200202", self::$objectHelper->ToDateTime("20200202", "102")->format("Ymd"));
+        $this->assertNull(self::$objectHelper->ToDateTime("", "102"));
+        $this->assertNull(self::$objectHelper->ToDateTime("20200202", ""));
+        $this->assertNull(self::$objectHelper->ToDateTime(null, "102"));
+        $this->assertNull(self::$objectHelper->ToDateTime("20200202", null));
+        $this->assertNull(self::$objectHelper->ToDateTime("", ""));
+        $this->assertNull(self::$objectHelper->ToDateTime(null, null));
+        $this->assertNull(self::$objectHelper->ToDateTime("", null));
+        $this->assertNull(self::$objectHelper->ToDateTime(null, ""));
+        $this->assertNull(self::$objectHelper->ToDateTime(null, null));
+        $this->assertNull(self::$objectHelper->ToDateTime("20200202", "103"));
     }
 }
