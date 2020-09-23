@@ -1515,7 +1515,7 @@ class ObjectHelperEn16931Test extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
      */
-    public function testToDateTime1()
+    public function testToDateTimeGeneral()
     {
         $this->assertEquals("20200202", self::$objectHelper->ToDateTime("20200202", "102")->format("Ymd"));
         $this->assertNull(self::$objectHelper->ToDateTime("", "102"));
@@ -1528,7 +1528,47 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull(self::$objectHelper->ToDateTime(null, ""));
         $this->assertNull(self::$objectHelper->ToDateTime(null, null));
         $this->expectException(ZugferdUnknownDateFormat::class);
-        $this->assertNull(self::$objectHelper->ToDateTime("20200202", "103"));
+        $this->assertNull(self::$objectHelper->ToDateTime("20200202", "999"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime101()
+    {
+        $this->assertEquals("20200202", self::$objectHelper->ToDateTime("200202", "101")->format("Ymd"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime201()
+    {
+        $this->assertEquals("2002021031", self::$objectHelper->ToDateTime("2002021031", "201")->format("ymdHi"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime202()
+    {
+        $this->assertEquals("200202103145", self::$objectHelper->ToDateTime("200202103145", "202")->format("ymdHis"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime203()
+    {
+        $this->assertEquals("202002021031", self::$objectHelper->ToDateTime("202002021031", "203")->format("YmdHi"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::ToDateTime
+     */
+    public function testToDateTime204()
+    {
+        $this->assertEquals("20200202103145", self::$objectHelper->ToDateTime("20200202103145", "204")->format("YmdHis"));
     }
 
     /**
