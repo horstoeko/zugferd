@@ -108,6 +108,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Guess the profile type of a xml file
      *
+     * @codeCoverageIgnore
+     *
      * @param string $xmlfilename
      * @return ZugferdDocument
      * @throws Exception
@@ -123,6 +125,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Guess the profile type of the readden xml document
+     *
+     * @codeCoverageIgnore
      *
      * @param string $xmlcontent
      * @return ZugferdDocumentReader
@@ -149,6 +153,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read content of a zuferd/xrechnung xml from a string
      *
+     * @codeCoverageIgnore
+     *
      * @param string $xmlcontent
      * @return ZugferdDocumentReader
      */
@@ -160,6 +166,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Read content of a zuferd/xrechnung xml from a file
+     *
+     * @codeCoverageIgnore
      *
      * @param string $xmlfilename
      * @return ZugferdDocumentReader
@@ -2837,6 +2845,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Function to return a value from $invoiceObject by path
      *
+     * @codeCoverageIgnore
+     * 
      * @param string $methods
      * @param mixed $defaultValue
      * @return mixed
@@ -2848,6 +2858,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Function to return a value from $from by path
+     *
+     * @codeCoverageIgnore
      *
      * @param object $from
      * @param string $methods
@@ -2861,6 +2873,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Convert to array
+     *
+     * @codeCoverageIgnore
      *
      * @param mixed $value
      * @param array $methods
@@ -2907,6 +2921,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Convert to associative array
      *
+     * @codeCoverageIgnore
+     *
      * @param mixed $value
      * @param string $methodKey
      * @param string $methodValue
@@ -2931,6 +2947,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Ensure array
+     *
+     * @codeCoverageIgnore
      *
      * @param mixed $value
      * @return array

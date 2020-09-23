@@ -1160,6 +1160,7 @@ class ReaderEn16931SimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionLineSummation
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionFirst()
     {
@@ -1254,10 +1255,13 @@ class ReaderEn16931SimpleTest extends TestCase
         self::$document->GetDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
         $this->assertEquals(198.0, $lineTotalAmount);
         $this->assertEquals(0.0, $totalAllowanceChargeAmount);
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPosition
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionGenerals
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionProductDetails
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionBuyerOrderReferencedDocument
@@ -1278,6 +1282,7 @@ class ReaderEn16931SimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionLineSummation
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionSecond()
     {
@@ -1372,6 +1377,9 @@ class ReaderEn16931SimpleTest extends TestCase
         self::$document->GetDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
         $this->assertEquals(275.0, $lineTotalAmount);
         $this->assertEquals(0.0, $totalAllowanceChargeAmount);
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**

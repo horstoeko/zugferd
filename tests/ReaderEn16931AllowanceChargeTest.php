@@ -1231,6 +1231,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionNote
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPositionAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionFirst()
     {
@@ -1351,10 +1352,13 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
 
         $this->assertFalse(self::$document->FirstDocumentPositionAllowanceCharge());
         $this->assertFalse(self::$document->NextDocumentPositionAllowanceCharge());
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPosition
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionGenerals
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionProductDetails
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionBuyerOrderReferencedDocument
@@ -1380,6 +1384,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionNote
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPositionAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionSecond()
     {
@@ -1480,10 +1485,13 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
 
         $this->assertFalse(self::$document->FirstDocumentPositionAllowanceCharge());
         $this->assertFalse(self::$document->NextDocumentPositionAllowanceCharge());
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPosition
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionGenerals
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionProductDetails
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionBuyerOrderReferencedDocument
@@ -1509,6 +1517,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionNote
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPositionAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionThird()
     {
@@ -1609,10 +1618,13 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
 
         $this->assertFalse(self::$document->FirstDocumentPositionAllowanceCharge());
         $this->assertFalse(self::$document->NextDocumentPositionAllowanceCharge());
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPosition
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionGenerals
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionProductDetails
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionBuyerOrderReferencedDocument
@@ -1638,6 +1650,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionNote
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstDocumentPositionAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextDocumentPositionAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPositionSupplyChainEvent
      */
     public function testDocumentPositionFourth()
     {
@@ -1738,6 +1751,9 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
 
         $this->assertFalse(self::$document->FirstDocumentPositionAllowanceCharge());
         $this->assertFalse(self::$document->NextDocumentPositionAllowanceCharge());
+
+        self::$document->GetDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
     }
 
     /**
