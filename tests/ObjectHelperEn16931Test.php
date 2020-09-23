@@ -5,6 +5,7 @@ namespace horstoeko\zugferd\tests;
 use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdObjectHelper;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 
 class ObjectHelperEn16931Test extends TestCase
 {
@@ -1526,6 +1527,18 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull(self::$objectHelper->ToDateTime("", null));
         $this->assertNull(self::$objectHelper->ToDateTime(null, ""));
         $this->assertNull(self::$objectHelper->ToDateTime(null, null));
+        $this->expectException(ZugferdUnknownDateFormat::class);
         $this->assertNull(self::$objectHelper->ToDateTime("20200202", "103"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::CreateClassInstance
+     */
+    public function testCreateClassInstance()
+    {
+        $instance = self::$objectHelper->CreateClassInstance('ram\TradeProductType');
+        $this->assertNotNull($instance);
+        $instance = self::$objectHelper->CreateClassInstance('ram\LogisticsServiceChargeType');
+        $this->assertNull($instance);
     }
 }

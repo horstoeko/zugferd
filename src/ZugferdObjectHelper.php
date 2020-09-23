@@ -4,6 +4,7 @@ namespace horstoeko\zugferd;
 
 use horstoeko\zugferd\ZugferdProfiles;
 use MimeTyper\Repository\MimeDbRepository;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 
 /**
  * Class representing a collection of common helpers and class factories
@@ -26,6 +27,8 @@ class ZugferdObjectHelper
 
     /**
      * Constructor
+     * 
+     * @codeCoverageIgnore
      *
      * @param integer $profile
      */
@@ -1160,7 +1163,7 @@ class ZugferdObjectHelper
         if ($format == "102") {
             return \DateTime::createFromFormat("Ymd", $dateTimeString);
         } else {
-            return null;
+            throw new ZugferdUnknownDateFormat();
         }
     }
 
@@ -1171,7 +1174,7 @@ class ZugferdObjectHelper
      * @param mixed $constructorvalue
      * @return object|null
      */
-    private function CreateClassInstance($classname, $constructorvalue = null): ?object
+    public function CreateClassInstance($classname, $constructorvalue = null): ?object
     {
         $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\' . $classname;
 
@@ -1185,6 +1188,7 @@ class ZugferdObjectHelper
     /**
      * Tries to call a method
      *
+     * @codeCoverageIgnore
      * @param object $instance
      * @param string $method
      * @param mixed $value
@@ -1210,6 +1214,7 @@ class ZugferdObjectHelper
     /**
      * Try call all methods
      *
+     * @codeCoverageIgnore
      * @param object $instance
      * @param string[] $methods
      * @param mixed $value
@@ -1236,6 +1241,7 @@ class ZugferdObjectHelper
      * Tries to call a method and return the returnvalue from call to $method
      * in object $instance
      *
+     * @codeCoverageIgnore
      * @param object $instance
      * @param string $method
      * @return mixed
@@ -1257,6 +1263,7 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
+     * @codeCoverageIgnore
      * @param [type] $instance
      * @param string $methods
      * @return void
@@ -1277,6 +1284,7 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
+     * @codeCoverageIgnore
      * @param object $instance
      * @param string $methods
      * @return mixed
@@ -1297,6 +1305,7 @@ class ZugferdObjectHelper
     /**
      * Ensure that $input is an array
      *
+     * @codeCoverageIgnore
      * @param mixed $input
      * @return array
      */
@@ -1311,6 +1320,7 @@ class ZugferdObjectHelper
     /**
      * Test if a value is null or empty
      *
+     * @codeCoverageIgnore
      * @param mixed $value
      * @return boolean
      */
@@ -1330,6 +1340,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
+     * @codeCoverageIgnore
      * @param array $args
      * @return boolean
      */
@@ -1352,6 +1363,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
+     * @codeCoverageIgnore
      * @param array $args
      * @return boolean
      */
