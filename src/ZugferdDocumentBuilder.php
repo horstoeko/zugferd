@@ -202,36 +202,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set the prepaid total amount
-     *
-     * @param float $totalPrepaidAmount
-     * @return ZugferdDocumentBuilder
-     */
-    public function SetDocumentPrepaidAmount(float $totalPrepaidAmount): ZugferdDocumentBuilder
-    {
-        $summation = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
-
-        if (is_null($summation)) {
-            return $this;
-        }
-
-        $summation = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
-
-        $grandTotalAmount = $this->objectHelper->TryCallAndReturn($summation, "getGrandTotalAmount");
-        $grandTotalAmount = !is_array($grandTotalAmount) ? [$grandTotalAmount] : $grandTotalAmount;
-        $grandTotalAmountSum = 0.0;
-
-        foreach ($grandTotalAmount as $grandTotalAmountItem) {
-            $grandTotalAmountSum = $grandTotalAmountSum + ($this->objectHelper->TryCallAndReturn($grandTotalAmountItem, "value") ?? 0.0);
-        }
-
-        $this->objectHelper->TryCall($summation, "setTotalPrepaidAmount", $this->objectHelper->GetAmountType($totalPrepaidAmount));
-        $this->objectHelper->TryCall($summation, "setDuePayableAmount", $this->objectHelper->GetAmountType(round($grandTotalAmountSum - $totalPrepaidAmount, 2)));
-
-        return $this;
-    }
-
-    /**
      * Add a note to the docuzment
      *
      * @param string $content
