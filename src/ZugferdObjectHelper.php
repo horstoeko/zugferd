@@ -1332,6 +1332,25 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Ensure array
+     *
+     * @codeCoverageIgnore
+     *
+     * @param mixed $value
+     * @return array
+     */
+    public function ensureArray($value): array
+    {
+        if (!is_array($value)) {
+            if (!is_null($value)) {
+                return [$value];
+            }
+            return [];
+        }
+        return $value;
+    }
+
+    /**
      * Test if a value is null or empty
      *
      * @codeCoverageIgnore

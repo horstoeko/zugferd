@@ -187,6 +187,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $summation = $this->objectHelper->GetTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
+        $taxTotalAmount = $this->objectHelper->TryCallAndReturn($summation, "getTaxTotalAmount");
+        $invoiceCurrencyCode = $this->objectHelper->TryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
+        $this->objectHelper->TryCall($this->objectHelper->ensureArray($taxTotalAmount)[0], 'setCurrencyID', $invoiceCurrencyCode);
         return $this;
     }
 
