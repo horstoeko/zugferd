@@ -2024,6 +2024,16 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         $description = $this->getInvoiceValueByPathFrom($serviceCharge, "getDescription.value", "");
         $appliedAmount = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedAmount.value", 0.0);
+        $appliedTradeTax = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedTradeTax", []);
+        $taxTypeCodes = $this->convertToArray($appliedTradeTax,[
+            "typecode" => ["getTypeCode.value", ""],
+        ]);
+        $taxCategpryCodes = $this->convertToArray($appliedTradeTax,[
+            "categorycode" => ["getCategoryCode.value", ""],
+        ]);
+        $rateApplicablePercents = $this->convertToArray($appliedTradeTax,[
+            "percent" => ["getRateApplicablePercent.value", 0.0],
+        ]);
 
         return $this;
     }
@@ -2117,7 +2127,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $paymentTerms = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
         $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
 
-        $calculationPercent = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getCalculationPercent", 0.0);
+        $calculationPercent = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentDiscountTerms.getCalculationPercent.value", 0.0);
         $basisDateTime = $this->objectHelper->ToDateTime(
             $this->objectHelper->TryCallByPathAndReturn($paymentTerms, "getApplicableTradePaymentDiscountTerms.getBasisDateTime.getDateTimeString.value"),
             $this->objectHelper->TryCallByPathAndReturn($paymentTerms, "getApplicableTradePaymentDiscountTerms.getBasisDateTime.getDateTimeString.getFormat")
