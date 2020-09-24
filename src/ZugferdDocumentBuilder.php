@@ -2208,6 +2208,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
                 $vatGroupId = md5($vatCategory . $vatType . $vatPercent);
                 $vatSumGrouped[$vatGroupId] = isset($vatSumGrouped[$vatGroupId]) ? $vatSumGrouped[$vatGroupId] : [$vatCategory, $vatType, $vatPercent, 0, 0];
                 $vatSumGrouped[$vatGroupId][4] = $vatSumGrouped[$vatGroupId][4] + $lineAmount;
+                $vatSumGrouped[$vatGroupId][3] = round($vatSumGrouped[$vatGroupId][4] * ($vatPercent / 100.0), 2);
             }
         }
 
