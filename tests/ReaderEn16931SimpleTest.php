@@ -15,7 +15,7 @@ class ReaderEn16931SimpleTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::ReadAndGuessFromFile(dirname(__FILE__) . "/data/en16931_einfach.xml");
+        self::$document = ZugferdDocumentReader::ReadAndGuessFromFile(dirname(__FILE__) . "/data/en16931_simple.xml");
     }
 
     public function testDocumentProfile()

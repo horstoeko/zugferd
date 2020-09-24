@@ -1164,10 +1164,6 @@ class ZugferdObjectHelper
             return \DateTime::createFromFormat("Ymd", $dateTimeString);
         } else if ($format == "101") {
             return \DateTime::createFromFormat("ymd", $dateTimeString);
-        } else if ($format == "2") {
-            return \DateTime::createFromFormat("dmy", $dateTimeString);
-        } else if ($format == "3") {
-            return \DateTime::createFromFormat("mdy", $dateTimeString);
         } else if ($format == "201") {
             return \DateTime::createFromFormat("ymdHi", $dateTimeString);
         } else if ($format == "202") {
