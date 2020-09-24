@@ -1201,12 +1201,18 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
          */
         $discountterms = self::$objectHelper->GetTradePaymentDiscountTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
+        
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         */
+        $calculationpercent = $discountterms->getCalculationPercent();
+        
         $this->assertEquals((new \DateTime())->format("Ymd"), $discountterms->getBasisDateTime()->getDateTimeString());
         $this->assertEquals("102", $discountterms->getBasisDateTime()->getDateTimeString()->getFormat());
         $this->assertEquals(2, $discountterms->getBasisPeriodMeasure()->value());
         $this->assertEquals("DAY", $discountterms->getBasisPeriodMeasure()->getUnitCode());
         $this->assertEquals(1, $discountterms->getBasisAmount()->value());
-        $this->assertEquals(1, $discountterms->getCalculationPercent()->value());
+        $this->assertEquals(1, $calculationpercent->value());
         $this->assertEquals(1, $discountterms->getActualDiscountAmount()->value());
     }
 
@@ -1231,11 +1237,17 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
          */
         $tax = self::$objectHelper->GetTradeTaxType("category", "type", 100, 19, 19, "reason", "reasoncode", 100, 10, new \DateTime(), "duedatecode");
+        
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         */
+        $rateapplicablepercent = $tax->getRateApplicablePercent();
+        
         $this->assertEquals("category", $tax->getCategoryCode());
         $this->assertEquals("type", $tax->getTypeCode());
         $this->assertEquals(100.0, $tax->getBasisAmount()->value());
         $this->assertEquals(19.0, $tax->getCalculatedAmount()->value());
-        $this->assertEquals(19.0, $tax->getRateApplicablePercent()->value());
+        $this->assertEquals(19.0, $rateapplicablepercent->value());
         $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
         $this->assertEquals("reason", $tax->getExemptionReason());
         $this->assertEquals(100, $tax->getLineTotalBasisAmount()->value());
@@ -1274,12 +1286,17 @@ class ObjectHelperExtendedTest extends TestCase
          */
         $calculationpercent = $allowancecharge->getCalculationPercent();
 
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\GetNumericType
+         */
+        $sequenceNumeric = $allowancecharge->getCalculationPercent();
+
         $this->assertEquals(10.0, $allowancecharge->getActualAmount()->value());
         $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
         $this->assertEquals(19.0, $rateapplicablepercent->value());
-        $this->assertEquals(1, $allowancecharge->getSequenceNumeric()->value());
+        $this->assertEquals(2, $sequenceNumeric->value());
         $this->assertEquals(2.0, $calculationpercent->value());
         $this->assertEquals(1.0, $allowancecharge->getBasisQuantity()->value());
         $this->assertEquals("C62", $allowancecharge->getBasisQuantity()->getUnitCode());
