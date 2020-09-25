@@ -1487,7 +1487,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $period = $this->objectHelper->GetSpecifiedPeriodType($startdate, $endDate, null, $description);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setBillingSpecifiedPeriod", $period);
         return $this;
-
     }
 
     /**
@@ -2136,6 +2135,32 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $summation = $this->objectHelper->GetTradeSettlementLineMonetarySummationType($lineTotalAmount, $totalAllowanceChargeAmount);
         $this->objectHelper->TryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+        return $this;
+    }
+
+    /**
+     * Calculate the line summation
+     *
+     * @return ZugferdDocumentBuilder
+     */
+    public function CalculatePositionLineSummation(): ZugferdDocumentBuilder
+    {
+        $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
+
+        $billedQuantity = (float) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery.getBilledQuantity.value") ?? 0.0;
+        $netPrice = (float) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value") ?? 0.0;
+        $positionAllowanceCharges = (array) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement.getSpecifiedTradeAllowanceCharge") ?? [];
+        $positionAllowanceChargesSum = 0.0;
+
+        foreach ($positionAllowanceCharges as $positionAllowanceCharge) {
+            $isCharge = (bool) $this->objectHelper->TryCallByPathAndReturn($positionAllowanceCharge, "getChargeIndicator.getIndicator") ?? false;
+            $actualAmount = (float) $this->objectHelper->TryCallByPathAndReturn($positionAllowanceCharge, "getActualAmount.value") ?? 0.0;
+            $positionAllowanceChargesSum = $positionAllowanceChargesSum + ($isCharge == false ? -$actualAmount : $actualAmount);
+        }
+
+        $summation = $this->objectHelper->GetTradeSettlementLineMonetarySummationType(round($netPrice * $billedQuantity + $positionAllowanceChargesSum, 2), round($positionAllowanceChargesSum, 2));
+        $this->objectHelper->TryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+
         return $this;
     }
 
