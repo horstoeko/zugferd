@@ -67,7 +67,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public static function CreateNew(int $profile): ZugferdDocumentBuilder
     {
-        return (new self($profile));
+        return (new static($profile));
     }
 
     /**
@@ -96,6 +96,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * This method can be overridden in derived class
+     * It is called before a XML is written
+     *
+     * @return void
+     */
+    protected function OnBeforeWriteFile(string $xmlfilename)
+    {
+        // Do nothing
+    }
+
+    /**
      * Write the content of a CrossIndustryInvoice object to a file
      *
      * @param string $xmlfilename
@@ -103,6 +114,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function WriteFile(string $xmlfilename): ZugferdDocument
     {
+        $this->OnBeforeWriteFile($xmlfilename);
         file_put_contents($xmlfilename, $this->GetContent());
         return $this;
     }
@@ -2139,32 +2151,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Calculate the line summation
-     *
-     * @return ZugferdDocumentBuilder
-     */
-    public function CalculatePositionLineSummation(): ZugferdDocumentBuilder
-    {
-        $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
-
-        $billedQuantity = (float) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery.getBilledQuantity.value") ?? 0.0;
-        $netPrice = (float) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value") ?? 0.0;
-        $positionAllowanceCharges = (array) $this->objectHelper->TryCallByPathAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement.getSpecifiedTradeAllowanceCharge") ?? [];
-        $positionAllowanceChargesSum = 0.0;
-
-        foreach ($positionAllowanceCharges as $positionAllowanceCharge) {
-            $isCharge = (bool) $this->objectHelper->TryCallByPathAndReturn($positionAllowanceCharge, "getChargeIndicator.getIndicator") ?? false;
-            $actualAmount = (float) $this->objectHelper->TryCallByPathAndReturn($positionAllowanceCharge, "getActualAmount.value") ?? 0.0;
-            $positionAllowanceChargesSum = $positionAllowanceChargesSum + ($isCharge == false ? -$actualAmount : $actualAmount);
-        }
-
-        $summation = $this->objectHelper->GetTradeSettlementLineMonetarySummationType(round($netPrice * $billedQuantity + $positionAllowanceChargesSum, 2), round($positionAllowanceChargesSum, 2));
-        $this->objectHelper->TryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
-
-        return $this;
-    }
-
-    /**
      * Add an AccountingAccount on item level
      * Detailinformationen zur Buchungsreferenz
      *
@@ -2177,112 +2163,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $account = $this->objectHelper->GetTradeAccountingAccountType($id, $typeCode);
         $this->objectHelper->TryCall($positionsettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
-        return $this;
-    }
-
-    /**
-     * Generates the summation of the document
-     *
-     * @return ZugferdDocumentBuilder
-     */
-    public function GenerateDocumentSummation(): ZugferdDocumentBuilder
-    {
-        $lines = $this->objectHelper->TryCallAndReturn($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
-
-        $lineTotalAmount = 0.0;
-        $vatSumGrouped = [];
-        $docAllowanceSum = 0.0;
-        $docChargeSum = 0.0;
-        $docNetAmount = 0.0;
-        $docVatSum = 0.0;
-
-        foreach ($lines as $line) {
-            $grossPrice = $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice.getChargeAmount.value");
-
-            if (!is_null($grossPrice)) {
-                $allowanceCharges = $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice.getAppliedTradeAllowanceCharge") ?? [];
-                $allowanceCharges = !is_array($allowanceCharges) ? [$allowanceCharges] : $allowanceCharges;
-                $allowanceChargeActualAmountSum = 0.0;
-
-                foreach ($allowanceCharges as $allowanceCharge) {
-                    $allowanceChargeActualAmount = (float) $this->objectHelper->TryCallByPathAndReturn($allowanceCharge, "getActualAmount.value") ?? 0.0;
-                    $chargeindicator = (bool) $this->objectHelper->TryCallByPathAndReturn($allowanceCharge, "getChargeIndicator.getIndicator") ?? false;
-                    $allowanceChargeActualAmountSum = $allowanceChargeActualAmountSum + ($chargeindicator === true ? $allowanceChargeActualAmount : -$allowanceChargeActualAmount);
-                }
-
-                $netPrice = $this->objectHelper->GetTradePriceType($grossPrice + $allowanceChargeActualAmountSum);
-                $this->objectHelper->TryCallByPath($line, "getSpecifiedLineTradeAgreement.setNetPriceProductTradePrice", $netPrice);
-            }
-
-            $netPrice = (float) $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value") ?? 0.0;
-            $billedQuantity = (float) $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeDelivery.getBilledQuantity.value") ?? 0.0;
-
-            $lineAmount = round($netPrice * $billedQuantity, 2);
-            $lineTotalAmount = $lineTotalAmount + $lineAmount;
-
-            $summation = $this->objectHelper->GetTradeSettlementLineMonetarySummationType($lineAmount);
-            $this->objectHelper->TryCallByPath($line, "getSpecifiedLineTradeSettlement.setSpecifiedTradeSettlementLineMonetarySummation", $summation);
-
-            $lineTaxes = $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeSettlement.getApplicableTradeTax") ?? [];
-            $lineTaxes = !is_array($lineTaxes) ? [$lineTaxes] : $lineTaxes;
-
-            foreach ($lineTaxes as $lineTax) {
-                $vatCategory = (string) $this->objectHelper->TryCallByPathAndReturn($lineTax, "getCategoryCode.value") ?? '';
-                $vatType = (string) $this->objectHelper->TryCallByPathAndReturn($lineTax, "getTypeCode.value") ?? '';
-                $vatPercent = (float) $this->objectHelper->TryCallByPathAndReturn($lineTax, "getRateApplicablePercent.value") ?? 0.0;
-                $vatGroupId = md5($vatCategory . $vatType . $vatPercent);
-                $vatSumGrouped[$vatGroupId] = isset($vatSumGrouped[$vatGroupId]) ? $vatSumGrouped[$vatGroupId] : [$vatCategory, $vatType, $vatPercent, 0, 0];
-                $vatSumGrouped[$vatGroupId][4] = $vatSumGrouped[$vatGroupId][4] + $lineAmount;
-                $vatSumGrouped[$vatGroupId][3] = round($vatSumGrouped[$vatGroupId][4] * ($vatPercent / 100.0), 2);
-            }
-        }
-
-        $docAllowanceCharges = $this->objectHelper->TryCallByPathAndReturn($this->headerTradeSettlement, 'getSpecifiedTradeAllowanceCharge') ?? [];
-        $docAllowanceCharges = !is_array($docAllowanceCharges) ? [$docAllowanceCharges] : $docAllowanceCharges;
-
-        foreach ($docAllowanceCharges as $docAllowanceCharge) {
-            $actualAmount = $this->objectHelper->TryCallByPathAndReturn($docAllowanceCharge, "getActualAmount.value");
-            $vatCategory = (string) $this->objectHelper->TryCallByPathAndReturn($docAllowanceCharge, "getCategoryTradeTax.getCategoryCode.value") ?? '';
-            $vatType = (string) $this->objectHelper->TryCallByPathAndReturn($docAllowanceCharge, "getCategoryTradeTax.getTypeCode.value") ?? '';
-            $vatPercent = (float) $this->objectHelper->TryCallByPathAndReturn($docAllowanceCharge, "getCategoryTradeTax.getRateApplicablePercent.value") ?? 0.0;
-            $chargeindicator = (bool) $this->objectHelper->TryCallByPathAndReturn($docAllowanceCharge, "getChargeIndicator.getIndicator") ?? false;
-            $vatGroupId = md5($vatCategory . $vatType . $vatPercent);
-            $vatSumGrouped[$vatGroupId] = isset($vatSumGrouped[$vatGroupId]) ? $vatSumGrouped[$vatGroupId] : [$vatCategory, $vatType, $vatPercent, 0, 0];
-            $vatSumGrouped[$vatGroupId][4] = $vatSumGrouped[$vatGroupId][4] + ($chargeindicator === true ? $actualAmount : -$actualAmount);
-            $vatSumGrouped[$vatGroupId][3] = round($vatSumGrouped[$vatGroupId][4] * ($vatPercent / 100.0), 2);
-            $docAllowanceSum = $docAllowanceSum + ($chargeindicator === true ? 0.0 : $actualAmount);
-            $docChargeSum = $docChargeSum + ($chargeindicator === true ? $actualAmount : 0.0);
-        }
-
-        foreach ($vatSumGrouped as $vatSumGroupedItemKey => $vatSumGroupedItem) {
-            $docNetAmount = $docNetAmount + $vatSumGroupedItem[4];
-            $docVatSum = $docVatSum + $vatSumGroupedItem[3];
-            $this->AddDocumentTax(
-                $vatSumGroupedItem[0],
-                $vatSumGroupedItem[1],
-                $vatSumGroupedItem[4],
-                $vatSumGroupedItem[3],
-                $vatSumGroupedItem[2]
-            );
-        }
-
-        $totalPrepaidAmount = $this->objectHelper->TryCallByPathAndReturn($summation, "getTotalPrepaidAmount.value") ?? 0;
-        $invoiceCurrencyCode = $this->objectHelper->TryCallByPathAndReturn($this->invoiceObject, "getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
-
-        $summation = $this->objectHelper->GetTradeSettlementHeaderMonetarySummationTypeOnly();
-
-        $this->objectHelper->TryCallAll($summation, ["addToGrandTotalAmount", "setGrandTotalAmount"], $this->objectHelper->GetAmountType(round($docNetAmount + $docVatSum, 2)));
-        $this->objectHelper->TryCall($summation, "setDuePayableAmount", $this->objectHelper->GetAmountType(round($docNetAmount + $docVatSum - $totalPrepaidAmount, 2)));
-        $this->objectHelper->TryCall($summation, "setLineTotalAmount", $this->objectHelper->GetAmountType(round($lineTotalAmount, 2)));
-        $this->objectHelper->TryCall($summation, "setChargeTotalAmount", $this->objectHelper->GetAmountType(round($docChargeSum, 2)));
-        $this->objectHelper->TryCall($summation, "setAllowanceTotalAmount", $this->objectHelper->GetAmountType(round($docAllowanceSum, 2)));
-        $this->objectHelper->TryCallAll($summation, ["addToTaxBasisTotalAmount", "setTaxBasisTotalAmount"], $this->objectHelper->GetAmountType(round($docNetAmount, 2)));
-        $this->objectHelper->TryCallAll($summation, ["addToTaxTotalAmount", "setTaxTotalAmount"], $this->objectHelper->GetAmountType(round($docVatSum, 2), $invoiceCurrencyCode));
-        $this->objectHelper->TryCall($summation, "setRoundingAmount", $this->objectHelper->GetAmountType(0));
-        $this->objectHelper->TryCall($summation, "setTotalPrepaidAmount", $this->objectHelper->GetAmountType($totalPrepaidAmount));
-
-        $this->objectHelper->TryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
-
         return $this;
     }
 }
