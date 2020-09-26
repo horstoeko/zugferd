@@ -54,6 +54,48 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     {
         $positionsettlement = $this->objectHelper->TryCallAndReturn($line, "getSpecifiedLineTradeSettlement");
 
+        $grossPriceType = $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice");
+        if (!is_null($grossPriceType)) {
+            $grossPriceAllowanceCharges = $this->objectHelper->EnsureArray($this->objectHelper->TryCallByPathAndReturn($grossPriceType, "getAppliedTradeAllowanceCharge"));
+            $grossPriceAllowanceChargesSum = 0.0;
+
+            foreach ($grossPriceAllowanceCharges as $grossPriceAllowanceCharge) {
+                $grossPriceAllowanceChargeBasisAmountType = $this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceCharge, "getBasisAmount");
+                $grossPriceAllowanceChargeCalculationPercentType = $this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceCharge, "getCalculationPercent");
+                $grossPriceAllowanceChargeActualAmountType = $this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceCharge, "getActualAmount");
+                $grossPriceAllowanceChargeIsCharge = (bool) $this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceCharge, "getChargeIndicator.getIndicator") ?? false;
+
+                $grossPriceAllowanceChargeActualAmount = 0.0;
+
+                if (
+                    is_null($grossPriceAllowanceChargeBasisAmountType) &&
+                    is_null($grossPriceAllowanceChargeCalculationPercentType) &&
+                    is_null($grossPriceAllowanceChargeActualAmountType)
+                ) {
+                    continue;
+                }
+
+                if (!is_null($grossPriceAllowanceChargeBasisAmountType) && !is_null($grossPriceAllowanceChargeCalculationPercentType)) {
+                    $grossPriceAllowanceChargeActualAmount = round(
+                        ($this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceChargeBasisAmountType, "value") ?? 0.0) *
+                        ($this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceChargeCalculationPercentType, "value") ?? 0.0) / 100, 2);
+                } else {
+                    $grossPriceAllowanceChargeActualAmount = 
+                        ($this->objectHelper->TryCallByPathAndReturn($grossPriceAllowanceChargeActualAmountType, "value") ?? 0.0);
+                }
+
+                $grossPriceAllowanceChargesSum = 
+                    $grossPriceAllowanceChargesSum + ($grossPriceAllowanceChargeIsCharge == false ? $grossPriceAllowanceChargeActualAmount : -$grossPriceAllowanceChargeActualAmount);
+            }
+
+            $grossPriceAmount = ($this->objectHelper->TryCallByPathAndReturn($grossPriceType, "getChargeAmount.value") ?? 0.0);
+            $netPrice = $grossPriceAmount - $grossPriceAllowanceChargesSum;
+
+            $netPriceType = $this->objectHelper->GetTradePriceType($netPrice);
+            $positionagreement = $this->objectHelper->TryCallAndReturn($line, "getSpecifiedLineTradeAgreement");
+            $this->objectHelper->TryCall($positionagreement, "setNetPriceProductTradePrice", $netPriceType);
+        }
+
         $billedQuantity = (float) $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeDelivery.getBilledQuantity.value") ?? 0.0;
         $netPrice = (float) $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value") ?? 0.0;
         $positionAllowanceCharges = (array) $this->objectHelper->TryCallByPathAndReturn($line, "getSpecifiedLineTradeSettlement.getSpecifiedTradeAllowanceCharge") ?? [];
@@ -144,7 +186,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
         }
 
         $summation = $this->objectHelper->TryCallAndReturn($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
-        
+
         $totalPrepaidAmount = $this->objectHelper->TryCallByPathAndReturn($summation, "getTotalPrepaidAmount.value") ?? 0.0;
 
         $this->SetDocumentSummation(

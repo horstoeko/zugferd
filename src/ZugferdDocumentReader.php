@@ -143,7 +143,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
             if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return (new self($profile))->ReadContent($xmlcontent);
+                return (new static($profile))->ReadContent($xmlcontent);
             }
         }
 
@@ -460,9 +460,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $id = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getID", []);
         $description = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDescription.value", "");
 
-        $id = $this->convertToArray($id, [
-            "id" => ["value", ""],
-        ]);
+        $id = $this->convertToArray($id, ["id" => "value"]);
 
         return $this;
     }
@@ -572,9 +570,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $id = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getID", []);
         $description = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDescription.value", "");
 
-        $id = $this->convertToArray($id, [
-            "id" => ["value", []],
-        ]);
+        $id = $this->convertToArray($id, ["id" => "value"]);
 
         return $this;
     }

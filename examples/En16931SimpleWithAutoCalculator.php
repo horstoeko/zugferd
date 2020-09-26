@@ -22,7 +22,6 @@ $document
     ->AddNewPosition("1")
     ->SetDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4", null, "0160", "4012345001235")
     ->SetDocumentPositionGrossPrice(9.9000)
-    ->SetDocumentPositionNetPrice(9.9000)
     ->SetDocumentPositionQuantity(20, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 19)
     ->AddNewPosition("2")

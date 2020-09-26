@@ -9,5 +9,9 @@
         <include>
             <directory suffix=".php">./src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">./src/entities</directory>
+            <directory suffix=".php">./src/exception</directory>
+        </exclude>
     </coverage>
 </phpunit>
