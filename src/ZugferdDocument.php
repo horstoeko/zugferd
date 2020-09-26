@@ -58,6 +58,8 @@ class ZugferdDocument
 
     /**
      * Constructor
+     * 
+     * @codeCoverageIgnore
      */
     public function __construct(int $profile)
     {
@@ -70,6 +72,8 @@ class ZugferdDocument
 
     /**
      * Build the internal serialzer
+     * 
+     * @codeCoverageIgnore
      *
      * @return void
      */
@@ -89,25 +93,5 @@ class ZugferdDocument
         });
 
         $this->serializer = $this->serializerBuilder->build();
-    }
-
-    /**
-     * Getters and setters for internal variables
-     *
-     * @param string $name
-     * @return mixed
-     */
-    public function __get($name)
-    {
-        switch (strtolower($name)) {
-            case "profile":
-                return $this->profile;
-            case "profiledef":
-                return $this->profiledef;
-            case "profilename":
-                return $this->profiledef["name"];
-            case "profilecontextparameter":
-                return $this->profiledef["contextparameter"];
-        }
     }
 }

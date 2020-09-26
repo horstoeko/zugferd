@@ -86,24 +86,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * This method can be overridden in derived class
+     * It is called before a XML is written
+     *
+     * @return void
+     */
+    protected function OnBeforeGetContent()
+    {
+        // Do nothing
+    }
+
+    /**
      * Write the content of a CrossIndustryInvoice object to a string
      *
      * @return string
      */
     public function GetContent(): string
     {
+        $this->OnBeforeGetContent();
         return $this->serializer->serialize($this->invoiceObject, 'xml');
-    }
-
-    /**
-     * This method can be overridden in derived class
-     * It is called before a XML is written
-     *
-     * @return void
-     */
-    protected function OnBeforeWriteFile(string $xmlfilename)
-    {
-        // Do nothing
     }
 
     /**
@@ -114,7 +115,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function WriteFile(string $xmlfilename): ZugferdDocument
     {
-        $this->OnBeforeWriteFile($xmlfilename);
         file_put_contents($xmlfilename, $this->GetContent());
         return $this;
     }
@@ -201,7 +201,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
         $taxTotalAmount = $this->objectHelper->TryCallAndReturn($summation, "getTaxTotalAmount");
         $invoiceCurrencyCode = $this->objectHelper->TryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
-        $this->objectHelper->TryCall($this->objectHelper->ensureArray($taxTotalAmount)[0], 'setCurrencyID', $invoiceCurrencyCode);
+        $this->objectHelper->TryCall($this->objectHelper->EnsureArray($taxTotalAmount)[0], 'setCurrencyID', $invoiceCurrencyCode);
         return $this;
     }
 

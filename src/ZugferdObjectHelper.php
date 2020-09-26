@@ -1335,7 +1335,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return array
      */
-    public function ensureArray($value): array
+    public function EnsureArray($value): array
     {
         if (!is_array($value)) {
             if (!is_null($value)) {
