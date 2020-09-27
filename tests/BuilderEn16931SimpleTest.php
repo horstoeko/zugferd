@@ -1349,7 +1349,7 @@ class BuilderEn16931SimpleTest extends TestCase
     {
         (self::$document)->WriteFile(getcwd() . "/myfile.xml");
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
-        //@unlink(getcwd() . "/myfile.xml");
+        @unlink(getcwd() . "/myfile.xml");
     }
 
     /**
