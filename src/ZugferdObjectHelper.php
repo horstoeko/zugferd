@@ -443,7 +443,7 @@ class ZugferdObjectHelper
         $this->TryCall($refdoctype, 'setFormattedIssueDateTime', $this->GetFormattedDateTimeType($issueddate));
 
         foreach ($this->EnsureStringArray($name) as $name) {
-            $this->TryCall($refdoctype, 'addToName', $this->GetTextType($name));
+            $this->TryCallAll($refdoctype, ['addToName', 'setName'], $this->GetTextType($name));
         }
 
         if ($binarydatafilename) {
@@ -577,7 +577,7 @@ class ZugferdObjectHelper
         $contact = $this->CreateClassInstance('ram\TradeContactType', $contactpersonname);
         $contactphone = $this->GetUniversalCommunicationType($contactphoneno, null, null);
         $contactfax = $this->GetUniversalCommunicationType($contactfaxno, null, null);
-        $contactemail = $this->GetUniversalCommunicationType(null, $contactemailaddr, "SMTP");
+        $contactemail = $this->GetUniversalCommunicationType(null, $contactemailaddr);
 
         $this->TryCall($contact, "setPersonName", $this->GetTextType($contactpersonname));
         $this->TryCall($contact, "setDepartmentName", $this->GetTextType($contactdepartmentname));

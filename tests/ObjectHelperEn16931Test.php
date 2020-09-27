@@ -722,7 +722,7 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("uriid", $refdoctype->getURIID()->value());
         $this->assertEquals("lineid", $refdoctype->getLineID()->value());
         $this->assertEquals("typecode", $refdoctype->getTypeCode());
-        $this->assertNull($refdoctype->getName());
+        $this->assertEquals("name", $refdoctype->getName());
         $this->assertEquals("reftypcode", $refdoctype->getReferenceTypeCode());
         $this->assertEquals((new \DateTime())->format("Ymd"), $refdoctype->getFormattedIssueDateTime()->getDateTimeString());
         $this->assertEquals("102", $refdoctype->getFormattedIssueDateTime()->getDateTimeString()->getFormat());

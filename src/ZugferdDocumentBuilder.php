@@ -51,6 +51,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
     /**
      * Constructor
+     * 
+     * @codeCoverageIgnore
      */
     public function __construct(int $profile)
     {
@@ -62,6 +64,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
+     * @codeCoverageIgnore
+     * 
      * @param integer $profile
      * @return ZugferdDocumentBuilder
      */
@@ -72,6 +76,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
     /**
      * Initialized a new document with profile settings
+     *
+     * @codeCoverageIgnore
      *
      * @return ZugferdDocumentBuilder
      */
@@ -553,7 +559,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $description
      * @return ZugferdDocumentBuilder
      */
-    public function SetProductEndUserTradeParty(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function SetDocumentProductEndUser(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setProductEndUserTradeParty", $productEndUserTradeParty);
@@ -1375,13 +1381,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated shipping notification
      *
      * @param string $issuerassignedid
-     * @param string|null $lineid
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
-        $despatchddvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $despatchddvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
         return $this;
     }
@@ -1390,13 +1395,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated shipping notification
      *
      * @param string $issuerassignedid
-     * @param string|null $lineid
      * @param \DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function SetDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
     {
-        $receivingadvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $receivingadvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
         return $this;
     }
@@ -1430,7 +1434,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $payeeFinInstitute
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentPaymentMeans(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function AddDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
         $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType($typecode, $information);
         $financialCard = $this->objectHelper->GetTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);

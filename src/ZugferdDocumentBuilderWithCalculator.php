@@ -238,7 +238,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $value
      * @return mixed
      */
-    public function _tc($instance, $method, $value)
+    private function _tc($instance, $method, $value)
     {
         return $this->objectHelper->TryCall($instance, $method, $value);
     }
@@ -250,7 +250,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $value
      * @return array
      */
-    public function _ea($value): array
+    private function _ea($value): array
     {
         return $this->objectHelper->EnsureArray($value);
     }
