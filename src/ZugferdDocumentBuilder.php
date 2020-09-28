@@ -128,13 +128,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set main information about this document
      *
-     * @param string $documentno
-     * @param string $documenttypecode
-     * @param \DateTime $documentdate
-     * @param string $invoiceCurrency
-     * @param string|null $documentname
-     * @param string|null $documentlanguage
-     * @param \DateTime|null $effectiveSpecifiedPeriod
+     * @param string $documentno The invoice no.
+     * @param string $documenttypecode Code for the invoice type
+     * @param \DateTime $documentdate Date of invoice
+     * @param string $invoiceCurrency Code for the invoice currency
+     * @param string|null $documentname Document Type
+     * @param string|null $documentlanguage Language indicator
+     * @param \DateTime|null $effectiveSpecifiedPeriod Contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
