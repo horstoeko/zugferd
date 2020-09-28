@@ -1209,6 +1209,8 @@ class BuilderEn16931SimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionLineSummation
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionReceivableSpecifiedTradeAccountingAccount
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionAdditionalReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionUltimateCustomerOrderReferencedDocument
      */
     public function testPositionMethods()
     {
@@ -1243,6 +1245,8 @@ class BuilderEn16931SimpleTest extends TestCase
         (self::$document)->AddDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
         (self::$document)->SetDocumentPositionLineSummation(100, 10);
         (self::$document)->AddDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
+        (self::$document)->AddDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
+        (self::$document)->AddDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 0, "1");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineStatusCode', 0);
