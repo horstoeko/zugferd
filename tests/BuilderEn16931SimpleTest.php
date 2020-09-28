@@ -1462,6 +1462,23 @@ class BuilderEn16931SimpleTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::InitNewDocument
+     */
+    public function testInitNewDocument()
+    {
+        (self::$document)->InitNewDocument();
+
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter');
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', "urn:cen.eu:en16931:2017");
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery');
+        $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement');
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::WriteFile
      */
     public function testWriteFile()
@@ -1550,6 +1567,19 @@ class BuilderEn16931SimpleTest extends TestCase
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
         $this->assertEquals($expectedAttributeValue, $xmlvalue[$index]->attributes()[$expectedAttribute][0]);
+    }
+
+    /**
+     * Test that an xml element does not exist
+     *
+     * @param string $xpath
+     * @return void
+     */
+    public function assertXPathExists(string $xpath)
+    {
+        $xml = $this->getXml();
+        $xmlvalue = $xml->xpath($xpath);
+        $this->assertNotEmpty($xmlvalue);
     }
 
     /**

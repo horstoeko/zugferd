@@ -77,8 +77,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Initialized a new document with profile settings
      *
-     * @codeCoverageIgnore
-     *
      * @return ZugferdDocumentBuilder
      */
     public function InitNewDocument(): ZugferdDocumentBuilder
