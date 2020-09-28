@@ -18,7 +18,6 @@ class BuilderEn16931SimpleTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         self::$document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
-        //self::$document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EXTENDED);
     }
 
     public function testDocumentProfile()
