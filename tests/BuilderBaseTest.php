@@ -2,8 +2,8 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
 class BuilderBaseTest extends TestCase
 {
