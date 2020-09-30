@@ -1369,6 +1369,6 @@ class BuilderExtendedTest extends BuilderBaseTest
     {
         (self::$document)->WriteFile(getcwd() . "/myfile.xml");
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
-        //@unlink(getcwd() . "/myfile.xml");
+        @unlink(getcwd() . "/myfile.xml");
     }
 }
