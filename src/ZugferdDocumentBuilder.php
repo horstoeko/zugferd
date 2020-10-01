@@ -152,8 +152,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set general payment information
      *
-     * @param string|null $creditorReferenceID
-     * @param string|null $paymentReference
+     * @param string|null $creditorReferenceID Identifier of the creditor
+     * @param string|null $paymentReference Intended use for payment
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
@@ -188,15 +188,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Document money summation
      *
-     * @param float $grandTotalAmount
-     * @param float $duePayableAmount
-     * @param float|null $lineTotalAmount
-     * @param float|null $chargeTotalAmount
-     * @param float|null $allowanceTotalAmount
-     * @param float|null $taxBasisTotalAmount
-     * @param float|null $taxTotalAmount
-     * @param float|null $roundingAmount
-     * @param float|null $totalPrepaidAmount
+     * @param float $grandTotalAmount Total invoice amount including sales tax
+     * @param float $duePayableAmount Payment amount due
+     * @param float|null $lineTotalAmount Sum of the net amounts of all invoice items
+     * @param float|null $chargeTotalAmount Sum of the surcharges at document level
+     * @param float|null $allowanceTotalAmount Sum of the discounts at document level
+     * @param float|null $taxBasisTotalAmount Total invoice amount excluding sales tax
+     * @param float|null $taxTotalAmount Total amount of the invoice sales tax, total tax amount in the booking currency
+     * @param float|null $roundingAmount Rounding amount
+     * @param float|null $totalPrepaidAmount Prepayment amount
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentSummation(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ZugferdDocumentBuilder
@@ -223,9 +223,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a note to the docuzment
      *
-     * @param string $content
-     * @param string|null $contentCode
-     * @param string|null $subjectCode
+     * @param string $content Free text on the invoice
+     * @param string|null $contentCode Free text at document level
+     * @param string|null $subjectCode Code to qualify the free text for the invoice
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
