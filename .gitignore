@@ -70,3 +70,4 @@ _backup*
 /logs/*
 !/logs/README.md
 .phpunit.result.cache
+/build/
