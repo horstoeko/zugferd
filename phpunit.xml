@@ -14,5 +14,13 @@
             <directory suffix=".php">./src/exception</directory>
             <file>./src/ZugferdProfiles.php</file>
         </exclude>
+        <report>
+            <xml outputDirectory="./build/logs/xml-coverage"/>
+            <clover outputFile="./build/logs/clover.xml"/>
+            <crap4j outputFile="./build/logs/crap4j.xml" threshold="50"/>
+        </report>
     </coverage>
+    <logging>
+        <junit outputFile="build/logs/junit.xml"/>
+    </logging>
 </phpunit>
