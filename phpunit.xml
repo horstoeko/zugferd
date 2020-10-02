@@ -15,7 +15,7 @@
             <file>./src/ZugferdProfiles.php</file>
         </exclude>
         <report>
-            <xml outputDirectory="./build/logs/xml-coverage"/>
+            <xml outputDirectory="./build/coverage"/>
             <clover outputFile="./build/logs/clover.xml"/>
             <crap4j outputFile="./build/logs/crap4j.xml" threshold="50"/>
         </report>

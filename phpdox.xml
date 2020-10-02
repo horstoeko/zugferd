@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phpdox xmlns="http://xml.phpdox.net/config">
-    <project name="Easy ZUGFeRD for PHP" source="${basedir}/src" workdir="${basedir}/build/logs/phpdox">
+    <project name="Easy ZUGFeRD for PHP" source="${basedir}/src" workdir="${basedir}/build/phpdox">
         <collector backend="parser" publiconly="true">
             <include mask="*.php"/>
         </collector>
@@ -17,7 +17,7 @@
                     <history enabled="true" limit="15" cache="${phpDox.project.workdir}/gitlog.xml" />
                 </source>
                 <source type="phpunit">
-                    <coverage path="logs/xml-coverage"/>
+                    <coverage path="coverage"/>
                 </source>
             </enrich>
         </generator>
