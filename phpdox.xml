@@ -4,7 +4,7 @@
         <collector backend="parser" publiconly="true">
             <include mask="*.php"/>
         </collector>
-        <generator output="${basedir}/doc">
+        <generator output="${basedir}/build/doc">
             <build engine="html">
                 <file extension="html"/>
             </build>
