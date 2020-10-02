@@ -16,6 +16,7 @@
         </exclude>
         <report>
             <xml outputDirectory="./build/coverage"/>
+            <html outputDirectory="./build/coverage-html"/>
             <clover outputFile="./build/logs/clover.xml"/>
             <crap4j outputFile="./build/logs/crap4j.xml" threshold="50"/>
         </report>
