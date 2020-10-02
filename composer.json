@@ -28,6 +28,7 @@
     "require-dev": {
         "phpunit/phpunit": "^9",
         "goetas-webservices/xsd2php": "^0.3",
-        "phploc/phploc": "^7"
+        "phploc/phploc": "^7",
+        "theseer/phpdox": "*"
     }
 }
