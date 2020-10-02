@@ -29,6 +29,6 @@
         "phpunit/phpunit": "^9",
         "goetas-webservices/xsd2php": "^0.3",
         "phploc/phploc": "^7",
-        "theseer/phpdox": "*"
+        "theseer/phpdox": "^0.12.0"
     }
 }
