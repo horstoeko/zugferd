@@ -226,6 +226,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string $content Free text on the invoice
      * @param string|null $contentCode Free text at document level
      * @param string|null $subjectCode Code to qualify the free text for the invoice
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
@@ -236,11 +237,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sekker
+     * Detailed information about the seller (=service provider)
      *
-     * @param string $name
-     * @param string|null $id
-     * @param string|null $description
+     * @param string $name The full formal name under which the seller is registered in the national register of
+     * legal entities or taxable persons, or otherwise acts as persons
+     * @param string|null $id In many systems, the clerk identification is key information. Multiple seller IDs can be 
+     * assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, 
+     * it should be known to the buyer and seller, e.g. a previously exchanged ID of the seller assigned by the buyer.
+     * @param string|null $description Further legal information that is relevant for the seller
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentSeller(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -253,8 +258,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the seller
      *
-     * @param string|null $globalID
-     * @param string|null $globalIDType
+     * @param string|null $globalID The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a 
+     * global registration organization.
+     * @param string|null $globalIDType If the identifier is used for the identification scheme, it must be selected from the entries in 
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentSellerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -265,10 +273,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to seller Trade party
+     * Add detailed information on the seller's tax information
+     * 
+     * The local identification (defined by the seller's address) of the seller for tax purposes or a reference that enables the seller 
+     * to indicate his reporting status for tax purposes The sales tax identification number of the seller 
+     * Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So 
+     * e.g. In some countries, if the seller is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the 
+     * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax 
+     * identification number, unless he uses a tax agent.
      *
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $taxregtype Type of tax number of the seller
+     * @param string|null $taxregid Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentSellerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -280,15 +296,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sets the postal address of the seller party
+     * Sets detailed information on the business address of the seller
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
+     * @param string|null $lineone Address Line 1, Enter the street or post office box. For major customer addresses, this field must be filled with "-".
+     * @param string|null $linetwo Address Line 2
+     * @param string|null $linethree Address Line 3
+     * @param string|null $postcode Post Code
+     * @param string|null $city City
+     * @param string|null $country Country (ISO 3166-1) Only the alpha-2 representation may be used
+     * @param string|null $subdivision State
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentSellerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -300,11 +317,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set legal organisation of the seller party
+     * Set Organization details
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param string|null $legalorgid An identifier issued by an official registrar that identifies the seller as a legal entity 
+     * or legal entity. If no identification scheme is given, it should be known to the buyer and seller
+     * @param string|null $legalorgtype The identifier for the identification scheme The identifier of the legal registration of 
+     * the seller Note: If the identification scheme is used, it must be selected from the entries in the 
+     * list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string|null $legalorgname A name by which the seller is known, if different from the seller's name (also known as
+     * the company name). Note: This may be used if different from the seller's name.
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentSellerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -316,13 +338,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set contact of the seller party
+     * Set detailed information on the seller's contact person
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailadd
+     * @param string|null $contactpersonname A point of contact for a legal entity or legal person,
+     * such as Personal name, designation of the contact person
+     * @param string|null $contactdepartmentname A point of contact for a legal entity or legal person
+     * such as Name of the department or office
+     * @param string|null $contactphoneno Seller's phone number 
+     * @param string|null $contactfaxno Detailed information on the seller's fax number
+     * @param string|null $contactemailadd Detailed information about the email address of the seller
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -334,31 +359,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Buyer
+     * Detailed information about the buyer (service recipient)
      *
-     * @param string $name
-     * @param string|null $id
-     * @param string|null $globalID
-     * @param string|null $globalIDType
-     * @param string|null $description
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
-     * @param string|null $buyerrefno
+     * @param string $name The full name of the buyer
+     * @param string|null $id An identifier of the buyer, note: If no scheme is given, it should be known to the 
+     * buyer and seller, e.g. a previously exchanged, seller-assigned identifier of the buyer.
+     * @param string|null $description Further legal information that is relevant for the seller
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentBuyer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -371,8 +378,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the buyer
      *
-     * @param string|null $globalID
-     * @param string|null $globalIDType
+     * @param string|null $globalID The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a 
+     * global registration organization.
+     * @param string|null $globalIDType If the identifier is used for the identification scheme, it must be selected from the entries in 
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -383,10 +393,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to buyer Trade party
+     * Add detailed information on the buyers's tax information
+     * 
+     * The local identification (defined by the buyers's address) of the buyers for tax purposes or a reference that enables the buyers 
+     * to indicate his reporting status for tax purposes The sales tax identification number of the buyers 
+     * Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So 
+     * e.g. In some countries, if the buyers is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the 
+     * buyers. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax 
+     * identification number, unless he uses a tax agent.
      *
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param string|null $taxregtype Type of tax number of the buyers
+     * @param string|null $taxregid Tax number of the buyers or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -398,15 +416,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sets the postal address of the buyer party
+     * Sets detailed information on the business address of the buyer
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
+     * @param string|null $lineone Address Line 1, Enter the street or post office box. For major customer addresses, this field must be filled with "-".
+     * @param string|null $linetwo Address Line 2
+     * @param string|null $linethree Address Line 3
+     * @param string|null $postcode Post Code
+     * @param string|null $city City
+     * @param string|null $country Country (ISO 3166-1) Only the alpha-2 representation may be used
+     * @param string|null $subdivision State
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentBuyerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -420,9 +439,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the buyer party
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param string|null $legalorgid An identifier issued by an official registrar that identifies the buyer as a legal entity 
+     * or legal entity. If no identification scheme is given, it should be known to the buyer and buyer
+     * @param string|null $legalorgtype The identifier for the identification scheme The identifier of the legal registration of 
+     * the buyer Note: If the identification scheme is used, it must be selected from the entries in the 
+     * list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param string|null $legalorgname A name by which the buyer is known, if different from the buyer's name (also known as
+     * the company name). Note: This may be used if different from the buyer's name.
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -436,11 +460,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the buyer party
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailadd
+     * @param string|null $contactpersonname A point of contact for a legal entity or legal person,
+     * such as Personal name, designation of the contact person
+     * @param string|null $contactdepartmentname A point of contact for a legal entity or legal person
+     * such as Name of the department or office
+     * @param string|null $contactphoneno buyer's phone number 
+     * @param string|null $contactfaxno Detailed information on the buyer's fax number
+     * @param string|null $contactemailadd Detailed information about the email address of the buyer
+     * 
      * @return ZugferdDocumentBuilder
      */
     public function SetDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
