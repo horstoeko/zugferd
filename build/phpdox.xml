@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phpdox xmlns="http://xml.phpdox.net/config">
-    <project name="Easy ZUGFeRD for PHP" source="${basedir}/src" workdir="${basedir}/build/phpdox">
+    <project name="Easy ZUGFeRD for PHP" source="../src" workdir="../build/phpdox">
         <collector backend="parser" publiconly="true">
             <include mask="*.php"/>
         </collector>
-        <generator output="${basedir}/build/api">
-            <build engine="html">
+        <generator output="../build">
+            <build engine="html" output="api">
                 <file extension="html"/>
             </build>
-            <enrich base="${basedir}/build">
+            <enrich base="../build">
                 <source type="phploc">
                     <file name="logs/phploc.xml"/>
                 </source>
