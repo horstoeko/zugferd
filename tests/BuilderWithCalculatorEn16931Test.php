@@ -6,7 +6,7 @@ use horstoeko\zugferd\tests\BuilderBaseTest;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentBuilderWithCalculator;
 
-class BuilderWithCalculatorEn16931SimpleTest extends BuilderBaseTest
+class BuilderWithCalculatorEn16931Test extends BuilderBaseTest
 {
     public static function setUpBeforeClass(): void
     {

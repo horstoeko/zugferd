@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class ReaderExtendedInvoiceTest extends TestCase
+class ReaderExtendedTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
