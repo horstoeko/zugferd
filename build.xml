@@ -86,9 +86,7 @@
         <property name="phpcs.done" value="true"/>
     </target>
     <target name="phpdox" unless="phpdox.done" depends="phploc-ci,phpcs-ci,phpmd-ci" description="Generate project documentation using phpDox.">
-        <exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox">
-            <arg value="--file ${basedir}/phpdox.xml"/>
-        </exec>
+        <exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox"/>
         <property name="phpdox.done" value="true"/>
     </target>
     <target name="phploc" unless="phploc.done" description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
@@ -115,7 +113,7 @@
         <exec executable="${phpmd}" taskname="phpmd">
             <arg path="${basedir}/src"/>
             <arg value="text"/>
-            <arg path="${basedir}/phpmd.xml"/>
+            <arg path="${basedir}/build/phpmd.xml"/>
         </exec>
         <property name="phpmd.done" value="true"/>
     </target>
@@ -123,7 +121,7 @@
         <exec executable="${phpmd}" taskname="phpmd">
             <arg path="${basedir}/src"/>
             <arg value="xml"/>
-            <arg path="${basedir}/phpmd.xml"/>
+            <arg path="${basedir}/build/phpmd.xml"/>
             <arg value="--reportfile"/>
             <arg path="${basedir}/build/logs/pmd.xml"/>
         </exec>
@@ -132,7 +130,7 @@
     <target name="phpunit" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit.">
         <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="--configuration"/>
-            <arg path="${basedir}/phpunit.xml"/>
+            <arg path="${basedir}/build/phpunit.xml"/>
             <arg path="tests"/>
         </exec>
         <property name="phpunit.done" value="true"/>
@@ -140,7 +138,7 @@
     <target name="phpunit-no-coverage" unless="phpunit.done" depends="prepare" description="Run unit tests with PHPUnit without generating code coverage reports.">
         <exec executable="${phpunit}" failonerror="true" taskname="phpunit">
             <arg value="--configuration"/>
-            <arg path="${basedir}/phpunit.xml"/>
+            <arg path="${basedir}/build/phpunit.xml"/>
             <arg path="tests"/>
             <arg value="--no-coverage"/>
         </exec>
