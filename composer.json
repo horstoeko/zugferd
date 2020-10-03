@@ -30,6 +30,7 @@
         "goetas-webservices/xsd2php": "^0.3",
         "phploc/phploc": "^7",
         "theseer/phpdox": "*",
-        "squizlabs/php_codesniffer": "^3.5"
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpmd/phpmd" : "@stable"
     }
 }
