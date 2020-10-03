@@ -4,7 +4,7 @@
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${basedir}/vendor/bin/phpcs"/>
-    <property name="phpdox" value="${basedir}/vendor/bin/phpdox"/>
+    <property name="phpdox" value="${basedir}/phpdox.phar"/>
     <property name="phploc" value="${basedir}/vendor/bin/phploc"/>
     <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
@@ -25,7 +25,14 @@
             <arg value="--no-progress"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="getphpdoxbin" description="Install phpdox.">
+        <get src="http://phpdox.de/releases/phpdox.phar" dest="phpdox.phar"/>
+        <exec executable="chmod" failonerror="true">
+            <arg value="+x"/>
+            <arg value="${basedir}/phpdox.phar"/>
+        </exec>
+    </target>
+    <target name="full-build" depends="prepare,composer,getphpdoxbin,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -152,7 +159,7 @@
         <mkdir dir="${basedir}/build/phpdox"/>
         <property name="prepare.done" value="true"/>
     </target>
-    <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
+    <target name="quick-build" depends="prepare,composer,getphpdoxbin,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
         <echo message="Built"/>
     </target>
     <target name="static-analysis" depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci" description="Perform static analysis.">
