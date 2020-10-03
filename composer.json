@@ -33,6 +33,6 @@
         "sebastian/phpcpd": "^6",
         "squizlabs/php_codesniffer": "^3.5",
         "theseer/phpdox": "*",
-        "goetas-webservices/xsd2php": "^0.3",
+        "goetas-webservices/xsd2php": "^0.3"
     }
 }
