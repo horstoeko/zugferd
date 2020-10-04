@@ -19,6 +19,12 @@
                 <source type="phpunit">
                     <coverage path="coverage"/>
                 </source>
+                <source type="checkstyle">
+                    <file name="logs/checkstyle.xml"/>
+                </source>
+                <source type="pmd">
+                    <file name="logs/pmd.xml"/>
+                </source>
             </enrich>
         </generator>
     </project>
