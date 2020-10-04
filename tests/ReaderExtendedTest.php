@@ -1074,10 +1074,30 @@ class ReaderExtendedTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstGetDocumentPaymentMeans
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::NextGetDocumentPaymentMeans
      */
-    public function testDocumentDocumentPaymentMeansLoop()
+    public function testDocumentPaymentMeansLoop()
     {
-        $this->assertFalse(self::$document->FirstGetDocumentPaymentMeans());
+        $this->assertTrue(self::$document->FirstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->NextGetDocumentPaymentMeans());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::FirstGetDocumentPaymentMeans
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::GetDocumentPaymentMeans
+     */
+    public function testGetDocumentPaymentMeans()
+    {
+        $this->assertTrue(self::$document->FirstGetDocumentPaymentMeans());
+        self::$document->GetDocumentPaymentMeans($typeCode, $information, $cardType, $cardId, $cardHolderName, $buyerIban, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
+        $this->assertEquals("58", $typeCode);
+        $this->assertEquals("", $information);
+        $this->assertEquals("", $cardType);
+        $this->assertEquals("", $cardId);
+        $this->assertEquals("", $cardHolderName);
+        $this->assertEquals("", $buyerIban);
+        $this->assertEquals("DE5467894567876500", $payeeIban);
+        $this->assertEquals("", $payeeAccountName);
+        $this->assertEquals("", $payeePropId);
+        $this->assertEquals("", $payeeBic);
     }
 
     /**
