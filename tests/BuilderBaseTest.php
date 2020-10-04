@@ -13,6 +13,28 @@ class BuilderBaseTest extends TestCase
     protected static $document;
 
     /**
+     * Cache for latest rendered XML
+     *
+     * @var \SimpleXMLElement
+     */
+    protected $latestXml;
+
+    /**
+     * Dont render xml content
+     *
+     * @var boolean
+     */
+    protected $renderingOfXmlDisabled = false;
+
+    /**
+     * @inheritDoc
+     */
+    protected function setUp(): void
+    {
+        $this->EnableRenderXmlContent();
+    }
+
+    /**
      * Dummy Test
      *
      * @return void
@@ -29,7 +51,31 @@ class BuilderBaseTest extends TestCase
      */
     protected function getXml(): \SimpleXMLElement
     {
-        return new \SimpleXMLElement((self::$document)->GetContent());
+        if ($this->renderingOfXmlDisabled === false) {
+            $this->latestXml = new \SimpleXMLElement((self::$document)->GetContent());
+        }
+        return $this->latestXml;
+    }
+
+    /**
+     * Disable rendering of test content
+     *
+     * @return void
+     */
+    protected function DisableRenderXmlContent()
+    {
+        $this->latestXml = new \SimpleXMLElement((self::$document)->GetContent());
+        $this->renderingOfXmlDisabled = true;
+    }
+
+    /**
+     * Disable rendering of test content
+     *
+     * @return void
+     */
+    protected function EnableRenderXmlContent()
+    {
+        $this->renderingOfXmlDisabled = false;
     }
 
     /**
