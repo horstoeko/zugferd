@@ -85,8 +85,8 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentNote()
     {
-        (self::$document)->AddDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.');
-        (self::$document)->AddDocumentNote('Lieferant GmbH', null, 'REG');
+        (self::$document)->addDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.');
+        (self::$document)->addDocumentNote('Lieferant GmbH', null, 'REG');
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 0, "Rechnung gemäß Bestellung vom 01.03.2018.");
@@ -110,7 +110,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSeller()
     {
-        (self::$document)->SetDocumentSeller("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentSeller("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', "549910");
@@ -122,7 +122,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentSellerGlobalId()
     {
-        (self::$document)->AddDocumentSellerGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentSellerGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
@@ -133,8 +133,8 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentSellerTaxRegistration()
     {
-        (self::$document)->AddDocumentSellerTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentSellerTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentSellerTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentSellerTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
@@ -146,7 +146,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSellerAddress()
     {
-        (self::$document)->SetDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
@@ -163,7 +163,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSellerLegalOrganisation()
     {
-        (self::$document)->SetDocumentSellerLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentSellerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
@@ -175,7 +175,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSellerContact()
     {
-        (self::$document)->SetDocumentSellerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentSellerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
@@ -1229,7 +1229,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testInitDocumentSummation()
     {
-        (self::$document)->InitDocumentSummation();
+        (self::$document)->initDocumentSummation();
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', 0, "0.0");
