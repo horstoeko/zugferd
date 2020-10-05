@@ -880,7 +880,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function SetDocumentShipFrom(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $name);
+        $shipToTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
         return $this;
     }
@@ -1447,16 +1447,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add new payment means
      *
-     * @param string $code
+     * @param string $typecode
      * @param string|null $information
      * @param string|null $cardType
      * @param string|null $cardId
-     * @param string|null $cardHolder
-     * @param string|null $sellerIban
+     * @param string|null $cardHolderName
+     * @param string|null $buyerIban
      * @param string|null $payeeIban
      * @param string|null $payeeAccountName
      * @param string|null $payeePropId
-     * @param string|null $payeeFinInstitute
+     * @param string|null $payeeBic
      * @return ZugferdDocumentBuilder
      */
     public function AddDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
