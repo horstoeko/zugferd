@@ -368,7 +368,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentBuyer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->GetTradeParty($name, $id, $description);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerTradeParty", $buyerTradeParty);
@@ -385,7 +385,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    public function addDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $this->objectHelper->TryCall($buyerTradeParty, "addToGlobalID", $this->objectHelper->GetIdType($globalID, $globalIDType));
@@ -407,7 +407,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function AddDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $taxreg = $this->objectHelper->GetTaxRegistrationType($taxregtype, $taxregid);
@@ -428,7 +428,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentBuyerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $address = $this->objectHelper->GetTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
@@ -449,7 +449,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $legalorg = $this->objectHelper->GetLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
@@ -470,7 +470,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * 
      * @return ZugferdDocumentBuilder
      */
-    public function SetDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->objectHelper->TryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->objectHelper->GetTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
