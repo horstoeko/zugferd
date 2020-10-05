@@ -268,11 +268,11 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSellerTaxRepresentativeTradeParty
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeTradeParty
      */
     public function testSetDocumentSellerTaxRepresentativeTradeParty()
     {
-        (self::$document)->SetDocumentSellerTaxRepresentativeTradeParty("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentSellerTaxRepresentativeTradeParty("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:ID', "549910");
@@ -280,23 +280,23 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentSellerTaxRepresentativeGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerTaxRepresentativeGlobalId
      */
-    public function testAddSellerTaxRepresentativeGlobalId()
+    public function testAddDocumentSellerTaxRepresentativeGlobalId()
     {
-        (self::$document)->AddDocumentSellerTaxRepresentativeGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentSellerTaxRepresentativeGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentSellerTaxRepresentativeTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerTaxRepresentativeTaxRegistration
      */
     public function testAddDocumentSellerTaxRepresentativeTaxRegistration()
     {
-        (self::$document)->AddDocumentSellerTaxRepresentativeTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentSellerTaxRepresentativeTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
@@ -304,11 +304,11 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSellerTaxRepresentativeAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeAddress
      */
     public function testSetDocumentSellerTaxRepresentativeAddress()
     {
-        (self::$document)->SetDocumentSellerTaxRepresentativeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentSellerTaxRepresentativeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
@@ -321,11 +321,11 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSellerTaxRepresentativeLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeLegalOrganisation
      */
     public function testSetDocumentSellerTaxRepresentativeLegalOrganisation()
     {
-        (self::$document)->SetDocumentSellerTaxRepresentativeLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentSellerTaxRepresentativeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
@@ -333,11 +333,11 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSellerTaxRepresentativeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeContact
      */
     public function testSetDocumentSellerTaxRepresentativeContact()
     {
-        (self::$document)->SetDocumentSellerTaxRepresentativeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentSellerTaxRepresentativeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
