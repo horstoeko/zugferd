@@ -58,18 +58,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         parent::__construct($profile);
 
-        $this->InitNewDocument();
+        $this->initNewDocument();
     }
 
     /**
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
      * @codeCoverageIgnore
-     * 
+     *
      * @param integer $profile
      * @return ZugferdDocumentBuilder
      */
-    public static function CreateNew(int $profile): ZugferdDocumentBuilder
+    public static function createNew(int $profile): ZugferdDocumentBuilder
     {
         return (new static($profile));
     }
@@ -79,7 +79,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @return ZugferdDocumentBuilder
      */
-    public function InitNewDocument(): ZugferdDocumentBuilder
+    public function initNewDocument(): ZugferdDocumentBuilder
     {
         $this->invoiceObject = $this->objectHelper->GetCrossIndustryInvoice();
         $this->headerTradeAgreement = $this->invoiceObject->getSupplyChainTradeTransaction()->getApplicableHeaderTradeAgreement();
