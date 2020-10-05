@@ -15,7 +15,7 @@ class BuilderWithCalculatorEn16931Test extends BuilderBaseTest
 
     public function testSimple()
     {
-        self::$document->SetDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
+        self::$document->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
         self::$document->AddNewPosition("1");
         self::$document->SetDocumentPositionGrossPrice(9.9);
         self::$document->SetDocumentPositionQuantity(20.0, "H87");

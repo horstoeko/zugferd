@@ -7,7 +7,7 @@ require getcwd() . "/vendor/autoload.php";
 
 $document = ZugferdDocumentBuilderWithCalculator::CreateNew(ZugferdProfiles::PROFILE_EN16931);
 $document
-    ->SetDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")
+    ->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")
     ->AddDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.')
     ->AddDocumentNote('Lieferant GmbH' . PHP_EOL . 'Lieferantenstraße 20' . PHP_EOL . '80333 München' . PHP_EOL . 'Deutschland' . PHP_EOL . 'Geschäftsführer: Hans Muster' . PHP_EOL . 'Handelsregisternummer: H A 123' . PHP_EOL . PHP_EOL, null, 'REG')
     ->SetDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'))

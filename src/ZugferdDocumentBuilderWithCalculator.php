@@ -191,7 +191,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
 
         $totalPrepaidAmount = $this->_cbpar($summation, "getTotalPrepaidAmount.value", 0.0);
 
-        $this->SetDocumentSummation(
+        $this->setDocumentSummation(
             round($docNetAmount + $docVatSum, 2),
             round($docNetAmount + $docVatSum - $totalPrepaidAmount, 2),
             round($lineTotalAmount, 2),

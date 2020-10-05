@@ -33,11 +33,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInformation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInformation
      */
     public function testSetDocumentInformation()
     {
-        (self::$document)->SetDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
+        (self::$document)->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "471102");
@@ -47,11 +47,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentGeneralPaymentInformation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentGeneralPaymentInformation
      */
     public function testSetDocumentGeneralPaymentInformation()
     {
-        (self::$document)->SetDocumentGeneralPaymentInformation("1111111111", "2222222222");
+        (self::$document)->setDocumentGeneralPaymentInformation("1111111111", "2222222222");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID', "1111111111");
@@ -59,11 +59,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetIsDocumentCopy
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setIsDocumentCopy
      */
     public function testSetIsDocumentCopy()
     {
-        (self::$document)->SetIsDocumentCopy();
+        (self::$document)->setIsDocumentCopy();
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator');
@@ -1248,7 +1248,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSummation()
     {
-        (self::$document)->SetDocumentSummation(100.0, 0.0, 100.0, 5.0, 4.0, 99.0, 10.0, 0.0, 0.0);
+        (self::$document)->setDocumentSummation(100.0, 0.0, 100.0, 5.0, 4.0, 99.0, 10.0, 0.0, 0.0);
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', 0, "100.0");
