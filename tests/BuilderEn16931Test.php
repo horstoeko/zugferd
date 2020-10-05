@@ -95,11 +95,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSupplyChainEvent
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSupplyChainEvent
      */
     public function testSetDocumentSupplyChainEvent()
     {
-        (self::$document)->SetDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'));
+        (self::$document)->setDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'));
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', "20180305", "format", "102");
@@ -346,11 +346,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentProductEndUser
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUser
      */
     public function testSetDocumentProductEndUser()
     {
-        (self::$document)->SetDocumentProductEndUser("Kunden AG Mitte", "549910");
+        (self::$document)->setDocumentProductEndUser("Kunden AG Mitte", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:ID');
@@ -358,23 +358,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentProductEndUserGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentProductEndUserGlobalId
      */
     public function testAddDocumentProductEndUserGlobalId()
     {
-        (self::$document)->AddDocumentProductEndUserGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentProductEndUserGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:GlobalID');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentProductEndUserTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentProductEndUserTaxRegistration
      */
     public function testAddDocumentProductEndUserTaxRegistration()
     {
-        (self::$document)->AddDocumentProductEndUserTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentProductEndUserTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentProductEndUserTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentProductEndUserTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
@@ -382,11 +382,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentProductEndUserAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserAddress
      */
     public function testSetDocumentProductEndUserAddress()
     {
-        (self::$document)->SetDocumentProductEndUserAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentProductEndUserAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
@@ -399,11 +399,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentProductEndUserLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserLegalOrganisation
      */
     public function testSetDocumentProductEndUserLegalOrganisation()
     {
-        (self::$document)->SetDocumentProductEndUserLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentProductEndUserLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
@@ -411,11 +411,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentProductEndUserContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserContact
      */
     public function testSetDocumentProductEndUserContact()
     {
-        (self::$document)->SetDocumentProductEndUserContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentProductEndUserContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:DefinedTradeContact/ram:PersonName');
@@ -426,11 +426,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipTo
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipTo
      */
     public function testSetDocumentShipTo()
     {
-        (self::$document)->SetDocumentShipTo("Kunden AG Mitte", "549910");
+        (self::$document)->setDocumentShipTo("Kunden AG Mitte", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', "549910");
@@ -438,23 +438,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentShipToGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipToGlobalId
      */
     public function testAddDocumentShipToGlobalId()
     {
-        (self::$document)->AddDocumentShipToGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentShipToGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentShipToTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipToTaxRegistration
      */
     public function testAddDocumentShipToTaxRegistration()
     {
-        (self::$document)->AddDocumentShipToTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentShipToTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentShipToTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentShipToTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
@@ -462,11 +462,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipToAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToAddress
      */
     public function testSetDocumentShipToAddress()
     {
-        (self::$document)->SetDocumentShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "69876");
@@ -479,11 +479,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipToLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToLegalOrganisation
      */
     public function testSetDocumentShipToLegalOrganisation()
     {
-        (self::$document)->SetDocumentShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
@@ -491,11 +491,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToContact
      */
     public function testSetDocumentShipToContact()
     {
-        (self::$document)->SetDocumentShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:PersonName', "Otto Müller");
@@ -506,11 +506,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentUltimateShipTo
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipTo
      */
     public function testSetDocumentUltimateShipTo()
     {
-        (self::$document)->SetDocumentUltimateShipTo("Kunden AG Mitte", "549910");
+        (self::$document)->setDocumentUltimateShipTo("Kunden AG Mitte", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID');
@@ -518,23 +518,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentUltimateShipToGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateShipToGlobalId
      */
     public function testAddDocumentUltimateShipToGlobalId()
     {
-        (self::$document)->AddDocumentUltimateShipToGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentUltimateShipToGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:GlobalID');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentUltimateShipToTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateShipToTaxRegistration
      */
     public function testAddDocumentUltimateShipToTaxRegistration()
     {
-        (self::$document)->AddDocumentUltimateShipToTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentUltimateShipToTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentUltimateShipToTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentUltimateShipToTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
@@ -542,11 +542,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentUltimateShipToAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToAddress
      */
     public function testSetDocumentUltimateShipToAddress()
     {
-        (self::$document)->SetDocumentUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
@@ -559,11 +559,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentUltimateShipToLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToLegalOrganisation
      */
     public function testSetDocumentUltimateShipToLegalOrganisation()
     {
-        (self::$document)->SetDocumentUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
@@ -571,11 +571,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentUltimateShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToContact
      */
     public function testSetDocumentUltimateShipToContact()
     {
-        (self::$document)->SetDocumentUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:DefinedTradeContact/ram:PersonName');
@@ -586,11 +586,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipFrom
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFrom
      */
     public function testSetDocumentShipFrom()
     {
-        (self::$document)->SetDocumentShipFrom("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentShipFrom("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID');
@@ -598,23 +598,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentShipFromGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromGlobalId
      */
     public function testAddDocumentShipFromGlobalId()
     {
-        (self::$document)->AddDocumentShipFromGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentShipFromGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:GlobalID');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentShipFromTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromTaxRegistration
      */
     public function testAddDocumentShipFromTaxRegistration()
     {
-        (self::$document)->AddDocumentShipFromTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentShipFromTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentShipFromTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentShipFromTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
@@ -622,11 +622,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipFromAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromAddress
      */
     public function testSetDocumentShipFromAddress()
     {
-        (self::$document)->SetDocumentShipFromAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentShipFromAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
@@ -639,11 +639,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipFromLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromLegalOrganisation
      */
     public function testSetDocumentShipFromLegalOrganisation()
     {
-        (self::$document)->SetDocumentShipFromLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentShipFromLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
@@ -651,11 +651,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentShipFromContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromContact
      */
     public function testSetDocumentShipFromContact()
     {
-        (self::$document)->SetDocumentShipFromContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentShipFromContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:DefinedTradeContact/ram:PersonName');
@@ -666,11 +666,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoicer
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicer
      */
     public function testSetDocumentInvoicer()
     {
-        (self::$document)->SetDocumentInvoicer("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentInvoicer("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID');
@@ -678,23 +678,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentInvoicerGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoicerGlobalId
      */
     public function testAddDocumentInvoicerGlobalId()
     {
-        (self::$document)->AddDocumentInvoicerGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentInvoicerGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:GlobalID');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentInvoicerTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoicerTaxRegistration
      */
     public function testAddDocumentInvoicerTaxRegistration()
     {
-        (self::$document)->AddDocumentInvoicerTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentInvoicerTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentInvoicerTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentInvoicerTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
@@ -702,11 +702,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoicerAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerAddress
      */
     public function testSetDocumentInvoicerAddress()
     {
-        (self::$document)->SetDocumentInvoicerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentInvoicerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
@@ -719,11 +719,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoicerLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerLegalOrganisation
      */
     public function testSetDocumentInvoicerLegalOrganisation()
     {
-        (self::$document)->SetDocumentInvoicerLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentInvoicerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
@@ -731,11 +731,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoicerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerContact
      */
     public function testSetDocumentInvoicerContact()
     {
-        (self::$document)->SetDocumentInvoicerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentInvoicerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:DefinedTradeContact/ram:PersonName');
@@ -746,11 +746,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoicee
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicee
      */
     public function testSetDocumentInvoicee()
     {
-        (self::$document)->SetDocumentInvoicee("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentInvoicee("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID');
@@ -758,23 +758,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentInvoiceeGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeGlobalId
      */
     public function testAddDocumentInvoiceeGlobalId()
     {
-        (self::$document)->AddDocumentInvoiceeGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentInvoiceeGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:GlobalID');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentInvoiceeTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeTaxRegistration
      */
     public function testAddDocumentInvoiceeTaxRegistration()
     {
-        (self::$document)->AddDocumentInvoiceeTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentInvoiceeTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentInvoiceeTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentInvoiceeTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
@@ -782,11 +782,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoiceeAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeAddress
      */
     public function testSetDocumentInvoiceeAddress()
     {
-        (self::$document)->SetDocumentInvoiceeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentInvoiceeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
@@ -799,11 +799,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoiceeLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeLegalOrganisation
      */
     public function testSetDocumentInvoiceeLegalOrganisation()
     {
-        (self::$document)->SetDocumentInvoiceeLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentInvoiceeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
@@ -811,11 +811,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoiceeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeContact
      */
     public function testSetDocumentInvoiceeContact()
     {
-        (self::$document)->SetDocumentInvoiceeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentInvoiceeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:DefinedTradeContact/ram:PersonName');
@@ -826,11 +826,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPayee
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayee
      */
     public function testSetDocumentPayee()
     {
-        (self::$document)->SetDocumentPayee("Lieferant GmbH", "549910");
+        (self::$document)->setDocumentPayee("Lieferant GmbH", "549910");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', "549910");
@@ -838,23 +838,23 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPayeeGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPayeeGlobalId
      */
     public function testAddDocumentPayeeGlobalId()
     {
-        (self::$document)->AddDocumentPayeeGlobalId("4000001123452", "0088");
+        (self::$document)->addDocumentPayeeGlobalId("4000001123452", "0088");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPayeeTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPayeeTaxRegistration
      */
     public function testAddDocumentPayeeTaxRegistration()
     {
-        (self::$document)->AddDocumentPayeeTaxRegistration("FC", "201/113/40209");
-        (self::$document)->AddDocumentPayeeTaxRegistration("VA", "DE123456789");
+        (self::$document)->addDocumentPayeeTaxRegistration("FC", "201/113/40209");
+        (self::$document)->addDocumentPayeeTaxRegistration("VA", "DE123456789");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
@@ -862,11 +862,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPayeeAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeAddress
      */
     public function testSetDocumentPayeeAddress()
     {
-        (self::$document)->SetDocumentPayeeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
+        (self::$document)->setDocumentPayeeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
@@ -879,11 +879,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPayeeLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeLegalOrganisation
      */
     public function testSetDocumentPayeeLegalOrganisation()
     {
-        (self::$document)->SetDocumentPayeeLegalOrganisation("DE12345", "FC", "Lieferant AG");
+        (self::$document)->setDocumentPayeeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
@@ -891,11 +891,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPayeeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeContact
      */
     public function testSetDocumentPayeeContact()
     {
-        (self::$document)->SetDocumentPayeeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
+        (self::$document)->setDocumentPayeeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
@@ -906,22 +906,22 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentDeliveryTerms
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDeliveryTerms
      */
     public function testSetDocumentDeliveryTerms()
     {
-        (self::$document)->SetDocumentDeliveryTerms("term");
+        (self::$document)->setDocumentDeliveryTerms("term");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ApplicableTradeDeliveryTerms/ram:DeliveryTypeCode');
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSellerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerOrderReferencedDocument
      */
     public function testSetDocumentSellerOrderReferencedDocument()
     {
-        (self::$document)->SetDocumentSellerOrderReferencedDocument('B-1010', new \DateTime());
+        (self::$document)->setDocumentSellerOrderReferencedDocument('B-1010', new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerOrderReferencedDocument/ram:IssuerAssignedID', "B-1010");
@@ -929,11 +929,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentBuyerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerOrderReferencedDocument
      */
     public function testSetDocumentBuyerOrderReferencedDocument()
     {
-        (self::$document)->SetDocumentBuyerOrderReferencedDocument('O-2020', new \DateTime());
+        (self::$document)->setDocumentBuyerOrderReferencedDocument('O-2020', new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', "O-2020");
@@ -941,11 +941,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentContractReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentContractReferencedDocument
      */
     public function testSetDocumentContractReferencedDocument()
     {
-        (self::$document)->SetDocumentContractReferencedDocument("CON-4711", new \DateTime());
+        (self::$document)->setDocumentContractReferencedDocument("CON-4711", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', "CON-4711");
@@ -953,12 +953,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentAdditionalReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAdditionalReferencedDocument
      */
     public function testAddDocumentAdditionalReferencedDocument()
     {
-        (self::$document)->AddDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime());
-        (self::$document)->AddDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new \DateTime());
+        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime());
+        (self::$document)->addDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 0, "A-1011");
@@ -976,11 +976,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentInvoiceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceReferencedDocument
      */
     public function testSetDocumentInvoiceReferencedDocument()
     {
-        (self::$document)->SetDocumentInvoiceReferencedDocument("INV-1", new \DateTime());
+        (self::$document)->setDocumentInvoiceReferencedDocument("INV-1", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', "INV-1");
@@ -988,11 +988,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentProcuringProject
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProcuringProject
      */
     public function testSetDocumentProcuringProject()
     {
-        (self::$document)->SetDocumentProcuringProject("HB-8378732", "Hausbau");
+        (self::$document)->setDocumentProcuringProject("HB-8378732", "Hausbau");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SpecifiedProcuringProject/ram:ID', "HB-8378732");
@@ -1000,12 +1000,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentUltimateCustomerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateCustomerOrderReferencedDocument
      */
     public function testAddDocumentUltimateCustomerOrderReferencedDocument()
     {
-        (self::$document)->AddDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new \DateTime());
-        (self::$document)->AddDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new \DateTime());
+        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new \DateTime());
+        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:UltimateCustomerOrderReferencedDocument/ram:IssuerAssignedID');
@@ -1013,11 +1013,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentDespatchAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDespatchAdviceReferencedDocument
      */
     public function testSetDocumentDespatchAdviceReferencedDocument()
     {
-        (self::$document)->SetDocumentDespatchAdviceReferencedDocument("DADV-001", new \DateTime());
+        (self::$document)->setDocumentDespatchAdviceReferencedDocument("DADV-001", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', "DADV-001");
@@ -1025,11 +1025,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentReceivingAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentReceivingAdviceReferencedDocument
      */
     public function testSetDocumentReceivingAdviceReferencedDocument()
     {
-        (self::$document)->SetDocumentReceivingAdviceReferencedDocument("RADV-002", new \DateTime());
+        (self::$document)->setDocumentReceivingAdviceReferencedDocument("RADV-002", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:IssuerAssignedID', "RADV-002");
@@ -1037,11 +1037,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentDeliveryNoteReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDeliveryNoteReferencedDocument
      */
     public function testSetDocumentDeliveryNoteReferencedDocument()
     {
-        (self::$document)->SetDocumentDeliveryNoteReferencedDocument("DNOTE-003", new \DateTime());
+        (self::$document)->setDocumentDeliveryNoteReferencedDocument("DNOTE-003", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:IssuerAssignedID');
@@ -1049,12 +1049,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPaymentMean
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPaymentMean
      */
     public function testAddDocumentPaymentMean()
     {
-        (self::$document)->AddDocumentPaymentMean("42", "Paying information", "cardtype", "cardid", "cardholder", "DE00000000000", "DE11111111111", "Bank", "44444444", "NOLADEQLB21");
-        (self::$document)->AddDocumentPaymentMean("49", "Paying information 2", "cardtype2", "cardid2", "cardholder2", "DE22222222222", "DE33333333333", "Bank 2", "22222222", "BIC");
+        (self::$document)->addDocumentPaymentMean("42", "Paying information", "cardtype", "cardid", "cardholder", "DE00000000000", "DE11111111111", "Bank", "44444444", "NOLADEQLB21");
+        (self::$document)->addDocumentPaymentMean("49", "Paying information 2", "cardtype2", "cardid2", "cardholder2", "DE22222222222", "DE33333333333", "Bank 2", "22222222", "BIC");
 
         $this->DisableRenderXmlContent();
 
@@ -1080,12 +1080,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentTax
      */
     public function testAddDocumentTax()
     {
-        (self::$document)->AddDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new \DateTime(), "duetypecode");
-        (self::$document)->AddDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new \DateTime(), "duetypecode2");
+        (self::$document)->addDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new \DateTime(), "duetypecode");
+        (self::$document)->addDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new \DateTime(), "duetypecode2");
 
         $this->DisableRenderXmlContent();
 
@@ -1111,11 +1111,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentTaxSimple
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentTaxSimple
      */
     public function testAddDocumentTaxSimple()
     {
-        (self::$document)->AddDocumentTaxSimple("S", "VAT", 100.0, 19.0, 19.0);
+        (self::$document)->addDocumentTaxSimple("S", "VAT", 100.0, 19.0, 19.0);
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:CalculatedAmount', 2, "19.0");
@@ -1130,11 +1130,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentBillingPeriod
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBillingPeriod
      */
     public function testSetDocumentBillingPeriod()
     {
-        (self::$document)->SetDocumentBillingPeriod(new \DateTime(), new \DateTime(), "Project");
+        (self::$document)->setDocumentBillingPeriod(new \DateTime(), new \DateTime(), "Project");
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
@@ -1142,12 +1142,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAllowanceCharge
      */
     public function testAddDocumentAllowanceCharge()
     {
-        (self::$document)->AddDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
-        (self::$document)->AddDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
+        (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
+        (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
 
         $this->DisableRenderXmlContent();
 
@@ -1171,11 +1171,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentLogisticsServiceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentLogisticsServiceCharge
      */
     public function testAddDocumentLogisticsServiceCharge()
     {
-        (self::$document)->AddDocumentLogisticsServiceCharge("Service", 10.0, ["S"], ["VAT"], [19.0]);
+        (self::$document)->addDocumentLogisticsServiceCharge("Service", 10.0, ["S"], ["VAT"], [19.0]);
 
         $this->DisableRenderXmlContent();
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedLogisticsServiceCharge/ram:Description', 0);
@@ -1186,13 +1186,13 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPaymentTerm
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDiscountTermsToPaymentTerms
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPaymentTerm
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDiscountTermsToPaymentTerms
      */
     public function testAddDocumentPaymentTermAndDiscount()
     {
-        (self::$document)->AddDocumentPaymentTerm("Payment", new \DateTime(), "mandate");
-        (self::$document)->AddDiscountTermsToPaymentTerms(10.0, new \DateTime(), 1, "DAY", 20.0, 2.0);
+        (self::$document)->addDocumentPaymentTerm("Payment", new \DateTime(), "mandate");
+        (self::$document)->addDiscountTermsToPaymentTerms(10.0, new \DateTime(), 1, "DAY", 20.0, 2.0);
 
         $this->DisableRenderXmlContent();
 
@@ -1208,12 +1208,12 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentReceivableSpecifiedTradeAccountingAccount
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentReceivableSpecifiedTradeAccountingAccount
      */
     public function testAddDocumentReceivableSpecifiedTradeAccountingAccount()
     {
-        (self::$document)->AddDocumentReceivableSpecifiedTradeAccountingAccount("accountid", "typecode");
-        (self::$document)->AddDocumentReceivableSpecifiedTradeAccountingAccount("accountid2", "typecode2");
+        (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid", "typecode");
+        (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid2", "typecode2");
 
         $this->DisableRenderXmlContent();
 
@@ -1263,75 +1263,75 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddNewPosition
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionProductDetails
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionBuyerOrderReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionContractReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionGrossPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionNetPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionNetPriceTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionQuantity
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionShipTo
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionShipToGlobalId
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionShipToTaxRegistration
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionShipToAddress
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionShipToLegalOrganisation
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionUltimateShipTo
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionUltimateShipToGlobalId
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionUltimateShipToTaxRegistration
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionUltimateShipToAddress
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionUltimateShipToLegalOrganisation
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionUltimateShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionSupplyChainEvent
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionDespatchAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionReceivingAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionDeliveryNoteReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionBillingPeriod
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentPositionLineSummation
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionReceivableSpecifiedTradeAccountingAccount
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionAdditionalReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::AddDocumentPositionUltimateCustomerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addNewPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionNote
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionProductDetails
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionBuyerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionContractReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionGrossPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionGrossPriceAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionNetPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionNetPriceTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionQuantity
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionShipTo
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionShipToGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionShipToTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionShipToAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionShipToLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionUltimateShipTo
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionUltimateShipToGlobalId
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionUltimateShipToTaxRegistration
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionUltimateShipToAddress
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionUltimateShipToLegalOrganisation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionUltimateShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionSupplyChainEvent
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionDespatchAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionReceivingAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionDeliveryNoteReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionBillingPeriod
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionLineSummation
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionReceivableSpecifiedTradeAccountingAccount
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionAdditionalReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionUltimateCustomerOrderReferencedDocument
      */
     public function testPositionMethods()
     {
-        (self::$document)->AddNewPosition("1", "linestatuscode", "linestatusreasoncode");
-        (self::$document)->SetDocumentPositionNote("content", "contentcode", "subjectcode");
-        (self::$document)->SetDocumentPositionProductDetails("Product Name", "Product Description", "SellerID", "BuyerID", "0088", "11111222222");
-        (self::$document)->SetDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new \DateTime());
-        (self::$document)->SetDocumentPositionContractReferencedDocument("C-0002", "2", new \DateTime());
-        (self::$document)->SetDocumentPositionGrossPrice(105, 1, "C62");
-        (self::$document)->AddDocumentPositionGrossPriceAllowanceCharge(10, false, 10, 20, "reason", "taxtypecode", "taxcategorycode", 19.9, 1, 1, "C62", "reasoncode");
-        (self::$document)->SetDocumentPositionNetPrice(20.0, 1, "C62");
-        (self::$document)->SetDocumentPositionNetPriceTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
-        (self::$document)->SetDocumentPositionQuantity(10.0, "C62", 0.0, "C62", 1.0, "C62");
-        (self::$document)->SetDocumentPositionShipTo("shiptoname", "shiptoid", "shiptodescription");
-        (self::$document)->AddDocumentPositionShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
-        (self::$document)->AddDocumentPositionShipToTaxRegistration("VA", "123");
-        (self::$document)->SetDocumentPositionShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
-        (self::$document)->SetDocumentPositionShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
-        (self::$document)->SetDocumentPositionShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->SetDocumentPositionUltimateShipTo("shiptoname", "shiptoid", "shiptodescription");
-        (self::$document)->AddDocumentPositionUltimateShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
-        (self::$document)->AddDocumentPositionUltimateShipToTaxRegistration("VA", "123");
-        (self::$document)->SetDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
-        (self::$document)->SetDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
-        (self::$document)->SetDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->SetDocumentPositionSupplyChainEvent(new \DateTime());
-        (self::$document)->SetDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
-        (self::$document)->SetDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
-        (self::$document)->SetDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
-        (self::$document)->AddDocumentPositionTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
-        (self::$document)->SetDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
-        (self::$document)->AddDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
-        (self::$document)->SetDocumentPositionLineSummation(100, 10);
-        (self::$document)->AddDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
-        (self::$document)->AddDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
-        (self::$document)->AddDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
+        (self::$document)->addNewPosition("1", "linestatuscode", "linestatusreasoncode");
+        (self::$document)->setDocumentPositionNote("content", "contentcode", "subjectcode");
+        (self::$document)->setDocumentPositionProductDetails("Product Name", "Product Description", "SellerID", "BuyerID", "0088", "11111222222");
+        (self::$document)->setDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new \DateTime());
+        (self::$document)->setDocumentPositionContractReferencedDocument("C-0002", "2", new \DateTime());
+        (self::$document)->setDocumentPositionGrossPrice(105, 1, "C62");
+        (self::$document)->addDocumentPositionGrossPriceAllowanceCharge(10, false, 10, 20, "reason", "taxtypecode", "taxcategorycode", 19.9, 1, 1, "C62", "reasoncode");
+        (self::$document)->setDocumentPositionNetPrice(20.0, 1, "C62");
+        (self::$document)->setDocumentPositionNetPriceTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
+        (self::$document)->setDocumentPositionQuantity(10.0, "C62", 0.0, "C62", 1.0, "C62");
+        (self::$document)->setDocumentPositionShipTo("shiptoname", "shiptoid", "shiptodescription");
+        (self::$document)->addDocumentPositionShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
+        (self::$document)->addDocumentPositionShipToTaxRegistration("VA", "123");
+        (self::$document)->setDocumentPositionShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentPositionShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentPositionShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentPositionUltimateShipTo("shiptoname", "shiptoid", "shiptodescription");
+        (self::$document)->addDocumentPositionUltimateShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
+        (self::$document)->addDocumentPositionUltimateShipToTaxRegistration("VA", "123");
+        (self::$document)->setDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentPositionSupplyChainEvent(new \DateTime());
+        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
+        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
+        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
+        (self::$document)->addDocumentPositionTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
+        (self::$document)->setDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
+        (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
+        (self::$document)->setDocumentPositionLineSummation(100, 10);
+        (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
+        (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
+        (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 0, "1");
@@ -1432,33 +1432,33 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ReceivableSpecifiedTradeAccountingAccount/ram:ID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ReceivableSpecifiedTradeAccountingAccount/ram:TypeCode', 0);
         
-        (self::$document)->AddNewPosition("2", "linestatuscode", "linestatusreasoncode");
-        (self::$document)->SetDocumentPositionNote("content2", "contentcode2", "subjectcode2");
-        (self::$document)->SetDocumentPositionProductDetails("Product Name 2", "Product Description 2", "SellerID 2", "BuyerID 2", "0160", "333");
-        (self::$document)->SetDocumentPositionGrossPrice(200, 2, "H87");
-        (self::$document)->SetDocumentPositionNetPrice(30.0, 2, "H87");
-        (self::$document)->SetDocumentPositionNetPriceTax("S", "VAT", 19.0, 10.0, "reason 2", "reasoncode 2");
-        (self::$document)->SetDocumentPositionQuantity(20.0, "H87", 0.0, "H87", 1.0, "H87");
-        (self::$document)->SetDocumentPositionShipTo("shiptoname2", "shiptoid2", "shiptodescription2");
-        (self::$document)->AddDocumentPositionShipToGlobalId("shiptoglobslid2", "shiptoglobslidtype2");
-        (self::$document)->AddDocumentPositionShipToTaxRegistration("VA", "123");
-        (self::$document)->SetDocumentPositionShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
-        (self::$document)->SetDocumentPositionShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
-        (self::$document)->SetDocumentPositionShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->SetDocumentPositionUltimateShipTo("shiptoname", "shiptoid", "shiptodescription");
-        (self::$document)->AddDocumentPositionUltimateShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
-        (self::$document)->AddDocumentPositionUltimateShipToTaxRegistration("VA", "123");
-        (self::$document)->SetDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
-        (self::$document)->SetDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
-        (self::$document)->SetDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->SetDocumentPositionSupplyChainEvent(new \DateTime());
-        (self::$document)->SetDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
-        (self::$document)->SetDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
-        (self::$document)->SetDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
-        (self::$document)->AddDocumentPositionTax("S", "VAT", 7.0, 2.0, "reason2", "reasoncode2");
-        (self::$document)->SetDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
-        (self::$document)->AddDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
-        (self::$document)->SetDocumentPositionLineSummation(200, 20);
+        (self::$document)->addNewPosition("2", "linestatuscode", "linestatusreasoncode");
+        (self::$document)->setDocumentPositionNote("content2", "contentcode2", "subjectcode2");
+        (self::$document)->setDocumentPositionProductDetails("Product Name 2", "Product Description 2", "SellerID 2", "BuyerID 2", "0160", "333");
+        (self::$document)->setDocumentPositionGrossPrice(200, 2, "H87");
+        (self::$document)->setDocumentPositionNetPrice(30.0, 2, "H87");
+        (self::$document)->setDocumentPositionNetPriceTax("S", "VAT", 19.0, 10.0, "reason 2", "reasoncode 2");
+        (self::$document)->setDocumentPositionQuantity(20.0, "H87", 0.0, "H87", 1.0, "H87");
+        (self::$document)->setDocumentPositionShipTo("shiptoname2", "shiptoid2", "shiptodescription2");
+        (self::$document)->addDocumentPositionShipToGlobalId("shiptoglobslid2", "shiptoglobslidtype2");
+        (self::$document)->addDocumentPositionShipToTaxRegistration("VA", "123");
+        (self::$document)->setDocumentPositionShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentPositionShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentPositionShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentPositionUltimateShipTo("shiptoname", "shiptoid", "shiptodescription");
+        (self::$document)->addDocumentPositionUltimateShipToGlobalId("shiptoglobslid", "shiptoglobslidtype");
+        (self::$document)->addDocumentPositionUltimateShipToTaxRegistration("VA", "123");
+        (self::$document)->setDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
+        (self::$document)->setDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
+        (self::$document)->setDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
+        (self::$document)->setDocumentPositionSupplyChainEvent(new \DateTime());
+        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
+        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
+        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
+        (self::$document)->addDocumentPositionTax("S", "VAT", 7.0, 2.0, "reason2", "reasoncode2");
+        (self::$document)->setDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
+        (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
+        (self::$document)->setDocumentPositionLineSummation(200, 20);
 
         $this->DisableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 1, "2");

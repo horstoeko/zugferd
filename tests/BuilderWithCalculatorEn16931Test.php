@@ -16,14 +16,14 @@ class BuilderWithCalculatorEn16931Test extends BuilderBaseTest
     public function testSimple()
     {
         self::$document->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
-        self::$document->AddNewPosition("1");
-        self::$document->SetDocumentPositionGrossPrice(9.9);
-        self::$document->SetDocumentPositionQuantity(20.0, "H87");
-        self::$document->AddDocumentPositionTax("S", "VAT", 19.0);
-        self::$document->AddNewPosition("2");
-        self::$document->SetDocumentPositionGrossPrice(5.5);
-        self::$document->SetDocumentPositionQuantity(50.0, "H87");
-        self::$document->AddDocumentPositionTax("S", "VAT", 7.0);
+        self::$document->addNewPosition("1");
+        self::$document->setDocumentPositionGrossPrice(9.9);
+        self::$document->setDocumentPositionQuantity(20.0, "H87");
+        self::$document->addDocumentPositionTax("S", "VAT", 19.0);
+        self::$document->addNewPosition("2");
+        self::$document->setDocumentPositionGrossPrice(5.5);
+        self::$document->setDocumentPositionQuantity(50.0, "H87");
+        self::$document->addDocumentPositionTax("S", "VAT", 7.0);
 
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', "473.0");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:ChargeTotalAmount', "0.0");

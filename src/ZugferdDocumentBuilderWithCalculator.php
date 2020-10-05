@@ -178,7 +178,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
         foreach ($vatSumGrouped as $vatSumGroupedItemKey => $vatSumGroupedItem) {
             $docNetAmount = $docNetAmount + $vatSumGroupedItem[4];
             $docVatSum = $docVatSum + $vatSumGroupedItem[3];
-            $this->AddDocumentTax(
+            $this->addDocumentTax(
                 $vatSumGroupedItem[0],
                 $vatSumGroupedItem[1],
                 $vatSumGroupedItem[4],
