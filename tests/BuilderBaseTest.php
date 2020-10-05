@@ -52,7 +52,7 @@ class BuilderBaseTest extends TestCase
     protected function getXml(): \SimpleXMLElement
     {
         if ($this->renderingOfXmlDisabled === false) {
-            $this->latestXml = new \SimpleXMLElement((self::$document)->GetContent());
+            $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
         }
         return $this->latestXml;
     }
@@ -64,7 +64,7 @@ class BuilderBaseTest extends TestCase
      */
     protected function DisableRenderXmlContent()
     {
-        $this->latestXml = new \SimpleXMLElement((self::$document)->GetContent());
+        $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
         $this->renderingOfXmlDisabled = true;
     }
 

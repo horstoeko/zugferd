@@ -105,7 +105,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @return string
      */
-    public function GetContent(): string
+    public function getContent(): string
     {
         $this->OnBeforeGetContent();
         return $this->serializer->serialize($this->invoiceObject, 'xml');
@@ -117,9 +117,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string $xmlfilename
      * @return ZugferdDocument
      */
-    public function WriteFile(string $xmlfilename): ZugferdDocument
+    public function writeFile(string $xmlfilename): ZugferdDocument
     {
-        file_put_contents($xmlfilename, $this->GetContent());
+        file_put_contents($xmlfilename, $this->getContent());
         return $this;
     }
 

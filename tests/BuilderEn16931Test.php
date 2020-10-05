@@ -1568,11 +1568,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::WriteFile
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::writeFile
      */
     public function testWriteFile()
     {
-        (self::$document)->WriteFile(getcwd() . "/myfile.xml");
+        (self::$document)->writeFile(getcwd() . "/myfile.xml");
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
         @unlink(getcwd() . "/myfile.xml");
     }

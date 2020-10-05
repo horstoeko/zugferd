@@ -36,11 +36,11 @@ class BuilderWithCalculatorEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilderWithCalculator::WriteFile
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilderWithCalculator::writeFile
      */
     public function testWriteFile()
     {
-        (self::$document)->WriteFile(getcwd() . "/myfile.xml");
+        (self::$document)->writeFile(getcwd() . "/myfile.xml");
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
         @unlink(getcwd() . "/myfile.xml");
     }

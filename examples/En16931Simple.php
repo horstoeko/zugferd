@@ -36,4 +36,4 @@ $document
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
     ->SetDocumentPositionLineSummation(275.0)
-    ->WriteFile(getcwd() . "/factur-x.xml");
+    ->writeFile(getcwd() . "/factur-x.xml");
