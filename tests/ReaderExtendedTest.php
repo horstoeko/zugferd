@@ -2,6 +2,7 @@
 
 namespace horstoeko\zugferd\tests;
 
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentReader;
@@ -33,7 +34,7 @@ class ReaderExtendedTest extends TestCase
     {
         self::$document->GetDocumentInformation($documentno, $documenttypecode, $documentdate, $duedate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('KR87654321012', $documentno);
-        $this->assertEquals('380', $documenttypecode);
+        $this->assertEquals(ZugferdInvoiceType::Invoice, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20181006'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertNull($duedate);
