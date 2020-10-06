@@ -1162,15 +1162,15 @@ class ZugferdObjectHelper
         }
         if ($format == "102") {
             return \DateTime::createFromFormat("Ymd", $dateTimeString);
-        } else if ($format == "101") {
+        } elseif ($format == "101") {
             return \DateTime::createFromFormat("ymd", $dateTimeString);
-        } else if ($format == "201") {
+        } elseif ($format == "201") {
             return \DateTime::createFromFormat("ymdHi", $dateTimeString);
-        } else if ($format == "202") {
+        } elseif ($format == "202") {
             return \DateTime::createFromFormat("ymdHis", $dateTimeString);
-        } else if ($format == "203") {
+        } elseif ($format == "203") {
             return \DateTime::createFromFormat("YmdHi", $dateTimeString);
-        } else if ($format == "204") {
+        } elseif ($format == "204") {
             return \DateTime::createFromFormat("YmdHis", $dateTimeString);
         } else {
             throw new ZugferdUnknownDateFormat();
