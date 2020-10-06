@@ -32,12 +32,11 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      */
     public function testDocumentGenerals()
     {
-        self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $duedate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
+        self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('471102', $documentno);
         $this->assertEquals(ZugferdInvoiceType::Invoice, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180605'))->format('Ymd'), $documentdate->format('Ymd'));
-        $this->assertNull($duedate);
         $this->assertEquals("EUR", $invoiceCurrency);
         $this->assertEquals("", $taxCurrency);
         $this->assertEquals("", $documentname);
@@ -969,12 +968,11 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
      */
     public function testDocumentBillingPeriod()
     {
-        self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend, $docbillingperioddescription);
+        self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
         $this->assertNull($docbillingperiodstart);
         $this->assertNotInstanceOf("DateTime", $docbillingperiodstart);
         $this->assertNull($docbillingperiodend);
         $this->assertNotInstanceOf("DateTime", $docbillingperiodend);
-        $this->assertEquals("", $docbillingperioddescription);
     }
 
     /**
