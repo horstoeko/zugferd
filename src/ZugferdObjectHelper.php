@@ -45,7 +45,7 @@ class ZugferdObjectHelper
      * @param string|null $schemeId
      * @return object
      */
-    public function GetIdType(?string $value = null, ?string $schemeId = null): ?object
+    public function getIdType(?string $value = null, ?string $schemeId = null): ?object
     {
         if (self::IsNullOrEmpty($value)) {
             return null;
@@ -64,7 +64,7 @@ class ZugferdObjectHelper
      * @param string|null $value
      * @return object
      */
-    public function GetTextType(?string $value = null): ?object
+    public function getTextType(?string $value = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -79,7 +79,7 @@ class ZugferdObjectHelper
      * @param string|null $value
      * @return object|null
      */
-    public function GetCodeType(?string $value = null): ?object
+    public function getCodeType(?string $value = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -94,7 +94,7 @@ class ZugferdObjectHelper
      * @param bool|null $value
      * @return object|null
      */
-    public function GetIndicatorType(?bool $value = null): ?object
+    public function getIndicatorType(?bool $value = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -115,7 +115,7 @@ class ZugferdObjectHelper
      * @param string|null $subjectCode
      * @return void
      */
-    public function GetNoteType(?string $content = null, ?string $contentCode = null, ?string $subjectCode = null): ?object
+    public function getNoteType(?string $content = null, ?string $contentCode = null, ?string $subjectCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -139,7 +139,7 @@ class ZugferdObjectHelper
      * @param \DateTime|null $datetime
      * @return object|null
      */
-    public function GetFormattedDateTimeType(?\DateTime $datetime = null): ?object
+    public function getFormattedDateTimeType(?\DateTime $datetime = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -161,7 +161,7 @@ class ZugferdObjectHelper
      * @param \DateTime|null $datetime
      * @return object|null
      */
-    public function GetDateTimeType(?\DateTime $datetime = null): ?object
+    public function getDateTimeType(?\DateTime $datetime = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -183,7 +183,7 @@ class ZugferdObjectHelper
      * @param \DateTime|null $datetime
      * @return object|null
      */
-    public function GetDateType(?\DateTime $datetime = null): ?object
+    public function getDateType(?\DateTime $datetime = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -206,7 +206,7 @@ class ZugferdObjectHelper
      * @param string|null $currencyCode
      * @return object|null
      */
-    public function GetAmountType(?float $value, ?string $currencyCode = null): ?object
+    public function getAmountType(?float $value, ?string $currencyCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -229,7 +229,7 @@ class ZugferdObjectHelper
      * @param float|null $value
      * @return object|null
      */
-    public function GetPercentType(?float $value): ?object
+    public function getPercentType(?float $value): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -249,7 +249,7 @@ class ZugferdObjectHelper
      * @param string|null $unitCode
      * @return object|null
      */
-    public function GetQuantityType(?float $value, ?string $unitCode = null): ?object
+    public function getQuantityType(?float $value, ?string $unitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -273,7 +273,7 @@ class ZugferdObjectHelper
      * @param string|null $unitCode
      * @return object|null
      */
-    public function GetMeasureType(?float $value, ?string $unitCode = null): ?object
+    public function getMeasureType(?float $value, ?string $unitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -296,7 +296,7 @@ class ZugferdObjectHelper
      * @param float|null $number
      * @return object|null
      */
-    public function GetNumericType(?float $value = null): ?object
+    public function getNumericType(?float $value = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -315,7 +315,7 @@ class ZugferdObjectHelper
      * @param string|null $categoryCode
      * @return object|null
      */
-    public function GetTaxCategoryCodeType(?string $taxCategoryCode = null): ?object
+    public function getTaxCategoryCodeType(?string $taxCategoryCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -334,7 +334,7 @@ class ZugferdObjectHelper
      * @param string|null $taxTypeCode
      * @return object|null
      */
-    public function GetTaxTypeCodeType(?string $taxTypeCode = null): ?object
+    public function getTaxTypeCodeType(?string $taxTypeCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -353,7 +353,7 @@ class ZugferdObjectHelper
      * @param string|null $timerefCode
      * @return object|null
      */
-    public function GetTimeReferenceCodeType(?string $value = null): ?object
+    public function getTimeReferenceCodeType(?string $value = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -375,7 +375,7 @@ class ZugferdObjectHelper
      * @param string|null $description
      * @return object|null
      */
-    public function GetSpecifiedPeriodType(?\DateTime $startdate = null, ?\DateTime $endDate = null, ?\DateTime $completedate = null, ?string $description = null): ?object
+    public function getSpecifiedPeriodType(?\DateTime $startdate = null, ?\DateTime $endDate = null, ?\DateTime $completedate = null, ?string $description = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -399,7 +399,7 @@ class ZugferdObjectHelper
      * @param string $filename
      * @return object|null
      */
-    public function GetBinaryObjectType(?string $binarydata = null, ?string $mimetype = null, ?string $filename = null): ?object
+    public function getBinaryObjectType(?string $binarydata = null, ?string $mimetype = null, ?string $filename = null): ?object
     {
         if (self::IsNullOrEmpty($binarydata) || self::IsNullOrEmpty($mimetype) || self::IsNullOrEmpty($filename)) {
             return null;
@@ -427,7 +427,7 @@ class ZugferdObjectHelper
      * @param string|null $binarydatafilename
      * @return object|null
      */
-    public function GetReferencedDocumentType(?string $issuerassignedid = null, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ?object
+    public function getReferencedDocumentType(?string $issuerassignedid = null, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -467,7 +467,7 @@ class ZugferdObjectHelper
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType
      */
-    public function GetCrossIndustryInvoice()
+    public function getCrossIndustryInvoice()
     {
         $result = $this->CreateClassInstance('rsm\CrossIndustryInvoice');
         $result->setExchangedDocumentContext($this->CreateClassInstance('ram\ExchangedDocumentContextType'));
@@ -490,7 +490,7 @@ class ZugferdObjectHelper
      * @param string|null $description
      * @return object|null
      */
-    public function GetTradeParty(?string $name = null, ?string $ID = null, ?string $description = null): ?object
+    public function getTradeParty(?string $name = null, ?string $ID = null, ?string $description = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -517,7 +517,7 @@ class ZugferdObjectHelper
      * @param string|null $subdivision
      * @return object|null
      */
-    public function GetTradeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ?object
+    public function getTradeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -544,7 +544,7 @@ class ZugferdObjectHelper
      * @param string|null $legalorgname
      * @return object|null
      */
-    public function GetLegalOrganization(?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null): ?object
+    public function getLegalOrganization(?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -568,7 +568,7 @@ class ZugferdObjectHelper
      * @param string|null $contactemailaddr
      * @return object|null
      */
-    public function GetTradeContact(?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null): ?object
+    public function getTradeContact(?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -596,7 +596,7 @@ class ZugferdObjectHelper
      * @param string $urischeme
      * @return object|null
      */
-    public function GetUniversalCommunicationType(?string $number = null, ?string $uriid = null, ?string $urischeme = null): ?object
+    public function getUniversalCommunicationType(?string $number = null, ?string $uriid = null, ?string $urischeme = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -617,7 +617,7 @@ class ZugferdObjectHelper
      * @param string|null $taxregid
      * @return object|null
      */
-    public function GetTaxRegistrationType(?string $taxregtype = null, ?string $taxregid = null): ?object
+    public function getTaxRegistrationType(?string $taxregtype = null, ?string $taxregid = null): ?object
     {
         if (self::IsNullOrEmpty($taxregtype)) {
             return null;
@@ -640,7 +640,7 @@ class ZugferdObjectHelper
      * @param string|null $code
      * @return object|null
      */
-    public function GetTradeDeliveryTermsType(?string $code = null): ?object
+    public function getTradeDeliveryTermsType(?string $code = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -660,7 +660,7 @@ class ZugferdObjectHelper
      * @param string|null $name
      * @return object|null
      */
-    public function GetProcuringProjectType(?string $id = null, ?string $name = null): ?object
+    public function getProcuringProjectType(?string $id = null, ?string $name = null): ?object
     {
         if (self::IsOneNullOrEmpty(func_get_args())) {
             return null;
@@ -680,7 +680,7 @@ class ZugferdObjectHelper
      * @param \DateTime|null $date
      * @return object|null
      */
-    public function GetSupplyChainEventType(?\DateTime $date = null): ?object
+    public function getSupplyChainEventType(?\DateTime $date = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -701,7 +701,7 @@ class ZugferdObjectHelper
      * @param string|null $holderName
      * @return object|null
      */
-    public function GetTradeSettlementFinancialCardType(?string $type = null, ?string $id = null, ?string $holderName = null): ?object
+    public function getTradeSettlementFinancialCardType(?string $type = null, ?string $id = null, ?string $holderName = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -721,7 +721,7 @@ class ZugferdObjectHelper
      * @param string|null $iban
      * @return object|null
      */
-    public function GetDebtorFinancialAccountType(?string $iban = null): ?object
+    public function getDebtorFinancialAccountType(?string $iban = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -742,7 +742,7 @@ class ZugferdObjectHelper
      * @param string|null $proprietaryID
      * @return object|null
      */
-    public function GetCreditorFinancialAccountType(?string $iban = null, ?string $accountName = null, ?string $proprietaryID = null): ?object
+    public function getCreditorFinancialAccountType(?string $iban = null, ?string $accountName = null, ?string $proprietaryID = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -763,7 +763,7 @@ class ZugferdObjectHelper
      * @param string|null $bic
      * @return object|null
      */
-    public function GetCreditorFinancialInstitutionType(?string $bic = null): ?object
+    public function getCreditorFinancialInstitutionType(?string $bic = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -781,7 +781,7 @@ class ZugferdObjectHelper
      *
      * @return objeect|null
      */
-    public function GetTradeSettlementPaymentMeansType(?string $typecode = null, ?string $information = null): ?object
+    public function getTradeSettlementPaymentMeansType(?string $typecode = null, ?string $information = null): ?object
     {
         if (self::IsNullOrEmpty($typecode)) {
             return null;
@@ -803,7 +803,7 @@ class ZugferdObjectHelper
      * @param string|null $directDebitMandateID
      * @return object|null
      */
-    public function GetTradePaymentTermsType(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ?object
+    public function getTradePaymentTermsType(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -829,7 +829,7 @@ class ZugferdObjectHelper
      * @param float|null $actualDiscountAmount
      * @return object|null
      */
-    public function GetTradePaymentDiscountTermsType(?\DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
+    public function getTradePaymentDiscountTermsType(?\DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -863,7 +863,7 @@ class ZugferdObjectHelper
      * @param string|null $dueDateTypeCode
      * @return object|null
      */
-    public function GetTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
+    public function getTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -904,7 +904,7 @@ class ZugferdObjectHelper
      * @param string|null $reason
      * @return object|null
      */
-    public function GetTradeAllowanceChargeType(?float $actualAmount = null, ?bool $isCharge = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ?object
+    public function getTradeAllowanceChargeType(?float $actualAmount = null, ?bool $isCharge = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -938,7 +938,7 @@ class ZugferdObjectHelper
      * @param array|null $rateApplicablePercents
      * @return object|null
      */
-    public function GetLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ?object
+    public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -951,7 +951,7 @@ class ZugferdObjectHelper
 
         if (!is_null($taxCategpryCodes) && !is_null($taxTypeCodes) && !is_null($rateApplicablePercents)) {
             foreach ($rateApplicablePercents as $index => $rateApplicablePercent) {
-                $taxBreakdown = $this->GetTradeTaxType($taxCategpryCodes[$index], $taxTypeCodes[$index], null, null, $rateApplicablePercents[$index]);
+                $taxBreakdown = $this->GetTradeTaxType($taxCategpryCodes[$index], $taxTypeCodes[$index], null, null, $rateApplicablePercent);
                 $this->TryCall($logCharge, "addToAppliedTradeTax", $taxBreakdown);
             }
         }
@@ -973,7 +973,7 @@ class ZugferdObjectHelper
      * @param float|null $totalPrepaidAmount
      * @return object|null
      */
-    public function GetTradeSettlementHeaderMonetarySummationType(?float $grandTotalAmount = null, ?float $duePayableAmount = null, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ?object
+    public function getTradeSettlementHeaderMonetarySummationType(?float $grandTotalAmount = null, ?float $duePayableAmount = null, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -999,7 +999,7 @@ class ZugferdObjectHelper
      *
      * @return object|null
      */
-    public function GetTradeSettlementHeaderMonetarySummationTypeOnly(): ?object
+    public function getTradeSettlementHeaderMonetarySummationTypeOnly(): ?object
     {
         $summation = $this->CreateClassInstance('ram\TradeSettlementHeaderMonetarySummationType');
 
@@ -1013,7 +1013,7 @@ class ZugferdObjectHelper
      * @param string|null $typeCode
      * @return object|null
      */
-    public function GetTradeAccountingAccountType(?string $id = null, ?string $typeCode = null): ?object
+    public function getTradeAccountingAccountType(?string $id = null, ?string $typeCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1033,7 +1033,7 @@ class ZugferdObjectHelper
      * @param string|null $lineid
      * @return object|null
      */
-    public function GetDocumentLineDocumentType(?string $lineid = null): ?object
+    public function getDocumentLineDocumentType(?string $lineid = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1054,7 +1054,7 @@ class ZugferdObjectHelper
      * @param string|null $lineStatusReasonCode
      * @return object|null
      */
-    public function GetSupplyChainTradeLineItemType(?string $lineid = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ?object
+    public function getSupplyChainTradeLineItemType(?string $lineid = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1087,7 +1087,7 @@ class ZugferdObjectHelper
      * @param string|null $globalID
      * @return object|null
      */
-    public function GetTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ?object
+    public function getTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1112,7 +1112,7 @@ class ZugferdObjectHelper
      * @param string|null $basisQuantityUnitCode
      * @return object|null
      */
-    public function GetTradePriceType(?float $amount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null): ?object
+    public function getTradePriceType(?float $amount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1133,7 +1133,7 @@ class ZugferdObjectHelper
      * @param float|null $totalAllowanceChargeAmount
      * @return object|null
      */
-    public function GetTradeSettlementLineMonetarySummationType(?float $lineTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ?object
+    public function getTradeSettlementLineMonetarySummationType(?float $lineTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1155,7 +1155,7 @@ class ZugferdObjectHelper
      * @return \DateTime|null
      * @throws \Exception
      */
-    public function ToDateTime(?string $dateTimeString, ?string $format): ?\DateTime
+    public function toDateTime(?string $dateTimeString, ?string $format): ?\DateTime
     {
         if (self::IsNullOrEmpty($dateTimeString) || self::IsNullOrEmpty($format)) {
             return null;
@@ -1184,7 +1184,7 @@ class ZugferdObjectHelper
      * @param mixed $constructorvalue
      * @return object|null
      */
-    public function CreateClassInstance($classname, $constructorvalue = null): ?object
+    public function createClassInstance($classname, $constructorvalue = null): ?object
     {
         $className = 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\\' . $classname;
 
@@ -1204,7 +1204,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return ZugferdObjectHelper
      */
-    public function TryCall($instance, $method, $value): ZugferdObjectHelper
+    public function tryCall($instance, $method, $value): ZugferdObjectHelper
     {
         if (!$instance) {
             return $this;
@@ -1230,7 +1230,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return ZugferdObjectHelper
      */
-    public function TryCallAll($instance, array $methods, $value): ZugferdObjectHelper
+    public function tryCallAll($instance, array $methods, $value): ZugferdObjectHelper
     {
         if (!$instance) {
             return $this;
@@ -1256,7 +1256,7 @@ class ZugferdObjectHelper
      * @param string $method
      * @return mixed
      */
-    public function TryCallAndReturn($instance, $method)
+    public function tryCallAndReturn($instance, $method)
     {
         if (!$instance) {
             return null;
@@ -1278,7 +1278,7 @@ class ZugferdObjectHelper
      * @param string $methods
      * @return void
      */
-    public function TryCallByPath($instance, string $methods, $value)
+    public function tryCallByPath($instance, string $methods, $value)
     {
         $methods = explode(".", $methods);
 
@@ -1299,7 +1299,7 @@ class ZugferdObjectHelper
      * @param string $methods
      * @return mixed
      */
-    public function TryCallByPathAndReturn($instance, string $methods)
+    public function tryCallByPathAndReturn($instance, string $methods)
     {
         $result = null;
         $methods = explode(".", $methods);
@@ -1319,7 +1319,7 @@ class ZugferdObjectHelper
      * @param mixed $input
      * @return array
      */
-    public function EnsureStringArray($input): array
+    public function ensureStringArray($input): array
     {
         if (is_array($input)) {
             return $input;
@@ -1335,7 +1335,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return array
      */
-    public function EnsureArray($value): array
+    public function ensureArray($value): array
     {
         if (!is_array($value)) {
             if (!is_null($value)) {
@@ -1353,7 +1353,7 @@ class ZugferdObjectHelper
      * @param mixed $value
      * @return boolean
      */
-    public static function IsNullOrEmpty($value)
+    public static function isNullOrEmpty($value)
     {
         if (is_null($value) || $value === null) {
             return true;
@@ -1373,7 +1373,7 @@ class ZugferdObjectHelper
      * @param array $args
      * @return boolean
      */
-    public static function IsAllNullOrEmpty(array $args): bool
+    public static function isAllNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
             if ($arg instanceof \DateTime) {
@@ -1396,7 +1396,7 @@ class ZugferdObjectHelper
      * @param array $args
      * @return boolean
      */
-    public static function IsOneNullOrEmpty(array $args): bool
+    public static function isOneNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
             if ($arg instanceof \DateTime) {
