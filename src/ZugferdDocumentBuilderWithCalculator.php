@@ -23,7 +23,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      *
      * @return ZugferdDocumentBuilderWithCalculator
      */
-    public function Calculate(): ZugferdDocumentBuilderWithCalculator
+    public function calculate(): ZugferdDocumentBuilderWithCalculator
     {
         $this->CalculatePositionLineSummations();
         $this->CalculateDocumentSummation();
@@ -36,7 +36,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      *
      * @return void
      */
-    public function CalculatePositionLineSummations()
+    public function calculatePositionLineSummations()
     {
         $lines = $this->_car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
 
@@ -51,7 +51,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param object $line
      * @return ZugferdDocumentBuilderWithCalculator
      */
-    public function CalculatePositionLineSummation(object $line): ZugferdDocumentBuilderWithCalculator
+    public function calculatePositionLineSummation(object $line): ZugferdDocumentBuilderWithCalculator
     {
         $positionsettlement = $this->_car($line, "getSpecifiedLineTradeSettlement");
 
@@ -119,7 +119,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
         return $this;
     }
 
-    public function CalculateDocumentSummation()
+    public function calculateDocumentSummation()
     {
         $lines = $this->_car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
 
