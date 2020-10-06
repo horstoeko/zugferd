@@ -27,7 +27,7 @@ class ZugferdObjectHelper
 
     /**
      * Constructor
-     * 
+     *
      * @codeCoverageIgnore
      *
      * @param integer $profile
@@ -206,7 +206,7 @@ class ZugferdObjectHelper
      * @param string|null $currencyCode
      * @return object|null
      */
-    public function GetAmountType(?float $value = 0, ?string $currencyCode = null): ?object
+    public function GetAmountType(?float $value, ?string $currencyCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -229,7 +229,7 @@ class ZugferdObjectHelper
      * @param float|null $value
      * @return object|null
      */
-    public function GetPercentType(?float $value = 0): ?object
+    public function GetPercentType(?float $value): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -249,7 +249,7 @@ class ZugferdObjectHelper
      * @param string|null $unitCode
      * @return object|null
      */
-    public function GetQuantityType(?float $value = 0, ?string $unitCode = null): ?object
+    public function GetQuantityType(?float $value, ?string $unitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -273,7 +273,7 @@ class ZugferdObjectHelper
      * @param string|null $unitCode
      * @return object|null
      */
-    public function GetMeasureType(?float $value = 0, ?string $unitCode = null): ?object
+    public function GetMeasureType(?float $value, ?string $unitCode = null): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1152,8 +1152,8 @@ class ZugferdObjectHelper
      *
      * @param string|null $dateTimeString
      * @param string|null $format
-     * @throws \Exception
      * @return \DateTime|null
+     * @throws \Exception
      */
     public function ToDateTime(?string $dateTimeString, ?string $format): ?\DateTime
     {
@@ -1324,7 +1324,7 @@ class ZugferdObjectHelper
         if (is_array($input)) {
             return $input;
         }
-        return [(string) $input];
+        return [(string)$input];
     }
 
     /**
@@ -1359,7 +1359,7 @@ class ZugferdObjectHelper
             return true;
         }
         if (!is_object($value)) {
-            if ((string) $value === "") {
+            if ((string)$value === "") {
                 return true;
             }
         }

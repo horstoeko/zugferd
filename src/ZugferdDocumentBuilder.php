@@ -2,6 +2,8 @@
 
 namespace horstoeko\zugferd;
 
+use DateTime;
+
 /**
  * Class representing the document builder for outgoing documents
  */
@@ -51,8 +53,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
     /**
      * Constructor
-     * 
+     *
      * @codeCoverageIgnore
+     * @param int $profile
      */
     public function __construct(int $profile)
     {
@@ -128,14 +131,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $documentno The invoice no.
      * @param string $documenttypecode Code for the invoice type
-     * @param \DateTime $documentdate Date of invoice
+     * @param DateTime $documentdate Date of invoice
      * @param string $invoiceCurrency Code for the invoice currency
      * @param string|null $documentname Document Type
      * @param string|null $documentlanguage Language indicator
-     * @param \DateTime|null $effectiveSpecifiedPeriod Contractual due date of the invoice
+     * @param DateTime|null $effectiveSpecifiedPeriod Contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInformation(string $documentno, string $documenttypecode, \DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?\DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
+    public function setDocumentInformation(string $documentno, string $documenttypecode, DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
     {
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setID", $this->objectHelper->GetIdType($documentno));
         $this->objectHelper->TryCall($this->invoiceObject->getExchangedDocument(), "setName", $this->objectHelper->GetTextType($documentname));
@@ -1283,10 +1286,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the associated confirmation of the order
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $sellerorderrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setSellerOrderReferencedDocument", $sellerorderrefdoc);
@@ -1297,10 +1300,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the related order
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerOrderReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentBuyerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $buyerorderrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
@@ -1311,10 +1314,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the associated contract
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentContractReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentContractReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setContractReferencedDocument", $contractrefdoc);
@@ -1330,11 +1333,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $uriid
      * @param string|array|null $name
      * @param string|null $reftypecode
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function addDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, null, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
@@ -1345,10 +1348,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the related order
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $invoicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setInvoiceReferencedDocument", $invoicerefdoc);
@@ -1373,16 +1376,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the ultimate customer order
      *
      * @param string $issuerassignedid
-     * @param string|null $uriid
-     * @param string|null $lineid
-     * @param string|null $typecode
-     * @param string|array|null $name
-     * @param string|null $reftypecode
-     * @param \DateTime|null $issueddate
-     * @param string|null $binarydatafilename
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentUltimateCustomerOrderReferencedDocument($issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "addToUltimateCustomerOrderReferencedDocument", $additionalrefdoc);
@@ -1392,10 +1389,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the actual delivery
      *
-     * @param \DateTime|null $date
+     * @param DateTime|null $date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSupplyChainEvent(?\DateTime $date): ZugferdDocumentBuilder
+    public function setDocumentSupplyChainEvent(?DateTime $date): ZugferdDocumentBuilder
     {
         $supplyChainevent = $this->objectHelper->GetSupplyChainEventType($date);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setActualDeliverySupplyChainEvent", $supplyChainevent);
@@ -1406,10 +1403,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated shipping notification
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $despatchddvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
@@ -1420,10 +1417,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated shipping notification
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $receivingadvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
@@ -1434,10 +1431,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on the associated delivery note
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $deliverynoterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->objectHelper->TryCall($this->headerTradeDelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
@@ -1489,11 +1486,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $exemptionReasonCode
      * @param float|null $lineTotalBasisAmount
      * @param float|null $allowanceChargeBasisAmount
-     * @param \DateTime|null $taxPointDate
+     * @param DateTime|null $taxPointDate
      * @param string|null $dueDateTypeCode
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount = 0, float $calculatedAmount = 0, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?\DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
+    public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
     {
         $tax = $this->objectHelper->GetTradeTaxType($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "addToApplicableTradeTax", $tax);
@@ -1510,7 +1507,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param float|null $rateApplicablePercent
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentTaxSimple(string $categoryCode, string $typeCode, float $basisAmount = 0, float $calculatedAmount = 0, ?float $rateApplicablePercent = null): ZugferdDocumentBuilder
+    public function addDocumentTaxSimple(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null): ZugferdDocumentBuilder
     {
         return $this->addDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent);
     }
@@ -1518,12 +1515,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the billing period
      *
-     * @param \DateTime|null $startdate
-     * @param \DateTime|null $endDate
+     * @param DateTime|null $startdate
+     * @param DateTime|null $endDate
      * @param string|null $description
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBillingPeriod(?\DateTime $startdate, ?\DateTime $endDate, ?string $description): ZugferdDocumentBuilder
+    public function setDocumentBillingPeriod(?DateTime $startdate, ?DateTime $endDate, ?string $description): ZugferdDocumentBuilder
     {
         $period = $this->objectHelper->GetSpecifiedPeriodType($startdate, $endDate, null, $description);
         $this->objectHelper->TryCall($this->headerTradeSettlement, "setBillingSpecifiedPeriod", $period);
@@ -1575,11 +1572,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a payment term
      *
      * @param string|null $description
-     * @param \DateTime|null $dueDate
+     * @param DateTime|null $dueDate
      * @param string|null $directDebitMandateID
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentTerm(?string $description = null, ?\DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
+    public function addDocumentPaymentTerm(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
     {
         $paymentTerms = $this->objectHelper->GetTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
         $this->objectHelper->TryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradePaymentTerms", "setSpecifiedTradePaymentTerms"], $paymentTerms);
@@ -1590,15 +1587,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add discount Terms to last added payment term
      *
-     * @param float $calculationPercent
-     * @param \DateTime|null $basisDateTime
+     * @param float|null $calculationPercent
+     * @param DateTime|null $basisDateTime
      * @param float|null $basisPeriodMeasureValue
      * @param string|null $basisPeriodMeasureUnitCode
      * @param float|null $basisAmount
      * @param float|null $actualDiscountAmount
      * @return ZugferdDocumentBuilder
      */
-    public function addDiscountTermsToPaymentTerms(float $calculationPercent = null, ?\DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
+    public function addDiscountTermsToPaymentTerms(?float $calculationPercent = null, ?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
     {
         $discountTerms = $this->objectHelper->GetTradePaymentDiscountTermsType($basisDateTime, $basisPeriodMeasureValue, $basisPeriodMeasureUnitCode, $basisAmount, $calculationPercent, $actualDiscountAmount);
         $this->objectHelper->TryCall($this->currentPaymentTerms, "setApplicableTradePaymentDiscountTerms", $discountTerms);
@@ -1675,10 +1672,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $issuerassignedid
      * @param string $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionBuyerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionBuyerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $buyerorderrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
@@ -1690,10 +1687,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Details of the related contract on the position
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param string $lineid
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionContractReferencedDocument(string $issuerassignedid, string $lineid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionContractReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
@@ -1711,11 +1709,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $lineid
      * @param string|null $name
      * @param string|null $reftypecode
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, ?string $name = null, ?string $reftypecode = null, ?\DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function addDocumentPositionAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, ?string $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
@@ -1728,10 +1726,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Dokument mit Bezug zur endgültigen Kundenbestellung
      *
      * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param string $lineid
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionUltimateCustomerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function addDocumentPositionUltimateCustomerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $ultimaterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
@@ -1804,9 +1803,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Tax included for B2C on position level
      * Enthaltene Steuer für B2C auf Positionsebene
      *
-     * @param float $amount
-     * @param float|null $basisQuantity
-     * @param string|null $basisQuantityUnitCode
+     * @param string $categoryCode
+     * @param string $typeCode
+     * @param float $rateApplicablePercent
+     * @param float|null $calculatedAmount
+     * @param string|null $exemptionReason
+     * @param string|null $exemptionReasonCode
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionNetPriceTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
@@ -2051,10 +2053,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the actual delivery on item level
      *
-     * @param \DateTime|null $date
+     * @param DateTime|null $date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionSupplyChainEvent(?\DateTime $date): ZugferdDocumentBuilder
+    public function setDocumentPositionSupplyChainEvent(?DateTime $date): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $supplyChainevent = $this->objectHelper->GetSupplyChainEventType($date);
@@ -2067,10 +2069,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $despatchddvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
@@ -2083,10 +2085,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $receivingadvicerefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
@@ -2099,10 +2101,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?\DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $deliverynoterefdoc = $this->objectHelper->GetReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
@@ -2133,11 +2135,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the billing period on item level
      *
-     * @param \DateTime|null $startdate
-     * @param \DateTime|null $endDate
+     * @param DateTime|null $startdate
+     * @param DateTime|null $endDate
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionBillingPeriod(?\DateTime $startdate, ?\DateTime $endDate): ZugferdDocumentBuilder
+    public function setDocumentPositionBillingPeriod(?DateTime $startdate, ?DateTime $endDate): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $period = $this->objectHelper->GetSpecifiedPeriodType($startdate, $endDate, null, null);

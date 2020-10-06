@@ -48,9 +48,10 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Calculate a single summations
      *
-     * @return void
+     * @param object $line
+     * @return ZugferdDocumentBuilderWithCalculator
      */
-    public function CalculatePositionLineSummation(object $line)
+    public function CalculatePositionLineSummation(object $line): ZugferdDocumentBuilderWithCalculator
     {
         $positionsettlement = $this->_car($line, "getSpecifiedLineTradeSettlement");
 
@@ -64,8 +65,6 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
                 $grossPriceAllowanceChargeCalculationPercentType = $this->_cbpar($grossPriceAllowanceCharge, "getCalculationPercent");
                 $grossPriceAllowanceChargeActualAmountType = $this->_cbpar($grossPriceAllowanceCharge, "getActualAmount");
                 $grossPriceAllowanceChargeIsCharge = (bool) $this->_cbpar($grossPriceAllowanceCharge, "getChargeIndicator.getIndicator", false);
-
-                $grossPriceAllowanceChargeActualAmount = 0.0;
 
                 if (
                     is_null($grossPriceAllowanceChargeBasisAmountType) &&
@@ -207,12 +206,12 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Shortcut method for $this->objectHelper->TryCallByPathAndReturn
      *
-     * @param object $instance
+     * @param object|null $instance
      * @param string $methods
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function _cbpar($instance, string $methods, $defaultValue = null)
+    private function _cbpar(?object $instance, string $methods, $defaultValue = null)
     {
         return $this->objectHelper->TryCallByPathAndReturn($instance, $methods) ?? $defaultValue;
     }
@@ -225,7 +224,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function _car($instance, string $method, $defaultValue = null)
+    private function _car(object $instance, string $method, $defaultValue = null)
     {
         return $this->objectHelper->TryCallAndReturn($instance, $method) ?? $defaultValue;
     }
@@ -238,7 +237,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $value
      * @return mixed
      */
-    private function _tc($instance, $method, $value)
+    private function _tc(object $instance, string $method, $value)
     {
         return $this->objectHelper->TryCall($instance, $method, $value);
     }

@@ -2,6 +2,11 @@
 
 namespace horstoeko\zugferd;
 
+use Closure;
+use DateTime;
+use Exception;
+use SimpleXMLElement;
+
 /**
  * Class representing the document reader for incoming documents
  */
@@ -33,7 +38,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @var integer
      */
-    private $documentServiceChargePointer = 0;
+    private $documentLogisticServiceChargePointer = 0;
 
     /**
      * Internal pointer for documents payment terms
@@ -48,13 +53,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @var integer
      */
     private $documentPaymentMeansPointer = 0;
-
-    /**
-     * Internal pointer for document logistic service charges
-     *
-     * @var integer
-     */
-    private $documentLogisticChargePointer = 0;
 
     /**
      * Internal pointer for the document taxes
@@ -111,13 +109,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @codeCoverageIgnore
      *
      * @param string $xmlfilename
-     * @return ZugferdDocument
+     * @return ZugferdDocumentReader
      * @throws Exception
      */
     public static function readAndGuessFromFile(string $xmlfilename): ZugferdDocumentReader
     {
         if (!file_exists($xmlfilename)) {
-            throw new \Exception("File {$xmlfilename} does not exist...");
+            throw new Exception("File {$xmlfilename} does not exist...");
         }
 
         return self::readAndGuessFromContent(file_get_contents($xmlfilename));
@@ -134,11 +132,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
     {
-        $xmldocument = new \SimpleXMLElement($xmlcontent);
+        $xmldocument = new SimpleXMLElement($xmlcontent);
         $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
 
         if (!is_array($typeelement) || !isset($typeelement[0])) {
-            throw new \Exception('Coult not determaine the profile...');
+            throw new Exception('Coult not determaine the profile...');
         }
 
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
@@ -147,7 +145,7 @@ class ZugferdDocumentReader extends ZugferdDocument
             }
         }
 
-        throw new \Exception('Could not determine the profile...');
+        throw new Exception('Could not determine the profile...');
     }
 
     /**
@@ -171,11 +169,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string $xmlfilename
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
     public function readFile(string $xmlfilename): ZugferdDocumentReader
     {
         if (!file_exists($xmlfilename)) {
-            throw new \Exception("File {$xmlfilename} does not exist...");
+            throw new Exception("File {$xmlfilename} does not exist...");
         }
 
         return $this->readContent(file_get_contents($xmlfilename));
@@ -186,15 +185,16 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $documentno
      * @param string|null $documenttypecode
-     * @param \DateTime|null $documentdate
-     * @param \DateTime|null $duedate
+     * @param DateTime|null $documentdate
      * @param string|null $invoiceCurrency
+     * @param string|null $taxCurrency
      * @param string|null $documentname
      * @param string|null $documentlanguage
-     * @param \DateTime|null $effectiveSpecifiedPeriod
+     * @param DateTime|null $effectiveSpecifiedPeriod
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?\DateTime &$documentdate, ?\DateTime &$duedate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?\DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
+    public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {
         $documentno = $this->getInvoiceValueByPath("getExchangedDocument.getID", "");
         $documenttypecode = $this->getInvoiceValueByPath("getExchangedDocument.getTypeCode.value", "");
@@ -322,6 +322,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Retrieve document notes
      *
+     * @param array|null $notes
      * @return ZugferdDocumentReader
      */
     public function getDocumentNotes(?array &$notes): ZugferdDocumentReader
@@ -1452,11 +1453,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Details of the associated confirmation of the order
      *
-     * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param string|null $issuerassignedid
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentSellerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentSellerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
         $issueddate = $this->objectHelper->ToDateTime(
@@ -1470,11 +1472,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Details of the related order
      *
-     * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param string|null $issuerassignedid
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentBuyerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentBuyerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
         $issueddate = $this->objectHelper->ToDateTime(
@@ -1488,11 +1491,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Details of the related order
      *
-     * @param string $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param string|null $issuerassignedid
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentContractReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentContractReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
         $issueddate = $this->objectHelper->ToDateTime(
@@ -1538,11 +1542,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null $uriid
      * @param array|null $name
      * @param string|null $reftypecode
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @param string|null $binarydatafilename
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid = null, ?array &$name = null, ?string &$reftypecode = null, ?\DateTime &$issueddate = null, ?string &$binarydatafilename = null): ZugferdDocumentReader
+    public function getDocumentAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid = null, ?array &$name = null, ?string &$reftypecode = null, ?DateTime &$issueddate = null, ?string &$binarydatafilename = null): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentAddRefDocPointer];
@@ -1626,10 +1631,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Details of the ultimate customer order
      *
      * @param string|null $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer];
@@ -1658,10 +1664,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Detailed information on the actual delivery
      *
-     * @param \DateTime|null $date
+     * @param DateTime|null $date
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentSupplyChainEvent(?\DateTime &$date): ZugferdDocumentReader
+    public function getDocumentSupplyChainEvent(?DateTime &$date): ZugferdDocumentReader
     {
         $date = $this->objectHelper->ToDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getActualDeliverySupplyChainEvent.getOccurrenceDateTime.getDateTimeString.value", ""),
@@ -1676,10 +1683,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
         $lineid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getLineID.value", "");
@@ -1696,10 +1704,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
         $lineid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getLineID.value", "");
@@ -1715,10 +1724,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Detailed information on the associated delivery note
      *
      * @param string|null $issuerassignedid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
         $issueddate = $this->objectHelper->ToDateTime(
@@ -1823,11 +1833,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null $exemptionReasonCode
      * @param float|null $lineTotalBasisAmount
      * @param float|null $allowanceChargeBasisAmount
-     * @param \DateTime|null $taxPointDate
+     * @param DateTime|null $taxPointDate
      * @param string|null $dueDateTypeCode
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentTax(?string &$categoryCode, ?string &$typeCode, ?float &$basisAmount, ?float &$calculatedAmount, ?float &$rateApplicablePercent, ?string &$exemptionReason, ?string &$exemptionReasonCode, ?float &$lineTotalBasisAmount, ?float &$allowanceChargeBasisAmount, ?\DateTime &$taxPointDate, ?string &$dueDateTypeCode): ZugferdDocumentReader
+    public function getDocumentTax(?string &$categoryCode, ?string &$typeCode, ?float &$basisAmount, ?float &$calculatedAmount, ?float &$rateApplicablePercent, ?string &$exemptionReason, ?string &$exemptionReasonCode, ?float &$lineTotalBasisAmount, ?float &$allowanceChargeBasisAmount, ?DateTime &$taxPointDate, ?string &$dueDateTypeCode): ZugferdDocumentReader
     {
         $taxes = $this->objectHelper->EnsureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
         $taxes = $taxes[$this->documentTaxPointer];
@@ -1853,12 +1864,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Gets the billing period
      *
-     * @param \DateTime|null $startdate
-     * @param \DateTime|null $endDate
-     * @param string|null $description
+     * @param DateTime|null $startdate
+     * @param DateTime|null $endDate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentBillingPeriod(?\DateTime &$startdate, ?\DateTime &$endDate, ?string &$description): ZugferdDocumentReader
+    public function getDocumentBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
     {
         $startdate = $this->objectHelper->ToDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getBillingSpecifiedPeriod.getStartDateTime.getDateTimeString.value", null),
@@ -1983,10 +1994,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function firstDocumentLogisticsServiceCharge(): bool
     {
-        $this->documentServiceChargePointer = 0;
+        $this->documentLogisticServiceChargePointer = 0;
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
-        return isset($serviceCharge[$this->documentServiceChargePointer]);
+        return isset($serviceCharge[$this->documentLogisticServiceChargePointer]);
     }
 
     /**
@@ -1997,10 +2008,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function nextDocumentLogisticsServiceCharge(): bool
     {
-        $this->documentServiceChargePointer++;
+        $this->documentLogisticServiceChargePointer++;
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
-        return isset($serviceCharge[$this->documentServiceChargePointer]);
+        return isset($serviceCharge[$this->documentLogisticServiceChargePointer]);
     }
 
     /**
@@ -2016,18 +2027,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategpryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
     {
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
-        $serviceCharge = $serviceCharge[$this->documentServiceChargePointer];
+        $serviceCharge = $serviceCharge[$this->documentLogisticServiceChargePointer];
 
         $description = $this->getInvoiceValueByPathFrom($serviceCharge, "getDescription.value", "");
         $appliedAmount = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedAmount.value", 0.0);
         $appliedTradeTax = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedTradeTax", []);
-        $taxTypeCodes = $this->convertToArray($appliedTradeTax,[
+        $taxTypeCodes = $this->convertToArray($appliedTradeTax, [
             "typecode" => ["getTypeCode.value", ""],
         ]);
-        $taxCategpryCodes = $this->convertToArray($appliedTradeTax,[
+        $taxCategpryCodes = $this->convertToArray($appliedTradeTax, [
             "categorycode" => ["getCategoryCode.value", ""],
         ]);
-        $rateApplicablePercents = $this->convertToArray($appliedTradeTax,[
+        $rateApplicablePercents = $this->convertToArray($appliedTradeTax, [
             "percent" => ["getRateApplicablePercent.value", 0.0],
         ]);
 
@@ -2088,11 +2099,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get current payment term
      *
      * @param string|null $description
-     * @param \DateTime|null $dueDate
+     * @param DateTime|null $dueDate
      * @param string|null $directDebitMandateID
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPaymentTerm(?string &$description, ?\DateTime &$dueDate, ?string &$directDebitMandateID): ZugferdDocumentReader
+    public function getDocumentPaymentTerm(?string &$description, ?DateTime &$dueDate, ?string &$directDebitMandateID): ZugferdDocumentReader
     {
         $paymentTerms = $this->objectHelper->EnsureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
         $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
@@ -2111,14 +2123,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get discount terms of the current payment term
      *
      * @param float|null $calculationPercent
-     * @param \DateTime|null $basisDateTime
+     * @param DateTime|null $basisDateTime
      * @param float|null $basisPeriodMeasureValue
      * @param string|null $basisPeriodMeasureUnitCode
      * @param float|null $basisAmount
      * @param float|null $actualDiscountAmount
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDiscountTermsFromPaymentTerm(?float &$calculationPercent, ?\DateTime &$basisDateTime, ?float &$basisPeriodMeasureValue, ?string &$basisPeriodMeasureUnitCode, ?float &$basisAmount, ?float &$actualDiscountAmount): ZugferdDocumentReader
+    public function getDiscountTermsFromPaymentTerm(?float &$calculationPercent, ?DateTime &$basisDateTime, ?float &$basisPeriodMeasureValue, ?string &$basisPeriodMeasureUnitCode, ?float &$basisAmount, ?float &$actualDiscountAmount): ZugferdDocumentReader
     {
         $paymentTerms = $this->objectHelper->EnsureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
         $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
@@ -2271,10 +2284,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionBuyerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionBuyerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2294,10 +2308,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionContractReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionContractReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2350,12 +2365,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null $typecode
      * @param string|null $uriid
      * @param string|null $lineid
-     * @param array $name
+     * @param string|null $name
      * @param string|null $reftypecode
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid, ?string &$lineid, ?string &$name, ?string &$reftypecode, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid, ?string &$lineid, ?string &$name, ?string &$reftypecode, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2551,10 +2567,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Detailed information on the actual delivery on item level
      *
-     * @param \DateTime|null $date
+     * @param DateTime|null $date
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionSupplyChainEvent(?\DateTime &$date): ZugferdDocumentReader
+    public function getDocumentPositionSupplyChainEvent(?DateTime &$date): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2572,10 +2589,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid = null, ?\DateTime &$issueddate = null): ZugferdDocumentReader
+    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid = null, ?DateTime &$issueddate = null): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2595,10 +2613,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2618,10 +2637,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
-     * @param \DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?\DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2705,11 +2725,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Gets the billing period on position level
      *
-     * @param \DateTime|null $startdate
-     * @param \DateTime|null $endDate
+     * @param DateTime|null $startdate
+     * @param DateTime|null $endDate
      * @return ZugferdDocumentReader
+     * @throws Exception
      */
-    public function getDocumentPositionBillingPeriod(?\DateTime &$startdate, ?\DateTime &$endDate): ZugferdDocumentReader
+    public function getDocumentPositionBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2852,7 +2873,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Function to return a value from $invoiceObject by path
      *
      * @codeCoverageIgnore
-     * 
+     *
      * @param string $methods
      * @param mixed $defaultValue
      * @return mixed
@@ -2903,7 +2924,7 @@ class ZugferdDocumentReader extends ZugferdDocument
                     $defaultValue = null;
                 }
 
-                if ($method instanceof \Closure) {
+                if ($method instanceof Closure) {
                     $itemValue = $method($valueItem);
                 } else {
                     $itemValue = $this->objectHelper->TryCallByPathAndReturn($valueItem, $method) ?? $defaultValue;
