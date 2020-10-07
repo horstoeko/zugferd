@@ -400,7 +400,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Tax registration of seller Trade party
      *
-     * @param array|null $taxreg
+     * @param array|null $taxreg Returns an associative array of tax registrations
+     * - Key: 
+     *      Scheme id of Tax number or sales tax identification number (VA/FC)
+     * - Value: 
+     *      The seller's local identification (defined by the seller's address) for tax purposes or a reference that 
+     *      enables the seller to indicate his reporting status for tax purposes.
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -414,13 +419,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Address of seller trade party
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param array|null $subdivision
+     * @param string|null $lineone Returns the main line in the sellers address. Note: Usually the street name and 
+     * house number or the post office box
+     * @param string|null $linetwo Returns line 2 of the seller's address, An additional address line in an address 
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $linethree Returns line 3 of the seller's address, An additional address line in an address 
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
+     * @param string|null $city Returns the usual name of the city or municipality in which the seller's address is located
+     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the 
+     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance 
+     * Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @param array|null $subdivision Returns the sellers state
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
@@ -439,9 +449,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of seller trade party
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the 
+     * seller as a legal entity or legal person. Note: If no identification scheme is provided, it should 
+     * be known to the buyer and seller.
+     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of 
+     * the legal registration of the seller, Note: If the identification scheme is used, it must be selected from 
+     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency 
+     * @param string|null $legalorgname Returns the identifier for the identification scheme the identifier of 
+     * the legal registration of the seller, Note: If the identification scheme is used, it must be selected from 
+     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -454,13 +470,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Contact information of seller trade party
+     * Detailed information on the seller's contact person
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailadd
+     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as 
+     * e.g. Personal name, designation of the contact person, synonym: contact person name of the seller
+     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such 
+     * as e.g. Name of the department or office, synonym: department name of the seller
+     * @param string|null $contactphoneno Returns detailed information on the seller's phone number
+     * @param string|null $contactfaxno Returns detailed information on the seller's fax number
+     * @param string|null $contactemailadd Returns detailed information on the seller's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
