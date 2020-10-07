@@ -344,7 +344,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Retrieve document notes
      *
-     * @param array|null $notes
+     * @param array|null $notes Returns an associative array with all document notes
      * @return ZugferdDocumentReader
      */
     public function getDocumentNotes(?array &$notes): ZugferdDocumentReader
