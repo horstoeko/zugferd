@@ -130,7 +130,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @codeCoverageIgnore
      *
-     * @param string $xmlfilename
+     * @param string $xmlfilename The filename to read invoice data from
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -148,7 +148,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @codeCoverageIgnore
      *
-     * @param string $xmlcontent
+     * @param string $xmlcontent The XML content as a string to read the invoice data from
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -171,29 +171,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Read content of a zuferd/xrechnung xml from a string
-     *
-     * @codeCoverageIgnore
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocumentReader
-     */
-    public function readContent(string $xmlcontent): ZugferdDocumentReader
-    {
-        $this->invoiceObject = $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\rsm\CrossIndustryInvoice', 'xml');
-        return $this;
-    }
-
-    /**
      * Read content of a zuferd/xrechnung xml from a file
      *
      * @codeCoverageIgnore
      *
-     * @param string $xmlfilename
+     * @param string $xmlfilename The filename to read invoice data from
      * @return ZugferdDocumentReader
      * @throws Exception
      */
-    public function readFile(string $xmlfilename): ZugferdDocumentReader
+    private function readFile(string $xmlfilename): ZugferdDocumentReader
     {
         if (!file_exists($xmlfilename)) {
             throw new Exception("File {$xmlfilename} does not exist...");
@@ -203,16 +189,30 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Read content of a zuferd/xrechnung xml from a string
+     *
+     * @codeCoverageIgnore
+     *
+     * @param string $xmlcontent The XML content as a string to read the invoice data from
+     * @return ZugferdDocumentReader
+     */
+    private function readContent(string $xmlcontent): ZugferdDocumentReader
+    {
+        $this->invoiceObject = $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\rsm\CrossIndustryInvoice', 'xml');
+        return $this;
+    }
+
+    /**
      * Read general information about the document
      *
-     * @param string|null $documentno
-     * @param string|null $documenttypecode
-     * @param DateTime|null $documentdate
-     * @param string|null $invoiceCurrency
-     * @param string|null $taxCurrency
-     * @param string|null $documentname
-     * @param string|null $documentlanguage
-     * @param DateTime|null $effectiveSpecifiedPeriod
+     * @param string|null $documentno Returns the document no issued by the seller
+     * @param string|null $documenttypecode Returns the type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
+     * @param DateTime|null $documentdate Returns the data when the document was issued by the seller
+     * @param string|null $invoiceCurrency Returns the code for the invoice currency
+     * @param string|null $taxCurrency Returns the code for the currency of the VAT posting
+     * @param string|null $documentname Returns the document type (free text)
+     * @param string|null $documentlanguage Returns the language code in which the document was written
+     * @param DateTime|null $effectiveSpecifiedPeriod Returns the contractual due date of the invoice
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -239,8 +239,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read general payment information
      *
-     * @param string|null $creditorReferenceID
-     * @param string|null $paymentReference
+     * @param string|null $creditorReferenceID Returns the identifier of the creditor (SEPA)
+     * @param string|null $paymentReference Returns the Usage (SEPA)
      * @return ZugferdDocumentReader
      */
     public function getDocumentGeneralPaymentInformation(?string &$creditorReferenceID, ?string &$paymentReference): ZugferdDocumentReader
@@ -253,7 +253,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read copy indicator
      *
-     * @param boolean|null $copyindicator
+     * @param boolean|null $copyindicator Returns true if this document is a copy from the original document
      * @return ZugferdDocumentReader
      */
     public function getIsDocumentCopy(?bool &$copyindicator): ZugferdDocumentReader
@@ -265,7 +265,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read a test document indicator
      *
-     * @param boolean|null $testdocumentindicator
+     * @param boolean|null $testdocumentindicator Returns true if this document is only for test purposes
      * @return ZugferdDocumentReader
      */
     public function getIsTestDocument(?bool &$testdocumentindicator): ZugferdDocumentReader
@@ -277,15 +277,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read Document money summation
      *
-     * @param float|null $grandTotalAmount
-     * @param float|null $duePayableAmount
-     * @param float|null $lineTotalAmount
-     * @param float|null $chargeTotalAmount
-     * @param float|null $allowanceTotalAmount
-     * @param float|null $taxBasisTotalAmount
-     * @param float|null $taxTotalAmount
-     * @param float|null $roundingAmount
-     * @param float|null $totalPrepaidAmount
+     * @param float|null $grandTotalAmount Returns the total invoice amount including sales tax
+     * @param float|null $duePayableAmount Returns the Payment amount due
+     * @param float|null $lineTotalAmount Returns the sum of the net amounts of all invoice lines
+     * @param float|null $chargeTotalAmount Returns the sum of the surcharges at document level
+     * @param float|null $allowanceTotalAmount Returns the sum of the discounts at document level
+     * @param float|null $taxBasisTotalAmount Returns the total invoice amount excluding sales tax
+     * @param float|null $taxTotalAmount Returns the total amount of the invoice sales tax, total tax amount in the booking currency
+     * @param float|null $roundingAmount Returns the rounding amount
+     * @param float|null $totalPrepaidAmount Returns the alreay payed amout
      * @return ZugferdDocumentReader
      */
     public function getDocumentSummation(?float &$grandTotalAmount, ?float &$duePayableAmount, ?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxBasisTotalAmount, ?float &$taxTotalAmount, ?float &$roundingAmount, ?float &$totalPrepaidAmount): ZugferdDocumentReader
