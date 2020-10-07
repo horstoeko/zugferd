@@ -104,6 +104,28 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $positionAddRefDocPointer = 0;
 
     /**
+     * @var string
+     */
+    private $binarydatadirectory = "";
+
+    /**
+     * Set the directory where the attached binary data from
+     * additional referenced documents are temporary stored
+     *
+     * @param string $binarydatadirectory
+     */
+    public function setBinaryDataDirectory(string $binarydatadirectory)
+    {
+        $this->binarydatadirectory = "";
+
+        if ($binarydatadirectory) {
+            if (is_dir($binarydatadirectory) && is_writable($binarydatadirectory)) {
+                $this->binarydatadirectory = $binarydatadirectory;
+            }
+        }
+    }
+
+    /**
      * Guess the profile type of a xml file
      *
      * @codeCoverageIgnore
@@ -1561,6 +1583,12 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
+        $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
+        $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
+        if ($binarydatafilename && $binarydata && $this->binarydatadirectory) {
+            $binarydatafilename = join(DIRECTORY_SEPARATOR, array($this->binarydatadirectory, $binarydatafilename));
+            file_put_contents($binarydatafilename, base64_decode($binarydata));
+        }
 
         return $this;
     }
