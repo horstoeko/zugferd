@@ -362,9 +362,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get seller information
      *
-     * @param string|null $name
-     * @param array|null $id
-     * @param string|null $description
+     * @param string|null $name The full formal name under which the seller is registered in the 
+     * National Register of Legal Entities, Taxable Person or otherwise acting as person (s)
+     * @param array|null $id An identifier of the seller. In many systems, seller identification 
+     * is key information. Multiple seller IDs can be assigned or specified. They can be differentiated 
+     * by using different identification schemes. If no scheme is given, it should be known to the buyer 
+     * and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller.
+     * @param string|null $description Further legal information that is relevant for the seller
      * @return ZugferdDocumentReader
      */
     public function getDocumentSeller(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -381,7 +385,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get document seller global ids
      *
-     * @param array|null $globalID
+     * @param array|null $globalID Returns an array of the seller's identifier identification scheme is an identifier uniquely 
+     * assigned to a seller by a global registration organization. The array key is the scheme id.
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerGlobalId(?array &$globalID): ZugferdDocumentReader
