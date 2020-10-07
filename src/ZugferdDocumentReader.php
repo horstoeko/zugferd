@@ -1460,7 +1460,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get the delivery terms
+     * Get detailed information on the delivery conditions
      *
      * @param string|null $code
      * @return ZugferdDocumentReader
@@ -1492,7 +1492,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of the related order
+     * Get the details of the related order
      *
      * @param string|null $issuerassignedid
      * @param DateTime|null $issueddate
@@ -1511,7 +1511,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of the related order
+     * Get the details of a related contract document
      *
      * @param string|null $issuerassignedid
      * @param DateTime|null $issueddate
@@ -1531,7 +1531,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get first additional referenced document for the document
-     * Returns true if the first position is available, otherwise false
+     * Returns true if an additional referenced document is available, otherwise false
      *
      * @return boolean
      */
@@ -1544,7 +1544,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get next additional referenced document for the document
-     * Returns true if the first position is available, otherwise false
+     * Returns true when another additional referenced document is available, otherwise false
      *
      * @return boolean
      */
@@ -1556,8 +1556,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Documents justifying the invoice
-     * Rechnungsbegründende Unterlagen
+     * Documents justifying the invoice. Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     * ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     * documents
      *
      * @param string|null $issuerassignedid
      * @param string|null $typecode
