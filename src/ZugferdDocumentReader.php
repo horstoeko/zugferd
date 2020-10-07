@@ -1588,6 +1588,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         if ($binarydatafilename && $binarydata && $this->binarydatadirectory) {
             $binarydatafilename = join(DIRECTORY_SEPARATOR, array($this->binarydatadirectory, $binarydatafilename));
             file_put_contents($binarydatafilename, base64_decode($binarydata));
+        } else {
+            $binarydatafilename = "";
         }
 
         return $this;
