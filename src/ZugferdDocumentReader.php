@@ -624,11 +624,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get seller tax representative party information
+     * Get Tax agent of the seller
      *
-     * @param string|null $name
-     * @param array|null $id
-     * @param string|null $description
+     * @param string|null $name Returns the Name of the seller's tax agent
+     * @param array|null $id An identifier of the tax agent. In many systems, tax agent identification 
+     * is key information. Multiple tax agent IDs can be assigned or specified. They can be differentiated 
+     * by using different identification schemes
+     * @param string|null $description Further legal information that is relevant for the seller's tax agent
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentative(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -643,9 +645,10 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get document seller tax representative party
+     * Get document seller tax agent global ids
      *
-     * @param array|null $globalID
+     * @param array|null $globalID Returns an array of the seller's tax gament identifier. identification scheme is an identifier uniquely 
+     * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id.
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeGlobalId(?array &$globalID): ZugferdDocumentReader
