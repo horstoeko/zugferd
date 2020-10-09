@@ -213,8 +213,7 @@
         </exec>
         <property name="projectdoc.done" value="true"/>
     </target>
-    <!--,composer,static-analysis,phpunit,phpdox,-check-failure,-->
-    <target name="deploy" depends="prepare,projectdoc" description="Deploy package">
+    <target name="deploy" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Deploy package">
         <copy todir="${project.basedir}/doc">
             <fileset dir="${project.basedir}/build/doc">
                 <include name= "**/*.*" />
@@ -230,5 +229,23 @@
             <arg value="-m"/>
             <arg value="Updated documentation"/>
         </exec>
+    </target>
+    <target name="projectdocstandalone" depends="downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
+        <exec executable="wget">
+            <arg value="${url.phpdocumentator.download}"/>
+            <arg value="-O"/>
+            <arg value="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="chmod">
+            <arg value="+x"/>
+            <arg value="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="${phpdocumentator}" taskname="projectdoc">
+            <arg path="-d"/>
+            <arg path="${project.basedir}/src"/>
+            <arg path="-t"/>
+            <arg path="${project.basedir}/doc"/>
+        </exec>
+        <delete file="${phpdocumentator}"/>
     </target>
 </project>
