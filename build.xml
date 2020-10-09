@@ -220,11 +220,11 @@
                 <include name= "**/*.*" />
             </fileset>
         </copy>
-        <exec executable="${git}">
+        <exec executable="${git}" passthru="true">
             <arg value="add"/>
             <arg path="${project.basedir}/doc"/>
         </exec>
-        <exec executable="${git}">
+        <exec executable="${git}" passthru="true">
             <arg value="commit"/>
             <arg value="-a"/>
             <arg value="-m"/>
