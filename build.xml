@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="php-automate-build-ant" default="full-build">
+<project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
@@ -51,13 +51,13 @@
     </target>
     <target name="downloadphpdocumentator" description="Install phpdocumentator.">
         <exec executable="wget">
-            <arg value="${url.phpdocumentator.download}"/>
+            <arg path="${url.phpdocumentator.download}"/>
             <arg value="-O"/>
-            <arg value="${project.basedir}/phpDocumentor.phar"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
         </exec>
         <exec executable="chmod">
             <arg value="+x"/>
-            <arg value="${project.basedir}/phpDocumentor.phar"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
@@ -206,12 +206,31 @@
     </target>
     <target name="projectdoc" depends="prepare,downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
         <exec executable="${phpdocumentator}" taskname="projectdoc">
-            <arg path="-d"/>
+            <arg value="-d"/>
             <arg path="${project.basedir}/src"/>
-            <arg path="-t"/>
+            <arg value="-t"/>
             <arg path="${project.basedir}/build/doc"/>
         </exec>
         <property name="projectdoc.done" value="true"/>
+    </target>
+    <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
+        <exec executable="wget">
+            <arg path="${url.phpdocumentator.download}"/>
+            <arg value="-O"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="chmod">
+            <arg value="+x"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="${phpdocumentator}" taskname="projectdoc">
+            <arg value="-d"/>
+            <arg path="${project.basedir}/src"/>
+            <arg value="-t"/>
+            <arg path="${project.basedir}/doc"/>
+        </exec>
+        <delete file="${phpdocumentator}"/>
+        <delete dir="${project.basedir}/.phpdoc"/>
     </target>
     <target name="deploy" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Deploy package">
         <copy todir="${project.basedir}/doc">
@@ -229,23 +248,5 @@
             <arg value="-m"/>
             <arg value="Updated documentation"/>
         </exec>
-    </target>
-    <target name="projectdocstandalone" depends="downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
-        <exec executable="wget">
-            <arg value="${url.phpdocumentator.download}"/>
-            <arg value="-O"/>
-            <arg value="${project.basedir}/phpDocumentor.phar"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg value="${project.basedir}/phpDocumentor.phar"/>
-        </exec>
-        <exec executable="${phpdocumentator}" taskname="projectdoc">
-            <arg path="-d"/>
-            <arg path="${project.basedir}/src"/>
-            <arg path="-t"/>
-            <arg path="${project.basedir}/doc"/>
-        </exec>
-        <delete file="${phpdocumentator}"/>
     </target>
 </project>
