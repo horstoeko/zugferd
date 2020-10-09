@@ -756,7 +756,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param array|null $id An identifier of the product end user. In many systems, product end user identification 
      * is key information. Multiple product end user IDs can be assigned or specified. They can be differentiated 
      * by using different identification schemes
-     * @param string|null $description Further legal information that is relevant for the seller's product end user
+     * @param string|null $description Further legal information that is relevant for the product end user
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUser(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -773,7 +773,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get document Product End User global ids
      *
-     * @param array|null $globalID
+     * @param array|null $globalID Returns an array of the product end user identifier. Identification scheme is an identifier uniquely 
+     * assigned to a product end user by a global registration organization. The array key is the scheme id.
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserGlobalId(?array &$globalID): ZugferdDocumentReader
