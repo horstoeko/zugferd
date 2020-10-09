@@ -752,9 +752,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Product End User information
      *
-     * @param string|null $name
-     * @param array|null $id
-     * @param string|null $description
+     * @param string|null $name Returns the Name of the product end user
+     * @param array|null $id An identifier of the product end user. In many systems, product end user identification 
+     * is key information. Multiple product end user IDs can be assigned or specified. They can be differentiated 
+     * by using different identification schemes
+     * @param string|null $description Further legal information that is relevant for the seller's product end user
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUser(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
