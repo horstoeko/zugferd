@@ -68,5 +68,14 @@ _backup*
 
 /vendor/
 /logs/*
-!/logs/README.md
 .phpunit.result.cache
+/.phpdoc/
+/build/api/
+/build/coverage/
+/build/coverage-html/
+/build/doc/
+/build/logs/
+/build/pdepend/
+/build/phpdox/
+/*.phar
+/composer.lock
