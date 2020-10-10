@@ -4,6 +4,7 @@
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
     <property name="url.phpdocumentator.download" value="https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-rc/phpDocumentor.phar"/>
+    <property name="composer" value="${basedir}/composer.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${basedir}/vendor/bin/phpcs"/>
@@ -22,26 +23,29 @@
         <property name="clean.done" value="true"/>
     </target>
     <target name="composer" description="Install composer packages including require-dev.">
-        <get src="${url.composer.download}" dest="composer.phar"/>
-        <exec executable="php" failonerror="true">
-            <arg value="${basedir}/composer.phar"/>
+        <get src="${url.composer.download}" dest="${composer}"/>
+        <exec executable="chmod" failonerror="true">
+            <arg value="+x"/>
+            <arg path="${composer}"/>
+        </exec>
+        <exec executable="${composer}" failonerror="true">
             <arg value="install"/>
             <arg value="--prefer-dist"/>
             <arg value="--no-progress"/>
         </exec>
     </target>
     <target name="downloadphpdox" description="Install phpdox.">
-        <get src="${url.phpdox.download}" dest="phpdox.phar"/>
+        <get src="${url.phpdox.download}" dest="${phpdox}"/>
         <exec executable="chmod" failonerror="true">
             <arg value="+x"/>
-            <arg value="${basedir}/phpdox.phar"/>
+            <arg value="${phpdox}"/>
         </exec>
     </target>
     <target name="downloadphpdocumentator" description="Install phpdocumentator.">
-        <get src="${url.phpdocumentator.download}" dest="phpDocumentor.phar"/>
+        <get src="${url.phpdocumentator.download}" dest="${phpdocumentator}"/>
         <exec executable="chmod">
             <arg value="+x"/>
-            <arg path="${basedir}/phpDocumentor.phar"/>
+            <arg path="${phpdocumentator}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,downloadphpdox,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Perform static analysis, run tests, and generate project documentation.">
