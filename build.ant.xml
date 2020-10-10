@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${basedir}/vendor/bin -->
+    <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
+    <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
+    <property name="url.phpdocumentator.download" value="https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-rc/phpDocumentor.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${basedir}/vendor/bin/phpcs"/>
@@ -10,6 +13,7 @@
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${basedir}/build/api"/>
+        <delete dir="${basedir}/build/doc"/>
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
         <delete dir="${basedir}/build/pdepend"/>
@@ -17,7 +21,7 @@
         <property name="clean.done" value="true"/>
     </target>
     <target name="composer" description="Install composer packages including require-dev.">
-        <get src="https://getcomposer.org/download/1.10.13/composer.phar" dest="composer.phar"/>
+        <get src="${url.composer.download}" dest="composer.phar"/>
         <exec executable="php" failonerror="true">
             <arg value="${basedir}/composer.phar"/>
             <arg value="install"/>
@@ -25,14 +29,25 @@
             <arg value="--no-progress"/>
         </exec>
     </target>
-    <target name="getphpdoxbin" description="Install phpdox.">
-        <get src="http://phpdox.de/releases/phpdox.phar" dest="phpdox.phar"/>
+    <target name="downloadphpdox" description="Install phpdox.">
+        <get src="${url.phpdox.download}" dest="phpdox.phar"/>
         <exec executable="chmod" failonerror="true">
             <arg value="+x"/>
             <arg value="${basedir}/phpdox.phar"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,getphpdoxbin,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="downloadphpdocumentator" description="Install phpdocumentator.">
+        <exec executable="wget">
+            <arg path="${url.phpdocumentator.download}"/>
+            <arg value="-O"/>
+            <arg path="${basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="chmod">
+            <arg value="+x"/>
+            <arg path="${basedir}/phpDocumentor.phar"/>
+        </exec>
+    </target>
+    <target name="full-build" depends="prepare,composer,downloadphpdox,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -170,13 +185,14 @@
     </target>
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build.">
         <mkdir dir="${basedir}/build/api"/>
+        <mkdir dir="${basedir}/build/doc"/>
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <mkdir dir="${basedir}/build/pdepend"/>
         <mkdir dir="${basedir}/build/phpdox"/>
         <property name="prepare.done" value="true"/>
     </target>
-    <target name="quick-build" depends="prepare,composer,getphpdoxbin,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
+    <target name="quick-build" depends="prepare,composer,downloadphpdox,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
         <echo message="Built"/>
     </target>
     <target name="static-analysis" depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci" description="Perform static analysis.">
@@ -191,5 +207,14 @@
             </condition>
         </fail>
         <echo message="Checked failure"/>
+    </target>
+    <target name="projectdoc" depends="prepare,downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
+        <exec executable="${phpdocumentator}" taskname="projectdoc">
+            <arg value="-d"/>
+            <arg path="${basedir}/src"/>
+            <arg value="-t"/>
+            <arg path="${basedir}/build/doc"/>
+        </exec>
+        <property name="projectdoc.done" value="true"/>
     </target>
 </project>
