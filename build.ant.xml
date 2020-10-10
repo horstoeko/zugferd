@@ -58,6 +58,8 @@
     </target>
     <target name="phpcpd" unless="phpcpd.done" description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="${phpcpd}" taskname="phpcpd">
+            <arg value="--exclude"/>
+            <arg path="${basedir}/src/entities"/>
             <arg path="${basedir}/src"/>
         </exec>
         <property name="phpcpd.done" value="true"/>
@@ -66,6 +68,8 @@
         <exec executable="${phpcpd}" taskname="phpcpd">
             <arg value="--log-pmd"/>
             <arg path="${basedir}/build/logs/pmd-cpd.xml"/>
+            <arg value="--exclude"/>
+            <arg path="${basedir}/src/entities/"/>
             <arg path="${basedir}/src"/>
         </exec>
         <property name="phpcpd.done" value="true"/>
