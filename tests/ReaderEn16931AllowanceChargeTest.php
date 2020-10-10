@@ -34,7 +34,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('471102', $documentno);
-        $this->assertEquals(ZugferdInvoiceType::Invoice, $documenttypecode);
+        $this->assertEquals(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180605'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertEquals("EUR", $invoiceCurrency);

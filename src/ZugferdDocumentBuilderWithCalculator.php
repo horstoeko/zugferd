@@ -38,7 +38,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      */
     public function calculatePositionLineSummations()
     {
-        $lines = $this->_car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
+        $lines = $this->car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
 
         foreach ($lines as $line) {
             $this->CalculatePositionLineSummation($line);
@@ -53,18 +53,18 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      */
     public function calculatePositionLineSummation(object $line): ZugferdDocumentBuilderWithCalculator
     {
-        $positionsettlement = $this->_car($line, "getSpecifiedLineTradeSettlement");
+        $positionsettlement = $this->car($line, "getSpecifiedLineTradeSettlement");
 
-        $grossPriceType = $this->_cbpar($line, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice");
+        $grossPriceType = $this->cbpar($line, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice");
         if (!is_null($grossPriceType)) {
-            $grossPriceAllowanceCharges = $this->_ea($this->_cbpar($grossPriceType, "getAppliedTradeAllowanceCharge"));
+            $grossPriceAllowanceCharges = $this->ea($this->cbpar($grossPriceType, "getAppliedTradeAllowanceCharge"));
             $grossPriceAllowanceChargesSum = 0.0;
 
             foreach ($grossPriceAllowanceCharges as $grossPriceAllowanceCharge) {
-                $grossPriceAllowanceChargeBasisAmountType = $this->_cbpar($grossPriceAllowanceCharge, "getBasisAmount");
-                $grossPriceAllowanceChargeCalculationPercentType = $this->_cbpar($grossPriceAllowanceCharge, "getCalculationPercent");
-                $grossPriceAllowanceChargeActualAmountType = $this->_cbpar($grossPriceAllowanceCharge, "getActualAmount");
-                $grossPriceAllowanceChargeIsCharge = (bool) $this->_cbpar($grossPriceAllowanceCharge, "getChargeIndicator.getIndicator", false);
+                $grossPriceAllowanceChargeBasisAmountType = $this->cbpar($grossPriceAllowanceCharge, "getBasisAmount");
+                $grossPriceAllowanceChargeCalculationPercentType = $this->cbpar($grossPriceAllowanceCharge, "getCalculationPercent");
+                $grossPriceAllowanceChargeActualAmountType = $this->cbpar($grossPriceAllowanceCharge, "getActualAmount");
+                $grossPriceAllowanceChargeIsCharge = (bool) $this->cbpar($grossPriceAllowanceCharge, "getChargeIndicator.getIndicator", false);
 
                 if (
                     is_null($grossPriceAllowanceChargeBasisAmountType) &&
@@ -76,35 +76,35 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
 
                 if (!is_null($grossPriceAllowanceChargeBasisAmountType) && !is_null($grossPriceAllowanceChargeCalculationPercentType)) {
                     $grossPriceAllowanceChargeActualAmount = round(
-                        $this->_cbpar($grossPriceAllowanceChargeBasisAmountType, "value", 0.0) *
-                            $this->_cbpar($grossPriceAllowanceChargeCalculationPercentType, "value", 0.0) / 100,
+                        $this->cbpar($grossPriceAllowanceChargeBasisAmountType, "value", 0.0) *
+                            $this->cbpar($grossPriceAllowanceChargeCalculationPercentType, "value", 0.0) / 100,
                         2
                     );
                 } else {
                     $grossPriceAllowanceChargeActualAmount =
-                        $this->_cbpar($grossPriceAllowanceChargeActualAmountType, "value", 0.0);
+                        $this->cbpar($grossPriceAllowanceChargeActualAmountType, "value", 0.0);
                 }
 
                 $grossPriceAllowanceChargesSum =
                     $grossPriceAllowanceChargesSum + ($grossPriceAllowanceChargeIsCharge == false ? $grossPriceAllowanceChargeActualAmount : -$grossPriceAllowanceChargeActualAmount);
             }
 
-            $grossPriceAmount = $this->_cbpar($grossPriceType, "getChargeAmount.value", 0.0);
+            $grossPriceAmount = $this->cbpar($grossPriceType, "getChargeAmount.value", 0.0);
             $netPrice = $grossPriceAmount - $grossPriceAllowanceChargesSum;
 
             $netPriceType = $this->objectHelper->GetTradePriceType($netPrice);
-            $positionagreement = $this->_car($line, "getSpecifiedLineTradeAgreement");
-            $this->_tc($positionagreement, "setNetPriceProductTradePrice", $netPriceType);
+            $positionagreement = $this->car($line, "getSpecifiedLineTradeAgreement");
+            $this->tc($positionagreement, "setNetPriceProductTradePrice", $netPriceType);
         }
 
-        $billedQuantity = (float) $this->_cbpar($line, "getSpecifiedLineTradeDelivery.getBilledQuantity.value", 0.0);
-        $netPrice = (float) $this->_cbpar($line, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value", 0.0);
-        $positionAllowanceCharges = (array) $this->_cbpar($line, "getSpecifiedLineTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
+        $billedQuantity = (float) $this->cbpar($line, "getSpecifiedLineTradeDelivery.getBilledQuantity.value", 0.0);
+        $netPrice = (float) $this->cbpar($line, "getSpecifiedLineTradeAgreement.getNetPriceProductTradePrice.getChargeAmount.value", 0.0);
+        $positionAllowanceCharges = (array) $this->cbpar($line, "getSpecifiedLineTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
         $positionAllowanceChargesSum = 0.0;
 
         foreach ($positionAllowanceCharges as $positionAllowanceCharge) {
-            $isCharge = (bool) $this->_cbpar($positionAllowanceCharge, "getChargeIndicator.getIndicator", false);
-            $actualAmount = (float) $this->_cbpar($positionAllowanceCharge, "getActualAmount.value", 0.0);
+            $isCharge = (bool) $this->cbpar($positionAllowanceCharge, "getChargeIndicator.getIndicator", false);
+            $actualAmount = (float) $this->cbpar($positionAllowanceCharge, "getActualAmount.value", 0.0);
             $positionAllowanceChargesSum = $positionAllowanceChargesSum + ($isCharge == false ? -$actualAmount : $actualAmount);
         }
 
@@ -114,14 +114,14 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
                 round($positionAllowanceChargesSum, 2)
             );
 
-            $this->_tc($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+            $this->tc($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
 
         return $this;
     }
 
     public function calculateDocumentSummation()
     {
-        $lines = $this->_car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
+        $lines = $this->car($this->headerSupplyChainTradeTransaction, 'getIncludedSupplyChainTradeLineItem') ?? [];
 
         $lineTotalAmount = 0.0;
         $vatSumGrouped = [];
@@ -131,14 +131,14 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
         $docVatSum = 0.0;
 
         foreach ($lines as $line) {
-            $lineAmount = $this->_cbpar($line, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getLineTotalAmount.value", 0.0);
+            $lineAmount = $this->cbpar($line, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getLineTotalAmount.value", 0.0);
             $lineTotalAmount = $lineTotalAmount + $lineAmount;
-            $lineTaxes = $this->_ea($this->_cbpar($line, "getSpecifiedLineTradeSettlement.getApplicableTradeTax", []));
+            $lineTaxes = $this->ea($this->cbpar($line, "getSpecifiedLineTradeSettlement.getApplicableTradeTax", []));
 
             foreach ($lineTaxes as $lineTax) {
-                $vatCategory = (string) $this->_cbpar($lineTax, "getCategoryCode.value", "");
-                $vatType = (string) $this->_cbpar($lineTax, "getTypeCode.value", "");
-                $vatPercent = (float) $this->_cbpar($lineTax, "getRateApplicablePercent.value", 0.0);
+                $vatCategory = (string) $this->cbpar($lineTax, "getCategoryCode.value", "");
+                $vatType = (string) $this->cbpar($lineTax, "getTypeCode.value", "");
+                $vatPercent = (float) $this->cbpar($lineTax, "getRateApplicablePercent.value", 0.0);
 
                 $vatGroupId = md5($vatCategory . $vatType . $vatPercent);
 
@@ -148,14 +148,14 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
             }
         }
 
-        $docAllowanceCharges = $this->_ea($this->_cbpar($this->headerTradeSettlement, 'getSpecifiedTradeAllowanceCharge', []));
+        $docAllowanceCharges = $this->ea($this->cbpar($this->headerTradeSettlement, 'getSpecifiedTradeAllowanceCharge', []));
 
         foreach ($docAllowanceCharges as $docAllowanceCharge) {
-            $actualAmount = $this->_cbpar($docAllowanceCharge, "getActualAmount.value");
-            $vatCategory = (string) $this->_cbpar($docAllowanceCharge, "getCategoryTradeTax.getCategoryCode.value", "");
-            $vatType = (string) $this->_cbpar($docAllowanceCharge, "getCategoryTradeTax.getTypeCode.value", "");
-            $vatPercent = (float) $this->_cbpar($docAllowanceCharge, "getCategoryTradeTax.getRateApplicablePercent.value", 0.0);
-            $chargeindicator = (bool) $this->_cbpar($docAllowanceCharge, "getChargeIndicator.getIndicator", false);
+            $actualAmount = $this->cbpar($docAllowanceCharge, "getActualAmount.value");
+            $vatCategory = (string) $this->cbpar($docAllowanceCharge, "getCategoryTradeTax.getCategoryCode.value", "");
+            $vatType = (string) $this->cbpar($docAllowanceCharge, "getCategoryTradeTax.getTypeCode.value", "");
+            $vatPercent = (float) $this->cbpar($docAllowanceCharge, "getCategoryTradeTax.getRateApplicablePercent.value", 0.0);
+            $chargeindicator = (bool) $this->cbpar($docAllowanceCharge, "getChargeIndicator.getIndicator", false);
 
             $vatGroupId = md5($vatCategory . $vatType . $vatPercent);
 
@@ -167,10 +167,10 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
             $docChargeSum = $docChargeSum + ($chargeindicator === true ? $actualAmount : 0.0);
         }
 
-        $docLogisticCharges = $this->_ea($this->_cbpar($this->headerTradeSettlement, 'getSpecifiedLogisticsServiceCharge', []));
+        $docLogisticCharges = $this->ea($this->cbpar($this->headerTradeSettlement, 'getSpecifiedLogisticsServiceCharge', []));
 
         foreach ($docLogisticCharges as $docLogisticCharge) {
-            $actualAmount = $this->_cbpar($docLogisticCharge, "getAppliedAmount.value");
+            $actualAmount = $this->cbpar($docLogisticCharge, "getAppliedAmount.value");
             $docChargeSum = $docChargeSum + $actualAmount;
         }
 
@@ -186,9 +186,9 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
             );
         }
 
-        $summation = $this->_car($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
+        $summation = $this->car($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
 
-        $totalPrepaidAmount = $this->_cbpar($summation, "getTotalPrepaidAmount.value", 0.0);
+        $totalPrepaidAmount = $this->cbpar($summation, "getTotalPrepaidAmount.value", 0.0);
 
         $this->setDocumentSummation(
             round($docNetAmount + $docVatSum, 2),
@@ -211,7 +211,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function _cbpar(?object $instance, string $methods, $defaultValue = null)
+    private function cbpar(?object $instance, string $methods, $defaultValue = null)
     {
         return $this->objectHelper->TryCallByPathAndReturn($instance, $methods) ?? $defaultValue;
     }
@@ -224,7 +224,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function _car(object $instance, string $method, $defaultValue = null)
+    private function car(object $instance, string $method, $defaultValue = null)
     {
         return $this->objectHelper->TryCallAndReturn($instance, $method) ?? $defaultValue;
     }
@@ -237,7 +237,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $value
      * @return mixed
      */
-    private function _tc(object $instance, string $method, $value)
+    private function tc(object $instance, string $method, $value)
     {
         return $this->objectHelper->TryCall($instance, $method, $value);
     }
@@ -249,7 +249,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      * @param mixed $value
      * @return array
      */
-    private function _ea($value): array
+    private function ea($value): array
     {
         return $this->objectHelper->EnsureArray($value);
     }

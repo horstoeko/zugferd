@@ -34,7 +34,7 @@ class ReaderExtendedTest extends TestCase
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('KR87654321012', $documentno);
-        $this->assertEquals(ZugferdInvoiceType::Invoice, $documenttypecode);
+        $this->assertEquals(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20181006'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertEquals("EUR", $invoiceCurrency);
