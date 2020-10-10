@@ -3,7 +3,7 @@
 namespace horstoeko\zugferd;
 
 /**
- * Class representing the auto-calculator for amounts of a document 
+ * Class representing the auto-calculator for amounts of a document
  * builded by document build
  */
 class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder

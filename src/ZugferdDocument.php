@@ -58,7 +58,7 @@ class ZugferdDocument
 
     /**
      * Constructor
-     * 
+     *
      * @codeCoverageIgnore
      */
     public function __construct(int $profile)
@@ -72,7 +72,7 @@ class ZugferdDocument
 
     /**
      * Build the internal serialzer
-     * 
+     *
      * @codeCoverageIgnore
      *
      * @return void
