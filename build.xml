@@ -153,6 +153,8 @@
             <arg path="${project.basedir}/src"/>
             <arg value="text"/>
             <arg path="${project.basedir}/build/phpmd.xml"/>
+            <arg value="--exclude"/>
+            <arg path="${project.basedir}/src/entities/"/>
         </exec>
         <property name="phpmd.done" value="true"/>
     </target>
@@ -163,6 +165,17 @@
             <arg path="${project.basedir}/build/phpmd.xml"/>
             <arg value="--reportfile"/>
             <arg path="${project.basedir}/build/logs/pmd.xml"/>
+            <arg value="--exclude"/>
+            <arg path="${project.basedir}/src/entities/"/>
+        </exec>
+        <exec executable="${phpmd}" taskname="phpmd">
+            <arg path="${project.basedir}/src"/>
+            <arg value="html"/>
+            <arg path="${project.basedir}/build/phpmd.xml"/>
+            <arg value="--reportfile"/>
+            <arg path="${project.basedir}/build/logs/pmd.html"/>
+            <arg value="--exclude"/>
+            <arg path="${project.basedir}/src/entities/"/>
         </exec>
         <property name="phpmd.done" value="true"/>
     </target>
