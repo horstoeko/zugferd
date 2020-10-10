@@ -62,7 +62,7 @@ class BuilderBaseTest extends TestCase
      *
      * @return void
      */
-    protected function DisableRenderXmlContent()
+    protected function disableRenderXmlContent()
     {
         $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
         $this->renderingOfXmlDisabled = true;

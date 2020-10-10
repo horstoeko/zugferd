@@ -26,7 +26,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $xml = $this->getXml();
         $namespaces = $xml->getNamespaces(true);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertArrayHasKey("rsm", $namespaces);
         $this->assertArrayHasKey("ram", $namespaces);
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', (self::$document)->profiledef["contextparameter"]);
@@ -39,7 +39,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "471102");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:TypeCode', "380");
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString', "20180305", "format", "102");
@@ -53,7 +53,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentGeneralPaymentInformation("1111111111", "2222222222");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID', "1111111111");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PaymentReference', "2222222222");
     }
@@ -65,7 +65,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setIsDocumentCopy();
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator');
     }
 
@@ -76,7 +76,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->SetIsTestDocument();
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:TestIndicator/udt:Indicator');
     }
 
@@ -88,7 +88,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.');
         (self::$document)->addDocumentNote('Lieferant GmbH', null, 'REG');
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 0, "Rechnung gemäß Bestellung vom 01.03.2018.");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:Content', 1, "Lieferant GmbH");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote/ram:SubjectCode', 0, "REG");
@@ -101,7 +101,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'));
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', "20180305", "format", "102");
     }
 
@@ -112,7 +112,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSeller("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:ID', "549910");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name', "Lieferant GmbH");
     }
@@ -124,7 +124,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentSellerGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
@@ -136,7 +136,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentSellerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentSellerTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 1, "DE123456789", "schemeID", "VA");
     }
@@ -148,7 +148,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:LineOne', "Lieferantenstraße 20");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -165,7 +165,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName', "Lieferant AG");
     }
@@ -177,7 +177,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:DepartmentName', "Financials");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', "+49-111-2222222");
@@ -192,7 +192,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBuyer("Kunden AG Mitte", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:ID', "549910");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name', "Kunden AG Mitte");
     }
@@ -204,7 +204,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentBuyerGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
@@ -216,7 +216,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentBuyerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentBuyerTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 1, "DE123456789", "schemeID", "VA");
     }
@@ -228,7 +228,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBuyerAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "69876");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:LineOne', "Kundenstrasse 15");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -245,7 +245,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBuyerLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName', "Kunden Holding");
     }
@@ -257,7 +257,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBuyerContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:PersonName', "Otto Müller");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:DepartmentName', "Financials");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', "+49-111-2222222");
@@ -272,7 +272,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerTaxRepresentativeTradeParty("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:ID', "549910");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:Name', "Lieferant GmbH");
     }
@@ -284,7 +284,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentSellerTaxRepresentativeGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
@@ -296,7 +296,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 1, "DE123456789", "schemeID", "VA");
     }
@@ -308,7 +308,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerTaxRepresentativeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:PostalTradeAddress/ram:LineOne', "Lieferantenstraße 20");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -325,7 +325,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerTaxRepresentativeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName', "Lieferant AG");
     }
@@ -337,7 +337,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerTaxRepresentativeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:DefinedTradeContact/ram:DepartmentName', "Financials");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', "+49-111-2222222");
@@ -352,7 +352,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentProductEndUser("Kunden AG Mitte", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:Name');
     }
@@ -364,7 +364,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentProductEndUserGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:GlobalID');
     }
 
@@ -376,7 +376,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentProductEndUserTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentProductEndUserTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
     }
@@ -388,7 +388,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentProductEndUserAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:PostalTradeAddress/ram:LineOne');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -405,7 +405,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentProductEndUserLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName');
     }
@@ -417,7 +417,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentProductEndUserContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:DefinedTradeContact/ram:PersonName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:DefinedTradeContact/ram:DepartmentName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ProductEndUserTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber');
@@ -432,7 +432,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipTo("Kunden AG Mitte", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', "549910");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:Name', "Kunden AG Mitte");
     }
@@ -444,7 +444,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentShipToGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
@@ -456,7 +456,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentShipToTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentShipToTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 1, "DE123456789", "schemeID", "VA");
     }
@@ -468,7 +468,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "69876");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress/ram:LineOne', "Kundenstrasse 15");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -485,7 +485,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName', "Kunden Holding");
     }
@@ -497,7 +497,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:PersonName', "Otto Müller");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName', "Financials");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', "+49-111-2222222");
@@ -512,7 +512,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentUltimateShipTo("Kunden AG Mitte", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:Name');
     }
@@ -524,7 +524,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentUltimateShipToGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:GlobalID');
     }
 
@@ -536,7 +536,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentUltimateShipToTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentUltimateShipToTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
     }
@@ -548,7 +548,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:PostalTradeAddress/ram:LineOne');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -565,7 +565,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName');
     }
@@ -577,7 +577,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:DefinedTradeContact/ram:PersonName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:DefinedTradeContact/ram:DepartmentName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber');
@@ -592,7 +592,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipFrom("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:Name');
     }
@@ -604,7 +604,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentShipFromGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:GlobalID');
     }
 
@@ -616,7 +616,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentShipFromTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentShipFromTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
     }
@@ -628,7 +628,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipFromAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:PostalTradeAddress/ram:LineOne');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -645,7 +645,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipFromLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName');
     }
@@ -657,7 +657,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentShipFromContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:DefinedTradeContact/ram:PersonName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:DefinedTradeContact/ram:DepartmentName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber');
@@ -672,7 +672,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoicer("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:Name');
     }
@@ -684,7 +684,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentInvoicerGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:GlobalID');
     }
 
@@ -696,7 +696,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentInvoicerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentInvoicerTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
     }
@@ -708,7 +708,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoicerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:PostalTradeAddress/ram:LineOne');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -725,7 +725,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoicerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName');
     }
@@ -737,7 +737,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoicerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:DefinedTradeContact/ram:PersonName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:DefinedTradeContact/ram:DepartmentName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber');
@@ -752,7 +752,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoicee("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:Name');
     }
@@ -764,7 +764,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentInvoiceeGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:GlobalID');
     }
 
@@ -776,7 +776,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentInvoiceeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentInvoiceeTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedTaxRegistration/ram:ID');
     }
@@ -788,7 +788,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoiceeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:LineOne');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -805,7 +805,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoiceeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedLegalOrganization/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName');
     }
@@ -817,7 +817,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoiceeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:DefinedTradeContact/ram:PersonName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:DefinedTradeContact/ram:DepartmentName');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber');
@@ -832,7 +832,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentPayee("Lieferant GmbH", "549910");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', "549910");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:Name', "Lieferant GmbH");
     }
@@ -844,7 +844,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentPayeeGlobalId("4000001123452", "0088");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:GlobalID', 0, "4000001123452", "schemeID", "0088");
     }
 
@@ -856,7 +856,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentPayeeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentPayeeTaxRegistration("VA", "DE123456789");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 0, "201/113/40209", "schemeID", "FC");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedTaxRegistration/ram:ID', 1, "DE123456789", "schemeID", "VA");
     }
@@ -868,7 +868,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentPayeeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:PostalTradeAddress/ram:PostcodeCode', "80333");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:PostalTradeAddress/ram:LineOne', "Lieferantenstraße 20");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:PostalTradeAddress/ram:LineTwo');
@@ -885,7 +885,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentPayeeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:ID', 0, "DE12345", "schemeID", "FC");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:SpecifiedLegalOrganization/ram:TradingBusinessName', "Lieferant AG");
     }
@@ -897,7 +897,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentPayeeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:DefinedTradeContact/ram:PersonName', "Hans Müller");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:DefinedTradeContact/ram:DepartmentName', "Financials");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber', "+49-111-2222222");
@@ -912,7 +912,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentDeliveryTerms("term");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ApplicableTradeDeliveryTerms/ram:DeliveryTypeCode');
     }
 
@@ -923,7 +923,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSellerOrderReferencedDocument('B-1010', new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerOrderReferencedDocument/ram:IssuerAssignedID', "B-1010");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerOrderReferencedDocument/ram:FormattedIssueDateTime/ram:DateTimeString');
     }
@@ -935,7 +935,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBuyerOrderReferencedDocument('O-2020', new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', "O-2020");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/ram:DateTimeString');
     }
@@ -947,7 +947,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentContractReferencedDocument("CON-4711", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', "CON-4711");
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/ram:DateTimeString');
     }
@@ -960,7 +960,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime());
         (self::$document)->addDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 0, "A-1011");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 1, "B-2233");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:URIID', 0, "http://lieferant.de/docs/a1011.pdf");
@@ -982,7 +982,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentInvoiceReferencedDocument("INV-1", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', "INV-1");
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
     }
@@ -994,7 +994,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentProcuringProject("HB-8378732", "Hausbau");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SpecifiedProcuringProject/ram:ID', "HB-8378732");
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SpecifiedProcuringProject/ram:Name', "Hausbau");
     }
@@ -1007,7 +1007,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new \DateTime());
         (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:UltimateCustomerOrderReferencedDocument/ram:IssuerAssignedID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:UltimateCustomerOrderReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString');
     }
@@ -1019,7 +1019,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentDespatchAdviceReferencedDocument("DADV-001", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', "DADV-001");
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
     }
@@ -1031,7 +1031,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentReceivingAdviceReferencedDocument("RADV-002", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:IssuerAssignedID', "RADV-002");
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
     }
@@ -1043,7 +1043,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentDeliveryNoteReferencedDocument("DNOTE-003", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:IssuerAssignedID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString');
     }
@@ -1056,7 +1056,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentPaymentMean("42", "Paying information", "cardtype", "cardid", "cardholder", "DE00000000000", "DE11111111111", "Bank", "44444444", "NOLADEQLB21");
         (self::$document)->addDocumentPaymentMean("49", "Paying information 2", "cardtype2", "cardid2", "cardholder2", "DE22222222222", "DE33333333333", "Bank 2", "22222222", "BIC");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode', 0, "42");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:Information', 0, "Paying information");
@@ -1087,7 +1087,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new \DateTime(), "duetypecode");
         (self::$document)->addDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new \DateTime(), "duetypecode2");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:CalculatedAmount', 0, "19.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode', 0, "VAT");
@@ -1117,7 +1117,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentTaxSimple("S", "VAT", 100.0, 19.0, 19.0);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:CalculatedAmount', 2, "19.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode', 2, "VAT");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReason', 2);
@@ -1136,7 +1136,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentBillingPeriod(new \DateTime(), new \DateTime(), "Project");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
     }
@@ -1149,7 +1149,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
         (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:CalculationPercent', 0, "10.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:BasisAmount', 0, "100.0");
@@ -1177,7 +1177,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->addDocumentLogisticsServiceCharge("Service", 10.0, ["S"], ["VAT"], [19.0]);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedLogisticsServiceCharge/ram:Description', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedLogisticsServiceCharge/ram:AppliedAmount', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedLogisticsServiceCharge/ram:AppliedTradeTax/ram:TypeCode', 0);
@@ -1194,7 +1194,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentPaymentTerm("Payment", new \DateTime(), "mandate");
         (self::$document)->addDiscountTermsToPaymentTerms(10.0, new \DateTime(), 1, "DAY", 20.0, 2.0);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "Payment");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new \DateTime())->format("Ymd"), "format", "102");
@@ -1215,7 +1215,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid", "typecode");
         (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid2", "typecode2");
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:ReceivableSpecifiedTradeAccountingAccount/ram:ID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:ReceivableSpecifiedTradeAccountingAccount/ram:TypeCode', 0);
@@ -1231,7 +1231,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->initDocumentSummation();
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', 0, "0.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:ChargeTotalAmount', 0, "0.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:AllowanceTotalAmount', 0, "0.0");
@@ -1250,7 +1250,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->setDocumentSummation(100.0, 0.0, 100.0, 5.0, 4.0, 99.0, 10.0, 0.0, 0.0);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', 0, "100.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:ChargeTotalAmount', 0, "5.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:AllowanceTotalAmount', 0, "4.0");
@@ -1333,7 +1333,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
         (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 0, "1");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineStatusCode', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineStatusReasonCode', 0);
@@ -1460,7 +1460,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
         (self::$document)->setDocumentPositionLineSummation(200, 20);
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 1, "2");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineStatusCode', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineStatusReasonCode', 1);
@@ -1556,7 +1556,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     {
         (self::$document)->InitNewDocument();
 
-        $this->DisableRenderXmlContent();
+        $this->disableRenderXmlContent();
         $this->assertXPathExists('/rsm:CrossIndustryInvoice');
         $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext');
         $this->assertXPathExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter');

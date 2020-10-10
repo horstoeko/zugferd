@@ -1311,7 +1311,20 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
 
         self::$document->firstDocumentPositionGrossPriceAllowanceCharge();
-        self::$document->getDocumentPositionGrossPriceAllowanceCharge($docPosAllowanceChargeactualAmount, $docPosAllowanceChargeisCharge, $docPosAllowanceChargecalculationPercent, $docPosAllowanceChargebasisAmount, $docPosAllowanceChargereason, $docPosAllowanceChargeTaxTypeCode, $docPosAllowanceChargeTaxCategoryCode, $docPosAllowanceChargerateApplicablePercent, $docPosAllowanceChargesequence, $docPosAllowanceChargebasisQuantity, $docPosAllowanceChargebasisQuantityUnitCode, $docPosAllowanceChargereasonCode);
+        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+            $docPosAllowanceChargeactualAmount,
+            $docPosAllowanceChargeisCharge,
+            $docPosAllowanceChargecalculationPercent,
+            $docPosAllowanceChargebasisAmount,
+            $docPosAllowanceChargereason,
+            $docPosAllowanceChargeTaxTypeCode,
+            $docPosAllowanceChargeTaxCategoryCode,
+            $docPosAllowanceChargerateApplicablePercent,
+            $docPosAllowanceChargesequence,
+            $docPosAllowanceChargebasisQuantity,
+            $docPosAllowanceChargebasisQuantityUnitCode,
+            $docPosAllowanceChargereasonCode
+        );
         $this->assertEquals(0.6667, $docPosAllowanceChargeactualAmount);
         $this->assertFalse($docPosAllowanceChargeisCharge);
         $this->assertEquals(0, $docPosAllowanceChargecalculationPercent);
