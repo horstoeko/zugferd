@@ -24,7 +24,8 @@
         "jms/serializer": "^3",
         "adrienrn/php-mimetyper": "^0.2",
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "symfony/validator": "^5"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
