@@ -2,6 +2,7 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PSR12" xsi:noNamespaceSchemaLocation="../../../phpcs.xsd">
     <description>The PSR-12 coding standard.</description>
     <arg name="tab-width" value="4"/>
+    <exclude-pattern>*/src/entities/*</exclude-pattern>
 
     <!-- 2. General -->
 

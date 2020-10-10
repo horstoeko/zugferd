@@ -115,7 +115,6 @@
             <arg value="--standard=${project.basedir}/build/phpcsrules.xml"/>
             <arg value="--extensions=php"/>
             <arg value="--ignore=autoload.php"/>
-            <arg value="--ignore=*src/entities/*"/>
             <arg path="${project.basedir}/src"/>
             <arg path="${project.basedir}/tests"/>
         </exec>

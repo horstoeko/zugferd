@@ -110,7 +110,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function getContent(): string
     {
-        $this->OnBeforeGetContent();
+        $this->onBeforeGetContent();
         return $this->serializer->serialize($this->invoiceObject, 'xml');
     }
 
