@@ -48,7 +48,7 @@
             <arg path="${phpdocumentator}"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,downloadphpdox,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -112,7 +112,7 @@
         </exec>
         <property name="phpcs.done" value="true"/>
     </target>
-    <target name="phpdox" unless="phpdox.done" depends="phploc-ci,phpcs-ci,phpmd-ci" description="Generate project documentation using phpDox.">
+    <target name="phpdox" unless="phpdox.done" depends="downloadphpdox,phploc-ci,phpcs-ci,phpmd-ci" description="Generate project documentation using phpDox.">
         <exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox"/>
         <property name="phpdox.done" value="true"/>
     </target>
@@ -193,7 +193,7 @@
         <mkdir dir="${basedir}/build/phpdox"/>
         <property name="prepare.done" value="true"/>
     </target>
-    <target name="quick-build" depends="prepare,composer,downloadphpdox,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
+    <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
         <echo message="Built"/>
     </target>
     <target name="static-analysis" depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci" description="Perform static analysis.">
