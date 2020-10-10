@@ -13,7 +13,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
      *
      * @return void
      */
-    protected function OnBeforeGetContent()
+    protected function onBeforeGetContent()
     {
         $this->Calculate();
     }
