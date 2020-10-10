@@ -43,7 +43,7 @@ class ZugferdDocumentValidator
      */
     public function validateDocument(): ConstraintViolationListInterface
     {
-        $violations = $this->validator->validate($this->document, null, ['xsd_rules']);
+        $violations = $this->validator->validate($this->document->getInvoiceObject(), null, ['xsd_rules']);
         return $violations;
     }
 

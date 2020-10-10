@@ -70,6 +70,17 @@ class ZugferdDocument
     }
 
     /**
+     * Returns the internal invoice object (created by the
+     * serializer). This is used e.g. in the validator
+     *
+     * @return object
+     */
+    public function getInvoiceObject(): object
+    {
+        return $this->invoiceObject;
+    }
+
+    /**
      * Build the internal serialzer
      * @codeCoverageIgnore
      * @return void
