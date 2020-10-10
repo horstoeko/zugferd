@@ -37,17 +37,13 @@
         </exec>
     </target>
     <target name="downloadphpdocumentator" description="Install phpdocumentator.">
-        <exec executable="wget">
-            <arg path="${url.phpdocumentator.download}"/>
-            <arg value="-O"/>
-            <arg path="${basedir}/phpDocumentor.phar"/>
-        </exec>
+        <get src="${url.phpdocumentator.download}" dest="phpDocumentor.phar"/>
         <exec executable="chmod">
             <arg value="+x"/>
             <arg path="${basedir}/phpDocumentor.phar"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,downloadphpdox,static-analysis,phpunit,phpdox,-check-failure" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,downloadphpdox,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
