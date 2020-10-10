@@ -73,7 +73,7 @@ class BuilderBaseTest extends TestCase
      *
      * @return void
      */
-    protected function EnableRenderXmlContent()
+    protected function enableRenderXmlContent()
     {
         $this->renderingOfXmlDisabled = false;
     }
