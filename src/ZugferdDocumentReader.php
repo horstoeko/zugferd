@@ -386,7 +386,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document seller global ids
      *
      * @param array|null $globalID Returns an array of the seller's identifier. Identification scheme is an identifier uniquely
-     * assigned to a seller by a global registration organization. The array key is the scheme id.
+     * assigned to a seller by a global registration organization. The array key is the scheme id. The scheme results from the 
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -517,7 +519,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document Buyer global ids
      *
      * @param array|null $globalID Returns the global identifiers of the buyer. This is a unique identifier assigned to a
-     * buyer by a global registration organization. The array key is the scheme id.
+     * buyer by a global registration organization. The array key is the scheme id. The scheme results from the 
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -531,7 +535,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Tax registration of Buyer Trade party
      *
-     * @param array|null $taxreg$taxreg Returns an associative array of tax registrations of the buyer
+     * @param array|null $taxreg Returns an associative array of tax registrations of the buyer
      * - Key:
      *      Scheme id of Tax number or sales tax identification number (VA/FC)
      * - Value:
@@ -648,7 +652,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document seller tax agent global ids
      *
      * @param array|null $globalID Returns an array of the seller's tax agent identifier. Identification scheme is an identifier uniquely
-     * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id.
+     * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id. The scheme results from the 
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -774,7 +780,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document Product End User global ids
      *
      * @param array|null $globalID Returns an array of the product end user identifier. Identification scheme is an identifier uniquely
-     * assigned to a product end user by a global registration organization. The array key is the scheme id.
+     * assigned to a product end user by a global registration organization. The array key is the scheme id. The scheme results from the 
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -788,8 +796,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Tax registration of Product End User Trade party
      *
-     * @param array|null $taxreg
-     * @return ZugferdDocumentReader
+     * @param array|null $taxreg Returns an associative array of tax registrations of the product end user
+     * - Key:
+     *      Scheme id of Tax number or sales tax identification number (VA/FC)
+     * - Value:
+     *      The product enduser's local identification (defined by the address) for tax purposes or a reference that
+     *      enables the seller to indicate his reporting status for tax purposes.
      */
     public function getDocumentProductEndUserTaxRegistration(?array &$taxreg): ZugferdDocumentReader
     {
@@ -802,13 +814,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Address of Product End User trade party
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param array|null $subdivision
+     * @param string|null $lineone Returns the main line in the product enduser's address. Note: Usually the street name and
+     * house number or the post office box
+     * @param string|null $linetwo Returns line 2 of the product enduser's address, An additional address line in an address
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $linethree Returns line 3 of the product enduser's address, An additional address line in an address
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
+     * @param string|null $city Returns the usual name of the city or municipality in which the product enduser's address is located
+     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the
+     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance
+     * Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @param array|null $subdivision Returns the product endusers state
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
@@ -827,9 +844,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of Product End User trade party
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the
+     * product enduser as a legal entity or legal person. Note: If no identification scheme is provided, it should
+     * be known to the buyer and seller.
+     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of
+     * the legal registration of the product enduser, Note: If the identification scheme is used, it must be selected from
+     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @param string|null $legalorgname Returns the trading business name of the product enduser. Use this if
+     * different from the product enduser's name
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -844,11 +866,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Contact information of Product End User trade party
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailadd
+     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as
+     * e.g. Personal name, designation of the contact person, synonym: contact person name of the product enduser
+     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such
+     * as e.g. Name of the department or office, synonym: department name of the product enduser
+     * @param string|null $contactphoneno Returns detailed information on the product enduser's phone number
+     * @param string|null $contactfaxno Returns detailed information on the product enduser's fax number
+     * @param string|null $contactemailadd Returns detailed information on the product enduser's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
@@ -865,9 +889,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Ship-To information
      *
-     * @param string|null $name
-     * @param array|null $id
-     * @param string|null $description
+     * @param string|null $name Returns the name of the party to whom the goods are being delivered or for whom 
+     * the services are being performed. Note: Must be used if the recipient of the goods or services is not the same 
+     * as the buyer.
+     * @param array|null $id Returns an identifier for the place where the goods are delivered or where the services 
+     * are provided. Note: If no scheme is given, it should be known to the buyer and seller, e.g. a previously 
+     * exchanged identifier assigned by the buyer or seller.
+     * @param string|null $description Returns an additional description for the place where the goods are delivered or where the services 
+     * are provided.
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipTo(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -882,9 +911,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get document Ship-To global ids
-     *
-     * @param array|null $globalID
+     * Get document global identifier of the identifier for the delivery location
+     * 
+     * @param array|null $globalID Returns the global identifiers of the delivery location. The array key is the scheme id.
+     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes 
+     * are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -896,9 +927,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Tax registration of Ship-To Trade party
+     * Tax registration of the delivery location
      *
-     * @param array|null $taxreg
+     * @param array|null $taxreg Returns the tax identifiers of the delivery location. The array key is the scheme id.
+     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes 
+     * are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -910,15 +943,23 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Address of Ship-To trade party
+     * The address to which the invoiced goods are delivered or to which the invoiced services are provided. 
+     * Note: In the event of a collection, the delivery address corresponds to the collection address. In order 
+     * to meet the legal requirements, a sufficient number of components of the address must be entered. 
+     * Synonym: detailed information on the address of the recipient of the goods
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param array|null $subdivision
+     * @param string|null $lineone Returns the main line in the delivery location address. Note: Usually the street name and
+     * house number or the post office box
+     * @param string|null $linetwo Returns line 2 of the delivery locations address, An additional address line in an address
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $linethree Returns line 3 of the delivery locations address, An additional address line in an address
+     * that can be used to provide additional details in addition to the main line
+     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
+     * @param string|null $city Returns the usual name of the city or municipality in which the delivery locations address is located
+     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the
+     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance
+     * Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @param array|null $subdivision Returns the delivery locations state
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
