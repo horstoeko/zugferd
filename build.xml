@@ -233,25 +233,6 @@
         </exec>
         <property name="projectdoc.done" value="true"/>
     </target>
-    <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
-        <exec executable="wget">
-            <arg path="${url.phpdocumentator.download}"/>
-            <arg value="-O"/>
-            <arg path="${phpdocumentator}"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${phpdocumentator}"/>
-        </exec>
-        <exec executable="${phpdocumentator}" taskname="projectdoc">
-            <arg value="-d"/>
-            <arg path="${project.basedir}/src"/>
-            <arg value="-t"/>
-            <arg path="${project.basedir}/doc"/>
-        </exec>
-        <delete file="${phpdocumentator}"/>
-        <delete dir="${project.basedir}/.phpdoc"/>
-    </target>
     <target name="deploy" description="Deplay build">
         <zip destfile="${project.basedir}/build/dist/doc.zip">
             <fileset dir="${project.basedir}/build/doc">
