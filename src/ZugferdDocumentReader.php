@@ -386,8 +386,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document seller global ids
      *
      * @param array|null $globalID Returns an array of the seller's identifier. Identification scheme is an identifier uniquely
-     * assigned to a seller by a global registration organization. The array key is the scheme id. The scheme results from the 
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * assigned to a seller by a global registration organization. The array key is the scheme id. The scheme results from the
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
      * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -519,8 +519,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document Buyer global ids
      *
      * @param array|null $globalID Returns the global identifiers of the buyer. This is a unique identifier assigned to a
-     * buyer by a global registration organization. The array key is the scheme id. The scheme results from the 
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * buyer by a global registration organization. The array key is the scheme id. The scheme results from the
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
      * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -652,8 +652,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document seller tax agent global ids
      *
      * @param array|null $globalID Returns an array of the seller's tax agent identifier. Identification scheme is an identifier uniquely
-     * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id. The scheme results from the 
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id. The scheme results from the
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
      * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -780,8 +780,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get document Product End User global ids
      *
      * @param array|null $globalID Returns an array of the product end user identifier. Identification scheme is an identifier uniquely
-     * assigned to a product end user by a global registration organization. The array key is the scheme id. The scheme results from the 
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used: 
+     * assigned to a product end user by a global registration organization. The array key is the scheme id. The scheme results from the
+     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
      * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -889,13 +889,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Ship-To information
      *
-     * @param string|null $name Returns the name of the party to whom the goods are being delivered or for whom 
-     * the services are being performed. Note: Must be used if the recipient of the goods or services is not the same 
+     * @param string|null $name Returns the name of the party to whom the goods are being delivered or for whom
+     * the services are being performed. Note: Must be used if the recipient of the goods or services is not the same
      * as the buyer.
-     * @param array|null $id Returns an identifier for the place where the goods are delivered or where the services 
-     * are provided. Note: If no scheme is given, it should be known to the buyer and seller, e.g. a previously 
+     * @param array|null $id Returns an identifier for the place where the goods are delivered or where the services
+     * are provided. Note: If no scheme is given, it should be known to the buyer and seller, e.g. a previously
      * exchanged identifier assigned by the buyer or seller.
-     * @param string|null $description Returns an additional description for the place where the goods are delivered or where the services 
+     * @param string|null $description Returns an additional description for the place where the goods are delivered or where the services
      * are provided.
      * @return ZugferdDocumentReader
      */
@@ -912,9 +912,9 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get document global identifier of the identifier for the delivery location
-     * 
+     *
      * @param array|null $globalID Returns the global identifiers of the delivery location. The array key is the scheme id.
-     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes 
+     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes
      * are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -930,7 +930,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Tax registration of the delivery location
      *
      * @param array|null $taxreg Returns the tax identifiers of the delivery location. The array key is the scheme id.
-     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes 
+     * The scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes
      * are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -943,9 +943,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * The address to which the invoiced goods are delivered or to which the invoiced services are provided. 
-     * Note: In the event of a collection, the delivery address corresponds to the collection address. In order 
-     * to meet the legal requirements, a sufficient number of components of the address must be entered. 
+     * The address to which the invoiced goods are delivered or to which the invoiced services are provided.
+     * Note: In the event of a collection, the delivery address corresponds to the collection address. In order
+     * to meet the legal requirements, a sufficient number of components of the address must be entered.
      * Synonym: detailed information on the address of the recipient of the goods
      *
      * @param string|null $lineone Returns the main line in the delivery location address. Note: Usually the street name and

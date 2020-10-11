@@ -56,7 +56,7 @@ class ZugferdDocumentValidator
     {
         $validatorBuilder = Validation::createValidatorBuilder();
         $dirname = dirname(__FILE__) . '/validation/' . $this->document->profiledef['name'] . '/*.yml';
-        $files = $this->glob_recursive($dirname);
+        $files = $this->globRecursive($dirname);
 
         foreach ($files as $file) {
             $validatorBuilder->addYamlMapping($file);
@@ -72,12 +72,12 @@ class ZugferdDocumentValidator
      * @param integer $flags
      * @return array
      */
-    private function glob_recursive(string $pattern, int $flags = 0): array
+    private function globRecursive(string $pattern, int $flags = 0): array
     {
         $files = glob($pattern, $flags);
 
         foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
-            $files = array_merge($files, $this->glob_recursive($dir . '/' . basename($pattern), $flags));
+            $files = array_merge($files, $this->globRecursive($dir . '/' . basename($pattern), $flags));
         }
 
         return $files;
