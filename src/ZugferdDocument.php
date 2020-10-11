@@ -75,7 +75,7 @@ class ZugferdDocument
      *
      * @return object
      */
-    public function getInvoiceObject(): object
+    public function getInvoiceObject()
     {
         return $this->invoiceObject;
     }
@@ -85,7 +85,7 @@ class ZugferdDocument
      * @codeCoverageIgnore
      * @return void
      */
-    private function initSerialzer()
+    private function initSerialzer(): void
     {
         $serializerBuilder = SerializerBuilder::create();
         $this->serializerBuilder = $serializerBuilder;
