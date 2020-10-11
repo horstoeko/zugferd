@@ -42,6 +42,7 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("KOSTENRECHNUNG", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
     /**

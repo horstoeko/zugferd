@@ -42,6 +42,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertEquals("", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
     /**
