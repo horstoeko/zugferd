@@ -5,7 +5,7 @@
             <include mask="*.php"/>
         </collector>
         <generator output="../build">
-            <build engine="html" output="api">
+            <build engine="html" output="builddoc">
                 <file extension="html"/>
             </build>
             <enrich base="../build">

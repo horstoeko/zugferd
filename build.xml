@@ -15,12 +15,13 @@
     <property name="phpdocumentator" value="${project.basedir}/phpDocumentor.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
-        <delete dir="${project.basedir}/build/api"/>
+        <delete dir="${project.basedir}/build/builddoc"/>
         <delete dir="${project.basedir}/build/doc"/>
         <delete dir="${project.basedir}/build/coverage"/>
         <delete dir="${project.basedir}/build/logs"/>
         <delete dir="${project.basedir}/build/pdepend"/>
         <delete dir="${project.basedir}/build/phpdox"/>
+        <delete dir="${project.basedir}/build/dist"/>
         <property name="clean.done" value="true"/>
     </target>
     <target name="composer" description="Install composer packages including require-dev.">
@@ -61,7 +62,7 @@
             <arg path="${phpdocumentator}"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -198,12 +199,13 @@
         <property name="phpunit.done" value="true"/>
     </target>
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build.">
-        <mkdir dir="${project.basedir}/build/api"/>
+        <mkdir dir="${project.basedir}/build/builddoc"/>
         <mkdir dir="${project.basedir}/build/doc"/>
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
         <mkdir dir="${project.basedir}/build/pdepend"/>
         <mkdir dir="${project.basedir}/build/phpdox"/>
+        <mkdir dir="${project.basedir}/build/dist"/>
         <property name="prepare.done" value="true"/>
     </target>
     <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
@@ -250,21 +252,26 @@
         <delete file="${phpdocumentator}"/>
         <delete dir="${project.basedir}/.phpdoc"/>
     </target>
-    <target name="deploy" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc" description="Deploy package">
-        <copy todir="${project.basedir}/doc">
+    <target name="deploy" description="Deplay build">
+        <zip destfile="${project.basedir}/build/dist/doc.zip">
             <fileset dir="${project.basedir}/build/doc">
-                <include name= "**/*.*" />
+                <include name="**/*.*"/>
             </fileset>
-        </copy>
-        <exec executable="${git}" passthru="true">
-            <arg value="add"/>
-            <arg path="${project.basedir}/doc"/>
-        </exec>
-        <exec executable="${git}" passthru="true">
-            <arg value="commit"/>
-            <arg value="-a"/>
-            <arg value="-m"/>
-            <arg value="Updated documentation"/>
-        </exec>
+        </zip>
+        <zip destfile="${project.basedir}/build/dist/src.zip">
+            <fileset dir="${project.basedir}/src">
+                <include name="**/*.*"/>
+            </fileset>
+        </zip>
+        <zip destfile="${project.basedir}/build/dist/builddoc.zip">
+            <fileset dir="${project.basedir}/build">
+                <include name="builddoc/**/*.*"/>
+                <include name="coverage/**/*.*"/>
+                <include name="coverage-html/**/*.*"/>
+                <include name="logs/**/*.*"/>
+                <include name="pdepend/**/*.*"/>
+                <include name="phpdox/**/*.*"/>
+            </fileset>
+        </zip>
     </target>
 </project>
