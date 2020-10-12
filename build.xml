@@ -254,6 +254,7 @@
                 <include name="phpdox/**/*.*"/>
             </fileset>
         </zip>
+        <!--
         <copy todir="${project.basedir}/doc">
             <fileset dir="${project.basedir}/build/doc">
                 <include name= "**/*.*" />
@@ -269,7 +270,6 @@
             <arg value="-m"/>
             <arg value="Updated documentation"/>
         </exec>
-        <!--
         <exec executable="${git}" passthru="true">
             <arg value="push"/>
             <arg path="origin"/>

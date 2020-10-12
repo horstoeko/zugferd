@@ -13,6 +13,7 @@
     <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
     <property name="phpdocumentator" value="${basedir}/phpDocumentor.phar"/>
+    <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${basedir}/build/builddoc"/>
         <delete dir="${basedir}/build/doc"/>
@@ -241,5 +242,27 @@
                 <include name="phpdox/**/*.*"/>
             </fileset>
         </zip>
+        <!--
+        <copy todir="${basedir}/doc">
+            <fileset dir="${basedir}/build/doc">
+                <include name= "**/*.*" />
+            </fileset>
+        </copy>
+        <exec executable="${git}" passthru="true">
+            <arg value="add"/>
+            <arg path="${asedir}/doc"/>
+        </exec>
+        <exec executable="${git}" passthru="true">
+            <arg value="commit"/>
+            <arg value="-a"/>
+            <arg value="-m"/>
+            <arg value="Updated documentation"/>
+        </exec>
+        <exec executable="${git}" passthru="true">
+            <arg value="push"/>
+            <arg path="origin"/>
+            <arg path="master:master"/>
+        </exec>
+        -->
     </target>
 </project>
