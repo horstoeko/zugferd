@@ -277,4 +277,23 @@
         </exec>
         -->
     </target>
+    <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
+        <exec executable="wget">
+            <arg path="${url.phpdocumentator.download}"/>
+            <arg value="-O"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="chmod">
+            <arg value="+x"/>
+            <arg path="${project.basedir}/phpDocumentor.phar"/>
+        </exec>
+        <exec executable="${phpdocumentator}" taskname="projectdoc">
+            <arg value="-d"/>
+            <arg path="${project.basedir}/src"/>
+            <arg value="-t"/>
+            <arg path="${project.basedir}/doc"/>
+        </exec>
+        <delete file="${phpdocumentator}"/>
+        <delete dir="${project.basedir}/.phpdoc"/>
+    </target>
 </project>
