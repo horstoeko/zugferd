@@ -4,6 +4,10 @@ A simple ZUGFeRD/XRechnung Library
 
 With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the basic-, EN16931- and Extended-Profile.
 
+Information about...
+* [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
+* [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
+
 This package makes use of [JMS Serializer](http://jmsyst.com/libs/serializer) and [Xsd2Php](https://github.com/goetas-webservices/xsd2php).
 
 ## Project status
