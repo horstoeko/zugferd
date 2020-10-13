@@ -978,9 +978,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of Ship-To trade party
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the
+     * delivery locations as a legal entity or legal person. Note: If no identification scheme is provided, it should
+     * be known to the buyer and seller.
+     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of
+     * the legal registration of the delivery locations, Note: If the identification scheme is used, it must be selected from
+     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @param string|null $legalorgname Returns the trading business name of the delivery locations. Use this if
+     * different from the delivery locationss name
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -993,13 +998,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Contact information of Ship-To trade party
+     * Detailed information on the contact person of the delivery location
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailadd
+     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as
+     * e.g. Personal name, designation of the contact person, synonym: contact person name of the delivery location
+     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such
+     * as e.g. Name of the department or office, synonym: department name of the delivery location
+     * @param string|null $contactphoneno Returns detailed information on the delivery locations phone number
+     * @param string|null $contactfaxno Returns detailed information on the delivery locations fax number
+     * @param string|null $contactemailadd Returns detailed information on the delivery locations email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
