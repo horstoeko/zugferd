@@ -360,7 +360,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get seller information
+     * Get general information about the seller
+     * Synonym: detailed information about the seller (= service provider)
      *
      * @param string|null $name The full formal name under which the seller is registered in the
      * National Register of Legal Entities, Taxable Person or otherwise acting as person (s)
@@ -383,12 +384,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get document seller global ids
+     * Get global identifier of the seller
+     * **Note**: The Seller's ID identification scheme is a unique identifier assigned to a seller by a global 
+     * registration organization.
      *
-     * @param array|null $globalID Returns an array of the seller's identifier. Identification scheme is an identifier uniquely
-     * assigned to a seller by a global registration organization. The array key is the scheme id. The scheme results from the
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
-     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param array|null $globalID Array of the sellers global ids index by the identification scheme
+     * The identification scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In 
+     * particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -400,14 +402,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Tax registration of seller Trade party
+     * Get detailed information on the seller's tax information
+     * The local identification (defined by the seller's address) of the seller for tax purposes or a reference that 
+     * enables the seller to indicate his reporting status for tax purposes
+     * **Note**: This information may have an impact on how the buyer pays the bill (such as regarding social security 
+     * contributions). So e.g. in some countries, if the seller is not reported for tax, the buyer will withhold the 
+     * tax amount and pay it on behalf of the seller. 
      *
-     * @param array|null $taxreg Returns an associative array of tax registrations
-     * - Key:
-     *      Scheme id of Tax number or sales tax identification number (VA/FC)
-     * - Value:
-     *      The seller's local identification (defined by the seller's address) for tax purposes or a reference that
-     *      enables the seller to indicate his reporting status for tax purposes.
+     * @param array|null $taxreg Array of sales tax identification numbers of the seller indexed by **FC** 
+     * for *Tax number of the seller* and **VA** for *Sales tax identification number of the seller*
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
