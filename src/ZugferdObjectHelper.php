@@ -1148,6 +1148,30 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Undocumented function
+     *
+     * @param string|null $sourceCurrencyCode
+     * @param string|null $targetCurrencyCode
+     * @param float|null $rate
+     * @param \DateTime|null $rateDateTime
+     * @return object|null
+     */
+    public function getTaxApplicableTradeCurrencyExchangeType(?string $sourceCurrencyCode = null, ?string $targetCurrencyCode = null, ?float $rate = null, ?\DateTime $rateDateTime = null): ?object
+    {
+        if (self::isOneNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $currencyExchange = $this->CreateClassInstance('ram\TradeCurrencyExchangeType');
+
+        $this->TryCall($currencyExchange, "setSourceCurrencyCode", $this->getIdType($sourceCurrencyCode));
+        $this->TryCall($currencyExchange, "setTargetCurrencyCode", $this->getIdType($targetCurrencyCode));
+        $this->TryCall($currencyExchange, "setConversionRate", $this->getRateType($rate));
+
+        return $currencyExchange;
+    }
+
+    /**
      * Create a datetime object
      *
      * @param string|null $dateTimeString
@@ -1175,6 +1199,19 @@ class ZugferdObjectHelper
         } else {
             throw new ZugferdUnknownDateFormat();
         }
+    }
+
+    /**
+     * Get Exchange rate type instance
+     *
+     * @param float|null $rate
+     * @return object|null
+     */
+    public function getRateType(?float $rateValue): ?object
+    {
+        $rate = $this->createClassInstance('udt\RateType');
+        $this->TryCall($rate, "value", $rateValue);
+        return $rate;
     }
 
     /**

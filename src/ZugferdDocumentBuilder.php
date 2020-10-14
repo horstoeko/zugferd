@@ -224,6 +224,65 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Sets a foreign currency (code) with the tax amount. The exchange rate
+     * is calculated by tax amounts
+     *
+     * @param string $currencyCode
+     * @return ZugferdDocumentBuilder
+     */
+    public function setForeignCurrency(string $foreignCurrencyCode, float $foreignTaxAmount): ZugferdDocumentBuilder
+    {
+        $invoiceCurrencyCode = $this->objectHelper->TryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
+        
+        if (is_null($invoiceCurrencyCode)) {
+            return $this;
+        }
+        
+        $documentSummation = $this->objectHelper->tryCallByPathAndReturn($this->headerTradeSettlement, "getSpecifiedTradeSettlementHeaderMonetarySummation");
+        
+        if (is_null($documentSummation)) {
+            return $this;
+        }
+
+        $taxTotalAmounts = $this->objectHelper->tryCallByPathAndReturn($documentSummation, "getTaxTotalAmount") ?? [];
+        $taxTotalAmountInvoice = null;
+        $taxTotalAmountForeign = null;
+
+        foreach ($taxTotalAmounts as $taxTotalAmount) {
+            if ($this->objectHelper->tryCallAndReturn($taxTotalAmount, "getCurrencyID") == $invoiceCurrencyCode) {
+                $taxTotalAmountInvoice = $taxTotalAmount;
+            }
+            if ($this->objectHelper->tryCallAndReturn($taxTotalAmount, "getCurrencyID") == $foreignCurrencyCode) {
+                $taxTotalAmountForeign = $taxTotalAmount;
+            }
+        }
+
+        if (is_null($taxTotalAmountInvoice)) {
+            return $this;
+        }
+
+        $invoiceTaxAmount = $this->objectHelper->tryCallByPathAndReturn($taxTotalAmountInvoice, "value") ?? 0;
+
+        if ($invoiceTaxAmount == 0) {
+            return $this;
+        }
+
+        if (is_null($taxTotalAmountForeign)) {
+            $taxTotalAmountForeign = $this->objectHelper->getAmountType($foreignTaxAmount, $foreignCurrencyCode);
+            $this->objectHelper->tryCall($documentSummation, "addToTaxTotalAmount", $taxTotalAmountForeign);
+        } else {
+            $this->objectHelper->tryCallByPath($taxTotalAmountForeign, "value", $foreignTaxAmount);
+            $this->objectHelper->tryCallByPath($taxTotalAmountForeign, "setCurrencyID", $foreignCurrencyCode);
+        }
+
+        $exchangeRate = round($foreignTaxAmount / $invoiceTaxAmount, 5);
+
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setTaxCurrencyCode", $this->objectHelper->GetIdType($foreignCurrencyCode));
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "setTaxApplicableTradeCurrencyExchange", $this->objectHelper->getTaxApplicableTradeCurrencyExchangeType($invoiceCurrencyCode, $foreignCurrencyCode, $exchangeRate));
+        return $this;
+    }
+
+    /**
      * Add a note to the docuzment
      *
      * @param string $content Free text on the invoice
