@@ -344,7 +344,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Retrieve document notes
      *
-     * @param array|null $notes Returns an associative array with all document notes
+     * @param array|null $notes Returns an array with all document notes. Each array element
+     * contains an assiociative array containing the following keys: _contentcode_, _subjectcode_ and
+     * _content_
      * @return ZugferdDocumentReader
      */
     public function getDocumentNotes(?array &$notes): ZugferdDocumentReader
@@ -360,16 +362,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get general information about the seller
-     * Synonym: detailed information about the seller (= service provider)
+     * Get detailed information about the seller (=service provider)
      *
-     * @param string|null $name The full formal name under which the seller is registered in the
-     * National Register of Legal Entities, Taxable Person or otherwise acting as person (s)
-     * @param array|null $id An identifier of the seller. In many systems, seller identification
+     * @param string|null $name 
+     * The full formal name under which the seller is registered in the
+     * National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
+     * @param array|null $id 
+     * An identifier of the seller. In many systems, seller identification
      * is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
      * by using different identification schemes. If no scheme is given, it should be known to the buyer
-     * and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller.
-     * @param string|null $description Further legal information that is relevant for the seller
+     * and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @param string|null $description 
+     * Further legal information that is relevant for the seller
      * @return ZugferdDocumentReader
      */
     public function getDocumentSeller(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -384,13 +388,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get global identifier of the seller
-     * **Note**: The Seller's ID identification scheme is a unique identifier assigned to a seller by a global 
-     * registration organization.
+     * Get global identifier of the seller.  
+     * __Note:__ The Seller's ID identification scheme is a unique identifier 
+     * assigned to a seller by a global registration organization
      *
-     * @param array|null $globalID Array of the sellers global ids index by the identification scheme
-     * The identification scheme results from the list published by the ISO / IEC 6523 Maintenance Agency. In 
-     * particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param array|null $globalID 
+     * Array of the sellers global ids indexed by the identification scheme. The identification scheme results 
+     * from the list published by the ISO/IEC 6523 Maintenance Agency. In particular, the following scheme 
+     * codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -402,15 +407,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get detailed information on the seller's tax information
-     * The local identification (defined by the seller's address) of the seller for tax purposes or a reference that 
-     * enables the seller to indicate his reporting status for tax purposes
-     * **Note**: This information may have an impact on how the buyer pays the bill (such as regarding social security 
-     * contributions). So e.g. in some countries, if the seller is not reported for tax, the buyer will withhold the 
-     * tax amount and pay it on behalf of the seller. 
+     * Get detailed information on the seller's tax information.  
+     * __Note:__ The local identification (defined by the seller's address) of the seller for tax purposes or a reference that 
+     * enables the seller to indicate his reporting status for tax purposes. This information may have an impact on how the buyer 
+     * pays the bill (such as regarding social security contributions). So e.g. in some countries, if the seller is not reported 
+     * for tax, the buyer will withhold the tax amount and pay it on behalf of the seller
      *
-     * @param array|null $taxreg Array of sales tax identification numbers of the seller indexed by **FC** 
-     * for *Tax number of the seller* and **VA** for *Sales tax identification number of the seller*
+     * @param array|null $taxreg 
+     * Array of sales tax identification numbers of the seller indexed by __FC__ for _Tax number of the seller_ and __VA__
+     * for _Sales tax identification number of the seller_
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -422,20 +427,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Address of seller trade party
+     * Get the address of seller trade party
      *
-     * @param string|null $lineone Returns the main line in the sellers address. Note: Usually the street name and
-     * house number or the post office box
-     * @param string|null $linetwo Returns line 2 of the seller's address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $linethree Returns line 3 of the seller's address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
-     * @param string|null $city Returns the usual name of the city or municipality in which the seller's address is located
-     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the
-     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance
-     * Agency “Codes for the representation of names of countries and their subdivisions”.
-     * @param array|null $subdivision Returns the sellers state
+     * @param string|null $lineone 
+     * The main line in the sellers address. This is usually the street name and house number or 
+     * the post office box
+     * @param string|null $linetwo 
+     * Line 2 of the seller's address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $linethree 
+     * Line 3 of the seller's address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $postcode 
+     * Identifier for a group of properties, such as a zip code
+     * @param string|null $city 
+     * Usual name of the city or municipality in which the seller's address is located
+     * @param string|null $country 
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax 
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the 
+     * representation of names of countries and their subdivisions”
+     * @param array|null $subdivision 
+     * The sellers state
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
@@ -452,17 +464,17 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Legal organisation of seller trade party
+     * Get the legal organisation of seller trade party
      *
-     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the
-     * seller as a legal entity or legal person. Note: If no identification scheme is provided, it should
-     * be known to the buyer and seller.
-     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the seller, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
-     * @param string|null $legalorgname Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the seller, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @param string|null $legalorgid 
+     * An identifier issued by an official registrar that identifies the
+     * seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, 
+     * it should be known to the buyer and seller
+     * @param string|null $legalorgtype The identifier for the identification scheme of the legal 
+     * registration of the seller. If the identification scheme is used, it must be selected from 
+     * ISO/IEC 6523 list
+     * @param string|null $legalorgname A name by which the seller is known, if different from the seller's name 
+     * (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -475,15 +487,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the seller's contact person
+     * Get detailed information on the seller's contact person
      *
-     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as
-     * e.g. Personal name, designation of the contact person, synonym: contact person name of the seller
-     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such
-     * as e.g. Name of the department or office, synonym: department name of the seller
-     * @param string|null $contactphoneno Returns detailed information on the seller's phone number
-     * @param string|null $contactfaxno Returns detailed information on the seller's fax number
-     * @param string|null $contactemailadd Returns detailed information on the seller's email address
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity,
+     * such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
@@ -498,13 +514,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * A group of business terms that contains information about the buyer
-     * Detailed information about the buyer (service recipient)
+     * Get detailed information about the buyer (service recipient)
      *
-     * @param string|null $name The full name of the buyer
-     * @param array|null $id An identifier of the buyer. Note: If no scheme is given, it should be known
-     * to the buyer and seller, e.g. B. a previously exchanged, seller-assigned identifier of the buyer.
-     * @param string|null $description Further legal information about the buyer
+     * @param string|null $name 
+     * The full name of the buyer
+     * @param array|null $id 
+     * An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be 
+     * assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, 
+     * it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param string|null $description 
+     * Further legal information about the buyer
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyer(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -519,12 +538,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get document Buyer global ids
+     * Get global identifier of the buyer.  
+     * __Note:__ The buyers's ID identification scheme is a unique identifier 
+     * assigned to a buyer by a global registration organization
      *
-     * @param array|null $globalID Returns the global identifiers of the buyer. This is a unique identifier assigned to a
-     * buyer by a global registration organization. The array key is the scheme id. The scheme results from the
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
-     * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param array|null $globalID 
+     * Array of the buyers global ids indexed by the identification scheme. The identification scheme results 
+     * from the list published by the ISO/IEC 6523 Maintenance Agency. In particular, the following scheme 
+     * codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerGlobalId(?array &$globalID): ZugferdDocumentReader
@@ -536,14 +557,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Tax registration of Buyer Trade party
+     * Get detailed information on the buyer's tax information.  
+     * __Note:__ The local identification (defined by the buyer's address) of the buyer for tax purposes or a reference that 
+     * enables the buyer to indicate his reporting status for tax purposes.
      *
-     * @param array|null $taxreg Returns an associative array of tax registrations of the buyer
-     * - Key:
-     *      Scheme id of Tax number or sales tax identification number (VA/FC)
-     * - Value:
-     *      The seller's local identification (defined by the seller's address) for tax purposes or a reference that
-     *      enables the seller to indicate his reporting status for tax purposes.
+     * @param array|null $taxreg 
+     * Array of sales tax identification numbers of the buyer indexed by __VA__ for _Sales tax identification number of the buyer_
+     * Only the code __VA__ is permitted as an identification scheme
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -555,20 +575,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Address of buyer trade party
+     * Get the address of buyer trade party
      *
-     * @param string|null $lineone Returns the main line in the buyers address. Note: Usually the street name and
-     * house number or the post office box
-     * @param string|null $linetwo Returns line 2 of the buyer's address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $linethree Returns line 3 of the buyer's address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
-     * @param string|null $city Returns the usual name of the city or municipality in which the buyer's address is located
-     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the
-     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance
-     * Agency “Codes for the representation of names of countries and their subdivisions”.
-     * @param array|null $subdivision Returns the buyers state
+     * @param string|null $lineone 
+     * The main line in the buyers address. This is usually the street name and house number or 
+     * the post office box
+     * @param string|null $linetwo 
+     * Line 2 of the buyers address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $linethree 
+     * Line 3 of the buyers address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $postcode 
+     * Identifier for a group of properties, such as a zip code
+     * @param string|null $city 
+     * Usual name of the city or municipality in which the buyers address is located
+     * @param string|null $country 
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax 
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the 
+     * representation of names of countries and their subdivisions”
+     * @param array|null $subdivision 
+     * The buyers state
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
@@ -585,17 +612,17 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Legal organisation of buyer trade party
+     * Get the legal organisation of buyer trade party
      *
-     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the
-     * buyer as a legal entity or legal person. Note: If no identification scheme is provided, it should
-     * be known to the buyer and seller.
-     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the buyer, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
-     * @param string|null $legalorgname Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the buyer, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @param string|null $legalorgid 
+     * An identifier issued by an official registrar that identifies the
+     * buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, 
+     * it should be known to the buyer and buyer
+     * @param string|null $legalorgtype The identifier for the identification scheme of the legal 
+     * registration of the buyer. If the identification scheme is used, it must be selected from 
+     * ISO/IEC 6523 list
+     * @param string|null $legalorgname A name by which the buyer is known, if different from the buyers name 
+     * (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -610,13 +637,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Contact information of buyer trade party
      *
-     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as
-     * e.g. Personal name, designation of the contact person, synonym: contact person name of the buyer
-     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such
-     * as e.g. Name of the department or office, synonym: department name of the buyer
-     * @param string|null $contactphoneno Returns detailed information on the buyer's phone number
-     * @param string|null $contactfaxno Returns detailed information on the buyer's fax number
-     * @param string|null $contactemailadd Returns detailed information on the buyer's email address
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
