@@ -635,7 +635,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Contact information of buyer trade party
+     * Get contact information of buyer trade party
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -661,13 +661,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get Tax agent of the seller
+     * Get detailed information about the seller's tax agent
      *
-     * @param string|null $name Returns the Name of the seller's tax agent
-     * @param array|null $id An identifier of the tax agent. In many systems, tax agent identification
-     * is key information. Multiple tax agent IDs can be assigned or specified. They can be differentiated
-     * by using different identification schemes
-     * @param string|null $description Further legal information that is relevant for the seller's tax agent
+     * @param string|null $name 
+     * The full name of the seller's tax agent
+     * @param array|null $id 
+     * An identifier of the sellers tax agent.
+     * @param string|null $description 
+     * Further legal information that is relevant for the sellers tax agent
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentative(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
@@ -684,9 +685,10 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get document seller tax agent global ids
      *
-     * @param array|null $globalID Returns an array of the seller's tax agent identifier. Identification scheme is an identifier uniquely
+     * @param array|null $globalID 
+     * Returns an array of the seller's tax agent identifier. Identification scheme is an identifier uniquely
      * assigned to a seller's tax agent by a global registration organization. The array key is the scheme id. The scheme results from the
-     * list published by the ISO / IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
+     * list published by the ISO/IEC 6523 Maintenance Agency. In particular, the following scheme codes are used:
      * 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @return ZugferdDocumentReader
      */
@@ -699,9 +701,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Tax registration of seller tax representative trade party
+     * Get detailed information on the seller's tax agent tax information.  
+     * __Note:__ The local identification (defined by the sellers tax agent address) of the tax agent for tax purposes 
+     * or a reference that enables the sellers tax agent to indicate his reporting status for tax purposes.
      *
-     * @param array|null $taxreg
+     * @param array|null $taxreg 
+     * Array of sales tax identification numbers of the sellers tax agent indexed by __VA__ for _Sales tax identification 
+     * number of the tax agent. _ Only the code __VA__ is permitted as an identification scheme
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -713,20 +719,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Address of seller tax representative trade party
+     * Get the address of sellers tax agent
      *
-     * @param string|null $lineoneReturns the main line in the sellers tax agent address. Note: Usually the street name and
-     * house number or the post office box
-     * @param string|null $linetwoReturns line 2 of the seller's tax agent address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $linethreeReturns line 3 of the seller's tax agent address, An additional address line in an address
-     * that can be used to provide additional details in addition to the main line
-     * @param string|null $postcode Returns the identifier for a group of properties, such as e.g. a zip code
-     * @param string|null $city Returns the usual name of the city or municipality in which the seller's tax agent address is located
-     * @param string|null $country Returns a code used to identify the country, If no tax agent is specified, this is the
-     * country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance
-     * Agency “Codes for the representation of names of countries and their subdivisions”.
-     * @param array|null $subdivision Returns the seller's tax agent state
+     * @param string|null $lineone 
+     * The main line in the sellers tax agent address. This is usually the street name and house number or 
+     * the post office box
+     * @param string|null $linetwo 
+     * Line 2 of the sellers tax agent address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $linethree 
+     * Line 3 of the sellers tax agent address. This is an additional address line in an address that can be 
+     * used to provide additional details in addition to the main line
+     * @param string|null $postcode 
+     * Identifier for a group of properties, such as a zip code
+     * @param string|null $city 
+     * Usual name of the city or municipality in which the sellers tax agent address is located
+     * @param string|null $country 
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax 
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the 
+     * representation of names of countries and their subdivisions”
+     * @param array|null $subdivision 
+     * The sellers tax agent state
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
@@ -743,17 +756,17 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Legal organisation of seller tax representative trade party
+     * Get the legal organisation of sellers tax agent
      *
-     * @param string|null $legalorgid Returns an identifier issued by an official registrar that identifies the
-     * sellers tax agent as a legal entity or legal person. Note: If no identification scheme is provided, it should
-     * be known to the buyer and seller.
-     * @param string|null $legalorgtype Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the sellers tax agent, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
-     * @param string|null $legalorgname Returns the identifier for the identification scheme the identifier of
-     * the legal registration of the sellers tax agent, Note: If the identification scheme is used, it must be selected from
-     * the entries in the list published by the ISO / IEC 6523 Maintenance Agency
+     * @param string|null $legalorgid 
+     * An identifier issued by an official registrar that identifies the seller tax agent as 
+     * a legal entity or legal person.
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal registration of the sellers tax 
+     * agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
+     * @param string|null $legalorgname 
+     * A name by which the sellers tax agent is known, if different from the  sellers tax agent 
+     * name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -766,15 +779,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Contact information of seller tax representative trade party
+     * Get contact information of sellers tax agent
      *
-     * @param string|null $contactpersonname Returns a contact point for a legal entity or a legal person, note: Such as
-     * e.g. Personal name, designation of the contact person, synonym: contact person name of the sellers tax agent
-     * @param string|null $contactdepartmentname Returns a contact point for a legal entity or a legal person, note: Such
-     * as e.g. Name of the department or office, synonym: department name of the seller tax agent
-     * @param string|null $contactphoneno Returns detailed information on the sellers tax agent phone number
-     * @param string|null $contactfaxno Returns detailed information on the sellers tax agent fax number
-     * @param string|null $contactemailadd Returns detailed information on the sellers tax agent email address
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
