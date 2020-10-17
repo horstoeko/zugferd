@@ -949,9 +949,8 @@ class ReaderExtendedTest extends TestCase
      */
     public function testDocumentDespatchAdviceReferencedDocument()
     {
-        self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdoclineid, $despatchdocdate);
+        self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertEquals("", $despatchdocid);
-        $this->assertEquals("", $despatchdoclineid);
         $this->assertNull($despatchdocdate);
         $this->assertNotInstanceOf("DateTime", $despatchdocdate);
     }
@@ -961,9 +960,8 @@ class ReaderExtendedTest extends TestCase
      */
     public function testDocumentReceivingAdviceReferencedDocument()
     {
-        self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvlineid, $recadvdate);
+        self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertEquals("", $recadvid);
-        $this->assertEquals("", $recadvlineid);
         $this->assertNull($recadvdate);
         $this->assertNotInstanceOf("DateTime", $recadvdate);
     }
