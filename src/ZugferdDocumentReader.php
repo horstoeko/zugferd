@@ -2858,8 +2858,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first document position
-     * Returns true if the first position is available, otherwise false
+     * Seek to the first document position  
+     * Returns true if the first position is available, otherwise false  
+     * You may use it together with getDocumentPositionGenerals
      *
      * @return boolean
      */
@@ -2871,8 +2872,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the next document position
-     * Returns true if the first position is available, otherwise false
+     * Seek to the next document position  
+     * Returns true if another position is available, otherwise false  
+     * You may use it together with getDocumentPositionGenerals
      *
      * @return boolean
      */
@@ -2887,8 +2889,21 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get general information of the current position
      *
      * @param string|null $lineid
+     * A unique identifier for the relevant item within the invoice (item number)
      * @param string|null $lineStatusCode
+     * Indicates whether the invoice item contains prices that must be taken into account when 
+     * calculating the invoice amount, or whether it only contains information.
+     * The following code should be used: TYPE_LINE
      * @param string|null $lineStatusReasonCode
+     * Adds the type to specify whether the invoice line is:
+     *  - detail (normal position)
+     *  - Subtotal
+     *  - Information only
+     * 
+     * If the $lineStatusCode field is used, the LineStatusReasonCode field must use the following codes:
+     *  - detail
+     *  - grouping
+     *  - information
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionGenerals(?string &$lineid, ?string &$lineStatusCode, ?string &$lineStatusReasonCode): ZugferdDocumentReader
@@ -2904,8 +2919,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first document position
+     * Seek to the first document position  
      * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionNote
      *
      * @return boolean
      */
@@ -2924,6 +2940,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the next document position
      * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionNote
      *
      * @return boolean
      */
@@ -2940,11 +2957,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get position note of the current position
+     * Get detailed information on the free text on the position
      *
      * @param string|null $content
+     * A free text that contains unstructured information that is relevant to the invoice item
      * @param string|null $contentCode
+     * Text modules agreed bilaterally, which are transmitted here as code.
      * @param string|null $subjectCode
+     * Free text for the position (code for the type)  
+     * __Codelist:__ UNTDID 4451
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionNote(?string &$content, ?string &$contentCode, ?string &$subjectCode): ZugferdDocumentReader
@@ -2962,14 +2983,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get product details of the current position
+     * Get information about the goods and services billed
      *
      * @param string|null $name
+     * A name of the item (item name)
      * @param string|null $description
+     * A description of the item, the item description makes it possible to describe the item and its 
+     * properties in more detail than is possible with the item name.
      * @param string|null $sellerAssignedID
+     * An identifier assigned to the item by the seller
      * @param string|null $buyerAssignedID
+     * An identifier assigned to the item by the buyer. The article number of the buyer is a clear, 
+     * bilaterally agreed identification of the product. It can, for example, be the customer article 
+     * number or the article number assigned by the manufacturer.
      * @param string|null $globalIDType
+     * The scheme for $globalID
      * @param string|null $globalID
+     * Identification of an article according to the registered scheme (Global identifier of the product,
+     * GTIN, ...)
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionProductDetails(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?string &$globalIDType, ?string &$globalID): ZugferdDocumentReader
@@ -2988,11 +3019,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of the related order of the current position
+     * Get details of the related buyer order position
      *
      * @param string|null $issuerassignedid
+     * An identifier issued by the buyer for a referenced order (order number)
      * @param string|null $lineid
+     * An identifier for a position within an order placed by the buyer. Note: Reference is made to the order 
+     * reference at the document level.
      * @param DateTime|null $issueddate
+     * Date of order
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3012,11 +3047,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of the related contract of the current position
+     * Get details of the related contract position
      *
      * @param string|null $issuerassignedid
+     * The contract reference should be assigned once in the context of the specific trade relationship and for a 
+     * defined period of time (contract number)
      * @param string|null $lineid
+     * Identifier of the according contract position
      * @param DateTime|null $issueddate
+     * Contract date
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3038,6 +3077,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the first documents position additional referenced document
      * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedDocument
      *
      * @return boolean
      */
@@ -3053,6 +3093,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the next documents position additional referenced document
      * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedDocument
      *
      * @return boolean
      */
@@ -3066,16 +3107,41 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of an additional Document reference on a position
-     * Detailangaben zu einer zusätzlichen Dokumentenreferenz auf Positionsebene
+     * Details of an additional Document reference (on position level)
+     * 
+     * __Note:__ The documents justifying the invoice can be used to reference a document number, which should be 
+     * known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such 
+     * as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes 
+     * to large attachments and / or sensitive information, e.g. for personal services, which must be separated 
+     * from the bill
+     * 
+     * __Note:__ Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     * ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     * documents
      *
      * @param string|null $issuerassignedid
+     * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for 
+     * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
      * @param string|null $typecode
+     * Type of referenced document (See codelist UNTDID 1001)
+     *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
+     *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
+     *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
      * @param string|null $uriid
+     * The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource 
+     * including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document 
+     * must be used if the buyer needs additional information to support the amounts billed. External documents are not part 
+     * of the invoice. Access to external documents can involve certain risks.
      * @param string|null $lineid
+     * The referenced position identifier in the additional document
      * @param string|null $name
+     * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param string|null $reftypecode
+     * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the 
+     * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected 
+     * from UNTDID 1153 in accordance with the code list entries.
      * @param DateTime|null $issueddate
+     * Document date
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3104,11 +3170,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     //TODO: DocumentPositionUltimateCustomerOrderReferencedDocument
 
     /**
-     * Get documents position gross price
+     * Get the unit price excluding sales tax before deduction of the discount on the item price. 
      *
      * @param float|null $amount
+     * The unit price excluding sales tax before deduction of the discount on the item price. 
+     * Note: If the price is shown according to the net calculation, the price must also be shown 
+     * according to the gross calculation.
      * @param float|null $basisQuantity
+     * The number of item units for which the price applies (price base quantity)
      * @param string|null $basisQuantityUnitCode
+     * The unit code of the number of item units for which the price applies (price base quantity)
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionGrossPrice(?float &$amount, ?float &$basisQuantity, ?string &$basisQuantityUnitCode): ZugferdDocumentReader
@@ -3126,6 +3197,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the first documents position gross price allowance charge position
      * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionGrossPriceAllowanceCharge
      *
      * @return boolean
      */
@@ -3141,6 +3213,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the next documents position gross price allowance charge position
      * Returns true if a other position is available, otherwise false
+     * You may use it together with getDocumentPositionGrossPriceAllowanceCharge
      *
      * @return boolean
      */
@@ -3154,14 +3227,20 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on surcharges and discounts
-     * Detailinformationen zu Zu- und Abschlägen
+     * Get detailed information on surcharges and discounts
      *
      * @param float|null $actualAmount
+     * Discount on the item price. The total discount subtracted from the gross price to calculate the 
+     * net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
      * @param boolean|null $isCharge
+     * Switch for surcharge/discount, if true then its an charge
      * @param float|null $calculationPercent
+     * Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount) 
+     * is transferred
      * @param float|null $basisAmount
+     * Base amount of the discount/surcharge
      * @param string|null $reason
+     * Reason for surcharge/discount (free text)
      * @param string|null $taxTypeCode
      * @param string|null $taxCategoryCode
      * @param float|null $rateApplicablePercent
@@ -3196,12 +3275,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the net price of the item
-     * Detailinformationen zum Nettopreis des Artikels
+     * Get detailed information on the net price of the item
      *
      * @param float|null $amount
+     * Net price of the item
      * @param float|null $basisQuantity
+     * Base quantity at the item price
      * @param string|null $basisQuantityUnitCode
+     * Code of the unit of measurement of the base quantity at the item price
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionNetPrice(?float &$amount, ?float &$basisQuantity, ?string &$basisQuantityUnitCode): ZugferdDocumentReader
@@ -3218,14 +3299,47 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Tax included for B2C on position level
-     * Enthaltene Steuer für B2C auf Positionsebene
      *
      * @param string|null $categoryCode
+     * Coded description of a sales tax category
+     * 
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure) 
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI) 
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU) 
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     * 
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
      * @param string|null $typeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
      * @param float|null $rateApplicablePercent
+     * The sales tax rate, expressed as the percentage applicable to the sales tax category in 
+     * question. Note: The code of the sales tax category and the category-specific sales tax rate 
+     * must correspond to one another. The value to be given is the percentage. For example, the 
+     * value 20 is given for 20% (and not 0.2)
      * @param float|null $calculatedAmount
+     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying 
+     * the amount to be taxed according to the sales tax category by the sales tax rate applicable 
+     * for the sales tax category concerned
      * @param string|null $exemptionReason
+     * Reason for tax exemption (free text)
      * @param string|null $exemptionReasonCode
+     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued 
+     * and maintained by the Connecting Europe Facility.
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionNetPriceTax(?string &$categoryCode, ?string &$typeCode, ?float &$rateApplicablePercent, ?float &$calculatedAmount, ?string &$exemptionReason, ?string &$exemptionReasonCode): ZugferdDocumentReader
@@ -3247,11 +3361,24 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get the position Quantity
      *
      * @param float|null $billedQuantity
+     * The quantity of individual items (goods or services) billed in the relevant line
      * @param string|null $billedQuantityUnitCode
+     * The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the 
+     * lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and 
+     * UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials 
+     * (with Complementary Codes for Package Names)" using the UN / ECE Rec No. 20 Intro 2.a) can be selected. 
+     * It should be noted that in most cases it is not necessary for buyers and sellers to fully implement these 
+     * lists in their software. Sellers only need to support the entities necessary for their goods and services; 
+     * Buyers only need to verify that the units used in the invoice match those in other documents (such as in 
+     * Contracts, catalogs, orders and shipping notifications) match the units used.
      * @param float|null $chargeFreeQuantity
+     * Quantity, free of charge
      * @param string|null $chargeFreeQuantityUnitCpde
+     * Unit of measure code for the quantity free of charge
      * @param float|null $packageQuantity
+     * Number of packages
      * @param string|null $packageQuantityUnitCode
+     * Unit of measure code for number of packages
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionQuantity(?float &$billedQuantity, ?string &$billedQuantityUnitCode, ?float &$chargeFreeQuantity, ?string &$chargeFreeQuantityUnitCpde, ?float &$packageQuantity, ?string &$packageQuantityUnitCode): ZugferdDocumentReader
@@ -3273,9 +3400,10 @@ class ZugferdDocumentReader extends ZugferdDocument
     //TODO: GetDocumentPositionUltimateShipTo
 
     /**
-     * Detailed information on the actual delivery on item level
+     * Get detailed information on the actual delivery (on position level)
      *
      * @param DateTime|null $date
+     * Actual delivery time. In Germany, the delivery and service date is a mandatory requirement on invoices. 
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3293,11 +3421,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the associated shipping notification on position level
+     * Get detailed information on the associated shipping notification (on position level)
      *
      * @param string|null $issuerassignedid
+     * Shipping notification reference
      * @param string|null $lineid
+     * Shipping notification position reference date
      * @param DateTime|null $issueddate
+     * Shipping notification date
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3317,7 +3448,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the associated shipping notification on position level
+     * Detailed information on the associated shipping notification (on position level)
      *
      * @param string|null $issuerassignedid
      * @param string|null $lineid
