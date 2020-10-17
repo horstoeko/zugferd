@@ -2200,6 +2200,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get detailed information on the associated delivery note
+     * 
+     * __Note__: This is only available in the EXTENDED profile
      *
      * @param string|null $issuerassignedid
      * Delivery receipt number
@@ -2220,7 +2222,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first payment means of the document
+     * Seek to the first payment means of the document. 
+     * Returns true if a first payment mean is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans
      *
      * @return boolean
      */
@@ -2233,6 +2237,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Seek to the next payment means of the document
+     * Returns true if another payment mean is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans
      *
      * @return boolean
      */
@@ -2244,18 +2250,54 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get current payment means
+     * Get detailed information on the payment method
+     * 
+     * __Note:__ The SpecifiedTradeSettlementPaymentMeans element can only be repeated for each bank account if 
+     * several bank accounts are to be transferred for transfers. The code for the payment method in the Typecode 
+     * element must therefore not differ in the repetitions. The elements ApplicableTradeSettlementFinancialCard 
+     * and PayerPartyDebtorFinancialAccount must not be specified for bank transfers.
      *
      * @param string|null $typecode
+     * The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list 
+     * must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit 
+     * payments, direct debits, card payments and other means of payment In particular, the following codes can 
+     * be used:
+     *  - 10: cash
+     *  - 20: check
+     *  - 30: transfer
+     *  - 42: Payment to bank account
+     *  - 48: Card payment
+     *  - 49: direct debit
+     *  - 57: Standing order
+     *  - 58: SEPA Credit Transfer
+     *  - 59: SEPA Direct Debit
+     *  - 97: Report
      * @param string|null $information
+     * The expected or used means of payment expressed in text form, e.g. cash, bank transfer, direct debit, 
+     * credit card, etc.
      * @param string|null $cardType
+     * The type of the card
      * @param string|null $cardId
+     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card 
+     * payment security standards, an invoice should never contain a full payment card master account number. 
+     * The following specification of the PCI Security Standards Council currently applies: The first 6 and 
+     * last 4 digits at most are to be displayed
      * @param string|null $cardHolderName
+     * Name of the payment card holder
      * @param string|null $buyerIban
+     * Direct debit: ID of the account to be debited
      * @param string|null $payeeIban
+     * Transfer: A unique identifier for the financial account held with a payment service provider to which 
+     * the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID 
+     * account number
      * @param string|null $payeeAccountName
+     * The name of the payment account held with a payment service provider to which the payment should be made. 
+     * Information only required if different from the name of the payee / seller
      * @param string|null $payeePropId
+     * National account number (not for SEPA)
      * @param string|null $payeeBic
+     * Seller's banking institution, An identifier for the payment service provider with whom the payment account 
+     * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
      * @return ZugferdDocumentReader
      */
     public function getDocumentPaymentMeans(?string &$typecode, ?string &$information, ?string &$cardType, ?string &$cardId, ?string &$cardHolderName, ?string &$buyerIban, ?string &$payeeIban, ?string &$payeeAccountName, ?string &$payeePropId, ?string &$payeeBic): ZugferdDocumentReader
@@ -2279,6 +2321,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Seek to the first document tax
+     * Returns true if a first tax (at document level) is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentTax
      *
      * @return boolean
      */
@@ -2291,6 +2335,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Seek to the next document tax
+     * Returns true if another tax (at document level) is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentTax
      *
      * @return boolean
      */
@@ -2302,19 +2348,82 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get current tax
+     * Get current VAT breakdown (at document level)
      *
      * @param string|null $categoryCode
+     * Coded description of a sales tax category
+     * 
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure) 
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI) 
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU) 
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     * 
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
      * @param string|null $typeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
      * @param float|null $basisAmount
+     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
      * @param float|null $calculatedAmount
+     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying 
+     * the amount to be taxed according to the sales tax category by the sales tax rate applicable 
+     * for the sales tax category concerned
      * @param float|null $rateApplicablePercent
+     * The sales tax rate, expressed as the percentage applicable to the sales tax category in 
+     * question. Note: The code of the sales tax category and the category-specific sales tax rate 
+     * must correspond to one another. The value to be given is the percentage. For example, the 
+     * value 20 is given for 20% (and not 0.2)
      * @param string|null $exemptionReason
+     * Reason for tax exemption (free text)
      * @param string|null $exemptionReasonCode
+     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued 
+     * and maintained by the Connecting Europe Facility.
      * @param float|null $lineTotalBasisAmount
+     * Tax rate goods amount
      * @param float|null $allowanceChargeBasisAmount
+     * Total amount of surcharges and deductions of the tax rate at document level
      * @param DateTime|null $taxPointDate
+     * Specification of a date, in accordance with the sales tax guideline, on which the sales tax 
+     * for the seller and for the buyer becomes relevant for accounting, insofar as this date can be 
+     * determined and differs from the invoice date
+     * Note: The tax collection date for VAT purposes is usually the date the goods were delivered or 
+     * the service was completed (the base tax date). There are a few variations. For further information, 
+     * please refer to Article 226 (7) of Council Directive 2006/112 / EC. This element is required 
+     * if the date set for the sales tax return differs from the invoice date. Both the buyer and the 
+     * seller should use the delivery date for VAT returns, if provided by the seller.
+     * This is not used in Germany. Instead, the delivery and service date must be specified.
      * @param string|null $dueDateTypeCode
+     * The code for the date on which sales tax becomes relevant for the seller and the buyer.
+     * The code must distinguish between the following entries from UNTDID 2005:
+     *  - date of issue of the invoice document
+     *  - actual delivery date
+     *  - Date of payment.
+     * 
+     * The VAT Collection Date Code is used when the VAT Collection Date is not known for VAT purposes 
+     * when the invoice is issued.
+     * 
+     * The semantic values cited in the standard, which are represented by the values 3, 35, 432 in 
+     * UNTDID2005, are mapped to the following values of UNTDID2475, which is the relevant code list 
+     * supported by CII 16B:
+     *  - 5: date of issue of the invoice
+     *  - 29: Delivery date, current status
+     *  - 72: Paid to date
+     * 
+     * In Germany, the date of delivery and service is decisive.
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -2342,10 +2451,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Gets the billing period
+     * Get detailed information on the billing period
      *
      * @param DateTime|null $startdate
+     * Start of the billing period
      * @param DateTime|null $endDate
+     * End of the billing period
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -2364,7 +2475,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get allowances/charges at document level
+     * Get information about surcharges and charges applicable to the bill as a whole, Deductions, such as for 
+     * withheld taxes may also be specified in this group
      *
      * @param array|null $allowanceCharge
      * @return ZugferdDocumentReader
@@ -2403,8 +2515,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first documents allowance charge
-     * Returns true if the first position is available, otherwise false
+     * Seek to the first documents allowance charge. Returns true if the first position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
      *
      * @return boolean
      */
@@ -2416,8 +2528,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the next documents allowance charge
-     * Returns true if a other position is available, otherwise false
+     * Seek to the next documents allowance charge. Returns true if a other position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
      *
      * @return boolean
      */
@@ -2429,20 +2541,87 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get currently seeked documents allowance charge position
+     * Get information about the currently seeked surcharges and charges applicable to the 
+     * bill as a whole, Deductions, such as for withheld taxes may also be specified in this group
      *
      * @param float|null $actualAmount
+     * Amount of the surcharge or discount at document level
      * @param boolean|null $isCharge
+     * Switch that indicates whether the following data refer to an allowance or a discount, true means that
+     * this an charge
      * @param string|null $taxCategoryCode
+     * A coded indication of which sales tax category applies to the surcharge or deduction at document level
+     * 
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure) 
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI) 
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU) 
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     * 
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta/Melilla)
      * @param string|null $taxTypeCode
+     * Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
      * @param float|null $rateApplicablePercent
+     * VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category 
+     * and the category-specific sales tax rate must correspond to one another. The value to be given is 
+     * the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @param float|null $sequence
+     * Calculation order
      * @param float|null $calculationPercent
+     * Percentage surcharge or discount at document level
      * @param float|null $basisAmount
+     * The base amount that may be used in conjunction with the percentage of the surcharge or discount 
+     * at document level to calculate the amount of the discount at document level
      * @param float|null $basisQuantity
+     * Basismenge des Rabatts
      * @param string|null $basisQuantityUnitCode
+     * Einheit der Preisbasismenge
+     *  - Codeliste: Rec. N°20 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass 
+     *    beide Listen kombiniert anzuwenden sind.
+     *  - Codeliste: Rec. N°21 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass 
+     *    beide Listen kombiniert anzuwenden sind.
      * @param string|null $reasonCode
+     * The reason given as a code for the surcharge or discount at document level. Note: Use entries from 
+     * the UNTDID 5189 code list. The code of the reason for the surcharge or discount at document level 
+     * and the reason for the surcharge or discount at document level must correspond to each other
+     * 
+     * Code list: UNTDID 7161 Complete list, code list: UNTDID 5189 Restricted
+     * Include PEPPOL subset:  
+     *  - 41 - Bonus for works ahead of schedule 
+     *  - 42 - Other bonus
+     *  - 60 - Manufacturer’s consumer discount
+     *  - 62 - Due to military status
+     *  - 63 - Due to work accident
+     *  - 64 - Special agreement
+     *  - 65 - Production error discount
+     *  - 66 - New outlet discount
+     *  - 67 - Sample discount
+     *  - 68 - End-of-range discount
+     *  - 70 - Incoterm discount
+     *  - 71 - Point of sales threshold allowance
+     *  - 88 - Material surcharge/deduction
+     *  - 95 - Discount
+     *  - 100 - Special rebate
+     *  - 102 - Fixed long term
+     *  - 103 - Temporary
+     *  - 104 - Standard
+     *  - 105 - Yearly turnover
      * @param string|null $reason
+     * The reason given in text form for the surcharge or discount at document level
      * @return ZugferdDocumentReader
      */
     public function getDocumentAllowanceCharge(?float &$actualAmount, ?bool &$isCharge, ?string &$taxCategoryCode, ?string &$taxTypeCode, ?float &$rateApplicablePercent, ?float &$sequence, ?float &$calculationPercent, ?float &$basisAmount, ?float &$basisQuantity, ?string &$basisQuantityUnitCode, ?string &$reasonCode, ?string &$reason): ZugferdDocumentReader
@@ -2469,6 +2648,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the first documents service charge position
      * Returns true if the first position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentLogisticsServiceCharge
      *
      * @return boolean
      */
@@ -2483,6 +2663,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the next documents service charge position
      * Returns true if a other position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentLogisticsServiceCharge
      *
      * @return boolean
      */
@@ -2495,13 +2676,43 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get currently seeked documents logistic service charge
+     * Get currently seeked logistical service fees (On document level)
      *
      * @param string|null $description
+     * Identification of the service fee
      * @param float|null $appliedAmount
+     * Amount of the service fee
      * @param array|null $taxTypeCodes
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
      * @param array|null $taxCategpryCodes
+     * Coded description of a sales tax category
+     * 
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure) 
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI) 
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU) 
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     * 
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
      * @param array|null $rateApplicablePercents
+     * The sales tax rate, expressed as the percentage applicable to the sales tax category in 
+     * question. Note: The code of the sales tax category and the category-specific sales tax rate 
+     * must correspond to one another. The value to be given is the percentage. For example, the 
+     * value 20 is given for 20% (and not 0.2)
      * @return ZugferdDocumentReader
      */
     public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategpryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
@@ -2552,6 +2763,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the first documents payment terms position
      * Returns true if the first position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm
      *
      * @return boolean
      */
@@ -2565,6 +2777,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Seek to the next documents payment terms position
      * Returns true if a other position is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm
      *
      * @return boolean
      */
@@ -2576,11 +2789,20 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get current payment term
+     * Get currently seeked payment term
+     * This controlled by firstDocumentPaymentTerms and nextDocumentPaymentTerms methods
      *
      * @param string|null $description
+     * A text description of the payment terms that apply to the payment amount due (including a 
+     * description of possible penalties). Note: This element can contain multiple lines and 
+     * multiple conditions.
      * @param DateTime|null $dueDate
+     * The date by which payment is due Note: The payment due date reflects the net payment due 
+     * date. In the case of partial payments, this indicates the first due date of a net payment.
+     * The corresponding description of more complex payment terms can be given in BT-20.
      * @param string|null $directDebitMandateID
+     * Unique identifier assigned by the payee to reference the direct debit authorization. 
+     * __Note:__ Used to inform the buyer in advance about a SEPA direct debit. __Synonym:__ mandate reference for SEPA
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -2600,14 +2822,20 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get discount terms of the current payment term
+     * Get detailed information on payment discounts
      *
      * @param float|null $calculationPercent
+     * Percentage of the down payment
      * @param DateTime|null $basisDateTime
+     * Due date reference date
      * @param float|null $basisPeriodMeasureValue
+     * Due period
      * @param string|null $basisPeriodMeasureUnitCode
+     * Due period, unit
      * @param float|null $basisAmount
+     * Base amount of the down payment
      * @param float|null $actualDiscountAmount
+     * Amount of the down payment
      * @return ZugferdDocumentReader
      * @throws Exception
      */
