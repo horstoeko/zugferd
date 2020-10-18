@@ -389,8 +389,11 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get global identifier of the seller.  
-     * __Note:__ The Seller's ID identification scheme is a unique identifier 
-     * assigned to a seller by a global registration organization
+     * 
+     * __Notes__ 
+     * 
+     * - The Seller's ID identification scheme is a unique identifier 
+     *   assigned to a seller by a global registration organization
      *
      * @param array|null $globalID 
      * Array of the sellers global ids indexed by the identification scheme. The identification scheme results 
@@ -408,10 +411,12 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get detailed information on the seller's tax information.  
-     * __Note:__ The local identification (defined by the seller's address) of the seller for tax purposes or a reference that 
-     * enables the seller to indicate his reporting status for tax purposes. This information may have an impact on how the buyer 
-     * pays the bill (such as regarding social security contributions). So e.g. in some countries, if the seller is not reported 
-     * for tax, the buyer will withhold the tax amount and pay it on behalf of the seller
+     * 
+     * __Notes__ 
+     *  - The local identification (defined by the seller's address) of the seller for tax purposes or a reference that 
+     *    enables the seller to indicate his reporting status for tax purposes. This information may have an impact on how the buyer 
+     *    pays the bill (such as regarding social security contributions). So e.g. in some countries, if the seller is not reported 
+     *    for tax, the buyer will withhold the tax amount and pay it on behalf of the seller
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the seller indexed by __FC__ for _Tax number of the seller_ and __VA__
@@ -539,8 +544,10 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get global identifier of the buyer.  
-     * __Note:__ The buyers's ID identification scheme is a unique identifier 
-     * assigned to a buyer by a global registration organization
+     * 
+     * __Notes__ 
+     *  - The buyers's ID identification scheme is a unique identifier 
+     *    assigned to a buyer by a global registration organization
      *
      * @param array|null $globalID 
      * Array of the buyers global ids indexed by the identification scheme. The identification scheme results 
@@ -558,8 +565,10 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get detailed information on the buyer's tax information.  
-     * __Note:__ The local identification (defined by the buyer's address) of the buyer for tax purposes or a reference that 
-     * enables the buyer to indicate his reporting status for tax purposes.
+     * 
+     * __Notes__ 
+     *  - The local identification (defined by the buyer's address) of the buyer for tax purposes or a reference that 
+     *    enables the buyer to indicate his reporting status for tax purposes.
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the buyer indexed by __VA__ for _Sales tax identification number of the buyer_
@@ -702,8 +711,10 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get detailed information on the seller's tax agent tax information.  
-     * __Note:__ The local identification (defined by the sellers tax agent address) of the tax agent for tax purposes 
-     * or a reference that enables the sellers tax agent to indicate his reporting status for tax purposes.
+     * 
+     * __Notes__ 
+     *  - The local identification (defined by the sellers tax agent address) of the tax agent for tax purposes 
+     *    or a reference that enables the sellers tax agent to indicate his reporting status for tax purposes.
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the sellers tax agent indexed by __VA__ for _Sales tax identification 
@@ -832,8 +843,10 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get global identifier of the product end user.  
-     * __Note:__ The product end users ID identification scheme is a unique identifier 
-     * assigned to a product end user by a global registration organization
+     * 
+     * __Notes__ 
+     *  - The product end users ID identification scheme is a unique identifier 
+     *    assigned to a product end user by a global registration organization
      *
      * @param array|null $globalID 
      * Array of the product end users global ids indexed by the identification scheme. The identification scheme results 
@@ -1014,9 +1027,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the address to which the invoiced goods are delivered or to which the invoiced services are provided.
      * 
-     * __Note__: In the event of a collection, the delivery address corresponds to the collection address. In order
-     * to meet the legal requirements, a sufficient number of components of the address must be entered.
-     * Synonym: detailed information on the address of the recipient of the goods
+     * __Notes__
+     *  - In the event of a collection, the delivery address corresponds to the collection address. In order
+     *    to meet the legal requirements, a sufficient number of components of the address must be entered.
      *
      * @param string|null $lineone 
      * The main line in the party's address. This is usually the street name and house number or 
@@ -1104,7 +1117,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the different end recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $name
      * Name or company name of the different end recipient
@@ -1129,7 +1143,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get global identifiers of the different end recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $globalID
      * Array of the party's global ids indexed by the identification scheme. The identification scheme results 
@@ -1148,7 +1163,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the final recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $taxreg
      * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
@@ -1166,7 +1182,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the address of the final recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone 
      * The main line in the party's address. This is usually the street name and house number or 
@@ -1205,7 +1222,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information about the Legal organisation of the final recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid 
      * An identifier issued by an official registrar that identifies the
@@ -1230,7 +1248,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the contact person of the final recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -1258,7 +1277,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $name 
      * The name of the party
@@ -1284,7 +1304,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get global identifier of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $globalID
      * Array of the party's global ids indexed by the identification scheme. The identification scheme results 
@@ -1303,7 +1324,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
@@ -1321,7 +1343,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone 
      * The main line in the party's address. This is usually the street name and house number or 
@@ -1360,7 +1383,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid 
      * An identifier issued by an official registrar that identifies the
@@ -1385,7 +1409,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the deviating consignor party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -1413,7 +1438,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $name 
      * The name of the party
@@ -1439,7 +1465,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get global identifier of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $globalID
      * Array of the party's global ids indexed by the identification scheme. The identification scheme results 
@@ -1458,7 +1485,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
@@ -1476,7 +1504,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone 
      * The main line in the party's address. This is usually the street name and house number or 
@@ -1515,7 +1544,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid 
      * An identifier issued by an official registrar that identifies the
@@ -1540,7 +1570,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the invoicer party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -1568,7 +1599,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $name 
      * The name of the party
@@ -1594,7 +1626,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get global identifier of the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $globalID
      * Array of the party's global ids indexed by the identification scheme. The identification scheme results 
@@ -1613,7 +1646,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param array|null $taxreg 
      * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
@@ -1631,7 +1665,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone 
      * The main line in the party's address. This is usually the street name and house number or 
@@ -1670,7 +1705,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid 
      * An identifier issued by an official registrar that identifies the
@@ -1695,7 +1731,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the different invoice recipient party
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -1868,7 +1905,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the delivery conditions
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Note__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $code
      * Delivery condition (code)
@@ -1974,15 +2012,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about billing documents that provide evidence of claims made in the bill
      * 
-     * __Note:__ The documents justifying the invoice can be used to reference a document number, which should be 
-     * known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such 
-     * as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes 
-     * to large attachments and / or sensitive information, e.g. for personal services, which must be separated 
-     * from the bill
-     * 
-     * __Note:__ Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
-     * ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
-     * documents
+     * __Notes__ 
+     *  - The documents justifying the invoice can be used to reference a document number, which should be 
+     *    known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such 
+     *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes 
+     *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated 
+     *    from the bill
+     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     *    documents
      *
      * @param string|null $issuerassignedid
      * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for 
@@ -2201,7 +2239,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the associated delivery note
      * 
-     * __Note__: This is only available in the EXTENDED profile
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $issuerassignedid
      * Delivery receipt number
@@ -2252,10 +2291,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the payment method
      * 
-     * __Note:__ The SpecifiedTradeSettlementPaymentMeans element can only be repeated for each bank account if 
-     * several bank accounts are to be transferred for transfers. The code for the payment method in the Typecode 
-     * element must therefore not differ in the repetitions. The elements ApplicableTradeSettlementFinancialCard 
-     * and PayerPartyDebtorFinancialAccount must not be specified for bank transfers.
+     * __Notes__ 
+     *  - The SpecifiedTradeSettlementPaymentMeans element can only be repeated for each bank account if 
+     *    several bank accounts are to be transferred for transfers. The code for the payment method in the Typecode 
+     *    element must therefore not differ in the repetitions. The elements ApplicableTradeSettlementFinancialCard 
+     *    and PayerPartyDebtorFinancialAccount must not be specified for bank transfers.
      *
      * @param string|null $typecode
      * The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list 
@@ -3109,15 +3149,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Details of an additional Document reference (on position level)
      * 
-     * __Note:__ The documents justifying the invoice can be used to reference a document number, which should be 
-     * known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such 
-     * as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes 
-     * to large attachments and / or sensitive information, e.g. for personal services, which must be separated 
-     * from the bill
-     * 
-     * __Note:__ Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
-     * ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
-     * documents
+     * __Notes__ 
+     *  - The documents justifying the invoice can be used to reference a document number, which should be 
+     *    known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such 
+     *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes 
+     *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated 
+     *    from the bill
+     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     *    documents
      *
      * @param string|null $issuerassignedid
      * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for 
@@ -3672,13 +3712,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      * The base amount that may be used in conjunction with the invoice line discount percentage 
      * to calculate the invoice line discount amount
      * @param string|null $reason
-     * The reason given in text form for the invoice item discount / surcharge
-     * __Note:__ The invoice line discount reason code (BT-140) and the invoice line discount reason 
-     * (BT-139) must show the same allowance type.
-     * __Note:__ Each line item discount (BG-27) must include a corresponding line discount reason 
-     * (BT-139) or an appropriate line discount reason code (BT-140), or both.
-     * __Note:__ The code for the reason for the charge at the invoice line level (BT-145) and the 
-     * reason for the invoice line discount (BT-144) must show the same discount type
+     * The reason given in text form for the invoice item discount/surcharge  
+     *
+     * __Notes__ 
+     *  - The invoice line discount reason code (BT-140) and the invoice line discount reason 
+     *    (BT-139) must show the same allowance type.
+     *  - Each line item discount (BG-27) must include a corresponding line discount reason 
+     *    (BT-139) or an appropriate line discount reason code (BT-140), or both.
+     *  - The code for the reason for the charge at the invoice line level (BT-145) and the 
+     *    reason for the invoice line discount (BT-144) must show the same discount type
      * @param string|null $taxTypeCode
      * Not used, this is only a dummy
      * @param string|null $taxCategoryCode
@@ -3693,13 +3735,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Not used, this is only a dummy
      * @param string|null $reasonCode
      * The reason given as a code for the invoice line discount
-     * __Note:__ Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list 
-     * (surcharges). The invoice line discount reason code and the invoice line discount reason must 
-     * match.
-     * __Note:__ In the case of a discount, the code list UNTDID 5189 must be used.
-     * __Note:__ In the event of a surcharge, the code list UNTDID 7161 must be used.
      * 
-     * Insbesondere können folgende Codes genutzt werden:
+     * __Notes__
+     *  - Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list
+     *    (surcharges). The invoice line discount reason code and the invoice line discount reason must
+     *    match.
+     *  - In the case of a discount, the code list UNTDID 5189 must be used.
+     *  - In the event of a surcharge, the code list UNTDID 7161 must be used.
+     * 
+     * In particular, the following codes can be used:
      *  - AA = Advertising
      *  - ABL = Additional packaging
      *  - ADR = Other services
@@ -3773,13 +3817,16 @@ class ZugferdDocumentReader extends ZugferdDocument
      * to calculate the invoice line discount amount
      * @param string|null $reasonCode
      * The reason given as a code for the invoice line discount
-     * __Note:__ Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list 
-     * (surcharges). The invoice line discount reason code and the invoice line discount reason must 
-     * match.
-     * __Note:__ In the case of a discount, the code list UNTDID 5189 must be used.
-     * __Note:__ In the event of a surcharge, the code list UNTDID 7161 must be used.
      * 
-     * Insbesondere können folgende Codes genutzt werden:
+     * __Notes__
+     * 
+     *  - Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list 
+     *    (surcharges). The invoice line discount reason code and the invoice line discount reason must 
+     *    match.  
+     *  - In the case of a discount, the code list UNTDID 5189 must be used.  
+     *  - In the event of a surcharge, the code list UNTDID 7161 must be used.  
+     * 
+     * In particular, the following codes can be used:
      *  - AA = Advertising
      *  - ABL = Additional packaging
      *  - ADR = Other services
@@ -3812,12 +3859,14 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Codelists: UNTDID 7161 (Complete list), UNTDID 5189 (Restricted)
      * @param string|null $reason
      * The reason given in text form for the invoice item discount / surcharge
-     * __Note:__ The invoice line discount reason code (BT-140) and the invoice line discount reason 
-     * (BT-139) must show the same allowance type.
-     * __Note:__ Each line item discount (BG-27) must include a corresponding line discount reason 
-     * (BT-139) or an appropriate line discount reason code (BT-140), or both.
-     * __Note:__ The code for the reason for the charge at the invoice line level (BT-145) and the 
-     * reason for the invoice line discount (BT-144) must show the same discount type
+     * 
+     * __Notes__ 
+     *  - The invoice line discount reason code (BT-140) and the invoice line discount reason 
+     *    (BT-139) must show the same allowance type.
+     *  - Each line item discount (BG-27) must include a corresponding line discount reason 
+     *    or an appropriate line discount reason code (BT-140), or both.
+     *  - The code for the reason for the charge at the invoice line level (BT-145) and the 
+     *    reason for the invoice line discount (BT-144) must show the same discount type
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionAllowanceCharge2(?float &$actualAmount, ?bool &$isCharge, ?float &$calculationPercent, ?float &$basisAmount, ?string &$reasonCode, ?string &$reason): ZugferdDocumentReader
