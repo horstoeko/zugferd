@@ -33,7 +33,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * SupplyChainTradeTransactionType
      *
-     * @var [type]
+     * @var object
      */
     protected $headerSupplyChainTradeTransaction = null;
 

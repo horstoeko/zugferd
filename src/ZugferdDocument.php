@@ -75,7 +75,7 @@ class ZugferdDocument
      *
      * @return object
      */
-    public function getInvoiceObject()
+    protected function getInvoiceObject()
     {
         return $this->invoiceObject;
     }

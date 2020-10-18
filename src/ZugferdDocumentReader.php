@@ -2133,7 +2133,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentUltimateCustomerOrderReferencedDocuments(?array $refdocs): ZugferdDocumentReader
     {
-        //!! TODO
+        // TODO: Implemente method getDocumentUltimateCustomerOrderReferencedDocuments
         return $this;
     }
 
@@ -3497,7 +3497,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Seek to the first document position tax
-     * Returns true if the first position is available, otherwise false
+     * Returns true if the first tax position is available, otherwise false
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionTax
      *
      * @return boolean
      */
@@ -3515,7 +3516,8 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Seek to the next document position tax
-     * Returns true if the first position is available, otherwise false
+     * Returns true if another tax position is available, otherwise false
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionTax
      *
      * @return boolean
      */
@@ -3532,15 +3534,49 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * A group of business terms that contains information about the sales tax that applies to
-     * the goods and services invoiced on the relevant invoice line
+     * Get information about the sales tax that applies to the goods and services invoiced 
+     * in the relevant invoice line
      *
      * @param string|null $categoryCode
+     * Coded description of a sales tax category
+     * 
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure) 
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI) 
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU) 
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     * 
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
      * @param string|null $typeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. If other types of tax are 
+     * to be specified, such as an insurance tax or a mineral oil tax, the EXTENDED profile must be used. The 
+     * code for the tax type must then be taken from the code list UNTDID 5153.
      * @param float|null $rateApplicablePercent
+     * The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales 
+     * tax category and the category-specific sales tax rate  must correspond to one another. The value to be 
+     * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @param float|null $calculatedAmount
+     * Tax amount. Information only for taxes that are not VAT.
      * @param string|null $exemptionReason
+     * Reason for tax exemption (free text)
      * @param string|null $exemptionReasonCode
+     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued 
+     * and maintained by the Connecting Europe Facility.
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionTax(?string &$categoryCode, ?string &$typeCode, ?float &$rateApplicablePercent, ?float &$calculatedAmount, ?string &$exemptionReason, ?string &$exemptionReasonCode): ZugferdDocumentReader
@@ -3562,10 +3598,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Gets the billing period on position level
+     * Get information about the period relevant for the invoice item.
+     * Note: Also known as the invoice line delivery period.
      *
      * @param DateTime|null $startdate
+     * Start of the billing period
      * @param DateTime|null $endDate
+     * End of the billing period
      * @return ZugferdDocumentReader
      * @throws Exception
      */
@@ -3587,8 +3626,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the first documents position allowance charge position
+     * Seek to the first allowance charge (on position level)
      * Returns true if the first position is available, otherwise false
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge
      *
      * @return boolean
      */
@@ -3602,8 +3642,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the next documents position gross price allowance charge position
-     * Returns true if a other position is available, otherwise false
+     * Seek to the next allowance charge (on position level)
+     * Returns true if another position is available, otherwise false
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge
      *
      * @return boolean
      */
@@ -3617,21 +3658,78 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Detailed information on surcharges and discounts on position level
-     * Detailinformationen zu Zu- und Abschlägen
+     * Detailed information on currentley seeked surcharges and discounts on position level
      *
      * @param float|null $actualAmount
+     * The surcharge / discount amount excluding sales tax
      * @param boolean|null $isCharge
+     * Switch that indicates whether the following data refer to an allowance or a discount, 
+     * true means that
      * @param float|null $calculationPercent
+     * The percentage that may be used in conjunction with the base invoice line discount 
+     * amount to calculate the invoice line discount amount
      * @param float|null $basisAmount
+     * The base amount that may be used in conjunction with the invoice line discount percentage 
+     * to calculate the invoice line discount amount
      * @param string|null $reason
+     * The reason given in text form for the invoice item discount / surcharge
+     * __Note:__ The invoice line discount reason code (BT-140) and the invoice line discount reason 
+     * (BT-139) must show the same allowance type.
+     * __Note:__ Each line item discount (BG-27) must include a corresponding line discount reason 
+     * (BT-139) or an appropriate line discount reason code (BT-140), or both.
+     * __Note:__ The code for the reason for the charge at the invoice line level (BT-145) and the 
+     * reason for the invoice line discount (BT-144) must show the same discount type
      * @param string|null $taxTypeCode
+     * Not used, this is only a dummy
      * @param string|null $taxCategoryCode
+     * Not used, this is only a dummy
      * @param float|null $rateApplicablePercent
+     * Not used, this is only a dummy
      * @param float|null $sequence
+     * Not used, this is only a dummy
      * @param float|null $basisQuantity
+     * Not used, this is only a dummy
      * @param string|null $basisQuantityUnitCode
+     * Not used, this is only a dummy
      * @param string|null $reasonCode
+     * The reason given as a code for the invoice line discount
+     * __Note:__ Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list 
+     * (surcharges). The invoice line discount reason code and the invoice line discount reason must 
+     * match.
+     * __Note:__ In the case of a discount, the code list UNTDID 5189 must be used.
+     * __Note:__ In the event of a surcharge, the code list UNTDID 7161 must be used.
+     * 
+     * Insbesondere können folgende Codes genutzt werden:
+     *  - AA = Advertising
+     *  - ABL = Additional packaging
+     *  - ADR = Other services
+     *  - ADT = Pick-up
+     *  - FC = Freight service
+     *  - FI = Financing
+     *  - LA = Labelling
+     * 
+     * Include PEPPOL subset:
+     *  - 41 - Bonus for works ahead of schedule
+     *  - 42 - Other bonus
+     *  - 60 - Manufacturer’s consumer discount
+     *  - 62 - Due to military status
+     *  - 63 - Due to work accident
+     *  - 64 - Special agreement
+     *  - 65 - Production error discount
+     *  - 66 - New outlet discount
+     *  - 67 - Sample discount
+     *  - 68 - End-of-range discount
+     *  - 70 - Incoterm discount
+     *  - 71 - Point of sales threshold allowance
+     *  - 88 - Material surcharge/deduction
+     *  - 95 - Discount
+     *  - 100 - Special rebate
+     *  - 102 - Fixed long term
+     *  - 103 - Temporary
+     *  - 104 - Standard
+     *  - 105 - Yearly turnover
+     * 
+     * Codelists: UNTDID 7161 (Complete list), UNTDID 5189 (Restricted)
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionAllowanceCharge(?float &$actualAmount, ?bool &$isCharge, ?float &$calculationPercent, ?float &$basisAmount, ?string &$reason, ?string &$taxTypeCode, ?string &$taxCategoryCode, ?float &$rateApplicablePercent, ?float &$sequence, ?float &$basisQuantity, ?string &$basisQuantityUnitCode, ?string &$reasonCode): ZugferdDocumentReader
@@ -3660,14 +3758,66 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Detailed information on surcharges and discounts on position level (on a simple way)
-     * Detailinformationen zu Zu- und Abschlägen
+     * This is the simplified version of ZugferdDocumentReader::getDocumentPositionAllowanceCharge
      *
      * @param float|null $actualAmount
+     * The surcharge / discount amount excluding sales tax
      * @param boolean|null $isCharge
+     * Switch that indicates whether the following data refer to an allowance or a discount, 
+     * true means that
      * @param float|null $calculationPercent
+     * The percentage that may be used in conjunction with the base invoice line discount 
+     * amount to calculate the invoice line discount amount
      * @param float|null $basisAmount
+     * The base amount that may be used in conjunction with the invoice line discount percentage 
+     * to calculate the invoice line discount amount
      * @param string|null $reasonCode
+     * The reason given as a code for the invoice line discount
+     * __Note:__ Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list 
+     * (surcharges). The invoice line discount reason code and the invoice line discount reason must 
+     * match.
+     * __Note:__ In the case of a discount, the code list UNTDID 5189 must be used.
+     * __Note:__ In the event of a surcharge, the code list UNTDID 7161 must be used.
+     * 
+     * Insbesondere können folgende Codes genutzt werden:
+     *  - AA = Advertising
+     *  - ABL = Additional packaging
+     *  - ADR = Other services
+     *  - ADT = Pick-up
+     *  - FC = Freight service
+     *  - FI = Financing
+     *  - LA = Labelling
+     * 
+     * Include PEPPOL subset:
+     *  - 41 - Bonus for works ahead of schedule
+     *  - 42 - Other bonus
+     *  - 60 - Manufacturer’s consumer discount
+     *  - 62 - Due to military status
+     *  - 63 - Due to work accident
+     *  - 64 - Special agreement
+     *  - 65 - Production error discount
+     *  - 66 - New outlet discount
+     *  - 67 - Sample discount
+     *  - 68 - End-of-range discount
+     *  - 70 - Incoterm discount
+     *  - 71 - Point of sales threshold allowance
+     *  - 88 - Material surcharge/deduction
+     *  - 95 - Discount
+     *  - 100 - Special rebate
+     *  - 102 - Fixed long term
+     *  - 103 - Temporary
+     *  - 104 - Standard
+     *  - 105 - Yearly turnover
+     * 
+     * Codelists: UNTDID 7161 (Complete list), UNTDID 5189 (Restricted)
      * @param string|null $reason
+     * The reason given in text form for the invoice item discount / surcharge
+     * __Note:__ The invoice line discount reason code (BT-140) and the invoice line discount reason 
+     * (BT-139) must show the same allowance type.
+     * __Note:__ Each line item discount (BG-27) must include a corresponding line discount reason 
+     * (BT-139) or an appropriate line discount reason code (BT-140), or both.
+     * __Note:__ The code for the reason for the charge at the invoice line level (BT-145) and the 
+     * reason for the invoice line discount (BT-144) must show the same discount type
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionAllowanceCharge2(?float &$actualAmount, ?bool &$isCharge, ?float &$calculationPercent, ?float &$basisAmount, ?string &$reasonCode, ?string &$reason): ZugferdDocumentReader
@@ -3689,10 +3839,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get Line summation for item level
+     * Get detailed information on item totals
      *
      * @param float|null $lineTotalAmount
+     * The total amount of the invoice item. 
+     * __Note:__ This is the "net" amount, that is, excluding sales tax, but including all surcharges 
+     * and discounts applicable to the item level, as well as other taxes.
      * @param float|null $totalAllowanceChargeAmount
+     * Total amount of item surcharges and discounts
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionLineSummation(?float &$lineTotalAmount, ?float &$totalAllowanceChargeAmount): ZugferdDocumentReader

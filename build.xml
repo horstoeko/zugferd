@@ -289,9 +289,16 @@
         </exec>
         <exec executable="${phpdocumentator}" taskname="projectdoc">
             <arg value="-d"/>
-            <arg path="${project.basedir}/src"/>
+            <arg path="./src"/>
             <arg value="-t"/>
-            <arg path="${project.basedir}/doc"/>
+            <arg path="./doc"/>
+            <arg value="-i"/>
+            <arg path="./src/entities/"/>
+            <arg value="-m"/>
+            <arg path="TODO"/>
+            <arg value="--title=EasyZugFerd"/>
+            <arg value="--visibility=public"/>
+            <arg value="--sourcecode"/>
         </exec>
         <delete file="${phpdocumentator}"/>
         <delete dir="${project.basedir}/.phpdoc"/>

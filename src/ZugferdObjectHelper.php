@@ -1311,7 +1311,7 @@ class ZugferdObjectHelper
      * Try call methods in a form .object.method1.method2.method3
      *
      * @codeCoverageIgnore
-     * @param [type] $instance
+     * @param object $instance
      * @param string $methods
      * @return void
      */
