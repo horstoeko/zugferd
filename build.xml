@@ -294,6 +294,8 @@
             <arg path="./doc"/>
             <arg value="-i"/>
             <arg path="./src/entities/"/>
+            <arg value="-i"/>
+            <arg path="./src/ZugferdObjectHelper.php"/>
             <arg value="-m"/>
             <arg path="TODO"/>
             <arg value="--title=horstoeko/zugferd"/>
