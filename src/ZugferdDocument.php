@@ -15,49 +15,53 @@ use horstoeko\zugferd\ZugferdObjectHelper;
 class ZugferdDocument
 {
     /**
+     * @internal
      * Internal profile id (see ZugferdProfiles.php)
-     *
      * @var integer
      */
     public $profile = -1;
 
     /**
+     * @internal
      * Internal profile definition (see ZugferdProfiles.php)
-     *
      * @var array
      */
     public $profiledef = [];
 
     /**
+     * @internal
      * Serializer builder
-     *
      * @var SerializerBuilder
      */
     protected $serializerBuilder;
 
     /**
+     * @internal
      * Serializer
-     *
      * @var SerializerInterface
      */
     protected $serializer;
 
     /**
+     * @internal
      * The internal invoice object
-     *
      * @var \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType
      */
     protected $invoiceObject = null;
 
     /**
+     * @internal
      * Object Helper
-     *
      * @var ZugferdObjectHelper
      */
     protected $objectHelper = null;
 
     /**
      * Constructor
+     *
+     * @param integer $profile
+     * The ID of the profile of the document
+     * 
      * @codeCoverageIgnore
      */
     public function __construct(int $profile)
@@ -70,6 +74,8 @@ class ZugferdDocument
     }
 
     /**
+     * @internal
+     * 
      * Returns the internal invoice object (created by the
      * serializer). This is used e.g. in the validator
      *
@@ -81,8 +87,11 @@ class ZugferdDocument
     }
 
     /**
+     * @internal
+     * 
      * Build the internal serialzer
      * @codeCoverageIgnore
+     * 
      * @return void
      */
     private function initSerialzer(): void

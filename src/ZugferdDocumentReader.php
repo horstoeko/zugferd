@@ -214,7 +214,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null $documentlanguage Returns the language code in which the document was written
      * @param DateTime|null $effectiveSpecifiedPeriod Returns the contractual due date of the invoice
      * @return ZugferdDocumentReader
-     * @throws Exception
+     * @throws Exception when the value of datetime cannot be parsed
      */
     public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {

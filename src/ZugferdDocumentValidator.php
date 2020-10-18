@@ -7,7 +7,7 @@ use \Symfony\Component\Validator\Validator\RecursiveValidator;
 use \Symfony\Component\Validator\ConstraintViolationListInterface;
 
 /**
- * Class representing the document reader for incoming documents
+ * Class representing the document validator for incoming documents
  */
 class ZugferdDocumentValidator
 {
