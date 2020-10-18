@@ -296,7 +296,7 @@
             <arg path="./src/entities/"/>
             <arg value="-m"/>
             <arg path="TODO"/>
-            <arg value="--title=EasyZugFerd"/>
+            <arg value="--title=horstoeko/zugferd"/>
             <arg value="--visibility=public"/>
             <arg value="--sourcecode"/>
         </exec>
