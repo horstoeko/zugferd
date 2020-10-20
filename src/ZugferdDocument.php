@@ -61,7 +61,7 @@ class ZugferdDocument
      *
      * @param integer $profile
      * The ID of the profile of the document
-     * 
+     *
      * @codeCoverageIgnore
      */
     public function __construct(int $profile)
@@ -75,7 +75,7 @@ class ZugferdDocument
 
     /**
      * @internal
-     * 
+     *
      * Returns the internal invoice object (created by the
      * serializer). This is used e.g. in the validator
      *
@@ -88,10 +88,10 @@ class ZugferdDocument
 
     /**
      * @internal
-     * 
+     *
      * Build the internal serialzer
      * @codeCoverageIgnore
-     * 
+     *
      * @return void
      */
     private function initSerialzer(): void

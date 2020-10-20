@@ -6524,17 +6524,17 @@ class ZugferdUnitCodes
     const REC20_DEGREE_UNIT_OF_ANGLE_PER_SECOND_SQUARED = 'M45';
 
     /**
-     * revolution per minute 
+     * revolution per minute
      */
     const REC20_REVOLUTION_PER_MINUTE = 'M46';
 
     /**
-     * circular mil 
+     * circular mil
      */
     const REC20_CIRCULAR_MIL = 'M47';
 
     /**
-     * square mile (based on U.S. survey foot) 
+     * square mile (based on U.S. survey foot)
      */
     const REC20_SQUARE_MILE_BASED_ON_US_SURVEY_FOOT = 'M48';
 
@@ -6554,12 +6554,12 @@ class ZugferdUnitCodes
     const REC20_FURLONG = 'M50';
 
     /**
-     * foot (U.S. survey) 
+     * foot (U.S. survey)
      */
     const REC20_FOOT_US_SURVEY = 'M51';
 
     /**
-     * mile (based on U.S. survey foot) 
+     * mile (based on U.S. survey foot)
      */
     const REC20_MILE_BASED_ON_US_SURVEY_FOOT = 'M52';
 
@@ -6579,12 +6579,12 @@ class ZugferdUnitCodes
     const REC20_SHAKE = 'M56';
 
     /**
-     * mile per minute 
+     * mile per minute
      */
     const REC20_MILE_PER_MINUTE = 'M57';
 
     /**
-     * mile per second 
+     * mile per second
      */
     const REC20_MILE_PER_SECOND = 'M58';
 
@@ -6604,7 +6604,7 @@ class ZugferdUnitCodes
     const REC20_INCH_PER_YEAR = 'M61';
 
     /**
-     * kilometre per second 
+     * kilometre per second
      */
     const REC20_KILOMETRE_PER_SECOND = 'M62';
 
@@ -6649,7 +6649,7 @@ class ZugferdUnitCodes
     const REC20_MICROINCH = 'M7';
 
     /**
-     * ton, register 
+     * ton, register
      */
     const REC20_TON_REGISTER = 'M70';
 
@@ -6694,7 +6694,7 @@ class ZugferdUnitCodes
     const REC20_POND = 'M78';
 
     /**
-     * square foot per hour 
+     * square foot per hour
      */
     const REC20_SQUARE_FOOT_PER_HOUR = 'M79';
 
@@ -6714,12 +6714,12 @@ class ZugferdUnitCodes
     const REC20_SQUARE_METRE_PER_SECOND_PASCAL = 'M82';
 
     /**
-     * denier 
+     * denier
      */
     const REC20_DENIER = 'M83';
 
     /**
-     * pound per yard 
+     * pound per yard
      */
     const REC20_POUND_PER_YARD = 'M84';
 
@@ -7039,12 +7039,12 @@ class ZugferdUnitCodes
     const REC20_KIP_PER_SQUARE_INCH = 'N20';
 
     /**
-     * poundal per square foot 
+     * poundal per square foot
      */
     const REC20_POUNDAL_PER_SQUARE_FOOT = 'N21';
 
     /**
-     * ounce (avoirdupois) per square inch 
+     * ounce (avoirdupois) per square inch
      */
     const REC20_OUNCE_AVOIRDUPOIS_PER_SQUARE_INCH = 'N22';
 
@@ -7069,7 +7069,7 @@ class ZugferdUnitCodes
     const REC20_POUNDAL_PER_SQUARE_INCH = 'N26';
 
     /**
-     * foot to the fourth power 
+     * foot to the fourth power
      */
     const REC20_FOOT_TO_THE_FOURTH_POWER = 'N27';
 
@@ -7109,7 +7109,7 @@ class ZugferdUnitCodes
     const REC20_POUNDFORCE_PER_YARD = 'N33';
 
     /**
-     * poundal second per square foot 
+     * poundal second per square foot
      */
     const REC20_POUNDAL_SECOND_PER_SQUARE_FOOT = 'N34';
 
@@ -7179,12 +7179,12 @@ class ZugferdUnitCodes
     const REC20_INCH_POUNDAL = 'N47';
 
     /**
-     * watt per square centimetre 
+     * watt per square centimetre
      */
     const REC20_WATT_PER_SQUARE_CENTIMETRE = 'N48';
 
     /**
-     * watt per square inch 
+     * watt per square inch
      */
     const REC20_WATT_PER_SQUARE_INCH = 'N49';
 
@@ -7229,7 +7229,7 @@ class ZugferdUnitCodes
     const REC20_CALORIE_THERMOCHEMICAL_PER_SQUARE_CENTIMETRE_SECOND = 'N57';
 
     /**
-     * British thermal unit (international table) per cubic foot 
+     * British thermal unit (international table) per cubic foot
      */
     const REC20_BRITISH_THERMAL_UNIT_INTERNATIONAL_TABLE_PER_CUBIC_FOOT = 'N58';
 
@@ -7269,7 +7269,7 @@ class ZugferdUnitCodes
     const REC20_KILOCALORIE_INTERNATIONAL_TABLE_PER_GRAM_KELVIN = 'N65';
 
     /**
-     * British thermal unit (39 ºF) 
+     * British thermal unit (39 ºF)
      */
     const REC20_BRITISH_THERMAL_UNIT_39_F = 'N66';
 
@@ -7279,12 +7279,12 @@ class ZugferdUnitCodes
     const REC20_BRITISH_THERMAL_UNIT_59_F = 'N67';
 
     /**
-     * British thermal unit (60 ºF) 
+     * British thermal unit (60 ºF)
      */
     const REC20_BRITISH_THERMAL_UNIT_60_F = 'N68';
 
     /**
-     * calorie (20 ºC) 
+     * calorie (20 ºC)
      */
     const REC20_CALORIE_20_C = 'N69';
 
@@ -7656,7 +7656,7 @@ class ZugferdUnitCodes
     const REC20_NANOOHM = 'P22';
 
     /**
-     * ohm circular-mil per foot 
+     * ohm circular-mil per foot
      */
     const REC20_OHM_CIRCULARMIL_PER_FOOT = 'P23';
 
@@ -7666,7 +7666,7 @@ class ZugferdUnitCodes
     const REC20_KILOHENRY = 'P24';
 
     /**
-     * lumen per square foot 
+     * lumen per square foot
      */
     const REC20_LUMEN_PER_SQUARE_FOOT = 'P25';
 
@@ -7681,7 +7681,7 @@ class ZugferdUnitCodes
     const REC20_FOOTCANDLE = 'P27';
 
     /**
-     * candela per square inch 
+     * candela per square inch
      */
     const REC20_CANDELA_PER_SQUARE_INCH = 'P28';
 
@@ -7721,7 +7721,7 @@ class ZugferdUnitCodes
     const REC20_HEFNERKERZE = 'P35';
 
     /**
-     * international candle 
+     * international candle
      */
     const REC20_INTERNATIONAL_CANDLE = 'P36';
 
@@ -7736,7 +7736,7 @@ class ZugferdUnitCodes
     const REC20_BRITISH_THERMAL_UNIT_THERMOCHEMICAL_PER_SQUARE_FOOT = 'P38';
 
     /**
-     * calorie (thermochemical) per square centimetre 
+     * calorie (thermochemical) per square centimetre
      */
     const REC20_CALORIE_THERMOCHEMICAL_PER_SQUARE_CENTIMETRE = 'P39';
 
@@ -7811,7 +7811,7 @@ class ZugferdUnitCodes
     const REC20_MOL_PER_CUBIC_METRE_PASCAL = 'P52';
 
     /**
-     * unit pole 
+     * unit pole
      */
     const REC20_UNIT_POLE = 'P53';
 
@@ -7996,17 +7996,17 @@ class ZugferdUnitCodes
     const REC20_POUNDFORCE_FOOT_PER_INCH = 'P89';
 
     /**
-     * pound-force inch per inch 
+     * pound-force inch per inch
      */
     const REC20_POUNDFORCE_INCH_PER_INCH = 'P90';
 
     /**
-     * perm (0 ºC) 
+     * perm (0 ºC)
      */
     const REC20_PERM_0_C = 'P91';
 
     /**
-     * perm (23 ºC) 
+     * perm (23 ºC)
      */
     const REC20_PERM_23_C = 'P92';
 
@@ -8796,12 +8796,12 @@ class ZugferdUnitCodes
     const REC21_BAG_WOVEN_PLASTIC = 'X5H';
 
     /**
-     * Bag, textile 
+     * Bag, textile
      */
     const REC21_BAG_TEXTILE = 'X5L';
 
     /**
-     * Bag, paper 
+     * Bag, paper
      */
     const REC21_BAG_PAPER = 'X5M';
 
@@ -8846,17 +8846,17 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_RIGID_PLASTIC = 'XAA';
 
     /**
-     * Receptacle, fibre 
+     * Receptacle, fibre
      */
     const REC21_RECEPTACLE_FIBRE = 'XAB';
 
     /**
-     * Receptacle, paper 
+     * Receptacle, paper
      */
     const REC21_RECEPTACLE_PAPER = 'XAC';
 
     /**
-     * Receptacle, wooden 
+     * Receptacle, wooden
      */
     const REC21_RECEPTACLE_WOODEN = 'XAD';
 
@@ -8866,17 +8866,17 @@ class ZugferdUnitCodes
     const REC21_AEROSOL = 'XAE';
 
     /**
-     * Pallet, modular, collars 80cms * 60cms 
+     * Pallet, modular, collars 80cms * 60cms
      */
     const REC21_PALLET_MODULAR_COLLARS_80CMS__60CMS = 'XAF';
 
     /**
-     * Pallet, shrinkwrapped 
+     * Pallet, shrinkwrapped
      */
     const REC21_PALLET_SHRINKWRAPPED = 'XAG';
 
     /**
-     * Pallet, 100cms * 110cms 
+     * Pallet, 100cms * 110cms
      */
     const REC21_PALLET_100CMS__110CMS = 'XAH';
 
@@ -8896,17 +8896,17 @@ class ZugferdUnitCodes
     const REC21_BALL = 'XAL';
 
     /**
-     * Ampoule, non-protected 
+     * Ampoule, non-protected
      */
     const REC21_AMPOULE_NONPROTECTED = 'XAM';
 
     /**
-     * Ampoule, protected 
+     * Ampoule, protected
      */
     const REC21_AMPOULE_PROTECTED = 'XAP';
 
     /**
-     * Atomizer 
+     * Atomizer
      */
     const REC21_ATOMIZER = 'XAT';
 
@@ -8921,17 +8921,17 @@ class ZugferdUnitCodes
     const REC21_BELT = 'XB4';
 
     /**
-     * Barrel 
+     * Barrel
      */
     const REC21_BARREL = 'XBA';
 
     /**
-     * Bobbin 
+     * Bobbin
      */
     const REC21_BOBBIN = 'XBB';
 
     /**
-     * Bottlecrate / bottlerack 
+     * Bottlecrate / bottlerack
      */
     const REC21_BOTTLECRATE___BOTTLERACK = 'XBC';
 
@@ -8941,12 +8941,12 @@ class ZugferdUnitCodes
     const REC21_BOARD = 'XBD';
 
     /**
-     * Bundle 
+     * Bundle
      */
     const REC21_BUNDLE = 'XBE';
 
     /**
-     * Balloon, non-protected 
+     * Balloon, non-protected
      */
     const REC21_BALLOON_NONPROTECTED = 'XBF';
 
@@ -8966,17 +8966,17 @@ class ZugferdUnitCodes
     const REC21_BIN = 'XBI';
 
     /**
-     * Bucket 
+     * Bucket
      */
     const REC21_BUCKET = 'XBJ';
 
     /**
-     * Basket 
+     * Basket
      */
     const REC21_BASKET = 'XBK';
 
     /**
-     * Bale, compressed 
+     * Bale, compressed
      */
     const REC21_BALE_COMPRESSED = 'XBL';
 
@@ -8986,17 +8986,17 @@ class ZugferdUnitCodes
     const REC21_BASIN = 'XBM';
 
     /**
-     * Bale, non-compressed 
+     * Bale, non-compressed
      */
     const REC21_BALE_NONCOMPRESSED = 'XBN';
 
     /**
-     * Bottle, non-protected, cylindrical 
+     * Bottle, non-protected, cylindrical
      */
     const REC21_BOTTLE_NONPROTECTED_CYLINDRICAL = 'XBO';
 
     /**
-     * Balloon, protected 
+     * Balloon, protected
      */
     const REC21_BALLOON_PROTECTED = 'XBP';
 
@@ -9011,17 +9011,17 @@ class ZugferdUnitCodes
     const REC21_BAR = 'XBR';
 
     /**
-     * Bottle, non-protected, bulbous 
+     * Bottle, non-protected, bulbous
      */
     const REC21_BOTTLE_NONPROTECTED_BULBOUS = 'XBS';
 
     /**
-     * Bolt 
+     * Bolt
      */
     const REC21_BOLT = 'XBT';
 
     /**
-     * Butt 
+     * Butt
      */
     const REC21_BUTT = 'XBU';
 
@@ -9041,7 +9041,7 @@ class ZugferdUnitCodes
     const REC21_BOX = 'XBX';
 
     /**
-     * Board, in bundle/bunch/truss 
+     * Board, in bundle/bunch/truss
      */
     const REC21_BOARD_IN_BUNDLE_BUNCH_TRUSS = 'XBY';
 
@@ -9051,7 +9051,7 @@ class ZugferdUnitCodes
     const REC21_BARS_IN_BUNDLE_BUNCH_TRUSS = 'XBZ';
 
     /**
-     * Can, rectangular 
+     * Can, rectangular
      */
     const REC21_CAN_RECTANGULAR = 'XCA';
 
@@ -9066,7 +9066,7 @@ class ZugferdUnitCodes
     const REC21_CHURN = 'XCC';
 
     /**
-     * Can, with handle and spout 
+     * Can, with handle and spout
      */
     const REC21_CAN_WITH_HANDLE_AND_SPOUT = 'XCD';
 
@@ -9076,12 +9076,12 @@ class ZugferdUnitCodes
     const REC21_CREEL = 'XCE';
 
     /**
-     * Coffer 
+     * Coffer
      */
     const REC21_COFFER = 'XCF';
 
     /**
-     * Cage 
+     * Cage
      */
     const REC21_CAGE = 'XCG';
 
@@ -9091,22 +9091,22 @@ class ZugferdUnitCodes
     const REC21_CHEST = 'XCH';
 
     /**
-     * Canister 
+     * Canister
      */
     const REC21_CANISTER = 'XCI';
 
     /**
-     * Coffin 
+     * Coffin
      */
     const REC21_COFFIN = 'XCJ';
 
     /**
-     * Cask 
+     * Cask
      */
     const REC21_CASK = 'XCK';
 
     /**
-     * Coil 
+     * Coil
      */
     const REC21_COIL = 'XCL';
 
@@ -9141,12 +9141,12 @@ class ZugferdUnitCodes
     const REC21_CRATE = 'XCR';
 
     /**
-     * Case 
+     * Case
      */
     const REC21_CASE = 'XCS';
 
     /**
-     * Carton 
+     * Carton
      */
     const REC21_CARTON = 'XCT';
 
@@ -9161,27 +9161,27 @@ class ZugferdUnitCodes
     const REC21_COVER = 'XCV';
 
     /**
-     * Cage, roll 
+     * Cage, roll
      */
     const REC21_CAGE_ROLL = 'XCW';
 
     /**
-     * Can, cylindrical 
+     * Can, cylindrical
      */
     const REC21_CAN_CYLINDRICAL = 'XCX';
 
     /**
-     * Cylinder 
+     * Cylinder
      */
     const REC21_CYLINDER = 'XCY';
 
     /**
-     * Canvas 
+     * Canvas
      */
     const REC21_CANVAS = 'XCZ';
 
     /**
-     * Crate, multiple layer, plastic 
+     * Crate, multiple layer, plastic
      */
     const REC21_CRATE_MULTIPLE_LAYER_PLASTIC = 'XDA';
 
@@ -9191,7 +9191,7 @@ class ZugferdUnitCodes
     const REC21_CRATE_MULTIPLE_LAYER_WOODEN = 'XDB';
 
     /**
-     * Crate, multiple layer, cardboard 
+     * Crate, multiple layer, cardboard
      */
     const REC21_CRATE_MULTIPLE_LAYER_CARDBOARD = 'XDC';
 
@@ -9206,7 +9206,7 @@ class ZugferdUnitCodes
     const REC21_BOX_COMMONWEALTH_HANDLING_EQUIPMENT_POOL_CHEP_EUROBOX = 'XDH';
 
     /**
-     * Drum, iron 
+     * Drum, iron
      */
     const REC21_DRUM_IRON = 'XDI';
 
@@ -9216,12 +9216,12 @@ class ZugferdUnitCodes
     const REC21_DEMIJOHN_NONPROTECTED = 'XDJ';
 
     /**
-     * Crate, bulk, cardboard 
+     * Crate, bulk, cardboard
      */
     const REC21_CRATE_BULK_CARDBOARD = 'XDK';
 
     /**
-     * Crate, bulk, plastic 
+     * Crate, bulk, plastic
      */
     const REC21_CRATE_BULK_PLASTIC = 'XDL';
 
@@ -9241,7 +9241,7 @@ class ZugferdUnitCodes
     const REC21_DEMIJOHN_PROTECTED = 'XDP';
 
     /**
-     * Drum 
+     * Drum
      */
     const REC21_DRUM = 'XDR';
 
@@ -9251,7 +9251,7 @@ class ZugferdUnitCodes
     const REC21_TRAY_ONE_LAYER_NO_COVER_PLASTIC = 'XDS';
 
     /**
-     * Tray, one layer no cover, wooden 
+     * Tray, one layer no cover, wooden
      */
     const REC21_TRAY_ONE_LAYER_NO_COVER_WOODEN = 'XDT';
 
@@ -9276,22 +9276,22 @@ class ZugferdUnitCodes
     const REC21_TRAY_TWO_LAYERS_NO_COVER_WOODEN = 'XDX';
 
     /**
-     * Tray, two layers no cover, cardboard 
+     * Tray, two layers no cover, cardboard
      */
     const REC21_TRAY_TWO_LAYERS_NO_COVER_CARDBOARD = 'XDY';
 
     /**
-     * Bag, plastic 
+     * Bag, plastic
      */
     const REC21_BAG_PLASTIC = 'XEC';
 
     /**
-     * Case, with pallet base 
+     * Case, with pallet base
      */
     const REC21_CASE_WITH_PALLET_BASE = 'XED';
 
     /**
-     * Case, with pallet base, wooden 
+     * Case, with pallet base, wooden
      */
     const REC21_CASE_WITH_PALLET_BASE_WOODEN = 'XEE';
 
@@ -9311,12 +9311,12 @@ class ZugferdUnitCodes
     const REC21_CASE_WITH_PALLET_BASE_METAL = 'XEH';
 
     /**
-     * Case, isothermic 
+     * Case, isothermic
      */
     const REC21_CASE_ISOTHERMIC = 'XEI';
 
     /**
-     * Envelope 
+     * Envelope
      */
     const REC21_ENVELOPE = 'XEN';
 
@@ -9326,7 +9326,7 @@ class ZugferdUnitCodes
     const REC21_FLEXIBAG = 'XFB';
 
     /**
-     * Crate, fruit 
+     * Crate, fruit
      */
     const REC21_CRATE_FRUIT = 'XFC';
 
@@ -9341,7 +9341,7 @@ class ZugferdUnitCodes
     const REC21_FLEXITANK = 'XFE';
 
     /**
-     * Firkin 
+     * Firkin
      */
     const REC21_FIRKIN = 'XFI';
 
@@ -9351,12 +9351,12 @@ class ZugferdUnitCodes
     const REC21_FLASK = 'XFL';
 
     /**
-     * Footlocker 
+     * Footlocker
      */
     const REC21_FOOTLOCKER = 'XFO';
 
     /**
-     * Filmpack 
+     * Filmpack
      */
     const REC21_FILMPACK = 'XFP';
 
@@ -9386,7 +9386,7 @@ class ZugferdUnitCodes
     const REC21_BOTTLE_GAS = 'XGB';
 
     /**
-     * Girder 
+     * Girder
      */
     const REC21_GIRDER = 'XGI';
 
@@ -9396,7 +9396,7 @@ class ZugferdUnitCodes
     const REC21_CONTAINER_GALLON = 'XGL';
 
     /**
-     * Receptacle, glass 
+     * Receptacle, glass
      */
     const REC21_RECEPTACLE_GLASS = 'XGR';
 
@@ -9411,12 +9411,12 @@ class ZugferdUnitCodes
     const REC21_BAG_GUNNY = 'XGY';
 
     /**
-     * Girders, in bundle/bunch/truss 
+     * Girders, in bundle/bunch/truss
      */
     const REC21_GIRDERS_IN_BUNDLE_BUNCH_TRUSS = 'XGZ';
 
     /**
-     * Basket, with handle, plastic 
+     * Basket, with handle, plastic
      */
     const REC21_BASKET_WITH_HANDLE_PLASTIC = 'XHA';
 
@@ -9426,12 +9426,12 @@ class ZugferdUnitCodes
     const REC21_BASKET_WITH_HANDLE_WOODEN = 'XHB';
 
     /**
-     * Basket, with handle, cardboard 
+     * Basket, with handle, cardboard
      */
     const REC21_BASKET_WITH_HANDLE_CARDBOARD = 'XHC';
 
     /**
-     * Hogshead 
+     * Hogshead
      */
     const REC21_HOGSHEAD = 'XHG';
 
@@ -9441,12 +9441,12 @@ class ZugferdUnitCodes
     const REC21_HANGER = 'XHN';
 
     /**
-     * Hamper 
+     * Hamper
      */
     const REC21_HAMPER = 'XHR';
 
     /**
-     * Package, display, wooden 
+     * Package, display, wooden
      */
     const REC21_PACKAGE_DISPLAY_WOODEN = 'XIA';
 
@@ -9471,7 +9471,7 @@ class ZugferdUnitCodes
     const REC21_PACKAGE_SHOW = 'XIE';
 
     /**
-     * Package, flow 
+     * Package, flow
      */
     const REC21_PACKAGE_FLOW = 'XIF';
 
@@ -9486,7 +9486,7 @@ class ZugferdUnitCodes
     const REC21_DRUM_PLASTIC = 'XIH';
 
     /**
-     * Package, cardboard, with bottle grip-holes 
+     * Package, cardboard, with bottle grip-holes
      */
     const REC21_PACKAGE_CARDBOARD_WITH_BOTTLE_GRIPHOLES = 'XIK';
 
@@ -9596,12 +9596,12 @@ class ZugferdUnitCodes
     const REC21_CONTAINER_METAL = 'XME';
 
     /**
-     * Receptacle, metal 
+     * Receptacle, metal
      */
     const REC21_RECEPTACLE_METAL = 'XMR';
 
     /**
-     * Sack, multi-wall 
+     * Sack, multi-wall
      */
     const REC21_SACK_MULTIWALL = 'XMS';
 
@@ -9611,12 +9611,12 @@ class ZugferdUnitCodes
     const REC21_MAT = 'XMT';
 
     /**
-     * Receptacle, plastic wrapped 
+     * Receptacle, plastic wrapped
      */
     const REC21_RECEPTACLE_PLASTIC_WRAPPED = 'XMW';
 
     /**
-     * Matchbox 
+     * Matchbox
      */
     const REC21_MATCHBOX = 'XMX';
 
@@ -9626,7 +9626,7 @@ class ZugferdUnitCodes
     const REC21_NOT_AVAILABLE = 'XNA';
 
     /**
-     * Unpacked or unpackaged 
+     * Unpacked or unpackaged
      */
     const REC21_UNPACKED_OR_UNPACKAGED = 'XNE';
 
@@ -9641,7 +9641,7 @@ class ZugferdUnitCodes
     const REC21_UNPACKED_OR_UNPACKAGED_MULTIPLE_UNITS = 'XNG';
 
     /**
-     * Nest 
+     * Nest
      */
     const REC21_NEST = 'XNS';
 
@@ -9651,12 +9651,12 @@ class ZugferdUnitCodes
     const REC21_NET = 'XNT';
 
     /**
-     * Net, tube, plastic 
+     * Net, tube, plastic
      */
     const REC21_NET_TUBE_PLASTIC = 'XNU';
 
     /**
-     * Net, tube, textile 
+     * Net, tube, textile
      */
     const REC21_NET_TUBE_TEXTILE = 'XNV';
 
@@ -9711,7 +9711,7 @@ class ZugferdUnitCodes
     const REC21_PAN = 'XP2';
 
     /**
-     * Packet 
+     * Packet
      */
     const REC21_PACKET = 'XPA';
 
@@ -9721,22 +9721,22 @@ class ZugferdUnitCodes
     const REC21_PALLET_BOX_COMBINED_OPENENDED_BOX_AND_PALLET = 'XPB';
 
     /**
-     * Parcel 
+     * Parcel
      */
     const REC21_PARCEL = 'XPC';
 
     /**
-     * Pallet, modular, collars 80cms * 100cms 
+     * Pallet, modular, collars 80cms * 100cms
      */
     const REC21_PALLET_MODULAR_COLLARS_80CMS__100CMS = 'XPD';
 
     /**
-     * Pallet, modular, collars 80cms * 120cms 
+     * Pallet, modular, collars 80cms * 120cms
      */
     const REC21_PALLET_MODULAR_COLLARS_80CMS__120CMS = 'XPE';
 
     /**
-     * Pen 
+     * Pen
      */
     const REC21_PEN = 'XPF';
 
@@ -9751,7 +9751,7 @@ class ZugferdUnitCodes
     const REC21_PITCHER = 'XPH';
 
     /**
-     * Pipe 
+     * Pipe
      */
     const REC21_PIPE = 'XPI';
 
@@ -9766,7 +9766,7 @@ class ZugferdUnitCodes
     const REC21_PACKAGE = 'XPK';
 
     /**
-     * Pail 
+     * Pail
      */
     const REC21_PAIL = 'XPL';
 
@@ -9786,7 +9786,7 @@ class ZugferdUnitCodes
     const REC21_PIECE = 'XPP';
 
     /**
-     * Receptacle, plastic 
+     * Receptacle, plastic
      */
     const REC21_RECEPTACLE_PLASTIC = 'XPR';
 
@@ -9796,17 +9796,17 @@ class ZugferdUnitCodes
     const REC21_POT = 'XPT';
 
     /**
-     * Tray 
+     * Tray
      */
     const REC21_TRAY = 'XPU';
 
     /**
-     * Pipes, in bundle/bunch/truss 
+     * Pipes, in bundle/bunch/truss
      */
     const REC21_PIPES_IN_BUNDLE_BUNCH_TRUSS = 'XPV';
 
     /**
-     * Pallet 
+     * Pallet
      */
     const REC21_PALLET = 'XPX';
 
@@ -9856,7 +9856,7 @@ class ZugferdUnitCodes
     const REC21_BARREL_WOODEN_BUNG_TYPE = 'XQH';
 
     /**
-     * Barrel, wooden, removable head 
+     * Barrel, wooden, removable head
      */
     const REC21_BARREL_WOODEN_REMOVABLE_HEAD = 'XQJ';
 
@@ -9891,7 +9891,7 @@ class ZugferdUnitCodes
     const REC21_BOX_WOODEN_NATURAL_WOOD_WITH_SIFT_PROOF_WALLS = 'XQQ';
 
     /**
-     * Box, plastic, expanded 
+     * Box, plastic, expanded
      */
     const REC21_BOX_PLASTIC_EXPANDED = 'XQR';
 
@@ -9906,7 +9906,7 @@ class ZugferdUnitCodes
     const REC21_ROD = 'XRD';
 
     /**
-     * Ring 
+     * Ring
      */
     const REC21_RING = 'XRG';
 
@@ -9916,22 +9916,22 @@ class ZugferdUnitCodes
     const REC21_RACK_CLOTHING_HANGER = 'XRJ';
 
     /**
-     * Rack 
+     * Rack
      */
     const REC21_RACK = 'XRK';
 
     /**
-     * Reel 
+     * Reel
      */
     const REC21_REEL = 'XRL';
 
     /**
-     * Roll 
+     * Roll
      */
     const REC21_ROLL = 'XRO';
 
     /**
-     * Rednet 
+     * Rednet
      */
     const REC21_REDNET = 'XRT';
 
@@ -9941,7 +9941,7 @@ class ZugferdUnitCodes
     const REC21_RODS_IN_BUNDLE_BUNCH_TRUSS = 'XRZ';
 
     /**
-     * Sack 
+     * Sack
      */
     const REC21_SACK = 'XSA';
 
@@ -9951,7 +9951,7 @@ class ZugferdUnitCodes
     const REC21_SLAB = 'XSB';
 
     /**
-     * Crate, shallow 
+     * Crate, shallow
      */
     const REC21_CRATE_SHALLOW = 'XSC';
 
@@ -9966,32 +9966,32 @@ class ZugferdUnitCodes
     const REC21_SEACHEST = 'XSE';
 
     /**
-     * Sachet 
+     * Sachet
      */
     const REC21_SACHET = 'XSH';
 
     /**
-     * Skid 
+     * Skid
      */
     const REC21_SKID = 'XSI';
 
     /**
-     * Case, skeleton 
+     * Case, skeleton
      */
     const REC21_CASE_SKELETON = 'XSK';
 
     /**
-     * Slipsheet 
+     * Slipsheet
      */
     const REC21_SLIPSHEET = 'XSL';
 
     /**
-     * Sheetmetal 
+     * Sheetmetal
      */
     const REC21_SHEETMETAL = 'XSM';
 
     /**
-     * Spool 
+     * Spool
      */
     const REC21_SPOOL = 'XSO';
 
@@ -10011,7 +10011,7 @@ class ZugferdUnitCodes
     const REC21_SHEET = 'XST';
 
     /**
-     * Suitcase 
+     * Suitcase
      */
     const REC21_SUITCASE = 'XSU';
 
@@ -10021,7 +10021,7 @@ class ZugferdUnitCodes
     const REC21_ENVELOPE_STEEL = 'XSV';
 
     /**
-     * Shrinkwrapped  
+     * Shrinkwrapped
      */
     const REC21_SHRINKWRAPPED = 'XSW';
 
@@ -10106,12 +10106,12 @@ class ZugferdUnitCodes
     const REC21_BAG_TOTE = 'XTT';
 
     /**
-     * Tube 
+     * Tube
      */
     const REC21_TUBE = 'XTU';
 
     /**
-     * Tube, with nozzle 
+     * Tube, with nozzle
      */
     const REC21_TUBE_WITH_NOZZLE = 'XTV';
 
@@ -10126,12 +10126,12 @@ class ZugferdUnitCodes
     const REC21_TANK_CYLINDRICAL = 'XTY';
 
     /**
-     * Tubes, in bundle/bunch/truss 
+     * Tubes, in bundle/bunch/truss
      */
     const REC21_TUBES_IN_BUNDLE_BUNCH_TRUSS = 'XTZ';
 
     /**
-     * Uncaged 
+     * Uncaged
      */
     const REC21_UNCAGED = 'XUC';
 
@@ -10151,22 +10151,22 @@ class ZugferdUnitCodes
     const REC21_BULK_GAS_AT_1031_MBAR_AND_15C = 'XVG';
 
     /**
-     * Vial 
+     * Vial
      */
     const REC21_VIAL = 'XVI';
 
     /**
-     * Vanpack 
+     * Vanpack
      */
     const REC21_VANPACK = 'XVK';
 
     /**
-     * Bulk, liquid 
+     * Bulk, liquid
      */
     const REC21_BULK_LIQUID = 'XVL';
 
     /**
-     * Bulk, solid, large particles (“nodules”) 
+     * Bulk, solid, large particles (“nodules”)
      */
     const REC21_BULK_SOLID_LARGE_PARTICLES_NODULES = 'XVO';
 
@@ -10176,7 +10176,7 @@ class ZugferdUnitCodes
     const REC21_VACUUMPACKED = 'XVP';
 
     /**
-     * Bulk, liquefied gas (at abnormal temperature/pressure) 
+     * Bulk, liquefied gas (at abnormal temperature/pressure)
      */
     const REC21_BULK_LIQUEFIED_GAS_AT_ABNORMAL_TEMPERATURE_PRESSURE = 'XVQ';
 
@@ -10186,7 +10186,7 @@ class ZugferdUnitCodes
     const REC21_VEHICLE = 'XVN';
 
     /**
-     * Bulk, solid, granular particles (“grains”) 
+     * Bulk, solid, granular particles (“grains”)
      */
     const REC21_BULK_SOLID_GRANULAR_PARTICLES_GRAINS = 'XVR';
 
@@ -10206,22 +10206,22 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER = 'XWA';
 
     /**
-     * Wickerbottle 
+     * Wickerbottle
      */
     const REC21_WICKERBOTTLE = 'XWB';
 
     /**
-     * Intermediate bulk container, steel 
+     * Intermediate bulk container, steel
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_STEEL = 'XWC';
 
     /**
-     * Intermediate bulk container, aluminium 
+     * Intermediate bulk container, aluminium
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_ALUMINIUM = 'XWD';
 
     /**
-     * Intermediate bulk container, metal 
+     * Intermediate bulk container, metal
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_METAL = 'XWF';
 
@@ -10236,42 +10236,42 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_ALUMINIUM_PRESSURISED__10_KPA = 'XWH';
 
     /**
-     * Intermediate bulk container, metal, pressure 10 kpa 
+     * Intermediate bulk container, metal, pressure 10 kpa
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_METAL_PRESSURE_10_KPA = 'XWJ';
 
     /**
-     * Intermediate bulk container, steel, liquid 
+     * Intermediate bulk container, steel, liquid
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_STEEL_LIQUID = 'XWK';
 
     /**
-     * Intermediate bulk container, aluminium, liquid 
+     * Intermediate bulk container, aluminium, liquid
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_ALUMINIUM_LIQUID = 'XWL';
 
     /**
-     * Intermediate bulk container, metal, liquid 
+     * Intermediate bulk container, metal, liquid
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_METAL_LIQUID = 'XWM';
 
     /**
-     * Intermediate bulk container, woven plastic, without coat/liner 
+     * Intermediate bulk container, woven plastic, without coat/liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_WOVEN_PLASTIC_WITHOUT_COAT_LINER = 'XWN';
 
     /**
-     * Intermediate bulk container, woven plastic, coated 
+     * Intermediate bulk container, woven plastic, coated
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_WOVEN_PLASTIC_COATED = 'XWP';
 
     /**
-     * Intermediate bulk container, woven plastic, with liner 
+     * Intermediate bulk container, woven plastic, with liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_WOVEN_PLASTIC_WITH_LINER = 'XWQ';
 
     /**
-     * Intermediate bulk container, woven plastic, coated and liner 
+     * Intermediate bulk container, woven plastic, coated and liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_WOVEN_PLASTIC_COATED_AND_LINER = 'XWR';
 
@@ -10281,7 +10281,7 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_PLASTIC_FILM = 'XWS';
 
     /**
-     * Intermediate bulk container, textile with out coat/liner 
+     * Intermediate bulk container, textile with out coat/liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_TEXTILE_WITH_OUT_COAT_LINER = 'XWT';
 
@@ -10291,22 +10291,22 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_NATURAL_WOOD_WITH_INNER_LINER = 'XWU';
 
     /**
-     * Intermediate bulk container, textile, coated 
+     * Intermediate bulk container, textile, coated
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_TEXTILE_COATED = 'XWV';
 
     /**
-     * Intermediate bulk container, textile, with liner 
+     * Intermediate bulk container, textile, with liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_TEXTILE_WITH_LINER = 'XWW';
 
     /**
-     * Intermediate bulk container, textile, coated and liner 
+     * Intermediate bulk container, textile, coated and liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_TEXTILE_COATED_AND_LINER = 'XWX';
 
     /**
-     * Intermediate bulk container, plywood, with inner liner 
+     * Intermediate bulk container, plywood, with inner liner
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_PLYWOOD_WITH_INNER_LINER = 'XWY';
 
@@ -10316,12 +10316,12 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_RECONSTITUTED_WOOD_WITH_INNER_LINER = 'XWZ';
 
     /**
-     * Bag, woven plastic, without inner coat/liner 
+     * Bag, woven plastic, without inner coat/liner
      */
     const REC21_BAG_WOVEN_PLASTIC_WITHOUT_INNER_COAT_LINER = 'XXA';
 
     /**
-     * Bag, woven plastic, sift proof 
+     * Bag, woven plastic, sift proof
      */
     const REC21_BAG_WOVEN_PLASTIC_SIFT_PROOF = 'XXB';
 
@@ -10331,17 +10331,17 @@ class ZugferdUnitCodes
     const REC21_BAG_WOVEN_PLASTIC_WATER_RESISTANT = 'XXC';
 
     /**
-     * Bag, plastics film 
+     * Bag, plastics film
      */
     const REC21_BAG_PLASTICS_FILM = 'XXD';
 
     /**
-     * Bag, textile, without inner coat/liner 
+     * Bag, textile, without inner coat/liner
      */
     const REC21_BAG_TEXTILE_WITHOUT_INNER_COAT_LINER = 'XXF';
 
     /**
-     * Bag, textile, sift proof 
+     * Bag, textile, sift proof
      */
     const REC21_BAG_TEXTILE_SIFT_PROOF = 'XXG';
 
@@ -10351,7 +10351,7 @@ class ZugferdUnitCodes
     const REC21_BAG_TEXTILE_WATER_RESISTANT = 'XXH';
 
     /**
-     * Bag, paper, multi-wall 
+     * Bag, paper, multi-wall
      */
     const REC21_BAG_PAPER_MULTIWALL = 'XXJ';
 
@@ -10391,7 +10391,7 @@ class ZugferdUnitCodes
     const REC21_COMPOSITE_PACKAGING_PLASTIC_RECEPTACLE_IN_PLYWOOD_DRUM = 'XYG';
 
     /**
-     * Composite packaging, plastic receptacle in plywood box 
+     * Composite packaging, plastic receptacle in plywood box
      */
     const REC21_COMPOSITE_PACKAGING_PLASTIC_RECEPTACLE_IN_PLYWOOD_BOX = 'XYH';
 
@@ -10456,7 +10456,7 @@ class ZugferdUnitCodes
     const REC21_COMPOSITE_PACKAGING_GLASS_RECEPTACLE_IN_FIBRE_DRUM = 'XYW';
 
     /**
-     * Composite packaging, glass receptacle in fibreboard box 
+     * Composite packaging, glass receptacle in fibreboard box
      */
     const REC21_COMPOSITE_PACKAGING_GLASS_RECEPTACLE_IN_FIBREBOARD_BOX = 'XYX';
 
@@ -10471,12 +10471,12 @@ class ZugferdUnitCodes
     const REC21_COMPOSITE_PACKAGING_GLASS_RECEPTACLE_IN_SOLID_PLASTIC_PACK = 'XYZ';
 
     /**
-     * Intermediate bulk container, paper, multi-wall 
+     * Intermediate bulk container, paper, multi-wall
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_PAPER_MULTIWALL = 'XZA';
 
     /**
-     * Bag, large 
+     * Bag, large
      */
     const REC21_BAG_LARGE = 'XZB';
 
@@ -10509,7 +10509,7 @@ class ZugferdUnitCodes
 
     /**
      * Intermediate bulk container, rigid plastic, with structural equipment,
-     * liquids 
+     * liquids
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_RIGID_PLASTIC_WITH_STRUCTURAL_EQUIPMENT_LIQUIDS = 'XZJ';
 
@@ -10529,7 +10529,7 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_COMPOSITE_FLEXIBLE_PLASTIC_SOLIDS = 'XZM';
 
     /**
-     * Intermediate bulk container, composite, rigid plastic, pressurised 
+     * Intermediate bulk container, composite, rigid plastic, pressurised
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_COMPOSITE_RIGID_PLASTIC_PRESSURISED = 'XZN';
 
@@ -10544,7 +10544,7 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_COMPOSITE_RIGID_PLASTIC_LIQUIDS = 'XZQ';
 
     /**
-     * Intermediate bulk container, composite, flexible plastic, liquids 
+     * Intermediate bulk container, composite, flexible plastic, liquids
      */
     const REC21_INTERMEDIATE_BULK_CONTAINER_COMPOSITE_FLEXIBLE_PLASTIC_LIQUIDS = 'XZR';
 
@@ -10584,7 +10584,7 @@ class ZugferdUnitCodes
     const REC21_INTERMEDIATE_BULK_CONTAINER_RECONSTITUTED_WOOD = 'XZY';
 
     /**
-     * Mutually defined 
+     * Mutually defined
      */
     const REC21_MUTUALLY_DEFINED = 'XZZ';
 }
