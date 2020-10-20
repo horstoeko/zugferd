@@ -266,6 +266,8 @@
         -->
     </target>
     <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
+        <delete dir="${project.basedir}/doc"/>
+        <mkdir dir="${project.basedir}/doc"/>
         <exec executable="wget">
             <arg path="${url.phpdocumentator.download}"/>
             <arg value="-O"/>
@@ -282,9 +284,11 @@
             <arg path="./doc"/>
             <arg value="-i"/>
             <arg path="./src/entities/"/>
+            <arg value="-i"/>
+            <arg path="./src/ZugferdObjectHelper.php"/>
             <arg value="-m"/>
             <arg path="TODO"/>
-            <arg value="--title=EasyZugFerd"/>
+            <arg value="--title=horstoeko/zugferd"/>
             <arg value="--visibility=public"/>
             <arg value="--sourcecode"/>
         </exec>

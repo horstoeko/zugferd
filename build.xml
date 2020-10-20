@@ -278,6 +278,8 @@
         -->
     </target>
     <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
+        <delete dir="${project.basedir}/doc"/>
+        <mkdir dir="${project.basedir}/doc"/>
         <exec executable="wget">
             <arg path="${url.phpdocumentator.download}"/>
             <arg value="-O"/>
