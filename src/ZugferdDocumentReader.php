@@ -3955,7 +3955,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $isFlat = count($methods) == 1;
         $value = $this->objectHelper->EnsureArray($value);
 
-        foreach ($value as $valueKey => $valueItem) {
+        foreach ($value as $valueItem) {
             $resultItem = [];
 
             foreach ($methods as $methodKey => $method) {
@@ -4002,7 +4002,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $result = [];
         $value = $this->objectHelper->EnsureArray($value);
 
-        foreach ($value as $valueKey => $valueItem) {
+        foreach ($value as $valueItem) {
             $theValueForKey = $this->objectHelper->TryCallByPathAndReturn($valueItem, $methodKey);
             $theValueForValue = $this->objectHelper->TryCallByPathAndReturn($valueItem, $methodValue);
 
