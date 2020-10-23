@@ -937,7 +937,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">141</span>
+        <span class="phpdocumentor-element-found-in__line">148</span>
     </aside>
         <p class="phpdocumentor-summary">Set main information about this document</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -982,37 +982,41 @@ Detailinformationen zur Buchungsreferenz</td>
                     <span class="phpdocumentor-signature__argument__name">$documentno</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The invoice no.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The document no issued by the seller</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$documenttypecode</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Code for the invoice type</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$documentdate</span>
                     : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr></span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Date of invoice</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Date of invoice
+The date when the document was issued by the seller</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$invoiceCurrency</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Code for the invoice currency</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Code for the invoice currency
+The code for the invoice currency</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$documentname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Document Type</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Document Type
+The document type (free text)</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$documentlanguage</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Language indicator</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Language indicator
+The language code in which the document was written</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$effectiveSpecifiedPeriod</span>
                     : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DateTime">DateTime</abbr>|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Contractual due date of the invoice</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The contractual due date of the invoice</p></section></dd>
                     </dl>
     
         
@@ -1031,7 +1035,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">162</span>
+        <span class="phpdocumentor-element-found-in__line">171</span>
     </aside>
         <p class="phpdocumentor-summary">Set general payment information</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1080,7 +1084,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">174</span>
+        <span class="phpdocumentor-element-found-in__line">183</span>
     </aside>
         <p class="phpdocumentor-summary">Mark document as a copy from the original one</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1108,7 +1112,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">185</span>
+        <span class="phpdocumentor-element-found-in__line">194</span>
     </aside>
         <p class="phpdocumentor-summary">Mark document as a test document</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1136,7 +1140,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">205</span>
+        <span class="phpdocumentor-element-found-in__line">214</span>
     </aside>
         <p class="phpdocumentor-summary">Document money summation</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1219,7 +1223,7 @@ Detailinformationen zur Buchungsreferenz</td>
                     <span class="phpdocumentor-signature__argument__name">$taxTotalAmount</span>
                     : <span class="phpdocumentor-signature__argument__return-type">float|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Total amount of the invoice sales tax, total tax amount in the booking currency</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Total amount of the invoice sales tax, Total tax amount in the booking currency</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$roundingAmount</span>
                     : <span class="phpdocumentor-signature__argument__return-type">float|null</span>
@@ -1248,7 +1252,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">220</span>
+        <span class="phpdocumentor-element-found-in__line">229</span>
     </aside>
         <p class="phpdocumentor-summary">Initilize the main document summation</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1276,7 +1280,7 @@ Detailinformationen zur Buchungsreferenz</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">233</span>
+        <span class="phpdocumentor-element-found-in__line">243</span>
     </aside>
         <p class="phpdocumentor-summary">Sets a foreign currency (code) with the tax amount. The exchange rate
 is calculated by tax amounts</p>
@@ -1302,12 +1306,12 @@ is calculated by tax amounts</p>
                     <span class="phpdocumentor-signature__argument__name">$foreignCurrencyCode</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Foreign currency code</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$foreignTaxAmount</span>
                     : <span class="phpdocumentor-signature__argument__return-type">float</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Tax total amount in the foreign currency</p></section></dd>
                     </dl>
     
         
@@ -1326,7 +1330,7 @@ is calculated by tax amounts</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">293</span>
+        <span class="phpdocumentor-element-found-in__line">303</span>
     </aside>
         <p class="phpdocumentor-summary">Add a note to the docuzment</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1384,7 +1388,7 @@ is calculated by tax amounts</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">311</span>
+        <span class="phpdocumentor-element-found-in__line">325</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information about the seller (=service provider)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1413,15 +1417,16 @@ is calculated by tax amounts</p>
                     <span class="phpdocumentor-signature__argument__name">$name</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The full formal name under which the seller is registered in the national register of
-legal entities or taxable persons, or otherwise acts as persons</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The full formal name under which the seller is registered in the
+National Register of Legal Entities, Taxable Person or otherwise acting as person(s)</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$id</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>In many systems, the clerk identification is key information. Multiple seller IDs can be
-assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given
-it should be known to the buyer and seller, e.g. a previously exchanged ID of the seller assigned by the buyer</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier of the seller. In many systems, seller identification
+is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
+by using different identification schemes. If no scheme is given, it should be known to the buyer
+and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$description</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
@@ -1445,7 +1450,7 @@ it should be known to the buyer and seller, e.g. a previously exchanged ID of th
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">327</span>
+        <span class="phpdocumentor-element-found-in__line">348</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the seller</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1463,6 +1468,11 @@ it should be known to the buyer and seller, e.g. a previously exchanged ID of th
         : <span class="phpdocumentor-signature__response_type"><a href="../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a></span>
     </code>
 
+        <section class="phpdocumentor-description"><p><strong>Notes</strong></p>
+<ul>
+<li>The Seller's ID identification scheme is a unique identifier
+assigned to a seller by a global registration organization</li>
+</ul></section>
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
@@ -1496,7 +1506,7 @@ the list published by the ISO / IEC 6523 Maintenance Agency.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">348</span>
+        <span class="phpdocumentor-element-found-in__line">369</span>
     </aside>
         <p class="phpdocumentor-summary">Add detailed information on the seller&#039;s tax information</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1551,7 +1561,7 @@ identification number, unless he uses a tax agent.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">368</span>
+        <span class="phpdocumentor-element-found-in__line">401</span>
     </aside>
         <p class="phpdocumentor-summary">Sets detailed information on the business address of the seller</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1596,37 +1606,42 @@ identification number, unless he uses a tax agent.</p></section>
                     <span class="phpdocumentor-signature__argument__name">$lineone</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 1, Enter the street or post office box. For major customer addresses, this field must be filled with &quot;-&quot;.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The main line in the sellers address. This is usually the street name and house number or
+the post office box</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$linetwo</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 2</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Line 2 of the seller's address. This is an additional address line in an address that can be
+used to provide additional details in addition to the main line</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$linethree</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 3</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Line 3 of the seller's address. This is an additional address line in an address that can be
+used to provide additional details in addition to the main line</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$postcode</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Post Code</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Identifier for a group of properties, such as a zip code</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$city</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>City</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Usual name of the city or municipality in which the seller's address is located</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$country</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Country (ISO 3166-1) Only the alpha-2 representation may be used</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+representation of names of countries and their subdivisions”</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$subdivision</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>State</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The sellers state</p></section></dd>
                     </dl>
     
         
@@ -1645,7 +1660,7 @@ identification number, unless he uses a tax agent.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">388</span>
+        <span class="phpdocumentor-element-found-in__line">425</span>
     </aside>
         <p class="phpdocumentor-summary">Set Organization details</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1674,15 +1689,16 @@ identification number, unless he uses a tax agent.</p></section>
                     <span class="phpdocumentor-signature__argument__name">$legalorgid</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier issued by an official registrar that identifies the seller as a legal entity
-or legal entity. If no identification scheme is given, it should be known to the buyer and seller</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier issued by an official registrar that identifies the
+seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+it should be known to the buyer and seller</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$legalorgtype</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The identifier for the identification scheme The identifier of the legal registration of
-the seller Note: If the identification scheme is used, it must be selected from the entries in the
-list published by the ISO / IEC 6523 Maintenance Agency.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The identifier for the identification scheme of the legal
+registration of the seller. If the identification scheme is used, it must be selected from
+ISO/IEC 6523 list</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$legalorgname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
@@ -1707,7 +1723,7 @@ the company name). Note: This may be used if different from the seller's name.</
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">408</span>
+        <span class="phpdocumentor-element-found-in__line">449</span>
     </aside>
         <p class="phpdocumentor-summary">Set detailed information on the seller&#039;s contact person</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1744,19 +1760,18 @@ the company name). Note: This may be used if different from the seller's name.</
                     <span class="phpdocumentor-signature__argument__name">$contactpersonname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A point of contact for a legal entity or legal person,
-such as Personal name, designation of the contact person</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Contact point for a legal entity,
+such as a personal name of the contact person</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactdepartmentname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A point of contact for a legal entity or legal person
-such as Name of the department or office</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Contact point for a legal entity, such as a name of the department or office</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactphoneno</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Seller's phone number</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information on the seller's phone number</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactfaxno</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
@@ -1766,7 +1781,7 @@ such as Name of the department or office</p></section></dd>
                     <span class="phpdocumentor-signature__argument__name">$contactemailadd</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information about the email address of the seller</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information on the seller's email address</p></section></dd>
                     </dl>
     
         
@@ -1785,7 +1800,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">425</span>
+        <span class="phpdocumentor-element-found-in__line">470</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information about the buyer (service recipient)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1819,13 +1834,14 @@ such as Name of the department or office</p></section></dd>
                     <span class="phpdocumentor-signature__argument__name">$id</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier of the buyer, note: If no scheme is given, it should be known to the
-buyer and seller, e.g. a previously exchanged, seller-assigned identifier of the buyer.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be
+assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given,
+it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$description</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Further legal information that is relevant for the seller</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Further legal information about the buyer</p></section></dd>
                     </dl>
     
         
@@ -1844,7 +1860,7 @@ buyer and seller, e.g. a previously exchanged, seller-assigned identifier of the
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">441</span>
+        <span class="phpdocumentor-element-found-in__line">488</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the buyer</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1895,7 +1911,7 @@ the list published by the ISO / IEC 6523 Maintenance Agency.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">462</span>
+        <span class="phpdocumentor-element-found-in__line">511</span>
     </aside>
         <p class="phpdocumentor-summary">Add detailed information on the buyers&#039;s tax information</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1950,7 +1966,7 @@ identification number, unless he uses a tax agent.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">482</span>
+        <span class="phpdocumentor-element-found-in__line">543</span>
     </aside>
         <p class="phpdocumentor-summary">Sets detailed information on the business address of the buyer</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1995,37 +2011,42 @@ identification number, unless he uses a tax agent.</p></section>
                     <span class="phpdocumentor-signature__argument__name">$lineone</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 1, Enter the street or post office box. For major customer addresses, this field must be filled with &quot;-&quot;.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The main line in the buyers address. This is usually the street name and house number or
+the post office box</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$linetwo</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 2</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Line 2 of the buyers address. This is an additional address line in an address that can be
+used to provide additional details in addition to the main line</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$linethree</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Address Line 3</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Line 3 of the buyers address. This is an additional address line in an address that can be
+used to provide additional details in addition to the main line</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$postcode</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Post Code</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Identifier for a group of properties, such as a zip code</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$city</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>City</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Usual name of the city or municipality in which the buyers address is located</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$country</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Country (ISO 3166-1) Only the alpha-2 representation may be used</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+representation of names of countries and their subdivisions”</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$subdivision</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>State</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The buyers state</p></section></dd>
                     </dl>
     
         
@@ -2044,7 +2065,7 @@ identification number, unless he uses a tax agent.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">502</span>
+        <span class="phpdocumentor-element-found-in__line">567</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the buyer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2073,21 +2094,22 @@ identification number, unless he uses a tax agent.</p></section>
                     <span class="phpdocumentor-signature__argument__name">$legalorgid</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier issued by an official registrar that identifies the buyer as a legal entity
-or legal entity. If no identification scheme is given, it should be known to the buyer and buyer</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier issued by an official registrar that identifies the
+buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+it should be known to the buyer and buyer</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$legalorgtype</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The identifier for the identification scheme The identifier of the legal registration of
-the buyer Note: If the identification scheme is used, it must be selected from the entries in the
-list published by the ISO / IEC 6523 Maintenance Agency.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The identifier for the identification scheme of the legal
+registration of the buyer. If the identification scheme is used, it must be selected from
+ISO/IEC 6523 list</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$legalorgname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A name by which the buyer is known, if different from the buyer's name (also known as
-the company name). Note: This may be used if different from the buyer's name.</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A name by which the buyer is known, if different from the buyers name
+(also known as the company name)</p></section></dd>
                     </dl>
     
         
@@ -2106,7 +2128,7 @@ the company name). Note: This may be used if different from the buyer's name.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">522</span>
+        <span class="phpdocumentor-element-found-in__line">590</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the buyer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2143,19 +2165,17 @@ the company name). Note: This may be used if different from the buyer's name.</p
                     <span class="phpdocumentor-signature__argument__name">$contactpersonname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A point of contact for a legal entity or legal person,
-such as Personal name, designation of the contact person</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Contact point for a legal entity, such as a personal name of the contact person</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactdepartmentname</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>A point of contact for a legal entity or legal person
-such as Name of the department or office</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Contact point for a legal entity, such as a name of the department or office</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactphoneno</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>buyer's phone number</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information on the buyer's phone number</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$contactfaxno</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
@@ -2165,7 +2185,7 @@ such as Name of the department or office</p></section></dd>
                     <span class="phpdocumentor-signature__argument__name">$contactemailadd</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information about the email address of the buyer</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Detailed information on the buyer's email address</p></section></dd>
                     </dl>
     
         
@@ -2184,7 +2204,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">538</span>
+        <span class="phpdocumentor-element-found-in__line">609</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the sellers tax representative trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2213,17 +2233,17 @@ such as Name of the department or office</p></section></dd>
                     <span class="phpdocumentor-signature__argument__name">$name</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The full name of the seller's tax agent</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$id</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier of the sellers tax agent.</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$description</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>Further legal information that is relevant for the sellers tax agent</p></section></dd>
                     </dl>
     
         
@@ -2242,7 +2262,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">552</span>
+        <span class="phpdocumentor-element-found-in__line">627</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Tax representative party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2267,12 +2287,14 @@ such as Name of the department or office</p></section></dd>
                     <span class="phpdocumentor-signature__argument__name">$globalID</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a
+global registration organization.</p></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$globalIDType</span>
                     : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
                      = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>If the identifier is used for the identification scheme, it must be selected from the entries in
+the list published by the ISO / IEC 6523 Maintenance Agency.</p></section></dd>
                     </dl>
     
         
@@ -2291,7 +2313,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">566</span>
+        <span class="phpdocumentor-element-found-in__line">641</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to tax representative party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2340,7 +2362,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">586</span>
+        <span class="phpdocumentor-element-found-in__line">661</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the tax representative party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2434,7 +2456,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">602</span>
+        <span class="phpdocumentor-element-found-in__line">677</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the tax representative party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2492,7 +2514,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">620</span>
+        <span class="phpdocumentor-element-found-in__line">695</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the tax representative party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2568,7 +2590,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">636</span>
+        <span class="phpdocumentor-element-found-in__line">711</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the deviating Consumer</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2626,7 +2648,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">650</span>
+        <span class="phpdocumentor-element-found-in__line">725</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Product Enduser Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2675,7 +2697,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">664</span>
+        <span class="phpdocumentor-element-found-in__line">739</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Product Enduser Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2724,7 +2746,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">684</span>
+        <span class="phpdocumentor-element-found-in__line">759</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the Product Enduser party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2818,7 +2840,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">700</span>
+        <span class="phpdocumentor-element-found-in__line">775</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the Product Enduser party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2876,7 +2898,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">718</span>
+        <span class="phpdocumentor-element-found-in__line">793</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the Product Enduser party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2952,7 +2974,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">734</span>
+        <span class="phpdocumentor-element-found-in__line">809</span>
     </aside>
         <p class="phpdocumentor-summary">Ship-To</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3010,7 +3032,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">748</span>
+        <span class="phpdocumentor-element-found-in__line">823</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Ship-to Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3059,7 +3081,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">762</span>
+        <span class="phpdocumentor-element-found-in__line">837</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-To Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3108,7 +3130,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">782</span>
+        <span class="phpdocumentor-element-found-in__line">857</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3202,7 +3224,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">798</span>
+        <span class="phpdocumentor-element-found-in__line">873</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3260,7 +3282,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">816</span>
+        <span class="phpdocumentor-element-found-in__line">891</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3336,7 +3358,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">832</span>
+        <span class="phpdocumentor-element-found-in__line">907</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the different end recipient</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3394,7 +3416,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">846</span>
+        <span class="phpdocumentor-element-found-in__line">921</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Ship-to Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3443,7 +3465,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">860</span>
+        <span class="phpdocumentor-element-found-in__line">935</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-To Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3492,7 +3514,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">880</span>
+        <span class="phpdocumentor-element-found-in__line">955</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the ultimate Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3586,7 +3608,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">896</span>
+        <span class="phpdocumentor-element-found-in__line">971</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the ultimate Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3644,7 +3666,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">914</span>
+        <span class="phpdocumentor-element-found-in__line">989</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the ultimate Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3720,7 +3742,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">930</span>
+        <span class="phpdocumentor-element-found-in__line">1005</span>
     </aside>
         <p class="phpdocumentor-summary">Ship-From Tradeparty</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3778,7 +3800,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">944</span>
+        <span class="phpdocumentor-element-found-in__line">1019</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Ship-from Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3827,7 +3849,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">958</span>
+        <span class="phpdocumentor-element-found-in__line">1033</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-from Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3876,7 +3898,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">978</span>
+        <span class="phpdocumentor-element-found-in__line">1053</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3970,7 +3992,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">994</span>
+        <span class="phpdocumentor-element-found-in__line">1069</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4028,7 +4050,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1012</span>
+        <span class="phpdocumentor-element-found-in__line">1087</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4104,7 +4126,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1028</span>
+        <span class="phpdocumentor-element-found-in__line">1103</span>
     </aside>
         <p class="phpdocumentor-summary">Invoicer (Rechnungssteller)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4162,7 +4184,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1042</span>
+        <span class="phpdocumentor-element-found-in__line">1117</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Invoicer Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4211,7 +4233,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1056</span>
+        <span class="phpdocumentor-element-found-in__line">1131</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-from Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4260,7 +4282,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1076</span>
+        <span class="phpdocumentor-element-found-in__line">1151</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4354,7 +4376,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1092</span>
+        <span class="phpdocumentor-element-found-in__line">1167</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4412,7 +4434,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1110</span>
+        <span class="phpdocumentor-element-found-in__line">1185</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4488,7 +4510,7 @@ such as Name of the department or office</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1128</span>
+        <span class="phpdocumentor-element-found-in__line">1203</span>
     </aside>
         <p class="phpdocumentor-summary">Invoicee,
 Detailed information on the different invoice recipient,
@@ -4548,7 +4570,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1142</span>
+        <span class="phpdocumentor-element-found-in__line">1217</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Invoicee Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4597,7 +4619,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1156</span>
+        <span class="phpdocumentor-element-found-in__line">1231</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-from Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4646,7 +4668,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1176</span>
+        <span class="phpdocumentor-element-found-in__line">1251</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4740,7 +4762,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1192</span>
+        <span class="phpdocumentor-element-found-in__line">1267</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4798,7 +4820,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1210</span>
+        <span class="phpdocumentor-element-found-in__line">1285</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4874,7 +4896,7 @@ Detailinformationen zum abweichenden Rechnungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1228</span>
+        <span class="phpdocumentor-element-found-in__line">1303</span>
     </aside>
         <p class="phpdocumentor-summary">Payee,
 Detailed information on the different invoice payee,
@@ -4934,7 +4956,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1242</span>
+        <span class="phpdocumentor-element-found-in__line">1317</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Payee Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4983,7 +5005,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1256</span>
+        <span class="phpdocumentor-element-found-in__line">1331</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-from Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5032,7 +5054,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1276</span>
+        <span class="phpdocumentor-element-found-in__line">1351</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5126,7 +5148,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1292</span>
+        <span class="phpdocumentor-element-found-in__line">1367</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5184,7 +5206,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1310</span>
+        <span class="phpdocumentor-element-found-in__line">1385</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the ultimate Ship-from party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5260,7 +5282,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1324</span>
+        <span class="phpdocumentor-element-found-in__line">1399</span>
     </aside>
         <p class="phpdocumentor-summary">Set the delivery terms</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5300,7 +5322,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1338</span>
+        <span class="phpdocumentor-element-found-in__line">1413</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the associated confirmation of the order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5349,7 +5371,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1352</span>
+        <span class="phpdocumentor-element-found-in__line">1427</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the related order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5398,7 +5420,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1366</span>
+        <span class="phpdocumentor-element-found-in__line">1441</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the associated contract</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5447,7 +5469,7 @@ Zahlungsempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1386</span>
+        <span class="phpdocumentor-element-found-in__line">1461</span>
     </aside>
         <p class="phpdocumentor-summary">Documents justifying the invoice
 Rechnungsbegründende Unterlagen</p>
@@ -5542,7 +5564,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1400</span>
+        <span class="phpdocumentor-element-found-in__line">1475</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the related order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5591,7 +5613,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1414</span>
+        <span class="phpdocumentor-element-found-in__line">1489</span>
     </aside>
         <p class="phpdocumentor-summary">Set Details of a project reference</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5640,7 +5662,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1428</span>
+        <span class="phpdocumentor-element-found-in__line">1503</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the ultimate customer order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5689,7 +5711,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1441</span>
+        <span class="phpdocumentor-element-found-in__line">1516</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the actual delivery</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5729,7 +5751,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1455</span>
+        <span class="phpdocumentor-element-found-in__line">1530</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated shipping notification</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5778,7 +5800,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1469</span>
+        <span class="phpdocumentor-element-found-in__line">1544</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated shipping notification</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5827,7 +5849,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1483</span>
+        <span class="phpdocumentor-element-found-in__line">1558</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated delivery note</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5876,7 +5898,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1505</span>
+        <span class="phpdocumentor-element-found-in__line">1580</span>
     </aside>
         <p class="phpdocumentor-summary">Add new payment means</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5997,7 +6019,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1539</span>
+        <span class="phpdocumentor-element-found-in__line">1614</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6127,7 +6149,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1556</span>
+        <span class="phpdocumentor-element-found-in__line">1631</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax in a simple way</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6203,7 +6225,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1569</span>
+        <span class="phpdocumentor-element-found-in__line">1644</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the billing period</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6261,7 +6283,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1593</span>
+        <span class="phpdocumentor-element-found-in__line">1668</span>
     </aside>
         <p class="phpdocumentor-summary">Add a allowance/charge at document level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6400,7 +6422,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1610</span>
+        <span class="phpdocumentor-element-found-in__line">1685</span>
     </aside>
         <p class="phpdocumentor-summary">Add a logistic service charge</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6476,7 +6498,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1625</span>
+        <span class="phpdocumentor-element-found-in__line">1700</span>
     </aside>
         <p class="phpdocumentor-summary">Add a payment term</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6534,7 +6556,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1644</span>
+        <span class="phpdocumentor-element-found-in__line">1719</span>
     </aside>
         <p class="phpdocumentor-summary">Add discount Terms to last added payment term</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6619,7 +6641,7 @@ Rechnungsbegründende Unterlagen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1659</span>
+        <span class="phpdocumentor-element-found-in__line">1734</span>
     </aside>
         <p class="phpdocumentor-summary">Add an AccountingAccount
 Detailinformationen zur Buchungsreferenz</p>
@@ -6669,7 +6691,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1674</span>
+        <span class="phpdocumentor-element-found-in__line">1749</span>
     </aside>
         <p class="phpdocumentor-summary">Adds a new position (line) to document</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6727,7 +6749,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1690</span>
+        <span class="phpdocumentor-element-found-in__line">1765</span>
     </aside>
         <p class="phpdocumentor-summary">Set note on a document position (line)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6785,7 +6807,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1709</span>
+        <span class="phpdocumentor-element-found-in__line">1784</span>
     </aside>
         <p class="phpdocumentor-summary">Adds product details to the last created position (line) in the document</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6870,7 +6892,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1724</span>
+        <span class="phpdocumentor-element-found-in__line">1799</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the related order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6928,7 +6950,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1740</span>
+        <span class="phpdocumentor-element-found-in__line">1815</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the related contract on the position</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6986,7 +7008,7 @@ Detailinformationen zur Buchungsreferenz</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1762</span>
+        <span class="phpdocumentor-element-found-in__line">1837</span>
     </aside>
         <p class="phpdocumentor-summary">Details of an additional Document reference on a position
 Detailangaben zu einer zusätzlichen Dokumentenreferenz auf Positionsebene</p>
@@ -7090,7 +7112,7 @@ Detailangaben zu einer zusätzlichen Dokumentenreferenz auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1779</span>
+        <span class="phpdocumentor-element-found-in__line">1854</span>
     </aside>
         <p class="phpdocumentor-summary">Ultimate Customer Order Referenced Document
 Dokument mit Bezug zur endgültigen Kundenbestellung</p>
@@ -7149,7 +7171,7 @@ Dokument mit Bezug zur endgültigen Kundenbestellung</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1796</span>
+        <span class="phpdocumentor-element-found-in__line">1871</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the gross price of the item
 Detailinformationen zum Bruttopreis des Artikels</p>
@@ -7208,7 +7230,7 @@ Detailinformationen zum Bruttopreis des Artikels</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1822</span>
+        <span class="phpdocumentor-element-found-in__line">1897</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on surcharges and discounts
 Detailinformationen zu Zu- und Abschlägen</p>
@@ -7348,7 +7370,7 @@ Detailinformationen zu Zu- und Abschlägen</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1840</span>
+        <span class="phpdocumentor-element-found-in__line">1915</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the net price of the item
 Detailinformationen zum Nettopreis des Artikels</p>
@@ -7407,7 +7429,7 @@ Detailinformationen zum Nettopreis des Artikels</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1860</span>
+        <span class="phpdocumentor-element-found-in__line">1935</span>
     </aside>
         <p class="phpdocumentor-summary">Tax included for B2C on position level
 Enthaltene Steuer für B2C auf Positionsebene</p>
@@ -7493,7 +7515,7 @@ Enthaltene Steuer für B2C auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1880</span>
+        <span class="phpdocumentor-element-found-in__line">1955</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the position Quantity</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7578,7 +7600,7 @@ Enthaltene Steuer für B2C auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1898</span>
+        <span class="phpdocumentor-element-found-in__line">1973</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the different ship-to party at item level
 Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
@@ -7637,7 +7659,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1913</span>
+        <span class="phpdocumentor-element-found-in__line">1988</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Ship-to Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7686,7 +7708,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1928</span>
+        <span class="phpdocumentor-element-found-in__line">2003</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-To Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7735,7 +7757,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1949</span>
+        <span class="phpdocumentor-element-found-in__line">2024</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7829,7 +7851,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1966</span>
+        <span class="phpdocumentor-element-found-in__line">2041</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7887,7 +7909,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1985</span>
+        <span class="phpdocumentor-element-found-in__line">2060</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7963,7 +7985,7 @@ Detailinformationen zum abweichenden Warenempfänger auf Positionsebene</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2003</span>
+        <span class="phpdocumentor-element-found-in__line">2078</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the different end recipient
 Detailinformationen zum abweichenden Endempfänger</p>
@@ -8022,7 +8044,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2018</span>
+        <span class="phpdocumentor-element-found-in__line">2093</span>
     </aside>
         <p class="phpdocumentor-summary">Add a global id for the Ship-to Trade Party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8071,7 +8093,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2033</span>
+        <span class="phpdocumentor-element-found-in__line">2108</span>
     </aside>
         <p class="phpdocumentor-summary">Add Tax registration to Ship-To Trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8120,7 +8142,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2054</span>
+        <span class="phpdocumentor-element-found-in__line">2129</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the postal address of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8214,7 +8236,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2071</span>
+        <span class="phpdocumentor-element-found-in__line">2146</span>
     </aside>
         <p class="phpdocumentor-summary">Set legal organisation of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8272,7 +8294,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2090</span>
+        <span class="phpdocumentor-element-found-in__line">2165</span>
     </aside>
         <p class="phpdocumentor-summary">Set contact of the Ship-To party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8348,7 +8370,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2105</span>
+        <span class="phpdocumentor-element-found-in__line">2180</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the actual delivery on item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8388,7 +8410,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2121</span>
+        <span class="phpdocumentor-element-found-in__line">2196</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated shipping notification on item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8446,7 +8468,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2137</span>
+        <span class="phpdocumentor-element-found-in__line">2212</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated shipping notification on item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8504,7 +8526,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2153</span>
+        <span class="phpdocumentor-element-found-in__line">2228</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated delivery note on item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8562,7 +8584,7 @@ Detailinformationen zum abweichenden Endempfänger</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2173</span>
+        <span class="phpdocumentor-element-found-in__line">2248</span>
     </aside>
         <p class="phpdocumentor-summary">A group of business terms that contains information about the sales tax that applies to
 the goods and services invoiced on the relevant invoice line</p>
@@ -8648,7 +8670,7 @@ the goods and services invoiced on the relevant invoice line</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2188</span>
+        <span class="phpdocumentor-element-found-in__line">2263</span>
     </aside>
         <p class="phpdocumentor-summary">Sets the billing period on item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8697,7 +8719,7 @@ the goods and services invoiced on the relevant invoice line</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2207</span>
+        <span class="phpdocumentor-element-found-in__line">2282</span>
     </aside>
         <p class="phpdocumentor-summary">Add a allowance/charge at item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8782,7 +8804,7 @@ the goods and services invoiced on the relevant invoice line</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2222</span>
+        <span class="phpdocumentor-element-found-in__line">2297</span>
     </aside>
         <p class="phpdocumentor-summary">Set Line summation for item level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8831,7 +8853,7 @@ the goods and services invoiced on the relevant invoice line</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentBuilder.php"><a href="../files/src-zugferddocumentbuilder.html"><abbr title="src/ZugferdDocumentBuilder.php">ZugferdDocumentBuilder.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2238</span>
+        <span class="phpdocumentor-element-found-in__line">2313</span>
     </aside>
         <p class="phpdocumentor-summary">Add an AccountingAccount on item level
 Detailinformationen zur Buchungsreferenz</p>

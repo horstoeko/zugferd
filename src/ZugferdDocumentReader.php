@@ -642,10 +642,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer and buyer
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal
      * registration of the buyer. If the identification scheme is used, it must be selected from
      * ISO/IEC 6523 list
-     * @param string|null $legalorgname A name by which the buyer is known, if different from the buyers name
+     * @param string|null $legalorgname
+     * A name by which the buyer is known, if different from the buyers name
      * (also known as the company name)
      * @return ZugferdDocumentReader
      */
@@ -666,11 +668,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null $contactdepartmentname
      * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
-     * Detailed information on the seller's phone number
+     * Detailed information on the buyer's phone number
      * @param string|null $contactfaxno
-     * Detailed information on the seller's fax number
+     * Detailed information on the buyer's fax number
      * @param string|null $contactemailadd
-     * Detailed information on the seller's email address
+     * Detailed information on the buyer's email address
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
