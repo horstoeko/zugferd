@@ -19148,7 +19148,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentProductEndUser\u0028\u0029",
             "name": "setDocumentProductEndUser",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020deviating\u0020Consumer",
+            "summary": "Detailed\u0020information\u0020on\u0020the\u0020product\u0020end\u0020user\u0020\u0028general\u0020information\u0029",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentProductEndUser"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentProductEndUserGlobalId\u0028\u0029",

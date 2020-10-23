@@ -650,12 +650,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Sets the postal address of the tax representative party
      *
      * @param string|null $lineone
+     * The main line in the sellers tax agent address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the sellers tax agent address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the sellers tax agent address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the sellers tax agent address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The sellers tax agent state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerTaxRepresentativeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -670,8 +682,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set legal organisation of the tax representative party
      *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the seller tax agent as
+     * a legal entity or legal person.
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the sellers tax
+     * agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
      * @param string|null $legalorgname
+     * A name by which the sellers tax agent is known, if different from the  sellers tax agent
+     * name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerTaxRepresentativeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -686,10 +704,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set contact of the tax representative party
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerTaxRepresentativeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -701,11 +724,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the deviating Consumer
+     * Detailed information on the product end user (general information)
      *
      * @param string $name
+     * The full formal name under which the product end user is registered in the
+     * National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
      * @param string|null $id
+     * An identifier of the product end user. In many systems, product end user identification
+     * is key information. Multiple product end user IDs can be assigned or specified. They can be differentiated
+     * by using different identification schemes. If no scheme is given, it should be known to all trade
+     * parties, e.g. a previously exchanged
      * @param string|null $description
+     * Further legal information that is relevant for the product end user
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUser(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -719,7 +749,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a global id for the Product Enduser Trade Party
      *
      * @param string|null $globalID
+     * The identifier is uniquely assigned to a party by a global registration organization.
      * @param string|null $globalIDType
+     * If the identifier is used for the identification scheme, it must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -732,8 +765,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Product Enduser Trade Party
      *
+     * The local identification (defined by the party's address) of the party for tax purposes or a reference that enables the party
+     * to indicate his reporting status for tax purposes The sales tax identification number of the party
+     * Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So
+     * e.g. In some countries, if the party is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the
+     * party. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
+     * identification number, unless he uses a tax agent.
+     *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -748,12 +790,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Sets the postal address of the Product Enduser party
      *
      * @param string|null $lineone
+     * The main line in the product end users address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the product end users address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the product end users address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the product end users address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The product end users state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -768,8 +822,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set legal organisation of the Product Enduser party
      *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to all trade parties
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal
+     * registration of the product end user. If the identification scheme is used, it must be selected from
+     * ISO/IEC 6523 list
      * @param string|null $legalorgname
+     * A name by which the product end user is known, if different from the product
+     * end users name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -784,10 +846,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set contact of the Product Enduser party
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the product end user's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the product end user's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the product end user's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder

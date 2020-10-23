@@ -939,10 +939,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to all trade parties
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal
      * registration of the product end user. If the identification scheme is used, it must be selected from
      * ISO/IEC 6523 list
-     * @param string|null $legalorgname A name by which the product end user is known, if different from the product
+     * @param string|null $legalorgname
+     * A name by which the product end user is known, if different from the product
      * end users name (also known as the company name)
      * @return ZugferdDocumentReader
      */
@@ -959,8 +961,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get detailed information on the product end user's contact person
      *
      * @param string|null $contactpersonname
-     * Contact point for a legal entity,
-     * such as a personal name of the contact person
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
      * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
