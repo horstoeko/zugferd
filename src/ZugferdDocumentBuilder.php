@@ -129,13 +129,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set main information about this document
      *
-     * @param string $documentno The invoice no.
-     * @param string $documenttypecode Code for the invoice type
+     * @param string $documentno
+     * The document no issued by the seller
+     * @param string $documenttypecode
+     * The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
      * @param DateTime $documentdate Date of invoice
+     * The date when the document was issued by the seller
      * @param string $invoiceCurrency Code for the invoice currency
+     * The code for the invoice currency
      * @param string|null $documentname Document Type
+     * The document type (free text)
      * @param string|null $documentlanguage Language indicator
-     * @param DateTime|null $effectiveSpecifiedPeriod Contractual due date of the invoice
+     * The language code in which the document was written
+     * @param DateTime|null $effectiveSpecifiedPeriod
+     * The contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInformation(string $documentno, string $documenttypecode, DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
@@ -155,8 +162,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set general payment information
      *
-     * @param string|null $creditorReferenceID Identifier of the creditor
-     * @param string|null $paymentReference Intended use for payment
+     * @param string|null $creditorReferenceID
+     * Identifier of the creditor
+     * @param string|null $paymentReference
+     * Intended use for payment
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
@@ -197,7 +206,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param float|null $chargeTotalAmount Sum of the surcharges at document level
      * @param float|null $allowanceTotalAmount Sum of the discounts at document level
      * @param float|null $taxBasisTotalAmount Total invoice amount excluding sales tax
-     * @param float|null $taxTotalAmount Total amount of the invoice sales tax, total tax amount in the booking currency
+     * @param float|null $taxTotalAmount Total amount of the invoice sales tax, Total tax amount in the booking currency
      * @param float|null $roundingAmount Rounding amount
      * @param float|null $totalPrepaidAmount Prepayment amount
      * @return ZugferdDocumentBuilder
@@ -227,7 +236,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Sets a foreign currency (code) with the tax amount. The exchange rate
      * is calculated by tax amounts
      *
-     * @param string $currencyCode
+     * @param string $foreignCurrencyCode Foreign currency code
+     * @param float $foreignTaxAmount Tax total amount in the foreign currency
      * @return ZugferdDocumentBuilder
      */
     public function setForeignCurrency(string $foreignCurrencyCode, float $foreignTaxAmount): ZugferdDocumentBuilder
@@ -300,12 +310,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information about the seller (=service provider)
      *
-     * @param string $name The full formal name under which the seller is registered in the national register of
-     * legal entities or taxable persons, or otherwise acts as persons
-     * @param string|null $id In many systems, the clerk identification is key information. Multiple seller IDs can be
-     * assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given
-     * it should be known to the buyer and seller, e.g. a previously exchanged ID of the seller assigned by the buyer
-     * @param string|null $description Further legal information that is relevant for the seller
+     * @param string $name 
+     * The full formal name under which the seller is registered in the
+     * National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
+     * @param string|null $id
+     * An identifier of the seller. In many systems, seller identification
+     * is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
+     * by using different identification schemes. If no scheme is given, it should be known to the buyer
+     * and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @param string|null $description
+     * Further legal information that is relevant for the seller
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSeller(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -318,9 +332,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the seller
      *
-     * @param string|null $globalID The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a
+     * __Notes__
+     *
+     * - The Seller's ID identification scheme is a unique identifier
+     *   assigned to a seller by a global registration organization
+     *
+     * @param string|null $globalID
+     * The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a
      * global registration organization.
-     * @param string|null $globalIDType If the identifier is used for the identification scheme, it must be selected from the entries in
+     * @param string|null $globalIDType
+     * If the identifier is used for the identification scheme, it must be selected from the entries in
      * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */

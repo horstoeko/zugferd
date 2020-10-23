@@ -207,7 +207,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param string|null $documentno Returns the document no issued by the seller
      * @param string|null $documenttypecode Returns the type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
-     * @param DateTime|null $documentdate Returns the data when the document was issued by the seller
+     * @param DateTime|null $documentdate Returns the date when the document was issued by the seller
      * @param string|null $invoiceCurrency Returns the code for the invoice currency
      * @param string|null $taxCurrency Returns the code for the currency of the VAT posting
      * @param string|null $documentname Returns the document type (free text)
@@ -239,8 +239,10 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read general payment information
      *
-     * @param string|null $creditorReferenceID Returns the identifier of the creditor (SEPA)
-     * @param string|null $paymentReference Returns the Usage (SEPA)
+     * @param string|null $creditorReferenceID
+     * Returns the identifier of the creditor (SEPA)
+     * @param string|null $paymentReference
+     * Returns the Usage (SEPA)
      * @return ZugferdDocumentReader
      */
     public function getDocumentGeneralPaymentInformation(?string &$creditorReferenceID, ?string &$paymentReference): ZugferdDocumentReader
@@ -253,7 +255,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read copy indicator
      *
-     * @param boolean|null $copyindicator Returns true if this document is a copy from the original document
+     * @param boolean|null $copyindicator
+     * Returns true if this document is a copy from the original document
      * @return ZugferdDocumentReader
      */
     public function getIsDocumentCopy(?bool &$copyindicator): ZugferdDocumentReader
@@ -265,7 +268,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read a test document indicator
      *
-     * @param boolean|null $testdocumentindicator Returns true if this document is only for test purposes
+     * @param boolean|null $testdocumentindicator
+     * Returns true if this document is only for test purposes
      * @return ZugferdDocumentReader
      */
     public function getIsTestDocument(?bool &$testdocumentindicator): ZugferdDocumentReader
@@ -277,15 +281,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read Document money summation
      *
-     * @param float|null $grandTotalAmount Returns the total invoice amount including sales tax
-     * @param float|null $duePayableAmount Returns the Payment amount due
-     * @param float|null $lineTotalAmount Returns the sum of the net amounts of all invoice lines
-     * @param float|null $chargeTotalAmount Returns the sum of the surcharges at document level
-     * @param float|null $allowanceTotalAmount Returns the sum of the discounts at document level
-     * @param float|null $taxBasisTotalAmount Returns the total invoice amount excluding sales tax
-     * @param float|null $taxTotalAmount Returns the total amount of the invoice sales tax, total tax amount in the booking currency
-     * @param float|null $roundingAmount Returns the rounding amount
-     * @param float|null $totalPrepaidAmount Returns the alreay payed amout
+     * @param float|null $grandTotalAmount
+     * Returns the total invoice amount including sales tax
+     * @param float|null $duePayableAmount
+     * Returns the Payment amount due
+     * @param float|null $lineTotalAmount
+     * Returns the sum of the net amounts of all invoice lines
+     * @param float|null $chargeTotalAmount
+     * Returns the sum of the surcharges at document level
+     * @param float|null $allowanceTotalAmount
+     * Returns the sum of the discounts at document level
+     * @param float|null $taxBasisTotalAmount
+     * Returns the total invoice amount excluding sales tax
+     * @param float|null $taxTotalAmount
+     * Returns the total amount of the invoice sales tax, total tax amount in the booking currency
+     * @param float|null $roundingAmount
+     * Returns the rounding amount
+     * @param float|null $totalPrepaidAmount
+     * Returns the alreay payed amout
      * @return ZugferdDocumentReader
      */
     public function getDocumentSummation(?float &$grandTotalAmount, ?float &$duePayableAmount, ?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxBasisTotalAmount, ?float &$taxTotalAmount, ?float &$roundingAmount, ?float &$totalPrepaidAmount): ZugferdDocumentReader
