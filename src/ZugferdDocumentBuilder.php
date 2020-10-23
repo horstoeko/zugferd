@@ -377,13 +377,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets detailed information on the business address of the seller
      *
-     * @param string|null $lineone Address Line 1, Enter the street or post office box. For major customer addresses, this field must be filled with "-".
-     * @param string|null $linetwo Address Line 2
-     * @param string|null $linethree Address Line 3
-     * @param string|null $postcode Post Code
-     * @param string|null $city City
-     * @param string|null $country Country (ISO 3166-1) Only the alpha-2 representation may be used
-     * @param string|null $subdivision State
+     * @param string|null $lineone
+     * The main line in the sellers address. This is usually the street name and house number or
+     * the post office box
+     * @param string|null $linetwo
+     * Line 2 of the seller's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
+     * @param string|null $linethree
+     * Line 3 of the seller's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
+     * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
+     * @param string|null $city
+     * Usual name of the city or municipality in which the seller's address is located
+     * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
+     * @param string|null $subdivision
+     * The sellers state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -397,12 +409,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Organization details
      *
-     * @param string|null $legalorgid An identifier issued by an official registrar that identifies the seller as a legal entity
-     * or legal entity. If no identification scheme is given, it should be known to the buyer and seller
-     * @param string|null $legalorgtype The identifier for the identification scheme The identifier of the legal registration of
-     * the seller Note: If the identification scheme is used, it must be selected from the entries in the
-     * list published by the ISO / IEC 6523 Maintenance Agency.
-     * @param string|null $legalorgname A name by which the seller is known, if different from the seller's name (also known as
+     * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer and seller
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal
+     * registration of the seller. If the identification scheme is used, it must be selected from
+     * ISO/IEC 6523 list
+     * @param string|null $legalorgname
+     * A name by which the seller is known, if different from the seller's name (also known as
      * the company name). Note: This may be used if different from the seller's name.
      * @return ZugferdDocumentBuilder
      */
@@ -417,13 +433,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the seller's contact person
      *
-     * @param string|null $contactpersonname A point of contact for a legal entity or legal person,
-     * such as Personal name, designation of the contact person
-     * @param string|null $contactdepartmentname A point of contact for a legal entity or legal person
-     * such as Name of the department or office
-     * @param string|null $contactphoneno Seller's phone number
-     * @param string|null $contactfaxno Detailed information on the seller's fax number
-     * @param string|null $contactemailadd Detailed information about the email address of the seller
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity,
+     * such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder

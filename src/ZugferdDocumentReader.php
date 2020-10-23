@@ -488,10 +488,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer and seller
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal
      * registration of the seller. If the identification scheme is used, it must be selected from
      * ISO/IEC 6523 list
-     * @param string|null $legalorgname A name by which the seller is known, if different from the seller's name
+     * @param string|null $legalorgname
+     * A name by which the seller is known, if different from the seller's name
      * (also known as the company name)
      * @return ZugferdDocumentReader
      */
