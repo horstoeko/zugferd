@@ -19418,32 +19418,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPaymentMean\u0028\u0029",
             "name": "addDocumentPaymentMean",
-            "summary": "Add\u0020new\u0020payment\u0020means",
+            "summary": "Add\u0020detailed\u0020information\u0020on\u0020the\u0020payment\u0020method",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPaymentMean"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentTax\u0028\u0029",
             "name": "addDocumentTax",
-            "summary": "Add\u0020Tax",
+            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentTax"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentTaxSimple\u0028\u0029",
             "name": "addDocumentTaxSimple",
-            "summary": "Add\u0020Tax\u0020in\u0020a\u0020simple\u0020way",
+            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029\u0020in\u0020a\u0020more\u0020simple\u0020way",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentTaxSimple"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentBillingPeriod\u0028\u0029",
             "name": "setDocumentBillingPeriod",
-            "summary": "Sets\u0020the\u0020billing\u0020period",
+            "summary": "Get\u0020detailed\u0020information\u0020on\u0020the\u0020billing\u0020period",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentBillingPeriod"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentAllowanceCharge\u0028\u0029",
             "name": "addDocumentAllowanceCharge",
-            "summary": "Add\u0020a\u0020allowance\/charge\u0020at\u0020document\u0020level",
+            "summary": "Add\u0020information\u0020about\u0020surcharges\u0020and\u0020charges\u0020applicable\u0020to\u0020the\u0020bill\u0020as\u0020a\u0020whole,\u0020Deductions,\nsuch\u0020as\u0020for\u0020withheld\u0020taxes\u0020may\u0020also\u0020be\u0020specified\u0020in\u0020this\u0020group",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentAllowanceCharge"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentLogisticsServiceCharge\u0028\u0029",
             "name": "addDocumentLogisticsServiceCharge",
-            "summary": "Add\u0020a\u0020logistic\u0020service\u0020charge",
+            "summary": "Add\u0020a\u0020logistical\u0020service\u0020fees\u0020\u0028On\u0020document\u0020level\u0029",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentLogisticsServiceCharge"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPaymentTerm\u0028\u0029",
@@ -19468,7 +19468,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionNote\u0028\u0029",
             "name": "setDocumentPositionNote",
-            "summary": "Set\u0020note\u0020on\u0020a\u0020document\u0020position\u0020\u0028line\u0029",
+            "summary": "Add\u0020detailed\u0020information\u0020on\u0020the\u0020free\u0020text\u0020on\u0020the\u0020position",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionNote"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionProductDetails\u0028\u0029",
@@ -19478,52 +19478,52 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionBuyerOrderReferencedDocument\u0028\u0029",
             "name": "setDocumentPositionBuyerOrderReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020related\u0020order",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020buyer\u0020order\u0020position",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionBuyerOrderReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionContractReferencedDocument\u0028\u0029",
             "name": "setDocumentPositionContractReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020related\u0020contract\u0020on\u0020the\u0020position",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020contract\u0020position",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionContractReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionAdditionalReferencedDocument\u0028\u0029",
             "name": "addDocumentPositionAdditionalReferencedDocument",
-            "summary": "Details\u0020of\u0020an\u0020additional\u0020Document\u0020reference\u0020on\u0020a\u0020position\nDetailangaben\u0020zu\u0020einer\u0020zus\u00E4tzlichen\u0020Dokumentenreferenz\u0020auf\u0020Positionsebene",
+            "summary": "Add\u0020an\u0020additional\u0020Document\u0020reference\u0020on\u0020a\u0020position",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionAdditionalReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionUltimateCustomerOrderReferencedDocument\u0028\u0029",
             "name": "addDocumentPositionUltimateCustomerOrderReferencedDocument",
-            "summary": "Ultimate\u0020Customer\u0020Order\u0020Referenced\u0020Document\nDokument\u0020mit\u0020Bezug\u0020zur\u0020endg\u00FCltigen\u0020Kundenbestellung",
+            "summary": "Add\u0020a\u0020referennce\u0020to\u0020a\u0020ultimate\u0020customer\u0020order\u0020referenced\u0020document",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionUltimateCustomerOrderReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionGrossPrice\u0028\u0029",
             "name": "setDocumentPositionGrossPrice",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020gross\u0020price\u0020of\u0020the\u0020item\nDetailinformationen\u0020zum\u0020Bruttopreis\u0020des\u0020Artikels",
+            "summary": "Set\u0020the\u0020unit\u0020price\u0020excluding\u0020sales\u0020tax\u0020before\u0020deduction\u0020of\u0020the\u0020discount\u0020on\u0020the\u0020item\u0020price.",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionGrossPrice"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionGrossPriceAllowanceCharge\u0028\u0029",
             "name": "addDocumentPositionGrossPriceAllowanceCharge",
-            "summary": "Detailed\u0020information\u0020on\u0020surcharges\u0020and\u0020discounts\nDetailinformationen\u0020zu\u0020Zu\u002D\u0020und\u0020Abschl\u00E4gen",
+            "summary": "Detailed\u0020information\u0020on\u0020surcharges\u0020and\u0020discounts\u0020on\u0020item\u0020gross\u0020price",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionGrossPriceAllowanceCharge"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionNetPrice\u0028\u0029",
             "name": "setDocumentPositionNetPrice",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020net\u0020price\u0020of\u0020the\u0020item\nDetailinformationen\u0020zum\u0020Nettopreis\u0020des\u0020Artikels",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020net\u0020price\u0020of\u0020the\u0020item",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionNetPrice"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionNetPriceTax\u0028\u0029",
             "name": "setDocumentPositionNetPriceTax",
-            "summary": "Tax\u0020included\u0020for\u0020B2C\u0020on\u0020position\u0020level\nEnthaltene\u0020Steuer\u0020f\u00FCr\u0020B2C\u0020auf\u0020Positionsebene",
+            "summary": "Tax\u0020included\u0020for\u0020B2C\u0020on\u0020position\u0020level",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionNetPriceTax"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionQuantity\u0028\u0029",
             "name": "setDocumentPositionQuantity",
-            "summary": "Sets\u0020the\u0020position\u0020Quantity",
+            "summary": "Set\u0020the\u0020position\u0020Quantity",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionQuantity"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionShipTo\u0028\u0029",
             "name": "setDocumentPositionShipTo",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020different\u0020ship\u002Dto\u0020party\u0020at\u0020item\u0020level\nDetailinformationen\u0020zum\u0020abweichenden\u0020Warenempf\u00E4nger\u0020auf\u0020Positionsebene",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020different\u0020ship\u002Dto\u0020party\u0020at\u0020item\u0020level",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionShipTo"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionShipToGlobalId\u0028\u0029",
@@ -19543,7 +19543,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionShipToLegalOrganisation\u0028\u0029",
             "name": "setDocumentPositionShipToLegalOrganisation",
-            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020Ship\u002DTo\u0020party",
+            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020Ship\u002DTo\u0020party\u0020on\u0020item\u0020level",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionShipToLegalOrganisation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionShipToContact\u0028\u0029",
@@ -19553,7 +19553,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionUltimateShipTo\u0028\u0029",
             "name": "setDocumentPositionUltimateShipTo",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020different\u0020end\u0020recipient\nDetailinformationen\u0020zum\u0020abweichenden\u0020Endempf\u00E4nger",
+            "summary": "Detailed\u0020information\u0020on\u0020the\u0020different\u0020end\u0020recipient",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionUltimateShipTo"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionUltimateShipToGlobalId\u0028\u0029",
@@ -19603,22 +19603,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionTax\u0028\u0029",
             "name": "addDocumentPositionTax",
-            "summary": "A\u0020group\u0020of\u0020business\u0020terms\u0020that\u0020contains\u0020information\u0020about\u0020the\u0020sales\u0020tax\u0020that\u0020applies\u0020to\nthe\u0020goods\u0020and\u0020services\u0020invoiced\u0020on\u0020the\u0020relevant\u0020invoice\u0020line",
+            "summary": "Add\u0020information\u0020about\u0020the\u0020sales\u0020tax\u0020that\u0020applies\u0020to\u0020the\u0020goods\u0020and\u0020services\u0020invoiced\nin\u0020the\u0020relevant\u0020invoice\u0020line",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionTax"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionBillingPeriod\u0028\u0029",
             "name": "setDocumentPositionBillingPeriod",
-            "summary": "Sets\u0020the\u0020billing\u0020period\u0020on\u0020item\u0020level",
+            "summary": "Set\u0020information\u0020about\u0020the\u0020period\u0020relevant\u0020for\u0020the\u0020invoice\u0020item.",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionBillingPeriod"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionAllowanceCharge\u0028\u0029",
             "name": "addDocumentPositionAllowanceCharge",
-            "summary": "Add\u0020a\u0020allowance\/charge\u0020at\u0020item\u0020level",
+            "summary": "Add\u0020surcharges\u0020and\u0020discounts\u0020on\u0020position\u0020level",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionAllowanceCharge"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionLineSummation\u0028\u0029",
             "name": "setDocumentPositionLineSummation",
-            "summary": "Set\u0020Line\u0020summation\u0020for\u0020item\u0020level",
+            "summary": "Set\u0020information\u0020on\u0020item\u0020totals",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionLineSummation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionReceivableSpecifiedTradeAccountingAccount\u0028\u0029",

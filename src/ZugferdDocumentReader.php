@@ -1086,15 +1086,15 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of Ship-To trade party
      *
-     * @param string|null $legalorgid 
+     * @param string|null $legalorgid
      * An identifier issued by an official registrar that identifies the party as a legal entity or legal
-     * person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or 
+     * person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or
      * seller party
-     * @param string|null $legalorgtype 
+     * @param string|null $legalorgtype
      * The identifier for the identification scheme of the legal
      * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
      * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname 
+     * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
@@ -1248,8 +1248,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype 
-     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular,
      * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
@@ -1409,8 +1409,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype 
-     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular,
      * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
@@ -1570,10 +1570,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype 
-     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular,
      * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname 
+     * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
@@ -1732,7 +1732,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
-     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * The identifier for the identification scheme of the legal registration of the party. In particular,
      * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
@@ -1879,8 +1879,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype 
-     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular,
      * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
      * A name by which the party is known, if different from the party's name (also known as the company name)
