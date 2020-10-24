@@ -1086,15 +1086,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of Ship-To trade party
      *
-     * @param string|null $legalorgid
-     * An identifier issued by an official registrar that identifies the
-     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
-     * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
+     * @param string|null $legalorgid 
+     * An identifier issued by an official registrar that identifies the party as a legal entity or legal
+     * person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or 
+     * seller party
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal
      * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
      * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgname 
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -1179,7 +1180,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get detailed information on tax details of the final recipient party
+     * Get detailed information on tax details of the different end recipient party
      *
      * __Notes__
      *  - This is only available in the EXTENDED profile
@@ -1198,7 +1199,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get detailed information on the address of the final recipient party
+     * Get detailed information on the address of the different end recipient party
      *
      * __Notes__
      *  - This is only available in the EXTENDED profile
@@ -1238,7 +1239,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get detailed information about the Legal organisation of the final recipient party
+     * Get detailed information about the Legal organisation of the different end recipient party
      *
      * __Notes__
      *  - This is only available in the EXTENDED profile
@@ -1247,11 +1248,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentUltimateShipToLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -1264,7 +1265,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Get detailed information on the contact person of the final recipient party
+     * Get detailed information on the contact person of the different end recipient party
      *
      * __Notes__
      *  - This is only available in the EXTENDED profile
@@ -1408,11 +1409,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipFromLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -1569,11 +1570,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname 
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentInvoicerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -1730,11 +1731,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentInvoiceeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
@@ -1878,11 +1879,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier issued by an official registrar that identifies the
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
-     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
-     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     * @param string|null $legalorgtype 
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
     public function getDocumentPayeeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader

@@ -869,8 +869,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Ship-To
      *
      * @param string $name
+     * The name of the party to whom the goods are being delivered or for whom the services are being
+     * performed. Must be used if the recipient of the goods or services is not the same as the buyer.
      * @param string|null $id
+     * An identifier for the place where the goods are delivered or where the services are provided.
+     * Multiple IDs can be assigned or specified. They can be differentiated by using different
+     * identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
      * @param string|null $description
+     * Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -884,7 +891,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a global id for the Ship-to Trade Party
      *
      * @param string|null $globalID
+     * Global identifier of the goods recipient
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -898,7 +908,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to Ship-To Trade party
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -913,12 +925,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Sets the postal address of the Ship-To party
      *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -933,8 +957,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set legal organisation of the Ship-To party
      *
      * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
+     * @param string|null $legalorgtype The identifier for the identification scheme of the legal
+     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
+     * 0060 : DUNS, 0177 : ODETTE
+     * @param string|null $legalorgname A name by which the party is known, if different from the party's name
+     * (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -949,10 +979,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set contact of the Ship-To party
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -966,9 +1001,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the different end recipient
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string $name
+     * Name or company name of the different end recipient
      * @param string|null $id
+     * Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be
+     * differentiated by using different identification schemes.
      * @param string|null $description
+     * Further legal information that is relevant for the different end recipient
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentUltimateShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -979,10 +1021,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add a global id for the Ship-to Trade Party
+     * Add a global id for the different end recipient party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $globalID
+     * Global identifier of the goods recipient
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -993,10 +1041,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to Ship-To Trade party
+     * Add Tax registration to the different end recipient party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1008,15 +1061,30 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sets the postal address of the ultimate Ship-To party
+     * Sets the postal address of the different end recipient
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box. For major customer addresses, this field must be filled with "-".
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentUltimateShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -1028,11 +1096,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set legal organisation of the ultimate Ship-To party
+     * Set legal organisation of the different end recipient
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -1044,13 +1121,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set contact of the ultimate Ship-To party
+     * Set contact of the different end recipient
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -1062,11 +1147,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Ship-From Tradeparty
+     * Set detailed information of the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string $name
+     * The name of the party
      * @param string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
      * @param string|null $description
+     * Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFrom(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1077,10 +1170,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add a global id for the Ship-from Trade Party
+     * Add a global id for the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $globalID
+     * Global identifier of the goods recipient
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipFromGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1091,10 +1190,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to Ship-from Trade party
+     * Add Tax registration to the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipFromTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1106,15 +1210,30 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sets the postal address of the ultimate Ship-from party
+     * Sets the postal address of the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -1126,11 +1245,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set legal organisation of the ultimate Ship-from party
+     * Set legal organisation of the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -1142,13 +1270,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set contact of the ultimate Ship-from party
+     * Set contact of the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -1163,8 +1299,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Invoicer (Rechnungssteller)
      *
      * @param string $name
+     * The name of the party
      * @param string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
      * @param string|null $description
+     * Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1177,8 +1318,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the Invoicer Trade Party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $globalID
+     * Global identifier of the goods recipient
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoicerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1189,10 +1336,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to Ship-from Trade party
+     * Add Tax registration to Invoicer Trade Party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoicerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1206,13 +1358,28 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -1226,9 +1393,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -1242,11 +1418,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -1258,13 +1442,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Invoicee,
-     * Detailed information on the different invoice recipient,
-     * Detailinformationen zum abweichenden Rechnungsempfänger
+     * Set detailed information on the different invoice recipient,
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string $name
+     * The name of the party
      * @param string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
      * @param string|null $description
+     * Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1277,8 +1467,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the Invoicee Trade Party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $globalID
+     * Global identification number
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1289,10 +1485,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to Ship-from Trade party
+     * Add Tax registration to Invoicer Trade Party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1306,13 +1507,28 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -1326,9 +1542,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -1342,11 +1567,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the ultimate Ship-from party
      *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -1358,13 +1591,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Payee,
-     * Detailed information on the different invoice payee,
-     * Zahlungsempfänger
+     * Set detailed information about the payee, i.e. about the place that receives the payment.
+     * The role of the payee may also be performed by a party other than the seller, e.g. by a factoring service.
      *
      * @param string $name
+     * The name of the party. Must be used if the payee is not the same as the seller. However, the name of the
+     * payee may match the name of the seller.
      * @param string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
      * @param string|null $description
+     * Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1375,10 +1613,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add a global id for the Payee Trade Party
+     * Add a global id for the payee trade party
      *
      * @param string|null $globalID
+     * Global identification number
      * @param string|null $globalIDType
+     * Type of global identification number, must be selected from the entries in
+     * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1389,10 +1630,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add Tax registration to Ship-from Trade party
+     * Add Tax registration to payee trade party
      *
      * @param string|null $taxregtype
+     * Type of tax number of the party
      * @param string|null $taxregid
+     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1404,15 +1647,27 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Sets the postal address of the ultimate Ship-from party
+     * Sets the postal address of the payee trade party
      *
      * @param string|null $lineone
+     * The main line in the party's address. This is usually the street name and house number or
+     * the post office box
      * @param string|null $linetwo
+     * Line 2 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $linethree
+     * Line 3 of the party's address. This is an additional address line in an address that can be
+     * used to provide additional details in addition to the main line
      * @param string|null $postcode
+     * Identifier for a group of properties, such as a zip code
      * @param string|null $city
+     * Usual name of the city or municipality in which the party's address is located
      * @param string|null $country
+     * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+     * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+     * representation of names of countries and their subdivisions”
      * @param string|null $subdivision
+     * The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayeeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
@@ -1424,11 +1679,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set legal organisation of the ultimate Ship-from party
+     * Set legal organisation of the payee trade party
      *
      * @param string|null $legalorgid
+     * An identifier issued by an official registrar that identifies the
+     * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
+     * it should be known to the buyer or seller party
      * @param string|null $legalorgtype
+     * The identifier for the identification scheme of the legal registration of the party. In particular, 
+     * the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string|null $legalorgname
+     * A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayeeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
@@ -1440,13 +1701,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set contact of the ultimate Ship-from party
+     * Set contact of the payee trade party
      *
      * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
      * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
      * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
      * @param string|null $contactemailadd
+     * Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayeeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
@@ -1458,7 +1724,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set the delivery terms
+     * Set information on the delivery conditions
+     *
+     * __Note__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string|null $code
      * @return ZugferdDocumentBuilder
@@ -1471,10 +1740,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the associated confirmation of the order
+     * Set details of the associated order confirmation
      *
      * @param string $issuerassignedid
+     * An identifier issued by the seller for a referenced sales order (Order confirmation number)
      * @param DateTime|null $issueddate
+     * Order confirmation date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1485,10 +1756,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the related order
+     * Set details of the related buyer order
      *
      * @param string $issuerassignedid
+     * An identifier issued by the buyer for a referenced order (order number)
      * @param DateTime|null $issueddate
+     * Date of order
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBuyerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1499,10 +1772,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the associated contract
+     * Set details of the associated contract
      *
      * @param string $issuerassignedid
+     * The contract reference should be assigned once in the context of the specific trade relationship and for a
+     * defined period of time (contract number)
      * @param DateTime|null $issueddate
+     * Contract date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentContractReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1513,16 +1789,41 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Documents justifying the invoice
-     * Rechnungsbegründende Unterlagen
+     * Set information about billing documents that provide evidence of claims made in the bill
+     *
+     * __Notes__
+     *  - The documents justifying the invoice can be used to reference a document number, which should be
+     *    known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such
+     *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes
+     *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
+     *    from the bill
+     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     *    documents
      *
      * @param string $issuerassignedid
+     * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
+     * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
      * @param string $typecode
+     * Type of referenced document (See codelist UNTDID 1001)
+     *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
+     *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
+     *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
      * @param string|null $uriid
+     * The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource
+     * including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document
+     * must be used if the buyer needs additional information to support the amounts billed. External documents are not part
+     * of the invoice. Access to external documents can involve certain risks.
      * @param string|array|null $name
+     * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param string|null $reftypecode
+     * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
+     * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
+     * from UNTDID 1153 in accordance with the code list entries.
      * @param DateTime|null $issueddate
+     * Document date
      * @param string|null $binarydatafilename
+     * Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
@@ -1533,10 +1834,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the related order
+     * Set a Reference to the previous invoice
+     * 
+     * __Note__: To be used if:
+     *  - a previous invoice is corrected
+     *  - reference is made to previous partial invoices from a final invoice
+     *  - Reference is made to previous invoices for advance payments from a final invoice
      *
      * @param string $issuerassignedid
+     * Number of the previous invoice
      * @param DateTime|null $issueddate
+     * Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1550,7 +1858,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set Details of a project reference
      *
      * @param string $id
+     * Project Data
      * @param string $name
+     * Project Name
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProcuringProject(string $id, string $name): ZugferdDocumentBuilder
@@ -1561,7 +1871,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Details of the ultimate customer order
+     * Add a reference of the ultimate customer order
      *
      * @param string $issuerassignedid
      * @param DateTime|null $issueddate
@@ -1575,9 +1885,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the actual delivery
+     * Set detailed information on the actual delivery
      *
      * @param DateTime|null $date
+     * Actual delivery time
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSupplyChainEvent(?DateTime $date): ZugferdDocumentBuilder
@@ -1588,10 +1899,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the associated shipping notification
+     * Set detailed information on the associated shipping notification
      *
      * @param string $issuerassignedid
+     * Shipping notification reference
      * @param DateTime|null $issueddate
+     * Shipping notification date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1602,10 +1915,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the associated shipping notification
+     * Set detailed information on the associated goods receipt notification
      *
      * @param string $issuerassignedid
+     * An identifier for a referenced goods receipt notification (Goods receipt number)
      * @param DateTime|null $issueddate
+     * Goods receipt date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1616,10 +1931,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Detailed information on the associated delivery note
+     * Set detailed information on the associated delivery note
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
      *
      * @param string $issuerassignedid
+     * Delivery receipt number
      * @param DateTime|null $issueddate
+     * Delivery receipt date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder

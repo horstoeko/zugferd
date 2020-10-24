@@ -19213,57 +19213,57 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentUltimateShipToGlobalId\u0028\u0029",
             "name": "addDocumentUltimateShipToGlobalId",
-            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020Ship\u002Dto\u0020Trade\u0020Party",
+            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentUltimateShipToGlobalId"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentUltimateShipToTaxRegistration\u0028\u0029",
             "name": "addDocumentUltimateShipToTaxRegistration",
-            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Ship\u002DTo\u0020Trade\u0020party",
+            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentUltimateShipToTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentUltimateShipToAddress\u0028\u0029",
             "name": "setDocumentUltimateShipToAddress",
-            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020ultimate\u0020Ship\u002DTo\u0020party",
+            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020different\u0020end\u0020recipient",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentUltimateShipToAddress"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentUltimateShipToLegalOrganisation\u0028\u0029",
             "name": "setDocumentUltimateShipToLegalOrganisation",
-            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020ultimate\u0020Ship\u002DTo\u0020party",
+            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020different\u0020end\u0020recipient",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentUltimateShipToLegalOrganisation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentUltimateShipToContact\u0028\u0029",
             "name": "setDocumentUltimateShipToContact",
-            "summary": "Set\u0020contact\u0020of\u0020the\u0020ultimate\u0020Ship\u002DTo\u0020party",
+            "summary": "Set\u0020contact\u0020of\u0020the\u0020different\u0020end\u0020recipient",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentUltimateShipToContact"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentShipFrom\u0028\u0029",
             "name": "setDocumentShipFrom",
-            "summary": "Ship\u002DFrom\u0020Tradeparty",
+            "summary": "Set\u0020detailed\u0020information\u0020of\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentShipFrom"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentShipFromGlobalId\u0028\u0029",
             "name": "addDocumentShipFromGlobalId",
-            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020Ship\u002Dfrom\u0020Trade\u0020Party",
+            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentShipFromGlobalId"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentShipFromTaxRegistration\u0028\u0029",
             "name": "addDocumentShipFromTaxRegistration",
-            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Ship\u002Dfrom\u0020Trade\u0020party",
+            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentShipFromTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentShipFromAddress\u0028\u0029",
             "name": "setDocumentShipFromAddress",
-            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentShipFromAddress"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentShipFromLegalOrganisation\u0028\u0029",
             "name": "setDocumentShipFromLegalOrganisation",
-            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentShipFromLegalOrganisation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentShipFromContact\u0028\u0029",
             "name": "setDocumentShipFromContact",
-            "summary": "Set\u0020contact\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Set\u0020contact\u0020of\u0020the\u0020deviating\u0020consignor\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentShipFromContact"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentInvoicer\u0028\u0029",
@@ -19278,7 +19278,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentInvoicerTaxRegistration\u0028\u0029",
             "name": "addDocumentInvoicerTaxRegistration",
-            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Ship\u002Dfrom\u0020Trade\u0020party",
+            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Invoicer\u0020Trade\u0020Party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentInvoicerTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentInvoicerAddress\u0028\u0029",
@@ -19298,7 +19298,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentInvoicee\u0028\u0029",
             "name": "setDocumentInvoicee",
-            "summary": "Invoicee,\nDetailed\u0020information\u0020on\u0020the\u0020different\u0020invoice\u0020recipient,\nDetailinformationen\u0020zum\u0020abweichenden\u0020Rechnungsempf\u00E4nger",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020different\u0020invoice\u0020recipient,",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentInvoicee"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentInvoiceeGlobalId\u0028\u0029",
@@ -19308,7 +19308,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentInvoiceeTaxRegistration\u0028\u0029",
             "name": "addDocumentInvoiceeTaxRegistration",
-            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Ship\u002Dfrom\u0020Trade\u0020party",
+            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Invoicer\u0020Trade\u0020Party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentInvoiceeTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentInvoiceeAddress\u0028\u0029",
@@ -19328,62 +19328,62 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPayee\u0028\u0029",
             "name": "setDocumentPayee",
-            "summary": "Payee,\nDetailed\u0020information\u0020on\u0020the\u0020different\u0020invoice\u0020payee,\nZahlungsempf\u00E4nger",
+            "summary": "Set\u0020detailed\u0020information\u0020about\u0020the\u0020payee,\u0020i.e.\u0020about\u0020the\u0020place\u0020that\u0020receives\u0020the\u0020payment.",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPayee"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPayeeGlobalId\u0028\u0029",
             "name": "addDocumentPayeeGlobalId",
-            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020Payee\u0020Trade\u0020Party",
+            "summary": "Add\u0020a\u0020global\u0020id\u0020for\u0020the\u0020payee\u0020trade\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPayeeGlobalId"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPayeeTaxRegistration\u0028\u0029",
             "name": "addDocumentPayeeTaxRegistration",
-            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020Ship\u002Dfrom\u0020Trade\u0020party",
+            "summary": "Add\u0020Tax\u0020registration\u0020to\u0020payee\u0020trade\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPayeeTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPayeeAddress\u0028\u0029",
             "name": "setDocumentPayeeAddress",
-            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Sets\u0020the\u0020postal\u0020address\u0020of\u0020the\u0020payee\u0020trade\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPayeeAddress"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPayeeLegalOrganisation\u0028\u0029",
             "name": "setDocumentPayeeLegalOrganisation",
-            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Set\u0020legal\u0020organisation\u0020of\u0020the\u0020payee\u0020trade\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPayeeLegalOrganisation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPayeeContact\u0028\u0029",
             "name": "setDocumentPayeeContact",
-            "summary": "Set\u0020contact\u0020of\u0020the\u0020ultimate\u0020Ship\u002Dfrom\u0020party",
+            "summary": "Set\u0020contact\u0020of\u0020the\u0020payee\u0020trade\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPayeeContact"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentDeliveryTerms\u0028\u0029",
             "name": "setDocumentDeliveryTerms",
-            "summary": "Set\u0020the\u0020delivery\u0020terms",
+            "summary": "Set\u0020information\u0020on\u0020the\u0020delivery\u0020conditions",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentDeliveryTerms"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentSellerOrderReferencedDocument\u0028\u0029",
             "name": "setDocumentSellerOrderReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020associated\u0020confirmation\u0020of\u0020the\u0020order",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020associated\u0020order\u0020confirmation",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentSellerOrderReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentBuyerOrderReferencedDocument\u0028\u0029",
             "name": "setDocumentBuyerOrderReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020related\u0020order",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020buyer\u0020order",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentBuyerOrderReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentContractReferencedDocument\u0028\u0029",
             "name": "setDocumentContractReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020associated\u0020contract",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020associated\u0020contract",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentContractReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentAdditionalReferencedDocument\u0028\u0029",
             "name": "addDocumentAdditionalReferencedDocument",
-            "summary": "Documents\u0020justifying\u0020the\u0020invoice\nRechnungsbegr\u00FCndende\u0020Unterlagen",
+            "summary": "Set\u0020information\u0020about\u0020billing\u0020documents\u0020that\u0020provide\u0020evidence\u0020of\u0020claims\u0020made\u0020in\u0020the\u0020bill",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentAdditionalReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentInvoiceReferencedDocument\u0028\u0029",
             "name": "setDocumentInvoiceReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020related\u0020order",
+            "summary": "Set\u0020a\u0020Reference\u0020to\u0020the\u0020previous\u0020invoice",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentInvoiceReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentProcuringProject\u0028\u0029",
@@ -19393,27 +19393,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentUltimateCustomerOrderReferencedDocument\u0028\u0029",
             "name": "addDocumentUltimateCustomerOrderReferencedDocument",
-            "summary": "Details\u0020of\u0020the\u0020ultimate\u0020customer\u0020order",
+            "summary": "Add\u0020a\u0020reference\u0020of\u0020the\u0020ultimate\u0020customer\u0020order",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentUltimateCustomerOrderReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentSupplyChainEvent\u0028\u0029",
             "name": "setDocumentSupplyChainEvent",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020actual\u0020delivery",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020actual\u0020delivery",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentSupplyChainEvent"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentDespatchAdviceReferencedDocument\u0028\u0029",
             "name": "setDocumentDespatchAdviceReferencedDocument",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020associated\u0020shipping\u0020notification",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020associated\u0020shipping\u0020notification",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentDespatchAdviceReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentReceivingAdviceReferencedDocument\u0028\u0029",
             "name": "setDocumentReceivingAdviceReferencedDocument",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020associated\u0020shipping\u0020notification",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020associated\u0020goods\u0020receipt\u0020notification",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentReceivingAdviceReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentDeliveryNoteReferencedDocument\u0028\u0029",
             "name": "setDocumentDeliveryNoteReferencedDocument",
-            "summary": "Detailed\u0020information\u0020on\u0020the\u0020associated\u0020delivery\u0020note",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020associated\u0020delivery\u0020note",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentDeliveryNoteReferencedDocument"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPaymentMean\u0028\u0029",
@@ -19863,22 +19863,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentUltimateShipToTaxRegistration\u0028\u0029",
             "name": "getDocumentUltimateShipToTaxRegistration",
-            "summary": "Get\u0020detailed\u0020information\u0020on\u0020tax\u0020details\u0020of\u0020the\u0020final\u0020recipient\u0020party",
+            "summary": "Get\u0020detailed\u0020information\u0020on\u0020tax\u0020details\u0020of\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentUltimateShipToTaxRegistration"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentUltimateShipToAddress\u0028\u0029",
             "name": "getDocumentUltimateShipToAddress",
-            "summary": "Get\u0020detailed\u0020information\u0020on\u0020the\u0020address\u0020of\u0020the\u0020final\u0020recipient\u0020party",
+            "summary": "Get\u0020detailed\u0020information\u0020on\u0020the\u0020address\u0020of\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentUltimateShipToAddress"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentUltimateShipToLegalOrganisation\u0028\u0029",
             "name": "getDocumentUltimateShipToLegalOrganisation",
-            "summary": "Get\u0020detailed\u0020information\u0020about\u0020the\u0020Legal\u0020organisation\u0020of\u0020the\u0020final\u0020recipient\u0020party",
+            "summary": "Get\u0020detailed\u0020information\u0020about\u0020the\u0020Legal\u0020organisation\u0020of\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentUltimateShipToLegalOrganisation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentUltimateShipToContact\u0028\u0029",
             "name": "getDocumentUltimateShipToContact",
-            "summary": "Get\u0020detailed\u0020information\u0020on\u0020the\u0020contact\u0020person\u0020of\u0020the\u0020final\u0020recipient\u0020party",
+            "summary": "Get\u0020detailed\u0020information\u0020on\u0020the\u0020contact\u0020person\u0020of\u0020the\u0020different\u0020end\u0020recipient\u0020party",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentUltimateShipToContact"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentShipFrom\u0028\u0029",
