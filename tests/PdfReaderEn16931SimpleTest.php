@@ -5,6 +5,7 @@ namespace horstoeko\zugferd\tests;
 use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\ZugferdDocumentReader;
 
 class PdfReaderEn16931SimpleTest extends TestCase
 {
