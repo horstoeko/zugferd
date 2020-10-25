@@ -20,6 +20,11 @@
             "horstoeko\\zugferd\\udt\\": "src/entities/udt"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "horstoeko\\zugferd\\tests\\": "tests"
+        }
+    },
     "require": {
         "jms/serializer": "^3",
         "adrienrn/php-mimetyper": "^0.2",
