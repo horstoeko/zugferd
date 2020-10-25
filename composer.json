@@ -30,7 +30,8 @@
         "adrienrn/php-mimetyper": "^0.2",
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
         "ext-simplexml": "*",
-        "symfony/validator": "^5"
+        "symfony/validator": "^5",
+        "Smalot/PdfParser": "^0"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
