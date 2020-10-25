@@ -120,6 +120,11 @@ additional referenced documents are temporary stored</td>
                     <td class="phpdocumentor-cell"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></td>
                 </tr>
                             <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getBuyerReference">getBuyerReference()</a></th>
+                    <td class="phpdocumentor-cell">Get the identifier assigned by the buyer and used for internal routing.</td>
+                    <td class="phpdocumentor-cell"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></td>
+                </tr>
+                            <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentSeller">getDocumentSeller()</a></th>
                     <td class="phpdocumentor-cell">Get detailed information about the seller (=service provider)</td>
                     <td class="phpdocumentor-cell"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></td>
@@ -1355,6 +1360,48 @@ contains an assiociative array containing the following keys: <em>contentcode</e
         <span class="phpdocumentor-signature__response_type"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></span>
             
 </article>
+                                    <a id="method_getBuyerReference"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getBuyerReference()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">387</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get the identifier assigned by the buyer and used for internal routing.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getBuyerReference</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$buyerreference</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></span>
+    </code>
+
+        <section class="phpdocumentor-description"><p><strong>Note</strong>: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
+but stated by the seller on the invoice.</p></section>
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$buyerreference</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>An identifier assigned by the buyer and used for internal routing</p></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="../classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></span>
+            
+</article>
                                     <a id="method_getDocumentSeller"></a>
 <article
         class="
@@ -1366,7 +1413,7 @@ contains an assiociative array containing the following keys: <em>contentcode</e
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">392</span>
+        <span class="phpdocumentor-element-found-in__line">408</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information about the seller (=service provider)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1428,7 +1475,7 @@ and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">417</span>
+        <span class="phpdocumentor-element-found-in__line">433</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the seller.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1475,7 +1522,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">439</span>
+        <span class="phpdocumentor-element-found-in__line">455</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the seller&#039;s tax information.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1523,7 +1570,7 @@ for <em>Sales tax identification number of the seller</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">471</span>
+        <span class="phpdocumentor-element-found-in__line">487</span>
     </aside>
         <p class="phpdocumentor-summary">Get the address of seller trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1622,7 +1669,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">500</span>
+        <span class="phpdocumentor-element-found-in__line">516</span>
     </aside>
         <p class="phpdocumentor-summary">Get the legal organisation of seller trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1685,7 +1732,7 @@ ISO/IEC 6523 list</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">525</span>
+        <span class="phpdocumentor-element-found-in__line">541</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the seller&#039;s contact person</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1762,7 +1809,7 @@ such as a personal name of the contact person</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">549</span>
+        <span class="phpdocumentor-element-found-in__line">565</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information about the buyer (service recipient)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1822,7 +1869,7 @@ it should be known to the buyer and buyer, e.g. a previously exchanged, seller-a
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">573</span>
+        <span class="phpdocumentor-element-found-in__line">589</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the buyer.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1869,7 +1916,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">593</span>
+        <span class="phpdocumentor-element-found-in__line">609</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the buyer&#039;s tax information.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1915,7 +1962,7 @@ Only the code <strong>VA</strong> is permitted as an identification scheme</p></
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">625</span>
+        <span class="phpdocumentor-element-found-in__line">641</span>
     </aside>
         <p class="phpdocumentor-summary">Get the address of buyer trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2014,7 +2061,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">654</span>
+        <span class="phpdocumentor-element-found-in__line">670</span>
     </aside>
         <p class="phpdocumentor-summary">Get the legal organisation of buyer trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2077,7 +2124,7 @@ ISO/IEC 6523 list</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">678</span>
+        <span class="phpdocumentor-element-found-in__line">694</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of buyer trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2153,7 +2200,7 @@ ISO/IEC 6523 list</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">700</span>
+        <span class="phpdocumentor-element-found-in__line">716</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information about the seller&#039;s tax agent</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2211,7 +2258,7 @@ ISO/IEC 6523 list</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">721</span>
+        <span class="phpdocumentor-element-found-in__line">737</span>
     </aside>
         <p class="phpdocumentor-summary">Get document seller tax agent global ids</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2254,7 +2301,7 @@ list published by the ISO/IEC 6523 Maintenance Agency. In particular, the follow
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">741</span>
+        <span class="phpdocumentor-element-found-in__line">757</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the seller&#039;s tax agent tax information.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2300,7 +2347,7 @@ number of the tax agent. </em> Only the code <strong>VA</strong> is permitted as
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">773</span>
+        <span class="phpdocumentor-element-found-in__line">789</span>
     </aside>
         <p class="phpdocumentor-summary">Get the address of sellers tax agent</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2399,7 +2446,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">800</span>
+        <span class="phpdocumentor-element-found-in__line">816</span>
     </aside>
         <p class="phpdocumentor-summary">Get the legal organisation of sellers tax agent</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2460,7 +2507,7 @@ name (also known as the company name)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">824</span>
+        <span class="phpdocumentor-element-found-in__line">840</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of sellers tax agent</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2536,7 +2583,7 @@ name (also known as the company name)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">850</span>
+        <span class="phpdocumentor-element-found-in__line">866</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the product end user (general information)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2598,7 +2645,7 @@ parties, e.g. a previously exchanged</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">874</span>
+        <span class="phpdocumentor-element-found-in__line">890</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the product end user.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2645,7 +2692,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">890</span>
+        <span class="phpdocumentor-element-found-in__line">906</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the tax number of the product end user</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2686,7 +2733,7 @@ for <em>Sales tax identification number of the product end user</em></p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">922</span>
+        <span class="phpdocumentor-element-found-in__line">938</span>
     </aside>
         <p class="phpdocumentor-summary">Get the address of product end user</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2785,7 +2832,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">951</span>
+        <span class="phpdocumentor-element-found-in__line">967</span>
     </aside>
         <p class="phpdocumentor-summary">Get the legal organisation of product end user</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2848,7 +2895,7 @@ end users name (also known as the company name)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">975</span>
+        <span class="phpdocumentor-element-found-in__line">991</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the product end user&#039;s contact person</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2924,7 +2971,7 @@ end users name (also known as the company name)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1001</span>
+        <span class="phpdocumentor-element-found-in__line">1017</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the different ship-to party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -2986,7 +3033,7 @@ a previously exchanged identifier assigned by the buyer or seller.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1021</span>
+        <span class="phpdocumentor-element-found-in__line">1037</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier for the delivery location</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3028,7 +3075,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1037</span>
+        <span class="phpdocumentor-element-found-in__line">1053</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the goods recipient</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3069,7 +3116,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1073</span>
+        <span class="phpdocumentor-element-found-in__line">1089</span>
     </aside>
         <p class="phpdocumentor-summary">Get the address to which the invoiced goods are delivered or to which the invoiced services are provided.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3173,7 +3220,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1101</span>
+        <span class="phpdocumentor-element-found-in__line">1117</span>
     </aside>
         <p class="phpdocumentor-summary">Legal organisation of Ship-To trade party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3235,7 +3282,7 @@ registration of the party. In particular, the following scheme codes are used: 0
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1125</span>
+        <span class="phpdocumentor-element-found-in__line">1141</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the contact person of the goods recipient</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3311,7 +3358,7 @@ registration of the party. In particular, the following scheme codes are used: 0
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1151</span>
+        <span class="phpdocumentor-element-found-in__line">1167</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3374,7 +3421,7 @@ differentiated by using different identification schemes.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1174</span>
+        <span class="phpdocumentor-element-found-in__line">1190</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifiers of the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3420,7 +3467,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1193</span>
+        <span class="phpdocumentor-element-found-in__line">1209</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3465,7 +3512,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1228</span>
+        <span class="phpdocumentor-element-found-in__line">1244</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the address of the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3568,7 +3615,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1258</span>
+        <span class="phpdocumentor-element-found-in__line">1274</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information about the Legal organisation of the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3633,7 +3680,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1285</span>
+        <span class="phpdocumentor-element-found-in__line">1301</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the contact person of the different end recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3713,7 +3760,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1312</span>
+        <span class="phpdocumentor-element-found-in__line">1328</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3777,7 +3824,7 @@ a previously exchanged identifier assigned by the buyer or seller.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1335</span>
+        <span class="phpdocumentor-element-found-in__line">1351</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3823,7 +3870,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1354</span>
+        <span class="phpdocumentor-element-found-in__line">1370</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3868,7 +3915,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1389</span>
+        <span class="phpdocumentor-element-found-in__line">1405</span>
     </aside>
         <p class="phpdocumentor-summary">Get Detailed information on the address of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -3971,7 +4018,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1419</span>
+        <span class="phpdocumentor-element-found-in__line">1435</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the legal organisation of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4036,7 +4083,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1446</span>
+        <span class="phpdocumentor-element-found-in__line">1462</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of the deviating consignor party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4116,7 +4163,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1473</span>
+        <span class="phpdocumentor-element-found-in__line">1489</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4180,7 +4227,7 @@ a previously exchanged identifier assigned by the buyer or seller.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1496</span>
+        <span class="phpdocumentor-element-found-in__line">1512</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4226,7 +4273,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1515</span>
+        <span class="phpdocumentor-element-found-in__line">1531</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4271,7 +4318,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1550</span>
+        <span class="phpdocumentor-element-found-in__line">1566</span>
     </aside>
         <p class="phpdocumentor-summary">Get Detailed information on the address of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4374,7 +4421,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1580</span>
+        <span class="phpdocumentor-element-found-in__line">1596</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the legal organisation of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4439,7 +4486,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 017
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1607</span>
+        <span class="phpdocumentor-element-found-in__line">1623</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of the invoicer party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4519,7 +4566,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 017
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1634</span>
+        <span class="phpdocumentor-element-found-in__line">1650</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4583,7 +4630,7 @@ a previously exchanged identifier assigned by the buyer or seller.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1657</span>
+        <span class="phpdocumentor-element-found-in__line">1673</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4629,7 +4676,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1676</span>
+        <span class="phpdocumentor-element-found-in__line">1692</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4674,7 +4721,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1711</span>
+        <span class="phpdocumentor-element-found-in__line">1727</span>
     </aside>
         <p class="phpdocumentor-summary">Get Detailed information on the address of the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4777,7 +4824,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1741</span>
+        <span class="phpdocumentor-element-found-in__line">1757</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the legal organisation of the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4842,7 +4889,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1768</span>
+        <span class="phpdocumentor-element-found-in__line">1784</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of the different invoice recipient party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4922,7 +4969,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1794</span>
+        <span class="phpdocumentor-element-found-in__line">1810</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information about the payee, i.e. about the place that receives the payment.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -4984,7 +5031,7 @@ a previously exchanged identifier assigned by the buyer or seller.</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1814</span>
+        <span class="phpdocumentor-element-found-in__line">1830</span>
     </aside>
         <p class="phpdocumentor-summary">Get global identifier of the payee party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5026,7 +5073,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1830</span>
+        <span class="phpdocumentor-element-found-in__line">1846</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on tax details of the payee party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5067,7 +5114,7 @@ for <em>Sales tax identification number of the party</em></p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1862</span>
+        <span class="phpdocumentor-element-found-in__line">1878</span>
     </aside>
         <p class="phpdocumentor-summary">Get Detailed information on the address of the payee party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5166,7 +5213,7 @@ representation of names of countries and their subdivisions”</p></section></dd
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1889</span>
+        <span class="phpdocumentor-element-found-in__line">1905</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the legal organisation of the payee party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5227,7 +5274,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1913</span>
+        <span class="phpdocumentor-element-found-in__line">1929</span>
     </aside>
         <p class="phpdocumentor-summary">Get contact information of the payee party</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5303,7 +5350,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1934</span>
+        <span class="phpdocumentor-element-found-in__line">1950</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the delivery conditions</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5347,7 +5394,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1951</span>
+        <span class="phpdocumentor-element-found-in__line">1967</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the associated order confirmation</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5403,7 +5450,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1972</span>
+        <span class="phpdocumentor-element-found-in__line">1988</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the related buyer order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5459,7 +5506,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">1994</span>
+        <span class="phpdocumentor-element-found-in__line">2010</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the associated contract</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5516,7 +5563,7 @@ defined period of time (contract number)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2011</span>
+        <span class="phpdocumentor-element-found-in__line">2027</span>
     </aside>
         <p class="phpdocumentor-summary">Get first additional referenced document for the document
 Returns true if an additional referenced document is available, otherwise false</p>
@@ -5545,7 +5592,7 @@ Returns true if an additional referenced document is available, otherwise false<
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2024</span>
+        <span class="phpdocumentor-element-found-in__line">2040</span>
     </aside>
         <p class="phpdocumentor-summary">Get next additional referenced document for the document
 Returns true when another additional referenced document is available, otherwise false</p>
@@ -5574,7 +5621,7 @@ Returns true when another additional referenced document is available, otherwise
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2071</span>
+        <span class="phpdocumentor-element-found-in__line">2087</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about billing documents that provide evidence of claims made in the bill</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5698,7 +5745,7 @@ binary attached file is stored can be controlled by using the methud ZugferdDocu
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2105</span>
+        <span class="phpdocumentor-element-found-in__line">2121</span>
     </aside>
         <p class="phpdocumentor-summary">Get all additional referenced documents</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5739,7 +5786,7 @@ want to access attached binary objects you have to use ZugferdDocumentReader::ge
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2129</span>
+        <span class="phpdocumentor-element-found-in__line">2145</span>
     </aside>
         <p class="phpdocumentor-summary">Get Details of a project reference</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5788,7 +5835,7 @@ want to access attached binary objects you have to use ZugferdDocumentReader::ge
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2143</span>
+        <span class="phpdocumentor-element-found-in__line">2159</span>
     </aside>
         <p class="phpdocumentor-summary">Get first additional referenced document for the document
 Returns true if the first position is available, otherwise false</p>
@@ -5817,7 +5864,7 @@ Returns true if the first position is available, otherwise false</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2156</span>
+        <span class="phpdocumentor-element-found-in__line">2172</span>
     </aside>
         <p class="phpdocumentor-summary">Get next additional referenced document for the document
 Returns true if the first position is available, otherwise false</p>
@@ -5846,7 +5893,7 @@ Returns true if the first position is available, otherwise false</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2171</span>
+        <span class="phpdocumentor-element-found-in__line">2187</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the ultimate customer order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5902,7 +5949,7 @@ Returns true if the first position is available, otherwise false</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2191</span>
+        <span class="phpdocumentor-element-found-in__line">2207</span>
     </aside>
         <p class="phpdocumentor-summary">Details of the ultimate customer order</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5942,7 +5989,7 @@ Returns true if the first position is available, otherwise false</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2206</span>
+        <span class="phpdocumentor-element-found-in__line">2222</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the actual delivery</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -5990,7 +6037,7 @@ This can be done here or at item level.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2226</span>
+        <span class="phpdocumentor-element-found-in__line">2242</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the associated shipping notification</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6046,7 +6093,7 @@ This can be done here or at item level.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2247</span>
+        <span class="phpdocumentor-element-found-in__line">2263</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the associated goods receipt notification</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6102,7 +6149,7 @@ This can be done here or at item level.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2271</span>
+        <span class="phpdocumentor-element-found-in__line">2287</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the associated delivery note</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6162,7 +6209,7 @@ This can be done here or at item level.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2289</span>
+        <span class="phpdocumentor-element-found-in__line">2305</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first payment means of the document.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6192,7 +6239,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2303</span>
+        <span class="phpdocumentor-element-found-in__line">2319</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next payment means of the document
 Returns true if another payment mean is available, otherwise false
@@ -6222,7 +6269,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2362</span>
+        <span class="phpdocumentor-element-found-in__line">2378</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the payment method</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6373,7 +6420,7 @@ is managed, such as the BIC or a national bank code, if required. No identificat
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2388</span>
+        <span class="phpdocumentor-element-found-in__line">2404</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first document tax
 Returns true if a first tax (at document level) is available, otherwise false
@@ -6403,7 +6450,7 @@ You may use this together with ZugferdDocumentReader::getDocumentTax</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2402</span>
+        <span class="phpdocumentor-element-found-in__line">2418</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next document tax
 Returns true if another tax (at document level) is available, otherwise false
@@ -6433,7 +6480,7 @@ You may use this together with ZugferdDocumentReader::getDocumentTax</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2489</span>
+        <span class="phpdocumentor-element-found-in__line">2505</span>
     </aside>
         <p class="phpdocumentor-summary">Get current VAT breakdown (at document level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6625,7 +6672,7 @@ supported by CII 16B:</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2522</span>
+        <span class="phpdocumentor-element-found-in__line">2538</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the billing period</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -6681,7 +6728,7 @@ supported by CII 16B:</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2543</span>
+        <span class="phpdocumentor-element-found-in__line">2559</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about surcharges and charges applicable to the bill as a whole, Deductions, such as for
 withheld taxes may also be specified in this group</p>
@@ -6722,7 +6769,7 @@ withheld taxes may also be specified in this group</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2582</span>
+        <span class="phpdocumentor-element-found-in__line">2598</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first documents allowance charge. Returns true if the first position is available, otherwise false
 You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge</p>
@@ -6751,7 +6798,7 @@ You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2595</span>
+        <span class="phpdocumentor-element-found-in__line">2611</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next documents allowance charge. Returns true if a other position is available, otherwise false
 You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge</p>
@@ -6780,7 +6827,7 @@ You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2686</span>
+        <span class="phpdocumentor-element-found-in__line">2702</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the currently seeked surcharges and charges applicable to the
 bill as a whole, Deductions, such as for withheld taxes may also be specified in this group</p>
@@ -6979,7 +7026,7 @@ Include PEPPOL subset:</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2714</span>
+        <span class="phpdocumentor-element-found-in__line">2730</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first documents service charge position
 Returns true if the first position is available, otherwise false
@@ -7009,7 +7056,7 @@ You may use this together with ZugferdDocumentReader::getDocumentLogisticsServic
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2729</span>
+        <span class="phpdocumentor-element-found-in__line">2745</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next documents service charge position
 Returns true if a other position is available, otherwise false
@@ -7039,7 +7086,7 @@ You may use this together with ZugferdDocumentReader::getDocumentLogisticsServic
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2777</span>
+        <span class="phpdocumentor-element-found-in__line">2793</span>
     </aside>
         <p class="phpdocumentor-summary">Get currently seeked logistical service fees (On document level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7142,7 +7189,7 @@ value 20 is given for 20% (and not 0.2)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2804</span>
+        <span class="phpdocumentor-element-found-in__line">2820</span>
     </aside>
         <p class="phpdocumentor-summary">Get all documents payment terms</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7182,7 +7229,7 @@ value 20 is given for 20% (and not 0.2)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2829</span>
+        <span class="phpdocumentor-element-found-in__line">2845</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first documents payment terms position
 Returns true if the first position is available, otherwise false
@@ -7212,7 +7259,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2843</span>
+        <span class="phpdocumentor-element-found-in__line">2859</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next documents payment terms position
 Returns true if a other position is available, otherwise false
@@ -7242,7 +7289,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2868</span>
+        <span class="phpdocumentor-element-found-in__line">2884</span>
     </aside>
         <p class="phpdocumentor-summary">Get currently seeked payment term
 This controlled by firstDocumentPaymentTerms and nextDocumentPaymentTerms methods</p>
@@ -7313,7 +7360,7 @@ The corresponding description of more complex payment terms can be given in BT-2
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2901</span>
+        <span class="phpdocumentor-element-found-in__line">2917</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on payment discounts</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7405,7 +7452,7 @@ The corresponding description of more complex payment terms can be given in BT-2
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2926</span>
+        <span class="phpdocumentor-element-found-in__line">2942</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first document position
 Returns true if the first position is available, otherwise false
@@ -7435,7 +7482,7 @@ You may use it together with getDocumentPositionGenerals</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2940</span>
+        <span class="phpdocumentor-element-found-in__line">2956</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next document position
 Returns true if another position is available, otherwise false
@@ -7465,7 +7512,7 @@ You may use it together with getDocumentPositionGenerals</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2968</span>
+        <span class="phpdocumentor-element-found-in__line">2984</span>
     </aside>
         <p class="phpdocumentor-summary">Get general information of the current position</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7536,7 +7583,7 @@ The following code should be used: TYPE_LINE</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">2987</span>
+        <span class="phpdocumentor-element-found-in__line">3003</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first document position
 Returns true if the first position is available, otherwise false
@@ -7566,7 +7613,7 @@ You may use it together with getDocumentPositionNote</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3006</span>
+        <span class="phpdocumentor-element-found-in__line">3022</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next document position
 Returns true if the first position is available, otherwise false
@@ -7596,7 +7643,7 @@ You may use it together with getDocumentPositionNote</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3030</span>
+        <span class="phpdocumentor-element-found-in__line">3046</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the free text on the position</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7655,7 +7702,7 @@ You may use it together with getDocumentPositionNote</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3065</span>
+        <span class="phpdocumentor-element-found-in__line">3081</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the goods and services billed</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7744,7 +7791,7 @@ GTIN, ...)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3093</span>
+        <span class="phpdocumentor-element-found-in__line">3109</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the related buyer order position</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7810,7 +7857,7 @@ reference at the document level.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3121</span>
+        <span class="phpdocumentor-element-found-in__line">3137</span>
     </aside>
         <p class="phpdocumentor-summary">Get details of the related contract position</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -7876,7 +7923,7 @@ defined period of time (contract number)</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3143</span>
+        <span class="phpdocumentor-element-found-in__line">3159</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first documents position additional referenced document
 Returns true if the first position is available, otherwise false
@@ -7906,7 +7953,7 @@ You may use it together with getDocumentPositionAdditionalReferencedDocument</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3159</span>
+        <span class="phpdocumentor-element-found-in__line">3175</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next documents position additional referenced document
 Returns true if the first position is available, otherwise false
@@ -7936,7 +7983,7 @@ You may use it together with getDocumentPositionAdditionalReferencedDocument</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3207</span>
+        <span class="phpdocumentor-element-found-in__line">3223</span>
     </aside>
         <p class="phpdocumentor-summary">Details of an additional Document reference (on position level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8059,7 +8106,7 @@ from UNTDID 1153 in accordance with the code list entries.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3244</span>
+        <span class="phpdocumentor-element-found-in__line">3260</span>
     </aside>
         <p class="phpdocumentor-summary">Get the unit price excluding sales tax before deduction of the discount on the item price.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8119,7 +8166,7 @@ according to the gross calculation.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3263</span>
+        <span class="phpdocumentor-element-found-in__line">3279</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first documents position gross price allowance charge position
 Returns true if the first position is available, otherwise false
@@ -8149,7 +8196,7 @@ You may use it together with getDocumentPositionGrossPriceAllowanceCharge</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3279</span>
+        <span class="phpdocumentor-element-found-in__line">3295</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next documents position gross price allowance charge position
 Returns true if a other position is available, otherwise false
@@ -8179,7 +8226,7 @@ You may use it together with getDocumentPositionGrossPriceAllowanceCharge</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3312</span>
+        <span class="phpdocumentor-element-found-in__line">3328</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on surcharges and discounts</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8320,7 +8367,7 @@ is transferred</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3347</span>
+        <span class="phpdocumentor-element-found-in__line">3363</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the net price of the item</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8378,7 +8425,7 @@ is transferred</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3404</span>
+        <span class="phpdocumentor-element-found-in__line">3420</span>
     </aside>
         <p class="phpdocumentor-summary">Tax included for B2C on position level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8493,7 +8540,7 @@ and maintained by the Connecting Europe Facility.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3443</span>
+        <span class="phpdocumentor-element-found-in__line">3459</span>
     </aside>
         <p class="phpdocumentor-summary">Get the position Quantity</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8585,7 +8632,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3469</span>
+        <span class="phpdocumentor-element-found-in__line">3485</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the actual delivery (on position level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8632,7 +8679,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3494</span>
+        <span class="phpdocumentor-element-found-in__line">3510</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on the associated shipping notification (on position level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8697,7 +8744,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3518</span>
+        <span class="phpdocumentor-element-found-in__line">3534</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated shipping notification (on position level)</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8762,7 +8809,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3542</span>
+        <span class="phpdocumentor-element-found-in__line">3558</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on the associated delivery note on position level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -8827,7 +8874,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</p
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3564</span>
+        <span class="phpdocumentor-element-found-in__line">3580</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first document position tax
 Returns true if the first tax position is available, otherwise false
@@ -8857,7 +8904,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionTax</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3583</span>
+        <span class="phpdocumentor-element-found-in__line">3599</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next document position tax
 Returns true if another tax position is available, otherwise false
@@ -8887,7 +8934,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionTax</p>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3641</span>
+        <span class="phpdocumentor-element-found-in__line">3657</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the sales tax that applies to the goods and services invoiced
 in the relevant invoice line</p>
@@ -9003,7 +9050,7 @@ and maintained by the Connecting Europe Facility.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3670</span>
+        <span class="phpdocumentor-element-found-in__line">3686</span>
     </aside>
         <p class="phpdocumentor-summary">Get information about the period relevant for the invoice item.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -9060,7 +9107,7 @@ and maintained by the Connecting Europe Facility.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3694</span>
+        <span class="phpdocumentor-element-found-in__line">3710</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the first allowance charge (on position level)
 Returns true if the first position is available, otherwise false
@@ -9090,7 +9137,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionAllowance
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3710</span>
+        <span class="phpdocumentor-element-found-in__line">3726</span>
     </aside>
         <p class="phpdocumentor-summary">Seek to the next allowance charge (on position level)
 Returns true if another position is available, otherwise false
@@ -9120,7 +9167,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionAllowance
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3798</span>
+        <span class="phpdocumentor-element-found-in__line">3814</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on currentley seeked surcharges and discounts on position level</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -9312,7 +9359,7 @@ match.</li>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3891</span>
+        <span class="phpdocumentor-element-found-in__line">3907</span>
     </aside>
         <p class="phpdocumentor-summary">Detailed information on surcharges and discounts on position level (on a simple way)
 This is the simplified version of ZugferdDocumentReader::getDocumentPositionAllowanceCharge</p>
@@ -9451,7 +9498,7 @@ reason for the invoice line discount (BT-144) must show the same discount type</
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentReader.php"><a href="../files/src-zugferddocumentreader.html"><abbr title="src/ZugferdDocumentReader.php">ZugferdDocumentReader.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">3920</span>
+        <span class="phpdocumentor-element-found-in__line">3936</span>
     </aside>
         <p class="phpdocumentor-summary">Get detailed information on item totals</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
