@@ -317,7 +317,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentBuilder
      */
-    public function setBuyerReference(string $buyerreference): ZugferdDocumentBuilder
+    public function setDocumentBuyerReference(string $buyerreference): ZugferdDocumentBuilder
     {
         $reference = $this->objectHelper->getTextType($buyerreference);
         $this->objectHelper->TryCall($this->headerTradeAgreement, "setBuyerReference", $reference);

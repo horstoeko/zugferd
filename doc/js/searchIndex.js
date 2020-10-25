@@ -19056,10 +19056,10 @@ Search.appendIndex(
             "summary": "Add\u0020a\u0020note\u0020to\u0020the\u0020docuzment",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentNote"
         },                {
-            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetBuyerReference\u0028\u0029",
-            "name": "setBuyerReference",
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentBuyerReference\u0028\u0029",
+            "name": "setDocumentBuyerReference",
             "summary": "An\u0020identifier\u0020assigned\u0020by\u0020the\u0020buyer\u0020and\u0020used\u0020for\u0020internal\u0020routing.",
-            "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setBuyerReference"
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentBuyerReference"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentSeller\u0028\u0029",
             "name": "setDocumentSeller",
@@ -19706,10 +19706,10 @@ Search.appendIndex(
             "summary": "Retrieve\u0020document\u0020notes",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentNotes"
         },                {
-            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetBuyerReference\u0028\u0029",
-            "name": "getBuyerReference",
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentBuyerReference\u0028\u0029",
+            "name": "getDocumentBuyerReference",
             "summary": "Get\u0020the\u0020identifier\u0020assigned\u0020by\u0020the\u0020buyer\u0020and\u0020used\u0020for\u0020internal\u0020routing.",
-            "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getBuyerReference"
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_getDocumentBuyerReference"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AgetDocumentSeller\u0028\u0029",
             "name": "getDocumentSeller",

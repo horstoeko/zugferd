@@ -384,7 +384,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentReader
      */
-    public function getBuyerReference(?string &$buyerreference): ZugferdDocumentReader
+    public function getDocumentBuyerReference(?string &$buyerreference): ZugferdDocumentReader
     {
         $buyerreference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
         return $this;

@@ -139,11 +139,11 @@ class ReaderExtendedTest extends TestCase
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getBuyerReference
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerReference
      */
-    public function testGetBuyerReference()
+    public function testGetDocumentBuyerReference()
     {
-        self::$document->getBuyerReference($buyerReference);
+        self::$document->getDocumentBuyerReference($buyerReference);
         $this->assertEquals("08154712", $buyerReference);
     }
 

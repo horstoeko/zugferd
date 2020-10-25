@@ -106,11 +106,11 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setBuyerReference
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerReference
      */
-    public function testSetBuyerReference()
+    public function testSetDocumentBuyerReference()
     {
-        (self::$document)->setBuyerReference("buyerref");
+        (self::$document)->setDocumentBuyerReference("buyerref");
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', "buyerref");
