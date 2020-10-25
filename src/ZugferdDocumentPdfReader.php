@@ -2,8 +2,8 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdDocumentReader;
-use Smalot\PdfParser\Parser as PdfParser;
+use \horstoeko\zugferd\ZugferdDocumentReader;
+use \Smalot\PdfParser\Parser as PdfParser;
 
 class ZugferdDocumentPdfReader
 {
