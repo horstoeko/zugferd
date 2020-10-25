@@ -375,6 +375,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get the identifier assigned by the buyer and used for internal routing.
+     *
+     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
+     * but stated by the seller on the invoice.
+     *
+     * @param string|null $buyerreference
+     * An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentReader
+     */
+    public function getBuyerReference(?string &$buyerreference): ZugferdDocumentReader
+    {
+        $buyerreference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
+        return $this;
+    }
+
+    /**
      * Get detailed information about the seller (=service provider)
      *
      * @param string|null $name

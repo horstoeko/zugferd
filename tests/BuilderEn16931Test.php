@@ -106,6 +106,17 @@ class BuilderEn16931Test extends BuilderBaseTest
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setBuyerReference
+     */
+    public function testSetBuyerReference()
+    {
+        (self::$document)->setBuyerReference("buyerref");
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerReference', "buyerref");
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSeller
      */
     public function testSetDocumentSeller()

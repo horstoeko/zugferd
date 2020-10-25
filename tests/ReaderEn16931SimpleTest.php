@@ -125,6 +125,15 @@ class ReaderEn16931SimpleTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getBuyerReference
+     */
+    public function testGetBuyerReference()
+    {
+        self::$document->getBuyerReference($buyerReference);
+        $this->assertEquals("08154711", $buyerReference);
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSeller
      */
     public function testDocumentSellerGeneral()

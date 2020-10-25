@@ -259,6 +259,7 @@ costs, losses or damages could normally have been foreseen.-->
             </ram:SpecifiedLineTradeSettlement>
         </ram:IncludedSupplyChainTradeLineItem>
         <ram:ApplicableHeaderTradeAgreement>
+            <ram:BuyerReference>08154713</ram:BuyerReference>
             <ram:SellerTradeParty>
                 <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
                 <ram:Name>Lieferant GmbH</ram:Name>

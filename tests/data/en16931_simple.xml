@@ -94,6 +94,7 @@
             </ram:SpecifiedLineTradeSettlement>
         </ram:IncludedSupplyChainTradeLineItem>
         <ram:ApplicableHeaderTradeAgreement>
+            <ram:BuyerReference>08154711</ram:BuyerReference>
             <ram:SellerTradeParty>
                 <ram:ID>549910</ram:ID>
                 <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>

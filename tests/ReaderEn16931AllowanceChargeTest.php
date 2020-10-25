@@ -134,6 +134,15 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getBuyerReference
+     */
+    public function testGetBuyerReference()
+    {
+        self::$document->getBuyerReference($buyerReference);
+        $this->assertEquals("08154713", $buyerReference);
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSeller
      */
     public function testDocumentSellerGeneral()
