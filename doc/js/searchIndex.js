@@ -19656,6 +19656,21 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentBuilderWithCalculator.html#method_calculateDocumentSummation"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader",
+            "name": "ZugferdDocumentPdfReader",
+            "summary": "",
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader\u003A\u003AreadAndGuessFromFile\u0028\u0029",
+            "name": "readAndGuessFromFile",
+            "summary": "Load\u0020a\u0020PDF\u0020file\u0020\u0028ZUGFeRD\/Factur\u002DX\u0029",
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#method_readAndGuessFromFile"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader\u003A\u003AATTACHMENT_FILEAME",
+            "name": "ATTACHMENT_FILEAME",
+            "summary": "Filename\u0020of\u0020the\u0020relevant\u0020attachment\u0020file",
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constant_ATTACHMENT_FILEAME"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader",
             "name": "ZugferdDocumentReader",
             "summary": "Class\u0020representing\u0020the\u0020document\u0020reader\u0020for\u0020incoming\u0020documents",
