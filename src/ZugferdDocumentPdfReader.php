@@ -5,6 +5,10 @@ namespace horstoeko\zugferd;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \Smalot\PdfParser\Parser as PdfParser;
 
+/**
+ * Class representing the document reader for incoming PDF/A-Documents with
+ * attached XML data in BASIC-, EN16931- and EXTENDED profile
+ */
 class ZugferdDocumentPdfReader
 {
     /**

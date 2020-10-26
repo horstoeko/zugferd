@@ -19658,7 +19658,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader",
             "name": "ZugferdDocumentPdfReader",
-            "summary": "",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020reader\u0020for\u0020incoming\u0020PDF\/A\u002DDocuments\u0020with\nattached\u0020XML\u0020data\u0020in\u0020BASIC\u002D,\u0020EN16931\u002D\u0020and\u0020EXTENDED\u0020profile",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader\u003A\u003AreadAndGuessFromFile\u0028\u0029",
@@ -19673,7 +19673,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader",
             "name": "ZugferdDocumentReader",
-            "summary": "Class\u0020representing\u0020the\u0020document\u0020reader\u0020for\u0020incoming\u0020documents",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020reader\u0020for\u0020incoming\u0020XML\u002DDocuments\u0020with\nXML\u0020data\u0020in\u0020BASIC\u002D,\u0020EN16931\u002D\u0020and\u0020EXTENDED\u0020profile",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentReader.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AsetBinaryDataDirectory\u0028\u0029",

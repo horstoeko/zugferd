@@ -8,7 +8,8 @@ use Exception;
 use SimpleXMLElement;
 
 /**
- * Class representing the document reader for incoming documents
+ * Class representing the document reader for incoming XML-Documents with
+ * XML data in BASIC-, EN16931- and EXTENDED profile
  */
 class ZugferdDocumentReader extends ZugferdDocument
 {
