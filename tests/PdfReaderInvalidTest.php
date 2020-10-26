@@ -9,26 +9,16 @@ use horstoeko\zugferd\ZugferdDocumentReader;
 class PdfReaderInvalidTest extends TestCase
 {
     /**
-     * @var ZugferdDocumentPdfReader
-     */
-    protected static $pdfReader;
-
-    /**
      * @var ZugferdDocumentReader
      */
     protected static $document;
-
-    public static function setUpBeforeClass(): void
-    {
-        self::$pdfReader = new ZugferdDocumentPdfReader();
-    }
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
      */
     public function testCanReadPdf()
     {
-        self::$document = self::$pdfReader->readAndGuessFromFile(dirname(__FILE__) . "/data/InvalidPDF.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/InvalidPDF.pdf");
         $this->assertNull(self::$document);
     }
 }

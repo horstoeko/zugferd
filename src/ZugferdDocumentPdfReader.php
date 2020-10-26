@@ -13,28 +13,13 @@ class ZugferdDocumentPdfReader
     const ATTACHMENT_FILEAME = 'factur-x.xml';
 
     /**
-     * PDF parser instnace
-     *
-     * @var \Smalot\PdfParser\Parser
-     */
-    protected $parser = null;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->parser = new PdfParser();
-    }
-
-    /**
      * Load a PDF file (ZUGFeRD/Factur-X)
      *
      * @param string $pdfFilename
      * @return ZugferdDocumentReader|null
      * @throws Exception
      */
-    public function readAndGuessFromFile(string $pdfFilename): ?ZugferdDocumentReader
+    public static function readAndGuessFromFile(string $pdfFilename): ?ZugferdDocumentReader
     {
         if (!file_exists($pdfFilename)) {
             throw new \Exception("File {$pdfFilename} not found.");
@@ -43,7 +28,8 @@ class ZugferdDocumentPdfReader
             throw new \Exception("File {$pdfFilename} could not be read.");
         }
 
-        $pdfParsed = $this->parser->parseFile($pdfFilename);
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile($pdfFilename);
         $filespec = $pdfParsed->getObjectsByType('Filespec');
 
         $attachmentFound = false;

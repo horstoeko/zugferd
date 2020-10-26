@@ -11,26 +11,16 @@ use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 class PdfReaderExtendedTest extends TestCase
 {
     /**
-     * @var ZugferdDocumentPdfReader
-     */
-    protected static $pdfReader;
-
-    /**
      * @var ZugferdDocumentReader
      */
     protected static $document;
-
-    public static function setUpBeforeClass(): void
-    {
-        self::$pdfReader = new ZugferdDocumentPdfReader();
-    }
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
      */
     public function testCanReadPdf()
     {
-        self::$document = self::$pdfReader->readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EXTENDED_Kostenrechnung.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EXTENDED_Kostenrechnung.pdf");
         $this->assertNotNull(self::$document);
     }
 

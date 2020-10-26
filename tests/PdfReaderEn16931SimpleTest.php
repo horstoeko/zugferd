@@ -10,26 +10,16 @@ use horstoeko\zugferd\ZugferdDocumentReader;
 class PdfReaderEn16931SimpleTest extends TestCase
 {
     /**
-     * @var ZugferdDocumentPdfReader
-     */
-    protected static $pdfReader;
-
-    /**
      * @var ZugferdDocumentReader
      */
     protected static $document;
-
-    public static function setUpBeforeClass(): void
-    {
-        self::$pdfReader = new ZugferdDocumentPdfReader();
-    }
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
      */
     public function testCanReadPdf()
     {
-        self::$document = self::$pdfReader->readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EN16931_Einfach.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EN16931_Einfach.pdf");
         $this->assertNotNull(self::$document);
     }
 
