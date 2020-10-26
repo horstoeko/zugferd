@@ -16,6 +16,7 @@ class ZugferdDocumentPdfReader
      * Load a PDF file (ZUGFeRD/Factur-X)
      *
      * @param string $pdfFilename
+     * Contains a full-qualified filename which must exist and must be readable
      * @return ZugferdDocumentReader|null
      * @throws Exception
      */
