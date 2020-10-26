@@ -33,6 +33,8 @@ class ZugferdDocumentPdfReader
         $filespec = $pdfParsed->getObjectsByType('Filespec');
 
         $attachmentFound = false;
+        $attachmentIndex = 0;
+        $embeddedFileIndex = 0;
         $returnValue = null;
 
         try {
@@ -42,12 +44,17 @@ class ZugferdDocumentPdfReader
                     $attachmentFound = true;
                     break;
                 }
+                $attachmentIndex++;
             }
 
             if (true == $attachmentFound) {
                 $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
                 foreach ($embeddedFiles as $embedFile) {
-                    $returnValue = ZugferdDocumentReader::readAndGuessFromContent($embedFile->getContent());
+                    if ($attachmentIndex == $embeddedFileIndex) {
+                        $returnValue = ZugferdDocumentReader::readAndGuessFromContent($embedFile->getContent());
+                        break;
+                    }
+                    $embeddedFileIndex++;
                 }
             }
         } catch (\Exception $e) {
