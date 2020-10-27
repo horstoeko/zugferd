@@ -12,9 +12,9 @@ use \Smalot\PdfParser\Parser as PdfParser;
 class ZugferdDocumentPdfReader
 {
     /**
-     * Filename of the relevant attachment file
+     * List of filenames which are possible in PDF
      */
-    const ATTACHMENT_FILEAME = 'factur-x.xml';
+    const ATTACHMENT_FILEAMES = ['factur-x.xml', 'zugferd-invoice.xml', 'xrechnung.xml'];
 
     /**
      * Load a PDF file (ZUGFeRD/Factur-X)
@@ -45,7 +45,7 @@ class ZugferdDocumentPdfReader
         try {
             foreach ($filespec as $spec) {
                 $specDetails = $spec->getDetails();
-                if (static::ATTACHMENT_FILEAME == $specDetails['F']) {
+                if (in_array($specDetails['F'], static::ATTACHMENT_FILEAMES)) {
                     $attachmentFound = true;
                     break;
                 }
@@ -63,7 +63,7 @@ class ZugferdDocumentPdfReader
                 }
             }
         } catch (\Exception $e) {
-            throw new \Exception('Unable to get Xml from PDF : ' . $e);
+            $returnValue = null;
         }
 
         return $returnValue;

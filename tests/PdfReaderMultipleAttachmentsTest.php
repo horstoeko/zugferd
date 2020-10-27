@@ -5,6 +5,7 @@ namespace horstoeko\zugferd\tests;
 use PHPUnit\Framework\TestCase;
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class PdfReaderMultipleAttachmentsTest extends TestCase
 {
@@ -20,6 +21,15 @@ class PdfReaderMultipleAttachmentsTest extends TestCase
     {
         self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EN16931_Elektron.pdf");
         $this->assertNotNull(self::$document);
+    }
+
+    public function testDocumentProfile()
+    {
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->profile);
     }
 
     /**
