@@ -19666,10 +19666,10 @@ Search.appendIndex(
             "summary": "Load\u0020a\u0020PDF\u0020file\u0020\u0028ZUGFeRD\/Factur\u002DX\u0029",
             "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#method_readAndGuessFromFile"
         },                {
-            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader\u003A\u003AATTACHMENT_FILEAME",
-            "name": "ATTACHMENT_FILEAME",
-            "summary": "Filename\u0020of\u0020the\u0020relevant\u0020attachment\u0020file",
-            "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constant_ATTACHMENT_FILEAME"
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader\u003A\u003AATTACHMENT_FILEAMES",
+            "name": "ATTACHMENT_FILEAMES",
+            "summary": "List\u0020of\u0020filenames\u0020which\u0020are\u0020possible\u0020in\u0020PDF",
+            "url": "../classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constant_ATTACHMENT_FILEAMES"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader",
             "name": "ZugferdDocumentReader",
