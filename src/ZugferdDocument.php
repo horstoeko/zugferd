@@ -2,12 +2,12 @@
 
 namespace horstoeko\zugferd;
 
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use JMS\Serializer\Handler\HandlerRegistryInterface;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
-use horstoeko\zugferd\ZugferdObjectHelper;
+use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
+use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use \JMS\Serializer\Handler\HandlerRegistryInterface;
+use \JMS\Serializer\SerializerBuilder;
+use \JMS\Serializer\SerializerInterface;
+use \horstoeko\zugferd\ZugferdObjectHelper;
 
 /**
  * Class representing the document basics

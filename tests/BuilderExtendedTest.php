@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests;
 
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\tests\BuilderBaseTest;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
+use \horstoeko\zugferd\ZugferdProfiles;
+use \horstoeko\zugferd\tests\BuilderBaseTest;
+use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
 class BuilderExtendedTest extends BuilderBaseTest
 {

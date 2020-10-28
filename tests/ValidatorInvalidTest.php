@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdDocumentReader;
-use horstoeko\zugferd\ZugferdDocumentValidator;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdDocumentReader;
+use \horstoeko\zugferd\ZugferdDocumentValidator;
 
 class ValidatorInvalidTest extends TestCase
 {

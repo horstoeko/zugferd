@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd;
 
-use DateTime;
+use \DateTime;
 
 /**
  * Class representing the document builder for outgoing documents

@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdObjectHelper;
-use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdProfiles;
+use \horstoeko\zugferd\ZugferdObjectHelper;
+use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 
 class ObjectHelperExtendedTest extends TestCase
 {

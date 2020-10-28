@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd;
 
-use Closure;
-use DateTime;
-use Exception;
-use SimpleXMLElement;
+use \Closure;
+use \DateTime;
+use \Exception;
+use \SimpleXMLElement;
 
 /**
  * Class representing the document reader for incoming XML-Documents with

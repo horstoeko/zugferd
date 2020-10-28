@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdDocumentPdfReader;
-use horstoeko\zugferd\ZugferdDocumentReader;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdDocumentPdfReader;
+use \horstoeko\zugferd\ZugferdDocumentReader;
 
 class PdfReaderInvalidTest extends TestCase
 {

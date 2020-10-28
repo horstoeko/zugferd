@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdDocumentReader;
-use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdProfiles;
+use \horstoeko\zugferd\ZugferdDocumentReader;
+use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
 
 class ReaderEn16931AllowanceChargeTest extends TestCase
 {

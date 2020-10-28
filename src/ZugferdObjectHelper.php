@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdProfiles;
-use MimeTyper\Repository\MimeDbRepository;
-use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use \horstoeko\zugferd\ZugferdProfiles;
+use \MimeTyper\Repository\MimeDbRepository;
+use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 
 /**
  * Class representing a collection of common helpers and class factories

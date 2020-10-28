@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests;
 
-use PHPUnit\Framework\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdDocument;
+use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\ZugferdProfiles;
+use \horstoeko\zugferd\ZugferdDocument;
 
 class DocumentTest extends TestCase
 {
