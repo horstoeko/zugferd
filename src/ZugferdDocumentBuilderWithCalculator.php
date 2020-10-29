@@ -48,7 +48,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Calculate a single summations
      *
-     * @param object $line
+     * @param $line
      * @return ZugferdDocumentBuilderWithCalculator
      */
     public function calculatePositionLineSummation(object $line): ZugferdDocumentBuilderWithCalculator
@@ -206,7 +206,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Shortcut method for $this->objectHelper->TryCallByPathAndReturn
      *
-     * @param object|null $instance
+     * @param $instance
      * @param string $methods
      * @param mixed $defaultValue
      * @return mixed
@@ -219,7 +219,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Shortcut method for $this->objectHelper->TryCallAndReturn
      *
-     * @param object $instance
+     * @param $instance
      * @param string $method
      * @param mixed $defaultValue
      * @return mixed
@@ -232,7 +232,7 @@ class ZugferdDocumentBuilderWithCalculator extends ZugferdDocumentBuilder
     /**
      * Shortcut method for $this->objectHelper->TryCall
      *
-     * @param object $instance
+     * @param $instance
      * @param string $method
      * @param mixed $value
      * @return mixed

@@ -3,8 +3,8 @@
 namespace horstoeko\zugferd;
 
 use \Symfony\Component\Validator\Validation;
-use \Symfony\Component\Validator\Validator\RecursiveValidator;
 use \Symfony\Component\Validator\ConstraintViolationListInterface;
+use \Symfony\Component\Validator\Validator\RecursiveValidator;
 
 /**
  * Class representing the document validator for incoming documents
@@ -14,14 +14,14 @@ class ZugferdDocumentValidator
     /**
      * The invoice document reference
      *
-     * @var \horstoeko\zugferd\ZugferdDocument
+     * @var ZugferdDocument
      */
-    private $document = null;
+    private $document;
 
     /**
      * The validator instance
      *
-     * @var \Symfony\Component\Validator\Validator\RecursiveValidator;
+     * @var RecursiveValidator;
      */
     private $validator = null;
 
@@ -44,8 +44,7 @@ class ZugferdDocumentValidator
      */
     public function validateDocument(): ConstraintViolationListInterface
     {
-        $violations = $this->validator->validate($this->document->getInvoiceObject(), null, ['xsd_rules']);
-        return $violations;
+        return $this->validator->validate($this->document->getInvoiceObject(), null, ['xsd_rules']);
     }
 
     /**
