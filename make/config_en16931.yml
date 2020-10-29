@@ -1,0 +1,27 @@
+xsd2php:
+  namespaces:
+    'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100': 'horstoeko\zugferd\entities\en16931\rsm'
+    'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100': 'horstoeko\zugferd\entities\en16931\ram'
+    'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100': 'horstoeko\zugferd\entities\en16931\udt'
+    'urn:un:unece:uncefact:data:standard:QualifiedDataType:100': 'horstoeko\zugferd\entities\en16931\qdt'
+  destinations_php: 
+    'horstoeko\zugferd\entities\en16931\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/en16931/rsm'
+    'horstoeko\zugferd\entities\en16931\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/en16931/ram'
+    'horstoeko\zugferd\entities\en16931\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/en16931/udt'
+    'horstoeko\zugferd\entities\en16931\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/en16931/qdt'
+  destinations_jms: 
+    'horstoeko\zugferd\entities\en16931\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/en16931/rsm'
+    'horstoeko\zugferd\entities\en16931\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/en16931/ram'
+    'horstoeko\zugferd\entities\en16931\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/en16931/udt'
+    'horstoeko\zugferd\entities\en16931\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/en16931/qdt'
+  destinations_validation:
+    'horstoeko\zugferd\entities\en16931\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/en16931/rsm'
+    'horstoeko\zugferd\entities\en16931\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/en16931/ram'
+    'horstoeko\zugferd\entities\en16931\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/en16931/udt'
+    'horstoeko\zugferd\entities\en16931\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/en16931/qdt'
+  configs_jms:
+    xml_cdata: false
+  aliases:
+    'http://www.w3.org/2001/XMLSchema':
+      anyType: 'string'
+      anySimpleType: 'string'

@@ -3,7 +3,7 @@
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
 
-require getcwd() . "/vendor/autoload.php";
+require getcwd() . "/../vendor/autoload.php";
 
 $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
 $document
