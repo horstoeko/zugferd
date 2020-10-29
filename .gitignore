@@ -65,6 +65,7 @@ _backup*
 
 !/setup/.htaccess
 .vscode 
+.idea
 
 /vendor/
 /logs/*

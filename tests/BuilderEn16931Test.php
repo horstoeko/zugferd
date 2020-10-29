@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \horstoeko\zugferd\tests\BuilderBaseTest;
+use DateTime;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
@@ -37,7 +37,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentInformation()
     {
-        (self::$document)->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR");
+        (self::$document)->setDocumentInformation("471102", "380", DateTime::createFromFormat("Ymd", "20180305"), "EUR");
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID', "471102");
@@ -99,7 +99,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSupplyChainEvent()
     {
-        (self::$document)->setDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'));
+        (self::$document)->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20180305'));
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime/udt:DateTimeString', "20180305", "format", "102");
@@ -932,7 +932,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentSellerOrderReferencedDocument()
     {
-        (self::$document)->setDocumentSellerOrderReferencedDocument('B-1010', new \DateTime());
+        (self::$document)->setDocumentSellerOrderReferencedDocument('B-1010', new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerOrderReferencedDocument/ram:IssuerAssignedID', "B-1010");
@@ -944,7 +944,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentBuyerOrderReferencedDocument()
     {
-        (self::$document)->setDocumentBuyerOrderReferencedDocument('O-2020', new \DateTime());
+        (self::$document)->setDocumentBuyerOrderReferencedDocument('O-2020', new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', "O-2020");
@@ -956,7 +956,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentContractReferencedDocument()
     {
-        (self::$document)->setDocumentContractReferencedDocument("CON-4711", new \DateTime());
+        (self::$document)->setDocumentContractReferencedDocument("CON-4711", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', "CON-4711");
@@ -968,8 +968,8 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentAdditionalReferencedDocument()
     {
-        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime());
-        (self::$document)->addDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new \DateTime());
+        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new DateTime());
+        (self::$document)->addDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 0, "A-1011");
@@ -982,8 +982,8 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:Name', 1, "Lieferliste");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:ReferenceTypeCode', 0, "reftype");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:ReferenceTypeCode', 1, "reftype2");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0, (new \DateTime())->format("Ymd"), "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 1, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 1, (new DateTime())->format("Ymd"), "format", "102");
     }
 
     /**
@@ -991,11 +991,11 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentInvoiceReferencedDocument()
     {
-        (self::$document)->setDocumentInvoiceReferencedDocument("INV-1", new \DateTime());
+        (self::$document)->setDocumentInvoiceReferencedDocument("INV-1", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:IssuerAssignedID', "INV-1");
-        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new DateTime())->format("Ymd"), "format", "102");
     }
 
     /**
@@ -1015,8 +1015,8 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentUltimateCustomerOrderReferencedDocument()
     {
-        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new \DateTime());
-        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new \DateTime());
+        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new DateTime());
+        (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:UltimateCustomerOrderReferencedDocument/ram:IssuerAssignedID');
@@ -1028,11 +1028,11 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentDespatchAdviceReferencedDocument()
     {
-        (self::$document)->setDocumentDespatchAdviceReferencedDocument("DADV-001", new \DateTime());
+        (self::$document)->setDocumentDespatchAdviceReferencedDocument("DADV-001", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:IssuerAssignedID', "DADV-001");
-        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DespatchAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new DateTime())->format("Ymd"), "format", "102");
     }
 
     /**
@@ -1040,11 +1040,11 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentReceivingAdviceReferencedDocument()
     {
-        (self::$document)->setDocumentReceivingAdviceReferencedDocument("RADV-002", new \DateTime());
+        (self::$document)->setDocumentReceivingAdviceReferencedDocument("RADV-002", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:IssuerAssignedID', "RADV-002");
-        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ReceivingAdviceReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', (new DateTime())->format("Ymd"), "format", "102");
     }
 
     /**
@@ -1052,7 +1052,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentDeliveryNoteReferencedDocument()
     {
-        (self::$document)->setDocumentDeliveryNoteReferencedDocument("DNOTE-003", new \DateTime());
+        (self::$document)->setDocumentDeliveryNoteReferencedDocument("DNOTE-003", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:DeliveryNoteReferencedDocument/ram:IssuerAssignedID');
@@ -1095,8 +1095,8 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentTax()
     {
-        (self::$document)->addDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new \DateTime(), "duetypecode");
-        (self::$document)->addDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new \DateTime(), "duetypecode2");
+        (self::$document)->addDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new DateTime(), "duetypecode");
+        (self::$document)->addDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new DateTime(), "duetypecode2");
 
         $this->disableRenderXmlContent();
 
@@ -1106,7 +1106,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:BasisAmount', 0, "100.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:CategoryCode', 0, "S");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReasonCode', 0, "exreasoncode");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString', 0, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString', 0, (new DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:DueDateTypeCode', 0, "duetypecode");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent', 0, "19.0");
 
@@ -1116,7 +1116,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:BasisAmount', 1, "200.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:CategoryCode', 1, "S");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReasonCode', 1, "exreasoncode2");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString', 1, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:TaxPointDate/udt:DateString', 1, (new DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:DueDateTypeCode', 1, "duetypecode2");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent', 1, "7.0");
     }
@@ -1145,11 +1145,11 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testSetDocumentBillingPeriod()
     {
-        (self::$document)->setDocumentBillingPeriod(new \DateTime(), new \DateTime(), "Project");
+        (self::$document)->setDocumentBillingPeriod(new DateTime(), new DateTime(), "Project");
 
         $this->disableRenderXmlContent();
-        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
-        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', (new DateTime())->format("Ymd"), "format", "102");
     }
 
     /**
@@ -1202,13 +1202,13 @@ class BuilderEn16931Test extends BuilderBaseTest
      */
     public function testAddDocumentPaymentTermAndDiscount()
     {
-        (self::$document)->addDocumentPaymentTerm("Payment", new \DateTime(), "mandate");
-        (self::$document)->addDiscountTermsToPaymentTerms(10.0, new \DateTime(), 1, "DAY", 20.0, 2.0);
+        (self::$document)->addDocumentPaymentTerm("Payment", new DateTime(), "mandate");
+        (self::$document)->addDiscountTermsToPaymentTerms(10.0, new DateTime(), 1, "DAY", 20.0, 2.0);
 
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "Payment");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 0, "mandate");
 
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:ApplicableTradePaymentDiscountTerms/ram:BasisDateTime/udt:DateTimeString', 0);
@@ -1313,8 +1313,8 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->addNewPosition("1", "linestatuscode", "linestatusreasoncode");
         (self::$document)->setDocumentPositionNote("content", "contentcode", "subjectcode");
         (self::$document)->setDocumentPositionProductDetails("Product Name", "Product Description", "SellerID", "BuyerID", "0088", "11111222222");
-        (self::$document)->setDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new \DateTime());
-        (self::$document)->setDocumentPositionContractReferencedDocument("C-0002", "2", new \DateTime());
+        (self::$document)->setDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new DateTime());
+        (self::$document)->setDocumentPositionContractReferencedDocument("C-0002", "2", new DateTime());
         (self::$document)->setDocumentPositionGrossPrice(105, 1, "C62");
         (self::$document)->addDocumentPositionGrossPriceAllowanceCharge(10, false, 10, 20, "reason", "taxtypecode", "taxcategorycode", 19.9, 1, 1, "C62", "reasoncode");
         (self::$document)->setDocumentPositionNetPrice(20.0, 1, "C62");
@@ -1332,17 +1332,17 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->setDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
         (self::$document)->setDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
         (self::$document)->setDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->setDocumentPositionSupplyChainEvent(new \DateTime());
-        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
-        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
-        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
+        (self::$document)->setDocumentPositionSupplyChainEvent(new DateTime());
+        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new DateTime());
+        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new DateTime());
+        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new DateTime());
         (self::$document)->addDocumentPositionTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
-        (self::$document)->setDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
+        (self::$document)->setDocumentPositionBillingPeriod(new DateTime(), new DateTime());
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
         (self::$document)->setDocumentPositionLineSummation(100, 10);
         (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
-        (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
-        (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
+        (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new DateTime());
+        (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new DateTime());
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 0, "1");
@@ -1358,7 +1358,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:Description', 0, "Product Description");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, "B-0001");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:LineID', 0, "1");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0, (new \DateTime)->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0, (new DateTime)->format("Ymd"), "format", "102");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:ContractReferencedDocument/ram:IssuerAssignedID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:ContractReferencedDocument/ram:LineID', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:ContractReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0);
@@ -1430,8 +1430,8 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:CategoryCode', 0, "S");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReasonCode', 0, "reasoncode");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent', 0, "19.0");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, (new \DateTime())->format("Ymd"), "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator', 0, "true");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:CalculationPercent', 0, "19.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:BasisAmount', 0, "10.0");
@@ -1462,12 +1462,12 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->setDocumentPositionUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
         (self::$document)->setDocumentPositionUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
         (self::$document)->setDocumentPositionUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
-        (self::$document)->setDocumentPositionSupplyChainEvent(new \DateTime());
-        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new \DateTime());
-        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new \DateTime());
-        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new \DateTime());
+        (self::$document)->setDocumentPositionSupplyChainEvent(new DateTime());
+        (self::$document)->setDocumentPositionDespatchAdviceReferencedDocument("DADV-001", "3", new DateTime());
+        (self::$document)->setDocumentPositionReceivingAdviceReferencedDocument("RADV-002", "4", new DateTime());
+        (self::$document)->setDocumentPositionDeliveryNoteReferencedDocument("DNOTE-003", "4", new DateTime());
         (self::$document)->addDocumentPositionTax("S", "VAT", 7.0, 2.0, "reason2", "reasoncode2");
-        (self::$document)->setDocumentPositionBillingPeriod(new \DateTime(), new \DateTime());
+        (self::$document)->setDocumentPositionBillingPeriod(new DateTime(), new DateTime());
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
         (self::$document)->setDocumentPositionLineSummation(200, 20);
 
@@ -1548,8 +1548,8 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:CategoryCode', 1, "S");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:ExemptionReasonCode', 1, "reasoncode2");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent', 1, "7.0");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1, (new \DateTime())->format("Ymd"), "format", "102");
-        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 1, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString', 1, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString', 1, (new DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator', 1, "true");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:CalculationPercent', 1, "19.0");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge/ram:BasisAmount', 1, "10.0");

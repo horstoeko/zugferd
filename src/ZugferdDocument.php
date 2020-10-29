@@ -4,10 +4,10 @@ namespace horstoeko\zugferd;
 
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
 use \JMS\Serializer\Handler\HandlerRegistryInterface;
 use \JMS\Serializer\SerializerBuilder;
 use \JMS\Serializer\SerializerInterface;
-use \horstoeko\zugferd\ZugferdObjectHelper;
 
 /**
  * Class representing the document basics
@@ -45,7 +45,7 @@ class ZugferdDocument
     /**
      * @internal
      * The internal invoice object
-     * @var \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType
+     * @var CrossIndustryInvoiceType
      */
     protected $invoiceObject = null;
 
