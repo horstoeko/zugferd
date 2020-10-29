@@ -5,20 +5,20 @@ xsd2php:
     'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100': 'horstoeko\zugferd\entities\basicwl\udt'
     'urn:un:unece:uncefact:data:standard:QualifiedDataType:100': 'horstoeko\zugferd\entities\basicwl\qdt'
   destinations_php: 
-    'horstoeko\zugferd\entities\basicwl\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/basicwl/rsm'
-    'horstoeko\zugferd\entities\basicwl\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/basicwl/ram'
-    'horstoeko\zugferd\entities\basicwl\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/basicwl/udt'
-    'horstoeko\zugferd\entities\basicwl\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/entities/basicwl/qdt'
+    'horstoeko\zugferd\entities\basicwl\rsm': '../src/entities/basicwl/rsm'
+    'horstoeko\zugferd\entities\basicwl\ram': '../src/entities/basicwl/ram'
+    'horstoeko\zugferd\entities\basicwl\udt': '../src/entities/basicwl/udt'
+    'horstoeko\zugferd\entities\basicwl\qdt': '../src/entities/basicwl/qdt'
   destinations_jms: 
-    'horstoeko\zugferd\entities\basicwl\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/basicwl/rsm'
-    'horstoeko\zugferd\entities\basicwl\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/basicwl/ram'
-    'horstoeko\zugferd\entities\basicwl\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/basicwl/udt'
-    'horstoeko\zugferd\entities\basicwl\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/yaml/basicwl/qdt'
+    'horstoeko\zugferd\entities\basicwl\rsm': '../src/yaml/basicwl/rsm'
+    'horstoeko\zugferd\entities\basicwl\ram': '../src/yaml/basicwl/ram'
+    'horstoeko\zugferd\entities\basicwl\udt': '../src/yaml/basicwl/udt'
+    'horstoeko\zugferd\entities\basicwl\qdt': '../src/yaml/basicwl/qdt'
   destinations_validation:
-    'horstoeko\zugferd\entities\basicwl\rsm': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/basicwl/rsm'
-    'horstoeko\zugferd\entities\basicwl\ram': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/basicwl/ram'
-    'horstoeko\zugferd\entities\basicwl\udt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/basicwl/udt'
-    'horstoeko\zugferd\entities\basicwl\qdt': '/srv/www/dev/local-horstoeko-zugferd/vendor/horstoeko/zugferd/src/validation/basicwl/qdt'
+    'horstoeko\zugferd\entities\basicwl\rsm': '../src/validation/basicwl/rsm'
+    'horstoeko\zugferd\entities\basicwl\ram': '../src/validation/basicwl/ram'
+    'horstoeko\zugferd\entities\basicwl\udt': '../src/validation/basicwl/udt'
+    'horstoeko\zugferd\entities\basicwl\qdt': '../src/validation/basicwl/qdt'
   configs_jms:
     xml_cdata: false
   aliases:
