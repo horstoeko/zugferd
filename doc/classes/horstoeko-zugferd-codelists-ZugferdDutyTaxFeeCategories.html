@@ -3,335 +3,454 @@
 <head>
     <meta charset="utf-8">
     <title>horstoeko/zugferd</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/template.css">
-    <link rel="icon" href="../images/favicon.ico"/>
-        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"></script>
-    <script src="../js/search.js"></script>
-    <script defer src="../js/searchIndex.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
     </head>
-<body>
-<header class="phpdocumentor-top-header"></header>
-<header class="phpdocumentor-header">
-    <section class="phpdocumentor-section">
-        <h1 class="phpdocumentor-title">horstoeko/zugferd</h1>
-    </section>
-</header>
-<main class="phpdocumentor">
-    <div class="phpdocumentor-section">
-        <aside class="three phpdocumentor-columns phpdocumentor-sidebar">
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">horstoeko/zugferd</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
     <section data-search-form class="phpdocumentor-search">
-        <h1 class="phpdocumentor-sidebar__category-header">Search</h1>
-        <label class="phpdocumentor-label">
-            <span class="visually-hidden">Search for</span>
-            <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
-        </label>
-    </section>
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/horstoeko.html"><abbr title="\horstoeko">horstoeko</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/horstoeko-zugferd.html"><abbr title="\horstoeko\zugferd">zugferd</abbr></a></li>
+                                    </ul>
+                        </section>
 
     
-    <h1 class="phpdocumentor-sidebar__category-header">Namespaces</h1>
-            <h2 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/default.html"><abbr title="\">Global</abbr></a></h2>
-                    <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/horstoeko.html"><abbr title="\horstoeko">horstoeko</abbr></a></h3>
-            <ul class="phpdocumentor-list">
-                                    <li><a href="../namespaces/horstoeko-zugferd.html"><abbr title="\horstoeko\zugferd">zugferd</abbr></a></li>
-                            </ul>
-            
-    
-    <h1 class="phpdocumentor-sidebar__category-header">Reports</h1>
-        <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/deprecated.html">Deprecated</a></h2>
-    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/errors.html">Errors</a></h2>
-    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/markers.html">Markers</a></h2>
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
 </aside>
 
-        <div class="nine phpdocumentor-columns phpdocumentor-content">
-            <ul class="phpdocumentor-breadcrumbs">
-    <li><a href="../index.html">Home</a></li>
-                        <li><a href="../namespaces/horstoeko.html">horstoeko</a></li>
-                    <li><a href="../namespaces/horstoeko-zugferd.html">zugferd</a></li>
-                    <li><a href="../namespaces/horstoeko-zugferd-codelists.html">codelists</a></li>
-            </ul>
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/horstoeko.html">horstoeko</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/horstoeko-zugferd.html">zugferd</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/horstoeko-zugferd-codelists.html">codelists</a></li>
+    </ul>
 
-    <article class="phpdocumentor-element phpdocumentor-class">
+    <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-            ZugferdDutyTaxFeeCategories
-                                                        </h2>
+    ZugferdDutyTaxFeeCategories
+
+    
+    
+    
+    </h2>
+
         <aside class="phpdocumentor-element-found-in">
-            <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-            :
-            <span class="phpdocumentor-element-found-in__line">8</span>
-        </aside>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">8</span>
+</aside>
 
-        <p class="phpdocumentor-class__summary">Class representing the Duty or tax or fee categories</p>
-        <section class="phpdocumentor-class__description"></section>
+            <p class="phpdocumentor-summary">Class representing the Duty or tax or fee categories</p>
 
-        <h3>Table of Contents</h3>
-        <table class="phpdocumentor-table_of_contents">
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_STANDARD_RATE">STANDARD_RATE</a></th>
-                    <td class="phpdocumentor-cell">Standard rate</td>
-                    <td class="phpdocumentor-cell">&quot;S&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_ZERO_RATED_GOODS">ZERO_RATED_GOODS</a></th>
-                    <td class="phpdocumentor-cell">Zero rated goods</td>
-                    <td class="phpdocumentor-cell">&quot;Z&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_EXEMPT_FROM_TAX">EXEMPT_FROM_TAX</a></th>
-                    <td class="phpdocumentor-cell">Exempt from tax</td>
-                    <td class="phpdocumentor-cell">&quot;E&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_REVERSE_CHARGE">VAT_REVERSE_CHARGE</a></th>
-                    <td class="phpdocumentor-cell">VAT Reverse charge</td>
-                    <td class="phpdocumentor-cell">&quot;AE&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES">VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES</a></th>
-                    <td class="phpdocumentor-cell">VAT exempt for EEA intra-community supply of goods and services</td>
-                    <td class="phpdocumentor-cell">&quot;K&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_FREE_EXPORT_ITEM_TAX_NOT_CHARGED">FREE_EXPORT_ITEM_TAX_NOT_CHARGED</a></th>
-                    <td class="phpdocumentor-cell">Free export item, tax not charged</td>
-                    <td class="phpdocumentor-cell">&quot;G&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_SERVICE_OUTSIDE_SCOPE_OF_TAX">SERVICE_OUTSIDE_SCOPE_OF_TAX</a></th>
-                    <td class="phpdocumentor-cell">Service outside scope of tax</td>
-                    <td class="phpdocumentor-cell">&quot;O&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_CANARY_ISLANDS_GENERAL_INDIRECT_TAX">CANARY_ISLANDS_GENERAL_INDIRECT_TAX</a></th>
-                    <td class="phpdocumentor-cell">Canary Islands general indirect tax</td>
-                    <td class="phpdocumentor-cell">&quot;L&quot;</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA">TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA</a></th>
-                    <td class="phpdocumentor-cell">Tax for production, services and importation in Ceuta and Melilla</td>
-                    <td class="phpdocumentor-cell">&quot;M&quot;</td>
-                </tr>
-                                                                                            </table>
+    <section class="phpdocumentor-description"></section>
 
-                    <section>
-                <h3 class="phpdocumentor-constants__header">Constants</h3>
-                                    <a id="constant_STANDARD_RATE"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">STANDARD_RATE</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">13</span>
-    </aside>
-            <p class="phpdocumentor-summary">Standard rate</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$STANDARD_RATE</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;S&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_ZERO_RATED_GOODS"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">ZERO_RATED_GOODS</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">18</span>
-    </aside>
-            <p class="phpdocumentor-summary">Zero rated goods</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$ZERO_RATED_GOODS</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;Z&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_EXEMPT_FROM_TAX"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">EXEMPT_FROM_TAX</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">23</span>
-    </aside>
-            <p class="phpdocumentor-summary">Exempt from tax</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$EXEMPT_FROM_TAX</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;E&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_VAT_REVERSE_CHARGE"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">VAT_REVERSE_CHARGE</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">28</span>
-    </aside>
-            <p class="phpdocumentor-summary">VAT Reverse charge</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$VAT_REVERSE_CHARGE</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;AE&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">33</span>
-    </aside>
-            <p class="phpdocumentor-summary">VAT exempt for EEA intra-community supply of goods and services</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;K&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_FREE_EXPORT_ITEM_TAX_NOT_CHARGED"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">FREE_EXPORT_ITEM_TAX_NOT_CHARGED</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">38</span>
-    </aside>
-            <p class="phpdocumentor-summary">Free export item, tax not charged</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$FREE_EXPORT_ITEM_TAX_NOT_CHARGED</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;G&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_SERVICE_OUTSIDE_SCOPE_OF_TAX"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">SERVICE_OUTSIDE_SCOPE_OF_TAX</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">43</span>
-    </aside>
-            <p class="phpdocumentor-summary">Service outside scope of tax</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$SERVICE_OUTSIDE_SCOPE_OF_TAX</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;O&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_CANARY_ISLANDS_GENERAL_INDIRECT_TAX"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">CANARY_ISLANDS_GENERAL_INDIRECT_TAX</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">48</span>
-    </aside>
-            <p class="phpdocumentor-summary">Canary Islands general indirect tax</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$CANARY_ISLANDS_GENERAL_INDIRECT_TAX</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;L&quot;</span>
-    </code>
-    </article>
-                                    <a id="constant_TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="../files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">53</span>
-    </aside>
-            <p class="phpdocumentor-summary">Tax for production, services and importation in Ceuta and Melilla</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA</span>
-        = <span class="phpdocumentor-signature__default-value">&quot;M&quot;</span>
-    </code>
-    </article>
-                                            </section>
+
+
+
+
+
+
+
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_CANARY_ISLANDS_GENERAL_INDIRECT_TAX">CANARY_ISLANDS_GENERAL_INDIRECT_TAX</a>
+    <span>
+        &nbsp;= &quot;L&quot;                    </span>
+</dt>
+<dd>Canary Islands general indirect tax</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_EXEMPT_FROM_TAX">EXEMPT_FROM_TAX</a>
+    <span>
+        &nbsp;= &quot;E&quot;                    </span>
+</dt>
+<dd>Exempt from tax</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_FREE_EXPORT_ITEM_TAX_NOT_CHARGED">FREE_EXPORT_ITEM_TAX_NOT_CHARGED</a>
+    <span>
+        &nbsp;= &quot;G&quot;                    </span>
+</dt>
+<dd>Free export item, tax not charged</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_SERVICE_OUTSIDE_SCOPE_OF_TAX">SERVICE_OUTSIDE_SCOPE_OF_TAX</a>
+    <span>
+        &nbsp;= &quot;O&quot;                    </span>
+</dt>
+<dd>Service outside scope of tax</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_STANDARD_RATE">STANDARD_RATE</a>
+    <span>
+        &nbsp;= &quot;S&quot;                    </span>
+</dt>
+<dd>Standard rate</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA">TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA</a>
+    <span>
+        &nbsp;= &quot;M&quot;                    </span>
+</dt>
+<dd>Tax for production, services and importation in Ceuta and Melilla</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES">VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES</a>
+    <span>
+        &nbsp;= &quot;K&quot;                    </span>
+</dt>
+<dd>VAT exempt for EEA intra-community supply of goods and services</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_REVERSE_CHARGE">VAT_REVERSE_CHARGE</a>
+    <span>
+        &nbsp;= &quot;AE&quot;                    </span>
+</dt>
+<dd>VAT Reverse charge</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_ZERO_RATED_GOODS">ZERO_RATED_GOODS</a>
+    <span>
+        &nbsp;= &quot;Z&quot;                    </span>
+</dt>
+<dd>Zero rated goods</dd>
+
+                </dl>
+
+
+
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_CANARY_ISLANDS_GENERAL_INDIRECT_TAX">
+        CANARY_ISLANDS_GENERAL_INDIRECT_TAX
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_CANARY_ISLANDS_GENERAL_INDIRECT_TAX" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">48</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Canary Islands general indirect tax</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">CANARY_ISLANDS_GENERAL_INDIRECT_TAX</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;L&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_EXEMPT_FROM_TAX">
+        EXEMPT_FROM_TAX
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_EXEMPT_FROM_TAX" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Exempt from tax</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">EXEMPT_FROM_TAX</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;E&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_FREE_EXPORT_ITEM_TAX_NOT_CHARGED">
+        FREE_EXPORT_ITEM_TAX_NOT_CHARGED
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_FREE_EXPORT_ITEM_TAX_NOT_CHARGED" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Free export item, tax not charged</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">FREE_EXPORT_ITEM_TAX_NOT_CHARGED</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;G&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_SERVICE_OUTSIDE_SCOPE_OF_TAX">
+        SERVICE_OUTSIDE_SCOPE_OF_TAX
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_SERVICE_OUTSIDE_SCOPE_OF_TAX" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Service outside scope of tax</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">SERVICE_OUTSIDE_SCOPE_OF_TAX</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;O&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_STANDARD_RATE">
+        STANDARD_RATE
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_STANDARD_RATE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Standard rate</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">STANDARD_RATE</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;S&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA">
+        TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Tax for production, services and importation in Ceuta and Melilla</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">TAX_FOR_PRODUCTION_SERVICES_AND_IMPORTATION_IN_CEUTA_AND_MELILLA</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;M&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES">
+        VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+</aside>
+
+        <p class="phpdocumentor-summary">VAT exempt for EEA intra-community supply of goods and services</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">VAT_EXEMPT_FOR_EEA_INTRACOMMUNITY_SUPPLY_OF_GOODS_AND_SERVICES</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;K&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_VAT_REVERSE_CHARGE">
+        VAT_REVERSE_CHARGE
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_VAT_REVERSE_CHARGE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+</aside>
+
+        <p class="phpdocumentor-summary">VAT Reverse charge</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">VAT_REVERSE_CHARGE</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;AE&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ZERO_RATED_GOODS">
+        ZERO_RATED_GOODS
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#constant_ZERO_RATED_GOODS" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/codelists/ZugferdDutyTaxFeeCategories.php"><a href="files/src-codelists-zugferddutytaxfeecategories.html"><abbr title="src/codelists/ZugferdDutyTaxFeeCategories.php">ZugferdDutyTaxFeeCategories.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Zero rated goods</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">ZERO_RATED_GOODS</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;Z&quot;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+            </section>
+
         
-            </article>
-            <div data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
 
-                <h2>Search results</h2>
-                <ul class="phpdocumentor-search-results__entries">
-
-                </ul>
+        
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
             </div>
         </div>
-    </div>
-</main>
+        <a href="classes/horstoeko-zugferd-codelists-ZugferdDutyTaxFeeCategories.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
 </body>
 </html>

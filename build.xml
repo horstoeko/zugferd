@@ -3,7 +3,7 @@
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
-    <property name="url.phpdocumentator.download" value="https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-rc/phpDocumentor.phar"/>
+    <property name="url.phpdocumentator.download" value="https://phpdoc.org/phpDocumentor.phar"/>
     <property name="composer" value="${project.basedir}/composer.phar"/>
     <property name="pdepend" value="${project.basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${project.basedir}/vendor/bin/phpcpd"/>
@@ -230,6 +230,8 @@
             <arg path="${project.basedir}/src"/>
             <arg value="-t"/>
             <arg path="${project.basedir}/build/doc"/>
+            <arg value="--template"/>
+            <arg path="default"/>
         </exec>
         <property name="projectdoc.done" value="true"/>
     </target>
@@ -303,6 +305,8 @@
             <arg value="--title=horstoeko/zugferd"/>
             <arg value="--visibility=public"/>
             <arg value="--sourcecode"/>
+            <arg value="--template"/>
+            <arg path="default"/>
         </exec>
         <delete file="${phpdocumentator}"/>
         <delete dir="${project.basedir}/.phpdoc"/>

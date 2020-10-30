@@ -3,247 +3,339 @@
 <head>
     <meta charset="utf-8">
     <title>horstoeko/zugferd</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/template.css">
-    <link rel="icon" href="../images/favicon.ico"/>
-        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"></script>
-    <script src="../js/search.js"></script>
-    <script defer src="../js/searchIndex.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
     </head>
-<body>
-<header class="phpdocumentor-top-header"></header>
-<header class="phpdocumentor-header">
-    <section class="phpdocumentor-section">
-        <h1 class="phpdocumentor-title">horstoeko/zugferd</h1>
-    </section>
-</header>
-<main class="phpdocumentor">
-    <div class="phpdocumentor-section">
-        <aside class="three phpdocumentor-columns phpdocumentor-sidebar">
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">horstoeko/zugferd</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
     <section data-search-form class="phpdocumentor-search">
-        <h1 class="phpdocumentor-sidebar__category-header">Search</h1>
-        <label class="phpdocumentor-label">
-            <span class="visually-hidden">Search for</span>
-            <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
-        </label>
-    </section>
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/horstoeko.html"><abbr title="\horstoeko">horstoeko</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/horstoeko-zugferd.html"><abbr title="\horstoeko\zugferd">zugferd</abbr></a></li>
+                                    </ul>
+                        </section>
 
     
-    <h1 class="phpdocumentor-sidebar__category-header">Namespaces</h1>
-            <h2 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/default.html"><abbr title="\">Global</abbr></a></h2>
-                    <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/horstoeko.html"><abbr title="\horstoeko">horstoeko</abbr></a></h3>
-            <ul class="phpdocumentor-list">
-                                    <li><a href="../namespaces/horstoeko-zugferd.html"><abbr title="\horstoeko\zugferd">zugferd</abbr></a></li>
-                            </ul>
-            
-    
-    <h1 class="phpdocumentor-sidebar__category-header">Reports</h1>
-        <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/deprecated.html">Deprecated</a></h2>
-    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/errors.html">Errors</a></h2>
-    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/markers.html">Markers</a></h2>
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
 </aside>
 
-        <div class="nine phpdocumentor-columns phpdocumentor-content">
-            <ul class="phpdocumentor-breadcrumbs">
-    <li><a href="../index.html">Home</a></li>
-                        <li><a href="../namespaces/horstoeko.html">horstoeko</a></li>
-                    <li><a href="../namespaces/horstoeko-zugferd.html">zugferd</a></li>
-            </ul>
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/horstoeko.html">horstoeko</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/horstoeko-zugferd.html">zugferd</a></li>
+    </ul>
 
-    <article class="phpdocumentor-element phpdocumentor-class">
+    <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-            ZugferdProfiles
-                                                        </h2>
+    ZugferdProfiles
+
+    
+    
+    
+    </h2>
+
         <aside class="phpdocumentor-element-found-in">
-            <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-            :
-            <span class="phpdocumentor-element-found-in__line">8</span>
-        </aside>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">8</span>
+</aside>
 
-        <p class="phpdocumentor-class__summary">Class representing the document profiles</p>
-        <section class="phpdocumentor-class__description"></section>
+            <p class="phpdocumentor-summary">Class representing the document profiles</p>
 
-        <h3>Table of Contents</h3>
-        <table class="phpdocumentor-table_of_contents">
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASIC">PROFILE_BASIC</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">0</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASICWL">PROFILE_BASICWL</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">1</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EN16931">PROFILE_EN16931</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">2</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EXTENDED">PROFILE_EXTENDED</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">3</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_XRECHNUNG">PROFILE_XRECHNUNG</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">4</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILEDEF">PROFILEDEF</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">[self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]</td>
-                </tr>
-                                                                                            </table>
+    <section class="phpdocumentor-description"></section>
 
-                    <section>
-                <h3 class="phpdocumentor-constants__header">Constants</h3>
-                                    <a id="constant_PROFILE_BASIC"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILE_BASIC</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">10</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILE_BASIC</span>
-        = <span class="phpdocumentor-signature__default-value">""</span>
-    </code>
-    </article>
-                                    <a id="constant_PROFILE_BASICWL"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILE_BASICWL</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">11</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILE_BASICWL</span>
-        = <span class="phpdocumentor-signature__default-value">1</span>
-    </code>
-    </article>
-                                    <a id="constant_PROFILE_EN16931"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILE_EN16931</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">12</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILE_EN16931</span>
-        = <span class="phpdocumentor-signature__default-value">2</span>
-    </code>
-    </article>
-                                    <a id="constant_PROFILE_EXTENDED"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILE_EXTENDED</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">13</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILE_EXTENDED</span>
-        = <span class="phpdocumentor-signature__default-value">3</span>
-    </code>
-    </article>
-                                    <a id="constant_PROFILE_XRECHNUNG"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILE_XRECHNUNG</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">14</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILE_XRECHNUNG</span>
-        = <span class="phpdocumentor-signature__default-value">4</span>
-    </code>
-    </article>
-                                    <a id="constant_PROFILEDEF"></a>
-<article
-        class="
-            phpdocumentor-element
-            phpdocumentor-constant
-            phpdocumentor-constant--
-                    "
->
-    <h4 class="phpdocumentor-constant__name">PROFILEDEF</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="../files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">16</span>
-    </aside>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility"></span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-        <span class="phpdocumentor-signature__name">$PROFILEDEF</span>
-        = <span class="phpdocumentor-signature__default-value">[self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]</span>
-    </code>
-    </article>
-                                            </section>
+
+
+
+
+
+
+
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASIC">PROFILE_BASIC</a>
+    <span>
+        &nbsp;= 0                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASICWL">PROFILE_BASICWL</a>
+    <span>
+        &nbsp;= 1                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EN16931">PROFILE_EN16931</a>
+    <span>
+        &nbsp;= 2                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EXTENDED">PROFILE_EXTENDED</a>
+    <span>
+        &nbsp;= 3                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_XRECHNUNG">PROFILE_XRECHNUNG</a>
+    <span>
+        &nbsp;= 4                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILEDEF">PROFILEDEF</a>
+    <span>
+        &nbsp;= [self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]                    </span>
+</dt>
+<dd></dd>
+
+                </dl>
+
+
+
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILE_BASIC">
+        PROFILE_BASIC
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASIC" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILE_BASIC</span>
+    = <span class="phpdocumentor-signature__default-value">""</span>
+</code>
+
+
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILE_BASICWL">
+        PROFILE_BASICWL
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASICWL" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">11</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILE_BASICWL</span>
+    = <span class="phpdocumentor-signature__default-value">1</span>
+</code>
+
+
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILE_EN16931">
+        PROFILE_EN16931
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EN16931" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">12</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILE_EN16931</span>
+    = <span class="phpdocumentor-signature__default-value">2</span>
+</code>
+
+
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILE_EXTENDED">
+        PROFILE_EXTENDED
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EXTENDED" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILE_EXTENDED</span>
+    = <span class="phpdocumentor-signature__default-value">3</span>
+</code>
+
+
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILE_XRECHNUNG">
+        PROFILE_XRECHNUNG
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_XRECHNUNG" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">14</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILE_XRECHNUNG</span>
+    = <span class="phpdocumentor-signature__default-value">4</span>
+</code>
+
+
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PROFILEDEF">
+        PROFILEDEF
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILEDEF" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">16</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">PROFILEDEF</span>
+    = <span class="phpdocumentor-signature__default-value">[self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]</span>
+</code>
+
+
+    
+    
+
+</article>
+            </section>
+
         
-            </article>
-            <div data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
 
-                <h2>Search results</h2>
-                <ul class="phpdocumentor-search-results__entries">
-
-                </ul>
+        
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
             </div>
         </div>
-    </div>
-</main>
+        <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
 </body>
 </html>
