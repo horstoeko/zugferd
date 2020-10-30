@@ -219,7 +219,7 @@
             <arg value="-t"/>
             <arg path="${basedir}/build/doc"/>
             <arg value="--template"/>
-            <arg path="default"/>
+            <arg value="default"/>
         </exec>
         <property name="projectdoc.done" value="true"/>
     </target>
@@ -294,7 +294,7 @@
             <arg value="--visibility=public"/>
             <arg value="--sourcecode"/>
             <arg value="--template"/>
-            <arg path="default"/>
+            <arg value="default"/>
         </exec>
         <delete file="${phpdocumentator}"/>
         <delete dir="${basedir}/.phpdoc"/>
