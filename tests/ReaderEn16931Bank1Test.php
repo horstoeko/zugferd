@@ -8,7 +8,7 @@ use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use \horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 
-class ReaderEn16931SepaPreNotificationTest extends TestCase
+class ReaderEn16931Bank1Test extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
