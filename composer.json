@@ -31,7 +31,9 @@
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
         "ext-simplexml": "*",
         "symfony/validator": "^5",
-        "smalot/pdfparser": "^0"
+        "smalot/pdfparser": "^0",
+        "setasign/fpdf": "^1",
+        "setasign/fpdi": "^2"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
