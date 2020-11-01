@@ -4,7 +4,7 @@
  * This file is a part of horstoeko/zugferd.
  *
  * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.  
+ * file that was distributed with this source code.
  */
 
 namespace horstoeko\zugferd;
@@ -58,7 +58,7 @@ class ZugferdDocumentPdfBuilder
      * @param ZugferdDocumentBuilder $documentBuiler
      * The instance of the document builder. Needed to get the XML data
      * @param string $pdfData
-     * The full filename or a string containing the binary pdf data. This 
+     * The full filename or a string containing the binary pdf data. This
      * is the original PDF (e.g. created by a ERP system)
      */
     public function __construct(ZugferdDocumentBuilder $documentBuiler, string $pdfData)
