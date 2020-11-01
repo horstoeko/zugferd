@@ -21,13 +21,25 @@ class ZugferdPdfWriter extends PdfFpdi
      * @var array
      */
     protected $files = array();
-    protected $metadata_descriptions = array();
-    protected $file_spe_dictionnary_index = 0;
-    protected $description_index = 0;
-    protected $output_intent_index = 0;
+
+    /**
+     * Contains meta data
+     *
+     * @var array
+     */
+    protected $metaDataDescriptions = [];
+
+    /**
+     * Contains meta data
+     *
+     * @var array
+     */
+    protected $metaDataInfos = [];
+    protected $fileSpecDictionnaryIndex = 0;
+    protected $descriptionIndex = 0;
+    protected $outputIntentIndex = 0;
     protected $n_files;
-    protected $open_attachment_pane = false;
-    protected $pdf_metadata_infos = array();
+    protected $openAttachmentPane = false;
 
     /**
      * Set the PDF version.
@@ -35,7 +47,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * @param string $version
      * @param bool   $binary_data
      */
-    public function SetPdfVersion($version = '1.3', $binary_data = false)
+    public function setPdfVersion($version = '1.3', $binary_data = false)
     {
         $this->PDFVersion = sprintf('%.1F', $version);
         if (true == $binary_data) {
@@ -53,7 +65,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * @param string $mimetype
      * @param bool   $isUTF8
      */
-    public function Attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false)
+    public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false)
     {
         if ('' == $name) {
             $p = strrpos($file, '/');
@@ -82,9 +94,9 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Open attachment panel on PDF.
      */
-    public function OpenAttachmentPane()
+    public function openAttachmentPane()
     {
-        $this->open_attachment_pane = true;
+        $this->openAttachmentPane = true;
     }
 
     /**
@@ -92,19 +104,19 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @param $description
      */
-    public function AddMetadataDescriptionNode($description)
+    public function addMetadataDescriptionNode($description)
     {
-        $this->metadata_descriptions[] = $description;
+        $this->metaDataDescriptions[] = $description;
     }
 
     /**
      * Set PDF metadata infos.
      *
-     * @param array $pdf_metadata_infos
+     * @param array $metaDataInfos
      */
-    public function set_pdf_metadata_infos(array $pdf_metadata_infos)
+    public function setPdfMetadataInfos(array $metaDataInfos)
     {
-        $this->pdf_metadata_infos = $pdf_metadata_infos;
+        $this->metaDataInfos = $metaDataInfos;
     }
 
     /**
@@ -115,12 +127,12 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function _putfiles()
     {
         foreach ($this->files as $i => &$info) {
-            $this->_put_file_specification($info);
+            $this->putFileSpecification($info);
             $info['file_index'] = $this->n;
-            $this->_put_file_stream($info);
+            $this->putFileStream($info);
         }
 
-        $this->_put_file_dictionary();
+        $this->putFileDictionary();
     }
 
     /**
@@ -128,10 +140,10 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @param array $file_info
      */
-    protected function _put_file_specification(array $file_info)
+    protected function putFileSpecification(array $file_info)
     {
         $this->_newobj();
-        $this->file_spe_dictionnary_index = $this->n;
+        $this->fileSpecDictionnaryIndex = $this->n;
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
@@ -157,7 +169,7 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @throws \Exception
      */
-    protected function _put_file_stream(array $file_info)
+    protected function putFileStream(array $file_info)
     {
         $this->_newobj();
         $this->_put('<<');
@@ -188,7 +200,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put file dictionnary.
      */
-    protected function _put_file_dictionary()
+    protected function putFileDictionary()
     {
         $this->_newobj();
         $this->n_files = $this->n;
@@ -209,14 +221,14 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put metadata descriptions.
      */
-    protected function _put_metadata_descriptions()
+    protected function putMetadataDescriptions()
     {
         $s = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>' . "\n";
         $s .= '<x:xmpmeta xmlns:x="adobe:ns:meta/">' . "\n";
         $s .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">' . "\n";
         $this->_newobj();
-        $this->description_index = $this->n;
-        foreach ($this->metadata_descriptions as $i => $desc) {
+        $this->descriptionIndex = $this->n;
+        foreach ($this->metaDataDescriptions as $i => $desc) {
             $s .= $desc . "\n";
         }
         $s .= '</rdf:RDF>' . "\n";
@@ -243,8 +255,8 @@ class ZugferdPdfWriter extends PdfFpdi
             $this->_putfiles();
         }
         $this->_putoutputintent();
-        if (!empty($this->metadata_descriptions)) {
-            $this->_put_metadata_descriptions();
+        if (!empty($this->metaDataDescriptions)) {
+            $this->putMetadataDescriptions();
         }
     }
 
@@ -263,7 +275,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('/Info (sRGB V4 ICC)');
         $this->_put('>>');
         $this->_put('endobj');
-        $this->output_intent_index = $this->n;
+        $this->outputIntentIndex = $this->n;
 
         $icc = file_get_contents($this::ICC_PROFILE_PATH);
         $icc = gzcompress($icc);
@@ -296,18 +308,18 @@ class ZugferdPdfWriter extends PdfFpdi
             } else {
                 $this->_put(sprintf('/AF %s 0 R', $this->n_files));
             }
-            if (0 != $this->description_index) {
-                $this->_put(sprintf('/Metadata %s 0 R', $this->description_index));
+            if (0 != $this->descriptionIndex) {
+                $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
             }
             $this->_put('/Names <<');
             $this->_put('/EmbeddedFiles ');
             $this->_put(sprintf('%s 0 R', $this->n_files));
             $this->_put('>>');
         }
-        if (0 != $this->output_intent_index) {
-            $this->_put(sprintf('/OutputIntents [%s 0 R]', $this->output_intent_index));
+        if (0 != $this->outputIntentIndex) {
+            $this->_put(sprintf('/OutputIntents [%s 0 R]', $this->outputIntentIndex));
         }
-        if ($this->open_attachment_pane) {
+        if ($this->openAttachmentPane) {
             $this->_put('/PageMode /UseAttachments');
         }
     }
@@ -318,8 +330,8 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function _puttrailer()
     {
         parent::_puttrailer();
-        $created_id = md5($this->_generate_metadata_string('created'));
-        $modified_id = md5($this->_generate_metadata_string('modified'));
+        $created_id = md5($this->generateMetadataString('created'));
+        $modified_id = md5($this->generateMetadataString('modified'));
         $this->_put(sprintf('/ID [<%s><%s>]', $created_id, $modified_id));
     }
 
@@ -330,7 +342,7 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @return string
      */
-    protected function _generate_metadata_string($date_type = 'created')
+    protected function generateMetadataString($date_type = 'created')
     {
         $metadata_string = '';
         if (isset($this->pdf_metadata_infos['title'])) {

@@ -39,15 +39,18 @@ class ZugferdDocumentPdfBuilder
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuiler
+     * The instance of the document builder. Needed to get the XML data
      * @param string $pdfData
+     * The full filename or a string containing the binary pdf data. This 
+     * is the original PDF (e.g. created by a ERP system)
      */
     public function __construct(ZugferdDocumentBuilder $documentBuiler, string $pdfData)
     {
         $this->documentBuiler = $documentBuiler;
         $this->pdfData = $pdfData;
         $this->pdfWriter = new ZugferdPdfWriter();
-        $this->xmlData = new \DOMDocument();
-        $this->xmlData->loadXML($this->documentBuiler->getContent());
+        $this->xmlDomDocument = new \DOMDocument();
+        $this->xmlDomDocument->loadXML($this->documentBuiler->getContent());
     }
 
     /**
@@ -56,6 +59,33 @@ class ZugferdDocumentPdfBuilder
      * @return ZugferdDocumentPdfBuilder
      */
     public function generateDocument(): ZugferdDocumentPdfBuilder
+    {
+        $this->startCreatePdf();
+
+        return $this;
+    }
+
+    /**
+     * Saves the document generated with generateDocument to a file
+     *
+     * @param string $toFilename
+     * The full qualified filename to which the generated PDF (with attachment)
+     * is stored
+     * @return ZugferdDocumentPdfBuilder
+     */
+    public function saveDocument(string $toFilename): ZugferdDocumentPdfBuilder
+    {
+        $this->pdfWriter->Output($toFilename, 'F');
+
+        return $this;
+    }
+
+    /**
+     * Internal function which sets up the PDF
+     *
+     * @return void
+     */
+    private function startCreatePdf(): void
     {
         // Get PDF data
 
@@ -78,110 +108,110 @@ class ZugferdDocumentPdfBuilder
 
         // Start
 
-        $this->pdfWriter->Attach($xmlDataRef, $profileDef['attachmentfilename'], 'Factur-X Invoice', 'Data', 'text#2Fxml');
-        $this->pdfWriter->OpenAttachmentPane();
-        $this->pdfWriter->setSourceFile($pdfDataRef);
+        $this->pdfWriter->attach($xmlDataRef, $profileDef['attachmentfilename'], 'Factur-X Invoice', 'Data', 'text#2Fxml');
+        $this->pdfWriter->openAttachmentPane();
+
+        // Copy pages from the original PDF
+
+        $pageCount = $this->pdfWriter->setSourceFile($pdfDataRef);
+
+        for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
+            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox');
+            $this->pdfWriter->AddPage();
+            $this->pdfWriter->useTemplate($pageContent);
+        }
+
+        // Set PDF version 1.7 according to PDF/A-3 ISO 32000-1
+
         $this->pdfWriter->setPdfVersion('1.7', true);
 
+        // Update meta data (e.g. such as author, producer, title)
+
         $this->updatePdfMetaData();
-
-        return $this;
     }
 
     /**
-     * Saves the document generated with generateDocument to a file
-     *
-     * @param string $toFilename
-     * @return ZugferdDocumentPdfBuilder
-     */
-    public function saveDocument(string $toFilename): ZugferdDocumentPdfBuilder
-    {
-        $this->pdfWriter->Output($toFilename, 'F');
-
-        return $this;
-    }
-
-    /**
-     * Update PDF metadata to according to Factur-X XML data.
+     * Update PDF metadata to according to FacturX/ZUGFeRD XML data.
      *
      * @return void
      */
     private function updatePdfMetadata(): void
     {
-        $pdf_metadata_infos = $this->preparePdfMetadata($this->xmlData);
-        $this->pdfWriter->set_pdf_metadata_infos($pdf_metadata_infos);
+        $pdfMetadataInfos = $this->preparePdfMetadata($this->xmlDomDocument);
+        $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
         $xmp = simplexml_load_file(dirname(__FILE__) . "/assets/facturx_extension_schema.xmp");
-        $description_nodes = $xmp->xpath('rdf:Description');
+        $descriptionNodes = $xmp->xpath('rdf:Description');
 
-        $desc_fx = $description_nodes[0];
-        $desc_fx->children('fx', true)->ConformanceLevel = strtoupper($this->documentBuiler->profiledef["xmpname"]);
-        $this->pdfWriter->AddMetadataDescriptionNode($desc_fx->asXML());
+        $descFx = $descriptionNodes[0];
+        $descFx->children('fx', true)->ConformanceLevel = strtoupper($this->documentBuiler->profiledef["xmpname"]);
+        $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
-        $this->pdfWriter->AddMetadataDescriptionNode($description_nodes[1]->asXML());
+        $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
 
-        $desc_pdfaid = $description_nodes[2];
-        $this->pdfWriter->AddMetadataDescriptionNode($desc_pdfaid->asXML());
+        $descPdfAid = $descriptionNodes[2];
+        $this->pdfWriter->addMetadataDescriptionNode($descPdfAid->asXML());
 
-        $desc_dc = $description_nodes[3];
-        $desc_nodes = $desc_dc->children('dc', true);
-        $desc_nodes->title->children('rdf', true)->Alt->li = $pdf_metadata_infos['title'];
-        $desc_nodes->creator->children('rdf', true)->Seq->li = $pdf_metadata_infos['author'];
-        $desc_nodes->description->children('rdf', true)->Alt->li = $pdf_metadata_infos['subject'];
-        $this->pdfWriter->AddMetadataDescriptionNode($desc_dc->asXML());
+        $descDc = $descriptionNodes[3];
+        $descNodes = $descDc->children('dc', true);
+        $descNodes->title->children('rdf', true)->Alt->li = $pdfMetadataInfos['title'];
+        $descNodes->creator->children('rdf', true)->Seq->li = $pdfMetadataInfos['author'];
+        $descNodes->description->children('rdf', true)->Alt->li = $pdfMetadataInfos['subject'];
+        $this->pdfWriter->addMetadataDescriptionNode($descDc->asXML());
 
-        $desc_adobe = $description_nodes[4];
-        $desc_adobe->children('pdf', true)->Producer = 'FPDF';
-        $this->pdfWriter->AddMetadataDescriptionNode($desc_adobe->asXML());
+        $descAdobe = $descriptionNodes[4];
+        $descAdobe->children('pdf', true)->Producer = 'FPDF';
+        $this->pdfWriter->addMetadataDescriptionNode($descAdobe->asXML());
 
-        $desc_xmp = $description_nodes[5];
-        $xmp_nodes = $desc_xmp->children('xmp', true);
-        $xmp_nodes->CreatorTool = sprintf('Factur-X PHP library v%s by HorstOeko', "1.0");
-        $xmp_nodes->CreateDate = $pdf_metadata_infos['createdDate'];
-        $xmp_nodes->ModifyDate = $pdf_metadata_infos['modifiedDate'];
-        $this->pdfWriter->AddMetadataDescriptionNode($desc_xmp->asXML());
+        $descXmp = $descriptionNodes[5];
+        $xmpNodes = $descXmp->children('xmp', true);
+        $xmpNodes->CreatorTool = sprintf('Factur-X PHP library v%s by HorstOeko', "1.0");
+        $xmpNodes->CreateDate = $pdfMetadataInfos['createdDate'];
+        $xmpNodes->ModifyDate = $pdfMetadataInfos['modifiedDate'];
+        $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
     }
 
     /**
-     * Prepare PDF Metadata informations from Factur-X XML.
+     * Prepare PDF Metadata informations from FacturX/ZUGFeRD XML.
      *
      * @return array
      */
-    private function preparePdfMetadata()
+    private function preparePdfMetadata(): array
     {
-        $invoiceInformations = $this->extractInvoiceInformations($this->xmlData);
+        $invoiceInformations = $this->extractInvoiceInformations($this->xmlDomDocument);
         $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
         $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
-        $subject = sprintf('Factur-X %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
+        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
         $pdf_metadata = array(
             'author' => $invoiceInformations['seller'],
-            'keywords' => sprintf('%s, Factur-X', $invoiceInformations['docTypeName']),
+            'keywords' => sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']),
             'title' => $title,
             'subject' => $subject,
             'createdDate' => $invoiceInformations['date'],
-            'modifiedDate' => date('Y-m-d\TH:i:s').'+00:00',
+            'modifiedDate' => date('Y-m-d\TH:i:s') . '+00:00',
         );
 
         return $pdf_metadata;
     }
 
     /**
-     * Extract major invoice information from Factur-X XML.
+     * Extract major invoice information from FacturX/ZUGFeRD XML.
      *
      * @return array
      */
-    protected function extractInvoiceInformations()
+    protected function extractInvoiceInformations(): array
     {
-        $xpath = new \DOMXpath($this->xmlData);
+        $xpath = new \DOMXpath($this->xmlDomDocument);
         $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
         $date = $dateXpath->item(0)->nodeValue;
-        $dateReformatted = date('Y-m-d\TH:i:s', strtotime($date)).'+00:00';
+        $dateReformatted = date('Y-m-d\TH:i:s', strtotime($date)) . '+00:00';
         $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
         $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
         $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
         $seller = $sellerXpath->item(0)->nodeValue;
         $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
         $docType = $docTypeXpath->item(0)->nodeValue;
+
         switch ($docType) {
             case '381':
                 $docTypeName = 'Refund';
@@ -190,6 +220,7 @@ class ZugferdDocumentPdfBuilder
                 $docTypeName = 'Invoice';
                 break;
         }
+
         $base_info = array(
             'invoiceId' => $invoiceId,
             'docTypeName' => $docTypeName,

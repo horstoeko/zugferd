@@ -36,8 +36,7 @@ $document
     ->SetDocumentPositionNetPrice(5.5000)
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
-    ->SetDocumentPositionLineSummation(275.0)
-    ->writeFile(getcwd() . "/factur-x.xml");
+    ->SetDocumentPositionLineSummation(275.0);
 
 $pdf = new ZugferdDocumentPdfBuilder($document, dirname(__FILE__) . "/emptypdf.pdf");
 $pdf->generateDocument();
