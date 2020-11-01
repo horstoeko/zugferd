@@ -30,7 +30,8 @@
             <arg value="+x"/>
             <arg path="${composer}"/>
         </exec>
-        <exec executable="${composer}" failonerror="true">
+        <exec executable="php" failonerror="true">
+            <arg path="${composer}"/>
             <arg value="install"/>
             <arg value="--prefer-dist"/>
             <arg value="--no-progress"/>
@@ -115,7 +116,9 @@
         <property name="phpcs.done" value="true"/>
     </target>
     <target name="phpdox" unless="phpdox.done" depends="downloadphpdox,phploc-ci,phpcs-ci,phpmd-ci" description="Generate project documentation using phpDox.">
-        <exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox"/>
+        <exec executable="php" dir="${basedir}/build" taskname="phpdox">
+            <arg path="${phpdox}"/>
+        </exec>
         <property name="phpdox.done" value="true"/>
     </target>
     <target name="phploc" unless="phploc.done" description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
@@ -213,7 +216,8 @@
         <echo message="Checked failure"/>
     </target>
     <target name="projectdoc" depends="prepare,downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
-        <exec executable="${phpdocumentator}" taskname="projectdoc">
+        <exec executable="php" taskname="projectdoc">
+            <arg path="${phpdocumentator}"/>
             <arg value="-d"/>
             <arg path="${basedir}/src"/>
             <arg value="-t"/>
@@ -277,7 +281,8 @@
             <arg value="+x"/>
             <arg path="${basedir}/phpDocumentor.phar"/>
         </exec>
-        <exec executable="${phpdocumentator}" taskname="projectdoc">
+        <exec executable="php" taskname="projectdoc">
+            <arg path="${phpdocumentator}"/>
             <arg value="-d"/>
             <arg path="./src"/>
             <arg value="-t"/>
