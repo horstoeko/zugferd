@@ -1,0 +1,110 @@
+<!--
+PDFlib GmbH 2013-2014
+
+Sample FACTUR-X XMP with the required PDF/A extension schema description
+for the XMP properties of the FACTUR-X schema and the actual FACTUR-X properties.
+
+Schema name: FACTUR-X Schema
+Preferred schema namespace prefix: fx
+Schema namespace URI: urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#
+
+Notes on the Factur-X schema namespace URI:
+
+- The use of mixed upper/lowercase in "CrossIndustryDocument" conforms to
+  the Factur-X 1.0 specification. The PDF samples distributed with the
+  Factur-X 1.0 info package use all-lowercase spelling "crossindustrydocument"
+  which is not correct since it violates the Factur-X specification.
+
+- The required trailing "#" character is missing in the comment in the
+  Factur-X 1.0 extension schema description which is included in the Factur-X
+  specification, but it is correctly present in the actual XMP.
+
+
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+  <!-- The actual Factur-X properties; adjust if required -->  
+  <rdf:Description rdf:about="" xmlns:fx="urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#">
+     <fx:DocumentType>INVOICE</fx:DocumentType>
+     <fx:DocumentFileName>factur-x.xml</fx:DocumentFileName>
+     <fx:Version>1.0</fx:Version>
+  	 <fx:ConformanceLevel>BASIC</fx:ConformanceLevel>
+  </rdf:Description>
+  
+  <!-- PDF/A extension schema description for the Factur-X schema.
+     It is crucial for PDF/A-3 conformance. Don't touch! -->
+  <rdf:Description rdf:about=""
+		xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/"
+		xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#"
+		xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#">
+	 <pdfaExtension:schemas>
+		<rdf:Bag>
+		   <rdf:li rdf:parseType="Resource">
+			  <pdfaSchema:schema>Factur-X PDFA Extension Schema</pdfaSchema:schema>
+			  <pdfaSchema:namespaceURI>urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
+			  <pdfaSchema:prefix>fx</pdfaSchema:prefix>
+			  <pdfaSchema:property>
+				 <rdf:Seq>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentType</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>INVOICE</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>Version</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The actual version of the Factur-X XML schema</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The conformance level of the embedded Factur-X data</pdfaProperty:description>
+					</rdf:li>
+				 </rdf:Seq>
+			  </pdfaSchema:property>
+		   </rdf:li>
+		</rdf:Bag>
+	 </pdfaExtension:schemas>
+  </rdf:Description>
+
+  <!-- PDF/A Metadata -->
+  <rdf:Description xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/" rdf:about="">
+      <pdfaid:part>3</pdfaid:part>
+      <pdfaid:conformance>B</pdfaid:conformance>
+  </rdf:Description>
+  <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about="">
+      <dc:title>
+          <rdf:Alt>
+              <rdf:li xml:lang="x-default">FOURNISSEUR F: Invoice 2017-TEST-01</rdf:li>
+          </rdf:Alt>
+      </dc:title>
+      <dc:creator>
+          <rdf:Seq>
+              <rdf:li>FOURNISSEUR F</rdf:li>
+          </rdf:Seq>
+      </dc:creator>
+      <dc:description>
+          <rdf:Alt>
+              <rdf:li xml:lang="x-default">Factur-X Invoice 2017-TEST-01 dated 2017-10-31 issued by FOURNISSEUR F
+              </rdf:li>
+          </rdf:Alt>
+      </dc:description>
+  </rdf:Description>
+  <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
+      <pdf:Producer>PyPDF2</pdf:Producer>
+  </rdf:Description>
+  <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
+      <xmp:CreatorTool>factur-x php lib by @GP</xmp:CreatorTool>
+      <xmp:CreateDate>2017-11-30T16:12:04+00:00</xmp:CreateDate>
+      <xmp:ModifyDate>2017-11-30T16:12:04+00:00</xmp:ModifyDate>
+  </rdf:Description>
+</rdf:RDF>

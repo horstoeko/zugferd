@@ -80,3 +80,5 @@ _backup*
 /build/phpdox/
 /*.phar
 /composer.lock
+/examples/fullpdf.pdf
+/examples/factur-x.xml

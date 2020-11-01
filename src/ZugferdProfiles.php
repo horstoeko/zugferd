@@ -19,6 +19,8 @@ class ZugferdProfiles
             'altname' => 'BASIC',
             'description' => 'The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.',
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
+            'attachmentfilename' => 'factur-x.xml',
+            'xmpname' => 'BASIC',
         ],
         self::PROFILE_BASICWL => [
             'name' => 'basicwl',
@@ -27,6 +29,8 @@ class ZugferdProfiles
                 'invoices. However, it contains all the information at document level that is required to post the invoice. ' .
                 'It is therefore a booking aid.',
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
+            'attachmentfilename' => 'factur-x.xml',
+            'xmpname' => 'BASIC WL',
         ],
         self::PROFILE_EN16931 => [
             'name' => 'en16931',
@@ -34,6 +38,8 @@ class ZugferdProfiles
             'description' => 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements ' .
                 'of an electronic invoice.',
             'contextparameter' => 'urn:cen.eu:en16931:2017',
+            'attachmentfilename' => 'factur-x.xml',
+            'xmpname' => 'EN 16931',
         ],
         self::PROFILE_EXTENDED => [
             'name' => 'extended',
@@ -42,6 +48,8 @@ class ZugferdProfiles
                 'in which several deliveries / delivery locations are billed, structured payment conditions, further information at ' .
                 'item level to support warehousing, etc.)',
             'contextparameter' => 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended',
+            'attachmentfilename' => 'factur-x.xml',
+            'xmpname' => 'EXTENDED',
         ],
         self::PROFILE_XRECHNUNG => [
             'name' => 'en16931',
@@ -50,6 +58,8 @@ class ZugferdProfiles
                 'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more ' .
                 'specific than the EN 16931 (COMFORT) profile.',
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2',
+            'attachmentfilename' => 'xrechnung.xml',
+            'xmpname' => 'EN 16931',
         ],
     ];
 }

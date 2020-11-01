@@ -1,6 +1,7 @@
 <?php
 
 use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
 
 require getcwd() . "/../vendor/autoload.php";
@@ -37,3 +38,7 @@ $document
     ->AddDocumentPositionTax('S', 'VAT', 7)
     ->SetDocumentPositionLineSummation(275.0)
     ->writeFile(getcwd() . "/factur-x.xml");
+
+$pdf = new ZugferdDocumentPdfBuilder($document, dirname(__FILE__) . "/emptypdf.pdf");
+$pdf->generateDocument();
+$pdf->saveDocument(dirname(__FILE__) . "/fullpdf.pdf");
