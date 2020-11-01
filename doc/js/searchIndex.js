@@ -19656,6 +19656,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/horstoeko-zugferd-ZugferdDocumentBuilderWithCalculator.html#method_calculateDocumentSummation"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfBuilder",
+            "name": "ZugferdDocumentPdfBuilder",
+            "summary": "Class\u0020representing\u0020the\u0020facillity\u0020adding\u0020XML\u0020data\u0020from\u0020ZugferdDocumentBuilder\nto\u0020an\u0020existing\u0020PDF\u0020with\u0020conversion\u0020to\u0020PDF\/A",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfBuilder\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method___construct"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfBuilder\u003A\u003AgenerateDocument\u0028\u0029",
+            "name": "generateDocument",
+            "summary": "Generates\u0020the\u0020final\u0020document",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_generateDocument"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfBuilder\u003A\u003AsaveDocument\u0028\u0029",
+            "name": "saveDocument",
+            "summary": "Saves\u0020the\u0020document\u0020generated\u0020with\u0020generateDocument\u0020to\u0020a\u0020file",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_saveDocument"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentPdfReader",
             "name": "ZugferdDocumentPdfReader",
             "summary": "Class\u0020representing\u0020the\u0020document\u0020reader\u0020for\u0020incoming\u0020PDF\/A\u002DDocuments\u0020with\nattached\u0020XML\u0020data\u0020in\u0020BASIC\u002D,\u0020EN16931\u002D\u0020and\u0020EXTENDED\u0020profile",
@@ -20381,6 +20401,41 @@ Search.appendIndex(
             "summary": "Perform\u0020the\u0020validation\u0020of\u0020the\u0020document",
             "url": "classes/horstoeko-zugferd-ZugferdDocumentValidator.html#method_validateDocument"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter",
+            "name": "ZugferdPdfWriter",
+            "summary": "Class\u0020representing\u0020some\u0020tools\u0020for\u0020pdf\u0020generation",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003AsetPdfVersion\u0028\u0029",
+            "name": "setPdfVersion",
+            "summary": "Set\u0020the\u0020PDF\u0020version.",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#method_setPdfVersion"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003Aattach\u0028\u0029",
+            "name": "attach",
+            "summary": "Attach\u0020file\u0020to\u0020PDF.",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#method_attach"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003AopenAttachmentPane\u0028\u0029",
+            "name": "openAttachmentPane",
+            "summary": "Open\u0020attachment\u0020panel\u0020on\u0020PDF.",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#method_openAttachmentPane"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003AaddMetadataDescriptionNode\u0028\u0029",
+            "name": "addMetadataDescriptionNode",
+            "summary": "Add\u0020metadata\u0020description\u0020node.",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#method_addMetadataDescriptionNode"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003AsetPdfMetadataInfos\u0028\u0029",
+            "name": "setPdfMetadataInfos",
+            "summary": "Set\u0020PDF\u0020metadata\u0020infos.",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#method_setPdfMetadataInfos"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdPdfWriter\u003A\u003AICC_PROFILE_PATH",
+            "name": "ICC_PROFILE_PATH",
+            "summary": "Full\u0020path\u0020to\u0020the\u0020ICC\u002DProfile",
+            "url": "classes/horstoeko-zugferd-ZugferdPdfWriter.html#constant_ICC_PROFILE_PATH"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles",
             "name": "ZugferdProfiles",
             "summary": "Class\u0020representing\u0020the\u0020document\u0020profiles",
@@ -20388,32 +20443,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILE_BASIC",
             "name": "PROFILE_BASIC",
-            "summary": "",
+            "summary": "Internal\u0020constant\u0020that\u0020identifies\u0020the\u0020BASIC\u0020profile",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASIC"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILE_BASICWL",
             "name": "PROFILE_BASICWL",
-            "summary": "",
+            "summary": "Internal\u0020constant\u0020that\u0020identifies\u0020the\u0020BASIC\u0020WL\u0020profile",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASICWL"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILE_EN16931",
             "name": "PROFILE_EN16931",
-            "summary": "",
+            "summary": "Internal\u0020constant\u0020that\u0020identifies\u0020the\u0020EN16931\u0020profile",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EN16931"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILE_EXTENDED",
             "name": "PROFILE_EXTENDED",
-            "summary": "",
+            "summary": "Internal\u0020constant\u0020that\u0020identifies\u0020the\u0020EXTENDED\u0020profile",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EXTENDED"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILE_XRECHNUNG",
             "name": "PROFILE_XRECHNUNG",
-            "summary": "",
+            "summary": "Internal\u0020constant\u0020that\u0020identifies\u0020the\u0020XRECHNUNG\u0020profile\u0020\u0028germany\u0020only\u0029",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_XRECHNUNG"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdProfiles\u003A\u003APROFILEDEF",
             "name": "PROFILEDEF",
-            "summary": "",
+            "summary": "The\u0020definitions\u0020of\u0020the\u0020several\u0020profiles",
             "url": "classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILEDEF"
         },                {
             "fqsen": "\\",

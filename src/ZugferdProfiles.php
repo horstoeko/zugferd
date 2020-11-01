@@ -1,18 +1,53 @@
 <?php
 
+/**
+ * This file is a part of horstoeko/zugferd.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.  
+ */
+
 namespace horstoeko\zugferd;
 
 /**
  * Class representing the document profiles
+ * 
+ * @category Zugferd
+ * @package  Zugferd
+ * @author   D. Erling <horstoeko@erling.com.de>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @link     https://github.com/horstoeko/zugferd
  */
 class ZugferdProfiles
 {
+    /**
+     * Internal constant that identifies the BASIC profile
+     */
     const PROFILE_BASIC = 0;
+
+    /**
+     * Internal constant that identifies the BASIC WL profile
+     */
     const PROFILE_BASICWL = 1;
+
+    /**
+     * Internal constant that identifies the EN16931 profile
+     */
     const PROFILE_EN16931 = 2;
+
+    /**
+     * Internal constant that identifies the EXTENDED profile
+     */
     const PROFILE_EXTENDED = 3;
+
+    /**
+     * Internal constant that identifies the XRECHNUNG profile (germany only)
+     */
     const PROFILE_XRECHNUNG = 4;
 
+    /**
+     * The definitions of the several profiles
+     */
     const PROFILEDEF = [
         self::PROFILE_BASIC => [
             'name' => 'basic',

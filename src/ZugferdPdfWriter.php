@@ -1,19 +1,31 @@
 <?php
 
+/**
+ * This file is a part of horstoeko/zugferd.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.  
+ */
+
 namespace horstoeko\zugferd;
 
 use \setasign\Fpdi\Fpdi as PdfFpdi;
 
 /**
- * Class representing some tools for pdf handling
- * @codeCoverageIgnore
+ * Class representing some tools for pdf generation
+ *
+ * @category Zugferd
+ * @package  Zugferd
+ * @author   D. Erling <horstoeko@erling.com.de>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @link     https://github.com/horstoeko/zugferd
  */
 class ZugferdPdfWriter extends PdfFpdi
 {
     /**
      * Full path to the ICC-Profile
      */
-    const ICC_PROFILE_PATH = __DIR__ . '/assets/sRGB_v4_ICC_preference_displayclass.icc';
+    const ICC_PROFILE_PATH = __DIR__ . '/assets/sRGB_v4_ICC.icc';
 
     /**
      * Contains all attached files
@@ -35,37 +47,77 @@ class ZugferdPdfWriter extends PdfFpdi
      * @var array
      */
     protected $metaDataInfos = [];
+
+    /**
+     * Internal index
+     *
+     * @var integer
+     */
     protected $fileSpecDictionnaryIndex = 0;
+
+    /**
+     * Internal index
+     *
+     * @var integer
+     */
     protected $descriptionIndex = 0;
+
+    /**
+     * Internal index
+     *
+     * @var integer
+     */
     protected $outputIntentIndex = 0;
+
+    /**
+     * Internal index
+     *
+     * @var [type]
+     */
     protected $n_files;
+
+    /**
+     * Internal flag that indicates that the attachment
+     * pane should be shown by default
+     *
+     * @var boolean
+     */
     protected $openAttachmentPane = false;
 
     /**
      * Set the PDF version.
      *
-     * @param string $version
-     * @param bool   $binary_data
+     * @param string $version     Contains the PDF version number.
+     * @param bool   $binary_data This is true for binary data
+     *
+     * @return void
      */
-    public function setPdfVersion($version = '1.3', $binary_data = false)
+    public function setPdfVersion($version = '1.3', $binary_data = false): void
     {
         $this->PDFVersion = sprintf('%.1F', $version);
         if (true == $binary_data) {
-            $this->PDFVersion .= "\n" . '%' . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256));
+            $this->PDFVersion .=
+                "\n" . '%' .
+                chr(rand(128, 256)) .
+                chr(rand(128, 256)) .
+                chr(rand(128, 256)) .
+                chr(rand(128, 256));
         }
     }
 
     /**
      * Attach file to PDF.
      *
-     * @param $file
-     * @param string $name
-     * @param string $desc
-     * @param string $relationship
-     * @param string $mimetype
-     * @param bool   $isUTF8
+     * @param mixed  $file         Data to embed to the pdf
+     * @param string $name         The visible attachment filename
+     * @param string $desc         The description for the attached file
+     * @param string $relationship The type of the relationship of the attached file
+     * @param string $mimetype     The url-encoded mimetype of the attached file
+     * @param bool   $isUTF8       Set to true, if the attached file is UTF-8 encoded
+     *
+     * @return void
      */
-    public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false)
+    public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false): void
     {
         if ('' == $name) {
             $p = strrpos($file, '/');
@@ -93,8 +145,10 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Open attachment panel on PDF.
+     *
+     * @return void
      */
-    public function openAttachmentPane()
+    public function openAttachmentPane(): void
     {
         $this->openAttachmentPane = true;
     }
@@ -102,9 +156,11 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Add metadata description node.
      *
-     * @param $description
+     * @param $description The description of the metadata
+     *
+     * @return void
      */
-    public function addMetadataDescriptionNode($description)
+    public function addMetadataDescriptionNode($description): void
     {
         $this->metaDataDescriptions[] = $description;
     }
@@ -112,9 +168,12 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Set PDF metadata infos.
      *
-     * @param array $metaDataInfos
+     * @param array $metaDataInfos The array with metadata information
+     *                             applied to the pdf
+     *
+     * @return void
      */
-    public function setPdfMetadataInfos(array $metaDataInfos)
+    public function setPdfMetadataInfos(array $metaDataInfos): void
     {
         $this->metaDataInfos = $metaDataInfos;
     }
@@ -123,8 +182,10 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put files.
      *
      * @throws \Exception
+     * @return void
+     * @codingStandardsIgnoreStart
      */
-    protected function _putfiles()
+    protected function _putfiles(): void
     {
         foreach ($this->files as $i => &$info) {
             $this->putFileSpecification($info);
@@ -139,8 +200,10 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put file attachment specification.
      *
      * @param array $file_info
+     *
+     * @return void
      */
-    protected function putFileSpecification(array $file_info)
+    protected function putFileSpecification(array $file_info): void
     {
         $this->_newobj();
         $this->fileSpecDictionnaryIndex = $this->n;
@@ -199,8 +262,10 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Put file dictionnary.
+     *
+     * @return void
      */
-    protected function putFileDictionary()
+    protected function putFileDictionary(): void
     {
         $this->_newobj();
         $this->n_files = $this->n;
@@ -220,8 +285,10 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Put metadata descriptions.
+     *
+     * @return void
      */
-    protected function putMetadataDescriptions()
+    protected function putMetadataDescriptions(): void
     {
         $s = '<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>' . "\n";
         $s .= '<x:xmpmeta xmlns:x="adobe:ns:meta/">' . "\n";
@@ -247,6 +314,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put resources including files and metadata descriptions.
      *
      * @throws \Exception
+     * @codingStandardsIgnoreStart
      */
     protected function _putresources()
     {
@@ -262,8 +330,11 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Put output intent with ICC profile.
+     *
+     * @return void
+     * @codingStandardsIgnoreStart
      */
-    protected function _putoutputintent()
+    protected function _putoutputintent(): void
     {
         $this->_newobj();
         $this->_put('<<');
@@ -291,8 +362,11 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Put catalog node, including associated files.
+     *
+     * @return void
+     * @codingStandardsIgnoreStart
      */
-    protected function _putcatalog()
+    protected function _putcatalog(): void
     {
         parent::_putcatalog();
         if (!empty($this->files)) {
@@ -326,8 +400,11 @@ class ZugferdPdfWriter extends PdfFpdi
 
     /**
      * Put trailer including ID.
+     *
+     * @return void
+     * @codingStandardsIgnoreStart
      */
-    protected function _puttrailer()
+    protected function _puttrailer(): void
     {
         parent::_puttrailer();
         $created_id = md5($this->generateMetadataString('created'));
@@ -338,9 +415,9 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Generate metadata string.
      *
-     * @param string $date_type
-     *
+     * @param string $date_type The type of the metadata date
      * @return string
+     * @codingStandardsIgnoreStart
      */
     protected function generateMetadataString($date_type = 'created')
     {

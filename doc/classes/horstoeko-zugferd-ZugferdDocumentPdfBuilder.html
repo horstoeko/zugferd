@@ -84,7 +84,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    ZugferdDocumentPdfReader
+    ZugferdDocumentPdfBuilder
 
     
             <div class="phpdocumentor-element__package">
@@ -98,13 +98,13 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfReader.php"><a href="files/src-zugferddocumentpdfreader.html"><abbr title="src/ZugferdDocumentPdfReader.php">ZugferdDocumentPdfReader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfBuilder.php"><a href="files/src-zugferddocumentpdfbuilder.html"><abbr title="src/ZugferdDocumentPdfBuilder.php">ZugferdDocumentPdfBuilder.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">25</span>
 </aside>
 
-            <p class="phpdocumentor-summary">Class representing the document reader for incoming PDF/A-Documents with
-attached XML data in BASIC-, EN16931- and EXTENDED profile</p>
+            <p class="phpdocumentor-summary">Class representing the facillity adding XML data from ZugferdDocumentBuilder
+to an existing PDF with conversion to PDF/A</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -161,122 +161,172 @@ attached XML data in BASIC-, EN16931- and EXTENDED profile</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constant_ATTACHMENT_FILEAMES">ATTACHMENT_FILEAMES</a>
-    <span>
-        &nbsp;= [&#039;factur-x.xml&#039;, &#039;zugferd-invoice.xml&#039;, &#039;xrechnung.xml&#039;]                    </span>
-</dt>
-<dd>List of filenames which are possible in PDF</dd>
-
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#method_readAndGuessFromFile">readAndGuessFromFile()</a>
+    <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method___construct">__construct()</a>
     <span>
-                        &nbsp;: <a href="classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>|null    </span>
+                        &nbsp;: mixed    </span>
 </dt>
-<dd>Load a PDF file (ZUGFeRD/Factur-X)</dd>
+<dd>Constructor</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_generateDocument">generateDocument()</a>
+    <span>
+                        &nbsp;: <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a>    </span>
+</dt>
+<dd>Generates the final document</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_saveDocument">saveDocument()</a>
+    <span>
+                        &nbsp;: <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a>    </span>
+</dt>
+<dd>Saves the document generated with generateDocument to a file</dd>
 
         </dl>
 
 
 
         
-    <section class="phpdocumentor-constants">
-        <h3 class="phpdocumentor-elements__header" id="constants">
-            Constants
-            <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
-        </h3>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_ATTACHMENT_FILEAMES">
-        ATTACHMENT_FILEAMES
-        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#constant_ATTACHMENT_FILEAMES" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfReader.php"><a href="files/src-zugferddocumentpdfreader.html"><abbr title="src/ZugferdDocumentPdfReader.php">ZugferdDocumentPdfReader.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-</aside>
-
-        <p class="phpdocumentor-summary">List of filenames which are possible in PDF</p>
-
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">ATTACHMENT_FILEAMES</span>
-    = <span class="phpdocumentor-signature__default-value">[&#039;factur-x.xml&#039;, &#039;zugferd-invoice.xml&#039;, &#039;xrechnung.xml&#039;]</span>
-</code>
-
-
-        <section class="phpdocumentor-description"></section>
-
-    
-
-</article>
-            </section>
 
         
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
             -method
             -public
-                                    -static                    "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="method_readAndGuessFromFile">
-        readAndGuessFromFile()
-        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#method_readAndGuessFromFile" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfReader.php"><a href="files/src-zugferddocumentpdfreader.html"><abbr title="src/ZugferdDocumentPdfReader.php">ZugferdDocumentPdfReader.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfBuilder.php"><a href="files/src-zugferddocumentpdfbuilder.html"><abbr title="src/ZugferdDocumentPdfBuilder.php">ZugferdDocumentPdfBuilder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Load a PDF file (ZUGFeRD/Factur-X)</p>
+        <p class="phpdocumentor-summary">Constructor</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">readAndGuessFromFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pdfFilename</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>|null</span></code>
+                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/horstoeko-zugferd-ZugferdDocumentBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$documentBuiler</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pdfData</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$pdfFilename</span>
+                <span class="phpdocumentor-signature__argument__name">$documentBuiler</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/horstoeko-zugferd-ZugferdDocumentBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The instance of the document builder. Needed to get the XML data</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$pdfData</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Contains a full-qualified filename which must exist and must be readable</p>
+                    <section class="phpdocumentor-description"><p>The full filename or a string containing the binary pdf data. This
+is the original PDF (e.g. created by a ERP system)</p>
 </section>
 
             </dd>
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"></section>
-
-                                    </dd>
-                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentReader.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_generateDocument">
+        generateDocument()
+        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_generateDocument" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfBuilder.php"><a href="files/src-zugferddocumentpdfbuilder.html"><abbr title="src/ZugferdDocumentPdfBuilder.php">ZugferdDocumentPdfBuilder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">78</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Generates the final document</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">generateDocument</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_saveDocument">
+        saveDocument()
+        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#method_saveDocument" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdDocumentPdfBuilder.php"><a href="files/src-zugferddocumentpdfbuilder.html"><abbr title="src/ZugferdDocumentPdfBuilder.php">ZugferdDocumentPdfBuilder.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">93</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Saves the document generated with generateDocument to a file</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">saveDocument</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$toFilename</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$toFilename</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The full qualified filename to which the generated PDF (with attachment)
+is stored</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html"><abbr title="\horstoeko\zugferd\ZugferdDocumentPdfBuilder">ZugferdDocumentPdfBuilder</abbr></a></span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -298,7 +348,7 @@ attached XML data in BASIC-, EN16931- and EXTENDED profile</p>
 </section>
             </div>
         </div>
-        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfReader.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/horstoeko-zugferd-ZugferdDocumentPdfBuilder.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

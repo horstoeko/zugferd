@@ -57,6 +57,11 @@
                                     </ul>
                         </section>
 
+        <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                    <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Default.html"><abbr title="\Default">Default</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Zugferd.html"><abbr title="\Zugferd">Zugferd</abbr></a></h3>
+                        </section>
     
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
@@ -82,6 +87,12 @@
     ZugferdProfiles
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Zugferd.html">Zugferd</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
@@ -89,7 +100,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 </aside>
 
             <p class="phpdocumentor-summary">Class representing the document profiles</p>
@@ -97,6 +108,46 @@
     <section class="phpdocumentor-description"></section>
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">category</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>Zugferd</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">author</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>D. Erling <a href="mailto:horstoeko@erling.com.de">horstoeko@erling.com.de</a></p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">license</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>https://opensource.org/licenses/MIT MIT</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">link</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                                        <a class="phpdocumentor-tag-link" href="https://github.com/horstoeko/zugferd"> https://github.com/horstoeko/zugferd </a>
+                    
+                                    </dd>
+                        </dl>
 
 
 
@@ -114,42 +165,42 @@
     <span>
         &nbsp;= 0                    </span>
 </dt>
-<dd></dd>
+<dd>Internal constant that identifies the BASIC profile</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_BASICWL">PROFILE_BASICWL</a>
     <span>
         &nbsp;= 1                    </span>
 </dt>
-<dd></dd>
+<dd>Internal constant that identifies the BASIC WL profile</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EN16931">PROFILE_EN16931</a>
     <span>
         &nbsp;= 2                    </span>
 </dt>
-<dd></dd>
+<dd>Internal constant that identifies the EN16931 profile</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_EXTENDED">PROFILE_EXTENDED</a>
     <span>
         &nbsp;= 3                    </span>
 </dt>
-<dd></dd>
+<dd>Internal constant that identifies the EXTENDED profile</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILE_XRECHNUNG">PROFILE_XRECHNUNG</a>
     <span>
         &nbsp;= 4                    </span>
 </dt>
-<dd></dd>
+<dd>Internal constant that identifies the XRECHNUNG profile (germany only)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/horstoeko-zugferd-ZugferdProfiles.html#constant_PROFILEDEF">PROFILEDEF</a>
     <span>
-        &nbsp;= [self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]                    </span>
+        &nbsp;= [self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;BASIC&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;BASIC WL&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EN 16931&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EXTENDED&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;, &#039;attachmentfilename&#039; =&gt; &#039;xrechnung.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EN 16931&#039;]]                    </span>
 </dt>
-<dd></dd>
+<dd>The definitions of the several profiles</dd>
 
                 </dl>
 
@@ -170,10 +221,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Internal constant that identifies the BASIC profile</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
@@ -182,7 +234,8 @@
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -195,10 +248,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Internal constant that identifies the BASIC WL profile</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
@@ -207,7 +261,8 @@
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -220,10 +275,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Internal constant that identifies the EN16931 profile</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
@@ -232,7 +288,8 @@
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -245,10 +302,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Internal constant that identifies the EXTENDED profile</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
@@ -257,7 +315,8 @@
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -270,10 +329,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">Internal constant that identifies the XRECHNUNG profile (germany only)</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
@@ -282,7 +342,8 @@
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -295,19 +356,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ZugferdProfiles.php"><a href="files/src-zugferdprofiles.html"><abbr title="src/ZugferdProfiles.php">ZugferdProfiles.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">The definitions of the several profiles</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">PROFILEDEF</span>
-    = <span class="phpdocumentor-signature__default-value">[self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;]]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::PROFILE_BASIC =&gt; [&#039;name&#039; =&gt; &#039;basic&#039;, &#039;altname&#039; =&gt; &#039;BASIC&#039;, &#039;description&#039; =&gt; &#039;The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;BASIC&#039;], self::PROFILE_BASICWL =&gt; [&#039;name&#039; =&gt; &#039;basicwl&#039;, &#039;altname&#039; =&gt; &#039;BASIC WL&#039;, &#039;description&#039; =&gt; &#039;The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant &#039; . &#039;invoices. However, it contains all the information at document level that is required to post the invoice. &#039; . &#039;It is therefore a booking aid.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;BASIC WL&#039;], self::PROFILE_EN16931 =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;EN 16931 (COMFORT)&#039;, &#039;description&#039; =&gt; &#039;The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements &#039; . &#039;of an electronic invoice.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EN 16931&#039;], self::PROFILE_EXTENDED =&gt; [&#039;name&#039; =&gt; &#039;extended&#039;, &#039;altname&#039; =&gt; &#039;EXTENDED&#039;, &#039;description&#039; =&gt; &#039;The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices &#039; . &#039;in which several deliveries / delivery locations are billed, structured payment conditions, further information at &#039; . &#039;item level to support warehousing, etc.)&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended&#039;, &#039;attachmentfilename&#039; =&gt; &#039;factur-x.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EXTENDED&#039;], self::PROFILE_XRECHNUNG =&gt; [&#039;name&#039; =&gt; &#039;en16931&#039;, &#039;altname&#039; =&gt; &#039;XRECHNUNG&#039;, &#039;description&#039; =&gt; &#039;The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an &#039; . &#039;extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more &#039; . &#039;specific than the EN 16931 (COMFORT) profile.&#039;, &#039;contextparameter&#039; =&gt; &#039;urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2&#039;, &#039;attachmentfilename&#039; =&gt; &#039;xrechnung.xml&#039;, &#039;xmpname&#039; =&gt; &#039;EN 16931&#039;]]</span>
 </code>
 
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
