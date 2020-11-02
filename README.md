@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/horstoeko/zugferd/v/stable.png)](https://packagist.org/packages/horstoeko/zugferd) [![Total Downloads](https://poser.pugx.org/horstoeko/zugferd/downloads.png)](https://packagist.org/packages/horstoeko/zugferd) [![Latest Unstable Version](https://poser.pugx.org/horstoeko/zugferd/v/unstable.png)](https://packagist.org/packages/horstoeko/zugferd) [![License](https://poser.pugx.org/horstoeko/zugferd/license.png)](https://packagist.org/packages/horstoeko/zugferd) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/horstoeko/zugferd)
 
-A simple ZUGFeRD/XRechnung Library
+A simple ZUGFeRD/XRechnung/Factur-X Library
 
 With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the basic-, EN16931- and Extended-Profile.
 
