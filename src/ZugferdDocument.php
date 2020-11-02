@@ -12,6 +12,7 @@ namespace horstoeko\zugferd;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
+use \horstoeko\zugferd\jms\ZugferdTypesHandler;
 use \JMS\Serializer\Handler\HandlerRegistryInterface;
 use \JMS\Serializer\SerializerBuilder;
 use \JMS\Serializer\SerializerInterface;
@@ -120,6 +121,7 @@ class ZugferdDocument
             $serializerBuilder->addDefaultHandlers();
             $handler->registerSubscribingHandler(new BaseTypesHandler());
             $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
+            $handler->registerSubscribingHandler(new ZugferdTypesHandler());
         });
 
         $this->serializer = $this->serializerBuilder->build();

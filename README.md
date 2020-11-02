@@ -10,7 +10,7 @@ Information about...
 * [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
 * [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
 
-This package makes use of [JMS Serializer](http://jmsyst.com/libs/serializer) and [Xsd2Php](https://github.com/goetas-webservices/xsd2php).
+This package makes use of [JMS Serializer](http://jmsyst.com/libs/serializer), [Xsd2Php](https://github.com/goetas-webservices/xsd2php), [FPDF](https://github.com/Setasign/FPDF) and  [FPDI](https://github.com/Setasign/FPDI).
 
 ## Project status
 
