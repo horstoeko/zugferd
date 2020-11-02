@@ -1,4 +1,4 @@
-# ZUGFeRD/XRechnung
+# ZUGFeRD/XRechnung/Factur-X
 
 [![Latest Stable Version](https://poser.pugx.org/horstoeko/zugferd/v/stable.png)](https://packagist.org/packages/horstoeko/zugferd) [![Total Downloads](https://poser.pugx.org/horstoeko/zugferd/downloads.png)](https://packagist.org/packages/horstoeko/zugferd) [![Latest Unstable Version](https://poser.pugx.org/horstoeko/zugferd/v/unstable.png)](https://packagist.org/packages/horstoeko/zugferd) [![License](https://poser.pugx.org/horstoeko/zugferd/license.png)](https://packagist.org/packages/horstoeko/zugferd) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/horstoeko/zugferd)
 
