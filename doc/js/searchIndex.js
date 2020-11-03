@@ -18976,6 +18976,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/horstoeko-zugferd-exception-ZugferdUnknownDateFormat.html"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler",
+            "name": "ZugferdTypesHandler",
+            "summary": "Class\u0020representing\u0020a\u0020collection\u0020of\u0020serialization\u0020handlers\nfor\u0020amount\u0020formatting\u0020and\u0020so\u0020on.",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler\u003A\u003AgetSubscribingMethods\u0028\u0029",
+            "name": "getSubscribingMethods",
+            "summary": "",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_getSubscribingMethods"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler\u003A\u003AserializeAmountType\u0028\u0029",
+            "name": "serializeAmountType",
+            "summary": "",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_serializeAmountType"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler\u003A\u003AserializeQuantityType\u0028\u0029",
+            "name": "serializeQuantityType",
+            "summary": "",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_serializeQuantityType"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler\u003A\u003AserializePercentType\u0028\u0029",
+            "name": "serializePercentType",
+            "summary": "",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_serializePercentType"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocument",
             "name": "ZugferdDocument",
             "summary": "Class\u0020representing\u0020the\u0020document\u0020basics",
@@ -20485,6 +20510,11 @@ Search.appendIndex(
             "name": "exception",
             "summary": "",
             "url": "namespaces/horstoeko-zugferd-exception.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms",
+            "name": "jms",
+            "summary": "",
+            "url": "namespaces/horstoeko-zugferd-jms.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd",
             "name": "zugferd",
