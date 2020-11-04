@@ -56,6 +56,7 @@ class ZugferdProfiles
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC',
+            'xsdfilename' => 'FACTUR-X_BASIC.xsd',
         ],
         self::PROFILE_BASICWL => [
             'name' => 'basicwl',
@@ -66,6 +67,7 @@ class ZugferdProfiles
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC WL',
+            'xsdfilename' => 'FACTUR-X_BASIC-WL.xsd',
         ],
         self::PROFILE_EN16931 => [
             'name' => 'en16931',
@@ -75,6 +77,7 @@ class ZugferdProfiles
             'contextparameter' => 'urn:cen.eu:en16931:2017',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EN 16931',
+            'xsdfilename' => 'FACTUR-X_EN16931.xsd',
         ],
         self::PROFILE_EXTENDED => [
             'name' => 'extended',
@@ -85,6 +88,7 @@ class ZugferdProfiles
             'contextparameter' => 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EXTENDED',
+            'xsdfilename' => 'FACTUR-X_EXTENDED.xsd',
         ],
         self::PROFILE_XRECHNUNG => [
             'name' => 'en16931',
@@ -95,6 +99,7 @@ class ZugferdProfiles
             'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2',
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'EN 16931',
+            'xsdfilename' => 'FACTUR-X_EN16931.xsd',
         ],
     ];
 }
