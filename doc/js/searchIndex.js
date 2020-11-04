@@ -18976,6 +18976,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/horstoeko-zugferd-exception-ZugferdUnknownDateFormat.html"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\exception\\ZugferdValidationFailed",
+            "name": "ZugferdValidationFailed",
+            "summary": "Class\u0020representing\u0020the\u0020exception\u0020when\u0020a\u0020validation\u0020of\u0020the\u0020XML\u0020data\u0020failed",
+            "url": "classes/horstoeko-zugferd-exception-ZugferdValidationFailed.html"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\exception\\ZugferdValidationFailed\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructur",
+            "url": "classes/horstoeko-zugferd-exception-ZugferdValidationFailed.html#method___construct"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\exception\\ZugferdValidationFailed\u003A\u003AgetValidationErrorList\u0028\u0029",
+            "name": "getValidationErrorList",
+            "summary": "Returns\u0020the\u0020list\u0020of\u0020validation\u0020errors",
+            "url": "classes/horstoeko-zugferd-exception-ZugferdValidationFailed.html#method_getValidationErrorList"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler",
             "name": "ZugferdTypesHandler",
             "summary": "Class\u0020representing\u0020a\u0020collection\u0020of\u0020serialization\u0020handlers\nfor\u0020amount\u0020formatting\u0020and\u0020so\u0020on.",
@@ -19725,6 +19740,16 @@ Search.appendIndex(
             "name": "setBinaryDataDirectory",
             "summary": "Set\u0020the\u0020directory\u0020where\u0020the\u0020attached\u0020binary\u0020data\u0020from\nadditional\u0020referenced\u0020documents\u0020are\u0020temporary\u0020stored",
             "url": "classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_setBinaryDataDirectory"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AenableValidation\u0028\u0029",
+            "name": "enableValidation",
+            "summary": "Enables\u0020the\u0020validation\u0020of\u0020XML\u0020data\u0020before\u0020the\u0020are\u0020serialized",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_enableValidation"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AdisableValidation\u0028\u0029",
+            "name": "disableValidation",
+            "summary": "Disabled\u0020the\u0020validation\u0020of\u0020XML\u0020data\u0020before\u0020the\u0020are\u0020serialized",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentReader.html#method_disableValidation"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentReader\u003A\u003AreadAndGuessFromFile\u0028\u0029",
             "name": "readAndGuessFromFile",
