@@ -271,7 +271,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     private function performValidationAgainstXsd(string $xmlcontent): ZugferdDocumentReader
     {
-        return $this;
         $xsdFilename = dirname(__FILE__) . "/schema//" . $this->profiledef['xsdfilename'];
 
         if (!file_exists($xsdFilename) || !is_readable($xsdFilename)) {
