@@ -26,7 +26,7 @@
         }
     },
     "require": {
-        "php": "^7"
+        "php": "^7",
         "jms/serializer": "^3",
         "adrienrn/php-mimetyper": "^0.2",
         "goetas-webservices/xsd2php-runtime": "^0.2.2",
