@@ -33,8 +33,7 @@
         "symfony/validator": "^5",
         "smalot/pdfparser": "^0",
         "setasign/fpdf": "^1",
-        "setasign/fpdi": "^2",
-        "milo/schematron": "^1"
+        "setasign/fpdi": "^2"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
