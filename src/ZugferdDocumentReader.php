@@ -15,7 +15,6 @@ use \Exception;
 use \DOMDocument;
 use \SimpleXMLElement;
 use \horstoeko\zugferd\exception\ZugferdValidationFailed;
-use \Milo\Schematron;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -311,6 +310,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     private function performValidationAgainstSchematron(string $xmlcontent): ZugferdDocumentReader
     {
+        /* !!! Disabled
         $schematronFilename = dirname(__FILE__) . "/schema/schematron/" . $this->profiledef['schematronfilename'];
 
         if (!file_exists($schematronFilename) || !is_readable($schematronFilename)) {
@@ -321,9 +321,11 @@ class ZugferdDocumentReader extends ZugferdDocument
         $schematron->load($schematronFilename);
 
         $document = new DOMDocument;
-        $document->load($xmlcontent);
+        $document->loadXML($xmlcontent);
 
         $result = $schematron->validate($document);
+
+        */
 
         return $this;
     }
