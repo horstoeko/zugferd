@@ -57,6 +57,7 @@ class ZugferdProfiles
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC',
             'xsdfilename' => 'FACTUR-X_BASIC.xsd',
+            'schematronfilename' => 'FACTUR-X_BASIC.sch',
         ],
         self::PROFILE_BASICWL => [
             'name' => 'basicwl',
@@ -68,6 +69,7 @@ class ZugferdProfiles
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC WL',
             'xsdfilename' => 'FACTUR-X_BASIC-WL.xsd',
+            'schematronfilename' => 'FACTUR-X_BASIC-WL.sch',
         ],
         self::PROFILE_EN16931 => [
             'name' => 'en16931',
@@ -78,6 +80,7 @@ class ZugferdProfiles
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
+            'schematronfilename' => 'FACTUR-X_EN16931.sch',
         ],
         self::PROFILE_EXTENDED => [
             'name' => 'extended',
@@ -89,6 +92,7 @@ class ZugferdProfiles
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EXTENDED',
             'xsdfilename' => 'FACTUR-X_EXTENDED.xsd',
+            'schematronfilename' => 'FACTUR-X_EXTENDED.sch',
         ],
         self::PROFILE_XRECHNUNG => [
             'name' => 'en16931',
@@ -100,6 +104,7 @@ class ZugferdProfiles
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
+            'schematronfilename' => 'FACTUR-X_EN16931.sch',
         ],
     ];
 }

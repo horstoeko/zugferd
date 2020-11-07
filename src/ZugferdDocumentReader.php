@@ -14,7 +14,8 @@ use \DateTime;
 use \Exception;
 use \DOMDocument;
 use \SimpleXMLElement;
-use horstoeko\zugferd\exception\ZugferdValidationFailed;
+use \horstoeko\zugferd\exception\ZugferdValidationFailed;
+use \Milo\Schematron;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -245,11 +246,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Performs a validation against the XSD
+     * Perform all available validations. It validates against XSD
+     * and schematron
      *
      * @param string $xmlcontent
      * @return ZugferdDocumentReader
-     * @throws ZugferdValidationFailed
      */
     private function performValidation(string $xmlcontent): ZugferdDocumentReader
     {
@@ -257,6 +258,21 @@ class ZugferdDocumentReader extends ZugferdDocument
             return $this;
         }
 
+        return $this
+            ->performValidationAgainstXsd($xmlcontent)
+            ->performValidationAgainstSchematron($xmlcontent);
+    }
+
+    /**
+     * Performs a validation against the XSD
+     *
+     * @param string $xmlcontent
+     * @return ZugferdDocumentReader
+     * @throws ZugferdValidationFailed
+     */
+    private function performValidationAgainstXsd(string $xmlcontent): ZugferdDocumentReader
+    {
+        return $this;
         $xsdFilename = dirname(__FILE__) . "/schema//" . $this->profiledef['xsdfilename'];
 
         if (!file_exists($xsdFilename) || !is_readable($xsdFilename)) {
@@ -283,6 +299,31 @@ class ZugferdDocumentReader extends ZugferdDocument
 
             throw new ZugferdValidationFailed($errors);
         }
+
+        return $this;
+    }
+
+    /**
+     * Performs a validation against schematron
+     *
+     * @param string $xmlcontent
+     * @return ZugferdDocumentReader
+     */
+    private function performValidationAgainstSchematron(string $xmlcontent): ZugferdDocumentReader
+    {
+        $schematronFilename = dirname(__FILE__) . "/schema/schematron/" . $this->profiledef['schematronfilename'];
+
+        if (!file_exists($schematronFilename) || !is_readable($schematronFilename)) {
+            return $this;
+        }
+
+        $schematron = new Schematron;
+        $schematron->load($schematronFilename);
+
+        $document = new DOMDocument;
+        $document->load($xmlcontent);
+
+        $result = $schematron->validate($document);
 
         return $this;
     }
