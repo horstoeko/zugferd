@@ -142,14 +142,14 @@
                 <ram:CalculatedAmount>19.25</ram:CalculatedAmount>
                 <ram:TypeCode>VAT</ram:TypeCode>
                 <ram:BasisAmount>275.00</ram:BasisAmount>
-                <ram:CategoryCode>Z</ram:CategoryCode>
+                <ram:CategoryCode>S</ram:CategoryCode>
                 <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>37.62</ram:CalculatedAmount>
                 <ram:TypeCode>VAT</ram:TypeCode>
                 <ram:BasisAmount>198.00</ram:BasisAmount>
-                <ram:CategoryCode>Z</ram:CategoryCode>
+                <ram:CategoryCode>S</ram:CategoryCode>
                 <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
