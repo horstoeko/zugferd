@@ -738,13 +738,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($allowanceChargeAmount) : 0.0;
         $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($allowanceChargeAmount) : 0.0;
         $allowanceChargeAmount = abs($allowanceChargeAmount);
+        $lineTotalAmount = $unitPrice * $quantity + $chargeAmount - $allowanceAmount;
 
         $this->addNewPosition($lineId);
         $this->setDocumentPositionProductDetails($productName);
         $this->setDocumentPositionNetPrice($unitPrice);
         $this->setDocumentPositionQuantity($quantity, $unitCode);
         $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
-        $this->setDocumentPositionLineSummation($unitPrice * $quantity + $chargeAmount - $allowanceAmount);
+        $this->setDocumentPositionLineSummation($lineTotalAmount);
 
         if ($hasChargeAmountIsAllowance == true) {
             $this->addDocumentPositionAllowanceCharge($allowanceChargeAmount, $allowanceChargeAmountIsAllowance === false, null, null, null, $allowanceChargeReason);
@@ -754,9 +755,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
             $taxCategoryCode,
             $taxTypeCode,
             $taxPercent,
-            $unitPrice * $quantity,
-            $allowanceAmount,
-            $chargeAmount
+            $lineTotalAmount
         );
 
         return $this;
@@ -1042,17 +1041,15 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param float $lineTotalAmount
      * @return void
      */
-    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $allowanceAmount, float $chargeAmount)
+    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount)
     {
         $vatGroup = md5($taxCategoryCode . "_" . $taxTypeCode . "_" . $taxPercent);
 
         if (!isset($this->vatBreakdown[$vatGroup])) {
-            $this->vatBreakdown[$vatGroup] = [$taxCategoryCode, $taxTypeCode, $taxPercent, 0.0, 0.0, 0.0, 0.0];
+            $this->vatBreakdown[$vatGroup] = [$taxCategoryCode, $taxTypeCode, $taxPercent, 0.0, 0.0];
         }
 
-        $this->vatBreakdown[$vatGroup][3] += ($lineTotalAmount + $chargeAmount - $allowanceAmount);
-        $this->vatBreakdown[$vatGroup][5] += $allowanceAmount;
-        $this->vatBreakdown[$vatGroup][6] += $chargeAmount;
+        $this->vatBreakdown[$vatGroup][3] += $lineTotalAmount;
     }
 
     /**
