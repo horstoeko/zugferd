@@ -2032,6 +2032,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function addDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
+        $cardId = substr($cardId, -4);
+
         $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType($typecode, $information);
         $financialCard = $this->objectHelper->GetTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
         $buyerfinancialaccount = $this->objectHelper->GetDebtorFinancialAccountType($buyerIban);
@@ -2424,6 +2426,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addNewPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
     {
         $position = $this->objectHelper->GetSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode);
+        $this->objectHelper->TryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
+        $this->currentPosition = $position;
+        return $this;
+    }
+
+    /**
+     * Adds a new text-only position (line) to document
+     *
+     * @param string $lineid
+     * A unique identifier for the relevant item within the invoice (item number)
+     * @param string|null $lineStatusCode
+     * Indicates whether the invoice item contains prices that must be taken into account when
+     * calculating the invoice amount, or whether it only contains information.
+     * The following code should be used: TYPE_LINE
+     * @param string|null $lineStatusReasonCode
+     * Adds the type to specify whether the invoice line is:
+     *  - detail (normal position)
+     *  - Subtotal
+     *  - Information only
+     * If the $lineStatusCode field is used, the LineStatusReasonCode field must use the following codes:
+     *  - detail
+     *  - grouping
+     *  - information
+     * @return ZugferdDocumentBuilder
+     */
+    public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
+    {
+        $position = $this->objectHelper->GetSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode, true);
         $this->objectHelper->TryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
         $this->currentPosition = $position;
         return $this;

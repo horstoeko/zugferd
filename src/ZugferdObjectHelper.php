@@ -1065,9 +1065,10 @@ class ZugferdObjectHelper
      * @param string|null $lineid
      * @param string|null $lineStatusCode
      * @param string|null $lineStatusReasonCode
+     * @param boolean $isTextPosition
      * @return object|null
      */
-    public function getSupplyChainTradeLineItemType(?string $lineid = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ?object
+    public function getSupplyChainTradeLineItemType(?string $lineid = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null, bool $isTextPosition = false): ?object
     {
         if (self::IsAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1082,8 +1083,10 @@ class ZugferdObjectHelper
         $this->TryCall($line, "setAssociatedDocumentLineDocument", $doclinedoc);
         $this->TryCall($doclinedoc, "setLineStatusCode", $this->GetCodeType($lineStatusCode));
         $this->TryCall($doclinedoc, "setLineStatusReasonCode", $this->GetCodeType($lineStatusReasonCode));
-        $this->TryCall($line, "setSpecifiedLineTradeAgreement", $lineAgreement);
-        $this->TryCall($line, "setSpecifiedLineTradeDelivery", $lineDelivery);
+        if ($isTextPosition == false) {
+            $this->TryCall($line, "setSpecifiedLineTradeAgreement", $lineAgreement);
+            $this->TryCall($line, "setSpecifiedLineTradeDelivery", $lineDelivery);
+        }
         $this->TryCall($line, "setSpecifiedLineTradeSettlement", $lineSettlement);
 
         return $line;
