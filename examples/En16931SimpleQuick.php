@@ -20,5 +20,5 @@ $document = (ZugferdQuickDescriptorEn16931::doCreateNew())
     ->doAddTradeLineItemWithSurcharge("4", "Unterlagen", 100.0, 10.0, "Zeilenzuschlag", 10.0, "C62", "S", "VAT", 7.0)
     ->doAddTradeLineItemWithDiscount("5", "Reinigungstuecher", 100.0, 10.0, "Zeilenrabatt", 10.0, "C62", "S", "VAT", 7.0)
     ->doSetPrepaidAmount(100)
-    ->doSetTotals()
+    ->doCalcTotals()
     ->writeFile(getcwd() . "/factur-x.xml");

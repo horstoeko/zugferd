@@ -25,5 +25,5 @@ $document = (ZugferdQuickDescriptorXRechnung::doCreateNew())
     //->doSetPaymentMeansForDebitTransfer(true, "DE00000000000000000000")
     ->doSetPaymentMeansForCreditCard("11", "72136216312627", "Heinz Meier")
     ->doSetPrepaidAmount(100)
-    ->doSetTotals()
+    ->doCalcTotals()
     ->writeFile(getcwd() . "/factur-x.xml");

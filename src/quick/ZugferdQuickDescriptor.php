@@ -530,7 +530,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * Date of the previous invoice
      * @return ZugferdQuickDescriptor
      */
-    public function SetInvoiceReferencedDocument(string $id, ?DateTime $issueDateTime = null): ZugferdQuickDescriptor
+    public function setInvoiceReferencedDocument(string $id, ?DateTime $issueDateTime = null): ZugferdQuickDescriptor
     {
         $this->setDocumentInvoiceReferencedDocument($id, $issueDateTime);
         return $this;
@@ -549,7 +549,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param float|null $duePayableAmount
      * @return ZugferdQuickDescriptor
      */
-    public function SetTotals(?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalPrepaidAmount = null, ?float $duePayableAmount = null): ZugferdQuickDescriptor
+    public function doSetTotals(?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalPrepaidAmount = null, ?float $duePayableAmount = null): ZugferdQuickDescriptor
     {
         $this->setDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisAmount, $taxTotalAmount, null, $totalPrepaidAmount);
         return $this;
@@ -907,7 +907,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *
      * @return ZugferdQuickDescriptor
      */
-    public function doSetTotals(): ZugferdQuickDescriptor
+    public function doCalcTotals(): ZugferdQuickDescriptor
     {
         $this->updateVatBuffer();
         $this->writeVatBreakDown();
