@@ -692,6 +692,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * lists in their software. Sellers only need to support the entities necessary for their goods and services;
      * Buyers only need to verify that the units used in the invoice match those in other documents (such as in
      * Contracts, catalogs, orders and shipping notifications) match the units used.
+     * @param float $allowanceChargeAmount
+     * The surcharge/discount amount excluding sales tax. If negative then its an allowance, if positive then
+     * it's a charge
+     * @param string $allowanceChargeReason
+     * The reason given in text form for the invoice item discount/surcharge
      * @param string $taxCategoryCode
      * Coded description of a sales tax category
      *
@@ -726,15 +731,34 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return ZugferdQuickDescriptor
      */
-    public function doAddTradeLineItem(string $lineId, string $productName, float $unitPrice, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
+    public function doAddTradeLineItem(string $lineId, string $productName, float $unitPrice, float $quantity, string $unitCode, float $allowanceChargeAmount, string $allowanceChargeReason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
     {
+        $hasChargeAmountIsAllowance = $allowanceChargeAmount != 0.0;
+        $allowanceChargeAmountIsAllowance = $allowanceChargeAmount < 0.0;
+        $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($allowanceChargeAmount) : 0.0;
+        $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($allowanceChargeAmount) : 0.0;
+        $allowanceChargeAmount = abs($allowanceChargeAmount);
+
         $this->addNewPosition($lineId);
         $this->setDocumentPositionProductDetails($productName);
         $this->setDocumentPositionNetPrice($unitPrice);
         $this->setDocumentPositionQuantity($quantity, $unitCode);
         $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
-        $this->setDocumentPositionLineSummation($unitPrice * $quantity);
-        $this->addToInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent, $unitPrice * $quantity);
+        $this->setDocumentPositionLineSummation($unitPrice * $quantity + $chargeAmount - $allowanceAmount);
+
+        if ($hasChargeAmountIsAllowance == true) {
+            $this->addDocumentPositionAllowanceCharge($allowanceChargeAmount, $allowanceChargeAmountIsAllowance === false, null, null, null, $allowanceChargeReason);
+        }
+
+        $this->addToInternalVatBuffer(
+            $taxCategoryCode,
+            $taxTypeCode,
+            $taxPercent,
+            $unitPrice * $quantity,
+            $allowanceAmount,
+            $chargeAmount
+        );
+
         return $this;
     }
 
@@ -799,14 +823,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public function doAddTradeLineItemWithSurcharge(string $lineId, string $productName, float $unitPrice, float $chargeAmount, string $chargeReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
     {
-        $this->addNewPosition($lineId);
-        $this->setDocumentPositionProductDetails($productName);
-        $this->setDocumentPositionNetPrice($unitPrice);
-        $this->setDocumentPositionQuantity($quantity, $unitCode);
-        $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
-        $this->setDocumentPositionLineSummation($unitPrice * $quantity + $chargeAmount);
-        $this->addDocumentPositionAllowanceCharge($chargeAmount, true, null, null, null, $chargeReason);
-        $this->addToInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent, $unitPrice * $quantity + $chargeAmount);
+        $this->doAddTradeLineItem($lineId, $productName, $unitPrice, $quantity, $unitCode, abs($chargeAmount), $chargeReason, $taxCategoryCode, $taxTypeCode, $taxPercent);
         return $this;
     }
 
@@ -870,14 +887,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public function doAddTradeLineItemWithDiscount(string $lineId, string $productName, float $unitPrice, float $discountAmount, string $discountReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
     {
-        $this->addNewPosition($lineId);
-        $this->setDocumentPositionProductDetails($productName);
-        $this->setDocumentPositionNetPrice($unitPrice);
-        $this->setDocumentPositionQuantity($quantity, $unitCode);
-        $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
-        $this->setDocumentPositionLineSummation($unitPrice * $quantity - $discountAmount);
-        $this->addDocumentPositionAllowanceCharge($discountAmount, false, null, null, null, $discountReason);
-        $this->addToInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent, $unitPrice * $quantity - $discountAmount);
+        $this->doAddTradeLineItem($lineId, $productName, $unitPrice, $quantity, $unitCode, -abs($discountAmount), $discountReason, $taxCategoryCode, $taxTypeCode, $taxPercent);
         return $this;
     }
 
@@ -1032,15 +1042,17 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param float $lineTotalAmount
      * @return void
      */
-    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount)
+    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $allowanceAmount, float $chargeAmount)
     {
         $vatGroup = md5($taxCategoryCode . "_" . $taxTypeCode . "_" . $taxPercent);
 
         if (!isset($this->vatBreakdown[$vatGroup])) {
-            $this->vatBreakdown[$vatGroup] = [$taxCategoryCode, $taxTypeCode, $taxPercent, 0.0, 0.0];
+            $this->vatBreakdown[$vatGroup] = [$taxCategoryCode, $taxTypeCode, $taxPercent, 0.0, 0.0, 0.0, 0.0];
         }
 
-        $this->vatBreakdown[$vatGroup][3] += $lineTotalAmount;
+        $this->vatBreakdown[$vatGroup][3] += ($lineTotalAmount + $chargeAmount - $allowanceAmount);
+        $this->vatBreakdown[$vatGroup][5] += $allowanceAmount;
+        $this->vatBreakdown[$vatGroup][6] += $chargeAmount;
     }
 
     /**
