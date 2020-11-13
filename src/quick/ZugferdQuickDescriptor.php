@@ -774,7 +774,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * The surcharge amount excluding sales tax
      * @param string $chargeReason
      * The reason given in text form for the invoice item discount/surcharge
-     * 
+     *
      * @param float $quantity
      * The quantity of individual items (goods or services) billed in the relevant line
      * @param string $unitCode
@@ -927,7 +927,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     /**
      * Set payment means to "direct debit"
-     * 
+     *
      * If $isSEPA is true code __31__ wil be useed for payment means code.
      * If $isSEPA is false code __59__ wil be useed for payment means code.
      *
@@ -945,10 +945,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     /**
      * Set payment means to "debit transfer"
-     * 
+     *
      * If $isSEPA is true code __58__ wil be useed for payment means code.
      * If $isSEPA is false code __30__ wil be useed for payment means code.
-     * 
+     *
      * @param boolean $isSEPA
      * Is it a SEPA transaction or not
      * @param string $payeeIban
@@ -1119,7 +1119,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Returns the total prepaid amount 
+     * Returns the total prepaid amount
      *
      * @return float
      */
