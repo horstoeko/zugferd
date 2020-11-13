@@ -68,6 +68,16 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * @inheritDoc
+     * 
+     * @return void
+     */
+    protected function onBeforeGetContent()
+    {
+        $this->doCalcTotals();
+    }
+
+    /**
      * Create a new invoice
      *
      * @param string $invoiceNo
@@ -537,25 +547,6 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Document money summation
-     *
-     * @param float|null $lineTotalAmount
-     * @param float|null $chargeTotalAmount
-     * @param float|null $allowanceTotalAmount
-     * @param float|null $taxBasisAmount
-     * @param float|null $taxTotalAmount
-     * @param float|null $grandTotalAmount
-     * @param float|null $totalPrepaidAmount
-     * @param float|null $duePayableAmount
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetTotals(?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalPrepaidAmount = null, ?float $duePayableAmount = null): ZugferdQuickDescriptor
-    {
-        $this->setDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisAmount, $taxTotalAmount, null, $totalPrepaidAmount);
-        return $this;
-    }
-
-    /**
      * Add a VAT breakdown (at document level)
      *
      * @param float $basisAmount
@@ -891,7 +882,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Sets the prepaid amount. This must be called before doSetTotals
+     * Sets the prepaid amount
      *
      * @param float $totalPrepaidAmount
      * @return ZugferdQuickDescriptor
