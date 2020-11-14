@@ -198,7 +198,12 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
          */
         $indicatortype = self::$objectHelper->getIndicatorType(false);
-        $this->assertNull($indicatortype);
+        $this->assertNotNull($indicatortype);
+        $this->assertEquals(false, $indicatortype->getIndicator());
+
+        $indicatortype = self::$objectHelper->getIndicatorType(true);
+        $this->assertNotNull($indicatortype);
+        $this->assertEquals(true, $indicatortype->getIndicator());
     }
 
     /**
