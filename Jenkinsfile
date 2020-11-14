@@ -31,5 +31,29 @@ pipeline {
       }
     }
 
+    stage('Static-Analysis') {
+      parallel {
+        stage('Static-Analysis (PHPLINT)') {
+          steps {
+            sh 'find ./src/ -type f -name \'*.php\' -exec php -l {} \\; |grep -v "No syntax errors detected"'
+            sh 'find ./tests/ -type f -name \'*.php\' -exec php -l {} \\; |grep -v "No syntax errors detected"'
+          }
+        }
+
+        stage('Static-Analysis (PHPLOC)') {
+          steps {
+            sh './vendor/bin/phploc --count-tests --log-csv ./build/logs/phploc.csv  --log-xml ./build/logs/phploc.xml ./src ./tests'
+          }
+        }
+
+        stage('Static-Analysis (PDEPEND)') {
+          steps {
+            sh './vendor/bin/pdepend --jdepend-xml=./build/logs/jdepend.xml --jdepend-chart=./build/pdepend/dependencies.svg --overview-pyramid=./build/pdepend/overview-pyramid.svg ./src'
+          }
+        }
+
+      }
+    }
+
   }
 }
