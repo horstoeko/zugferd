@@ -2208,7 +2208,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param float $actualAmount
      * Amount of the surcharge or discount at document level
      * @param boolean $isCharge
-     * Switch that indicates whether the following data refer to an allowance or a discount, true means that
+     * Switch that indicates whether the following data refer to an surcharge or a discount, true means that
      * this an charge
      * @param string $taxCategoryCode
      * A coded indication of which sales tax category applies to the surcharge or deduction at document level

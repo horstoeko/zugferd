@@ -30,6 +30,17 @@ use horstoeko\zugferd\ZugferdProfiles;
  */
 class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 {
+    private const VT_TAXCATEGORY = 0;
+    private const VT_TAXTYPE = 1;
+    private const VT_TAXPERCENT = 2;
+    private const VT_LINETOTALBASISAMOUNT = 3;
+    private const VT_ALLOWANCEAMOUNT = 4;
+    private const VT_CHARGEAMOUNT = 5;
+    private const VT_ALLOWANCECHARGEAMOUNT = 6;
+    private const VT_BASISAMOUNT = 7;
+    private const VT_CALCULATEDAMOUNT = 8;
+    private const VT_LOGSERVICECHARGE = 9;
+
     /**
      * Used for internal vat summation
      *
@@ -118,7 +129,132 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Add note to invoice
+     * Add a payment term
+     *
+     * @param string $description
+     * A text description of the payment terms that apply to the payment amount due (including a
+     * description of possible penalties). Note: This element can contain multiple lines and
+     * multiple conditions.
+     * @param DateTime|null $dueDate
+     * The date by which payment is due Note: The payment due date reflects the net payment due
+     * date. In the case of partial payments, this indicates the first due date of a net payment.
+     * The corresponding description of more complex payment terms can be given in BT-20.
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentTerms(string $description, ?DateTime $dueDate = null): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentTerm($description, $dueDate);
+        return $this;
+    }
+
+    /**
+     * Set payment means to "direct debit"
+     *
+     * If $isSEPA is true code __31__ wil be useed for payment means code.
+     * If $isSEPA is false code __59__ wil be useed for payment means code.
+     *
+     * @param boolean $isSEPA
+     * Is it a SEPA transaction or not
+     * @param string $buyerIban
+     * Direct debit: ID of the account to be debited
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentMeansForDebitTransfer(bool $isSEPA, string $buyerIban): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentMean($isSEPA === false ? ZugferdPaymentMeans::UNTDID_4461_31 : ZugferdPaymentMeans::UNTDID_4461_59, null, null, null, null, $buyerIban, null, null, null, null);
+        return $this;
+    }
+
+    /**
+     * Set payment means to "debit transfer"
+     *
+     * If $isSEPA is true code __58__ wil be useed for payment means code.
+     * If $isSEPA is false code __30__ wil be useed for payment means code.
+     *
+     * @param boolean $isSEPA
+     * Is it a SEPA transaction or not
+     * @param string $payeeIban
+     * Transfer: A unique identifier for the financial account held with a payment service provider to which
+     * the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID
+     * account number
+     * @param string|null $payeeAccountName
+     * The name of the payment account held with a payment service provider to which the payment should be made.
+     * Information only required if different from the name of the payee / seller
+     * @param string|null $payeePropId
+     * National account number (not for SEPA)
+     * @param string|null $payeeBic
+     * Seller's banking institution, An identifier for the payment service provider with whom the payment account
+     * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentMeansForCreditTransfer(bool $isSEPA, string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentMean($isSEPA === false ? ZugferdPaymentMeans::UNTDID_4461_30 : ZugferdPaymentMeans::UNTDID_4461_58, null, null, null, null, null, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
+        return $this;
+    }
+
+    /**
+     * Set payment means to "Bank Card"
+     *
+     * @param string $cardType
+     * The type of the card
+     * @param string $cardId
+     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+     * payment security standards, an invoice should never contain a full payment card master account number.
+     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
+     * last 4 digits at most are to be displayed
+     * @param string $cardHolderName
+     * Name of the payment card holder
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentMeansForBankCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_48, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
+        return $this;
+    }
+
+    /**
+     * Set payment means to "Credit Card"
+     *
+     * @param string $cardType
+     * The type of the card
+     * @param string $cardId
+     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+     * payment security standards, an invoice should never contain a full payment card master account number.
+     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
+     * last 4 digits at most are to be displayed
+     * @param string $cardHolderName
+     * Name of the payment card holder
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentMeansForCreditCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_54, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
+        return $this;
+    }
+
+    /**
+     * Set payment means to "Debit Card"
+     *
+     * @param string $cardType
+     * The type of the card
+     * @param string $cardId
+     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+     * payment security standards, an invoice should never contain a full payment card master account number.
+     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
+     * last 4 digits at most are to be displayed
+     * @param string $cardHolderName
+     * Name of the payment card holder
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetPaymentMeansForDebitCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
+    {
+        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_55, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
+        return $this;
+    }
+
+    /**
+     * Add note to the document
      *
      * @param string $note
      * Free text on the invoice
@@ -135,21 +271,109 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Undocumented function
+     * Set details of the related buyer order
      *
-     * @param string $description
-     * A text description of the payment terms that apply to the payment amount due (including a
-     * description of possible penalties). Note: This element can contain multiple lines and
-     * multiple conditions.
-     * @param DateTime $dueDate
-     * The date by which payment is due Note: The payment due date reflects the net payment due
-     * date. In the case of partial payments, this indicates the first due date of a net payment.
-     * The corresponding description of more complex payment terms can be given in BT-20.
+     * @param string $orderNo
+     * An identifier issued by the buyer for a referenced order (order number)
+     * @param DateTime $orderDate
+     * Date of order
      * @return ZugferdQuickDescriptor
      */
-    public function doSetPaymentTerms(string $description = null, DateTime $dueDate = null): ZugferdQuickDescriptor
+    public function doSetBuyerOrderReferenceDocument(string $orderNo, DateTime $orderDate): ZugferdQuickDescriptor
     {
-        $this->addDocumentPaymentTerm($description, $dueDate);
+        $this->setDocumentBuyerOrderReferencedDocument($orderNo, $orderDate);
+        return $this;
+    }
+
+    /**
+     * Set information about billing documents that provide evidence of claims made in the bill
+     *
+     * __Notes__
+     *  - The documents justifying the invoice can be used to reference a document number, which should be
+     *    known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such
+     *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes
+     *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
+     *    from the bill
+     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+     *    documents
+     *
+     * @param string $issuerAssignedID
+     * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
+     * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param DateTime|null $issueDateTime
+     * Document date
+     * @param string|null $typeCode
+     * Type of referenced document (See codelist UNTDID 1001)
+     *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
+     *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
+     *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
+     * @param string|null $name
+     * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param string|null $referenceTypeCode
+     * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
+     * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
+     * from UNTDID 1153 in accordance with the code list entries.
+     * @param string|null $filename
+     * Contains a file name of an attachment document embedded as a binary object
+     * @return ZugferdQuickDescriptor
+     */
+    public function doAddAdditionalReferencedDocument(string $issuerAssignedID, ?DateTime $issueDateTime = null, ?string $typeCode = null, ?string $name = null, ?string $referenceTypeCode = null, ?string $filename = null): ZugferdQuickDescriptor
+    {
+        $this->addDocumentAdditionalReferencedDocument($issuerAssignedID, $typeCode, null, $name, $referenceTypeCode, $issueDateTime, $filename);
+        return $this;
+    }
+
+    /**
+     * Set detailed information on the associated delivery note
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param string $deliveryNoteNo
+     * Delivery receipt number
+     * @param DateTime $deliveryNoteDate
+     * Delivery receipt date
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetDeliveryNoteReferenceDocument(string $deliveryNoteNo, DateTime $deliveryNoteDate): ZugferdQuickDescriptor
+    {
+        $this->setDocumentDeliveryNoteReferencedDocument($deliveryNoteNo, $deliveryNoteDate);
+        return $this;
+    }
+
+    /**
+     * Set a Reference to the previous invoice
+     *
+     * __Note__: To be used if:
+     *  - a previous invoice is corrected
+     *  - reference is made to previous partial invoices from a final invoice
+     *  - Reference is made to previous invoices for advance payments from a final invoice
+     *
+     * @param string $id
+     * Number of the previous invoice
+     * @param DateTime|null $issueDateTime
+     * Date of the previous invoice
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetInvoiceReferencedDocument(string $id, ?DateTime $issueDateTime = null): ZugferdQuickDescriptor
+    {
+        $this->setDocumentInvoiceReferencedDocument($id, $issueDateTime);
+        return $this;
+    }
+
+    /**
+     * Set Details of a project reference
+     *
+     * @param string $id
+     * Project Data
+     * @param string $name
+     * Project Name
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetSpecifiedProcuringProject(string $id, string $name): ZugferdQuickDescriptor
+    {
+        $this->setDocumentProcuringProject($id, $name);
         return $this;
     }
 
@@ -319,335 +543,6 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Set Details of a project reference
-     *
-     * @param string $id
-     * Project Data
-     * @param string $name
-     * Project Name
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetSpecifiedProcuringProject(string $id, string $name): ZugferdQuickDescriptor
-    {
-        $this->setDocumentProcuringProject($id, $name);
-        return $this;
-    }
-
-    /**
-     * Set information about billing documents that provide evidence of claims made in the bill
-     *
-     * __Notes__
-     *  - The documents justifying the invoice can be used to reference a document number, which should be
-     *    known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such
-     *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes
-     *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
-     *    from the bill
-     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
-     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
-     *    documents
-     *
-     * @param string $issuerAssignedID
-     * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
-     * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param DateTime|null $issueDateTime
-     * Document date
-     * @param string|null $typeCode
-     * Type of referenced document (See codelist UNTDID 1001)
-     *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
-     *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
-     *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param string|null $name
-     * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param string|null $referenceTypeCode
-     * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
-     * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
-     * from UNTDID 1153 in accordance with the code list entries.
-     * @param string|null $filename
-     * Contains a file name of an attachment document embedded as a binary object
-     * @return ZugferdQuickDescriptor
-     */
-    public function doAddAdditionalReferencedDocument(string $issuerAssignedID, ?DateTime $issueDateTime = null, ?string $typeCode = null, ?string $name = null, ?string $referenceTypeCode = null, ?string $filename = null): ZugferdQuickDescriptor
-    {
-        $this->addDocumentAdditionalReferencedDocument($issuerAssignedID, $typeCode, null, $name, $referenceTypeCode, $issueDateTime, $filename);
-        return $this;
-    }
-
-    /**
-     * Set details of the related buyer order
-     *
-     * @param string $orderNo
-     * An identifier issued by the buyer for a referenced order (order number)
-     * @param DateTime $orderDate
-     * Date of order
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetBuyerOrderReferenceDocument(string $orderNo, DateTime $orderDate): ZugferdQuickDescriptor
-    {
-        $this->setDocumentBuyerOrderReferencedDocument($orderNo, $orderDate);
-        return $this;
-    }
-
-    /**
-     * Set detailed information on the associated delivery note
-     *
-     * __Notes__
-     *  - This is only available in the EXTENDED profile
-     *
-     * @param string $deliveryNoteNo
-     * Delivery receipt number
-     * @param DateTime $deliveryNoteDate
-     * Delivery receipt date
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetDeliveryNoteReferenceDocument(string $deliveryNoteNo, DateTime $deliveryNoteDate): ZugferdQuickDescriptor
-    {
-        $this->setDocumentDeliveryNoteReferencedDocument($deliveryNoteNo, $deliveryNoteDate);
-        return $this;
-    }
-
-    /**
-     * Add a logistical service fees (On document level)
-     *
-     * __Notes__
-     *  - This is only available in the EXTENDED profile
-     *
-     * @param float $amount
-     * Amount of the service fee
-     * @param string $description
-     * Identification of the service fee
-     * @param string $taxTypeCode
-     * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param string $taxCategoryCode
-     * Coded description of a sales tax category
-     *
-     * The following entries from UNTDID 5305 are used (details in brackets):
-     *  - Standard rate (sales tax is due according to the normal procedure)
-     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *  - Tax exempt (USt./IGIC/IPSI)
-     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *  - Canary Islands general indirect tax (IGIC tax applies)
-     *  - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     * The codes for the VAT category are as follows:
-     *  - S = sales tax is due at the normal rate
-     *  - Z = goods to be taxed according to the zero rate
-     *  - E = tax exempt
-     *  - AE = reversal of tax liability
-     *  - K = VAT is not shown for intra-community deliveries
-     *  - G = tax not levied due to export outside the EU
-     *  - O = Outside the tax scope
-     *  - L = IGIC (Canary Islands)
-     *  - M = IPSI (Ceuta / Melilla)
-     * @param float $taxPercent
-     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
-     * question. Note: The code of the sales tax category and the category-specific sales tax rate
-     * must correspond to one another. The value to be given is the percentage. For example, the
-     * value 20 is given for 20% (and not 0.2)
-     * @return ZugferdQuickDescriptor
-     */
-    public function doAddLogisticsServiceCharge(float $amount, string $description, string $taxTypeCode, string $taxCategoryCode, float $taxPercent): ZugferdQuickDescriptor
-    {
-        $this->addDocumentLogisticsServiceCharge($description, $amount, [$taxTypeCode], [$taxCategoryCode], [$taxPercent]);
-        return $this;
-    }
-
-    /**
-     * Add information about surcharges and charges applicable to the bill as a whole, Deductions,
-     * such as for withheld taxes may also be specified in this group
-     *
-     * @param boolean $isDiscount
-     * Switch that indicates whether the following data refer to an allowance or a discount, true means that
-     * this an charge
-     * @param float $basisAmount
-     * The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * at document level to calculate the amount of the discount at document level
-     * @param string $currency
-     * @param float $actualAmount
-     * Amount of the surcharge or discount at document level
-     * @param string $reason
-     * The reason given in text form for the surcharge or discount at document level
-     * @param string $taxTypeCode
-     * Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
-     * @param string $taxCategoryCode
-     * A coded indication of which sales tax category applies to the surcharge or deduction at document level
-     *
-     * The following entries from UNTDID 5305 are used (details in brackets):
-     *  - Standard rate (sales tax is due according to the normal procedure)
-     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *  - Tax exempt (USt./IGIC/IPSI)
-     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *  - Canary Islands general indirect tax (IGIC tax applies)
-     *  - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     * The codes for the VAT category are as follows:
-     *  - S = sales tax is due at the normal rate
-     *  - Z = goods to be taxed according to the zero rate
-     *  - E = tax exempt
-     *  - AE = reversal of tax liability
-     *  - K = VAT is not shown for intra-community deliveries
-     *  - G = tax not levied due to export outside the EU
-     *  - O = Outside the tax scope
-     *  - L = IGIC (Canary Islands)
-     *  - M = IPSI (Ceuta/Melilla)
-     * @param float $taxPercent
-     * VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category
-     * and the category-specific sales tax rate must correspond to one another. The value to be given is
-     * the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @return ZugferdQuickDescriptor
-     */
-    public function doAddTradeAllowanceCharge(bool $isDiscount, float $basisAmount, string $currency, float $actualAmount, string $reason, string $taxTypeCode, string $taxCategoryCode, float $taxPercent): ZugferdQuickDescriptor
-    {
-        $this->addDocumentAllowanceCharge($actualAmount, $isDiscount == false, $taxCategoryCode, $taxTypeCode, $taxPercent, null, null, $basisAmount, null, null, null, $reason);
-        return $this;
-    }
-
-    /**
-     * Add a payment term
-     *
-     * @param string $description
-     * A text description of the payment terms that apply to the payment amount due (including a
-     * description of possible penalties). Note: This element can contain multiple lines and
-     * multiple conditions.
-     * @param DateTime|null $dueDate
-     * The date by which payment is due Note: The payment due date reflects the net payment due
-     * date. In the case of partial payments, this indicates the first due date of a net payment.
-     * The corresponding description of more complex payment terms can be given in BT-20.
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetTradePaymentTerms(string $description, ?DateTime $dueDate = null): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentTerm($description, $dueDate);
-        return $this;
-    }
-
-    /**
-     * Set a Reference to the previous invoice
-     *
-     * __Note__: To be used if:
-     *  - a previous invoice is corrected
-     *  - reference is made to previous partial invoices from a final invoice
-     *  - Reference is made to previous invoices for advance payments from a final invoice
-     *
-     * @param string $id
-     * Number of the previous invoice
-     * @param DateTime|null $issueDateTime
-     * Date of the previous invoice
-     * @return ZugferdQuickDescriptor
-     */
-    public function setInvoiceReferencedDocument(string $id, ?DateTime $issueDateTime = null): ZugferdQuickDescriptor
-    {
-        $this->setDocumentInvoiceReferencedDocument($id, $issueDateTime);
-        return $this;
-    }
-
-    /**
-     * Add a VAT breakdown (at document level)
-     *
-     * @param float $basisAmount
-     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param float $percent
-     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
-     * question. Note: The code of the sales tax category and the category-specific sales tax rate
-     * must correspond to one another. The value to be given is the percentage. For example, the
-     * value 20 is given for 20% (and not 0.2)
-     * @param string $categoryCode
-     * Coded description of a sales tax category
-     *
-     * The following entries from UNTDID 5305 are used (details in brackets):
-     *  - Standard rate (sales tax is due according to the normal procedure)
-     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *  - Tax exempt (USt./IGIC/IPSI)
-     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *  - Canary Islands general indirect tax (IGIC tax applies)
-     *  - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     * The codes for the VAT category are as follows:
-     *  - S = sales tax is due at the normal rate
-     *  - Z = goods to be taxed according to the zero rate
-     *  - E = tax exempt
-     *  - AE = reversal of tax liability
-     *  - K = VAT is not shown for intra-community deliveries
-     *  - G = tax not levied due to export outside the EU
-     *  - O = Outside the tax scope
-     *  - L = IGIC (Canary Islands)
-     *  - M = IPSI (Ceuta / Melilla)
-     * @param string|null $typeCode
-     * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param float|null $allowanceChargeBasisAmount
-     * Total amount of surcharges and deductions of the tax rate at document level
-     * @param string|null $exemptionReasonCode
-     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
-     * and maintained by the Connecting Europe Facility.
-     * @param string|null $exemptionReason
-     * Reason for tax exemption (free text)
-     * @return ZugferdQuickDescriptor
-     */
-    public function doAddApplicableTradeTax(float $basisAmount, float $percent, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
-    {
-        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, round(0.01 * $percent * $basisAmount, 2), $percent, $exemptionReason, $exemptionReasonCode);
-        return $this;
-    }
-
-    /**
-     * Add a VAT breakdown (at document level)
-     *
-     * @param float $basisAmount
-     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param float $calculatedAmount
-     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
-     * the amount to be taxed according to the sales tax category by the sales tax rate applicable
-     * for the sales tax category concerned
-     * @param string $categoryCode
-     * Coded description of a sales tax category
-     *
-     * The following entries from UNTDID 5305 are used (details in brackets):
-     *  - Standard rate (sales tax is due according to the normal procedure)
-     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *  - Tax exempt (USt./IGIC/IPSI)
-     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *  - Canary Islands general indirect tax (IGIC tax applies)
-     *  - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     * The codes for the VAT category are as follows:
-     *  - S = sales tax is due at the normal rate
-     *  - Z = goods to be taxed according to the zero rate
-     *  - E = tax exempt
-     *  - AE = reversal of tax liability
-     *  - K = VAT is not shown for intra-community deliveries
-     *  - G = tax not levied due to export outside the EU
-     *  - O = Outside the tax scope
-     *  - L = IGIC (Canary Islands)
-     *  - M = IPSI (Ceuta / Melilla)
-     * @param string|null $typeCode
-     * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param float|null $allowanceChargeBasisAmount
-     * Total amount of surcharges and deductions of the tax rate at document level
-     * @param string|null $exemptionReasonCode
-     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
-     * and maintained by the Connecting Europe Facility.
-     * @param string|null $exemptionReason
-     * Reason for tax exemption (free text)
-     * @return ZugferdQuickDescriptor
-     */
-    public function doAddApplicableTradeTax2(float $basisAmount, float $calculatedAmount, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
-    {
-        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, $calculatedAmount, round($calculatedAmount * 100.0 / $basisAmount, 2), $exemptionReason, $exemptionReasonCode);
-        return $this;
-    }
-
-    /**
      * Add a new text position
      *
      * @param string $lineId
@@ -746,7 +641,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
             $taxCategoryCode,
             $taxTypeCode,
             $taxPercent,
-            $lineTotalAmount
+            $lineTotalAmount,
+            0.0,
+            0.0,
+            0.0
         );
 
         return $this;
@@ -882,6 +780,204 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Add a logistical service fees (On document level)
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param float $amount
+     * Amount of the service fee
+     * @param string $description
+     * Identification of the service fee
+     * @param string $taxTypeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param string $taxCategoryCode
+     * Coded description of a sales tax category
+     *
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure)
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI)
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     *
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
+     * @param float $taxPercent
+     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
+     * question. Note: The code of the sales tax category and the category-specific sales tax rate
+     * must correspond to one another. The value to be given is the percentage. For example, the
+     * value 20 is given for 20% (and not 0.2)
+     * @return ZugferdQuickDescriptor
+     */
+    public function doAddLogisticsServiceCharge(float $amount, string $description, string $taxTypeCode, string $taxCategoryCode, float $taxPercent): ZugferdQuickDescriptor
+    {
+        $this->addDocumentLogisticsServiceCharge($description, $amount, [$taxTypeCode], [$taxCategoryCode], [$taxPercent]);
+
+        $this->addToInternalVatBuffer(
+            $taxCategoryCode,
+            $taxTypeCode,
+            $taxPercent,
+            0.0,
+            0.0,
+            0.0,
+            $amount
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add information about surcharges and charges applicable to the bill as a whole, Deductions,
+     * such as for withheld taxes may also be specified in this group
+     *
+     * @param float $actualAmount
+     * Amount of the surcharge or discount at document level
+     * @param string $reason
+     * @param string $taxCategoryCode
+     * @param string $taxTypeCode
+     * @param float $taxPercent
+     * @return ZugferdQuickDescriptor
+     */
+    public function doAddTradeAllowanceCharge(float $actualAmount, string $reason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
+    {
+        if ($actualAmount == 0.0) {
+            return $this;
+        }
+
+        $allowanceChargeAmountIsAllowance = $actualAmount < 0.0;
+        $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($actualAmount) : 0.0;
+        $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($actualAmount) : 0.0;
+
+        $this->addDocumentAllowanceCharge(abs($actualAmount), $allowanceChargeAmountIsAllowance == false, $taxCategoryCode, $taxTypeCode, $taxPercent, null, null, null, null, null, null, $reason);
+
+        $this->addToInternalVatBuffer(
+            $taxCategoryCode,
+            $taxTypeCode,
+            $taxPercent,
+            0.0,
+            $chargeAmount,
+            $allowanceAmount,
+            0.0
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a VAT breakdown (at document level)
+     *
+     * @param float $basisAmount
+     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
+     * @param float $percent
+     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
+     * question. Note: The code of the sales tax category and the category-specific sales tax rate
+     * must correspond to one another. The value to be given is the percentage. For example, the
+     * value 20 is given for 20% (and not 0.2)
+     * @param string $categoryCode
+     * Coded description of a sales tax category
+     *
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure)
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI)
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     *
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
+     * @param string|null $typeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param float|null $allowanceChargeBasisAmount
+     * Total amount of surcharges and deductions of the tax rate at document level
+     * @param string|null $exemptionReasonCode
+     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
+     * and maintained by the Connecting Europe Facility.
+     * @param string|null $exemptionReason
+     * Reason for tax exemption (free text)
+     * @return ZugferdQuickDescriptor
+     */
+    public function doAddApplicableTradeTax(float $basisAmount, float $percent, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
+    {
+        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, round(0.01 * $percent * $basisAmount, 2), $percent, $exemptionReason, $exemptionReasonCode);
+        return $this;
+    }
+
+    /**
+     * Add a VAT breakdown (at document level)
+     *
+     * @param float $basisAmount
+     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
+     * @param float $calculatedAmount
+     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
+     * the amount to be taxed according to the sales tax category by the sales tax rate applicable
+     * for the sales tax category concerned
+     * @param string $categoryCode
+     * Coded description of a sales tax category
+     *
+     * The following entries from UNTDID 5305 are used (details in brackets):
+     *  - Standard rate (sales tax is due according to the normal procedure)
+     *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *  - Tax exempt (USt./IGIC/IPSI)
+     *  - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *  - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *  - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+     *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *  - Canary Islands general indirect tax (IGIC tax applies)
+     *  - IPSI (tax for Ceuta / Melilla) applies.
+     *
+     * The codes for the VAT category are as follows:
+     *  - S = sales tax is due at the normal rate
+     *  - Z = goods to be taxed according to the zero rate
+     *  - E = tax exempt
+     *  - AE = reversal of tax liability
+     *  - K = VAT is not shown for intra-community deliveries
+     *  - G = tax not levied due to export outside the EU
+     *  - O = Outside the tax scope
+     *  - L = IGIC (Canary Islands)
+     *  - M = IPSI (Ceuta / Melilla)
+     * @param string|null $typeCode
+     * Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param float|null $allowanceChargeBasisAmount
+     * Total amount of surcharges and deductions of the tax rate at document level
+     * @param string|null $exemptionReasonCode
+     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
+     * and maintained by the Connecting Europe Facility.
+     * @param string|null $exemptionReason
+     * Reason for tax exemption (free text)
+     * @return ZugferdQuickDescriptor
+     */
+    public function doAddApplicableTradeTax2(float $basisAmount, float $calculatedAmount, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
+    {
+        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, $calculatedAmount, round($calculatedAmount * 100.0 / $basisAmount, 2), $exemptionReason, $exemptionReasonCode);
+        return $this;
+    }
+
+    /**
      * Sets the prepaid amount
      *
      * @param float $totalPrepaidAmount
@@ -898,127 +994,20 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *
      * @return ZugferdQuickDescriptor
      */
-    public function doCalcTotals(): ZugferdQuickDescriptor
+    protected function doCalcTotals(): ZugferdQuickDescriptor
     {
-        $this->updateVatBuffer();
         $this->writeVatBreakDown();
         $this->setDocumentSummation(
-            $this->getGrandTotalAmount(),
-            $this->getGrandTotalAmount() - $this->getTotalPrepaidAmount(),
-            $this->getLineTotalAmount(),
+            $this->summarizeVatTableElement(self::VT_BASISAMOUNT) + $this->summarizeVatTableElement(self::VT_CALCULATEDAMOUNT),
+            $this->summarizeVatTableElement(self::VT_BASISAMOUNT) + $this->summarizeVatTableElement(self::VT_CALCULATEDAMOUNT) - $this->totalPrepaidAmount,
+            $this->summarizeVatTableElement(self::VT_LINETOTALBASISAMOUNT),
+            $this->summarizeVatTableElement(self::VT_CHARGEAMOUNT) + $this->summarizeVatTableElement(self::VT_LOGSERVICECHARGE),
+            $this->summarizeVatTableElement(self::VT_ALLOWANCEAMOUNT),
+            $this->summarizeVatTableElement(self::VT_BASISAMOUNT),
+            $this->summarizeVatTableElement(self::VT_CALCULATEDAMOUNT),
             0.0,
-            0.0,
-            $this->getLineTotalAmount(),
-            $this->getTaxTotalAmount(),
-            0.0,
-            $this->getTotalPrepaidAmount()
+            $this->totalPrepaidAmount
         );
-        return $this;
-    }
-
-    /**
-     * Set payment means to "direct debit"
-     *
-     * If $isSEPA is true code __31__ wil be useed for payment means code.
-     * If $isSEPA is false code __59__ wil be useed for payment means code.
-     *
-     * @param boolean $isSEPA
-     * Is it a SEPA transaction or not
-     * @param string $buyerIban
-     * Direct debit: ID of the account to be debited
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetPaymentMeansForDebitTransfer(bool $isSEPA, string $buyerIban): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentMean($isSEPA === false ? ZugferdPaymentMeans::UNTDID_4461_31 : ZugferdPaymentMeans::UNTDID_4461_59, null, null, null, null, $buyerIban, null, null, null, null);
-        return $this;
-    }
-
-    /**
-     * Set payment means to "debit transfer"
-     *
-     * If $isSEPA is true code __58__ wil be useed for payment means code.
-     * If $isSEPA is false code __30__ wil be useed for payment means code.
-     *
-     * @param boolean $isSEPA
-     * Is it a SEPA transaction or not
-     * @param string $payeeIban
-     * Transfer: A unique identifier for the financial account held with a payment service provider to which
-     * the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID
-     * account number
-     * @param string|null $payeeAccountName
-     * The name of the payment account held with a payment service provider to which the payment should be made.
-     * Information only required if different from the name of the payee / seller
-     * @param string|null $payeePropId
-     * National account number (not for SEPA)
-     * @param string|null $payeeBic
-     * Seller's banking institution, An identifier for the payment service provider with whom the payment account
-     * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetPaymentMeansForCreditTransfer(bool $isSEPA, string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentMean($isSEPA === false ? ZugferdPaymentMeans::UNTDID_4461_30 : ZugferdPaymentMeans::UNTDID_4461_58, null, null, null, null, null, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
-        return $this;
-    }
-
-    /**
-     * Set payment means to "Bank Card"
-     *
-     * @param string $cardType
-     * The type of the card
-     * @param string $cardId
-     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
-     * payment security standards, an invoice should never contain a full payment card master account number.
-     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
-     * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
-     * Name of the payment card holder
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetPaymentMeansForBankCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_48, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
-        return $this;
-    }
-
-    /**
-     * Set payment means to "Credit Card"
-     *
-     * @param string $cardType
-     * The type of the card
-     * @param string $cardId
-     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
-     * payment security standards, an invoice should never contain a full payment card master account number.
-     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
-     * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
-     * Name of the payment card holder
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetPaymentMeansForCreditCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_54, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
-        return $this;
-    }
-
-    /**
-     * Set payment means to "Debit Card"
-     *
-     * @param string $cardType
-     * The type of the card
-     * @param string $cardId
-     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
-     * payment security standards, an invoice should never contain a full payment card master account number.
-     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
-     * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
-     * Name of the payment card holder
-     * @return ZugferdQuickDescriptor
-     */
-    public function doSetPaymentMeansForDebitCard(string $cardType, string $cardId, string $cardHolderName): ZugferdQuickDescriptor
-    {
-        $this->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_55, null, $cardType, $cardId, $cardHolderName, null, null, null, null, null);
         return $this;
     }
 
@@ -1030,29 +1019,43 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param string $taxTypeCode
      * @param float $taxPercent
      * @param float $lineTotalAmount
+     * @param float $chargeAmount
+     * @param float $allowanceAmount
      * @return void
      */
-    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount)
+    protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
     {
-        $vatGroup = md5($taxCategoryCode . "_" . $taxTypeCode . "_" . $taxPercent);
+        $vatGroup = md5($taxCategoryCode . "_" . $taxTypeCode . "_" . number_format($taxPercent, 10, '_', '__'));
 
         if (!isset($this->vatBreakdown[$vatGroup])) {
-            $this->vatBreakdown[$vatGroup] = [$taxCategoryCode, $taxTypeCode, $taxPercent, 0.0, 0.0];
+            $this->vatBreakdown[$vatGroup] = [
+                self::VT_TAXCATEGORY => $taxCategoryCode,
+                self::VT_TAXTYPE => $taxTypeCode,
+                self::VT_TAXPERCENT => $taxPercent,
+                self::VT_LINETOTALBASISAMOUNT => 0.0,
+                self::VT_ALLOWANCEAMOUNT => 0.0,
+                self::VT_CHARGEAMOUNT => 0.0,
+                self::VT_ALLOWANCECHARGEAMOUNT => 0.0,
+                self::VT_CALCULATEDAMOUNT => 0.0,
+                self::VT_LOGSERVICECHARGE => 0.0
+            ];
         }
 
-        $this->vatBreakdown[$vatGroup][3] += $lineTotalAmount;
-    }
-
-    /**
-     * Updates the internal vat buffer before writing vat breakdownb
-     *
-     * @return void
-     */
-    protected function updateVatBuffer(): void
-    {
-        foreach ($this->vatBreakdown as $key => $item) {
-            $this->vatBreakdown[$key][4] = round($item[3] * $item[2] / 100.0, 2);
-        }
+        $this->vatBreakdown[$vatGroup][self::VT_LINETOTALBASISAMOUNT] += $lineTotalAmount;
+        $this->vatBreakdown[$vatGroup][self::VT_ALLOWANCEAMOUNT] += $allowanceAmount;
+        $this->vatBreakdown[$vatGroup][self::VT_CHARGEAMOUNT] += $chargeAmount;
+        $this->vatBreakdown[$vatGroup][self::VT_LOGSERVICECHARGE] += $logisticServiceCharge;
+        $this->vatBreakdown[$vatGroup][self::VT_ALLOWANCECHARGEAMOUNT] =
+            $this->vatBreakdown[$vatGroup][self::VT_CHARGEAMOUNT] -
+            $this->vatBreakdown[$vatGroup][self::VT_ALLOWANCEAMOUNT] +
+            $this->vatBreakdown[$vatGroup][self::VT_LOGSERVICECHARGE];
+        $this->vatBreakdown[$vatGroup][self::VT_BASISAMOUNT] =
+            $this->vatBreakdown[$vatGroup][self::VT_LINETOTALBASISAMOUNT] +
+            $this->vatBreakdown[$vatGroup][self::VT_ALLOWANCECHARGEAMOUNT];
+        $this->vatBreakdown[$vatGroup][self::VT_CALCULATEDAMOUNT] =
+            round(
+                $this->vatBreakdown[$vatGroup][self::VT_BASISAMOUNT] *
+                $this->vatBreakdown[$vatGroup][self::VT_TAXPERCENT] / 100.0, 2);
     }
 
     /**
@@ -1063,59 +1066,34 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     protected function writeVatBreakDown(): void
     {
         foreach ($this->vatBreakdown as $item) {
-            $this->addDocumentTax($item[0], $item[1], $item[3], $item[4], $item[2]);
+            $this->addDocumentTax(
+                $item[self::VT_TAXCATEGORY],
+                $item[self::VT_TAXTYPE],
+                $item[self::VT_BASISAMOUNT],
+                $item[self::VT_CALCULATEDAMOUNT],
+                $item[self::VT_TAXPERCENT],
+                null,
+                null,
+                $item[self::VT_LINETOTALBASISAMOUNT],
+                $item[self::VT_ALLOWANCECHARGEAMOUNT]
+            );
         }
     }
 
     /**
-     * Returns the line total amount from the internal vat buffer
+     * Summarizes an array element in the internal vat table
      *
+     * @param integer $index
      * @return float
      */
-    protected function getLineTotalAmount(): float
+    protected function summarizeVatTableElement(int $index): float
     {
-        $lineTotalAmount = 0.0;
+        $sum = 0.0;
 
         foreach ($this->vatBreakdown as $item) {
-            $lineTotalAmount += $item[3];
+            $sum += $item[$index];
         }
 
-        return $lineTotalAmount;
-    }
-
-    /**
-     * Returns the tax total amount from the internal vat buffer
-     *
-     * @return float
-     */
-    protected function getTaxTotalAmount(): float
-    {
-        $taxTotalAmount = 0.0;
-
-        foreach ($this->vatBreakdown as $item) {
-            $taxTotalAmount += $item[4];
-        }
-
-        return $taxTotalAmount;
-    }
-
-    /**
-     * Retúrns the grand total amount from the internal vat buffer
-     *
-     * @return float
-     */
-    protected function getGrandTotalAmount(): float
-    {
-        return $this->getLineTotalAmount() + $this->getTaxTotalAmount();
-    }
-
-    /**
-     * Returns the total prepaid amount
-     *
-     * @return float
-     */
-    protected function getTotalPrepaidAmount(): float
-    {
-        return $this->totalPrepaidAmount;
+        return $sum;
     }
 }
