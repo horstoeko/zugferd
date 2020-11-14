@@ -25,4 +25,3 @@ class ZugferdQuickDescriptorEn16931 extends ZugferdQuickDescriptor
         return ZugferdProfiles::PROFILE_EN16931;
     }
 }
- 

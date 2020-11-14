@@ -69,7 +69,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     /**
      * @inheritDoc
-     * 
+     *
      * @return void
      */
     protected function onBeforeGetContent()
