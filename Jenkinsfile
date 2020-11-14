@@ -9,5 +9,17 @@ pipeline {
       }
     }
 
+    stage('Prepare') {
+      steps {
+        sh 'mkdir ./build/builddoc'
+        sh 'mkdir ./build/doc'
+        sh 'mkdir ./build/coverage'
+        sh 'mkdir ./build/logs'
+        sh 'mkdir ./build/pdepend'
+        sh 'mkdir ./build/phpdox'
+        sh 'mkdir ./build/dist'
+      }
+    }
+
   }
 }
