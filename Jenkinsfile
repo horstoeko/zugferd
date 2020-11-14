@@ -35,8 +35,8 @@ pipeline {
       parallel {
         stage('Static-Analysis (PHPLINT)') {
           steps {
-            sh 'find ./src/ -type f -name \'*.php\' -exec php -l {} \\; |grep -v "No syntax errors detected"'
-            sh 'find ./tests/ -type f -name \'*.php\' -exec php -l {} \\; |grep -v "No syntax errors detected"'
+            sh 'find ./src/ -type f -name \'*.php\' -exec php -l {} \\; '
+            sh 'find ./tests/ -type f -name \'*.php\' -exec php -l {} \\; '
           }
         }
 
