@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build with Ant') {
       steps {
-        withAnt(installation: 'LocalAnt')
+        withAnt()
       }
     }
 
