@@ -24,5 +24,12 @@ pipeline {
       }
     }
 
+    stage('Install') {
+      steps {
+        sh 'php ./composer.phar install --prefer-dist --no-progress'
+        sh 'php ./composer.phar update --dev'
+      }
+    }
+
   }
 }
