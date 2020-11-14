@@ -1055,7 +1055,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $this->vatBreakdown[$vatGroup][self::VT_CALCULATEDAMOUNT] =
             round(
                 $this->vatBreakdown[$vatGroup][self::VT_BASISAMOUNT] *
-                $this->vatBreakdown[$vatGroup][self::VT_TAXPERCENT] / 100.0, 2);
+                $this->vatBreakdown[$vatGroup][self::VT_TAXPERCENT] / 100.0,
+                2
+            );
     }
 
     /**
