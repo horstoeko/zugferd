@@ -33,13 +33,6 @@ pipeline {
 
     stage('Static-Analysis') {
       parallel {
-        stage('Static-Analysis (PHPLINT)') {
-          steps {
-            sh 'find ./src/ -type f -name \'*.php\' -exec php -l {} \\; '
-            sh 'find ./tests/ -type f -name \'*.php\' -exec php -l {} \\; '
-          }
-        }
-
         stage('Static-Analysis (PHPLOC)') {
           steps {
             sh './vendor/bin/phploc --count-tests --log-csv ./build/logs/phploc.csv  --log-xml ./build/logs/phploc.xml ./src ./tests'
@@ -49,6 +42,24 @@ pipeline {
         stage('Static-Analysis (PDEPEND)') {
           steps {
             sh './vendor/bin/pdepend --jdepend-xml=./build/logs/jdepend.xml --jdepend-chart=./build/pdepend/dependencies.svg --overview-pyramid=./build/pdepend/overview-pyramid.svg ./src'
+          }
+        }
+
+        stage('Static Analysis (PHPMD)') {
+          steps {
+            sh './vendor/bin/phpmd ./src xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml --exclude ./src/entities/'
+          }
+        }
+
+        stage('Static-Analysis (PHPCS)') {
+          steps {
+            sh './vendor/bin/phpcs --report=checkstyle --report-file=./build/logs/checkstyle.xml --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests'
+          }
+        }
+
+        stage('Static-Analysis (PHPCPD)') {
+          steps {
+            sh './vendor/bin/phpcpd --log-pmd ./build/logs/pmd-cpd.xml --exclude ./src/entities/ ./src'
           }
         }
 
