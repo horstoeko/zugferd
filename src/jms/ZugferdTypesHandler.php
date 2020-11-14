@@ -101,6 +101,30 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
                 'type' => 'horstoeko\zugferd\entities\extended\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\basic\udt\IndicatorType',
+                'method' => 'serializeIndicatorType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\basicwl\udt\IndicatorType',
+                'method' => 'serializeIndicatorType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\en16931\udt\IndicatorType',
+                'method' => 'serializeIndicatorType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\extended\udt\IndicatorType',
+                'method' => 'serializeIndicatorType'
+            ],
         ];
     }
 
@@ -133,6 +157,12 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     public function serializePercentType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
         $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 2, ".", ""));
+        return $node;
+    }
+
+    public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
+    {
+        $node = $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
         return $node;
     }
 }

@@ -109,7 +109,7 @@ class ZugferdObjectHelper
      */
     public function getIndicatorType(?bool $value = null): ?object
     {
-        if (self::IsAllNullOrEmpty(func_get_args())) {
+        if ($value === null) {
             return null;
         }
 
