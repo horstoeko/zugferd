@@ -14,13 +14,15 @@ pipeline {
 
     stage('Prepare') {
       steps {
-        sh 'mkdir ./build/builddoc'
-        sh 'mkdir ./build/doc'
-        sh 'mkdir ./build/coverage'
-        sh 'mkdir ./build/logs'
-        sh 'mkdir ./build/pdepend'
-        sh 'mkdir ./build/phpdox'
-        sh 'mkdir ./build/dist'
+        sh '''         
+            mkdir ./build/builddoc
+            mkdir ./build/doc
+            mkdir ./build/coverage
+            mkdir ./build/logs
+            mkdir ./build/pdepend
+            mkdir ./build/phpdox
+            mkdir ./build/dist
+        '''
       }
     }
 
