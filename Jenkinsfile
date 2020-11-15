@@ -1,12 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('CleanUp (Before)') {
-      steps {
-        cleanWs()
-      }
-    }
-
     stage('Prepare') {
       parallel {
         stage('Prepare (Directories)') {
