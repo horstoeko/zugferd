@@ -66,5 +66,11 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh './vendor/bin/phpunit --configuration ./build/phpunit.xml tests'
+      }
+    }
+
   }
 }
