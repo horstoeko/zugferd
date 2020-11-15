@@ -104,19 +104,6 @@ pipeline {
       }
     }
 
-    stage('Archive Artifacts') {
-      steps {
-        zip archive: true, dir: 'build/doc', glob: '**/*.*', zipFile: 'build/dist/doc.zip'
-        zip archive: true, dir: 'src', glob: '**/*.*', zipFile: 'build/dist/src.zip'
-        zip archive: true, dir: 'build/builddoc', glob: '**/*.*', zipFile: 'build/dist/builddoc.zip'
-        zip archive: true, dir: 'build/coverage', glob: '**/*.*', zipFile: 'build/dist/coverage.zip'
-        zip archive: true, dir: 'build/coverage-html', glob: '**/*.*', zipFile: 'build/dist/coverage-html.zip'
-        zip archive: true, dir: 'build/logs', glob: '**/*.*', zipFile: 'build/dist/logs.zip'
-        zip archive: true, dir: 'build/pdepend', glob: '**/*.*', zipFile: 'build/dist/pdepend.zip'
-        zip archive: true, dir: 'build/phpdox', glob: '**/*.*', zipFile: 'build/dist/phpdox.zip'
-      }
-    }
-
     stage('CleanUp (After)') {
       steps {
         cleanWs()
