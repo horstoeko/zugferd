@@ -19016,6 +19016,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_serializePercentType"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler\u003A\u003AserializeIndicatorType\u0028\u0029",
+            "name": "serializeIndicatorType",
+            "summary": "",
+            "url": "classes/horstoeko-zugferd-jms-ZugferdTypesHandler.html#method_serializeIndicatorType"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor",
             "name": "ZugferdQuickDescriptor",
             "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents.",
@@ -19036,15 +19041,65 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020new\u0020credit\u0020memo",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doCreateCreditMemo"
         },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddNote\u0028\u0029",
-            "name": "doAddNote",
-            "summary": "Add\u0020note\u0020to\u0020invoice",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddNote"
-        },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentTerms\u0028\u0029",
             "name": "doSetPaymentTerms",
-            "summary": "Undocumented\u0020function",
+            "summary": "Add\u0020a\u0020payment\u0020term",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentTerms"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForDebitTransfer\u0028\u0029",
+            "name": "doSetPaymentMeansForDebitTransfer",
+            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022direct\u0020debit\u0022",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForDebitTransfer"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForCreditTransfer\u0028\u0029",
+            "name": "doSetPaymentMeansForCreditTransfer",
+            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022debit\u0020transfer\u0022",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForCreditTransfer"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForBankCard\u0028\u0029",
+            "name": "doSetPaymentMeansForBankCard",
+            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Bank\u0020Card\u0022",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForBankCard"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForCreditCard\u0028\u0029",
+            "name": "doSetPaymentMeansForCreditCard",
+            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Credit\u0020Card\u0022",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForCreditCard"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForDebitCard\u0028\u0029",
+            "name": "doSetPaymentMeansForDebitCard",
+            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Debit\u0020Card\u0022",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForDebitCard"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddNote\u0028\u0029",
+            "name": "doAddNote",
+            "summary": "Add\u0020note\u0020to\u0020the\u0020document",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddNote"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetBuyerOrderReferenceDocument\u0028\u0029",
+            "name": "doSetBuyerOrderReferenceDocument",
+            "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020buyer\u0020order",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetBuyerOrderReferenceDocument"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddAdditionalReferencedDocument\u0028\u0029",
+            "name": "doAddAdditionalReferencedDocument",
+            "summary": "Set\u0020information\u0020about\u0020billing\u0020documents\u0020that\u0020provide\u0020evidence\u0020of\u0020claims\u0020made\u0020in\u0020the\u0020bill",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddAdditionalReferencedDocument"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetDeliveryNoteReferenceDocument\u0028\u0029",
+            "name": "doSetDeliveryNoteReferenceDocument",
+            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020associated\u0020delivery\u0020note",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetDeliveryNoteReferenceDocument"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetInvoiceReferencedDocument\u0028\u0029",
+            "name": "doSetInvoiceReferencedDocument",
+            "summary": "Set\u0020a\u0020Reference\u0020to\u0020the\u0020previous\u0020invoice",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetInvoiceReferencedDocument"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetSpecifiedProcuringProject\u0028\u0029",
+            "name": "doSetSpecifiedProcuringProject",
+            "summary": "Set\u0020Details\u0020of\u0020a\u0020project\u0020reference",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetSpecifiedProcuringProject"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetBuyer\u0028\u0029",
             "name": "doSetBuyer",
@@ -19076,61 +19131,6 @@ Search.appendIndex(
             "summary": "Add\u0020detailed\u0020information\u0020on\u0020the\u0020seller\u0027s\u0020tax\u0020information",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddSellerTaxRegistration"
         },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetSpecifiedProcuringProject\u0028\u0029",
-            "name": "doSetSpecifiedProcuringProject",
-            "summary": "Set\u0020Details\u0020of\u0020a\u0020project\u0020reference",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetSpecifiedProcuringProject"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddAdditionalReferencedDocument\u0028\u0029",
-            "name": "doAddAdditionalReferencedDocument",
-            "summary": "Set\u0020information\u0020about\u0020billing\u0020documents\u0020that\u0020provide\u0020evidence\u0020of\u0020claims\u0020made\u0020in\u0020the\u0020bill",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddAdditionalReferencedDocument"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetBuyerOrderReferenceDocument\u0028\u0029",
-            "name": "doSetBuyerOrderReferenceDocument",
-            "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020buyer\u0020order",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetBuyerOrderReferenceDocument"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetDeliveryNoteReferenceDocument\u0028\u0029",
-            "name": "doSetDeliveryNoteReferenceDocument",
-            "summary": "Set\u0020detailed\u0020information\u0020on\u0020the\u0020associated\u0020delivery\u0020note",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetDeliveryNoteReferenceDocument"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddLogisticsServiceCharge\u0028\u0029",
-            "name": "doAddLogisticsServiceCharge",
-            "summary": "Add\u0020a\u0020logistical\u0020service\u0020fees\u0020\u0028On\u0020document\u0020level\u0029",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddLogisticsServiceCharge"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddTradeAllowanceCharge\u0028\u0029",
-            "name": "doAddTradeAllowanceCharge",
-            "summary": "Add\u0020information\u0020about\u0020surcharges\u0020and\u0020charges\u0020applicable\u0020to\u0020the\u0020bill\u0020as\u0020a\u0020whole,\u0020Deductions,\nsuch\u0020as\u0020for\u0020withheld\u0020taxes\u0020may\u0020also\u0020be\u0020specified\u0020in\u0020this\u0020group",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddTradeAllowanceCharge"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetTradePaymentTerms\u0028\u0029",
-            "name": "doSetTradePaymentTerms",
-            "summary": "Add\u0020a\u0020payment\u0020term",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetTradePaymentTerms"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003ASetInvoiceReferencedDocument\u0028\u0029",
-            "name": "SetInvoiceReferencedDocument",
-            "summary": "Set\u0020a\u0020Reference\u0020to\u0020the\u0020previous\u0020invoice",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_SetInvoiceReferencedDocument"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003ASetTotals\u0028\u0029",
-            "name": "SetTotals",
-            "summary": "Document\u0020money\u0020summation",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_SetTotals"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddApplicableTradeTax\u0028\u0029",
-            "name": "doAddApplicableTradeTax",
-            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddApplicableTradeTax"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddApplicableTradeTax2\u0028\u0029",
-            "name": "doAddApplicableTradeTax2",
-            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddApplicableTradeTax2"
-        },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddTradeLineCommentItem\u0028\u0029",
             "name": "doAddTradeLineCommentItem",
             "summary": "Add\u0020a\u0020new\u0020text\u0020position",
@@ -19151,40 +19151,30 @@ Search.appendIndex(
             "summary": "Adds\u0020a\u0020new\u0020position\u0020\u0028line\u0029\u0020to\u0020document\u0020with\u0020a\u0020surcharge\u0020amount",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddTradeLineItemWithDiscount"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddLogisticsServiceCharge\u0028\u0029",
+            "name": "doAddLogisticsServiceCharge",
+            "summary": "Add\u0020a\u0020logistical\u0020service\u0020fees\u0020\u0028On\u0020document\u0020level\u0029",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddLogisticsServiceCharge"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddTradeAllowanceCharge\u0028\u0029",
+            "name": "doAddTradeAllowanceCharge",
+            "summary": "Add\u0020information\u0020about\u0020surcharges\u0020and\u0020charges\u0020applicable\u0020to\u0020the\u0020bill\u0020as\u0020a\u0020whole,\u0020Deductions,\nsuch\u0020as\u0020for\u0020withheld\u0020taxes\u0020may\u0020also\u0020be\u0020specified\u0020in\u0020this\u0020group",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddTradeAllowanceCharge"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddApplicableTradeTax\u0028\u0029",
+            "name": "doAddApplicableTradeTax",
+            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddApplicableTradeTax"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoAddApplicableTradeTax2\u0028\u0029",
+            "name": "doAddApplicableTradeTax2",
+            "summary": "Add\u0020a\u0020VAT\u0020breakdown\u0020\u0028at\u0020document\u0020level\u0029",
+            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doAddApplicableTradeTax2"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPrepaidAmount\u0028\u0029",
             "name": "doSetPrepaidAmount",
-            "summary": "Sets\u0020the\u0020prepaid\u0020amount.\u0020This\u0020must\u0020be\u0020called\u0020before\u0020doSetTotals",
+            "summary": "Sets\u0020the\u0020prepaid\u0020amount",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPrepaidAmount"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetTotals\u0028\u0029",
-            "name": "doSetTotals",
-            "summary": "Writes\u0020the\u0020vat\u0020breakdowns\u0020and\u0020the\u0020summation\u0020of\u0020the\u0020document",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetTotals"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForDebitTransfer\u0028\u0029",
-            "name": "doSetPaymentMeansForDebitTransfer",
-            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022direct\u0020debit\u0022",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForDebitTransfer"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForCreditTransfer\u0028\u0029",
-            "name": "doSetPaymentMeansForCreditTransfer",
-            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022debit\u0020transfer\u0022",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForCreditTransfer"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForBankCard\u0028\u0029",
-            "name": "doSetPaymentMeansForBankCard",
-            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Bank\u0020Card\u0022",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForBankCard"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForCreditCard\u0028\u0029",
-            "name": "doSetPaymentMeansForCreditCard",
-            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Credit\u0020Card\u0022",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForCreditCard"
-        },                {
-            "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptor\u003A\u003AdoSetPaymentMeansForDebitCard\u0028\u0029",
-            "name": "doSetPaymentMeansForDebitCard",
-            "summary": "Set\u0020payment\u0020means\u0020to\u0020\u0022Debit\u0020Card\u0022",
-            "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptor.html#method_doSetPaymentMeansForDebitCard"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorEn16931",
             "name": "ZugferdQuickDescriptorEn16931",
