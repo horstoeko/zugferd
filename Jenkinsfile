@@ -12,13 +12,6 @@ pipeline {
         stage('Prepare (Directories)') {
           steps {
             sh '''
-                rm -rf ./build/builddoc
-                rm -rf ./build/doc
-                rm -rf ./build/coverage
-                rm -rf ./build/logs
-                rm -rf ./build/pdepend
-                rm -rf ./build/phpdox
-                rm -rf ./build/dist
                 mkdir ./build/builddoc
                 mkdir ./build/doc
                 mkdir ./build/coverage
