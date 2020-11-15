@@ -59,7 +59,7 @@ pipeline {
 
         stage('Static-Analysis (PHPCPD)') {
           steps {
-            sh './vendor/bin/phpcpd --log-pmd ./build/logs/pmd-cpd.xml --exclude ./src/entities/ ./src'
+            sh './vendor/bin/phpcpd --log-pmd ./build/logs/pmd-cpd.xml --exclude ./src/entities/ ./src || true'
           }
         }
 
