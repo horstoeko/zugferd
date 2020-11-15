@@ -86,7 +86,7 @@ pipeline {
       parallel {
         stage('Report (CheckStyle)') {
           steps {
-            checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: './build/logs/checkstyle.xml', unHealthy: ''
+            checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'build/logs/checkstyle.xml', unHealthy: ''
           }
         }
 
@@ -98,7 +98,7 @@ pipeline {
 
         stage('Report (jUnit)') {
           steps {
-            junit './build/logs/junit.xml'
+            junit 'build/logs/junit.xml'
           }
         }
       }
@@ -106,7 +106,7 @@ pipeline {
 
     stage('Archive Artifacts') {
       steps {
-        archiveArtifacts artifacts: './build/dist/**/*', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
+        archiveArtifacts artifacts: 'build/dist/**/*', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
       }
     }
 
