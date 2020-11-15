@@ -1,11 +1,24 @@
 pipeline {
   agent any
   stages {
+    stage('CleanUp (Before)') {
+      steps {
+        cleanWs()
+      }
+    }
+
     stage('Prepare') {
       parallel {
         stage('Prepare (Directories)') {
           steps {
             sh '''
+                rm -rf ./build/builddoc
+                rm -rf ./build/doc
+                rm -rf ./build/coverage
+                rm -rf ./build/logs
+                rm -rf ./build/pdepend
+                rm -rf ./build/phpdox
+                rm -rf ./build/dist
                 mkdir ./build/builddoc
                 mkdir ./build/doc
                 mkdir ./build/coverage
@@ -79,6 +92,40 @@ pipeline {
     stage('Test') {
       steps {
         sh './vendor/bin/phpunit --configuration ./build/phpunit.xml tests'
+      }
+    }
+
+    stage('Report') {
+      parallel {
+        stage('Report (CheckStyle)') {
+          steps {
+            checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: './build/logs/checkstyle.xml', unHealthy: ''
+          }
+        }
+
+        stage('Report (HTML)') {
+          steps {
+            publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: './build/logs', reportFiles: 'index.html', reportName: 'Build of horstoeko/zugferd', reportTitles: 'Build of horstoeko/zugferd'])
+          }
+        }
+
+        stage('Report (jUnit)') {
+          steps {
+            junit './build/logs/junit.xml'
+          }
+        }
+      }
+    }
+
+    stage('Archive Artifacts') {
+      steps {
+        archiveArtifacts artifacts: './build/dist/**/*', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
+      }
+    }
+
+    stage('CleanUp (After)') {
+      steps {
+        cleanWs()
       }
     }
 
