@@ -106,6 +106,9 @@ pipeline {
 
     stage('Archive Artifacts') {
       steps {
+        zip zipFile: './build/dist/doc.zip', glob: 'build/doc/**/*.*'
+        zip zipFile: './build/dist/src.zip', glob: 'src/**/*.*'
+        zip zipFile: './build/dist/builddoc.zip', glob: 'build/**/*.*'
         archiveArtifacts artifacts: 'build/dist/**/*', caseSensitive: false, fingerprint: true, onlyIfSuccessful: true
       }
     }
