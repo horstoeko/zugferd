@@ -47,7 +47,7 @@ pipeline {
 
         stage('Static Analysis (PHPMD)') {
           steps {
-            sh './vendor/bin/phpmd ./src xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml --exclude ./src/entities/'
+            sh './vendor/bin/phpmd ./src xml ./build/phpmd.xml --reportfile ./build/logs/pmd.xml --exclude ./src/entities/ || true'
           }
         }
 
