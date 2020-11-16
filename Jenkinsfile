@@ -101,6 +101,12 @@ pipeline {
             junit 'build/logs/junit.xml'
           }
         }
+
+        stage('Report (Coverage') {
+          steps {
+            publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'build/coverage-html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+          }
+        }
       }
     }
 
