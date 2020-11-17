@@ -24,5 +24,6 @@
     </coverage>
     <logging>
         <junit outputFile="logs/junit.xml"/>
+        <testdoxHtml outputFile="logs/testdox.html"/>
     </logging>
 </phpunit>

@@ -90,12 +90,6 @@ pipeline {
           }
         }
 
-        stage('Report (HTML)') {
-          steps {
-            publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: './build/logs', reportFiles: 'index.html', reportName: 'Build of horstoeko/zugferd', reportTitles: 'Build of horstoeko/zugferd'])
-          }
-        }
-
         stage('Report (jUnit)') {
           steps {
             junit 'build/logs/junit.xml'
