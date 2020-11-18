@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 use \horstoeko\zugferd\ZugferdPdfWriter;
+use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
 
 /**
  * Class representing the facillity adding XML data from ZugferdDocumentBuilder
@@ -230,8 +231,8 @@ class ZugferdDocumentPdfBuilder
         $docType = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docType) {
-            case '381':
-                $docTypeName = 'Refund';
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
                 break;
             default:
                 $docTypeName = 'Invoice';
