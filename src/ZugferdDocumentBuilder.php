@@ -2540,7 +2540,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param string $classCode
      * A code for classifying the item by type or nature or essence or condition.
-     * __Note__: Classification codes are used to group similar items for different purposes, such as public 
+     * __Note__: Classification codes are used to group similar items for different purposes, such as public
      * procurement (using the Common Procurement Vocabulary [CPV]), e-commerce (UNSPSC), etc.
      * @param string|null $className
      * Classification name
