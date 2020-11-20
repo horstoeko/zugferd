@@ -102,6 +102,29 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Creates an instance of CodeType with extended list
+     * information
+     *
+     * @param string|null $value
+     * @param string|null $listID
+     * @param string|null $listVersionID
+     * @return object|null
+     */
+    public function getCodeType2(?string $value = null, ?string $listID = null, ?string $listVersionID = null): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $codetype = $this->CreateClassInstance('udt\CodeType', $value);
+
+        $this->TryCall($codetype, 'setListID', $listID);
+        $this->TryCall($codetype, 'setListVersionID', $listVersionID);
+
+        return $codetype;
+    }
+
+    /**
      * Get indicator type
      *
      * @param bool|null $value
@@ -1144,6 +1167,29 @@ class ZugferdObjectHelper
         $this->TryCall($productCharacteristic, "setValue", $this->getTextType($value));
 
         return $productCharacteristic;
+    }
+
+    /**
+     * Get Product Classification
+     *
+     * @param string|null $classCode
+     * @param string|null $className
+     * @param string|null $listID
+     * @param string|null $listVersionID
+     * @return object|null
+     */
+    public function getProductClassificationType(?string $classCode = null, ?string $className = null, ?string $listID = null, ?string $listVersionID = null): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $productClassification = $this->CreateClassInstance('ram\ProductClassificationType');
+
+        $this->TryCall($productClassification, "setClassCode", $this->getCodeType2($classCode, $listID, $listVersionID));
+        $this->TryCall($productClassification, "setClassName", $this->getTextType($className));
+
+        return $productClassification;
     }
 
     /**

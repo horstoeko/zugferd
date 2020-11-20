@@ -1468,6 +1468,20 @@ class ObjectHelperEn16931Test extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductClassificationType
+     */
+    public function testGetProductClassificationType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType
+         */
+        $productClassification = self::$objectHelper->getProductClassificationType("classcode", "classname", "listid", "listversionid");
+        $this->assertEquals("classcode", $productClassification->getClassCode()->value());
+        $this->assertEquals("listid", $productClassification->getClassCode()->getListID());
+        $this->assertEquals("listversionid", $productClassification->getClassCode()->getListVersionID());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
      */
     public function testGetTradeProductTypeAllNull()

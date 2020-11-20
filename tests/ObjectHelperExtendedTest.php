@@ -1515,6 +1515,21 @@ class ObjectHelperExtendedTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductClassificationType
+     */
+    public function testGetProductClassificationType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductClassificationType
+         */
+        $productClassification = self::$objectHelper->getProductClassificationType("classcode", "classname", "listid", "listversionid");
+        $this->assertEquals("classcode", $productClassification->getClassCode()->value());
+        $this->assertEquals("listid", $productClassification->getClassCode()->getListID());
+        $this->assertEquals("listversionid", $productClassification->getClassCode()->getListVersionID());
+        $this->assertEquals("classname", $productClassification->getClassName());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
      */
     public function testGetTradePriceTypeAllValues()

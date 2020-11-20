@@ -2536,6 +2536,30 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add detailed information on product classification
+     *
+     * @param string $classCode
+     * A code for classifying the item by type or nature or essence or condition.
+     * __Note__: Classification codes are used to group similar items for different purposes, such as public 
+     * procurement (using the Common Procurement Vocabulary [CPV]), e-commerce (UNSPSC), etc.
+     * @param string|null $className
+     * Classification name
+     * @param string|null $listID
+     * The identifier for the identification scheme of the identifier of the article classification
+     * __Note__: The identification scheme must be selected from the entries from UNTDID 7143.
+     * @param string|null $listVersionID
+     * The version of the identification scheme
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionProductClassification(string $classCode, ?string $className = null, ?string $listID = null, ?string $listVersionID = null): ZugferdDocumentBuilder
+    {
+        $product = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
+        $productClassification = $this->objectHelper->getProductClassificationType($classCode, $className, $listID, $listVersionID);
+        $this->objectHelper->TryCall($product, "addToDesignatedProductClassification", $productClassification);
+        return $this;
+    }
+
+    /**
      * Set details of the related buyer order position
      *
      * @param string $issuerassignedid
