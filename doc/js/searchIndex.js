@@ -19696,6 +19696,16 @@ Search.appendIndex(
             "summary": "Adds\u0020product\u0020details\u0020to\u0020the\u0020last\u0020created\u0020position\u0020\u0028line\u0029\u0020in\u0020the\u0020document",
             "url": "classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_setDocumentPositionProductDetails"
         },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionProductCharacteristic\u0028\u0029",
+            "name": "addDocumentPositionProductCharacteristic",
+            "summary": "Undocumented\u0020function",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionProductCharacteristic"
+        },                {
+            "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AaddDocumentPositionProductClassification\u0028\u0029",
+            "name": "addDocumentPositionProductClassification",
+            "summary": "Add\u0020detailed\u0020information\u0020on\u0020product\u0020classification",
+            "url": "classes/horstoeko-zugferd-ZugferdDocumentBuilder.html#method_addDocumentPositionProductClassification"
+        },                {
             "fqsen": "\\horstoeko\\zugferd\\ZugferdDocumentBuilder\u003A\u003AsetDocumentPositionBuyerOrderReferencedDocument\u0028\u0029",
             "name": "setDocumentPositionBuyerOrderReferencedDocument",
             "summary": "Set\u0020details\u0020of\u0020the\u0020related\u0020buyer\u0020order\u0020position",
