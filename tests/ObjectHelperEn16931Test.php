@@ -1455,6 +1455,19 @@ class ObjectHelperEn16931Test extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductCharacteristicType
+     */
+    public function testGetProductCharacteristicType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType
+         */
+        $productCharacteristic = self::$objectHelper->getProductCharacteristicType("typecode", "description", 0, "valuemeasureunit", "value");
+        $this->assertEquals("description", $productCharacteristic->getDescription());
+        $this->assertEquals("value", $productCharacteristic->getValue());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
      */
     public function testGetTradeProductTypeAllNull()

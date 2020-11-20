@@ -1206,12 +1206,12 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
          */
         $discountterms = self::$objectHelper->getTradePaymentDiscountTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
-        
+
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\PercentType
          */
         $calculationpercent = $discountterms->getCalculationPercent();
-        
+
         $this->assertEquals((new \DateTime())->format("Ymd"), $discountterms->getBasisDateTime()->getDateTimeString());
         $this->assertEquals("102", $discountterms->getBasisDateTime()->getDateTimeString()->getFormat());
         $this->assertEquals(2, $discountterms->getBasisPeriodMeasure()->value());
@@ -1242,12 +1242,12 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
          */
         $tax = self::$objectHelper->getTradeTaxType("category", "type", 100, 19, 19, "reason", "reasoncode", 100, 10, new \DateTime(), "duedatecode");
-        
+
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\PercentType
          */
         $rateapplicablepercent = $tax->getRateApplicablePercent();
-        
+
         $this->assertEquals("category", $tax->getCategoryCode());
         $this->assertEquals("type", $tax->getTypeCode());
         $this->assertEquals(100.0, $tax->getBasisAmount()->value());
@@ -1496,6 +1496,22 @@ class ObjectHelperExtendedTest extends TestCase
          */
         $product = self::$objectHelper->getTradeProductType(null, null, null, null, null, null);
         $this->assertNull($product);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductCharacteristicType
+     */
+    public function testGetProductCharacteristicType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType
+         */
+        $productCharacteristic = self::$objectHelper->getProductCharacteristicType("typecode", "description", 10.2, "valuemeasureunit", "value");
+        $this->assertEquals("description", $productCharacteristic->getDescription());
+        $this->assertEquals("value", $productCharacteristic->getValue());
+        $this->assertEquals(10.2, $productCharacteristic->getValueMeasure()->value());
+        $this->assertEquals("valuemeasureunit", $productCharacteristic->getValueMeasure()->getUnitCode());
+        $this->assertEquals("typecode", $productCharacteristic->getTypeCode()->value());
     }
 
     /**

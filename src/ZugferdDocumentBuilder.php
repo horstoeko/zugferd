@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
-*/
+ */
 
 namespace horstoeko\zugferd;
 
@@ -2504,6 +2504,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $product = $this->objectHelper->GetTradeProductType($name, $description, $sellerAssignedID, $buyerAssignedID, $globalIDType, $globalID);
         $this->objectHelper->TryCall($this->currentPosition, "setSpecifiedTradeProduct", $product);
+        return $this;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $description
+     * The name of the attribute or property of the article such as "Colour"
+     * @param string $value
+     * The value of the attribute or property of the item such as "Red"
+     * @param string|null $typecode
+     * Type of product property (code). The codes must be taken from the
+     * UNTDID 6313 codelist. Available only in the Extended-Profile
+     * @param float|null $valueMeasure
+     * Value of the product property (numerical measurand)
+     * @param string|null $valueMeasureUnitCode
+     * Unit of measurement of the measurand
+     *  - Codeliste: Rec. N°20 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
+     *    beide Listen kombiniert anzuwenden sind.
+     *  - Codeliste: Rec. N°21 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
+     *    beide Listen kombiniert anzuwenden sind.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionProductCharacteristic(string $description, string $value, ?string $typecode = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null): ZugferdDocumentBuilder
+    {
+        $product = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
+        $productCharacteristic = $this->objectHelper->getProductCharacteristicType($typecode, $description, $valueMeasure, $valueMeasureUnitCode, $value);
+        $this->objectHelper->TryCall($product, "addToApplicableProductCharacteristic", $productCharacteristic);
         return $this;
     }
 

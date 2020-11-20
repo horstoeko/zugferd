@@ -1121,6 +1121,32 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get Product Characteristic
+     *
+     * @param string|null $typeCode
+     * @param string|null $description
+     * @param float|null $valueMeasure
+     * @param string|null $valueMeasureUnitCode
+     * @param string|null $value
+     * @return object|null
+     */
+    public function getProductCharacteristicType(?string $typeCode = null, ?string $description = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null, ?string $value): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $productCharacteristic = $this->CreateClassInstance('ram\ProductCharacteristicType');
+
+        $this->TryCall($productCharacteristic, "setTypeCode", $this->getCodeType($typeCode));
+        $this->TryCall($productCharacteristic, "setDescription", $this->getTextType($description));
+        $this->TryCall($productCharacteristic, "setValueMeasure", $this->getMeasureType($valueMeasure, $valueMeasureUnitCode));
+        $this->TryCall($productCharacteristic, "setValue", $this->getTextType($value));
+
+        return $productCharacteristic;
+    }
+
+    /**
      * Get trade price
      *
      * @param float|null $amount
