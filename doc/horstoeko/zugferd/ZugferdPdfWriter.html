@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>horstoeko\zugferd\ZugferdPdfWriter | horstoeko/zugferd API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:horstoeko_zugferd_ZugferdPdfWriter" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">horstoeko/zugferd API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../horstoeko.html">horstoeko</a></li><li class="backslash">\</li><li><a href="../../horstoeko/zugferd.html">zugferd</a></li><li class="backslash">\</li><li>ZugferdPdfWriter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            ZugferdPdfWriter
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>ZugferdPdfWriter</strong>        extends <abbr title="setasign\Fpdi\Fpdi">Fpdi</abbr>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Class representing some tools for pdf generation</p>                                </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>ICC_PROFILE_PATH</td>
+                <td class="last">
+                    <p><em>Full path to the ICC-Profile</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_files">
+                                        protected                                        array
+                </td>
+                <td>$files</td>
+                <td class="last">Contains all attached files</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_metaDataDescriptions">
+                                        protected                                        array
+                </td>
+                <td>$metaDataDescriptions</td>
+                <td class="last">Contains meta data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_metaDataInfos">
+                                        protected                                        array
+                </td>
+                <td>$metaDataInfos</td>
+                <td class="last">Contains meta data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fileSpecDictionnaryIndex">
+                                        protected                                        integer
+                </td>
+                <td>$fileSpecDictionnaryIndex</td>
+                <td class="last">Internal index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_descriptionIndex">
+                                        protected                                        integer
+                </td>
+                <td>$descriptionIndex</td>
+                <td class="last">Internal index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_outputIntentIndex">
+                                        protected                                        integer
+                </td>
+                <td>$outputIntentIndex</td>
+                <td class="last">Internal index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_n_files">
+                                        protected                                        <abbr title="horstoeko\zugferd\[type]">[type]</abbr>
+                </td>
+                <td>$n_files</td>
+                <td class="last">Internal index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_openAttachmentPane">
+                                        protected                                        boolean
+                </td>
+                <td>$openAttachmentPane</td>
+                <td class="last">Internal flag that indicates that the attachment
+pane should be shown by default</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPdfVersion">setPdfVersion</a>(string $version = &#039;1.3&#039;, bool $binary_data = false)
+        
+                                            <p>Set the PDF version.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_attach">attach</a>(mixed $file, string $name = &#039;&#039;, string $desc = &#039;&#039;, string $relationship = &#039;Unspecified&#039;, string $mimetype = &#039;&#039;, bool $isUTF8 = false)
+        
+                                            <p>Attach file to PDF.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openAttachmentPane">openAttachmentPane</a>()
+        
+                                            <p>Open attachment panel on PDF.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addMetadataDescriptionNode">addMetadataDescriptionNode</a>($description)
+        
+                                            <p>Add metadata description node.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPdfMetadataInfos">setPdfMetadataInfos</a>(array $metaDataInfos)
+        
+                                            <p>Set PDF metadata infos.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method__putfiles">_putfiles</a>()
+        
+                                            <p>Put files.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_putFileSpecification">putFileSpecification</a>(array $file_info)
+        
+                                            <p>Put file attachment specification.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_putFileStream">putFileStream</a>(array $file_info)
+        
+                                            <p>Put file stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_putFileDictionary">putFileDictionary</a>()
+        
+                                            <p>Put file dictionnary.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_putMetadataDescriptions">putMetadataDescriptions</a>()
+        
+                                            <p>Put metadata descriptions.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method__putresources">_putresources</a>()
+        
+                                            <p>Put resources including files and metadata descriptions.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method__putoutputintent">_putoutputintent</a>()
+        
+                                            <p>Put output intent with ICC profile.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method__putcatalog">_putcatalog</a>()
+        
+                                            <p>Put catalog node, including associated files.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method__puttrailer">_puttrailer</a>()
+        
+                                            <p>Put trailer including ID.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateMetadataString">generateMetadataString</a>(string $date_type = &#039;created&#039;)
+        
+                                            <p>Generate metadata string.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setPdfVersion">
+        <div class="location">at         line 97</div>
+        <code>                    void
+    <strong>setPdfVersion</strong>(string $version = &#039;1.3&#039;, bool $binary_data = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set the PDF version.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$version</td>
+                <td>Contains the PDF version number.</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$binary_data</td>
+                <td>This is true for binary data</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attach">
+        <div class="location">at         line 122</div>
+        <code>                    void
+    <strong>attach</strong>(mixed $file, string $name = &#039;&#039;, string $desc = &#039;&#039;, string $relationship = &#039;Unspecified&#039;, string $mimetype = &#039;&#039;, bool $isUTF8 = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Attach file to PDF.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$file</td>
+                <td>Data to embed to the pdf</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>The visible attachment filename</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$desc</td>
+                <td>The description for the attached file</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$relationship</td>
+                <td>The type of the relationship of the attached file</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$mimetype</td>
+                <td>The url-encoded mimetype of the attached file</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isUTF8</td>
+                <td>Set to true, if the attached file is UTF-8 encoded</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openAttachmentPane">
+        <div class="location">at         line 153</div>
+        <code>                    void
+    <strong>openAttachmentPane</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open attachment panel on PDF.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addMetadataDescriptionNode">
+        <div class="location">at         line 165</div>
+        <code>                    void
+    <strong>addMetadataDescriptionNode</strong>($description)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add metadata description node.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$description</td>
+                <td>The description of the metadata</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPdfMetadataInfos">
+        <div class="location">at         line 178</div>
+        <code>                    void
+    <strong>setPdfMetadataInfos</strong>(array $metaDataInfos)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set PDF metadata infos.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$metaDataInfos</td>
+                <td>The array with metadata information
+                            applied to the pdf</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__putfiles">
+        <div class="location">at         line 190</div>
+        <code>            protected        void
+    <strong>_putfiles</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put files.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putFileSpecification">
+        <div class="location">at         line 208</div>
+        <code>            protected        void
+    <strong>putFileSpecification</strong>(array $file_info)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put file attachment specification.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$file_info</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putFileStream">
+        <div class="location">at         line 237</div>
+        <code>            protected        
+    <strong>putFileStream</strong>(array $file_info)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put file stream.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$file_info</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putFileDictionary">
+        <div class="location">at         line 270</div>
+        <code>            protected        void
+    <strong>putFileDictionary</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put file dictionnary.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putMetadataDescriptions">
+        <div class="location">at         line 293</div>
+        <code>            protected        void
+    <strong>putMetadataDescriptions</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put metadata descriptions.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__putresources">
+        <div class="location">at         line 321</div>
+        <code>            protected        
+    <strong>_putresources</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put resources including files and metadata descriptions.</p>                                                </div>
+                <div class="tags">
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__putoutputintent">
+        <div class="location">at         line 339</div>
+        <code>            protected        void
+    <strong>_putoutputintent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put output intent with ICC profile.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__putcatalog">
+        <div class="location">at         line 371</div>
+        <code>            protected        void
+    <strong>_putcatalog</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put catalog node, including associated files.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__puttrailer">
+        <div class="location">at         line 409</div>
+        <code>            protected        void
+    <strong>_puttrailer</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Put trailer including ID.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateMetadataString">
+        <div class="location">at         line 424</div>
+        <code>            protected        string
+    <strong>generateMetadataString</strong>(string $date_type = &#039;created&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate metadata string.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$date_type</td>
+                <td>The type of the metadata date</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

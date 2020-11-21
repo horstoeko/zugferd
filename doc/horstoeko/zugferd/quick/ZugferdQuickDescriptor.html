@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>horstoeko\zugferd\quick\ZugferdQuickDescriptor | horstoeko/zugferd API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:horstoeko_zugferd_quick_ZugferdQuickDescriptor" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">horstoeko/zugferd API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../horstoeko.html">horstoeko</a></li><li class="backslash">\</li><li><a href="../../../horstoeko/zugferd.html">zugferd</a></li><li class="backslash">\</li><li><a href="../../../horstoeko/zugferd/quick.html">quick</a></li><li class="backslash">\</li><li>ZugferdQuickDescriptor</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            ZugferdQuickDescriptor
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>ZugferdQuickDescriptor</strong>        extends <a href="../../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Class representing the document descriptor for outgoing documents.</p>            <p>Creating them in a simple and common way in EN16931 profile
+This class is slightly inspired by the invoicedescriptor of the
+https://github.com/stephanstapel/ZUGFeRD-csharp project
+This class contains only basic functionality</p>                    </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>VT_TAXCATEGORY</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_TAXTYPE</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_TAXPERCENT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_LINETOTALBASISAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_ALLOWANCEAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_CHARGEAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_ALLOWANCECHARGEAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_BASISAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_CALCULATEDAMOUNT</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>VT_LOGSERVICECHARGE</td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_vatBreakdown">
+                                        protected                                        array
+                </td>
+                <td>$vatBreakdown</td>
+                <td class="last">Used for internal vat summation</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_totalPrepaidAmount">
+                                        protected                                        float
+                </td>
+                <td>$totalPrepaidAmount</td>
+                <td class="last">Internal storage for the prepaid amount. Will be used
+in summation calculation</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProfile">getProfile</a>()
+        
+                                            <p>Returns the profile of the descriptor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doCreateNew">doCreateNew</a>()
+        
+                                            <p>Creates a new ZugferdDocumentBuilder with profile EN16931</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_onBeforeGetContent">onBeforeGetContent</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doCreateInvoice">doCreateInvoice</a>(string $invoiceNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $invoiceDate, string $currency, string|null $invoiceNoReferenceq = null)
+        
+                                            <p>Create a new invoice</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doCreateCreditMemo">doCreateCreditMemo</a>(string $creditMemoNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $invoiceDate, string $currency, string $creditMemoNoReference = &quot;&quot;)
+        
+                                            <p>Create a new credit memo</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentTerms">doSetPaymentTerms</a>(string $description, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate = null)
+        
+                                            <p>Add a payment term</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentMeansForDebitTransfer">doSetPaymentMeansForDebitTransfer</a>(bool $isSEPA, string $buyerIban)
+        
+                                            <p>Set payment means to "direct debit"</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentMeansForCreditTransfer">doSetPaymentMeansForCreditTransfer</a>(bool $isSEPA, string $payeeIban, string|null $payeeAccountName = null, string|null $payeePropId = null, string|null $payeeBic = null)
+        
+                                            <p>Set payment means to "debit transfer"</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentMeansForBankCard">doSetPaymentMeansForBankCard</a>(string $cardType, string $cardId, string $cardHolderName)
+        
+                                            <p>Set payment means to "Bank Card"</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentMeansForCreditCard">doSetPaymentMeansForCreditCard</a>(string $cardType, string $cardId, string $cardHolderName)
+        
+                                            <p>Set payment means to "Credit Card"</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPaymentMeansForDebitCard">doSetPaymentMeansForDebitCard</a>(string $cardType, string $cardId, string $cardHolderName)
+        
+                                            <p>Set payment means to "Debit Card"</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddNote">doAddNote</a>(string $note, string|null $subjectCode = null, string|null $contentCode = null)
+        
+                                            <p>Add note to the document</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetBuyerOrderReferenceDocument">doSetBuyerOrderReferenceDocument</a>(string $orderNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $orderDate)
+        
+                                            <p>Set details of the related buyer order</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddAdditionalReferencedDocument">doAddAdditionalReferencedDocument</a>(string $issuerAssignedID, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueDateTime = null, string|null $typeCode = null, string|null $name = null, string|null $referenceTypeCode = null, string|null $filename = null)
+        
+                                            <p>Set information about billing documents that provide evidence of claims made in the bill</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetDeliveryNoteReferenceDocument">doSetDeliveryNoteReferenceDocument</a>(string $deliveryNoteNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $deliveryNoteDate)
+        
+                                            <p>Set detailed information on the associated delivery note</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetInvoiceReferencedDocument">doSetInvoiceReferencedDocument</a>(string $id, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueDateTime = null)
+        
+                                            <p>Set a Reference to the previous invoice</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetSpecifiedProcuringProject">doSetSpecifiedProcuringProject</a>(string $id, string $name)
+        
+                                            <p>Set Details of a project reference</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetBuyer">doSetBuyer</a>(string $name, string $postcode, string $city, string $street, string $country, string|null $buyerReference = null, string|null $id = null, string|null $globalID = null, string|null $globalIDscheme = null)
+        
+                                            <p>Detailed information about the buyer (service recipient)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetBuyerContact">doSetBuyerContact</a>(string $name, string|null $orgunit = null, string|null $emailAddress = null, string|null $phoneno = null, string|null $faxno = null)
+        
+                                            <p>Set contact of the buyer party</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddBuyerTaxRegistration">doAddBuyerTaxRegistration</a>(string $no, string $schemeID)
+        
+                                            <p>Add detailed information on the buyers's tax information</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetSeller">doSetSeller</a>(string $name, string $postcode, string $city, string $street, string $country, string|null $id = null, string|null $globalID = null, string|null $globalIDscheme = null)
+        
+                                            <p>Detailed information about the seller (=service provider)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetSellerContact">doSetSellerContact</a>(string $name, string|null $orgunit = null, string|null $emailAddress = null, string|null $phoneno = null, string|null $faxno = null)
+        
+                                            <p>Set contact of the seller party</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddSellerTaxRegistration">doAddSellerTaxRegistration</a>(string $no, string $schemeID)
+        
+                                            <p>Add detailed information on the seller's tax information</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddTradeLineCommentItem">doAddTradeLineCommentItem</a>(string $lineId, string $comment)
+        
+                                            <p>Add a new text position</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddTradeLineItem">doAddTradeLineItem</a>(string $lineId, string $productName, float $unitPrice, float $quantity, string $unitCode, float $allowanceChargeAmount, string $allowanceChargeReason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        
+                                            <p>Adds a new position (line) to document</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddTradeLineItemWithSurcharge">doAddTradeLineItemWithSurcharge</a>(string $lineId, string $productName, float $unitPrice, float $chargeAmount, string $chargeReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        
+                                            <p>Adds a new position (line) to document with a surcharge amount</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddTradeLineItemWithDiscount">doAddTradeLineItemWithDiscount</a>(string $lineId, string $productName, float $unitPrice, float $discountAmount, string $discountReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        
+                                            <p>Adds a new position (line) to document with a surcharge amount</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddLogisticsServiceCharge">doAddLogisticsServiceCharge</a>(float $amount, string $description, string $taxTypeCode, string $taxCategoryCode, float $taxPercent)
+        
+                                            <p>Add a logistical service fees (On document level)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddTradeAllowanceCharge">doAddTradeAllowanceCharge</a>(float $actualAmount, string $reason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        
+                                            <p>Add information about surcharges and charges applicable to the bill as a whole, Deductions,
+such as for withheld taxes may also be specified in this group</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddApplicableTradeTax">doAddApplicableTradeTax</a>(float $basisAmount, float $percent, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
+        
+                                            <p>Add a VAT breakdown (at document level)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doAddApplicableTradeTax2">doAddApplicableTradeTax2</a>(float $basisAmount, float $calculatedAmount, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
+        
+                                            <p>Add a VAT breakdown (at document level)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doSetPrepaidAmount">doSetPrepaidAmount</a>(float $totalPrepaidAmount = 0.0)
+        
+                                            <p>Sets the prepaid amount</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_doCalcTotals">doCalcTotals</a>()
+        
+                                            <p>Writes the vat breakdowns and the summation of the document</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addToInternalVatBuffer">addToInternalVatBuffer</a>(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
+        
+                                            <p>Insert into internal vat table for later using, e.g. when creating
+the vat breakdown</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_writeVatBreakDown">writeVatBreakDown</a>()
+        
+                                            <p>Writes the document vat breakdown from the internal vat buffer</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    float
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_summarizeVatTableElement">summarizeVatTableElement</a>(int $index)
+        
+                                            <p>Summarizes an array element in the internal vat table</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getProfile">
+        <div class="location">at         line 64</div>
+        <code>        static    protected        int
+    <strong>getProfile</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the profile of the descriptor</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doCreateNew">
+        <div class="location">at         line 76</div>
+        <code>        static            <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doCreateNew</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a new ZugferdDocumentBuilder with profile EN16931</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onBeforeGetContent">
+        <div class="location">at         line 86</div>
+        <code>            protected        void
+    <strong>onBeforeGetContent</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doCreateInvoice">
+        <div class="location">at         line 104</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doCreateInvoice</strong>(string $invoiceNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $invoiceDate, string $currency, string|null $invoiceNoReferenceq = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a new invoice</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$invoiceNo</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+                <td>$invoiceDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currency</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$invoiceNoReferenceq</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doCreateCreditMemo">
+        <div class="location">at         line 124</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doCreateCreditMemo</strong>(string $creditMemoNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $invoiceDate, string $currency, string $creditMemoNoReference = &quot;&quot;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a new credit memo</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$creditMemoNo</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+                <td>$invoiceDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currency</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$creditMemoNoReference</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentTerms">
+        <div class="location">at         line 144</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentTerms</strong>(string $description, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a payment term</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$description</td>
+                <td>A text description of the payment terms that apply to the payment amount due (including a
+description of possible penalties). Note: This element can contain multiple lines and
+multiple conditions.</td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$dueDate</td>
+                <td>The date by which payment is due Note: The payment due date reflects the net payment due
+date. In the case of partial payments, this indicates the first due date of a net payment.
+The corresponding description of more complex payment terms can be given in BT-20.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentMeansForDebitTransfer">
+        <div class="location">at         line 162</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentMeansForDebitTransfer</strong>(bool $isSEPA, string $buyerIban)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set payment means to "direct debit"</p>                    <p>If $isSEPA is true code <strong>31</strong> wil be useed for payment means code.
+If $isSEPA is false code <strong>59</strong> wil be useed for payment means code.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$isSEPA</td>
+                <td>Is it a SEPA transaction or not</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$buyerIban</td>
+                <td>Direct debit: ID of the account to be debited</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentMeansForCreditTransfer">
+        <div class="location">at         line 190</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentMeansForCreditTransfer</strong>(bool $isSEPA, string $payeeIban, string|null $payeeAccountName = null, string|null $payeePropId = null, string|null $payeeBic = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set payment means to "debit transfer"</p>                    <p>If $isSEPA is true code <strong>58</strong> wil be useed for payment means code.
+If $isSEPA is false code <strong>30</strong> wil be useed for payment means code.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$isSEPA</td>
+                <td>Is it a SEPA transaction or not</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$payeeIban</td>
+                <td>Transfer: A unique identifier for the financial account held with a payment service provider to which
+the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID
+account number</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$payeeAccountName</td>
+                <td>The name of the payment account held with a payment service provider to which the payment should be made.
+Information only required if different from the name of the payee / seller</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$payeePropId</td>
+                <td>National account number (not for SEPA)</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$payeeBic</td>
+                <td>Seller's banking institution, An identifier for the payment service provider with whom the payment account
+is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentMeansForBankCard">
+        <div class="location">at         line 210</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentMeansForBankCard</strong>(string $cardType, string $cardId, string $cardHolderName)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set payment means to "Bank Card"</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cardType</td>
+                <td>The type of the card</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardId</td>
+                <td>The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+payment security standards, an invoice should never contain a full payment card master account number.
+The following specification of the PCI Security Standards Council currently applies: The first 6 and
+last 4 digits at most are to be displayed</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardHolderName</td>
+                <td>Name of the payment card holder</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentMeansForCreditCard">
+        <div class="location">at         line 230</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentMeansForCreditCard</strong>(string $cardType, string $cardId, string $cardHolderName)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set payment means to "Credit Card"</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cardType</td>
+                <td>The type of the card</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardId</td>
+                <td>The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+payment security standards, an invoice should never contain a full payment card master account number.
+The following specification of the PCI Security Standards Council currently applies: The first 6 and
+last 4 digits at most are to be displayed</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardHolderName</td>
+                <td>Name of the payment card holder</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPaymentMeansForDebitCard">
+        <div class="location">at         line 250</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPaymentMeansForDebitCard</strong>(string $cardType, string $cardId, string $cardHolderName)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set payment means to "Debit Card"</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cardType</td>
+                <td>The type of the card</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardId</td>
+                <td>The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+payment security standards, an invoice should never contain a full payment card master account number.
+The following specification of the PCI Security Standards Council currently applies: The first 6 and
+last 4 digits at most are to be displayed</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cardHolderName</td>
+                <td>Name of the payment card holder</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddNote">
+        <div class="location">at         line 267</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddNote</strong>(string $note, string|null $subjectCode = null, string|null $contentCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add note to the document</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$note</td>
+                <td>Free text on the invoice</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$subjectCode</td>
+                <td>Code to qualify the free text for the invoice</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contentCode</td>
+                <td>Free text at document level</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetBuyerOrderReferenceDocument">
+        <div class="location">at         line 282</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetBuyerOrderReferenceDocument</strong>(string $orderNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $orderDate)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set details of the related buyer order</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$orderNo</td>
+                <td>An identifier issued by the buyer for a referenced order (order number)</td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+                <td>$orderDate</td>
+                <td>Date of order</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddAdditionalReferencedDocument">
+        <div class="location">at         line 321</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddAdditionalReferencedDocument</strong>(string $issuerAssignedID, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueDateTime = null, string|null $typeCode = null, string|null $name = null, string|null $referenceTypeCode = null, string|null $filename = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set information about billing documents that provide evidence of claims made in the bill</p>                    <p><strong>Notes</strong>
+ - The documents justifying the invoice can be used to reference a document number, which should be
+   known to the recipient, as well as an external document (referenced by a URL) or an embedded document (such
+   as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes
+   to large attachments and / or sensitive information, e.g. for personal services, which must be separated
+   from the bill
+ - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
+   ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
+   documents</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$issuerAssignedID</td>
+                <td>The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
+an object on which the invoice is based, or an identifier of the document on which the invoice is based.</td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$issueDateTime</td>
+                <td>Document date</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td>Type of referenced document (See codelist UNTDID 1001)
+ - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
+ - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
+ - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$name</td>
+                <td>A description of the document, e.g. Hourly billing, usage or consumption report, etc.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$referenceTypeCode</td>
+                <td>The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
+recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
+from UNTDID 1153 in accordance with the code list entries.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$filename</td>
+                <td>Contains a file name of an attachment document embedded as a binary object</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetDeliveryNoteReferenceDocument">
+        <div class="location">at         line 339</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetDeliveryNoteReferenceDocument</strong>(string $deliveryNoteNo, <a target="_blank" href="http://php.net/DateTime">DateTime</a> $deliveryNoteDate)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set detailed information on the associated delivery note</p>                    <p><strong>Notes</strong>
+ - This is only available in the EXTENDED profile</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$deliveryNoteNo</td>
+                <td>Delivery receipt number</td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
+                <td>$deliveryNoteDate</td>
+                <td>Delivery receipt date</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetInvoiceReferencedDocument">
+        <div class="location">at         line 359</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetInvoiceReferencedDocument</strong>(string $id, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueDateTime = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set a Reference to the previous invoice</p>                    <p><strong>Note</strong>: To be used if:
+ - a previous invoice is corrected
+ - reference is made to previous partial invoices from a final invoice
+ - Reference is made to previous invoices for advance payments from a final invoice</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td>Number of the previous invoice</td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$issueDateTime</td>
+                <td>Date of the previous invoice</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetSpecifiedProcuringProject">
+        <div class="location">at         line 374</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetSpecifiedProcuringProject</strong>(string $id, string $name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set Details of a project reference</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td>Project Data</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>Project Name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetBuyer">
+        <div class="location">at         line 410</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetBuyer</strong>(string $name, string $postcode, string $city, string $street, string $country, string|null $buyerReference = null, string|null $id = null, string|null $globalID = null, string|null $globalIDscheme = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Detailed information about the buyer (service recipient)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>The full name of the buyer</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$postcode</td>
+                <td>Identifier for a group of properties, such as a zip code</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$city</td>
+                <td>Usual name of the city or municipality in which the buyers address is located</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$street</td>
+                <td>The main line in the buyers address. This is usually the street name and house number or
+the post office box</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$country</td>
+                <td>Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+representation of names of countries and their subdivisions”</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$buyerReference</td>
+                <td>An identifier assigned by the buyer and used for internal routing</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td>An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be
+assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given,
+it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalID</td>
+                <td>The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a
+global registration organization.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalIDscheme</td>
+                <td>If the identifier is used for the identification scheme, it must be selected from the entries in
+the list published by the ISO / IEC 6523 Maintenance Agency.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetBuyerContact">
+        <div class="location">at         line 436</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetBuyerContact</strong>(string $name, string|null $orgunit = null, string|null $emailAddress = null, string|null $phoneno = null, string|null $faxno = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set contact of the buyer party</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>Contact point for a legal entity, such as a personal name of the contact person</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$orgunit</td>
+                <td>Contact point for a legal entity, such as a name of the department or office</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$emailAddress</td>
+                <td>Detailed information on the buyer's phone number</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$phoneno</td>
+                <td>Detailed information on the buyer's phone number</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$faxno</td>
+                <td>Detailed information on the buyer's fax number</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddBuyerTaxRegistration">
+        <div class="location">at         line 458</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddBuyerTaxRegistration</strong>(string $no, string $schemeID)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add detailed information on the buyers's tax information</p>                    <p>The local identification (defined by the buyer's address) of the buyer for tax purposes or a reference that enables the buyer
+to indicate his reporting status for tax purposes The sales tax identification number of the buyer
+Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So
+e.g. In some countries, if the buyer is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the
+buyer. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
+identification number, unless he uses a tax agent.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$no</td>
+                <td>Tax number of the buyers</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$schemeID</td>
+                <td>Tax number of the buyers or sales tax identification number of the (FC = Tax number, VA = Sales tax number)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetSeller">
+        <div class="location">at         line 494</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetSeller</strong>(string $name, string $postcode, string $city, string $street, string $country, string|null $id = null, string|null $globalID = null, string|null $globalIDscheme = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Detailed information about the seller (=service provider)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>The full formal name under which the seller is registered in the
+National Register of Legal Entities, Taxable Person or otherwise acting as person(s)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$postcode</td>
+                <td>Identifier for a group of properties, such as a zip code</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$city</td>
+                <td>Usual name of the city or municipality in which the seller's address is located</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$street</td>
+                <td>The main line in the sellers address. This is usually the street name and house number or
+the post office box</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$country</td>
+                <td>Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
+is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
+representation of names of countries and their subdivisions”</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td>An identifier of the seller. In many systems, seller identification
+is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
+by using different identification schemes. If no scheme is given, it should be known to the buyer
+and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalID</td>
+                <td>The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a
+global registration organization.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalIDscheme</td>
+                <td>If the identifier is used for the identification scheme, it must be selected from the entries in
+the list published by the ISO / IEC 6523 Maintenance Agency.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetSellerContact">
+        <div class="location">at         line 517</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetSellerContact</strong>(string $name, string|null $orgunit = null, string|null $emailAddress = null, string|null $phoneno = null, string|null $faxno = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set contact of the seller party</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>Contact point for a legal entity, such as a personal name of the contact person</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$orgunit</td>
+                <td>Contact point for a legal entity, such as a name of the department or office</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$emailAddress</td>
+                <td>Detailed information on the seller's phone number</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$phoneno</td>
+                <td>Detailed information on the seller's phone number</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$faxno</td>
+                <td>Detailed information on the seller's fax number</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddSellerTaxRegistration">
+        <div class="location">at         line 539</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddSellerTaxRegistration</strong>(string $no, string $schemeID)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add detailed information on the seller's tax information</p>                    <p>The local identification (defined by the seller's address) of the seller for tax purposes or a reference that enables the seller
+to indicate his reporting status for tax purposes The sales tax identification number of the seller
+Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So
+e.g. In some countries, if the seller is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the
+seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
+identification number, unless he uses a tax agent.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$no</td>
+                <td>Tax number of the seller</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$schemeID</td>
+                <td>Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddTradeLineCommentItem">
+        <div class="location">at         line 554</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddTradeLineCommentItem</strong>(string $lineId, string $comment)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new text position</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$lineId</td>
+                <td>A unique identifier for the relevant item within the invoice (item number)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$comment</td>
+                <td>A free text that contains unstructured information that is relevant to the invoice item</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddTradeLineItem">
+        <div class="location">at         line 620</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddTradeLineItem</strong>(string $lineId, string $productName, float $unitPrice, float $quantity, string $unitCode, float $allowanceChargeAmount, string $allowanceChargeReason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds a new position (line) to document</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$lineId</td>
+                <td>A unique identifier for the relevant item within the invoice (item number)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$productName</td>
+                <td>A name of the item (item name)</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$unitPrice</td>
+                <td>Net price of the item</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$quantity</td>
+                <td>The quantity of individual items (goods or services) billed in the relevant line</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$unitCode</td>
+                <td>The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
+lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
+UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
+(with Complementary Codes for Package Names)" using the UN / ECE Rec No. 20 Intro 2.a) can be selected.
+It should be noted that in most cases it is not necessary for buyers and sellers to fully implement these
+lists in their software. Sellers only need to support the entities necessary for their goods and services;
+Buyers only need to verify that the units used in the invoice match those in other documents (such as in
+Contracts, catalogs, orders and shipping notifications) match the units used.</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$allowanceChargeAmount</td>
+                <td>The surcharge/discount amount excluding sales tax. If negative then its an allowance, if positive then
+it's a charge</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$allowanceChargeReason</td>
+                <td>The reason given in text form for the invoice item discount/surcharge</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td>In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
+specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
+the tax type must then be taken from the code list UNTDID 5153.</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td>The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
+tax category and the category-specific sales tax rate  must correspond to one another. The value to be
+given is the percentage. For example, the value 20 is given for 20% (and not 0.2)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddTradeLineItemWithSurcharge">
+        <div class="location">at         line 712</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddTradeLineItemWithSurcharge</strong>(string $lineId, string $productName, float $unitPrice, float $chargeAmount, string $chargeReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds a new position (line) to document with a surcharge amount</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$lineId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$productName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$unitPrice</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$chargeAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$chargeReason</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$quantity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$unitCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddTradeLineItemWithDiscount">
+        <div class="location">at         line 776</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddTradeLineItemWithDiscount</strong>(string $lineId, string $productName, float $unitPrice, float $discountAmount, string $discountReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Adds a new position (line) to document with a surcharge amount</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$lineId</td>
+                <td>A unique identifier for the relevant item within the invoice (item number)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$productName</td>
+                <td>A name of the item (item name)</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$unitPrice</td>
+                <td>Net price of the item</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$discountAmount</td>
+                <td>The discount amount excluding sales tax</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$discountReason</td>
+                <td>The reason given in text form for the invoice item discount/surcharge</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$quantity</td>
+                <td>The quantity of individual items (goods or services) billed in the relevant line</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$unitCode</td>
+                <td>The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
+lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
+UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
+(with Complementary Codes for Package Names)" using the UN / ECE Rec No. 20 Intro 2.a) can be selected.
+It should be noted that in most cases it is not necessary for buyers and sellers to fully implement these
+lists in their software. Sellers only need to support the entities necessary for their goods and services;
+Buyers only need to verify that the units used in the invoice match those in other documents (such as in
+Contracts, catalogs, orders and shipping notifications) match the units used.</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td>In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
+specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
+the tax type must then be taken from the code list UNTDID 5153.</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td>The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
+tax category and the category-specific sales tax rate  must correspond to one another. The value to be
+given is the percentage. For example, the value 20 is given for 20% (and not 0.2)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddLogisticsServiceCharge">
+        <div class="location">at         line 825</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddLogisticsServiceCharge</strong>(float $amount, string $description, string $taxTypeCode, string $taxCategoryCode, float $taxPercent)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a logistical service fees (On document level)</p>                    <p><strong>Notes</strong>
+ - This is only available in the EXTENDED profile</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$amount</td>
+                <td>Amount of the service fee</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$description</td>
+                <td>Identification of the service fee</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td>Coded description of a sales tax category. Note: Fixed value = "VAT"</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td>The sales tax rate, expressed as the percentage applicable to the sales tax category in
+question. Note: The code of the sales tax category and the category-specific sales tax rate
+must correspond to one another. The value to be given is the percentage. For example, the
+value 20 is given for 20% (and not 0.2)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddTradeAllowanceCharge">
+        <div class="location">at         line 854</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddTradeAllowanceCharge</strong>(float $actualAmount, string $reason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add information about surcharges and charges applicable to the bill as a whole, Deductions,
+such as for withheld taxes may also be specified in this group</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$actualAmount</td>
+                <td>Amount of the surcharge or discount at document level</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$reason</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddApplicableTradeTax">
+        <div class="location">at         line 924</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddApplicableTradeTax</strong>(float $basisAmount, float $percent, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a VAT breakdown (at document level)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$basisAmount</td>
+                <td>Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$percent</td>
+                <td>The sales tax rate, expressed as the percentage applicable to the sales tax category in
+question. Note: The code of the sales tax category and the category-specific sales tax rate
+must correspond to one another. The value to be given is the percentage. For example, the
+value 20 is given for 20% (and not 0.2)</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$categoryCode</td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td>Coded description of a sales tax category. Note: Fixed value = "VAT"</td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$allowanceChargeBasisAmount</td>
+                <td>Total amount of surcharges and deductions of the tax rate at document level</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReasonCode</td>
+                <td>Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
+and maintained by the Connecting Europe Facility.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReason</td>
+                <td>Reason for tax exemption (free text)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doAddApplicableTradeTax2">
+        <div class="location">at         line 974</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doAddApplicableTradeTax2</strong>(float $basisAmount, float $calculatedAmount, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a VAT breakdown (at document level)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$basisAmount</td>
+                <td>Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.</td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$calculatedAmount</td>
+                <td>The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
+the amount to be taxed according to the sales tax category by the sales tax rate applicable
+for the sales tax category concerned</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$categoryCode</td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td>Coded description of a sales tax category. Note: Fixed value = "VAT"</td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$allowanceChargeBasisAmount</td>
+                <td>Total amount of surcharges and deductions of the tax rate at document level</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReasonCode</td>
+                <td>Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
+and maintained by the Connecting Europe Facility.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReason</td>
+                <td>Reason for tax exemption (free text)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doSetPrepaidAmount">
+        <div class="location">at         line 986</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetPrepaidAmount</strong>(float $totalPrepaidAmount = 0.0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Sets the prepaid amount</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$totalPrepaidAmount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doCalcTotals">
+        <div class="location">at         line 997</div>
+        <code>            protected        <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doCalcTotals</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Writes the vat breakdowns and the summation of the document</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addToInternalVatBuffer">
+        <div class="location">at         line 1026</div>
+        <code>            protected        void
+    <strong>addToInternalVatBuffer</strong>(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Insert into internal vat table for later using, e.g. when creating
+the vat breakdown</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$taxCategoryCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$taxTypeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$taxPercent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$lineTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$chargeAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$allowanceAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$logisticServiceCharge</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeVatBreakDown">
+        <div class="location">at         line 1068</div>
+        <code>            protected        void
+    <strong>writeVatBreakDown</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Writes the document vat breakdown from the internal vat buffer</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_summarizeVatTableElement">
+        <div class="location">at         line 1091</div>
+        <code>            protected        float
+    <strong>summarizeVatTableElement</strong>(int $index)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Summarizes an array element in the internal vat table</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>float</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

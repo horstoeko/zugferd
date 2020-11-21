@@ -3,7 +3,7 @@
     <!-- By default the tools are managed by Composer in ${basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
-    <property name="url.phpdocumentator.download" value="https://phpdoc.org/phpDocumentor.phar"/>
+    <property name="url.sami.download" value="http://get.sensiolabs.org/sami.phar"/>
     <property name="composer" value="${basedir}/composer.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
@@ -12,7 +12,7 @@
     <property name="phploc" value="${basedir}/vendor/bin/phploc"/>
     <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
-    <property name="phpdocumentator" value="${basedir}/phpDocumentor.phar"/>
+    <property name="sami" value="${basedir}/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${basedir}/build/builddoc"/>
@@ -49,11 +49,11 @@
             <arg value="${phpdox}"/>
         </exec>
     </target>
-    <target name="downloadphpdocumentator" description="Install phpdocumentator.">
-        <get src="${url.phpdocumentator.download}" dest="${phpdocumentator}"/>
+    <target name="downloadsami" description="Install Sami.">
+        <get src="${url.sami.download}" dest="${sami}"/>
         <exec executable="chmod">
             <arg value="+x"/>
-            <arg path="${phpdocumentator}"/>
+            <arg path="${sami}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
@@ -220,23 +220,17 @@
         </fail>
         <echo message="Checked failure"/>
     </target>
-    <target name="projectdoc" depends="prepare,downloadphpdocumentator" description="Generator project documentation using phpdocumentator.">
+    <target name="projectdoc" depends="prepare,downloadsami" description="Generator project documentation using Sami.">
         <exec executable="php" taskname="projectdoc">
-            <arg path="${phpdocumentator}"/>
-            <arg value="-d"/>
-            <arg path="${basedir}/src"/>
-            <arg value="-t"/>
-            <arg path="${basedir}/build/doc"/>
-            <arg value="-i"/>
-            <arg path="${basedir}/src/entities/"/>
-            <arg value="-i"/>
-            <arg path="${basedir}/src/ZugferdObjectHelper.php"/>
-            <arg value="-m"/>
-            <arg path="TODO"/>
-            <arg value="--title=horstoeko/zugferd"/>
-            <arg value="--visibility=public"/>
-            <arg value="--sourcecode"/>
+            <arg path="${sami}"/>
+            <arg value="update"/>
+            <arg path="${basedir}/build/sami.config.php"/>
         </exec>
+        <delete file="${basedir}/build/doc/PROJECT_VERSION"/>
+        <delete file="${basedir}/build/doc/SAMI_VERSION"/>
+        <delete file="${basedir}/build/doc/renderer.index"/>
+        <delete file="${basedir}/build/doc/opensearch.xml"/>
+        <delete dir="${basedir}/build/cache"/>
         <property name="projectdoc.done" value="true"/>
     </target>
     <target name="deploy" description="Deplay build">
@@ -284,34 +278,29 @@
         -->
     </target>
     <target name="projectdocstandalone" description="Generator project documentation using phpdocumentator.">
-        <delete dir="${project.basedir}/doc"/>
-        <mkdir dir="${project.basedir}/doc"/>
+        <delete dir="${basedir}/cache"/>
+        <delete dir="${basedir}/doc"/>
+        <mkdir dir="${basedir}/cache"/>
+        <mkdir dir="${basedir}/doc"/>
         <exec executable="wget">
-            <arg path="${url.phpdocumentator.download}"/>
+            <arg path="${url.sami.download}"/>
             <arg value="-O"/>
-            <arg path="${basedir}/phpDocumentor.phar"/>
+            <arg path="${sami}"/>
         </exec>
         <exec executable="chmod">
             <arg value="+x"/>
-            <arg path="${basedir}/phpDocumentor.phar"/>
+            <arg path="${sami}"/>
         </exec>
-        <exec executable="php" taskname="projectdoc">
-            <arg path="${phpdocumentator}"/>
-            <arg value="-d"/>
-            <arg path="./src"/>
-            <arg value="-t"/>
-            <arg path="./doc"/>
-            <arg value="-i"/>
-            <arg path="./src/entities/"/>
-            <arg value="-i"/>
-            <arg path="./src/ZugferdObjectHelper.php"/>
-            <arg value="-m"/>
-            <arg path="TODO"/>
-            <arg value="--title=horstoeko/zugferd"/>
-            <arg value="--visibility=public"/>
-            <arg value="--sourcecode"/>
+        <exec executable="php">
+            <arg path="${sami}"/>
+            <arg value="update"/>
+            <arg path="${basedir}/build/sami.config.deploy.php"/>
         </exec>
-        <delete file="${phpdocumentator}"/>
-        <delete dir="${basedir}/.phpdoc"/>
+        <delete file="${sami}"/>
+        <delete file="${basedir}/doc/PROJECT_VERSION"/>
+        <delete file="${basedir}/doc/SAMI_VERSION"/>
+        <delete file="${basedir}/doc/renderer.index"/>
+        <delete file="${basedir}/doc/opensearch.xml"/>
+        <delete dir="${basedir}/cache"/>
     </target>
 </project>

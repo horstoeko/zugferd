@@ -1,0 +1,4049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>horstoeko\zugferd\ZugferdObjectHelper | horstoeko/zugferd API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:horstoeko_zugferd_ZugferdObjectHelper" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">horstoeko/zugferd API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../horstoeko.html">horstoeko</a></li><li class="backslash">\</li><li><a href="../../horstoeko/zugferd.html">zugferd</a></li><li class="backslash">\</li><li>ZugferdObjectHelper</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            ZugferdObjectHelper
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>ZugferdObjectHelper</strong>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Class representing a collection of common helpers and class factories</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_profile">
+                                                                                integer
+                </td>
+                <td>$profile</td>
+                <td class="last">Internal profile id (see ZugferdProfiles.php)</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_profiledef">
+                                                                                array
+                </td>
+                <td>$profiledef</td>
+                <td class="last">Internal profile definition (see ZugferdProfiles.php)</td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(int $profile)
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIdType">getIdType</a>(string|null $value = null, string|null $schemeId = null)
+        
+                                            <p>Creates an instance of IDType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTextType">getTextType</a>(string|null $value = null)
+        
+                                            <p>Creates an instance of TextType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCodeType">getCodeType</a>(string|null $value = null)
+        
+                                            <p>Creates an instance of CodeType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCodeType2">getCodeType2</a>(string|null $value = null, string|null $listID = null, string|null $listVersionID = null)
+        
+                                            <p>Creates an instance of CodeType with extended list
+information</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getIndicatorType">getIndicatorType</a>(bool|null $value = null)
+        
+                                            <p>Get indicator type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getNoteType">getNoteType</a>(string|null $content = null, string|null $contentCode = null, string|null $subjectCode = null)
+        
+                                            <p>Get Note type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFormattedDateTimeType">getFormattedDateTimeType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        
+                                            <p>Get formatted issue date</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDateTimeType">getDateTimeType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        
+                                            <p>Get formatted issue date</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDateType">getDateType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        
+                                            <p>Get date</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAmountType">getAmountType</a>(float|null $value, string|null $currencyCode = null)
+        
+                                            <p>Representation of Amount</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPercentType">getPercentType</a>(float|null $value)
+        
+                                            <p>Representation of Percdnt</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getQuantityType">getQuantityType</a>(float|null $value, string|null $unitCode = null)
+        
+                                            <p>Representation of Quantity</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMeasureType">getMeasureType</a>(float|null $value, string|null $unitCode = null)
+        
+                                            <p>Representation of Quantity Measure</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getNumericType">getNumericType</a>(float|null $value = null)
+        
+                                            <p>Get an instance of GetNumericType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTaxCategoryCodeType">getTaxCategoryCodeType</a>(string|null $taxCategoryCode = null)
+        
+                                            <p>Representation of Tax Category</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTaxTypeCodeType">getTaxTypeCodeType</a>(string|null $taxTypeCode = null)
+        
+                                            <p>Representation of Tax Type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTimeReferenceCodeType">getTimeReferenceCodeType</a>(string|null $value = null)
+        
+                                            <p>Representation of Time Reference Code</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSpecifiedPeriodType">getSpecifiedPeriodType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $completedate = null, string|null $description = null)
+        
+                                            <p>Get Specified Period type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBinaryObjectType">getBinaryObjectType</a>(string|null $binarydata = null, string|null $mimetype = null, string|null $filename = null)
+        
+                                            <p>Get a BinaryObjectType object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getReferencedDocumentType">getReferencedDocumentType</a>(string|null $issuerassignedid = null, string|null $uriid = null, string|null $lineid = null, string|null $typecode = null, string|array|null $name = null, string|null $reftypecode = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null, string|null $binarydatafilename = null)
+        
+                                            <p>Get a reference document object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCountryIDType">getCountryIDType</a>(string|null $id = null)
+        
+                                            <p>Get instance of CountryID</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeCountryType">getTradeCountryType</a>(string|null $id = null)
+        
+                                            <p>Get instance of TradeCountry</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCrossIndustryInvoice">getCrossIndustryInvoice</a>()
+        
+                                            <p>Undocumented function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeParty">getTradeParty</a>(string|null $name = null, string|null $ID = null, string|null $description = null)
+        
+                                            <p>Tradeparty type^^</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeAddress">getTradeAddress</a>(string|null $lineone = null, string|null $linetwo = null, string|null $linethree = null, string|null $postcode = null, string|null $city = null, string|null $country = null, string|null $subdivision = null)
+        
+                                            <p>Address type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLegalOrganization">getLegalOrganization</a>(string|null $legalorgid = null, string|null $legalorgtype = null, string|null $legalorgname = null)
+        
+                                            <p>Legal organization type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeContact">getTradeContact</a>(string|null $contactpersonname = null, string|null $contactdepartmentname = null, string|null $contactphoneno = null, string|null $contactfaxno = null, string|null $contactemailaddr = null)
+        
+                                            <p>Contact type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUniversalCommunicationType">getUniversalCommunicationType</a>(string|null $number = null, string|null $uriid = null, string|null $urischeme = null)
+        
+                                            <p>Communication type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTaxRegistrationType">getTaxRegistrationType</a>(string|null $taxregtype = null, string|null $taxregid = null)
+        
+                                            <p>Tax registration type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeDeliveryTermsType">getTradeDeliveryTermsType</a>(string|null $code = null)
+        
+                                            <p>Delivery terms type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProcuringProjectType">getProcuringProjectType</a>(string|null $id = null, string|null $name = null)
+        
+                                            <p>Procuring project type</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSupplyChainEventType">getSupplyChainEventType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date = null)
+        
+                                            <p>Undocumented function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeSettlementFinancialCardType">getTradeSettlementFinancialCardType</a>(string|null $type = null, string|null $id = null, string|null $holderName = null)
+        
+                                            <p>Get instance of TradeSettlementFinancialCardType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDebtorFinancialAccountType">getDebtorFinancialAccountType</a>(string|null $iban = null)
+        
+                                            <p>Get instance of DebtorFinancialAccountType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCreditorFinancialAccountType">getCreditorFinancialAccountType</a>(string|null $iban = null, string|null $accountName = null, string|null $proprietaryID = null)
+        
+                                            <p>Get instance of CreditorFinancialAccountType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCreditorFinancialInstitutionType">getCreditorFinancialInstitutionType</a>(string|null $bic = null)
+        
+                                            <p>Undocumented function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeSettlementPaymentMeansType">getTradeSettlementPaymentMeansType</a>(string|null $typecode = null, string|null $information = null)
+        
+                                            <p>Get instance of TradeSettlementPaymentMeansType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradePaymentTermsType">getTradePaymentTermsType</a>(string|null $description = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate = null, string|null $directDebitMandateID = null)
+        
+                                            <p>Get instance of TradePaymentTermsType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradePaymentDiscountTermsType">getTradePaymentDiscountTermsType</a>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $basisDateTime = null, float|null $basisPeriodMeasureValue = null, string|null $basisPeriodMeasureUnitCode = null, float|null $basisAmount = null, float|null $calculationPercent = null, float|null $actualDiscountAmount = null)
+        
+                                            <p>Get instance of TradePaymentDiscountTermsType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeTaxType">getTradeTaxType</a>(string|null $categoryCode = null, string|null $typeCode = null, float|null $basisAmount = null, float|null $calculatedAmount = null, float|null $rateApplicablePercent = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null, float|null $lineTotalBasisAmount = null, float|null $allowanceChargeBasisAmount = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $taxPointDate = null, string|null $dueDateTypeCode = null)
+        
+                                            <p>Get instance of TradeTaxType
+Sales tax breakdown, Umsatzsteueraufschlüsselung</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeAllowanceChargeType">getTradeAllowanceChargeType</a>(float|null $actualAmount = null, bool|null $isCharge = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $calculationPercent = null, float|null $basisAmount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null, string|null $reason = null)
+        
+                                            <p>Get Allowance/Charge type
+Zu- und Abschläge</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLogisticsServiceChargeType">getLogisticsServiceChargeType</a>(string|null $description = null, float|null $appliedAmount = null, array|null $taxTypeCodes = null, array|null $taxCategpryCodes = null, array|null $rateApplicablePercents = null)
+        
+                                            <p>Get instance of</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeSettlementHeaderMonetarySummationType">getTradeSettlementHeaderMonetarySummationType</a>(float|null $grandTotalAmount = null, float|null $duePayableAmount = null, float|null $lineTotalAmount = null, float|null $chargeTotalAmount = null, float|null $allowanceTotalAmount = null, float|null $taxBasisTotalAmount = null, float|null $taxTotalAmount = null, float|null $roundingAmount = null, float|null $totalPrepaidAmount = null)
+        
+                                            <p>Get instance of TradeSettlementHeaderMonetarySummationType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeSettlementHeaderMonetarySummationTypeOnly">getTradeSettlementHeaderMonetarySummationTypeOnly</a>()
+        
+                                            <p>Create summation class only</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeAccountingAccountType">getTradeAccountingAccountType</a>(string|null $id = null, string|null $typeCode = null)
+        
+                                            <p>Get an instance of TradeAccountingAccountType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDocumentLineDocumentType">getDocumentLineDocumentType</a>(string|null $lineid = null)
+        
+                                            <p>Get Document line</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSupplyChainTradeLineItemType">getSupplyChainTradeLineItemType</a>(string|null $lineid = null, string|null $lineStatusCode = null, string|null $lineStatusReasonCode = null, bool $isTextPosition = false)
+        
+                                            <p>Get instance of SupplyChainTradeLineItemType</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeProductType">getTradeProductType</a>(string|null $name = null, string|null $description = null, string|null $sellerAssignedID = null, string|null $buyerAssignedID = null, string|null $globalIDType = null, string|null $globalID = null)
+        
+                                            <p>Get product specification</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProductCharacteristicType">getProductCharacteristicType</a>(string|null $typeCode = null, string|null $description = null, float|null $valueMeasure = null, string|null $valueMeasureUnitCode = null, string|null $value)
+        
+                                            <p>Get Product Characteristic</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProductClassificationType">getProductClassificationType</a>(string|null $classCode = null, string|null $className = null, string|null $listID = null, string|null $listVersionID = null)
+        
+                                            <p>Get Product Classification</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradePriceType">getTradePriceType</a>(float|null $amount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
+        
+                                            <p>Get trade price</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTradeSettlementLineMonetarySummationType">getTradeSettlementLineMonetarySummationType</a>(float|null $lineTotalAmount = null, float|null $totalAllowanceChargeAmount = null)
+        
+                                            <p>Get Line Summation</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTaxApplicableTradeCurrencyExchangeType">getTaxApplicableTradeCurrencyExchangeType</a>(string|null $sourceCurrencyCode = null, string|null $targetCurrencyCode = null, float|null $rate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $rateDateTime = null)
+        
+                                            <p>Undocumented function</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_toDateTime">toDateTime</a>(string|null $dateTimeString, string|null $format)
+        
+                                            <p>Create a datetime object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRateType">getRateType</a>(float|null $rateValue)
+        
+                                            <p>Get Exchange rate type instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createClassInstance">createClassInstance</a>($classname, mixed $constructorvalue = null)
+        
+                                            <p>Creates an instance of a class needed by $invoiceObject</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCall">tryCall</a>(object $instance, string $method, mixed $value)
+        
+                                            <p>Tries to call a method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCallAll">tryCallAll</a>(object $instance, array $methods, mixed $value)
+        
+                                            <p>Try call all methods</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCallAndReturn">tryCallAndReturn</a>(object $instance, string $method)
+        
+                                            <p>Tries to call a method and return the returnvalue from call to $method
+in object $instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCallByPath">tryCallByPath</a>(object $instance, string $methods, $value)
+        
+                                            <p>Try call methods in a form .object.method1.method2.method3</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCallByPathAndReturn">tryCallByPathAndReturn</a>(object $instance, string $methods)
+        
+                                            <p>Try call methods in a form .object.method1.method2.method3</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ensureStringArray">ensureStringArray</a>(mixed $input)
+        
+                                            <p>Ensure that $input is an array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ensureArray">ensureArray</a>(mixed $value)
+        
+                                            <p>Ensure array</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNullOrEmpty">isNullOrEmpty</a>(mixed $value)
+        
+                                            <p>Test if a value is null or empty</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isAllNullOrEmpty">isAllNullOrEmpty</a>(array $args)
+        
+                                            <p>Checks if all function arguments are null or empty</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isOneNullOrEmpty">isOneNullOrEmpty</a>(array $args)
+        
+                                            <p>Checks if all function arguments are null or empty</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 48</div>
+        <code>                    
+    <strong>__construct</strong>(int $profile)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$profile</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIdType">
+        <div class="location">at         line 61</div>
+        <code>                    object|null
+    <strong>getIdType</strong>(string|null $value = null, string|null $schemeId = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an instance of IDType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$schemeId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTextType">
+        <div class="location">at         line 80</div>
+        <code>                    object|null
+    <strong>getTextType</strong>(string|null $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an instance of TextType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCodeType">
+        <div class="location">at         line 95</div>
+        <code>                    object|null
+    <strong>getCodeType</strong>(string|null $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an instance of CodeType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCodeType2">
+        <div class="location">at         line 113</div>
+        <code>                    object|null
+    <strong>getCodeType2</strong>(string|null $value = null, string|null $listID = null, string|null $listVersionID = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an instance of CodeType with extended list
+information</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$listID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$listVersionID</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIndicatorType">
+        <div class="location">at         line 133</div>
+        <code>                    object|null
+    <strong>getIndicatorType</strong>(bool|null $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get indicator type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNoteType">
+        <div class="location">at         line 154</div>
+        <code>                    object|null
+    <strong>getNoteType</strong>(string|null $content = null, string|null $contentCode = null, string|null $subjectCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Note type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contentCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$subjectCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFormattedDateTimeType">
+        <div class="location">at         line 178</div>
+        <code>                    object|null
+    <strong>getFormattedDateTimeType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get formatted issue date</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$datetime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDateTimeType">
+        <div class="location">at         line 200</div>
+        <code>                    object|null
+    <strong>getDateTimeType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get formatted issue date</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$datetime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDateType">
+        <div class="location">at         line 222</div>
+        <code>                    object|null
+    <strong>getDateType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get date</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$datetime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAmountType">
+        <div class="location">at         line 245</div>
+        <code>                    object|null
+    <strong>getAmountType</strong>(float|null $value, string|null $currencyCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Amount</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$currencyCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPercentType">
+        <div class="location">at         line 268</div>
+        <code>                    object|null
+    <strong>getPercentType</strong>(float|null $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Percdnt</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getQuantityType">
+        <div class="location">at         line 288</div>
+        <code>                    object|null
+    <strong>getQuantityType</strong>(float|null $value, string|null $unitCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Quantity</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$unitCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMeasureType">
+        <div class="location">at         line 312</div>
+        <code>                    object|null
+    <strong>getMeasureType</strong>(float|null $value, string|null $unitCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Quantity Measure</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$unitCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNumericType">
+        <div class="location">at         line 335</div>
+        <code>                    object|null
+    <strong>getNumericType</strong>(float|null $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get an instance of GetNumericType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTaxCategoryCodeType">
+        <div class="location">at         line 354</div>
+        <code>                    object|null
+    <strong>getTaxCategoryCodeType</strong>(string|null $taxCategoryCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Tax Category</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$taxCategoryCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTaxTypeCodeType">
+        <div class="location">at         line 373</div>
+        <code>                    object|null
+    <strong>getTaxTypeCodeType</strong>(string|null $taxTypeCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Tax Type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$taxTypeCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTimeReferenceCodeType">
+        <div class="location">at         line 392</div>
+        <code>                    object|null
+    <strong>getTimeReferenceCodeType</strong>(string|null $value = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Representation of Time Reference Code</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSpecifiedPeriodType">
+        <div class="location">at         line 414</div>
+        <code>                    object|null
+    <strong>getSpecifiedPeriodType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $completedate = null, string|null $description = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Specified Period type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$startdate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$endDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$completedate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBinaryObjectType">
+        <div class="location">at         line 438</div>
+        <code>                    object|null
+    <strong>getBinaryObjectType</strong>(string|null $binarydata = null, string|null $mimetype = null, string|null $filename = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get a BinaryObjectType object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$binarydata</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$mimetype</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$filename</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getReferencedDocumentType">
+        <div class="location">at         line 466</div>
+        <code>                    object|null
+    <strong>getReferencedDocumentType</strong>(string|null $issuerassignedid = null, string|null $uriid = null, string|null $lineid = null, string|null $typecode = null, string|array|null $name = null, string|null $reftypecode = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null, string|null $binarydatafilename = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get a reference document object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$issuerassignedid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$uriid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$lineid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typecode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|array|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$reftypecode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$issueddate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$binarydatafilename</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCountryIDType">
+        <div class="location">at         line 507</div>
+        <code>                    object|null
+    <strong>getCountryIDType</strong>(string|null $id = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of CountryID</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeCountryType">
+        <div class="location">at         line 524</div>
+        <code>                    object|null
+    <strong>getTradeCountryType</strong>(string|null $id = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradeCountry</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCrossIndustryInvoice">
+        <div class="location">at         line 542</div>
+        <code>                    <abbr title="horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>
+    <strong>getCrossIndustryInvoice</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Undocumented function</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeParty">
+        <div class="location">at         line 565</div>
+        <code>                    object|null
+    <strong>getTradeParty</strong>(string|null $name = null, string|null $ID = null, string|null $description = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Tradeparty type^^</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$ID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeAddress">
+        <div class="location">at         line 592</div>
+        <code>                    object|null
+    <strong>getTradeAddress</strong>(string|null $lineone = null, string|null $linetwo = null, string|null $linethree = null, string|null $postcode = null, string|null $city = null, string|null $country = null, string|null $subdivision = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Address type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$lineone</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$linetwo</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$linethree</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$postcode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$city</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$country</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$subdivision</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLegalOrganization">
+        <div class="location">at         line 619</div>
+        <code>                    object|null
+    <strong>getLegalOrganization</strong>(string|null $legalorgid = null, string|null $legalorgtype = null, string|null $legalorgname = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Legal organization type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$legalorgid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$legalorgtype</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$legalorgname</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeContact">
+        <div class="location">at         line 643</div>
+        <code>                    object|null
+    <strong>getTradeContact</strong>(string|null $contactpersonname = null, string|null $contactdepartmentname = null, string|null $contactphoneno = null, string|null $contactfaxno = null, string|null $contactemailaddr = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Contact type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$contactpersonname</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contactdepartmentname</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contactphoneno</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contactfaxno</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$contactemailaddr</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUniversalCommunicationType">
+        <div class="location">at         line 671</div>
+        <code>                    object|null
+    <strong>getUniversalCommunicationType</strong>(string|null $number = null, string|null $uriid = null, string|null $urischeme = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Communication type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$number</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$uriid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$urischeme</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTaxRegistrationType">
+        <div class="location">at         line 692</div>
+        <code>                    object|null
+    <strong>getTaxRegistrationType</strong>(string|null $taxregtype = null, string|null $taxregid = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Tax registration type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$taxregtype</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$taxregid</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeDeliveryTermsType">
+        <div class="location">at         line 715</div>
+        <code>                    object|null
+    <strong>getTradeDeliveryTermsType</strong>(string|null $code = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Delivery terms type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$code</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProcuringProjectType">
+        <div class="location">at         line 735</div>
+        <code>                    object|null
+    <strong>getProcuringProjectType</strong>(string|null $id = null, string|null $name = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Procuring project type</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSupplyChainEventType">
+        <div class="location">at         line 755</div>
+        <code>                    object|null
+    <strong>getSupplyChainEventType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Undocumented function</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$date</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeSettlementFinancialCardType">
+        <div class="location">at         line 776</div>
+        <code>                    object|null
+    <strong>getTradeSettlementFinancialCardType</strong>(string|null $type = null, string|null $id = null, string|null $holderName = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradeSettlementFinancialCardType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$holderName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDebtorFinancialAccountType">
+        <div class="location">at         line 796</div>
+        <code>                    object|null
+    <strong>getDebtorFinancialAccountType</strong>(string|null $iban = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of DebtorFinancialAccountType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$iban</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCreditorFinancialAccountType">
+        <div class="location">at         line 817</div>
+        <code>                    object|null
+    <strong>getCreditorFinancialAccountType</strong>(string|null $iban = null, string|null $accountName = null, string|null $proprietaryID = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of CreditorFinancialAccountType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$iban</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$accountName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$proprietaryID</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCreditorFinancialInstitutionType">
+        <div class="location">at         line 838</div>
+        <code>                    object|null
+    <strong>getCreditorFinancialInstitutionType</strong>(string|null $bic = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Undocumented function</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$bic</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeSettlementPaymentMeansType">
+        <div class="location">at         line 858</div>
+        <code>                    object|null
+    <strong>getTradeSettlementPaymentMeansType</strong>(string|null $typecode = null, string|null $information = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradeSettlementPaymentMeansType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$typecode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$information</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradePaymentTermsType">
+        <div class="location">at         line 880</div>
+        <code>                    object|null
+    <strong>getTradePaymentTermsType</strong>(string|null $description = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate = null, string|null $directDebitMandateID = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradePaymentTermsType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$dueDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$directDebitMandateID</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradePaymentDiscountTermsType">
+        <div class="location">at         line 906</div>
+        <code>                    object|null
+    <strong>getTradePaymentDiscountTermsType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $basisDateTime = null, float|null $basisPeriodMeasureValue = null, string|null $basisPeriodMeasureUnitCode = null, float|null $basisAmount = null, float|null $calculationPercent = null, float|null $actualDiscountAmount = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradePaymentDiscountTermsType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$basisDateTime</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisPeriodMeasureValue</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$basisPeriodMeasureUnitCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$calculationPercent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$actualDiscountAmount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeTaxType">
+        <div class="location">at         line 940</div>
+        <code>                    object|null
+    <strong>getTradeTaxType</strong>(string|null $categoryCode = null, string|null $typeCode = null, float|null $basisAmount = null, float|null $calculatedAmount = null, float|null $rateApplicablePercent = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null, float|null $lineTotalBasisAmount = null, float|null $allowanceChargeBasisAmount = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $taxPointDate = null, string|null $dueDateTypeCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradeTaxType
+Sales tax breakdown, Umsatzsteueraufschlüsselung</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$categoryCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$calculatedAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$rateApplicablePercent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReason</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$exemptionReasonCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$lineTotalBasisAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$allowanceChargeBasisAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$taxPointDate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$dueDateTypeCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeAllowanceChargeType">
+        <div class="location">at         line 981</div>
+        <code>                    object|null
+    <strong>getTradeAllowanceChargeType</strong>(float|null $actualAmount = null, bool|null $isCharge = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $calculationPercent = null, float|null $basisAmount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null, string|null $reason = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Allowance/Charge type
+Zu- und Abschläge</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$actualAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool|null</td>
+                <td>$isCharge</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$taxTypeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$taxCategoryCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$rateApplicablePercent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$sequence</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$calculationPercent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisQuantity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$basisQuantityUnitCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$reasonCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$reason</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLogisticsServiceChargeType">
+        <div class="location">at         line 1015</div>
+        <code>                    object|null
+    <strong>getLogisticsServiceChargeType</strong>(string|null $description = null, float|null $appliedAmount = null, array|null $taxTypeCodes = null, array|null $taxCategpryCodes = null, array|null $rateApplicablePercents = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$appliedAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$taxTypeCodes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$taxCategpryCodes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$rateApplicablePercents</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeSettlementHeaderMonetarySummationType">
+        <div class="location">at         line 1050</div>
+        <code>                    object|null
+    <strong>getTradeSettlementHeaderMonetarySummationType</strong>(float|null $grandTotalAmount = null, float|null $duePayableAmount = null, float|null $lineTotalAmount = null, float|null $chargeTotalAmount = null, float|null $allowanceTotalAmount = null, float|null $taxBasisTotalAmount = null, float|null $taxTotalAmount = null, float|null $roundingAmount = null, float|null $totalPrepaidAmount = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of TradeSettlementHeaderMonetarySummationType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$grandTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$duePayableAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$lineTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$chargeTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$allowanceTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$taxBasisTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$taxTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$roundingAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$totalPrepaidAmount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeSettlementHeaderMonetarySummationTypeOnly">
+        <div class="location">at         line 1076</div>
+        <code>                    object|null
+    <strong>getTradeSettlementHeaderMonetarySummationTypeOnly</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create summation class only</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeAccountingAccountType">
+        <div class="location">at         line 1088</div>
+        <code>                    object|null
+    <strong>getTradeAccountingAccountType</strong>(string|null $id = null, string|null $typeCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get an instance of TradeAccountingAccountType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDocumentLineDocumentType">
+        <div class="location">at         line 1108</div>
+        <code>                    object|null
+    <strong>getDocumentLineDocumentType</strong>(string|null $lineid = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Document line</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$lineid</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSupplyChainTradeLineItemType">
+        <div class="location">at         line 1130</div>
+        <code>                    object|null
+    <strong>getSupplyChainTradeLineItemType</strong>(string|null $lineid = null, string|null $lineStatusCode = null, string|null $lineStatusReasonCode = null, bool $isTextPosition = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get instance of SupplyChainTradeLineItemType</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$lineid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$lineStatusCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$lineStatusReasonCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isTextPosition</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeProductType">
+        <div class="location">at         line 1165</div>
+        <code>                    object|null
+    <strong>getTradeProductType</strong>(string|null $name = null, string|null $description = null, string|null $sellerAssignedID = null, string|null $buyerAssignedID = null, string|null $globalIDType = null, string|null $globalID = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get product specification</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$sellerAssignedID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$buyerAssignedID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalIDType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalID</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProductCharacteristicType">
+        <div class="location">at         line 1192</div>
+        <code>                    object|null
+    <strong>getProductCharacteristicType</strong>(string|null $typeCode = null, string|null $description = null, float|null $valueMeasure = null, string|null $valueMeasureUnitCode = null, string|null $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Product Characteristic</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$typeCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$valueMeasure</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$valueMeasureUnitCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProductClassificationType">
+        <div class="location">at         line 1217</div>
+        <code>                    object|null
+    <strong>getProductClassificationType</strong>(string|null $classCode = null, string|null $className = null, string|null $listID = null, string|null $listVersionID = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Product Classification</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$classCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$listID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$listVersionID</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradePriceType">
+        <div class="location">at         line 1239</div>
+        <code>                    object|null
+    <strong>getTradePriceType</strong>(float|null $amount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get trade price</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$amount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$basisQuantity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$basisQuantityUnitCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTradeSettlementLineMonetarySummationType">
+        <div class="location">at         line 1260</div>
+        <code>                    object|null
+    <strong>getTradeSettlementLineMonetarySummationType</strong>(float|null $lineTotalAmount = null, float|null $totalAllowanceChargeAmount = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Line Summation</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$lineTotalAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$totalAllowanceChargeAmount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTaxApplicableTradeCurrencyExchangeType">
+        <div class="location">at         line 1283</div>
+        <code>                    object|null
+    <strong>getTaxApplicableTradeCurrencyExchangeType</strong>(string|null $sourceCurrencyCode = null, string|null $targetCurrencyCode = null, float|null $rate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $rateDateTime = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Undocumented function</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$sourceCurrencyCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$targetCurrencyCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$rate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+                <td>$rateDateTime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toDateTime">
+        <div class="location">at         line 1306</div>
+        <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null
+    <strong>toDateTime</strong>(string|null $dateTimeString, string|null $format)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a datetime object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$dateTimeString</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DateTime">DateTime</a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRateType">
+        <div class="location">at         line 1334</div>
+        <code>                    object|null
+    <strong>getRateType</strong>(float|null $rateValue)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get Exchange rate type instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$rateValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createClassInstance">
+        <div class="location">at         line 1348</div>
+        <code>                    object|null
+    <strong>createClassInstance</strong>($classname, mixed $constructorvalue = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates an instance of a class needed by $invoiceObject</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$classname</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$constructorvalue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tryCall">
+        <div class="location">at         line 1368</div>
+        <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+    <strong>tryCall</strong>(object $instance, string $method, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Tries to call a method</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tryCallAll">
+        <div class="location">at         line 1394</div>
+        <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+    <strong>tryCallAll</strong>(object $instance, array $methods, mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Try call all methods</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$methods</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tryCallAndReturn">
+        <div class="location">at         line 1420</div>
+        <code>                    mixed
+    <strong>tryCallAndReturn</strong>(object $instance, string $method)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Tries to call a method and return the returnvalue from call to $method
+in object $instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tryCallByPath">
+        <div class="location">at         line 1443</div>
+        <code>                    void
+    <strong>tryCallByPath</strong>(object $instance, string $methods, $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Try call methods in a form .object.method1.method2.method3</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methods</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tryCallByPathAndReturn">
+        <div class="location">at         line 1464</div>
+        <code>                    mixed
+    <strong>tryCallByPathAndReturn</strong>(object $instance, string $methods)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Try call methods in a form .object.method1.method2.method3</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methods</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ensureStringArray">
+        <div class="location">at         line 1484</div>
+        <code>                    array
+    <strong>ensureStringArray</strong>(mixed $input)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Ensure that $input is an array</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$input</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ensureArray">
+        <div class="location">at         line 1500</div>
+        <code>                    array
+    <strong>ensureArray</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Ensure array</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNullOrEmpty">
+        <div class="location">at         line 1518</div>
+        <code>        static            boolean
+    <strong>isNullOrEmpty</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Test if a value is null or empty</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isAllNullOrEmpty">
+        <div class="location">at         line 1538</div>
+        <code>        static            bool
+    <strong>isAllNullOrEmpty</strong>(array $args)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if all function arguments are null or empty</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$args</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isOneNullOrEmpty">
+        <div class="location">at         line 1559</div>
+        <code>        static            bool
+    <strong>isOneNullOrEmpty</strong>(array $args)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if all function arguments are null or empty</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$args</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
