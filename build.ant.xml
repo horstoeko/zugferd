@@ -227,6 +227,15 @@
             <arg path="${basedir}/src"/>
             <arg value="-t"/>
             <arg path="${basedir}/build/doc"/>
+            <arg value="-i"/>
+            <arg path="${basedir}/src/entities/"/>
+            <arg value="-i"/>
+            <arg path="${basedir}/src/ZugferdObjectHelper.php"/>
+            <arg value="-m"/>
+            <arg path="TODO"/>
+            <arg value="--title=horstoeko/zugferd"/>
+            <arg value="--visibility=public"/>
+            <arg value="--sourcecode"/>
         </exec>
         <property name="projectdoc.done" value="true"/>
     </target>
