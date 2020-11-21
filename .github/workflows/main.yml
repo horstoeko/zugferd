@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Phing Build
+        uses: phingofficial/phing-github-action@main
+        with:
+            buildfile: ./build.ant.xml
