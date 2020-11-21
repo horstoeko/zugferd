@@ -2508,12 +2508,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Undocumented function
+     * Add extra characteristics to the formerly added product.
+     * Contains information about the characteristics of the goods and services invoiced
      *
      * @param string $description
-     * The name of the attribute or property of the article such as "Colour"
+     * The name of the attribute or property of the product such as "Colour"
      * @param string $value
-     * The value of the attribute or property of the item such as "Red"
+     * The value of the attribute or property of the product such as "Red"
      * @param string|null $typecode
      * Type of product property (code). The codes must be taken from the
      * UNTDID 6313 codelist. Available only in the Extended-Profile
