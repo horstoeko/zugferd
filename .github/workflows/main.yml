@@ -11,4 +11,4 @@ jobs:
       - name: Phing Build
         uses: phingofficial/phing-github-action@main
         with:
-            buildfile: ./build.ant.xml
+            buildfile: ./build.xml
