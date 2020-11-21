@@ -104,6 +104,12 @@ pipeline {
       }
     }
 
+    stage('Documentation') {
+      steps {
+        sh 'php ./phpDocumentor.phar -d ./src -t ./build/doc -i ./src/entities/ -i ./src/ZugferdObjectHelper.php -m TODO --title=horstoeko/zugferd --visibility=public --sourcecode'
+      }
+    }
+
     stage('Archive Artifacts') {
       steps {
         zip archive: true, dir: 'build/doc', glob: '**/*.*', zipFile: 'build/dist/doc.zip'
