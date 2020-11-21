@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Build package
 
 on:
   push:
@@ -28,3 +28,6 @@ jobs:
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run Tests
+        run: ./vendor/bin/phpunit --configuration ./build/phpunit.xml
