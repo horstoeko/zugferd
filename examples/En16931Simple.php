@@ -27,6 +27,7 @@ $document
     ->setDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4", null, "0160", "4012345001235")
     ->addDocumentPositionProductCharacteristic("Farbe", "Gelb")
     ->addDocumentPositionProductClassification("ClassCode", "ClassName", "ListId", "ListVersionId")
+    ->setDocumentPositionProductOriginTradeCountry("CN")
     ->setDocumentPositionGrossPrice(9.9000)
     ->setDocumentPositionNetPrice(9.9000)
     ->setDocumentPositionQuantity(20, "H87")

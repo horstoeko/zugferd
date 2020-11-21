@@ -1482,6 +1482,30 @@ class ObjectHelperEn16931Test extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCountryIDType
+     */
+    public function testGetCountryIDType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\qdt\CountryIDType
+         */
+        $countryId = self::$objectHelper->getCountryIDType("DE");
+        $this->assertEquals("DE", $countryId->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeCountryType
+     */
+    public function testGetTradeCountryType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeCountryType
+         */
+        $tradeCountry = self::$objectHelper->getTradeCountryType("DE");
+        $this->assertEquals("DE", $tradeCountry->getID());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
      */
     public function testGetTradeProductTypeAllNull()

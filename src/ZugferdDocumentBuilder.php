@@ -2560,6 +2560,23 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Sets the detailed information on the product origin
+     *
+     * @param string $country
+     * The code indicating the country the goods came from
+     * __Note__: The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance 
+     * Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionProductOriginTradeCountry(string $country): ZugferdDocumentBuilder
+    {
+        $product = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
+        $productTradeCounty = $this->objectHelper->getTradeCountryType($country);
+        $this->objectHelper->TryCall($product, "setOriginTradeCountry", $productTradeCounty);
+        return $this;
+    }
+
+    /**
      * Set details of the related buyer order position
      *
      * @param string $issuerassignedid

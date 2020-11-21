@@ -1309,6 +1309,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionUltimateCustomerOrderReferencedDocument
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionProductCharacteristic
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionProductClassification
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionProductOriginTradeCountry
      */
     public function testPositionMethods()
     {
@@ -1317,6 +1318,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         (self::$document)->setDocumentPositionProductDetails("Product Name", "Product Description", "SellerID", "BuyerID", "0088", "11111222222");
         (self::$document)->addDocumentPositionProductCharacteristic("attr", "attrvalue", "typecode", 10.2, "C62");
         (self::$document)->addDocumentPositionProductClassification("classcode", "classname", "listid", "listversionid");
+        (self::$document)->setDocumentPositionProductOriginTradeCountry("DE");
         (self::$document)->setDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new DateTime());
         (self::$document)->setDocumentPositionContractReferencedDocument("C-0002", "2", new DateTime());
         (self::$document)->setDocumentPositionGrossPrice(105, 1, "C62");
@@ -1363,6 +1365,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:Description', 0, "attr");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:Value', 0, "attrvalue");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode', 0, "classcode");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:OriginTradeCountry/ram:ID', 0, "DE");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode', 0, "classcode", "listID", "listid");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode', 0, "classcode", "listVersionID", "listversionid");
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:TypeCode', 0, "typecode");

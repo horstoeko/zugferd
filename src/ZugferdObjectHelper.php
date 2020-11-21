@@ -499,6 +499,42 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get instance of CountryID
+     *
+     * @param string|null $id
+     * @return object|null
+     */
+    public function getCountryIDType(?string $id = null): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $countryId = $this->CreateClassInstance('qdt\CountryIDType', $id);
+
+        return $countryId;
+    }
+
+    /**
+     * Get instance of TradeCountry
+     *
+     * @param string|null $id
+     * @return object|null
+     */
+    public function getTradeCountryType(?string $id = null): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $tradeCountry = $this->CreateClassInstance('ram\TradeCountryType');
+
+        $this->TryCall($tradeCountry, 'setID', $this->getCountryIDType($id));
+
+        return $tradeCountry;
+    }
+
+    /**
      * Undocumented function
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType
