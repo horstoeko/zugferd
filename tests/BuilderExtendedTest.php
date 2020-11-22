@@ -1316,6 +1316,7 @@ class BuilderExtendedTest extends BuilderBaseTest
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionProductCharacteristic
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionProductClassification
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionProductOriginTradeCountry
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionReferencedProduct
      */
     public function testPositionMethods()
     {
@@ -1325,6 +1326,7 @@ class BuilderExtendedTest extends BuilderBaseTest
         (self::$document)->addDocumentPositionProductCharacteristic("attr", "attrvalue", "typecode", 10.2, "C62");
         (self::$document)->addDocumentPositionProductClassification("classcode", "classname", "listid", "listversionid");
         (self::$document)->setDocumentPositionProductOriginTradeCountry("DE");
+        (self::$document)->addDocumentPositionReferencedProduct("name", "description", "sellerid", "buyerid", "globalid", "0088", 10, "C62");
         (self::$document)->setDocumentPositionBuyerOrderReferencedDocument("B-0001", "1", new \DateTime());
         (self::$document)->setDocumentPositionContractReferencedDocument("C-0002", "2", new \DateTime());
         (self::$document)->setDocumentPositionGrossPrice(105, 1, "C62");
@@ -1376,6 +1378,12 @@ class BuilderExtendedTest extends BuilderBaseTest
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode', 0, "classcode", "listVersionID", "listversionid");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic/ram:ValueMeasure', 0, "10.2", "unitCode", "C62");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:OriginTradeCountry/ram:ID', 0, "DE");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:Name', 0, "name");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:Description', 0, "description");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:SellerAssignedID', 0, "sellerid");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:BuyerAssignedID', 0, "buyerid");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:UnitQuantity', 0, 10, "unitCode", "C62");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IncludedReferencedProduct/ram:GlobalID', 0, "globalid", "schemeID", "0088");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:IssuerAssignedID', 0, "B-0001");
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:LineID', 0, "1");
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:BuyerOrderReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 0, (new \DateTime)->format("Ymd"), "format", "102");

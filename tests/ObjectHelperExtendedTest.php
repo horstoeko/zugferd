@@ -1530,6 +1530,25 @@ class ObjectHelperExtendedTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedProductType
+     */
+    public function testGetReferencedProductType()
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
+         */
+        $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "name", "description", 10, "C62");
+        $this->assertEquals("globalid", $referencedProduct->getGlobalID()->value());
+        $this->assertEquals("globalidtype", $referencedProduct->getGlobalID()->getSchemeID());
+        $this->assertEquals("sellerid", $referencedProduct->getSellerAssignedID()->value());
+        $this->assertEquals("buyerid", $referencedProduct->getBuyerAssignedID()->value());
+        $this->assertEquals("name", $referencedProduct->getName());
+        $this->assertEquals("description", $referencedProduct->getDescription());
+        $this->assertEquals(10, $referencedProduct->getUnitQuantity()->value());
+        $this->assertEquals("C62", $referencedProduct->getUnitQuantity()->getUnitCode());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
      */
     public function testGetTradePriceTypeAllValues()

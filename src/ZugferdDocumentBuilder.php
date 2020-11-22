@@ -2578,6 +2578,46 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add detailed information on included products. This information relates to the
+     * product that has just been added
+     *
+     * @param string $name
+     * Item name
+     * @param string|null $description
+     * Item description
+     * @param string|null $sellerAssignedID
+     * Item number of the seller
+     * @param string|null $buyerAssignedID
+     * Item number of the buyer
+     * __Note__: The identifier of the product is a unique, bilaterally agreed identification of the
+     * product. It can, for example, be the customer article number or the article number assigned by
+     * the manufacturer.
+     * @param string|null $globalID
+     * Global identifier of the product
+     * __Note__: The global identifier of the product is a label uniquely assigned by the manufacturer,
+     * which is based on the rules of a global registration organization.
+     * @param string|null $globalIDType
+     * Type of global item number
+     * In particular, the following codes can be used:
+     *  * 0021: SWIFT
+     *  * 0088: EAN
+     *  * 0060: DUNS
+     *  * 0177: ODETTE
+     * @param float|null $unitQuantity
+     * Included quantity
+     * @param string|null $unitCode
+     * Unit of measurement of the included quantity
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionReferencedProduct(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalID = null, ?string $globalIDType = null, ?float $unitQuantity = null, ?string $unitCode = null): ZugferdDocumentBuilder
+    {
+        $product = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
+        $referencedProduct = $this->objectHelper->getReferencedProductType($globalID, $globalIDType, $sellerAssignedID, $buyerAssignedID, $name, $description, $unitQuantity, $unitCode);
+        $this->objectHelper->TryCall($product, "addToIncludedReferencedProduct", $referencedProduct);
+        return $this;
+    }
+
+    /**
      * Set details of the related buyer order position
      *
      * @param string $issuerassignedid

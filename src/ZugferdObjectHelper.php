@@ -1229,6 +1229,37 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get product reference product
+     *
+     * @param string|null $globalID
+     * @param string|null $globalIDType
+     * @param string|null $sellerAssignedID
+     * @param string|null $buyerAssignedID
+     * @param string|null $name
+     * @param string|null $description
+     * @param float|null $unitQuantity
+     * @param string|null $unitCode
+     * @return object|null
+     */
+    public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $name, ?string $description = null, ?float $unitQuantity, ?string $unitCode): ?object
+    {
+        if (self::IsAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $referencedProduct = $this->CreateClassInstance('ram\ReferencedProductType');
+
+        $this->TryCall($referencedProduct, "setGlobalID", $this->getIdType($globalID, $globalIDType));
+        $this->TryCall($referencedProduct, "setSellerAssignedID", $this->getIdType($sellerAssignedID));
+        $this->TryCall($referencedProduct, "setBuyerAssignedID", $this->getIdType($buyerAssignedID));
+        $this->TryCall($referencedProduct, "setName", $this->getTextType($name));
+        $this->TryCall($referencedProduct, "setDescription", $this->getTextType($description));
+        $this->TryCall($referencedProduct, "setUnitQuantity", $this->getQuantityType($unitQuantity, $unitCode));
+
+        return $referencedProduct;
+    }
+
+    /**
      * Get trade price
      *
      * @param float|null $amount
