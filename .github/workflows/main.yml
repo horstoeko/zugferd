@@ -35,7 +35,6 @@ jobs:
         with:
           configuration: ./build/phpunit.xml
           memory_limit: 256M
-          phpunit_version: 9.4.3
 
       - name: Publish Unit Test Results
         uses: mikepenz/action-junit-report@v1
