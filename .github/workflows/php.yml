@@ -36,5 +36,5 @@ jobs:
       - name: Publish Unit Test Results
         uses: mikepenz/action-junit-report@v1
         with:
-          report_paths: './build/logs/junit.xml'
+          report_paths: '**/build/logs/junit.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
