@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [master]
   workflow_dispatch:
-        
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,8 +34,7 @@ jobs:
         run: ./vendor/bin/phpunit --configuration ./build/phpunit.xml
 
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.5
-        if: always()
+        uses: mikepenz/action-junit-report@v1
         with:
+          report_paths: './build/logs/junit.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: ./build/logs/junit.xml
