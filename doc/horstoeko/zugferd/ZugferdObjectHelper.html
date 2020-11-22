@@ -633,6 +633,16 @@ Zu- und Abschläge</p>                </div>
                     object|null
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_getReferencedProductType">getReferencedProductType</a>(string|null $globalID, string|null $globalIDType, string|null $sellerAssignedID, string|null $buyerAssignedID, string|null $name, string|null $description = null, float|null $unitQuantity, string|null $unitCode)
+        
+                                            <p>Get product reference product</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_getTradePriceType">getTradePriceType</a>(float|null $amount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
         
                                             <p>Get trade price</p>                </div>
@@ -3305,8 +3315,83 @@ Zu- und Abschläge</p>                                                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getReferencedProductType">
+        <div class="location">at         line 1244</div>
+        <code>                    object|null
+    <strong>getReferencedProductType</strong>(string|null $globalID, string|null $globalIDType, string|null $sellerAssignedID, string|null $buyerAssignedID, string|null $name, string|null $description = null, float|null $unitQuantity, string|null $unitCode)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get product reference product</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$globalID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalIDType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$sellerAssignedID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$buyerAssignedID</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$unitQuantity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$unitCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getTradePriceType">
-        <div class="location">at         line 1239</div>
+        <div class="location">at         line 1270</div>
         <code>                    object|null
     <strong>getTradePriceType</strong>(float|null $amount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
         </code>
@@ -3356,7 +3441,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementLineMonetarySummationType">
-        <div class="location">at         line 1260</div>
+        <div class="location">at         line 1291</div>
         <code>                    object|null
     <strong>getTradeSettlementLineMonetarySummationType</strong>(float|null $lineTotalAmount = null, float|null $totalAllowanceChargeAmount = null)
         </code>
@@ -3401,7 +3486,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTaxApplicableTradeCurrencyExchangeType">
-        <div class="location">at         line 1283</div>
+        <div class="location">at         line 1314</div>
         <code>                    object|null
     <strong>getTaxApplicableTradeCurrencyExchangeType</strong>(string|null $sourceCurrencyCode = null, string|null $targetCurrencyCode = null, float|null $rate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $rateDateTime = null)
         </code>
@@ -3456,7 +3541,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_toDateTime">
-        <div class="location">at         line 1306</div>
+        <div class="location">at         line 1337</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null
     <strong>toDateTime</strong>(string|null $dateTimeString, string|null $format)
         </code>
@@ -3510,7 +3595,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRateType">
-        <div class="location">at         line 1334</div>
+        <div class="location">at         line 1365</div>
         <code>                    object|null
     <strong>getRateType</strong>(float|null $rateValue)
         </code>
@@ -3550,7 +3635,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_createClassInstance">
-        <div class="location">at         line 1348</div>
+        <div class="location">at         line 1379</div>
         <code>                    object|null
     <strong>createClassInstance</strong>($classname, mixed $constructorvalue = null)
         </code>
@@ -3595,7 +3680,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCall">
-        <div class="location">at         line 1368</div>
+        <div class="location">at         line 1399</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
     <strong>tryCall</strong>(object $instance, string $method, mixed $value)
         </code>
@@ -3645,7 +3730,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallAll">
-        <div class="location">at         line 1394</div>
+        <div class="location">at         line 1425</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
     <strong>tryCallAll</strong>(object $instance, array $methods, mixed $value)
         </code>
@@ -3695,7 +3780,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallAndReturn">
-        <div class="location">at         line 1420</div>
+        <div class="location">at         line 1451</div>
         <code>                    mixed
     <strong>tryCallAndReturn</strong>(object $instance, string $method)
         </code>
@@ -3741,7 +3826,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallByPath">
-        <div class="location">at         line 1443</div>
+        <div class="location">at         line 1474</div>
         <code>                    void
     <strong>tryCallByPath</strong>(object $instance, string $methods, $value)
         </code>
@@ -3791,7 +3876,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallByPathAndReturn">
-        <div class="location">at         line 1464</div>
+        <div class="location">at         line 1495</div>
         <code>                    mixed
     <strong>tryCallByPathAndReturn</strong>(object $instance, string $methods)
         </code>
@@ -3836,7 +3921,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureStringArray">
-        <div class="location">at         line 1484</div>
+        <div class="location">at         line 1515</div>
         <code>                    array
     <strong>ensureStringArray</strong>(mixed $input)
         </code>
@@ -3876,7 +3961,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureArray">
-        <div class="location">at         line 1500</div>
+        <div class="location">at         line 1531</div>
         <code>                    array
     <strong>ensureArray</strong>(mixed $value)
         </code>
@@ -3916,7 +4001,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isNullOrEmpty">
-        <div class="location">at         line 1518</div>
+        <div class="location">at         line 1549</div>
         <code>        static            boolean
     <strong>isNullOrEmpty</strong>(mixed $value)
         </code>
@@ -3956,7 +4041,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isAllNullOrEmpty">
-        <div class="location">at         line 1538</div>
+        <div class="location">at         line 1569</div>
         <code>        static            bool
     <strong>isAllNullOrEmpty</strong>(array $args)
         </code>
@@ -3996,7 +4081,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isOneNullOrEmpty">
-        <div class="location">at         line 1559</div>
+        <div class="location">at         line 1590</div>
         <code>        static            bool
     <strong>isOneNullOrEmpty</strong>(array $args)
         </code>

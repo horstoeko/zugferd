@@ -1186,6 +1186,17 @@ Detailinformationen zur Buchungsreferenz</p>                </div>
                     <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_addDocumentPositionReferencedProduct">addDocumentPositionReferencedProduct</a>(string $name, string|null $description = null, string|null $sellerAssignedID = null, string|null $buyerAssignedID = null, string|null $globalID = null, string|null $globalIDType = null, float|null $unitQuantity = null, string|null $unitCode = null)
+        
+                                            <p>Add detailed information on included products. This information relates to the
+product that has just been added</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setDocumentPositionBuyerOrderReferencedDocument">setDocumentPositionBuyerOrderReferencedDocument</a>(string $issuerassignedid, string $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         
                                             <p>Set details of the related buyer order position</p>                </div>
@@ -7260,8 +7271,94 @@ Agency “Codes for the representation of names of countries and their subdivisi
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_addDocumentPositionReferencedProduct">
+        <div class="location">at         line 2612</div>
+        <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
+    <strong>addDocumentPositionReferencedProduct</strong>(string $name, string|null $description = null, string|null $sellerAssignedID = null, string|null $buyerAssignedID = null, string|null $globalID = null, string|null $globalIDType = null, float|null $unitQuantity = null, string|null $unitCode = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add detailed information on included products. This information relates to the
+product that has just been added</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td>Item name</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td>Item description</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$sellerAssignedID</td>
+                <td>Item number of the seller</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$buyerAssignedID</td>
+                <td>Item number of the buyer
+<strong>Note</strong>: The identifier of the product is a unique, bilaterally agreed identification of the
+product. It can, for example, be the customer article number or the article number assigned by
+the manufacturer.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalID</td>
+                <td>Global identifier of the product
+<strong>Note</strong>: The global identifier of the product is a label uniquely assigned by the manufacturer,
+which is based on the rules of a global registration organization.</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$globalIDType</td>
+                <td>Type of global item number
+In particular, the following codes can be used:
+ * 0021: SWIFT
+ * 0088: EAN
+ * 0060: DUNS
+ * 0177: ODETTE</td>
+            </tr>
+                    <tr>
+                <td>float|null</td>
+                <td>$unitQuantity</td>
+                <td>Included quantity</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$unitCode</td>
+                <td>Unit of measurement of the included quantity</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setDocumentPositionBuyerOrderReferencedDocument">
-        <div class="location">at         line 2592</div>
+        <div class="location">at         line 2632</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionBuyerOrderReferencedDocument</strong>(string $issuerassignedid, string $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -7312,7 +7409,7 @@ reference at the document level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionContractReferencedDocument">
-        <div class="location">at         line 2612</div>
+        <div class="location">at         line 2652</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionContractReferencedDocument</strong>(string $issuerassignedid, string $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -7363,7 +7460,7 @@ defined period of time (contract number)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionAdditionalReferencedDocument">
-        <div class="location">at         line 2660</div>
+        <div class="location">at         line 2700</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionAdditionalReferencedDocument</strong>(string $issuerassignedid, string $typecode, string|null $uriid = null, string|null $lineid = null, string|null $name = null, string|null $reftypecode = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null, string|null $binarydatafilename = null)
         </code>
@@ -7455,7 +7552,7 @@ from UNTDID 1153 in accordance with the code list entries.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionUltimateCustomerOrderReferencedDocument">
-        <div class="location">at         line 2676</div>
+        <div class="location">at         line 2716</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionUltimateCustomerOrderReferencedDocument</strong>(string $issuerassignedid, string $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -7505,7 +7602,7 @@ from UNTDID 1153 in accordance with the code list entries.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionGrossPrice">
-        <div class="location">at         line 2697</div>
+        <div class="location">at         line 2737</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionGrossPrice</strong>(float $amount, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
         </code>
@@ -7557,7 +7654,7 @@ according to the gross calculation.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionGrossPriceAllowanceCharge">
-        <div class="location">at         line 2729</div>
+        <div class="location">at         line 2769</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionGrossPriceAllowanceCharge</strong>(float $actualAmount, bool|null $isCharge = null, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reason = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null)
         </code>
@@ -7654,7 +7751,7 @@ is transferred</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionNetPrice">
-        <div class="location">at         line 2749</div>
+        <div class="location">at         line 2789</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionNetPrice</strong>(float $amount, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
         </code>
@@ -7704,7 +7801,7 @@ is transferred</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionNetPriceTax">
-        <div class="location">at         line 2802</div>
+        <div class="location">at         line 2842</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionNetPriceTax</strong>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float|null $calculatedAmount = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
         </code>
@@ -7797,7 +7894,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionQuantity">
-        <div class="location">at         line 2835</div>
+        <div class="location">at         line 2875</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionQuantity</strong>(float $billedQuantity, string $billedQuantityUnitCode, float|null $chargeFreeQuantity = null, string|null $chargeFreeQuantityUnitCpde = null, float|null $packageQuantity = null, string|null $packageQuantityUnitCode = null)
         </code>
@@ -7869,7 +7966,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionShipTo">
-        <div class="location">at         line 2859</div>
+        <div class="location">at         line 2899</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionShipTo</strong>(string $name, string|null $id = null, string|null $description = null)
         </code>
@@ -7923,7 +8020,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionShipToGlobalId">
-        <div class="location">at         line 2877</div>
+        <div class="location">at         line 2917</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionShipToGlobalId</strong>(string|null $globalID = null, string|null $globalIDType = null)
         </code>
@@ -7969,7 +8066,7 @@ the list published by the ISO / IEC 6523 Maintenance Agency.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionShipToTaxRegistration">
-        <div class="location">at         line 2901</div>
+        <div class="location">at         line 2941</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionShipToTaxRegistration</strong>(string|null $taxregtype = null, string|null $taxregid = null)
         </code>
@@ -8019,7 +8116,7 @@ identification number, unless he uses a tax agent.</p>                          
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionShipToAddress">
-        <div class="location">at         line 2934</div>
+        <div class="location">at         line 2974</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionShipToAddress</strong>(string|null $lineone = null, string|null $linetwo = null, string|null $linethree = null, string|null $postcode = null, string|null $city = null, string|null $country = null, string|null $subdivision = null)
         </code>
@@ -8094,7 +8191,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionShipToLegalOrganisation">
-        <div class="location">at         line 2957</div>
+        <div class="location">at         line 2997</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionShipToLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -8148,7 +8245,7 @@ it should be known to the buyer or seller party</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionShipToContact">
-        <div class="location">at         line 2981</div>
+        <div class="location">at         line 3021</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionShipToContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -8208,7 +8305,7 @@ it should be known to the buyer or seller party</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionUltimateShipTo">
-        <div class="location">at         line 3004</div>
+        <div class="location">at         line 3044</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionUltimateShipTo</strong>(string $name, string|null $id = null, string|null $description = null)
         </code>
@@ -8261,7 +8358,7 @@ and seller, e.g. a previously exchanged identifier assigned by the buyer or sell
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionUltimateShipToGlobalId">
-        <div class="location">at         line 3022</div>
+        <div class="location">at         line 3062</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionUltimateShipToGlobalId</strong>(string|null $globalID = null, string|null $globalIDType = null)
         </code>
@@ -8307,7 +8404,7 @@ the list published by the ISO / IEC 6523 Maintenance Agency.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionUltimateShipToTaxRegistration">
-        <div class="location">at         line 3039</div>
+        <div class="location">at         line 3079</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionUltimateShipToTaxRegistration</strong>(string|null $taxregtype = null, string|null $taxregid = null)
         </code>
@@ -8352,7 +8449,7 @@ the list published by the ISO / IEC 6523 Maintenance Agency.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionUltimateShipToAddress">
-        <div class="location">at         line 3072</div>
+        <div class="location">at         line 3112</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionUltimateShipToAddress</strong>(string|null $lineone = null, string|null $linetwo = null, string|null $linethree = null, string|null $postcode = null, string|null $city = null, string|null $country = null, string|null $subdivision = null)
         </code>
@@ -8427,7 +8524,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionUltimateShipToLegalOrganisation">
-        <div class="location">at         line 3095</div>
+        <div class="location">at         line 3135</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionUltimateShipToLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -8482,7 +8579,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionUltimateShipToContact">
-        <div class="location">at         line 3119</div>
+        <div class="location">at         line 3159</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionUltimateShipToContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -8542,7 +8639,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionSupplyChainEvent">
-        <div class="location">at         line 3134</div>
+        <div class="location">at         line 3174</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionSupplyChainEvent</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date)
         </code>
@@ -8582,7 +8679,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionDespatchAdviceReferencedDocument">
-        <div class="location">at         line 3150</div>
+        <div class="location">at         line 3190</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionDespatchAdviceReferencedDocument</strong>(string $issuerassignedid, string|null $lineid = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -8632,7 +8729,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionReceivingAdviceReferencedDocument">
-        <div class="location">at         line 3166</div>
+        <div class="location">at         line 3206</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionReceivingAdviceReferencedDocument</strong>(string $issuerassignedid, string|null $lineid = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -8682,7 +8779,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionDeliveryNoteReferencedDocument">
-        <div class="location">at         line 3182</div>
+        <div class="location">at         line 3222</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionDeliveryNoteReferencedDocument</strong>(string $issuerassignedid, string|null $lineid = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -8732,7 +8829,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionTax">
-        <div class="location">at         line 3235</div>
+        <div class="location">at         line 3275</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionTax</strong>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float|null $calculatedAmount = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
         </code>
@@ -8825,7 +8922,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionBillingPeriod">
-        <div class="location">at         line 3253</div>
+        <div class="location">at         line 3293</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionBillingPeriod</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate)
         </code>
@@ -8870,7 +8967,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionAllowanceCharge">
-        <div class="location">at         line 3328</div>
+        <div class="location">at         line 3368</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionAllowanceCharge</strong>(float $actualAmount, bool $isCharge, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reasonCode = null, string|null $reason = null)
         </code>
@@ -8985,7 +9082,7 @@ to calculate the invoice line discount amount</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocumentPositionLineSummation">
-        <div class="location">at         line 3347</div>
+        <div class="location">at         line 3387</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>setDocumentPositionLineSummation</strong>(float $lineTotalAmount, float|null $totalAllowanceChargeAmount = null)
         </code>
@@ -9032,7 +9129,7 @@ and discounts applicable to the item level, as well as other taxes.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDocumentPositionReceivableSpecifiedTradeAccountingAccount">
-        <div class="location">at         line 3363</div>
+        <div class="location">at         line 3403</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
     <strong>addDocumentPositionReceivableSpecifiedTradeAccountingAccount</strong>(string $id, string|null $typeCode)
         </code>
