@@ -87,8 +87,7 @@
     
 
             <div class="description">
-            <p>Class representing a collection of serialization handlers
-for amount formatting and so on.</p>            <p>..</p>                    </div>
+            <p>Class representing a collection of serialization handlers for amount formatting and so on</p>                                </div>
     
     
     
@@ -98,57 +97,57 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getSubscribingMethods">getSubscribingMethods</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Return format:</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_serializeAmountType">serializeAmountType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+                    <a href="#method_serializeAmountType">serializeAmountType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serialize Anount type
+The amounts will be serialized with a precission of 2 digits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_serializeQuantityType">serializeQuantityType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+                    <a href="#method_serializeQuantityType">serializeQuantityType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serialize quantity type
+The quantity will be serialized with a precission of 4 digits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_serializePercentType">serializePercentType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+                    <a href="#method_serializePercentType">serializePercentType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serialize a percantage value
+The valze will be serialized with a precission of 2 digits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <abbr title="horstoeko\zugferd\jms\DOMElement">DOMElement</abbr>|false
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_serializeIndicatorType">serializeIndicatorType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+                    <a href="#method_serializeIndicatorType">serializeIndicatorType</a>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Serialize a inditcator
+False and true values will be serialized correctly (false won't be serialized
+in the default implementation)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -159,8 +158,8 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getSubscribingMethods">
-        <div class="location">at         line 29</div>
-        <code>        static            
+        <div class="location">at         line 42</div>
+        <code>        static            array
     <strong>getSubscribingMethods</strong>()
         </code>
     </h3>
@@ -168,8 +167,26 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             
     
 
+                    <div class="method-description">
+                                    <p>Return format:</p>                    <p>array(
+         array(
+             'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
+             'format' => 'json',
+             'type' => 'DateTime',
+             'method' => 'serializeDateTimeToJson',
+         ),
+     )</p>                            </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -178,15 +195,18 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </div>
                     <div class="method-item">
                     <h3 id="method_serializeAmountType">
-        <div class="location">at         line 131</div>
-        <code>                    
-    <strong>serializeAmountType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+        <div class="location">at         line 154</div>
+        <code>                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
+    <strong>serializeAmountType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Serialize Anount type
+The amounts will be serialized with a precission of 2 digits</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -197,7 +217,7 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -214,6 +234,15 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -222,15 +251,18 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </div>
                     <div class="method-item">
                     <h3 id="method_serializeQuantityType">
-        <div class="location">at         line 144</div>
-        <code>                    
-    <strong>serializeQuantityType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+        <div class="location">at         line 177</div>
+        <code>                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
+    <strong>serializeQuantityType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Serialize quantity type
+The quantity will be serialized with a precission of 4 digits</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -241,7 +273,7 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -258,6 +290,15 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -266,15 +307,18 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </div>
                     <div class="method-item">
                     <h3 id="method_serializePercentType">
-        <div class="location">at         line 157</div>
-        <code>                    
-    <strong>serializePercentType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+        <div class="location">at         line 200</div>
+        <code>                    <abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false
+    <strong>serializePercentType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Serialize a percantage value
+The valze will be serialized with a precission of 2 digits</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -285,7 +329,7 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -302,6 +346,15 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="horstoeko\zugferd\jms\DOMText">DOMText</abbr>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -310,15 +363,19 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </div>
                     <div class="method-item">
                     <h3 id="method_serializeIndicatorType">
-        <div class="location">at         line 163</div>
-        <code>                    
-    <strong>serializeIndicatorType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
+        <div class="location">at         line 217</div>
+        <code>                    <abbr title="horstoeko\zugferd\jms\DOMElement">DOMElement</abbr>|false
+    <strong>serializeIndicatorType</strong>(<abbr title="JMS\Serializer\XmlSerializationVisitor">XmlSerializationVisitor</abbr> $visitor, mixed $data, array $type, <abbr title="JMS\Serializer\Context">Context</abbr> $context)
         </code>
     </h3>
     <div class="details">
             
     
 
+                    <div class="method-description">
+                                    <p>Serialize a inditcator
+False and true values will be serialized correctly (false won't be serialized
+in the default implementation)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -329,7 +386,7 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$data</td>
                 <td></td>
             </tr>
@@ -346,6 +403,15 @@ for amount formatting and so on.</p>            <p>..</p>                    </d
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="horstoeko\zugferd\jms\DOMElement">DOMElement</abbr>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>

@@ -16,4 +16,5 @@ return new Sami($iterator, array(
     'build_dir'            => dirname(__FILE__) . '/doc',
     'cache_dir'            => dirname(__FILE__) . '/cache',
     'include_parent_data'  => false,
+    'default_opened_level' => 3,
 ));

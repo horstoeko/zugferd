@@ -15,8 +15,7 @@ use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Context;
 
 /**
- * Class representing a collection of serialization handlers
- * for amount formatting and so on...
+ * Class representing a collection of serialization handlers for amount formatting and so on
  *
  * @category Zugferd
  * @package  Zugferd
@@ -26,6 +25,20 @@ use JMS\Serializer\Context;
  */
 class ZugferdTypesHandler implements SubscribingHandlerInterface
 {
+    /**
+     * Return format:
+     *
+     *      array(
+     *          array(
+     *              'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
+     *              'format' => 'json',
+     *              'type' => 'DateTime',
+     *              'method' => 'serializeDateTimeToJson',
+     *          ),
+     *      )
+     *
+     * @return array
+     */
     public static function getSubscribingMethods()
     {
         return [
@@ -128,6 +141,16 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         ];
     }
 
+    /**
+     * Serialize Anount type
+     * The amounts will be serialized with a precission of 2 digits
+     *
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed $data
+     * @param array $type
+     * @param Context $context
+     * @return DOMText|false
+     */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
         $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 2, ".", ""));
@@ -141,6 +164,16 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         return $node;
     }
 
+    /**
+     * Serialize quantity type
+     * The quantity will be serialized with a precission of 4 digits
+     *
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed $data
+     * @param array $type
+     * @param Context $context
+     * @return DOMText|false
+     */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
         $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 4, ".", ""));
@@ -154,12 +187,33 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         return $node;
     }
 
+    /**
+     * Serialize a percantage value
+     * The valze will be serialized with a precission of 2 digits
+     *
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed $data
+     * @param array $type
+     * @param Context $context
+     * @return DOMText|false
+     */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
         $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 2, ".", ""));
         return $node;
     }
 
+    /**
+     * Serialize a inditcator
+     * False and true values will be serialized correctly (false won't be serialized
+     * in the default implementation)
+     *
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed $data
+     * @param array $type
+     * @param Context $context
+     * @return DOMElement|false
+     */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
         $node = $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
