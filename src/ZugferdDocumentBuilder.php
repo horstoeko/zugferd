@@ -326,6 +326,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
      * but stated by the seller on the invoice.
      *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
+     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
+     * Cross Industry Invoice (CII).
+     *
      * @param string $buyerreference
      * An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentBuilder
