@@ -3,6 +3,7 @@
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 
 require getcwd() . "/../vendor/autoload.php";
 
@@ -12,12 +13,15 @@ $document
     ->addDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.')
     ->addDocumentNote('Lieferant GmbH' . PHP_EOL . 'Lieferantenstraße 20' . PHP_EOL . '80333 München' . PHP_EOL . 'Deutschland' . PHP_EOL . 'Geschäftsführer: Hans Muster' . PHP_EOL . 'Handelsregisternummer: H A 123' . PHP_EOL . PHP_EOL, null, 'REG')
     ->setDocumentSupplyChainEvent(\DateTime::createFromFormat('Ymd', '20180305'))
+    ->addDocumentPaymentMean(ZugferdPaymentMeans::UNTDID_4461_58, null, null, null, null, null, "DE12500105170648489890", null, null, null)
     ->setDocumentSeller("Lieferant GmbH", "549910")
     ->addDocumentSellerGlobalId("4000001123452", "0088")
     ->addDocumentSellerTaxRegistration("FC", "201/113/40209")
     ->addDocumentSellerTaxRegistration("VA", "DE123456789")
     ->setDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE")
+    ->setDocumentSellerContact("Heinz Mükker", "Buchhaltung", "+49-111-2222222", "+49-111-3333333","info@lieferant.de")
     ->setDocumentBuyer("Kunden AG Mitte", "GE2020211")
+    ->setDocumentBuyerReference("34676-342323")
     ->setDocumentBuyerAddress("Kundenstraße 15", "", "", "69876", "Frankfurt", "DE")
     ->addDocumentTax("S", "VAT", 275.0, 19.25, 7.0)
     ->addDocumentTax("S", "VAT", 198.0, 37.62, 19.0)
