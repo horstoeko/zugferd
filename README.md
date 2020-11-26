@@ -13,10 +13,6 @@ Information about...
 
 This package makes use of [JMS Serializer](http://jmsyst.com/libs/serializer), [Xsd2Php](https://github.com/goetas-webservices/xsd2php), [FPDF](https://github.com/Setasign/FPDF) and  [FPDI](https://github.com/Setasign/FPDI).
 
-## Project status
-
-**This project is currently still in beta-stage.** Please use with care.
-
 ## Installation
 
 There is one recommended way to install `horstoeko/zugferd` via [Composer](https://getcomposer.org/):
@@ -26,7 +22,7 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
 ```js
   "require": {
       ..
-      "horstoeko/zugferd":"^0.1",
+      "horstoeko/zugferd":"^1",
       ..
   },
 ```
