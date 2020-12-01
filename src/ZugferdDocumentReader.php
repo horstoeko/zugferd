@@ -309,23 +309,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     private function performValidationAgainstSchematron(string $xmlcontent): ZugferdDocumentReader
     {
-        /* !!! Disabled
-        $schematronFilename = dirname(__FILE__) . "/schema/schematron/" . $this->profiledef['schematronfilename'];
-
-        if (!file_exists($schematronFilename) || !is_readable($schematronFilename)) {
-            return $this;
-        }
-
-        $schematron = new Schematron;
-        $schematron->load($schematronFilename);
-
-        $document = new DOMDocument;
-        $document->loadXML($xmlcontent);
-
-        $result = $schematron->validate($document);
-
-        */
-
+        //TODO Implement schematron validation
         return $this;
     }
 
