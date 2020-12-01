@@ -450,6 +450,16 @@ in summation calculation</td>
                     <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_doSetDocumentPositionNote">doSetDocumentPositionNote</a>(string $content)
+        
+                                            <p>Add detailed information on the free text on the position</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_doAddTradeLineItemWithSurcharge">doAddTradeLineItemWithSurcharge</a>(string $lineId, string $productName, float $unitPrice, float $chargeAmount, string $chargeReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
         
                                             <p>Adds a new position (line) to document with a surcharge amount</p>                </div>
@@ -1949,8 +1959,48 @@ given is the percentage. For example, the value 20 is given for 20% (and not 0.2
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_doSetDocumentPositionNote">
+        <div class="location">at         line 660</div>
+        <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
+    <strong>doSetDocumentPositionNote</strong>(string $content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add detailed information on the free text on the position</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td>A free text that contains unstructured information that is relevant to the invoice item</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_doAddTradeLineItemWithSurcharge">
-        <div class="location">at         line 712</div>
+        <div class="location">at         line 726</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddTradeLineItemWithSurcharge</strong>(string $lineId, string $productName, float $unitPrice, float $chargeAmount, string $chargeReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
         </code>
@@ -2035,7 +2085,7 @@ given is the percentage. For example, the value 20 is given for 20% (and not 0.2
             </div>
                     <div class="method-item">
                     <h3 id="method_doAddTradeLineItemWithDiscount">
-        <div class="location">at         line 776</div>
+        <div class="location">at         line 790</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddTradeLineItemWithDiscount</strong>(string $lineId, string $productName, float $unitPrice, float $discountAmount, string $discountReason, float $quantity, string $unitCode, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
         </code>
@@ -2153,7 +2203,7 @@ given is the percentage. For example, the value 20 is given for 20% (and not 0.2
             </div>
                     <div class="method-item">
                     <h3 id="method_doAddLogisticsServiceCharge">
-        <div class="location">at         line 825</div>
+        <div class="location">at         line 839</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddLogisticsServiceCharge</strong>(float $amount, string $description, string $taxTypeCode, string $taxCategoryCode, float $taxPercent)
         </code>
@@ -2239,7 +2289,7 @@ value 20 is given for 20% (and not 0.2)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_doAddTradeAllowanceCharge">
-        <div class="location">at         line 854</div>
+        <div class="location">at         line 868</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddTradeAllowanceCharge</strong>(float $actualAmount, string $reason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent)
         </code>
@@ -2300,7 +2350,7 @@ such as for withheld taxes may also be specified in this group</p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_doAddApplicableTradeTax">
-        <div class="location">at         line 924</div>
+        <div class="location">at         line 938</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddApplicableTradeTax</strong>(float $basisAmount, float $percent, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
         </code>
@@ -2396,7 +2446,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_doAddApplicableTradeTax2">
-        <div class="location">at         line 974</div>
+        <div class="location">at         line 988</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doAddApplicableTradeTax2</strong>(float $basisAmount, float $calculatedAmount, string $categoryCode, string|null $typeCode = null, float|null $allowanceChargeBasisAmount = null, string|null $exemptionReasonCode = null, string|null $exemptionReason = null)
         </code>
@@ -2491,7 +2541,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_doSetPrepaidAmount">
-        <div class="location">at         line 986</div>
+        <div class="location">at         line 1000</div>
         <code>                    <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doSetPrepaidAmount</strong>(float $totalPrepaidAmount = 0.0)
         </code>
@@ -2531,7 +2581,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_doCalcTotals">
-        <div class="location">at         line 997</div>
+        <div class="location">at         line 1011</div>
         <code>            protected        <a href="../../../horstoeko/zugferd/quick/ZugferdQuickDescriptor.html"><abbr title="horstoeko\zugferd\quick\ZugferdQuickDescriptor">ZugferdQuickDescriptor</abbr></a>
     <strong>doCalcTotals</strong>()
         </code>
@@ -2561,7 +2611,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addToInternalVatBuffer">
-        <div class="location">at         line 1026</div>
+        <div class="location">at         line 1040</div>
         <code>            protected        void
     <strong>addToInternalVatBuffer</strong>(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
         </code>
@@ -2632,7 +2682,7 @@ the vat breakdown</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_writeVatBreakDown">
-        <div class="location">at         line 1068</div>
+        <div class="location">at         line 1082</div>
         <code>            protected        void
     <strong>writeVatBreakDown</strong>()
         </code>
@@ -2662,7 +2712,7 @@ the vat breakdown</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_summarizeVatTableElement">
-        <div class="location">at         line 1091</div>
+        <div class="location">at         line 1105</div>
         <code>            protected        float
     <strong>summarizeVatTableElement</strong>(int $index)
         </code>
