@@ -651,6 +651,20 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Add detailed information on the free text on the position
+     *
+     * @param string $content
+     * A free text that contains unstructured information that is relevant to the invoice item
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetDocumentPositionNote(string $content): ZugferdQuickDescriptor
+    {
+        $this->setDocumentPositionNote($content);
+
+        return $this;
+    }
+
+    /**
      * Adds a new position (line) to document with a surcharge amount
      *
      * @param string $lineId
@@ -1055,7 +1069,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $this->vatBreakdown[$vatGroup][self::VT_CALCULATEDAMOUNT] =
             round(
                 $this->vatBreakdown[$vatGroup][self::VT_BASISAMOUNT] *
-                $this->vatBreakdown[$vatGroup][self::VT_TAXPERCENT] / 100.0,
+                    $this->vatBreakdown[$vatGroup][self::VT_TAXPERCENT] / 100.0,
                 2
             );
     }
