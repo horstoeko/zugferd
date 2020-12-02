@@ -19,7 +19,7 @@ use horstoeko\zugferd\ZugferdProfiles;
  * Class representing the document descriptor for outgoing documents.
  * Creating them in a simple and common way in EN16931 profile
  * This class is slightly inspired by the invoicedescriptor of the
- * https://github.com/stephanstapel/ZUGFeRD-csharp project
+ * __https://github.com/stephanstapel/ZUGFeRD-csharp__ project
  * This class contains only basic functionality
  *
  * @category Zugferd
