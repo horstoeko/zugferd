@@ -363,7 +363,7 @@
         <echo message="Creating XRechnung 2.0..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
-            <arg path="./examples/XRechnungSimpleQuick.php"/>
+            <arg path="./examples/XRechnung2SimpleQuick.php"/>
         </exec>
         <echo message="Created XRechnung 2.0."/>
         <!-- Validate XRechnugn 2.0 -->
