@@ -4,6 +4,14 @@
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
     <property name="url.sami.download" value="http://get.sensiolabs.org/sami.phar"/>
+    <property name="url.validator.download" value="https://github.com/itplr-kosit/validator/releases/download/v1.4.0/validationtool-1.4.0.zip"/>
+    <property name="url.validator.scenarios.download" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2020-07-31/validator-configuration-xrechnung_2.0.0_2020-07-31.zip"/>
+    <property name="validatorzipdir" value="${basedir}/build/validator"/>
+    <property name="validatorconfigzipdir" value="${basedir}/build/validator"/>
+    <property name="validatorzipname" value="validator.zip"/>
+    <property name="validatorconfigzipname" value="validator-configuration.zip"/>
+    <property name="validatorzip" value="${validatorzipdir}/${validatorzipname}"/>
+    <property name="validatorconfigzip" value="${validatorconfigzipdir}/${validatorconfigzipname}"/>
     <property name="composer" value="${basedir}/composer.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
@@ -56,7 +64,7 @@
             <arg path="${sami}"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,schematron,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -218,6 +226,20 @@
                 </not>
             </condition>
         </fail>
+        <fail message="Schematron for XRechnung 2.0 did not finish successfully">
+            <condition>
+                <not>
+                    <equals arg1="${result.schematron.xrechnung}" arg2="0"/>
+                </not>
+            </condition>
+        </fail>
+        <fail message="Schematron for EN16931 did not finish successfully">
+            <condition>
+                <not>
+                    <equals arg1="${result.schematron.en16931}" arg2="0"/>
+                </not>
+            </condition>
+        </fail>
         <echo message="Checked failure"/>
     </target>
     <target name="projectdoc" depends="prepare,downloadsami" description="Generator project documentation using Sami.">
@@ -302,5 +324,70 @@
         <delete file="${basedir}/doc/renderer.index"/>
         <delete file="${basedir}/doc/opensearch.xml"/>
         <delete dir="${basedir}/cache"/>
+    </target>
+    <target name="schematron" description="Validate agains schematron">
+        <!-- Clean -->
+        <delete dir="${basedir}/build/validator"/>
+        <delete file="${basedir}/examples/factur-x.xml"/>
+        <mkdir dir="${basedir}/build/validator"/>
+        <!-- Get Validator -->
+        <echo message="Downloading validator..."/>
+        <exec executable="wget" failonerror="true">
+            <arg value="${url.validator.download}"/>
+            <arg value="-O"/>
+            <arg path="${validatorzip}"/>
+        </exec>
+        <echo message="Downloaded validator."/>
+        <!-- Get Scenarios -->
+        <echo message="Downloading scenarios..."/>
+        <exec executable="wget" failonerror="true">
+            <arg value="${url.validator.scenarios.download}"/>
+            <arg value="-O"/>
+            <arg path="${validatorconfigzip}"/>
+        </exec>
+        <echo message="Downloaded validator."/>
+        <!-- Unpacking -->
+        <echo message="Unpacking..."/>
+        <exec executable="unzip" failonerror="true">
+            <arg path="${validatorzip}"/>
+            <arg value="-d"/>
+            <arg path="${validatorzipdir}"/>
+        </exec>
+        <exec executable="unzip" failonerror="true">
+            <arg path="${validatorconfigzip}"/>
+            <arg value="-d"/>
+            <arg path="${validatorconfigzipdir}"/>
+        </exec>
+        <echo message="Unpacked."/>
+        <!-- XRechnung 2.0 -->
+        <echo message="Creating XRechnung 2.0..."/>
+        <exec executable="php" dir="${basedir}/examples" failonerror="true">
+            <arg value="-f"/>
+            <arg path="./examples/XRechnungSimpleQuick.php"/>
+        </exec>
+        <echo message="Created XRechnung 2.0."/>
+        <!-- Validate XRechnugn 2.0 -->
+        <exec executable="java" resultproperty="result.schematron.xrechnung">
+            <arg value="-jar"/>
+            <arg path="${basedir}/build/validator/validationtool-1.4.0-standalone.jar"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/build/validator/scenarios.xml"/>
+            <arg path="${basedir}/examples/factur-x.xml"/>
+        </exec>
+        <!-- EN16931 -->
+        <echo message="Creating EN16931..."/>
+        <exec executable="php" dir="${basedir}/examples" failonerror="true">
+            <arg value="-f"/>
+            <arg path="./examples/En16931SimpleQuick.php"/>
+        </exec>
+        <echo message="Created EN16931."/>
+        <!-- Validate XRechnugn 2.0 -->
+        <exec executable="java" resultproperty="result.schematron.en16931">
+            <arg value="-jar"/>
+            <arg path="${basedir}/build/validator/validationtool-1.4.0-standalone.jar"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/build/validator/scenarios.xml"/>
+            <arg path="${basedir}/examples/factur-x.xml"/>
+        </exec>
     </target>
 </project>
