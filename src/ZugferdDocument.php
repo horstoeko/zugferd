@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
-*/
+ */
 
 namespace horstoeko\zugferd;
 
@@ -80,10 +80,8 @@ class ZugferdDocument
      */
     public function __construct(int $profile)
     {
-        $this->profile = $profile;
-        $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
-        $this->objectHelper = new ZugferdObjectHelper($profile);
-
+        $this->initProfile($profile);
+        $this->initObjectHelper();
         $this->initSerialzer();
     }
 
@@ -103,12 +101,45 @@ class ZugferdDocument
     /**
      * @internal
      *
+     * Sets the internal profile definitions
+     *
+     * @param integer $profile
+     * The internal id of the profile (see ZugferdProfiles.php)
+     *
+     * @return ZugferdDocument
+     */
+    private function initProfile(int $profile): ZugferdDocument
+    {
+        $this->profile = $profile;
+        $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
+
+        return $this;
+    }
+
+    /**
+     * @internal
+     *
+     * Build the internal object helper
+     * @codeCoverageIgnore
+     *
+     * @return ZugferdDocument
+     */
+    private function initObjectHelper(): ZugferdDocument
+    {
+        $this->objectHelper = new ZugferdObjectHelper($this->profile);
+
+        return $this;
+    }
+
+    /**
+     * @internal
+     *
      * Build the internal serialzer
      * @codeCoverageIgnore
      *
-     * @return void
+     * @return ZugferdDocument
      */
-    private function initSerialzer(): void
+    private function initSerialzer(): ZugferdDocument
     {
         $serializerBuilder = SerializerBuilder::create();
         $this->serializerBuilder = $serializerBuilder;
@@ -125,5 +156,7 @@ class ZugferdDocument
         });
 
         $this->serializer = $this->serializerBuilder->build();
+
+        return $this;
     }
 }
