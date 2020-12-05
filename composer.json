@@ -5,12 +5,21 @@
     "homepage": "https://github.com/horstoeko/zugferd",
     "type": "package",
     "license": "MIT",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Daniel Erling",
-            "email": "daniel@erling.com.de"
+            "email": "daniel@erling.com.de",
+            "role": "lead"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "7.3.0"
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "horstoeko\\zugferd\\": "src",
@@ -29,22 +38,23 @@
         "php": "^7",
         "jms/serializer": "^3",
         "adrienrn/php-mimetyper": "^0.2",
-        "goetas-webservices/xsd2php-runtime": "^0.2.2",
+        "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "ext-simplexml": "*",
         "symfony/validator": "^5",
         "smalot/pdfparser": "^0",
         "setasign/fpdf": "^1",
-        "setasign/fpdi": "^2"
+        "setasign/fpdi": "^2",
+        "symfony/yaml": "^5"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
         "phploc/phploc": "^7",
-        "phpmd/phpmd" : "@stable",
+        "phpmd/phpmd" : "^2",
         "phpunit/phpunit": "^9",
         "sebastian/phpcpd": "^6",
-        "squizlabs/php_codesniffer": "^3.5",
-        "theseer/phpdox": "^0.7",
-        "goetas-webservices/xsd2php": "^0.3",
+        "squizlabs/php_codesniffer": "^3",
+        "theseer/phpdox": "^0",
+        "goetas-webservices/xsd2php": "^0",
         "clean/phpdoc-md": "^0"
     }
 }
