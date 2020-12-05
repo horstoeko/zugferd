@@ -110,6 +110,22 @@ class BuilderBaseTest extends TestCase
     }
 
     /**
+     * Assert a xpath with $expected value in a multiple element resultset
+     *
+     * @param string $xpath
+     * @param integer $index
+     * @param string $expected
+     * @return void
+     */
+    protected function assertXPathValueStartsWithIndex(string $xpath, int $index, string $expected): void
+    {
+        $xml = $this->getXml();
+        $xmlvalue = $xml->xpath($xpath);
+        $this->assertArrayHasKey($index, $xmlvalue);
+        $this->assertEquals($expected, substr($xmlvalue[$index], 0, strlen($expected)));
+    }
+
+    /**
      * Assert a xpath with $expected value and an expected attribute value
      *
      * @param string $xpath
@@ -144,6 +160,26 @@ class BuilderBaseTest extends TestCase
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayHasKey($index, $xmlvalue);
         $this->assertEquals($expected, $xmlvalue[$index]);
+        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
+        $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
+        $this->assertEquals($expectedAttributeValue, $xmlvalue[$index]->attributes()[$expectedAttribute][0]);
+    }
+
+    /**
+     * Assert a xpath with $expected value in a multiple resule and an expected attribute value
+     *
+     * @param string $xpath
+     * @param string $expected
+     * @param string $expectedAttribute
+     * @param string $expectedAttributeValue
+     * @return void
+     */
+    protected function assertXPathValueStartsWithIndexAndAttribute(string $xpath, int $index, string $expected, string $expectedAttribute, string $expectedAttributeValue): void
+    {
+        $xml = $this->getXml();
+        $xmlvalue = $xml->xpath($xpath);
+        $this->assertArrayHasKey($index, $xmlvalue);
+        $this->assertEquals($expected, substr($xmlvalue[$index], 0, strlen($expected)));
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
         $this->assertEquals($expectedAttributeValue, $xmlvalue[$index]->attributes()[$expectedAttribute][0]);

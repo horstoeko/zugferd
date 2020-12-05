@@ -990,6 +990,25 @@ class BuilderExtendedTest extends BuilderBaseTest
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAdditionalReferencedDocument
+     */
+    public function testAddDocumentAdditionalReferencedDocumentWithAttachment()
+    {
+        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime(), dirname(__FILE__) . "/data/InvalidPDF.pdf");
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 2, "A-1011");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:URIID', 2, "http://lieferant.de/docs/a1011.pdf");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:TypeCode', 2, "type");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:Name', 2, "Leistungsnachweis");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:ReferenceTypeCode', 2, "reftype");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 2, (new \DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueStartsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC");
+        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC", "mimeCode", "application/pdf");
+        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC", "filename", "InvalidPDF.pdf");
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceReferencedDocument
      */
     public function testSetDocumentInvoiceReferencedDocument()

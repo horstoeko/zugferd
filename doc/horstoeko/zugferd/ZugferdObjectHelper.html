@@ -89,6 +89,18 @@
             <p>Class representing a collection of common helpers and class factories</p>                                </div>
     
     
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>SUPPORTEDTMIMETYPES</td>
+                <td class="last">
+                    <p><em>A list of supported mimetypes by binaryattachments</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
             <h2>Properties</h2>
 
@@ -807,7 +819,7 @@ in object $instance</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 48</div>
+        <div class="location">at         line 61</div>
         <code>                    
     <strong>__construct</strong>(int $profile)
         </code>
@@ -838,7 +850,7 @@ in object $instance</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdType">
-        <div class="location">at         line 61</div>
+        <div class="location">at         line 74</div>
         <code>                    object|null
     <strong>getIdType</strong>(string|null $value = null, string|null $schemeId = null)
         </code>
@@ -883,7 +895,7 @@ in object $instance</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTextType">
-        <div class="location">at         line 80</div>
+        <div class="location">at         line 93</div>
         <code>                    object|null
     <strong>getTextType</strong>(string|null $value = null)
         </code>
@@ -923,7 +935,7 @@ in object $instance</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCodeType">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 108</div>
         <code>                    object|null
     <strong>getCodeType</strong>(string|null $value = null)
         </code>
@@ -963,7 +975,7 @@ in object $instance</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCodeType2">
-        <div class="location">at         line 113</div>
+        <div class="location">at         line 126</div>
         <code>                    object|null
     <strong>getCodeType2</strong>(string|null $value = null, string|null $listID = null, string|null $listVersionID = null)
         </code>
@@ -1014,7 +1026,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIndicatorType">
-        <div class="location">at         line 133</div>
+        <div class="location">at         line 146</div>
         <code>                    object|null
     <strong>getIndicatorType</strong>(bool|null $value = null)
         </code>
@@ -1054,7 +1066,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getNoteType">
-        <div class="location">at         line 154</div>
+        <div class="location">at         line 167</div>
         <code>                    object|null
     <strong>getNoteType</strong>(string|null $content = null, string|null $contentCode = null, string|null $subjectCode = null)
         </code>
@@ -1104,7 +1116,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFormattedDateTimeType">
-        <div class="location">at         line 178</div>
+        <div class="location">at         line 191</div>
         <code>                    object|null
     <strong>getFormattedDateTimeType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
         </code>
@@ -1144,7 +1156,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateTimeType">
-        <div class="location">at         line 200</div>
+        <div class="location">at         line 213</div>
         <code>                    object|null
     <strong>getDateTimeType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
         </code>
@@ -1184,7 +1196,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDateType">
-        <div class="location">at         line 222</div>
+        <div class="location">at         line 235</div>
         <code>                    object|null
     <strong>getDateType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $datetime = null)
         </code>
@@ -1224,7 +1236,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAmountType">
-        <div class="location">at         line 245</div>
+        <div class="location">at         line 258</div>
         <code>                    object|null
     <strong>getAmountType</strong>(float|null $value, string|null $currencyCode = null)
         </code>
@@ -1269,7 +1281,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPercentType">
-        <div class="location">at         line 268</div>
+        <div class="location">at         line 281</div>
         <code>                    object|null
     <strong>getPercentType</strong>(float|null $value)
         </code>
@@ -1309,7 +1321,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getQuantityType">
-        <div class="location">at         line 288</div>
+        <div class="location">at         line 301</div>
         <code>                    object|null
     <strong>getQuantityType</strong>(float|null $value, string|null $unitCode = null)
         </code>
@@ -1354,7 +1366,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMeasureType">
-        <div class="location">at         line 312</div>
+        <div class="location">at         line 325</div>
         <code>                    object|null
     <strong>getMeasureType</strong>(float|null $value, string|null $unitCode = null)
         </code>
@@ -1399,7 +1411,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumericType">
-        <div class="location">at         line 335</div>
+        <div class="location">at         line 348</div>
         <code>                    object|null
     <strong>getNumericType</strong>(float|null $value = null)
         </code>
@@ -1439,7 +1451,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTaxCategoryCodeType">
-        <div class="location">at         line 354</div>
+        <div class="location">at         line 367</div>
         <code>                    object|null
     <strong>getTaxCategoryCodeType</strong>(string|null $taxCategoryCode = null)
         </code>
@@ -1479,7 +1491,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTaxTypeCodeType">
-        <div class="location">at         line 373</div>
+        <div class="location">at         line 386</div>
         <code>                    object|null
     <strong>getTaxTypeCodeType</strong>(string|null $taxTypeCode = null)
         </code>
@@ -1519,7 +1531,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimeReferenceCodeType">
-        <div class="location">at         line 392</div>
+        <div class="location">at         line 405</div>
         <code>                    object|null
     <strong>getTimeReferenceCodeType</strong>(string|null $value = null)
         </code>
@@ -1559,7 +1571,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSpecifiedPeriodType">
-        <div class="location">at         line 414</div>
+        <div class="location">at         line 427</div>
         <code>                    object|null
     <strong>getSpecifiedPeriodType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $completedate = null, string|null $description = null)
         </code>
@@ -1614,7 +1626,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getBinaryObjectType">
-        <div class="location">at         line 438</div>
+        <div class="location">at         line 451</div>
         <code>                    object|null
     <strong>getBinaryObjectType</strong>(string|null $binarydata = null, string|null $mimetype = null, string|null $filename = null)
         </code>
@@ -1664,7 +1676,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferencedDocumentType">
-        <div class="location">at         line 466</div>
+        <div class="location">at         line 479</div>
         <code>                    object|null
     <strong>getReferencedDocumentType</strong>(string|null $issuerassignedid = null, string|null $uriid = null, string|null $lineid = null, string|null $typecode = null, string|array|null $name = null, string|null $reftypecode = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null, string|null $binarydatafilename = null)
         </code>
@@ -1739,7 +1751,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCountryIDType">
-        <div class="location">at         line 507</div>
+        <div class="location">at         line 526</div>
         <code>                    object|null
     <strong>getCountryIDType</strong>(string|null $id = null)
         </code>
@@ -1779,7 +1791,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeCountryType">
-        <div class="location">at         line 524</div>
+        <div class="location">at         line 543</div>
         <code>                    object|null
     <strong>getTradeCountryType</strong>(string|null $id = null)
         </code>
@@ -1819,7 +1831,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCrossIndustryInvoice">
-        <div class="location">at         line 542</div>
+        <div class="location">at         line 561</div>
         <code>                    <abbr title="horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>|<abbr title="horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoiceType">CrossIndustryInvoiceType</abbr>
     <strong>getCrossIndustryInvoice</strong>()
         </code>
@@ -1849,7 +1861,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeParty">
-        <div class="location">at         line 565</div>
+        <div class="location">at         line 584</div>
         <code>                    object|null
     <strong>getTradeParty</strong>(string|null $name = null, string|null $ID = null, string|null $description = null)
         </code>
@@ -1899,7 +1911,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeAddress">
-        <div class="location">at         line 592</div>
+        <div class="location">at         line 611</div>
         <code>                    object|null
     <strong>getTradeAddress</strong>(string|null $lineone = null, string|null $linetwo = null, string|null $linethree = null, string|null $postcode = null, string|null $city = null, string|null $country = null, string|null $subdivision = null)
         </code>
@@ -1969,7 +1981,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLegalOrganization">
-        <div class="location">at         line 619</div>
+        <div class="location">at         line 638</div>
         <code>                    object|null
     <strong>getLegalOrganization</strong>(string|null $legalorgid = null, string|null $legalorgtype = null, string|null $legalorgname = null)
         </code>
@@ -2019,7 +2031,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeContact">
-        <div class="location">at         line 643</div>
+        <div class="location">at         line 662</div>
         <code>                    object|null
     <strong>getTradeContact</strong>(string|null $contactpersonname = null, string|null $contactdepartmentname = null, string|null $contactphoneno = null, string|null $contactfaxno = null, string|null $contactemailaddr = null)
         </code>
@@ -2079,7 +2091,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getUniversalCommunicationType">
-        <div class="location">at         line 671</div>
+        <div class="location">at         line 690</div>
         <code>                    object|null
     <strong>getUniversalCommunicationType</strong>(string|null $number = null, string|null $uriid = null, string|null $urischeme = null)
         </code>
@@ -2129,7 +2141,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTaxRegistrationType">
-        <div class="location">at         line 692</div>
+        <div class="location">at         line 711</div>
         <code>                    object|null
     <strong>getTaxRegistrationType</strong>(string|null $taxregtype = null, string|null $taxregid = null)
         </code>
@@ -2174,7 +2186,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeDeliveryTermsType">
-        <div class="location">at         line 715</div>
+        <div class="location">at         line 734</div>
         <code>                    object|null
     <strong>getTradeDeliveryTermsType</strong>(string|null $code = null)
         </code>
@@ -2214,7 +2226,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getProcuringProjectType">
-        <div class="location">at         line 735</div>
+        <div class="location">at         line 754</div>
         <code>                    object|null
     <strong>getProcuringProjectType</strong>(string|null $id = null, string|null $name = null)
         </code>
@@ -2259,7 +2271,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSupplyChainEventType">
-        <div class="location">at         line 755</div>
+        <div class="location">at         line 774</div>
         <code>                    object|null
     <strong>getSupplyChainEventType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date = null)
         </code>
@@ -2299,7 +2311,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementFinancialCardType">
-        <div class="location">at         line 776</div>
+        <div class="location">at         line 795</div>
         <code>                    object|null
     <strong>getTradeSettlementFinancialCardType</strong>(string|null $type = null, string|null $id = null, string|null $holderName = null)
         </code>
@@ -2349,7 +2361,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDebtorFinancialAccountType">
-        <div class="location">at         line 796</div>
+        <div class="location">at         line 815</div>
         <code>                    object|null
     <strong>getDebtorFinancialAccountType</strong>(string|null $iban = null)
         </code>
@@ -2389,7 +2401,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCreditorFinancialAccountType">
-        <div class="location">at         line 817</div>
+        <div class="location">at         line 836</div>
         <code>                    object|null
     <strong>getCreditorFinancialAccountType</strong>(string|null $iban = null, string|null $accountName = null, string|null $proprietaryID = null)
         </code>
@@ -2439,7 +2451,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCreditorFinancialInstitutionType">
-        <div class="location">at         line 838</div>
+        <div class="location">at         line 857</div>
         <code>                    object|null
     <strong>getCreditorFinancialInstitutionType</strong>(string|null $bic = null)
         </code>
@@ -2479,7 +2491,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementPaymentMeansType">
-        <div class="location">at         line 858</div>
+        <div class="location">at         line 877</div>
         <code>                    object|null
     <strong>getTradeSettlementPaymentMeansType</strong>(string|null $typecode = null, string|null $information = null)
         </code>
@@ -2524,7 +2536,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradePaymentTermsType">
-        <div class="location">at         line 880</div>
+        <div class="location">at         line 899</div>
         <code>                    object|null
     <strong>getTradePaymentTermsType</strong>(string|null $description = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate = null, string|null $directDebitMandateID = null)
         </code>
@@ -2574,7 +2586,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradePaymentDiscountTermsType">
-        <div class="location">at         line 906</div>
+        <div class="location">at         line 925</div>
         <code>                    object|null
     <strong>getTradePaymentDiscountTermsType</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $basisDateTime = null, float|null $basisPeriodMeasureValue = null, string|null $basisPeriodMeasureUnitCode = null, float|null $basisAmount = null, float|null $calculationPercent = null, float|null $actualDiscountAmount = null)
         </code>
@@ -2639,7 +2651,7 @@ information</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeTaxType">
-        <div class="location">at         line 940</div>
+        <div class="location">at         line 959</div>
         <code>                    object|null
     <strong>getTradeTaxType</strong>(string|null $categoryCode = null, string|null $typeCode = null, float|null $basisAmount = null, float|null $calculatedAmount = null, float|null $rateApplicablePercent = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null, float|null $lineTotalBasisAmount = null, float|null $allowanceChargeBasisAmount = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $taxPointDate = null, string|null $dueDateTypeCode = null)
         </code>
@@ -2730,7 +2742,7 @@ Sales tax breakdown, Umsatzsteueraufschlüsselung</p>                           
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeAllowanceChargeType">
-        <div class="location">at         line 981</div>
+        <div class="location">at         line 1000</div>
         <code>                    object|null
     <strong>getTradeAllowanceChargeType</strong>(float|null $actualAmount = null, bool|null $isCharge = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $calculationPercent = null, float|null $basisAmount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null, string|null $reason = null)
         </code>
@@ -2826,7 +2838,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLogisticsServiceChargeType">
-        <div class="location">at         line 1015</div>
+        <div class="location">at         line 1034</div>
         <code>                    object|null
     <strong>getLogisticsServiceChargeType</strong>(string|null $description = null, float|null $appliedAmount = null, array|null $taxTypeCodes = null, array|null $taxCategpryCodes = null, array|null $rateApplicablePercents = null)
         </code>
@@ -2886,7 +2898,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementHeaderMonetarySummationType">
-        <div class="location">at         line 1050</div>
+        <div class="location">at         line 1069</div>
         <code>                    object|null
     <strong>getTradeSettlementHeaderMonetarySummationType</strong>(float|null $grandTotalAmount = null, float|null $duePayableAmount = null, float|null $lineTotalAmount = null, float|null $chargeTotalAmount = null, float|null $allowanceTotalAmount = null, float|null $taxBasisTotalAmount = null, float|null $taxTotalAmount = null, float|null $roundingAmount = null, float|null $totalPrepaidAmount = null)
         </code>
@@ -2966,7 +2978,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementHeaderMonetarySummationTypeOnly">
-        <div class="location">at         line 1076</div>
+        <div class="location">at         line 1095</div>
         <code>                    object|null
     <strong>getTradeSettlementHeaderMonetarySummationTypeOnly</strong>()
         </code>
@@ -2996,7 +3008,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeAccountingAccountType">
-        <div class="location">at         line 1088</div>
+        <div class="location">at         line 1107</div>
         <code>                    object|null
     <strong>getTradeAccountingAccountType</strong>(string|null $id = null, string|null $typeCode = null)
         </code>
@@ -3041,7 +3053,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentLineDocumentType">
-        <div class="location">at         line 1108</div>
+        <div class="location">at         line 1127</div>
         <code>                    object|null
     <strong>getDocumentLineDocumentType</strong>(string|null $lineid = null)
         </code>
@@ -3081,7 +3093,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSupplyChainTradeLineItemType">
-        <div class="location">at         line 1130</div>
+        <div class="location">at         line 1149</div>
         <code>                    object|null
     <strong>getSupplyChainTradeLineItemType</strong>(string|null $lineid = null, string|null $lineStatusCode = null, string|null $lineStatusReasonCode = null, bool $isTextPosition = false)
         </code>
@@ -3136,7 +3148,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeProductType">
-        <div class="location">at         line 1165</div>
+        <div class="location">at         line 1184</div>
         <code>                    object|null
     <strong>getTradeProductType</strong>(string|null $name = null, string|null $description = null, string|null $sellerAssignedID = null, string|null $buyerAssignedID = null, string|null $globalIDType = null, string|null $globalID = null)
         </code>
@@ -3201,7 +3213,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getProductCharacteristicType">
-        <div class="location">at         line 1192</div>
+        <div class="location">at         line 1211</div>
         <code>                    object|null
     <strong>getProductCharacteristicType</strong>(string|null $typeCode = null, string|null $description = null, float|null $valueMeasure = null, string|null $valueMeasureUnitCode = null, string|null $value)
         </code>
@@ -3261,7 +3273,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getProductClassificationType">
-        <div class="location">at         line 1217</div>
+        <div class="location">at         line 1236</div>
         <code>                    object|null
     <strong>getProductClassificationType</strong>(string|null $classCode = null, string|null $className = null, string|null $listID = null, string|null $listVersionID = null)
         </code>
@@ -3316,7 +3328,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferencedProductType">
-        <div class="location">at         line 1244</div>
+        <div class="location">at         line 1263</div>
         <code>                    object|null
     <strong>getReferencedProductType</strong>(string|null $globalID, string|null $globalIDType, string|null $sellerAssignedID, string|null $buyerAssignedID, string|null $name, string|null $description = null, float|null $unitQuantity, string|null $unitCode)
         </code>
@@ -3391,7 +3403,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradePriceType">
-        <div class="location">at         line 1270</div>
+        <div class="location">at         line 1289</div>
         <code>                    object|null
     <strong>getTradePriceType</strong>(float|null $amount = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null)
         </code>
@@ -3441,7 +3453,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTradeSettlementLineMonetarySummationType">
-        <div class="location">at         line 1291</div>
+        <div class="location">at         line 1310</div>
         <code>                    object|null
     <strong>getTradeSettlementLineMonetarySummationType</strong>(float|null $lineTotalAmount = null, float|null $totalAllowanceChargeAmount = null)
         </code>
@@ -3486,7 +3498,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTaxApplicableTradeCurrencyExchangeType">
-        <div class="location">at         line 1314</div>
+        <div class="location">at         line 1333</div>
         <code>                    object|null
     <strong>getTaxApplicableTradeCurrencyExchangeType</strong>(string|null $sourceCurrencyCode = null, string|null $targetCurrencyCode = null, float|null $rate = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $rateDateTime = null)
         </code>
@@ -3541,7 +3553,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_toDateTime">
-        <div class="location">at         line 1337</div>
+        <div class="location">at         line 1356</div>
         <code>                    <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null
     <strong>toDateTime</strong>(string|null $dateTimeString, string|null $format)
         </code>
@@ -3595,7 +3607,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRateType">
-        <div class="location">at         line 1365</div>
+        <div class="location">at         line 1384</div>
         <code>                    object|null
     <strong>getRateType</strong>(float|null $rateValue)
         </code>
@@ -3635,7 +3647,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_createClassInstance">
-        <div class="location">at         line 1379</div>
+        <div class="location">at         line 1398</div>
         <code>                    object|null
     <strong>createClassInstance</strong>($classname, mixed $constructorvalue = null)
         </code>
@@ -3680,7 +3692,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCall">
-        <div class="location">at         line 1399</div>
+        <div class="location">at         line 1418</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
     <strong>tryCall</strong>(object $instance, string $method, mixed $value)
         </code>
@@ -3730,7 +3742,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallAll">
-        <div class="location">at         line 1425</div>
+        <div class="location">at         line 1444</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
     <strong>tryCallAll</strong>(object $instance, array $methods, mixed $value)
         </code>
@@ -3780,7 +3792,7 @@ Zu- und Abschläge</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallAndReturn">
-        <div class="location">at         line 1451</div>
+        <div class="location">at         line 1470</div>
         <code>                    mixed
     <strong>tryCallAndReturn</strong>(object $instance, string $method)
         </code>
@@ -3826,7 +3838,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallByPath">
-        <div class="location">at         line 1474</div>
+        <div class="location">at         line 1493</div>
         <code>                    void
     <strong>tryCallByPath</strong>(object $instance, string $methods, $value)
         </code>
@@ -3876,7 +3888,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_tryCallByPathAndReturn">
-        <div class="location">at         line 1495</div>
+        <div class="location">at         line 1514</div>
         <code>                    mixed
     <strong>tryCallByPathAndReturn</strong>(object $instance, string $methods)
         </code>
@@ -3921,7 +3933,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureStringArray">
-        <div class="location">at         line 1515</div>
+        <div class="location">at         line 1534</div>
         <code>                    array
     <strong>ensureStringArray</strong>(mixed $input)
         </code>
@@ -3961,7 +3973,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureArray">
-        <div class="location">at         line 1531</div>
+        <div class="location">at         line 1550</div>
         <code>                    array
     <strong>ensureArray</strong>(mixed $value)
         </code>
@@ -4001,7 +4013,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isNullOrEmpty">
-        <div class="location">at         line 1549</div>
+        <div class="location">at         line 1568</div>
         <code>        static            boolean
     <strong>isNullOrEmpty</strong>(mixed $value)
         </code>
@@ -4041,7 +4053,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isAllNullOrEmpty">
-        <div class="location">at         line 1569</div>
+        <div class="location">at         line 1588</div>
         <code>        static            bool
     <strong>isAllNullOrEmpty</strong>(array $args)
         </code>
@@ -4081,7 +4093,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isOneNullOrEmpty">
-        <div class="location">at         line 1590</div>
+        <div class="location">at         line 1609</div>
         <code>        static            bool
     <strong>isOneNullOrEmpty</strong>(array $args)
         </code>

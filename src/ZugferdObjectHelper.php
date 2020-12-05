@@ -39,6 +39,19 @@ class ZugferdObjectHelper
     public $profiledef = [];
 
     /**
+     * A list of supported mimetypes by binaryattachments
+     */
+    const SUPPORTEDTMIMETYPES = [
+        "application/pdf",
+        "image/png",
+        "image/jpeg",
+        "text/csv",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.oasis.opendocument.spreadsheet",
+        "application/xml",
+    ];
+
+    /**
      * Constructor
      *
      * @codeCoverageIgnore
@@ -484,14 +497,20 @@ class ZugferdObjectHelper
 
         if ($binarydatafilename) {
             if (file_exists($binarydatafilename) && is_readable($binarydatafilename)) {
-                $mimetyper = new MimeDbRepository();
-                $content = base64_encode(file_get_contents($binarydatafilename));
                 $pathParts = pathinfo($binarydatafilename);
-                $this->TryCall(
-                    $refdoctype,
-                    'setAttachmentBinaryObject',
-                    $this->GetBinaryObjectType($content, $mimetyper->findType($pathParts["extension"]), $pathParts["basename"])
-                );
+                $mimetyper = new MimeDbRepository();
+                $mimeType = $mimetyper->findType($pathParts["extension"]);
+
+                if (in_array($mimeType, self::SUPPORTEDTMIMETYPES)) {
+                    $content = base64_encode(file_get_contents($binarydatafilename));
+                    $this->TryCall(
+                        $refdoctype,
+                        'setAttachmentBinaryObject',
+                        $this->GetBinaryObjectType($content, $mimeType, $pathParts["basename"])
+                    );
+                } else {
+                    throw new \Exception(sprintf("Invalid attachment. Mimetype %s not supported", $mimeType));
+                }
             }
         }
 
