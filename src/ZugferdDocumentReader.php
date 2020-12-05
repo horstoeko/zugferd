@@ -12,9 +12,7 @@ namespace horstoeko\zugferd;
 use \Closure;
 use \DateTime;
 use \Exception;
-use \DOMDocument;
 use \SimpleXMLElement;
-use \horstoeko\zugferd\exception\ZugferdValidationFailed;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -125,14 +123,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $binarydatadirectory = "";
 
     /**
-     * Flag, that indicates (if true) that before serialization is poerformed
-     * a validation must be done
-     *
-     * @var boolean
-     */
-    private $performValidation = false;
-
-    /**
      * Set the directory where the attached binary data from
      * additional referenced documents are temporary stored
      *
@@ -153,38 +143,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Enables the validation of XML data before the are serialized
-     *
-     * @return ZugferdDocumentReader
-     */
-    public function enableValidation(): ZugferdDocumentReader
-    {
-        return $this->setPerformValidation(true);
-    }
-
-    /**
-     * Disabled the validation of XML data before the are serialized
-     *
-     * @return ZugferdDocumentReader
-     */
-    public function disableValidation(): ZugferdDocumentReader
-    {
-        return $this->setPerformValidation(false);
-    }
-
-    /**
-     * Sets the internal flag which enabled validation
-     *
-     * @param boolean $performValidation
-     * @return ZugferdDocumentReader
-     */
-    private function setPerformValidation(bool $performValidation): ZugferdDocumentReader
-    {
-        $this->performValidation = $performValidation;
-        return $this;
-    }
-
-    /**
      * Guess the profile type of a xml file
      *
      * @codeCoverageIgnore
@@ -193,13 +151,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @return ZugferdDocumentReader
      * @throws Exception
      */
-    public static function readAndGuessFromFile(string $xmlfilename, bool $performValidation = false): ZugferdDocumentReader
+    public static function readAndGuessFromFile(string $xmlfilename): ZugferdDocumentReader
     {
         if (!file_exists($xmlfilename)) {
             throw new Exception("File {$xmlfilename} does not exist...");
         }
 
-        return self::readAndGuessFromContent(file_get_contents($xmlfilename), $performValidation);
+        return self::readAndGuessFromContent(file_get_contents($xmlfilename));
     }
 
     /**
@@ -211,7 +169,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @return ZugferdDocumentReader
      * @throws Exception
      */
-    public static function readAndGuessFromContent(string $xmlcontent, bool $performValidation = false): ZugferdDocumentReader
+    public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
     {
         $xmldocument = new SimpleXMLElement($xmlcontent);
         $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
@@ -222,7 +180,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
             if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return (new static($profile))->setPerformValidation($performValidation)->readContent($xmlcontent);
+                return (new static($profile))->readContent($xmlcontent);
             }
         }
 
@@ -239,77 +197,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     private function readContent(string $xmlcontent): ZugferdDocumentReader
     {
-        $this->performValidation($xmlcontent);
         $this->invoiceObject = $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->profiledef["name"] . '\rsm\CrossIndustryInvoice', 'xml');
-        return $this;
-    }
-
-    /**
-     * Perform all available validations. It validates against XSD
-     * and schematron
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocumentReader
-     */
-    private function performValidation(string $xmlcontent): ZugferdDocumentReader
-    {
-        if ($this->performValidation !== true) {
-            return $this;
-        }
-
-        return $this
-            ->performValidationAgainstXsd($xmlcontent)
-            ->performValidationAgainstSchematron($xmlcontent);
-    }
-
-    /**
-     * Performs a validation against the XSD
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocumentReader
-     * @throws ZugferdValidationFailed
-     */
-    private function performValidationAgainstXsd(string $xmlcontent): ZugferdDocumentReader
-    {
-        $xsdFilename = dirname(__FILE__) . "/schema//" . $this->profiledef['xsdfilename'];
-
-        if (!file_exists($xsdFilename) || !is_readable($xsdFilename)) {
-            return $this;
-        }
-
-        libxml_use_internal_errors(true);
-
-        $doc = new DOMDocument();
-        $doc->loadXML($xmlcontent);
-
-        $validationResult = $doc->schemaValidate($xsdFilename);
-
-        if (false === $validationResult) {
-            $errors = libxml_get_errors();
-            $errorsMessage = '';
-
-            foreach ($errors as $error) {
-                $errorsMessage .= sprintf('XML error "%s"' . "\n", $error->message);
-            }
-
-            libxml_clear_errors();
-            libxml_use_internal_errors(false);
-
-            throw new ZugferdValidationFailed($errors);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Performs a validation against schematron
-     *
-     * @param string $xmlcontent
-     * @return ZugferdDocumentReader
-     */
-    private function performValidationAgainstSchematron(string $xmlcontent): ZugferdDocumentReader
-    {
-        //TODO Implement schematron validation
         return $this;
     }
 

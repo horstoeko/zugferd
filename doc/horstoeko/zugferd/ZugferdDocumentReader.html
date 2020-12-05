@@ -108,30 +108,10 @@ additional referenced documents are temporary stored</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_enableValidation">enableValidation</a>()
-        
-                                            <p>Enables the validation of XML data before the are serialized</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_disableValidation">disableValidation</a>()
-        
-                                            <p>Disabled the validation of XML data before the are serialized</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     static&nbsp;<a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_readAndGuessFromFile">readAndGuessFromFile</a>(string $xmlfilename, bool $performValidation = false)
+                    <a href="#method_readAndGuessFromFile">readAndGuessFromFile</a>(string $xmlfilename)
         
                                             <p>Guess the profile type of a xml file</p>                </div>
                 <div class="col-md-2"></div>
@@ -141,7 +121,7 @@ additional referenced documents are temporary stored</p>                </div>
                     static&nbsp;<a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_readAndGuessFromContent">readAndGuessFromContent</a>(string $xmlcontent, bool $performValidation = false)
+                    <a href="#method_readAndGuessFromContent">readAndGuessFromContent</a>(string $xmlcontent)
         
                                             <p>Guess the profile type of the readden xml document</p>                </div>
                 <div class="col-md-2"></div>
@@ -1553,7 +1533,7 @@ This is the simplified version of ZugferdDocumentReader::getDocumentPositionAllo
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setBinaryDataDirectory">
-        <div class="location">at         line 142</div>
+        <div class="location">at         line 132</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>setBinaryDataDirectory</strong>(string $binarydatadirectory)
         </code>
@@ -1593,70 +1573,10 @@ additional referenced documents are temporary stored</p>                        
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_enableValidation">
-        <div class="location">at         line 160</div>
-        <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-    <strong>enableValidation</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Enables the validation of XML data before the are serialized</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_disableValidation">
-        <div class="location">at         line 170</div>
-        <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-    <strong>disableValidation</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Disabled the validation of XML data before the are serialized</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_readAndGuessFromFile">
-        <div class="location">at         line 196</div>
+        <div class="location">at         line 154</div>
         <code>        static            <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-    <strong>readAndGuessFromFile</strong>(string $xmlfilename, bool $performValidation = false)
+    <strong>readAndGuessFromFile</strong>(string $xmlfilename)
         </code>
     </h3>
     <div class="details">
@@ -1672,12 +1592,7 @@ additional referenced documents are temporary stored</p>                        
                     <tr>
                 <td>string</td>
                 <td>$xmlfilename</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$performValidation</td>
-                <td></td>
+                <td>The filename to read invoice data from</td>
             </tr>
             </table>
 
@@ -1708,9 +1623,9 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_readAndGuessFromContent">
-        <div class="location">at         line 214</div>
+        <div class="location">at         line 172</div>
         <code>        static            <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
-    <strong>readAndGuessFromContent</strong>(string $xmlcontent, bool $performValidation = false)
+    <strong>readAndGuessFromContent</strong>(string $xmlcontent)
         </code>
     </h3>
     <div class="details">
@@ -1726,12 +1641,7 @@ additional referenced documents are temporary stored</p>                        
                     <tr>
                 <td>string</td>
                 <td>$xmlcontent</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$performValidation</td>
-                <td></td>
+                <td>The XML content as a string to read the invoice data from</td>
             </tr>
             </table>
 
@@ -1762,7 +1672,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInformation">
-        <div class="location">at         line 330</div>
+        <div class="location">at         line 218</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInformation</strong>(string|null $documentno, string|null $documenttypecode, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $documentdate, string|null $invoiceCurrency, string|null $taxCurrency, string|null $documentname, string|null $documentlanguage, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $effectiveSpecifiedPeriod)
         </code>
@@ -1846,7 +1756,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentGeneralPaymentInformation">
-        <div class="location">at         line 359</div>
+        <div class="location">at         line 247</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentGeneralPaymentInformation</strong>(string|null $creditorReferenceID, string|null $paymentReference)
         </code>
@@ -1891,7 +1801,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getIsDocumentCopy">
-        <div class="location">at         line 373</div>
+        <div class="location">at         line 261</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getIsDocumentCopy</strong>(bool|null $copyindicator)
         </code>
@@ -1931,7 +1841,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getIsTestDocument">
-        <div class="location">at         line 386</div>
+        <div class="location">at         line 274</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getIsTestDocument</strong>(bool|null $testdocumentindicator)
         </code>
@@ -1971,7 +1881,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSummation">
-        <div class="location">at         line 415</div>
+        <div class="location">at         line 303</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSummation</strong>(float|null $grandTotalAmount, float|null $duePayableAmount, float|null $lineTotalAmount, float|null $chargeTotalAmount, float|null $allowanceTotalAmount, float|null $taxBasisTotalAmount, float|null $taxTotalAmount, float|null $roundingAmount, float|null $totalPrepaidAmount)
         </code>
@@ -2051,7 +1961,7 @@ additional referenced documents are temporary stored</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentNotes">
-        <div class="location">at         line 476</div>
+        <div class="location">at         line 364</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentNotes</strong>(array|null $notes)
         </code>
@@ -2093,7 +2003,7 @@ contains an assiociative array containing the following keys: <em>contentcode</e
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerReference">
-        <div class="location">at         line 498</div>
+        <div class="location">at         line 386</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerReference</strong>(string|null $buyerreference)
         </code>
@@ -2134,7 +2044,7 @@ but stated by the seller on the invoice.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSeller">
-        <div class="location">at         line 519</div>
+        <div class="location">at         line 407</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSeller</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -2188,7 +2098,7 @@ and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerGlobalId">
-        <div class="location">at         line 544</div>
+        <div class="location">at         line 432</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerGlobalId</strong>(array|null $globalID)
         </code>
@@ -2236,7 +2146,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRegistration">
-        <div class="location">at         line 566</div>
+        <div class="location">at         line 454</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -2281,7 +2191,7 @@ for <em>Sales tax identification number of the seller</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerAddress">
-        <div class="location">at         line 598</div>
+        <div class="location">at         line 486</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -2356,7 +2266,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerLegalOrganisation">
-        <div class="location">at         line 627</div>
+        <div class="location">at         line 515</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -2411,7 +2321,7 @@ ISO/IEC 6523 list</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerContact">
-        <div class="location">at         line 652</div>
+        <div class="location">at         line 540</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -2472,7 +2382,7 @@ such as a personal name of the contact person</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyer">
-        <div class="location">at         line 676</div>
+        <div class="location">at         line 564</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyer</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -2524,7 +2434,7 @@ it should be known to the buyer and buyer, e.g. a previously exchanged, seller-a
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerGlobalId">
-        <div class="location">at         line 700</div>
+        <div class="location">at         line 588</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerGlobalId</strong>(array|null $globalID)
         </code>
@@ -2568,7 +2478,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerTaxRegistration">
-        <div class="location">at         line 720</div>
+        <div class="location">at         line 608</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -2611,7 +2521,7 @@ Only the code <strong>VA</strong> is permitted as an identification scheme</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerAddress">
-        <div class="location">at         line 752</div>
+        <div class="location">at         line 640</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -2686,7 +2596,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerLegalOrganisation">
-        <div class="location">at         line 781</div>
+        <div class="location">at         line 669</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -2741,7 +2651,7 @@ ISO/IEC 6523 list</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerContact">
-        <div class="location">at         line 805</div>
+        <div class="location">at         line 693</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -2801,7 +2711,7 @@ ISO/IEC 6523 list</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentative">
-        <div class="location">at         line 827</div>
+        <div class="location">at         line 715</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentative</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -2851,7 +2761,7 @@ ISO/IEC 6523 list</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentativeGlobalId">
-        <div class="location">at         line 848</div>
+        <div class="location">at         line 736</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentativeGlobalId</strong>(array|null $globalID)
         </code>
@@ -2894,7 +2804,7 @@ list published by the ISO/IEC 6523 Maintenance Agency. In particular, the follow
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentativeTaxRegistration">
-        <div class="location">at         line 868</div>
+        <div class="location">at         line 756</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentativeTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -2937,7 +2847,7 @@ number of the tax agent. _ Only the code <strong>VA</strong> is permitted as an 
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentativeAddress">
-        <div class="location">at         line 900</div>
+        <div class="location">at         line 788</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentativeAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -3012,7 +2922,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentativeLegalOrganisation">
-        <div class="location">at         line 927</div>
+        <div class="location">at         line 815</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentativeLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -3065,7 +2975,7 @@ name (also known as the company name)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerTaxRepresentativeContact">
-        <div class="location">at         line 951</div>
+        <div class="location">at         line 839</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerTaxRepresentativeContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -3125,7 +3035,7 @@ name (also known as the company name)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUser">
-        <div class="location">at         line 977</div>
+        <div class="location">at         line 865</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUser</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -3179,7 +3089,7 @@ parties, e.g. a previously exchanged</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUserGlobalId">
-        <div class="location">at         line 1001</div>
+        <div class="location">at         line 889</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUserGlobalId</strong>(array|null $globalID)
         </code>
@@ -3223,7 +3133,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUserTaxRegistration">
-        <div class="location">at         line 1017</div>
+        <div class="location">at         line 905</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUserTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -3264,7 +3174,7 @@ for <em>Sales tax identification number of the product end user</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUserAddress">
-        <div class="location">at         line 1049</div>
+        <div class="location">at         line 937</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUserAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -3339,7 +3249,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUserLegalOrganisation">
-        <div class="location">at         line 1078</div>
+        <div class="location">at         line 966</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUserLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -3394,7 +3304,7 @@ end users name (also known as the company name)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProductEndUserContact">
-        <div class="location">at         line 1102</div>
+        <div class="location">at         line 990</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProductEndUserContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -3454,7 +3364,7 @@ end users name (also known as the company name)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipTo">
-        <div class="location">at         line 1128</div>
+        <div class="location">at         line 1016</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipTo</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -3508,7 +3418,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipToGlobalId">
-        <div class="location">at         line 1148</div>
+        <div class="location">at         line 1036</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipToGlobalId</strong>(array|null $globalID)
         </code>
@@ -3550,7 +3460,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipToTaxRegistration">
-        <div class="location">at         line 1164</div>
+        <div class="location">at         line 1052</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipToTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -3591,7 +3501,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipToAddress">
-        <div class="location">at         line 1200</div>
+        <div class="location">at         line 1088</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipToAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -3668,7 +3578,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipToLegalOrganisation">
-        <div class="location">at         line 1228</div>
+        <div class="location">at         line 1116</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipToLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -3722,7 +3632,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipToContact">
-        <div class="location">at         line 1252</div>
+        <div class="location">at         line 1140</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipToContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -3782,7 +3692,7 @@ registration of the party. In particular, the following scheme codes are used: 0
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipTo">
-        <div class="location">at         line 1278</div>
+        <div class="location">at         line 1166</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipTo</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -3834,7 +3744,7 @@ differentiated by using different identification schemes.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipToGlobalId">
-        <div class="location">at         line 1301</div>
+        <div class="location">at         line 1189</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipToGlobalId</strong>(array|null $globalID)
         </code>
@@ -3877,7 +3787,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipToTaxRegistration">
-        <div class="location">at         line 1320</div>
+        <div class="location">at         line 1208</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipToTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -3919,7 +3829,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipToAddress">
-        <div class="location">at         line 1355</div>
+        <div class="location">at         line 1243</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipToAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -3995,7 +3905,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipToLegalOrganisation">
-        <div class="location">at         line 1385</div>
+        <div class="location">at         line 1273</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipToLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -4049,7 +3959,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateShipToContact">
-        <div class="location">at         line 1412</div>
+        <div class="location">at         line 1300</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateShipToContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -4110,7 +4020,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFrom">
-        <div class="location">at         line 1439</div>
+        <div class="location">at         line 1327</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFrom</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -4163,7 +4073,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFromGlobalId">
-        <div class="location">at         line 1462</div>
+        <div class="location">at         line 1350</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFromGlobalId</strong>(array|null $globalID)
         </code>
@@ -4206,7 +4116,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFromTaxRegistration">
-        <div class="location">at         line 1481</div>
+        <div class="location">at         line 1369</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFromTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -4248,7 +4158,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFromAddress">
-        <div class="location">at         line 1516</div>
+        <div class="location">at         line 1404</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFromAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -4324,7 +4234,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFromLegalOrganisation">
-        <div class="location">at         line 1546</div>
+        <div class="location">at         line 1434</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFromLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -4378,7 +4288,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentShipFromContact">
-        <div class="location">at         line 1573</div>
+        <div class="location">at         line 1461</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentShipFromContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -4439,7 +4349,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicer">
-        <div class="location">at         line 1600</div>
+        <div class="location">at         line 1488</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicer</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -4492,7 +4402,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicerGlobalId">
-        <div class="location">at         line 1623</div>
+        <div class="location">at         line 1511</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicerGlobalId</strong>(array|null $globalID)
         </code>
@@ -4535,7 +4445,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicerTaxRegistration">
-        <div class="location">at         line 1642</div>
+        <div class="location">at         line 1530</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicerTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -4577,7 +4487,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicerAddress">
-        <div class="location">at         line 1677</div>
+        <div class="location">at         line 1565</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicerAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -4653,7 +4563,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicerLegalOrganisation">
-        <div class="location">at         line 1707</div>
+        <div class="location">at         line 1595</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicerLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -4707,7 +4617,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 017
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicerContact">
-        <div class="location">at         line 1734</div>
+        <div class="location">at         line 1622</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicerContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -4768,7 +4678,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 017
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoicee">
-        <div class="location">at         line 1761</div>
+        <div class="location">at         line 1649</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoicee</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -4821,7 +4731,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoiceeGlobalId">
-        <div class="location">at         line 1784</div>
+        <div class="location">at         line 1672</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoiceeGlobalId</strong>(array|null $globalID)
         </code>
@@ -4864,7 +4774,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoiceeTaxRegistration">
-        <div class="location">at         line 1803</div>
+        <div class="location">at         line 1691</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoiceeTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -4906,7 +4816,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoiceeAddress">
-        <div class="location">at         line 1838</div>
+        <div class="location">at         line 1726</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoiceeAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -4982,7 +4892,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoiceeLegalOrganisation">
-        <div class="location">at         line 1868</div>
+        <div class="location">at         line 1756</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoiceeLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -5036,7 +4946,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentInvoiceeContact">
-        <div class="location">at         line 1895</div>
+        <div class="location">at         line 1783</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentInvoiceeContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -5097,7 +5007,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayee">
-        <div class="location">at         line 1921</div>
+        <div class="location">at         line 1809</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayee</strong>(string|null $name, array|null $id, string|null $description)
         </code>
@@ -5150,7 +5060,7 @@ a previously exchanged identifier assigned by the buyer or seller.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayeeGlobalId">
-        <div class="location">at         line 1941</div>
+        <div class="location">at         line 1829</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayeeGlobalId</strong>(array|null $globalID)
         </code>
@@ -5192,7 +5102,7 @@ codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayeeTaxRegistration">
-        <div class="location">at         line 1957</div>
+        <div class="location">at         line 1845</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayeeTaxRegistration</strong>(array|null $taxreg)
         </code>
@@ -5233,7 +5143,7 @@ for <em>Sales tax identification number of the party</em></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayeeAddress">
-        <div class="location">at         line 1989</div>
+        <div class="location">at         line 1877</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayeeAddress</strong>(string|null $lineone, string|null $linetwo, string|null $linethree, string|null $postcode, string|null $city, string|null $country, array|null $subdivision)
         </code>
@@ -5308,7 +5218,7 @@ representation of names of countries and their subdivisions”</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayeeLegalOrganisation">
-        <div class="location">at         line 2016</div>
+        <div class="location">at         line 1904</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayeeLegalOrganisation</strong>(string|null $legalorgid, string|null $legalorgtype, string|null $legalorgname)
         </code>
@@ -5361,7 +5271,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPayeeContact">
-        <div class="location">at         line 2040</div>
+        <div class="location">at         line 1928</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPayeeContact</strong>(string|null $contactpersonname, string|null $contactdepartmentname, string|null $contactphoneno, string|null $contactfaxno, string|null $contactemailadd)
         </code>
@@ -5421,7 +5331,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentDeliveryTerms">
-        <div class="location">at         line 2061</div>
+        <div class="location">at         line 1949</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentDeliveryTerms</strong>(string|null $code)
         </code>
@@ -5462,7 +5372,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSellerOrderReferencedDocument">
-        <div class="location">at         line 2078</div>
+        <div class="location">at         line 1966</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSellerOrderReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -5516,7 +5426,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBuyerOrderReferencedDocument">
-        <div class="location">at         line 2099</div>
+        <div class="location">at         line 1987</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBuyerOrderReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -5570,7 +5480,7 @@ the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentContractReferencedDocument">
-        <div class="location">at         line 2121</div>
+        <div class="location">at         line 2009</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentContractReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -5625,7 +5535,7 @@ defined period of time (contract number)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentAdditionalReferencedDocument">
-        <div class="location">at         line 2138</div>
+        <div class="location">at         line 2026</div>
         <code>                    bool
     <strong>firstDocumentAdditionalReferencedDocument</strong>()
         </code>
@@ -5656,7 +5566,7 @@ Returns true if an additional referenced document is available, otherwise false<
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentAdditionalReferencedDocument">
-        <div class="location">at         line 2151</div>
+        <div class="location">at         line 2039</div>
         <code>                    bool
     <strong>nextDocumentAdditionalReferencedDocument</strong>()
         </code>
@@ -5687,7 +5597,7 @@ Returns true when another additional referenced document is available, otherwise
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentAdditionalReferencedDocument">
-        <div class="location">at         line 2198</div>
+        <div class="location">at         line 2086</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentAdditionalReferencedDocument</strong>(string|null $issuerassignedid, string|null $typecode, string|null $uriid = null, array|null $name = null, string|null $reftypecode = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null, string|null $binarydatafilename = null)
         </code>
@@ -5784,7 +5694,7 @@ binary attached file is stored can be controlled by using the methud ZugferdDocu
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentAdditionalReferencedDocuments">
-        <div class="location">at         line 2232</div>
+        <div class="location">at         line 2120</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentAdditionalReferencedDocuments</strong>(array|null $refdocs)
         </code>
@@ -5825,7 +5735,7 @@ want to access attached binary objects you have to use ZugferdDocumentReader::ge
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentProcuringProject">
-        <div class="location">at         line 2256</div>
+        <div class="location">at         line 2144</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentProcuringProject</strong>(string|null $id, string|null $name)
         </code>
@@ -5870,7 +5780,7 @@ want to access attached binary objects you have to use ZugferdDocumentReader::ge
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentUltimateCustomerOrderReferencedDocument">
-        <div class="location">at         line 2270</div>
+        <div class="location">at         line 2158</div>
         <code>                    bool
     <strong>firstDocumentUltimateCustomerOrderReferencedDocument</strong>()
         </code>
@@ -5901,7 +5811,7 @@ Returns true if the first position is available, otherwise false</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentUltimateCustomerOrderReferencedDocument">
-        <div class="location">at         line 2283</div>
+        <div class="location">at         line 2171</div>
         <code>                    bool
     <strong>nextDocumentUltimateCustomerOrderReferencedDocument</strong>()
         </code>
@@ -5932,7 +5842,7 @@ Returns true if the first position is available, otherwise false</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateCustomerOrderReferencedDocument">
-        <div class="location">at         line 2298</div>
+        <div class="location">at         line 2186</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateCustomerOrderReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -5986,7 +5896,7 @@ Returns true if the first position is available, otherwise false</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentUltimateCustomerOrderReferencedDocuments">
-        <div class="location">at         line 2318</div>
+        <div class="location">at         line 2206</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentUltimateCustomerOrderReferencedDocuments</strong>(array|null $refdocs)
         </code>
@@ -6026,7 +5936,7 @@ Returns true if the first position is available, otherwise false</p>            
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentSupplyChainEvent">
-        <div class="location">at         line 2333</div>
+        <div class="location">at         line 2221</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentSupplyChainEvent</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date)
         </code>
@@ -6076,7 +5986,7 @@ This can be done here or at item level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentDespatchAdviceReferencedDocument">
-        <div class="location">at         line 2353</div>
+        <div class="location">at         line 2241</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentDespatchAdviceReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -6130,7 +6040,7 @@ This can be done here or at item level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentReceivingAdviceReferencedDocument">
-        <div class="location">at         line 2374</div>
+        <div class="location">at         line 2262</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentReceivingAdviceReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -6184,7 +6094,7 @@ This can be done here or at item level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentDeliveryNoteReferencedDocument">
-        <div class="location">at         line 2398</div>
+        <div class="location">at         line 2286</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentDeliveryNoteReferencedDocument</strong>(string|null $issuerassignedid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -6239,7 +6149,7 @@ This can be done here or at item level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstGetDocumentPaymentMeans">
-        <div class="location">at         line 2416</div>
+        <div class="location">at         line 2304</div>
         <code>                    bool
     <strong>firstGetDocumentPaymentMeans</strong>()
         </code>
@@ -6270,7 +6180,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans</p
             </div>
                     <div class="method-item">
                     <h3 id="method_nextGetDocumentPaymentMeans">
-        <div class="location">at         line 2430</div>
+        <div class="location">at         line 2318</div>
         <code>                    bool
     <strong>nextGetDocumentPaymentMeans</strong>()
         </code>
@@ -6302,7 +6212,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans</p
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPaymentMeans">
-        <div class="location">at         line 2489</div>
+        <div class="location">at         line 2377</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPaymentMeans</strong>(string|null $typecode, string|null $information, string|null $cardType, string|null $cardId, string|null $cardHolderName, string|null $buyerIban, string|null $payeeIban, string|null $payeeAccountName, string|null $payeePropId, string|null $payeeBic)
         </code>
@@ -6412,7 +6322,7 @@ is managed, such as the BIC or a national bank code, if required. No identificat
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentTax">
-        <div class="location">at         line 2515</div>
+        <div class="location">at         line 2403</div>
         <code>                    bool
     <strong>firstDocumentTax</strong>()
         </code>
@@ -6444,7 +6354,7 @@ You may use this together with ZugferdDocumentReader::getDocumentTax</p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentTax">
-        <div class="location">at         line 2529</div>
+        <div class="location">at         line 2417</div>
         <code>                    bool
     <strong>nextDocumentTax</strong>()
         </code>
@@ -6476,7 +6386,7 @@ You may use this together with ZugferdDocumentReader::getDocumentTax</p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentTax">
-        <div class="location">at         line 2616</div>
+        <div class="location">at         line 2504</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentTax</strong>(string|null $categoryCode, string|null $typeCode, float|null $basisAmount, float|null $calculatedAmount, float|null $rateApplicablePercent, string|null $exemptionReason, string|null $exemptionReasonCode, float|null $lineTotalBasisAmount, float|null $allowanceChargeBasisAmount, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $taxPointDate, string|null $dueDateTypeCode)
         </code>
@@ -6627,7 +6537,7 @@ supported by CII 16B:
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentBillingPeriod">
-        <div class="location">at         line 2649</div>
+        <div class="location">at         line 2537</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentBillingPeriod</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate)
         </code>
@@ -6681,7 +6591,7 @@ supported by CII 16B:
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentAllowanceCharges">
-        <div class="location">at         line 2670</div>
+        <div class="location">at         line 2558</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentAllowanceCharges</strong>(array|null $allowanceCharge)
         </code>
@@ -6722,7 +6632,7 @@ withheld taxes may also be specified in this group</p>                          
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentAllowanceCharge">
-        <div class="location">at         line 2709</div>
+        <div class="location">at         line 2597</div>
         <code>                    bool
     <strong>firstDocumentAllowanceCharge</strong>()
         </code>
@@ -6753,7 +6663,7 @@ You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentAllowanceCharge">
-        <div class="location">at         line 2722</div>
+        <div class="location">at         line 2610</div>
         <code>                    bool
     <strong>nextDocumentAllowanceCharge</strong>()
         </code>
@@ -6784,7 +6694,7 @@ You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentAllowanceCharge">
-        <div class="location">at         line 2813</div>
+        <div class="location">at         line 2701</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentAllowanceCharge</strong>(float|null $actualAmount, bool|null $isCharge, string|null $taxCategoryCode, string|null $taxTypeCode, float|null $rateApplicablePercent, float|null $sequence, float|null $calculationPercent, float|null $basisAmount, float|null $basisQuantity, string|null $basisQuantityUnitCode, string|null $reasonCode, string|null $reason)
         </code>
@@ -6934,7 +6844,7 @@ Include PEPPOL subset:
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentLogisticsServiceCharge">
-        <div class="location">at         line 2841</div>
+        <div class="location">at         line 2729</div>
         <code>                    bool
     <strong>firstDocumentLogisticsServiceCharge</strong>()
         </code>
@@ -6966,7 +6876,7 @@ You may use this together with ZugferdDocumentReader::getDocumentLogisticsServic
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentLogisticsServiceCharge">
-        <div class="location">at         line 2856</div>
+        <div class="location">at         line 2744</div>
         <code>                    bool
     <strong>nextDocumentLogisticsServiceCharge</strong>()
         </code>
@@ -6998,7 +6908,7 @@ You may use this together with ZugferdDocumentReader::getDocumentLogisticsServic
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentLogisticsServiceCharge">
-        <div class="location">at         line 2904</div>
+        <div class="location">at         line 2792</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentLogisticsServiceCharge</strong>(string|null $description, float|null $appliedAmount, array|null $taxTypeCodes = null, array|null $taxCategpryCodes = null, array|null $rateApplicablePercents = null)
         </code>
@@ -7083,7 +6993,7 @@ value 20 is given for 20% (and not 0.2)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPaymentTerms">
-        <div class="location">at         line 2931</div>
+        <div class="location">at         line 2819</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPaymentTerms</strong>(array|null $paymentTerms)
         </code>
@@ -7123,7 +7033,7 @@ value 20 is given for 20% (and not 0.2)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPaymentTerms">
-        <div class="location">at         line 2956</div>
+        <div class="location">at         line 2844</div>
         <code>                    bool
     <strong>firstDocumentPaymentTerms</strong>()
         </code>
@@ -7155,7 +7065,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPaymentTerms">
-        <div class="location">at         line 2970</div>
+        <div class="location">at         line 2858</div>
         <code>                    bool
     <strong>nextDocumentPaymentTerms</strong>()
         </code>
@@ -7187,7 +7097,7 @@ You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPaymentTerm">
-        <div class="location">at         line 2995</div>
+        <div class="location">at         line 2883</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPaymentTerm</strong>(string|null $description, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $dueDate, string|null $directDebitMandateID)
         </code>
@@ -7252,7 +7162,7 @@ The corresponding description of more complex payment terms can be given in BT-2
             </div>
                     <div class="method-item">
                     <h3 id="method_getDiscountTermsFromPaymentTerm">
-        <div class="location">at         line 3028</div>
+        <div class="location">at         line 2916</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDiscountTermsFromPaymentTerm</strong>(float|null $calculationPercent, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $basisDateTime, float|null $basisPeriodMeasureValue, string|null $basisPeriodMeasureUnitCode, float|null $basisAmount, float|null $actualDiscountAmount)
         </code>
@@ -7326,7 +7236,7 @@ The corresponding description of more complex payment terms can be given in BT-2
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPosition">
-        <div class="location">at         line 3053</div>
+        <div class="location">at         line 2941</div>
         <code>                    bool
     <strong>firstDocumentPosition</strong>()
         </code>
@@ -7358,7 +7268,7 @@ You may use it together with getDocumentPositionGenerals</p>                    
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPosition">
-        <div class="location">at         line 3067</div>
+        <div class="location">at         line 2955</div>
         <code>                    bool
     <strong>nextDocumentPosition</strong>()
         </code>
@@ -7390,7 +7300,7 @@ You may use it together with getDocumentPositionGenerals</p>                    
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionGenerals">
-        <div class="location">at         line 3095</div>
+        <div class="location">at         line 2983</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionGenerals</strong>(string|null $lineid, string|null $lineStatusCode, string|null $lineStatusReasonCode)
         </code>
@@ -7450,7 +7360,7 @@ The following code should be used: TYPE_LINE</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPositionNote">
-        <div class="location">at         line 3114</div>
+        <div class="location">at         line 3002</div>
         <code>                    bool
     <strong>firstDocumentPositionNote</strong>()
         </code>
@@ -7482,7 +7392,7 @@ You may use it together with getDocumentPositionNote</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPositionNote">
-        <div class="location">at         line 3133</div>
+        <div class="location">at         line 3021</div>
         <code>                    bool
     <strong>nextDocumentPositionNote</strong>()
         </code>
@@ -7514,7 +7424,7 @@ You may use it together with getDocumentPositionNote</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionNote">
-        <div class="location">at         line 3157</div>
+        <div class="location">at         line 3045</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionNote</strong>(string|null $content, string|null $contentCode, string|null $subjectCode)
         </code>
@@ -7565,7 +7475,7 @@ You may use it together with getDocumentPositionNote</p>                        
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionProductDetails">
-        <div class="location">at         line 3192</div>
+        <div class="location">at         line 3080</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionProductDetails</strong>(string|null $name, string|null $description, string|null $sellerAssignedID, string|null $buyerAssignedID, string|null $globalIDType, string|null $globalID)
         </code>
@@ -7634,7 +7544,7 @@ GTIN, ...)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionBuyerOrderReferencedDocument">
-        <div class="location">at         line 3220</div>
+        <div class="location">at         line 3108</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionBuyerOrderReferencedDocument</strong>(string|null $issuerassignedid, string|null $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -7694,7 +7604,7 @@ reference at the document level.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionContractReferencedDocument">
-        <div class="location">at         line 3248</div>
+        <div class="location">at         line 3136</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionContractReferencedDocument</strong>(string|null $issuerassignedid, string|null $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -7754,7 +7664,7 @@ defined period of time (contract number)</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPositionAdditionalReferencedDocument">
-        <div class="location">at         line 3270</div>
+        <div class="location">at         line 3158</div>
         <code>                    bool
     <strong>firstDocumentPositionAdditionalReferencedDocument</strong>()
         </code>
@@ -7786,7 +7696,7 @@ You may use it together with getDocumentPositionAdditionalReferencedDocument</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPositionAdditionalReferencedDocument">
-        <div class="location">at         line 3286</div>
+        <div class="location">at         line 3174</div>
         <code>                    bool
     <strong>nextDocumentPositionAdditionalReferencedDocument</strong>()
         </code>
@@ -7818,7 +7728,7 @@ You may use it together with getDocumentPositionAdditionalReferencedDocument</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionAdditionalReferencedDocument">
-        <div class="location">at         line 3334</div>
+        <div class="location">at         line 3222</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionAdditionalReferencedDocument</strong>(string|null $issuerassignedid, string|null $typecode, string|null $uriid, string|null $lineid, string|null $name, string|null $reftypecode, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -7914,7 +7824,7 @@ from UNTDID 1153 in accordance with the code list entries.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionGrossPrice">
-        <div class="location">at         line 3371</div>
+        <div class="location">at         line 3259</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionGrossPrice</strong>(float|null $amount, float|null $basisQuantity, string|null $basisQuantityUnitCode)
         </code>
@@ -7966,7 +7876,7 @@ according to the gross calculation.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPositionGrossPriceAllowanceCharge">
-        <div class="location">at         line 3390</div>
+        <div class="location">at         line 3278</div>
         <code>                    bool
     <strong>firstDocumentPositionGrossPriceAllowanceCharge</strong>()
         </code>
@@ -7998,7 +7908,7 @@ You may use it together with getDocumentPositionGrossPriceAllowanceCharge</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPositionGrossPriceAllowanceCharge">
-        <div class="location">at         line 3406</div>
+        <div class="location">at         line 3294</div>
         <code>                    bool
     <strong>nextDocumentPositionGrossPriceAllowanceCharge</strong>()
         </code>
@@ -8030,7 +7940,7 @@ You may use it together with getDocumentPositionGrossPriceAllowanceCharge</p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionGrossPriceAllowanceCharge">
-        <div class="location">at         line 3439</div>
+        <div class="location">at         line 3327</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionGrossPriceAllowanceCharge</strong>(float|null $actualAmount, bool|null $isCharge, float|null $calculationPercent, float|null $basisAmount, string|null $reason, string|null $taxTypeCode, string|null $taxCategoryCode, float|null $rateApplicablePercent, float|null $sequence, float|null $basisQuantity, string|null $basisQuantityUnitCode, string|null $reasonCode)
         </code>
@@ -8127,7 +8037,7 @@ is transferred</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionNetPrice">
-        <div class="location">at         line 3474</div>
+        <div class="location">at         line 3362</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionNetPrice</strong>(float|null $amount, float|null $basisQuantity, string|null $basisQuantityUnitCode)
         </code>
@@ -8177,7 +8087,7 @@ is transferred</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionNetPriceTax">
-        <div class="location">at         line 3531</div>
+        <div class="location">at         line 3419</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionNetPriceTax</strong>(string|null $categoryCode, string|null $typeCode, float|null $rateApplicablePercent, float|null $calculatedAmount, string|null $exemptionReason, string|null $exemptionReasonCode)
         </code>
@@ -8270,7 +8180,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionQuantity">
-        <div class="location">at         line 3570</div>
+        <div class="location">at         line 3458</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionQuantity</strong>(float|null $billedQuantity, string|null $billedQuantityUnitCode, float|null $chargeFreeQuantity, string|null $chargeFreeQuantityUnitCpde, float|null $packageQuantity, string|null $packageQuantityUnitCode)
         </code>
@@ -8342,7 +8252,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionSupplyChainEvent">
-        <div class="location">at         line 3596</div>
+        <div class="location">at         line 3484</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionSupplyChainEvent</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $date)
         </code>
@@ -8391,7 +8301,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionDespatchAdviceReferencedDocument">
-        <div class="location">at         line 3621</div>
+        <div class="location">at         line 3509</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionDespatchAdviceReferencedDocument</strong>(string|null $issuerassignedid, string|null $lineid = null, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate = null)
         </code>
@@ -8450,7 +8360,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionReceivingAdviceReferencedDocument">
-        <div class="location">at         line 3645</div>
+        <div class="location">at         line 3533</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionReceivingAdviceReferencedDocument</strong>(string|null $issuerassignedid, string|null $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -8509,7 +8419,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionDeliveryNoteReferencedDocument">
-        <div class="location">at         line 3669</div>
+        <div class="location">at         line 3557</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionDeliveryNoteReferencedDocument</strong>(string|null $issuerassignedid, string|null $lineid, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $issueddate)
         </code>
@@ -8568,7 +8478,7 @@ Contracts, catalogs, orders and shipping notifications) match the units used.</t
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPositionTax">
-        <div class="location">at         line 3691</div>
+        <div class="location">at         line 3579</div>
         <code>                    bool
     <strong>firstDocumentPositionTax</strong>()
         </code>
@@ -8600,7 +8510,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionTax</p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPositionTax">
-        <div class="location">at         line 3710</div>
+        <div class="location">at         line 3598</div>
         <code>                    bool
     <strong>nextDocumentPositionTax</strong>()
         </code>
@@ -8632,7 +8542,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionTax</p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionTax">
-        <div class="location">at         line 3768</div>
+        <div class="location">at         line 3656</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionTax</strong>(string|null $categoryCode, string|null $typeCode, float|null $rateApplicablePercent, float|null $calculatedAmount, string|null $exemptionReason, string|null $exemptionReasonCode)
         </code>
@@ -8726,7 +8636,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionBillingPeriod">
-        <div class="location">at         line 3797</div>
+        <div class="location">at         line 3685</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionBillingPeriod</strong>(<a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $startdate, <a target="_blank" href="http://php.net/DateTime">DateTime</a>|null $endDate)
         </code>
@@ -8780,7 +8690,7 @@ and maintained by the Connecting Europe Facility.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstDocumentPositionAllowanceCharge">
-        <div class="location">at         line 3821</div>
+        <div class="location">at         line 3709</div>
         <code>                    bool
     <strong>firstDocumentPositionAllowanceCharge</strong>()
         </code>
@@ -8812,7 +8722,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionAllowance
             </div>
                     <div class="method-item">
                     <h3 id="method_nextDocumentPositionAllowanceCharge">
-        <div class="location">at         line 3837</div>
+        <div class="location">at         line 3725</div>
         <code>                    bool
     <strong>nextDocumentPositionAllowanceCharge</strong>()
         </code>
@@ -8844,7 +8754,7 @@ You may use it together with ZugferdDocumentReader::getDocumentPositionAllowance
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionAllowanceCharge">
-        <div class="location">at         line 3925</div>
+        <div class="location">at         line 3813</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionAllowanceCharge</strong>(float|null $actualAmount, bool|null $isCharge, float|null $calculationPercent, float|null $basisAmount, string|null $reason, string|null $taxTypeCode, string|null $taxCategoryCode, float|null $rateApplicablePercent, float|null $sequence, float|null $basisQuantity, string|null $basisQuantityUnitCode, string|null $reasonCode)
         </code>
@@ -8989,7 +8899,7 @@ to calculate the invoice line discount amount</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionAllowanceCharge2">
-        <div class="location">at         line 4018</div>
+        <div class="location">at         line 3906</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionAllowanceCharge2</strong>(float|null $actualAmount, bool|null $isCharge, float|null $calculationPercent, float|null $basisAmount, string|null $reasonCode, string|null $reason)
         </code>
@@ -9108,7 +9018,7 @@ match.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDocumentPositionLineSummation">
-        <div class="location">at         line 4047</div>
+        <div class="location">at         line 3935</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentReader.html"><abbr title="horstoeko\zugferd\ZugferdDocumentReader">ZugferdDocumentReader</abbr></a>
     <strong>getDocumentPositionLineSummation</strong>(float|null $lineTotalAmount, float|null $totalAllowanceChargeAmount)
         </code>
