@@ -13,6 +13,9 @@ use \Closure;
 use \DateTime;
 use \Exception;
 use \SimpleXMLElement;
+use \horstoeko\stringmanagement\FileUtils;
+use \horstoeko\stringmanagement\StringUtils;
+use \horstoeko\stringmanagement\PathUtils;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -2099,9 +2102,11 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if ($binarydatafilename && $binarydata && $this->binarydatadirectory) {
-            $binarydatafilename = join(DIRECTORY_SEPARATOR, array($this->binarydatadirectory, $binarydatafilename));
-            file_put_contents($binarydatafilename, base64_decode($binarydata));
+        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false &&
+            StringUtils::stringIsNullOrEmpty($binarydata) &&
+            StringUtils::stringIsNullOrEmpty($this->binarydatadirectory)) {
+            $binarydatafilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binarydatafilename);
+            FileUtils::base64ToFile($binarydata, $binarydatafilename);
         } else {
             $binarydatafilename = "";
         }

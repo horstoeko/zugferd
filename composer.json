@@ -44,7 +44,8 @@
         "smalot/pdfparser": "^0",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2",
-        "symfony/yaml": "^5"
+        "symfony/yaml": "^5",
+        "horstoeko/stringmanagement": "^1"
     },
     "require-dev": {
         "pdepend/pdepend" : "^2",
@@ -56,5 +57,9 @@
         "theseer/phpdox": "^0",
         "goetas-webservices/xsd2php": "^0",
         "clean/phpdoc-md": "^0"
+    },
+    "scripts": {
+        "tests": "./vendor/bin/phpunit ./tests/",
+        "phpcs": "./vendor/bin/phpcs --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests"
     }
 }
