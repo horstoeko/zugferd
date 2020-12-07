@@ -59,6 +59,22 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
      */
+    public function testGetDocumentAdditionalReferencedDocumentNoDirectorySet()
+    {
+        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
+        $this->assertEquals("01_15_Anhang_01.pdf", $issuerassignedid);
+        $this->assertEquals("916", $typecode);
+        $this->assertArrayHasKey(0, $name);
+        $this->assertArrayNotHasKey(1, $name);
+        $this->assertEquals("Aufschlüsselung der einzelnen Leistungspositionen", $name[0]);
+        $this->assertEquals("", $binarydatafilename);
+        $this->assertFalse(file_exists($binarydatafilename));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
+     */
     public function testGetDocumentAdditionalReferencedDocument()
     {
         self::$document->setBinaryDataDirectory(dirname(__FILE__));
@@ -69,6 +85,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertArrayNotHasKey(1, $name);
         $this->assertEquals("Aufschlüsselung der einzelnen Leistungspositionen", $name[0]);
         $this->assertNotEquals("", $binarydatafilename);
+        $this->assertEquals(dirname(__FILE__) . "/01_15_Anhang_01.pdf", $binarydatafilename);
         $this->assertTrue(file_exists($binarydatafilename));
         $this->assertEquals(150128, filesize($binarydatafilename));
         $this->assertEquals("%PDF", substr(file_get_contents($binarydatafilename), 0, 4));
