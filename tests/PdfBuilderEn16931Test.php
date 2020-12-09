@@ -7,7 +7,8 @@ use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 use \horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use \horstoeko\zugferd\codelists\ZugferdPaymentMeans;
-use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use \horstoeko\zugferd\ZugferdDocumentPdfReader;
+use \Smalot\PdfParser\Parser as PdfParser;
 
 class PdfBuilderEn16931Test extends BuilderBaseTest
 {
@@ -84,6 +85,20 @@ class PdfBuilderEn16931Test extends BuilderBaseTest
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
         $this->assertTrue(file_exists(self::$destPdfFilename));
+    }
+
+    public function testPdfMetaData()
+    {
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.82"
+        $this->assertArrayHasKey("CreationDate", $pdfDetails); //"2020-12-09T05:19:39+00:00"
+        $this->assertArrayHasKey("Pages", $pdfDetails); //"1"
+        $this->assertEquals("FPDF 1.82", $pdfDetails["Producer"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
     }
 
     public function testReadPdf()
