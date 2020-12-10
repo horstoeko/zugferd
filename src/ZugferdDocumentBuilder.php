@@ -2752,7 +2752,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param float $actualAmount
      * Discount on the item price. The total discount subtracted from the gross price to calculate the
      * net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
-     * @param boolean|null $isCharge
+     * @param boolean $isCharge
      * Switch for surcharge/discount, if true then its an charge
      * @param float|null $calculationPercent
      * Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount)
@@ -2770,7 +2770,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param string|null $reasonCode
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionGrossPriceAllowanceCharge(float $actualAmount, ?bool $isCharge = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reason = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null): ZugferdDocumentBuilder
+    public function addDocumentPositionGrossPriceAllowanceCharge(float $actualAmount, bool $isCharge, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reason = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null): ZugferdDocumentBuilder
     {
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $grossPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getGrossPriceProductTradePrice");
@@ -2832,7 +2832,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * question. Note: The code of the sales tax category and the category-specific sales tax rate
      * must correspond to one another. The value to be given is the percentage. For example, the
      * value 20 is given for 20% (and not 0.2)
-     * @param float|null $calculatedAmount
+     * @param float $calculatedAmount
      * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
      * the amount to be taxed according to the sales tax category by the sales tax rate applicable
      * for the sales tax category concerned
@@ -2843,7 +2843,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * and maintained by the Connecting Europe Facility.
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionNetPriceTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
+    public function setDocumentPositionNetPriceTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, float $calculatedAmount, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
     {
         $positionagreement = $this->objectHelper->TryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $netPrice = $this->objectHelper->TryCallAndReturn($positionagreement, "getNetPriceProductTradePrice");
