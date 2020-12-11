@@ -67,8 +67,8 @@ class ZugferdDocumentPdfBuilder
         $this->documentBuiler = $documentBuiler;
         $this->pdfData = $pdfData;
         $this->pdfWriter = new ZugferdPdfWriter();
-        $this->xmlDomDocument = new \DOMDocument();
-        $this->xmlDomDocument->loadXML($this->documentBuiler->getContent());
+        $this->xmlData = new \DOMDocument();
+        $this->xmlData->loadXML($this->documentBuiler->getContent());
     }
 
     /**
@@ -155,7 +155,7 @@ class ZugferdDocumentPdfBuilder
      */
     private function updatePdfMetadata(): void
     {
-        $pdfMetadataInfos = $this->preparePdfMetadata($this->xmlDomDocument);
+        $pdfMetadataInfos = $this->preparePdfMetadata();
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
         $xmp = simplexml_load_file(dirname(__FILE__) . "/assets/facturx_extension_schema.xmp");
@@ -196,7 +196,7 @@ class ZugferdDocumentPdfBuilder
      */
     private function preparePdfMetadata(): array
     {
-        $invoiceInformations = $this->extractInvoiceInformations($this->xmlDomDocument);
+        $invoiceInformations = $this->extractInvoiceInformations();
         $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
         $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
         $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
@@ -219,7 +219,7 @@ class ZugferdDocumentPdfBuilder
      */
     protected function extractInvoiceInformations(): array
     {
-        $xpath = new \DOMXpath($this->xmlDomDocument);
+        $xpath = new \DOMXpath($this->xmlData);
         $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
         $date = $dateXpath->item(0)->nodeValue;
         $dateReformatted = date('Y-m-d\TH:i:s', strtotime($date)) . '+00:00';

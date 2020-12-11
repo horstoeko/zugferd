@@ -681,22 +681,22 @@ the vat breakdown</p>                </div>
                     <tr>
                 <td>string</td>
                 <td>$invoiceNo</td>
-                <td></td>
+                <td>The document no issued by the seller</td>
             </tr>
                     <tr>
                 <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
                 <td>$invoiceDate</td>
-                <td></td>
+                <td>The date when the document was issued by the seller</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$currency</td>
-                <td></td>
+                <td>The code for the invoice currency</td>
             </tr>
                     <tr>
                 <td>string|null</td>
                 <td>$invoiceNoReferenceq</td>
-                <td></td>
+                <td>Intended use for payment. If null the number of the invoice is used</td>
             </tr>
             </table>
 
@@ -736,22 +736,22 @@ the vat breakdown</p>                </div>
                     <tr>
                 <td>string</td>
                 <td>$creditMemoNo</td>
-                <td></td>
+                <td>The document no issued by the seller</td>
             </tr>
                     <tr>
                 <td><a target="_blank" href="http://php.net/DateTime">DateTime</a></td>
                 <td>$invoiceDate</td>
-                <td></td>
+                <td>The date when the document was issued by the seller</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$currency</td>
-                <td></td>
+                <td>The code for the invoice currency</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$creditMemoNoReference</td>
-                <td></td>
+                <td>Intended use for refund. If null the number of the credit memo is used</td>
             </tr>
             </table>
 
@@ -2018,52 +2018,85 @@ given is the percentage. For example, the value 20 is given for 20% (and not 0.2
                     <tr>
                 <td>string</td>
                 <td>$lineId</td>
-                <td></td>
+                <td>A unique identifier for the relevant item within the invoice (item number)</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$productName</td>
-                <td></td>
+                <td>A name of the item (item name)</td>
             </tr>
                     <tr>
                 <td>float</td>
                 <td>$unitPrice</td>
-                <td></td>
+                <td>Net price of the item</td>
             </tr>
                     <tr>
                 <td>float</td>
                 <td>$chargeAmount</td>
-                <td></td>
+                <td>The surcharge amount excluding sales tax</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$chargeReason</td>
-                <td></td>
+                <td>The reason given in text form for the invoice item discount/surcharge</td>
             </tr>
                     <tr>
                 <td>float</td>
                 <td>$quantity</td>
-                <td></td>
+                <td>The quantity of individual items (goods or services) billed in the relevant line</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$unitCode</td>
-                <td></td>
+                <td>The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
+lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
+UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
+(with Complementary Codes for Package Names)" using the UN / ECE Rec No. 20 Intro 2.a) can be selected.
+It should be noted that in most cases it is not necessary for buyers and sellers to fully implement these
+lists in their software. Sellers only need to support the entities necessary for their goods and services;
+Buyers only need to verify that the units used in the invoice match those in other documents (such as in
+Contracts, catalogs, orders and shipping notifications) match the units used.</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$taxCategoryCode</td>
-                <td></td>
+                <td>Coded description of a sales tax category</p>
+
+<p>The following entries from UNTDID 5305 are used (details in brackets):
+ - Standard rate (sales tax is due according to the normal procedure)
+ - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+ - Tax exempt (USt./IGIC/IPSI)
+ - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+ - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+ - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+ - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+ - Canary Islands general indirect tax (IGIC tax applies)
+ - IPSI (tax for Ceuta / Melilla) applies.</p>
+
+<p>The codes for the VAT category are as follows:
+ - S = sales tax is due at the normal rate
+ - Z = goods to be taxed according to the zero rate
+ - E = tax exempt
+ - AE = reversal of tax liability
+ - K = VAT is not shown for intra-community deliveries
+ - G = tax not levied due to export outside the EU
+ - O = Outside the tax scope
+ - L = IGIC (Canary Islands)
+ - M = IPSI (Ceuta / Melilla)</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$taxTypeCode</td>
-                <td></td>
+                <td>In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
+specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
+the tax type must then be taken from the code list UNTDID 5153.</td>
             </tr>
                     <tr>
                 <td>float</td>
                 <td>$taxPercent</td>
-                <td></td>
+                <td>The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
+tax category and the category-specific sales tax rate  must correspond to one another. The value to be
+given is the percentage. For example, the value 20 is given for 20% (and not 0.2)</td>
             </tr>
             </table>
 

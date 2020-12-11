@@ -1247,7 +1247,7 @@ product that has just been added</p>                </div>
                     <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addDocumentPositionGrossPriceAllowanceCharge">addDocumentPositionGrossPriceAllowanceCharge</a>(float $actualAmount, bool|null $isCharge = null, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reason = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null)
+                    <a href="#method_addDocumentPositionGrossPriceAllowanceCharge">addDocumentPositionGrossPriceAllowanceCharge</a>(float $actualAmount, bool $isCharge, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reason = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null)
         
                                             <p>Detailed information on surcharges and discounts on item gross price</p>                </div>
                 <div class="col-md-2"></div>
@@ -1267,7 +1267,7 @@ product that has just been added</p>                </div>
                     <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDocumentPositionNetPriceTax">setDocumentPositionNetPriceTax</a>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float|null $calculatedAmount = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
+                    <a href="#method_setDocumentPositionNetPriceTax">setDocumentPositionNetPriceTax</a>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float $calculatedAmount, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
         
                                             <p>Tax included for B2C on position level</p>                </div>
                 <div class="col-md-2"></div>
@@ -7660,7 +7660,7 @@ according to the gross calculation.</td>
                     <h3 id="method_addDocumentPositionGrossPriceAllowanceCharge">
         <div class="location">at         line 2773</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
-    <strong>addDocumentPositionGrossPriceAllowanceCharge</strong>(float $actualAmount, bool|null $isCharge = null, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reason = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null)
+    <strong>addDocumentPositionGrossPriceAllowanceCharge</strong>(float $actualAmount, bool $isCharge, float|null $calculationPercent = null, float|null $basisAmount = null, string|null $reason = null, string|null $taxTypeCode = null, string|null $taxCategoryCode = null, float|null $rateApplicablePercent = null, float|null $sequence = null, float|null $basisQuantity = null, string|null $basisQuantityUnitCode = null, string|null $reasonCode = null)
         </code>
     </h3>
     <div class="details">
@@ -7680,7 +7680,7 @@ according to the gross calculation.</td>
 net price. Note: Only applies if the discount is given per unit and is not included in the gross price.</td>
             </tr>
                     <tr>
-                <td>bool|null</td>
+                <td>bool</td>
                 <td>$isCharge</td>
                 <td>Switch for surcharge/discount, if true then its an charge</td>
             </tr>
@@ -7807,7 +7807,7 @@ is transferred</td>
                     <h3 id="method_setDocumentPositionNetPriceTax">
         <div class="location">at         line 2846</div>
         <code>                    <a href="../../horstoeko/zugferd/ZugferdDocumentBuilder.html"><abbr title="horstoeko\zugferd\ZugferdDocumentBuilder">ZugferdDocumentBuilder</abbr></a>
-    <strong>setDocumentPositionNetPriceTax</strong>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float|null $calculatedAmount = null, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
+    <strong>setDocumentPositionNetPriceTax</strong>(string $categoryCode, string $typeCode, float $rateApplicablePercent, float $calculatedAmount, string|null $exemptionReason = null, string|null $exemptionReasonCode = null)
         </code>
     </h3>
     <div class="details">
@@ -7861,7 +7861,7 @@ must correspond to one another. The value to be given is the percentage. For exa
 value 20 is given for 20% (and not 0.2)</td>
             </tr>
                     <tr>
-                <td>float|null</td>
+                <td>float</td>
                 <td>$calculatedAmount</td>
                 <td>The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
 the amount to be taxed according to the sales tax category by the sales tax rate applicable

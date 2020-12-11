@@ -74,7 +74,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Internal index
      *
-     * @var [type]
+     * @var integer
      */
     protected $n_files;
 
@@ -158,7 +158,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Add metadata description node.
      *
-     * @param $description The description of the metadata
+     * @param string $description The description of the metadata
      *
      * @return void
      */
@@ -424,22 +424,22 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function generateMetadataString($date_type = 'created')
     {
         $metadata_string = '';
-        if (isset($this->pdf_metadata_infos['title'])) {
-            $metadata_string .= $this->pdf_metadata_infos['title'];
+        if (isset($this->metaDataInfos['title'])) {
+            $metadata_string .= $this->metaDataInfos['title'];
         }
-        if (isset($this->pdf_metadata_infos['subject'])) {
-            $metadata_string .= $this->pdf_metadata_infos['subject'];
+        if (isset($this->metaDataInfos['subject'])) {
+            $metadata_string .= $this->metaDataInfos['subject'];
         }
         switch ($date_type) {
             case 'modified':
-                if (isset($this->pdf_metadata_infos['modifiedDate'])) {
-                    $metadata_string .= $this->pdf_metadata_infos['modifiedDate'];
+                if (isset($this->metaDataInfos['modifiedDate'])) {
+                    $metadata_string .= $this->metaDataInfos['modifiedDate'];
                 }
                 break;
             case 'created':
             default:
-                if (isset($this->pdf_metadata_infos['createdDate'])) {
-                    $metadata_string .= $this->pdf_metadata_infos['createdDate'];
+                if (isset($this->metaDataInfos['createdDate'])) {
+                    $metadata_string .= $this->metaDataInfos['createdDate'];
                 }
                 break;
         }

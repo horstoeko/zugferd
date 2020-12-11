@@ -1392,7 +1392,7 @@ class ZugferdObjectHelper
     /**
      * Creates an instance of a class needed by $invoiceObject
      *
-     * @param $classname
+     * @param string $classname
      * @param mixed $constructorvalue
      * @return object|null
      */
@@ -1488,7 +1488,7 @@ class ZugferdObjectHelper
      * @codeCoverageIgnore
      * @param object $instance
      * @param string $methods
-     * @param $value
+     * @param mixed $value
      * @return void
      */
     public function tryCallByPath($instance, string $methods, $value)
@@ -1499,7 +1499,7 @@ class ZugferdObjectHelper
             if ($index == count($methods) - 1) {
                 $this->TryCall($instance, $method, $value);
             } else {
-                $instance = $this->TryCallAndReturn($instance, $method, $value);
+                $instance = $this->TryCallAndReturn($instance, $method);
             }
         }
     }

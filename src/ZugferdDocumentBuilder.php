@@ -87,7 +87,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public static function createNew(int $profile): ZugferdDocumentBuilder
     {
-        return (new static($profile));
+        return (new self($profile));
     }
 
     /**

@@ -183,7 +183,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
             if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return (new static($profile))->readContent($xmlcontent);
+                return (new self($profile))->readContent($xmlcontent);
             }
         }
 

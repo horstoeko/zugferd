@@ -75,7 +75,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public static function doCreateNew(): ZugferdQuickDescriptor
     {
-        return (new static(static::getProfile()));
+        return (new self(static::getProfile()));
     }
 
     /**
@@ -97,7 +97,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * The date when the document was issued by the seller
      * @param string $currency
      * The code for the invoice currency
-     * @param string@null $invoiceNoAsReference
+     * @param string|null $invoiceNoReferenceq
      * Intended use for payment. If null the number of the invoice is used
      * @return ZugferdQuickDescriptor
      */
@@ -117,7 +117,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * The date when the document was issued by the seller
      * @param string $currency
      * The code for the invoice currency
-     * @param string|null $invoiceNoAsReference
+     * @param string $creditMemoNoReference
      * Intended use for refund. If null the number of the credit memo is used
      * @return ZugferdQuickDescriptor
      */
@@ -673,7 +673,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * A name of the item (item name)
      * @param float $unitPrice
      * Net price of the item
-     * @param float $chargeTotalAmount
+     * @param float $chargeAmount
      * The surcharge amount excluding sales tax
      * @param string $chargeReason
      * The reason given in text form for the invoice item discount/surcharge

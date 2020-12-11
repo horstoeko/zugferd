@@ -48,15 +48,16 @@
         "horstoeko/stringmanagement": "^1"
     },
     "require-dev": {
-        "pdepend/pdepend" : "^2",
+        "clean/phpdoc-md": "^0",
+        "goetas-webservices/xsd2php": "^0",
+        "pdepend/pdepend": "^2",
         "phploc/phploc": "^7",
-        "phpmd/phpmd" : "^2",
+        "phpmd/phpmd": "^2",
+        "phpstan/phpstan": "^0.12.59",
         "phpunit/phpunit": "^9",
         "sebastian/phpcpd": "^6",
         "squizlabs/php_codesniffer": "^3",
-        "theseer/phpdox": "^0",
-        "goetas-webservices/xsd2php": "^0",
-        "clean/phpdoc-md": "^0"
+        "theseer/phpdox": "^0"
     },
     "scripts": {
         "tests": "./vendor/bin/phpunit ./tests/",

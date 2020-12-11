@@ -9,6 +9,8 @@
 
 namespace horstoeko\zugferd\jms;
 
+use \DOMText;
+use \DOMElement;
 use JMS\Serializer\XmlSerializationVisitor;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\GraphNavigator;

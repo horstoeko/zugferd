@@ -1,0 +1,4 @@
+parameters:
+    treatPhpDocTypesAsCertain: false
+    excludes_analyse:
+        - ../src/entities/*
