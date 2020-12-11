@@ -1568,7 +1568,7 @@ class ZugferdObjectHelper
      */
     public static function isNullOrEmpty($value)
     {
-        if (is_null($value) || $value === null) {
+        if ($value === null) {
             return true;
         }
         if (!is_object($value)) {
@@ -1611,7 +1611,7 @@ class ZugferdObjectHelper
     {
         foreach ($args as $arg) {
             if ($arg instanceof DateTime) {
-                if (is_null($arg)) {
+                if ($arg == null) {
                     return true;
                 }
             } else {

@@ -11,7 +11,7 @@ namespace horstoeko\zugferd;
 
 use \Symfony\Component\Validator\Validation;
 use \Symfony\Component\Validator\ConstraintViolationListInterface;
-use \Symfony\Component\Validator\Validator\RecursiveValidator;
+use \Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class representing the document validator for incoming documents
@@ -34,7 +34,7 @@ class ZugferdDocumentValidator
     /**
      * The validator instance
      *
-     * @var RecursiveValidator;
+     * @var ValidatorInterface;
      */
     private $validator = null;
 
