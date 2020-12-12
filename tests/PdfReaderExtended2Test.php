@@ -382,7 +382,7 @@ class PdfReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentShipToGlobalId($shiptoglobalids);
         $this->assertIsArray($shiptoglobalids);
-        $this->arrayHasKey("0088", $shiptoglobalids);
+        $this->assertArrayHasKey("0088", $shiptoglobalids);
         $this->assertEquals("3654789851", $shiptoglobalids["0088"]);
     }
 

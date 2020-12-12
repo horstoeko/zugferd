@@ -1,4 +1,8 @@
 parameters:
+    paths:
+        - ../src
+        - ../tests
+    level: 6
     treatPhpDocTypesAsCertain: false
     excludes_analyse:
         - ../src/entities/*

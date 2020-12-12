@@ -2,6 +2,8 @@
 
 namespace horstoeko\zugferd\tests;
 
+use \ReflectionClass;
+use \ReflectionProperty;
 use \PHPUnit\Framework\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocument;
@@ -88,9 +90,9 @@ class DocumentTest extends TestCase
      * @param string $propertyName
      * @return ReflectionProperty
      */
-    public function getPrivateProperty($className, $propertyName): \ReflectionProperty
+    public function getPrivateProperty($className, $propertyName): ReflectionProperty
     {
-        $reflector = new \ReflectionClass($className);
+        $reflector = new ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
         $property->setAccessible(true);
         return $property;

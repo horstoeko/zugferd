@@ -31,7 +31,7 @@ class ValidatorInvalidTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentValidator::validateDocument
      */
-    public function testValidateDocument()
+    public function testValidateDocument(): void
     {
         $validationResult = self::$validator->validateDocument();
         $this->assertEquals(1, count($validationResult));

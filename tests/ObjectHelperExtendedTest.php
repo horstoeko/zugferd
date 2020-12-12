@@ -558,7 +558,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxCategoryCodeTypeWithValue()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TaxCategoryCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
          */
         $taxcategorycodetype = self::$objectHelper->getTaxCategoryCodeType("VAT");
         $this->assertEquals("VAT", $taxcategorycodetype->value());
@@ -570,7 +570,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxCategoryCodeTypeAllNull()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TaxCategoryCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
          */
         $taxcategorycodetype = self::$objectHelper->getTaxCategoryCodeType(null);
         $this->assertNull($taxcategorycodetype);
@@ -582,7 +582,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxTypeCodeTypeWithValue()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TaxTypeCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
          */
         $taxtypecodetype = self::$objectHelper->getTaxTypeCodeType("S");
         $this->assertEquals("S", $taxtypecodetype->value());
@@ -594,7 +594,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxTypeCodeTypeAllNull()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TaxTypeCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
          */
         $taxtypecodetype = self::$objectHelper->getTaxTypeCodeType(null);
         $this->assertNull($taxtypecodetype);
@@ -606,7 +606,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTimeReferenceCodeTypeWithValue()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TimeReferenceCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
          */
         $timereferencecodetype = self::$objectHelper->getTimeReferenceCodeType("REF");
         $this->assertEquals("REF", $timereferencecodetype->value());
@@ -618,7 +618,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTimeReferenceCodeTypeAllNull()
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TimeReferenceCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
          */
         $timereferencecodetype = self::$objectHelper->getTimeReferenceCodeType(null);
         $this->assertNull($timereferencecodetype);
@@ -1292,7 +1292,7 @@ class ObjectHelperExtendedTest extends TestCase
         $calculationpercent = $allowancecharge->getCalculationPercent();
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\GetNumericType
+         * @var \horstoeko\zugferd\entities\extended\udt\NumericType
          */
         $sequenceNumeric = $allowancecharge->getCalculationPercent();
 
