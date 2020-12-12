@@ -91,7 +91,4 @@ class ExchangedDocumentContextType
         $this->guidelineSpecifiedDocumentContextParameter = $guidelineSpecifiedDocumentContextParameter;
         return $this;
     }
-
-
 }
-

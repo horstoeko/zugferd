@@ -469,7 +469,4 @@ class HeaderTradeSettlementType
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
         return $this;
     }
-
-
 }
-

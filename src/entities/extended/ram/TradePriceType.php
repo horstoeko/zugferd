@@ -154,7 +154,4 @@ class TradePriceType
         $this->includedTradeTax = $includedTradeTax;
         return $this;
     }
-
-
 }
-

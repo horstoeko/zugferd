@@ -127,7 +127,4 @@ class LineTradeSettlementType
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
         return $this;
     }
-
-
 }
-

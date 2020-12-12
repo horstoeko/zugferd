@@ -37,7 +37,4 @@ class LogisticsTransportMovementType
         $this->modeCode = $modeCode;
         return $this;
     }
-
-
 }
-

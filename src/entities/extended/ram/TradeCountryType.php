@@ -37,7 +37,4 @@ class TradeCountryType
         $this->iD = $iD;
         return $this;
     }
-
-
 }
-

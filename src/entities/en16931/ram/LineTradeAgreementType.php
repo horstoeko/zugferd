@@ -91,7 +91,4 @@ class LineTradeAgreementType
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
         return $this;
     }
-
-
 }
-

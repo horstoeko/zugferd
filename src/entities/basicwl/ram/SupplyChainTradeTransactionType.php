@@ -91,7 +91,4 @@ class SupplyChainTradeTransactionType
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
         return $this;
     }
-
-
 }
-

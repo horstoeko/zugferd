@@ -64,7 +64,4 @@ class DateTimeType
         $this->dateTime = $dateTime;
         return $this;
     }
-
-
 }
-

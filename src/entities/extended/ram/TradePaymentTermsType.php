@@ -172,7 +172,4 @@ class TradePaymentTermsType
         $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
         return $this;
     }
-
-
 }
-

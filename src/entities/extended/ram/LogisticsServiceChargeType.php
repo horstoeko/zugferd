@@ -127,7 +127,4 @@ class LogisticsServiceChargeType
         $this->appliedTradeTax = $appliedTradeTax;
         return $this;
     }
-
-
 }
-

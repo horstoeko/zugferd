@@ -64,7 +64,4 @@ class TradePaymentTermsType
         $this->directDebitMandateID = $directDebitMandateID;
         return $this;
     }
-
-
 }
-

@@ -253,7 +253,4 @@ class TradeTaxType
         $this->rateApplicablePercent = $rateApplicablePercent;
         return $this;
     }
-
-
 }
-

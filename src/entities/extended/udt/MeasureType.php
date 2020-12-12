@@ -76,7 +76,4 @@ class MeasureType
         $this->unitCode = $unitCode;
         return $this;
     }
-
-
 }
-

@@ -64,7 +64,4 @@ class TradePriceType
         $this->basisQuantity = $basisQuantity;
         return $this;
     }
-
-
 }
-

@@ -91,7 +91,4 @@ class CreditorFinancialAccountType
         $this->proprietaryID = $proprietaryID;
         return $this;
     }
-
-
 }
-

@@ -64,7 +64,4 @@ class ProductCharacteristicType
         $this->value = $value;
         return $this;
     }
-
-
 }
-

@@ -37,7 +37,4 @@ class ProductClassificationType
         $this->classCode = $classCode;
         return $this;
     }
-
-
 }
-

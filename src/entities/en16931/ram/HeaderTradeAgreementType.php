@@ -289,7 +289,4 @@ class HeaderTradeAgreementType
         $this->specifiedProcuringProject = $specifiedProcuringProject;
         return $this;
     }
-
-
 }
-

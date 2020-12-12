@@ -172,7 +172,4 @@ class HeaderTradeAgreementType
         $this->contractReferencedDocument = $contractReferencedDocument;
         return $this;
     }
-
-
 }
-

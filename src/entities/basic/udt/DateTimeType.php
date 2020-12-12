@@ -37,7 +37,4 @@ class DateTimeType
         $this->dateTimeString = $dateTimeString;
         return $this;
     }
-
-
 }
-

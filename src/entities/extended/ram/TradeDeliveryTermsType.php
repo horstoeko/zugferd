@@ -37,7 +37,4 @@ class TradeDeliveryTermsType
         $this->deliveryTypeCode = $deliveryTypeCode;
         return $this;
     }
-
-
 }
-

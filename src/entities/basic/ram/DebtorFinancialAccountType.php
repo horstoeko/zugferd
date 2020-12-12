@@ -37,7 +37,4 @@ class DebtorFinancialAccountType
         $this->iBANID = $iBANID;
         return $this;
     }
-
-
 }
-

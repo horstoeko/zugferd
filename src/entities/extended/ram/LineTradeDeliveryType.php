@@ -253,7 +253,4 @@ class LineTradeDeliveryType
         $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
         return $this;
     }
-
-
 }
-

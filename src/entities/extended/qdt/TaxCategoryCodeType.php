@@ -49,7 +49,4 @@ class TaxCategoryCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

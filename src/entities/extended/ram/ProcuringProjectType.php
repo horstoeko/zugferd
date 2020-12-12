@@ -64,7 +64,4 @@ class ProcuringProjectType
         $this->name = $name;
         return $this;
     }
-
-
 }
-

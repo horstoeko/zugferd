@@ -10,4 +10,3 @@ class CrossIndustryInvoice extends CrossIndustryInvoiceType
 
 
 }
-

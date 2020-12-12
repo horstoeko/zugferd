@@ -226,7 +226,4 @@ class TradeSettlementHeaderMonetarySummationType
         $this->duePayableAmount = $duePayableAmount;
         return $this;
     }
-
-
 }
-

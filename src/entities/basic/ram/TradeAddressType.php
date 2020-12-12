@@ -172,7 +172,4 @@ class TradeAddressType
         $this->countryID = $countryID;
         return $this;
     }
-
-
 }
-

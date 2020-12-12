@@ -49,7 +49,4 @@ class TimeReferenceCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

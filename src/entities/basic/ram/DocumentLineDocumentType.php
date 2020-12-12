@@ -37,7 +37,4 @@ class DocumentLineDocumentType
         $this->lineID = $lineID;
         return $this;
     }
-
-
 }
-

@@ -91,7 +91,4 @@ class HeaderTradeDeliveryType
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
         return $this;
     }
-
-
 }
-

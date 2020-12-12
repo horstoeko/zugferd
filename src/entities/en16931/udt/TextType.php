@@ -49,7 +49,4 @@ class TextType
     {
         return strval($this->__value);
     }
-
-
 }
-

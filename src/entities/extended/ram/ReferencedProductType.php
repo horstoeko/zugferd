@@ -172,7 +172,4 @@ class ReferencedProductType
         $this->unitQuantity = $unitQuantity;
         return $this;
     }
-
-
 }
-

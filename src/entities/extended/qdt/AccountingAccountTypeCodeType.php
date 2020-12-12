@@ -49,7 +49,4 @@ class AccountingAccountTypeCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

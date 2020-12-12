@@ -118,7 +118,4 @@ class SpecifiedPeriodType
         $this->completeDateTime = $completeDateTime;
         return $this;
     }
-
-
 }
-

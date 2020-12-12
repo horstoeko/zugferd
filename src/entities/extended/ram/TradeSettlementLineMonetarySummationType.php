@@ -64,7 +64,4 @@ class TradeSettlementLineMonetarySummationType
         $this->totalAllowanceChargeAmount = $totalAllowanceChargeAmount;
         return $this;
     }
-
-
 }
-

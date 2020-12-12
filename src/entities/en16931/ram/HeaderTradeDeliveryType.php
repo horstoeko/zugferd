@@ -118,7 +118,4 @@ class HeaderTradeDeliveryType
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
         return $this;
     }
-
-
 }
-
