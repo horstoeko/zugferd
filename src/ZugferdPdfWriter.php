@@ -234,7 +234,7 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @throws \Exception
      */
-    protected function putFileStream(array $file_info)
+    protected function putFileStream(array $file_info): void
     {
         $this->_newobj();
         $this->_put('<<');
@@ -318,7 +318,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * @throws \Exception
      * @codingStandardsIgnoreStart
      */
-    protected function _putresources()
+    protected function _putresources(): void
     {
         parent::_putresources();
         if (!empty($this->files)) {

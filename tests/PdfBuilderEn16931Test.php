@@ -78,7 +78,7 @@ class PdfBuilderEn16931Test extends BuilderBaseTest
         @unlink(self::$destPdfFilename);
     }
 
-    public function testBuildPdf()
+    public function testBuildPdf(): void
     {
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->generateDocument();
@@ -87,7 +87,7 @@ class PdfBuilderEn16931Test extends BuilderBaseTest
         $this->assertTrue(file_exists(self::$destPdfFilename));
     }
 
-    public function testPdfMetaData()
+    public function testPdfMetaData(): void
     {
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
@@ -101,15 +101,15 @@ class PdfBuilderEn16931Test extends BuilderBaseTest
         $this->assertEquals("1", $pdfDetails["Pages"]);
     }
 
-    public function testReadPdf()
+    public function testReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(self::$destPdfFilename);
+        $document = ZugferdDocumentPdfReader::readAndGuessFromFile(self::$destPdfFilename);
 
-        $this->assertNotNull(self::$document);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->profile);
+        $this->assertNotNull($document);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, $document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, $document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, $document->profile);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, $document->profile);
     }
 }

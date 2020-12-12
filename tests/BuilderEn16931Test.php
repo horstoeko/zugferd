@@ -13,7 +13,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         self::$document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
     }
 
-    public function testDocumentProfile()
+    public function testDocumentProfile(): void
     {
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
@@ -21,7 +21,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
     }
 
-    public function testXmlGenerals()
+    public function testXmlGenerals(): void
     {
         $xml = $this->getXml();
         $namespaces = $xml->getNamespaces(true);
@@ -35,7 +35,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInformation
      */
-    public function testSetDocumentInformation()
+    public function testSetDocumentInformation(): void
     {
         (self::$document)->setDocumentInformation("471102", "380", DateTime::createFromFormat("Ymd", "20180305"), "EUR");
 
@@ -49,7 +49,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentGeneralPaymentInformation
      */
-    public function testSetDocumentGeneralPaymentInformation()
+    public function testSetDocumentGeneralPaymentInformation(): void
     {
         (self::$document)->setDocumentGeneralPaymentInformation("1111111111", "2222222222");
 
@@ -61,7 +61,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setIsDocumentCopy
      */
-    public function testSetIsDocumentCopy()
+    public function testSetIsDocumentCopy(): void
     {
         (self::$document)->setIsDocumentCopy();
 
@@ -72,7 +72,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setIsTestDocument
      */
-    public function testSetIsTestDocument()
+    public function testSetIsTestDocument(): void
     {
         (self::$document)->SetIsTestDocument();
 
@@ -83,7 +83,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentNote
      */
-    public function testAddDocumentNote()
+    public function testAddDocumentNote(): void
     {
         (self::$document)->addDocumentNote('Rechnung gemäß Bestellung vom 01.03.2018.');
         (self::$document)->addDocumentNote('Lieferant GmbH', null, 'REG');
@@ -97,7 +97,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSupplyChainEvent
      */
-    public function testSetDocumentSupplyChainEvent()
+    public function testSetDocumentSupplyChainEvent(): void
     {
         (self::$document)->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20180305'));
 
@@ -108,7 +108,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerReference
      */
-    public function testSetDocumentBuyerReference()
+    public function testSetDocumentBuyerReference(): void
     {
         (self::$document)->setDocumentBuyerReference("buyerref");
 
@@ -119,7 +119,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSeller
      */
-    public function testSetDocumentSeller()
+    public function testSetDocumentSeller(): void
     {
         (self::$document)->setDocumentSeller("Lieferant GmbH", "549910");
 
@@ -131,7 +131,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerGlobalId
      */
-    public function testAddDocumentSellerGlobalId()
+    public function testAddDocumentSellerGlobalId(): void
     {
         (self::$document)->addDocumentSellerGlobalId("4000001123452", "0088");
 
@@ -142,7 +142,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerTaxRegistration
      */
-    public function testAddDocumentSellerTaxRegistration()
+    public function testAddDocumentSellerTaxRegistration(): void
     {
         (self::$document)->addDocumentSellerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentSellerTaxRegistration("VA", "DE123456789");
@@ -155,7 +155,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerAddress
      */
-    public function testSetDocumentSellerAddress()
+    public function testSetDocumentSellerAddress(): void
     {
         (self::$document)->setDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -172,7 +172,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerLegalOrganisation
      */
-    public function testSetDocumentSellerLegalOrganisation()
+    public function testSetDocumentSellerLegalOrganisation(): void
     {
         (self::$document)->setDocumentSellerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -184,7 +184,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerContact
      */
-    public function testSetDocumentSellerContact()
+    public function testSetDocumentSellerContact(): void
     {
         (self::$document)->setDocumentSellerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -199,7 +199,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyer
      */
-    public function testSetDocumentBuyer()
+    public function testSetDocumentBuyer(): void
     {
         (self::$document)->setDocumentBuyer("Kunden AG Mitte", "549910");
 
@@ -211,7 +211,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentBuyerGlobalId
      */
-    public function testAddDocumentBuyerGlobalId()
+    public function testAddDocumentBuyerGlobalId(): void
     {
         (self::$document)->addDocumentBuyerGlobalId("4000001123452", "0088");
 
@@ -222,7 +222,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentBuyerTaxRegistration
      */
-    public function testAddDocumentBuyerTaxRegistration()
+    public function testAddDocumentBuyerTaxRegistration(): void
     {
         (self::$document)->addDocumentBuyerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentBuyerTaxRegistration("VA", "DE123456789");
@@ -235,7 +235,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerAddress
      */
-    public function testSetDocumentBuyerAddress()
+    public function testSetDocumentBuyerAddress(): void
     {
         (self::$document)->setDocumentBuyerAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
@@ -252,7 +252,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerLegalOrganisation
      */
-    public function testSetDocumentBuyerLegalOrganisation()
+    public function testSetDocumentBuyerLegalOrganisation(): void
     {
         (self::$document)->setDocumentBuyerLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
@@ -264,7 +264,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerContact
      */
-    public function testSetDocumentBuyerContact()
+    public function testSetDocumentBuyerContact(): void
     {
         (self::$document)->setDocumentBuyerContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
@@ -279,7 +279,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeTradeParty
      */
-    public function testSetDocumentSellerTaxRepresentativeTradeParty()
+    public function testSetDocumentSellerTaxRepresentativeTradeParty(): void
     {
         (self::$document)->setDocumentSellerTaxRepresentativeTradeParty("Lieferant GmbH", "549910");
 
@@ -291,7 +291,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerTaxRepresentativeGlobalId
      */
-    public function testAddDocumentSellerTaxRepresentativeGlobalId()
+    public function testAddDocumentSellerTaxRepresentativeGlobalId(): void
     {
         (self::$document)->addDocumentSellerTaxRepresentativeGlobalId("4000001123452", "0088");
 
@@ -302,7 +302,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentSellerTaxRepresentativeTaxRegistration
      */
-    public function testAddDocumentSellerTaxRepresentativeTaxRegistration()
+    public function testAddDocumentSellerTaxRepresentativeTaxRegistration(): void
     {
         (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentSellerTaxRepresentativeTaxRegistration("VA", "DE123456789");
@@ -315,7 +315,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeAddress
      */
-    public function testSetDocumentSellerTaxRepresentativeAddress()
+    public function testSetDocumentSellerTaxRepresentativeAddress(): void
     {
         (self::$document)->setDocumentSellerTaxRepresentativeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -332,7 +332,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeLegalOrganisation
      */
-    public function testSetDocumentSellerTaxRepresentativeLegalOrganisation()
+    public function testSetDocumentSellerTaxRepresentativeLegalOrganisation(): void
     {
         (self::$document)->setDocumentSellerTaxRepresentativeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -344,7 +344,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerTaxRepresentativeContact
      */
-    public function testSetDocumentSellerTaxRepresentativeContact()
+    public function testSetDocumentSellerTaxRepresentativeContact(): void
     {
         (self::$document)->setDocumentSellerTaxRepresentativeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -359,7 +359,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUser
      */
-    public function testSetDocumentProductEndUser()
+    public function testSetDocumentProductEndUser(): void
     {
         (self::$document)->setDocumentProductEndUser("Kunden AG Mitte", "549910");
 
@@ -371,7 +371,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentProductEndUserGlobalId
      */
-    public function testAddDocumentProductEndUserGlobalId()
+    public function testAddDocumentProductEndUserGlobalId(): void
     {
         (self::$document)->addDocumentProductEndUserGlobalId("4000001123452", "0088");
 
@@ -382,7 +382,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentProductEndUserTaxRegistration
      */
-    public function testAddDocumentProductEndUserTaxRegistration()
+    public function testAddDocumentProductEndUserTaxRegistration(): void
     {
         (self::$document)->addDocumentProductEndUserTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentProductEndUserTaxRegistration("VA", "DE123456789");
@@ -395,7 +395,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserAddress
      */
-    public function testSetDocumentProductEndUserAddress()
+    public function testSetDocumentProductEndUserAddress(): void
     {
         (self::$document)->setDocumentProductEndUserAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
@@ -412,7 +412,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserLegalOrganisation
      */
-    public function testSetDocumentProductEndUserLegalOrganisation()
+    public function testSetDocumentProductEndUserLegalOrganisation(): void
     {
         (self::$document)->setDocumentProductEndUserLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
@@ -424,7 +424,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProductEndUserContact
      */
-    public function testSetDocumentProductEndUserContact()
+    public function testSetDocumentProductEndUserContact(): void
     {
         (self::$document)->setDocumentProductEndUserContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
@@ -439,7 +439,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipTo
      */
-    public function testSetDocumentShipTo()
+    public function testSetDocumentShipTo(): void
     {
         (self::$document)->setDocumentShipTo("Kunden AG Mitte", "549910");
 
@@ -451,7 +451,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipToGlobalId
      */
-    public function testAddDocumentShipToGlobalId()
+    public function testAddDocumentShipToGlobalId(): void
     {
         (self::$document)->addDocumentShipToGlobalId("4000001123452", "0088");
 
@@ -462,7 +462,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipToTaxRegistration
      */
-    public function testAddDocumentShipToTaxRegistration()
+    public function testAddDocumentShipToTaxRegistration(): void
     {
         (self::$document)->addDocumentShipToTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentShipToTaxRegistration("VA", "DE123456789");
@@ -475,7 +475,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToAddress
      */
-    public function testSetDocumentShipToAddress()
+    public function testSetDocumentShipToAddress(): void
     {
         (self::$document)->setDocumentShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
@@ -492,7 +492,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToLegalOrganisation
      */
-    public function testSetDocumentShipToLegalOrganisation()
+    public function testSetDocumentShipToLegalOrganisation(): void
     {
         (self::$document)->setDocumentShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
@@ -504,7 +504,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipToContact
      */
-    public function testSetDocumentShipToContact()
+    public function testSetDocumentShipToContact(): void
     {
         (self::$document)->setDocumentShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
@@ -519,7 +519,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipTo
      */
-    public function testSetDocumentUltimateShipTo()
+    public function testSetDocumentUltimateShipTo(): void
     {
         (self::$document)->setDocumentUltimateShipTo("Kunden AG Mitte", "549910");
 
@@ -531,7 +531,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateShipToGlobalId
      */
-    public function testAddDocumentUltimateShipToGlobalId()
+    public function testAddDocumentUltimateShipToGlobalId(): void
     {
         (self::$document)->addDocumentUltimateShipToGlobalId("4000001123452", "0088");
 
@@ -542,7 +542,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateShipToTaxRegistration
      */
-    public function testAddDocumentUltimateShipToTaxRegistration()
+    public function testAddDocumentUltimateShipToTaxRegistration(): void
     {
         (self::$document)->addDocumentUltimateShipToTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentUltimateShipToTaxRegistration("VA", "DE123456789");
@@ -555,7 +555,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToAddress
      */
-    public function testSetDocumentUltimateShipToAddress()
+    public function testSetDocumentUltimateShipToAddress(): void
     {
         (self::$document)->setDocumentUltimateShipToAddress("Kundenstrasse 15", "", "", "69876", "Frankfurt", "DE");
 
@@ -572,7 +572,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToLegalOrganisation
      */
-    public function testSetDocumentUltimateShipToLegalOrganisation()
+    public function testSetDocumentUltimateShipToLegalOrganisation(): void
     {
         (self::$document)->setDocumentUltimateShipToLegalOrganisation("DE12345", "FC", "Kunden Holding");
 
@@ -584,7 +584,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentUltimateShipToContact
      */
-    public function testSetDocumentUltimateShipToContact()
+    public function testSetDocumentUltimateShipToContact(): void
     {
         (self::$document)->setDocumentUltimateShipToContact("Otto Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@kunde.de");
 
@@ -599,7 +599,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFrom
      */
-    public function testSetDocumentShipFrom()
+    public function testSetDocumentShipFrom(): void
     {
         (self::$document)->setDocumentShipFrom("Lieferant GmbH", "549910");
 
@@ -611,7 +611,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromGlobalId
      */
-    public function testAddDocumentShipFromGlobalId()
+    public function testAddDocumentShipFromGlobalId(): void
     {
         (self::$document)->addDocumentShipFromGlobalId("4000001123452", "0088");
 
@@ -622,7 +622,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromTaxRegistration
      */
-    public function testAddDocumentShipFromTaxRegistration()
+    public function testAddDocumentShipFromTaxRegistration(): void
     {
         (self::$document)->addDocumentShipFromTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentShipFromTaxRegistration("VA", "DE123456789");
@@ -635,7 +635,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromAddress
      */
-    public function testSetDocumentShipFromAddress()
+    public function testSetDocumentShipFromAddress(): void
     {
         (self::$document)->setDocumentShipFromAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -652,7 +652,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromLegalOrganisation
      */
-    public function testSetDocumentShipFromLegalOrganisation()
+    public function testSetDocumentShipFromLegalOrganisation(): void
     {
         (self::$document)->setDocumentShipFromLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -664,7 +664,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentShipFromContact
      */
-    public function testSetDocumentShipFromContact()
+    public function testSetDocumentShipFromContact(): void
     {
         (self::$document)->setDocumentShipFromContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -679,7 +679,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicer
      */
-    public function testSetDocumentInvoicer()
+    public function testSetDocumentInvoicer(): void
     {
         (self::$document)->setDocumentInvoicer("Lieferant GmbH", "549910");
 
@@ -691,7 +691,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoicerGlobalId
      */
-    public function testAddDocumentInvoicerGlobalId()
+    public function testAddDocumentInvoicerGlobalId(): void
     {
         (self::$document)->addDocumentInvoicerGlobalId("4000001123452", "0088");
 
@@ -702,7 +702,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoicerTaxRegistration
      */
-    public function testAddDocumentInvoicerTaxRegistration()
+    public function testAddDocumentInvoicerTaxRegistration(): void
     {
         (self::$document)->addDocumentInvoicerTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentInvoicerTaxRegistration("VA", "DE123456789");
@@ -715,7 +715,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerAddress
      */
-    public function testSetDocumentInvoicerAddress()
+    public function testSetDocumentInvoicerAddress(): void
     {
         (self::$document)->setDocumentInvoicerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -732,7 +732,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerLegalOrganisation
      */
-    public function testSetDocumentInvoicerLegalOrganisation()
+    public function testSetDocumentInvoicerLegalOrganisation(): void
     {
         (self::$document)->setDocumentInvoicerLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -744,7 +744,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicerContact
      */
-    public function testSetDocumentInvoicerContact()
+    public function testSetDocumentInvoicerContact(): void
     {
         (self::$document)->setDocumentInvoicerContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -759,7 +759,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoicee
      */
-    public function testSetDocumentInvoicee()
+    public function testSetDocumentInvoicee(): void
     {
         (self::$document)->setDocumentInvoicee("Lieferant GmbH", "549910");
 
@@ -771,7 +771,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeGlobalId
      */
-    public function testAddDocumentInvoiceeGlobalId()
+    public function testAddDocumentInvoiceeGlobalId(): void
     {
         (self::$document)->addDocumentInvoiceeGlobalId("4000001123452", "0088");
 
@@ -782,7 +782,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeTaxRegistration
      */
-    public function testAddDocumentInvoiceeTaxRegistration()
+    public function testAddDocumentInvoiceeTaxRegistration(): void
     {
         (self::$document)->addDocumentInvoiceeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentInvoiceeTaxRegistration("VA", "DE123456789");
@@ -795,7 +795,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeAddress
      */
-    public function testSetDocumentInvoiceeAddress()
+    public function testSetDocumentInvoiceeAddress(): void
     {
         (self::$document)->setDocumentInvoiceeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -812,7 +812,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeLegalOrganisation
      */
-    public function testSetDocumentInvoiceeLegalOrganisation()
+    public function testSetDocumentInvoiceeLegalOrganisation(): void
     {
         (self::$document)->setDocumentInvoiceeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -824,7 +824,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceeContact
      */
-    public function testSetDocumentInvoiceeContact()
+    public function testSetDocumentInvoiceeContact(): void
     {
         (self::$document)->setDocumentInvoiceeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -839,7 +839,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayee
      */
-    public function testSetDocumentPayee()
+    public function testSetDocumentPayee(): void
     {
         (self::$document)->setDocumentPayee("Lieferant GmbH", "549910");
 
@@ -851,7 +851,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPayeeGlobalId
      */
-    public function testAddDocumentPayeeGlobalId()
+    public function testAddDocumentPayeeGlobalId(): void
     {
         (self::$document)->addDocumentPayeeGlobalId("4000001123452", "0088");
 
@@ -862,7 +862,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPayeeTaxRegistration
      */
-    public function testAddDocumentPayeeTaxRegistration()
+    public function testAddDocumentPayeeTaxRegistration(): void
     {
         (self::$document)->addDocumentPayeeTaxRegistration("FC", "201/113/40209");
         (self::$document)->addDocumentPayeeTaxRegistration("VA", "DE123456789");
@@ -875,7 +875,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeAddress
      */
-    public function testSetDocumentPayeeAddress()
+    public function testSetDocumentPayeeAddress(): void
     {
         (self::$document)->setDocumentPayeeAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE");
 
@@ -892,7 +892,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeLegalOrganisation
      */
-    public function testSetDocumentPayeeLegalOrganisation()
+    public function testSetDocumentPayeeLegalOrganisation(): void
     {
         (self::$document)->setDocumentPayeeLegalOrganisation("DE12345", "FC", "Lieferant AG");
 
@@ -904,7 +904,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPayeeContact
      */
-    public function testSetDocumentPayeeContact()
+    public function testSetDocumentPayeeContact(): void
     {
         (self::$document)->setDocumentPayeeContact("Hans Müller", "Financials", "+49-111-2222222", "+49-111-3333333", "info@lieferant.de");
 
@@ -919,7 +919,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDeliveryTerms
      */
-    public function testSetDocumentDeliveryTerms()
+    public function testSetDocumentDeliveryTerms(): void
     {
         (self::$document)->setDocumentDeliveryTerms("term");
 
@@ -930,7 +930,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentSellerOrderReferencedDocument
      */
-    public function testSetDocumentSellerOrderReferencedDocument()
+    public function testSetDocumentSellerOrderReferencedDocument(): void
     {
         (self::$document)->setDocumentSellerOrderReferencedDocument('B-1010', new DateTime());
 
@@ -942,7 +942,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBuyerOrderReferencedDocument
      */
-    public function testSetDocumentBuyerOrderReferencedDocument()
+    public function testSetDocumentBuyerOrderReferencedDocument(): void
     {
         (self::$document)->setDocumentBuyerOrderReferencedDocument('O-2020', new DateTime());
 
@@ -954,7 +954,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentContractReferencedDocument
      */
-    public function testSetDocumentContractReferencedDocument()
+    public function testSetDocumentContractReferencedDocument(): void
     {
         (self::$document)->setDocumentContractReferencedDocument("CON-4711", new DateTime());
 
@@ -966,7 +966,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAdditionalReferencedDocument
      */
-    public function testAddDocumentAdditionalReferencedDocument()
+    public function testAddDocumentAdditionalReferencedDocument(): void
     {
         (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new DateTime());
         (self::$document)->addDocumentAdditionalReferencedDocument("B-2233", "type2", "http://lieferant.de/docs/b2233.pdf", "Lieferliste", "reftype2", new DateTime());
@@ -989,7 +989,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAdditionalReferencedDocument
      */
-    public function testAddDocumentAdditionalReferencedDocumentWithAttachment()
+    public function testAddDocumentAdditionalReferencedDocumentWithAttachment(): void
     {
         (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new DateTime(), dirname(__FILE__) . "/data/InvalidPDF.pdf");
 
@@ -1008,7 +1008,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentInvoiceReferencedDocument
      */
-    public function testSetDocumentInvoiceReferencedDocument()
+    public function testSetDocumentInvoiceReferencedDocument(): void
     {
         (self::$document)->setDocumentInvoiceReferencedDocument("INV-1", new DateTime());
 
@@ -1020,7 +1020,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentProcuringProject
      */
-    public function testSetDocumentProcuringProject()
+    public function testSetDocumentProcuringProject(): void
     {
         (self::$document)->setDocumentProcuringProject("HB-8378732", "Hausbau");
 
@@ -1032,7 +1032,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateCustomerOrderReferencedDocument
      */
-    public function testAddDocumentUltimateCustomerOrderReferencedDocument()
+    public function testAddDocumentUltimateCustomerOrderReferencedDocument(): void
     {
         (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-11", new DateTime());
         (self::$document)->addDocumentUltimateCustomerOrderReferencedDocument("DOC-22", new DateTime());
@@ -1045,7 +1045,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDespatchAdviceReferencedDocument
      */
-    public function testSetDocumentDespatchAdviceReferencedDocument()
+    public function testSetDocumentDespatchAdviceReferencedDocument(): void
     {
         (self::$document)->setDocumentDespatchAdviceReferencedDocument("DADV-001", new DateTime());
 
@@ -1057,7 +1057,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentReceivingAdviceReferencedDocument
      */
-    public function testSetDocumentReceivingAdviceReferencedDocument()
+    public function testSetDocumentReceivingAdviceReferencedDocument(): void
     {
         (self::$document)->setDocumentReceivingAdviceReferencedDocument("RADV-002", new DateTime());
 
@@ -1069,7 +1069,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentDeliveryNoteReferencedDocument
      */
-    public function testSetDocumentDeliveryNoteReferencedDocument()
+    public function testSetDocumentDeliveryNoteReferencedDocument(): void
     {
         (self::$document)->setDocumentDeliveryNoteReferencedDocument("DNOTE-003", new DateTime());
 
@@ -1081,7 +1081,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPaymentMean
      */
-    public function testAddDocumentPaymentMean()
+    public function testAddDocumentPaymentMean(): void
     {
         (self::$document)->addDocumentPaymentMean("42", "Paying information", "cardtype", "cardid", "cardholder", "DE00000000000", "DE11111111111", "Bank", "44444444", "NOLADEQLB21");
         (self::$document)->addDocumentPaymentMean("49", "Paying information 2", "cardtype2", "cardid2", "cardholder2", "DE22222222222", "DE33333333333", "Bank 2", "22222222", "BIC");
@@ -1112,7 +1112,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentTax
      */
-    public function testAddDocumentTax()
+    public function testAddDocumentTax(): void
     {
         (self::$document)->addDocumentTax("S", "VAT", 100.0, 19.0, 19, "exreason", "exreasoncode", 100.0, 1.0, new DateTime(), "duetypecode");
         (self::$document)->addDocumentTax("S", "VAT", 200.0, 14.0, 7, "exreason2", "exreasoncode2", 200.0, 2.0, new DateTime(), "duetypecode2");
@@ -1143,7 +1143,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentTaxSimple
      */
-    public function testAddDocumentTaxSimple()
+    public function testAddDocumentTaxSimple(): void
     {
         (self::$document)->addDocumentTaxSimple("S", "VAT", 100.0, 19.0, 19.0);
 
@@ -1162,7 +1162,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBillingPeriod
      */
-    public function testSetDocumentBillingPeriod()
+    public function testSetDocumentBillingPeriod(): void
     {
         (self::$document)->setDocumentBillingPeriod(new DateTime(), new DateTime(), "Project");
 
@@ -1174,7 +1174,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentAllowanceCharge
      */
-    public function testAddDocumentAllowanceCharge()
+    public function testAddDocumentAllowanceCharge(): void
     {
         (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
         (self::$document)->addDocumentAllowanceCharge(10.0, false, "S", "VAT", 19.0, 1, 10.0, 100.0, 1, "C62", "reasoncode", "reason");
@@ -1203,7 +1203,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentLogisticsServiceCharge
      */
-    public function testAddDocumentLogisticsServiceCharge()
+    public function testAddDocumentLogisticsServiceCharge(): void
     {
         (self::$document)->addDocumentLogisticsServiceCharge("Service", 10.0, ["S"], ["VAT"], [19.0]);
 
@@ -1219,7 +1219,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPaymentTerm
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDiscountTermsToPaymentTerms
      */
-    public function testAddDocumentPaymentTermAndDiscount()
+    public function testAddDocumentPaymentTermAndDiscount(): void
     {
         (self::$document)->addDocumentPaymentTerm("Payment", new DateTime(), "mandate");
         (self::$document)->addDiscountTermsToPaymentTerms(10.0, new DateTime(), 1, "DAY", 20.0, 2.0);
@@ -1240,7 +1240,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentReceivableSpecifiedTradeAccountingAccount
      */
-    public function testAddDocumentReceivableSpecifiedTradeAccountingAccount()
+    public function testAddDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
         (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid", "typecode");
         (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid2", "typecode2");
@@ -1257,7 +1257,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::InitDocumentSummation
      */
-    public function testInitDocumentSummation()
+    public function testInitDocumentSummation(): void
     {
         (self::$document)->initDocumentSummation();
 
@@ -1276,7 +1276,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
      */
-    public function testSetDocumentSummation()
+    public function testSetDocumentSummation(): void
     {
         (self::$document)->setDocumentSummation(100.0, 0.0, 100.0, 5.0, 4.0, 99.0, 10.0, 0.0, 0.0);
 
@@ -1330,7 +1330,7 @@ class BuilderEn16931Test extends BuilderBaseTest
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPositionProductClassification
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentPositionProductOriginTradeCountry
      */
-    public function testPositionMethods()
+    public function testPositionMethods(): void
     {
         (self::$document)->addNewPosition("1", "linestatuscode", "linestatusreasoncode");
         (self::$document)->setDocumentPositionNote("content", "contentcode", "subjectcode");
@@ -1598,7 +1598,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::InitNewDocument
      */
-    public function testInitNewDocument()
+    public function testInitNewDocument(): void
     {
         (self::$document)->InitNewDocument();
 
@@ -1616,7 +1616,7 @@ class BuilderEn16931Test extends BuilderBaseTest
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::writeFile
      */
-    public function testWriteFile()
+    public function testWriteFile(): void
     {
         (self::$document)->writeFile(getcwd() . "/myfile.xml");
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));

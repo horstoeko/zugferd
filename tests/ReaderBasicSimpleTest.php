@@ -19,7 +19,7 @@ class ReaderBasicSimpleTest extends TestCase
         self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/basic_simple.xml");
     }
 
-    public function testDocumentProfile()
+    public function testDocumentProfile(): void
     {
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
         $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
@@ -30,7 +30,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
      */
-    public function testDocumentGenerals()
+    public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('471102', $documentno);
@@ -48,7 +48,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentNotes
      */
-    public function testDocumentNotes()
+    public function testDocumentNotes(): void
     {
         self::$document->getDocumentNotes($notes);
         $this->assertIsArray($notes);
@@ -82,7 +82,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentGeneralPaymentInformation
      */
-    public function testDocumentGeneralPaymentInformation()
+    public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
         $this->assertEquals("", $creditorReferenceID);
@@ -92,7 +92,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getIsDocumentCopy
      */
-    public function testDocumentIsCopy()
+    public function testDocumentIsCopy(): void
     {
         self::$document->getIsDocumentCopy($iscopy);
         $this->assertFalse($iscopy);
@@ -101,7 +101,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getIsTestDocument
      */
-    public function testDocumentIsTestDocument()
+    public function testDocumentIsTestDocument(): void
     {
         self::$document->getIsTestDocument($istest);
         $this->assertFalse($istest);
@@ -110,7 +110,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSummation
      */
-    public function testDocumentSummation()
+    public function testDocumentSummation(): void
     {
         self::$document->getDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
         $this->assertEquals(235.62, $grandTotalAmount);
@@ -127,7 +127,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerReference
      */
-    public function testGetDocumentBuyerReference()
+    public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
         $this->assertEquals("", $buyerReference);
@@ -136,7 +136,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSeller
      */
-    public function testDocumentSellerGeneral()
+    public function testDocumentSellerGeneral(): void
     {
         self::$document->getDocumentSeller($sellername, $sellerids, $sellerdescription);
         $this->assertEquals("Lieferant GmbH", $sellername);
@@ -149,7 +149,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerGlobalId
      */
-    public function testDocumentSellerGlobalId()
+    public function testDocumentSellerGlobalId(): void
     {
         self::$document->getDocumentSellerGlobalId($sellerglobalids);
         $this->assertIsArray($sellerglobalids);
@@ -159,7 +159,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRegistration
      */
-    public function testDocumentSellerTaxRegistration()
+    public function testDocumentSellerTaxRegistration(): void
     {
         self::$document->getDocumentSellerTaxRegistration($sellertaxreg);
         $this->assertIsArray($sellertaxreg);
@@ -175,7 +175,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerAddress
      */
-    public function testDocumentSellerAddress()
+    public function testDocumentSellerAddress(): void
     {
         self::$document->getDocumentSellerAddress($sellerlineone, $sellerlinetwo, $sellerlinethree, $sellerpostcode, $sellercity, $sellercountry, $sellersubdivision);
         $this->assertEquals("Lieferantenstraße 20", $sellerlineone);
@@ -191,7 +191,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerLegalOrganisation
      */
-    public function testDocumentSellerLegalOrganization()
+    public function testDocumentSellerLegalOrganization(): void
     {
         self::$document->getDocumentSellerLegalOrganisation($sellerlegalorgid, $sellerlegalorgtype, $sellerlegalorgname);
         $this->assertEquals("", $sellerlegalorgid);
@@ -202,7 +202,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerContact
      */
-    public function testDocumentSellerContact()
+    public function testDocumentSellerContact(): void
     {
         self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
         $this->assertEquals("", $sellercontactpersonname);
@@ -215,7 +215,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyer
      */
-    public function testDocumentBuyerGeneral()
+    public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
         $this->assertEquals("Kunden AG Mitte", $buyername);
@@ -228,7 +228,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerGlobalId
      */
-    public function testDocumentBuyerGlobalId()
+    public function testDocumentBuyerGlobalId(): void
     {
         self::$document->getDocumentBuyerGlobalId($buyerglobalids);
         $this->assertIsArray($buyerglobalids);
@@ -238,7 +238,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerTaxRegistration
      */
-    public function testDocumentBuyerTaxRegistration()
+    public function testDocumentBuyerTaxRegistration(): void
     {
         self::$document->getDocumentBuyerTaxRegistration($buyertaxreg);
         $this->assertIsArray($buyertaxreg);
@@ -248,7 +248,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerAddress
      */
-    public function testDocumentBuyerAddress()
+    public function testDocumentBuyerAddress(): void
     {
         self::$document->getDocumentBuyerAddress($buyerlineone, $buyerlinetwo, $buyerlinethree, $buyerpostcode, $buyercity, $buyercountry, $buyersubdivision);
         $this->assertEquals("Hans Muster", $buyerlineone);
@@ -264,7 +264,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerLegalOrganisation
      */
-    public function testDocumentBuyerLegalOrganization()
+    public function testDocumentBuyerLegalOrganization(): void
     {
         self::$document->getDocumentBuyerLegalOrganisation($buyerlegalorgid, $buyerlegalorgtype, $buyerlegalorgname);
         $this->assertEquals("", $buyerlegalorgid);
@@ -275,7 +275,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerContact
      */
-    public function testDocumentBuyerContact()
+    public function testDocumentBuyerContact(): void
     {
         self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
         $this->assertEquals("", $buyercontactpersonname);
@@ -288,7 +288,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentative
      */
-    public function testDocumentSellerTaxRepresentativeGeneral()
+    public function testDocumentSellerTaxRepresentativeGeneral(): void
     {
         self::$document->getDocumentSellerTaxRepresentative($sellertaxreprname, $sellertaxreprids, $sellertaxreprdescription);
         $this->assertEquals("", $sellertaxreprname);
@@ -300,7 +300,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeGlobalId
      */
-    public function testDocumentSellerTaxRepresentativeGlobalId()
+    public function testDocumentSellerTaxRepresentativeGlobalId(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeGlobalId($sellertaxreprglobalids);
         $this->assertIsArray($sellertaxreprglobalids);
@@ -310,7 +310,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeTaxRegistration
      */
-    public function testDocumentSellerTaxRepresentativeTaxRegistration()
+    public function testDocumentSellerTaxRepresentativeTaxRegistration(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeTaxRegistration($sellertaxreprtaxreg);
         $this->assertIsArray($sellertaxreprtaxreg);
@@ -320,7 +320,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeAddress
      */
-    public function testDocumentSellerTaxRepresentativeAddress()
+    public function testDocumentSellerTaxRepresentativeAddress(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeAddress($sellertaxreprlineone, $sellertaxreprlinetwo, $sellertaxreprlinethree, $sellertaxreprpostcode, $sellertaxreprcity, $sellertaxreprcountry, $sellertaxreprsubdivision);
         $this->assertEquals("", $sellertaxreprlineone);
@@ -336,7 +336,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeLegalOrganisation
      */
-    public function testDocumentSellerTaxRepresentativeLegalOrganization()
+    public function testDocumentSellerTaxRepresentativeLegalOrganization(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeLegalOrganisation($sellertaxreprlegalorgid, $sellertaxreprlegalorgtype, $sellertaxreprlegalorgname);
         $this->assertEquals("", $sellertaxreprlegalorgid);
@@ -347,7 +347,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
      */
-    public function testDocumentSellerTaxRepresentativeContact()
+    public function testDocumentSellerTaxRepresentativeContact(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
         $this->assertEquals("", $sellertaxreprcontactpersonname);
@@ -360,7 +360,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipTo
      */
-    public function testDocumentShipToGeneral()
+    public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
         $this->assertEquals("", $shiptoname);
@@ -372,7 +372,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToGlobalId
      */
-    public function testDocumentShipToGlobalId()
+    public function testDocumentShipToGlobalId(): void
     {
         self::$document->getDocumentShipToGlobalId($shiptoglobalids);
         $this->assertIsArray($shiptoglobalids);
@@ -382,7 +382,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToTaxRegistration
      */
-    public function testDocumentShipToTaxRegistration()
+    public function testDocumentShipToTaxRegistration(): void
     {
         self::$document->getDocumentShipToTaxRegistration($shiptotaxreg);
         $this->assertIsArray($shiptotaxreg);
@@ -392,7 +392,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToAddress
      */
-    public function testDocumentShipToAddress()
+    public function testDocumentShipToAddress(): void
     {
         self::$document->getDocumentShipToAddress($shiptolineone, $shiptolinetwo, $shiptolinethree, $shiptopostcode, $shiptocity, $shiptocountry, $shiptosubdivision);
         $this->assertEquals("", $shiptolineone);
@@ -408,7 +408,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToLegalOrganisation
      */
-    public function testDocumentShipToLegalOrganization()
+    public function testDocumentShipToLegalOrganization(): void
     {
         self::$document->getDocumentShipToLegalOrganisation($shiptolegalorgid, $shiptolegalorgtype, $shiptolegalorgname);
         $this->assertEquals("", $shiptolegalorgid);
@@ -419,7 +419,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToContact
      */
-    public function testDocumentShipToContact()
+    public function testDocumentShipToContact(): void
     {
         self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
         $this->assertEquals("", $shiptocontactpersonname);
@@ -432,7 +432,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipTo
      */
-    public function testDocumentUltimateShipToGeneral()
+    public function testDocumentUltimateShipToGeneral(): void
     {
         self::$document->getDocumentUltimateShipTo($ultimateshiptoname, $ultimateshiptoids, $ultimateshiptodescription);
         $this->assertEquals("", $ultimateshiptoname);
@@ -444,7 +444,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToGlobalId
      */
-    public function testDocumentUltimateShipToGlobalId()
+    public function testDocumentUltimateShipToGlobalId(): void
     {
         self::$document->getDocumentUltimateShipToGlobalId($ultimateshiptoglobalids);
         $this->assertIsArray($ultimateshiptoglobalids);
@@ -454,7 +454,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToTaxRegistration
      */
-    public function testDocumentUltimateShipToTaxRegistration()
+    public function testDocumentUltimateShipToTaxRegistration(): void
     {
         self::$document->getDocumentUltimateShipToTaxRegistration($ultimateshiptotaxreg);
         $this->assertIsArray($ultimateshiptotaxreg);
@@ -464,7 +464,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToAddress
      */
-    public function testDocumentUltimateShipToAddress()
+    public function testDocumentUltimateShipToAddress(): void
     {
         self::$document->getDocumentUltimateShipToAddress($ultimateshiptolineone, $ultimateshiptolinetwo, $ultimateshiptolinethree, $ultimateshiptopostcode, $ultimateshiptocity, $ultimateshiptocountry, $ultimateshiptosubdivision);
         $this->assertEquals("", $ultimateshiptolineone);
@@ -480,7 +480,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToLegalOrganisation
      */
-    public function testDocumentUltimateShipToLegalOrganization()
+    public function testDocumentUltimateShipToLegalOrganization(): void
     {
         self::$document->getDocumentUltimateShipToLegalOrganisation($ultimateshiptolegalorgid, $ultimateshiptolegalorgtype, $ultimateshiptolegalorgname);
         $this->assertEquals("", $ultimateshiptolegalorgid);
@@ -491,7 +491,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToContact
      */
-    public function testDocumentUltimateShipToContact()
+    public function testDocumentUltimateShipToContact(): void
     {
         self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
         $this->assertEquals("", $ultimateshiptocontactpersonname);
@@ -504,7 +504,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFrom
      */
-    public function testDocumentShipFromGeneral()
+    public function testDocumentShipFromGeneral(): void
     {
         self::$document->getDocumentShipFrom($shipfromname, $shipfromids, $shipfromdescription);
         $this->assertEquals("", $shipfromname);
@@ -516,7 +516,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromGlobalId
      */
-    public function testDocumentShipFromGlobalId()
+    public function testDocumentShipFromGlobalId(): void
     {
         self::$document->getDocumentShipFromGlobalId($shipfromglobalids);
         $this->assertIsArray($shipfromglobalids);
@@ -526,7 +526,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromTaxRegistration
      */
-    public function testDocumentShipFromTaxRegistration()
+    public function testDocumentShipFromTaxRegistration(): void
     {
         self::$document->getDocumentShipFromTaxRegistration($shipfromtaxreg);
         $this->assertIsArray($shipfromtaxreg);
@@ -536,7 +536,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromAddress
      */
-    public function testDocumentShipFromAddress()
+    public function testDocumentShipFromAddress(): void
     {
         self::$document->getDocumentShipFromAddress($shipfromlineone, $shipfromlinetwo, $shipfromlinethree, $shipfrompostcode, $shipfromcity, $shipfromcountry, $shipfromsubdivision);
         $this->assertEquals("", $shipfromlineone);
@@ -552,7 +552,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromLegalOrganisation
      */
-    public function testDocumentShipFromLegalOrganization()
+    public function testDocumentShipFromLegalOrganization(): void
     {
         self::$document->getDocumentShipFromLegalOrganisation($shipfromlegalorgid, $shipfromlegalorgtype, $shipfromlegalorgname);
         $this->assertEquals("", $shipfromlegalorgid);
@@ -563,7 +563,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromContact
      */
-    public function testDocumentShipFromContact()
+    public function testDocumentShipFromContact(): void
     {
         self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
         $this->assertEquals("", $shipfromcontactpersonname);
@@ -576,7 +576,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicer
      */
-    public function testDocumentInvoicerGeneral()
+    public function testDocumentInvoicerGeneral(): void
     {
         self::$document->getDocumentInvoicer($invoicername, $invoicerids, $invoicerdescription);
         $this->assertEquals("", $invoicername);
@@ -588,7 +588,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerGlobalId
      */
-    public function testDocumentInvoicerGlobalId()
+    public function testDocumentInvoicerGlobalId(): void
     {
         self::$document->getDocumentInvoicerGlobalId($invoicerglobalids);
         $this->assertIsArray($invoicerglobalids);
@@ -598,7 +598,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerTaxRegistration
      */
-    public function testDocumentInvoicerTaxRegistration()
+    public function testDocumentInvoicerTaxRegistration(): void
     {
         self::$document->getDocumentInvoicerTaxRegistration($invoicertaxreg);
         $this->assertIsArray($invoicertaxreg);
@@ -608,7 +608,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerAddress
      */
-    public function testDocumentInvoicerAddress()
+    public function testDocumentInvoicerAddress(): void
     {
         self::$document->getDocumentInvoicerAddress($invoicerlineone, $invoicerlinetwo, $invoicerlinethree, $invoicerpostcode, $invoicercity, $invoicercountry, $invoicersubdivision);
         $this->assertEquals("", $invoicerlineone);
@@ -624,7 +624,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerLegalOrganisation
      */
-    public function testDocumentInvoicerLegalOrganization()
+    public function testDocumentInvoicerLegalOrganization(): void
     {
         self::$document->getDocumentInvoicerLegalOrganisation($invoicerlegalorgid, $invoicerlegalorgtype, $invoicerlegalorgname);
         $this->assertEquals("", $invoicerlegalorgid);
@@ -635,7 +635,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerContact
      */
-    public function testDocumentInvoicerContact()
+    public function testDocumentInvoicerContact(): void
     {
         self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
         $this->assertEquals("", $invoicercontactpersonname);
@@ -648,7 +648,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicee
      */
-    public function testDocumentInvoiceeGeneral()
+    public function testDocumentInvoiceeGeneral(): void
     {
         self::$document->getDocumentInvoicee($invoiceename, $invoiceeids, $invoiceedescription);
         $this->assertEquals("", $invoiceename);
@@ -660,7 +660,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeGlobalId
      */
-    public function testDocumentInvoiceeGlobalId()
+    public function testDocumentInvoiceeGlobalId(): void
     {
         self::$document->getDocumentInvoiceeGlobalId($invoiceeglobalids);
         $this->assertIsArray($invoiceeglobalids);
@@ -670,7 +670,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeTaxRegistration
      */
-    public function testDocumentInvoiceeTaxRegistration()
+    public function testDocumentInvoiceeTaxRegistration(): void
     {
         self::$document->getDocumentInvoiceeTaxRegistration($invoiceetaxreg);
         $this->assertIsArray($invoiceetaxreg);
@@ -680,7 +680,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeAddress
      */
-    public function testDocumentInvoiceeAddress()
+    public function testDocumentInvoiceeAddress(): void
     {
         self::$document->getDocumentInvoiceeAddress($invoiceelineone, $invoiceelinetwo, $invoiceelinethree, $invoiceepostcode, $invoiceecity, $invoiceecountry, $invoiceesubdivision);
         $this->assertEquals("", $invoiceelineone);
@@ -696,7 +696,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeLegalOrganisation
      */
-    public function testDocumentInvoiceeLegalOrganization()
+    public function testDocumentInvoiceeLegalOrganization(): void
     {
         self::$document->getDocumentInvoiceeLegalOrganisation($invoiceelegalorgid, $invoiceelegalorgtype, $invoiceelegalorgname);
         $this->assertEquals("", $invoiceelegalorgid);
@@ -707,7 +707,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeContact
      */
-    public function testDocumentInvoiceeContact()
+    public function testDocumentInvoiceeContact(): void
     {
         self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
         $this->assertEquals("", $invoiceecontactpersonname);
@@ -720,7 +720,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayee
      */
-    public function testDocumentPayeeGeneral()
+    public function testDocumentPayeeGeneral(): void
     {
         self::$document->getDocumentPayee($payeename, $payeeids, $payeedescription);
         $this->assertEquals("", $payeename);
@@ -732,7 +732,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeGlobalId
      */
-    public function testDocumentPayeeGlobalId()
+    public function testDocumentPayeeGlobalId(): void
     {
         self::$document->getDocumentPayeeGlobalId($payeeglobalids);
         $this->assertIsArray($payeeglobalids);
@@ -742,7 +742,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeTaxRegistration
      */
-    public function testDocumentPayeeTaxRegistration()
+    public function testDocumentPayeeTaxRegistration(): void
     {
         self::$document->getDocumentPayeeTaxRegistration($payeetaxreg);
         $this->assertIsArray($payeetaxreg);
@@ -752,7 +752,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeAddress
      */
-    public function testDocumentPayeeAddress()
+    public function testDocumentPayeeAddress(): void
     {
         self::$document->getDocumentPayeeAddress($payeelineone, $payeelinetwo, $payeelinethree, $payeepostcode, $payeecity, $payeecountry, $payeesubdivision);
         $this->assertEquals("", $payeelineone);
@@ -768,7 +768,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeLegalOrganisation
      */
-    public function testDocumentPayeeLegalOrganization()
+    public function testDocumentPayeeLegalOrganization(): void
     {
         self::$document->getDocumentPayeeLegalOrganisation($payeelegalorgid, $payeelegalorgtype, $payeelegalorgname);
         $this->assertEquals("", $payeelegalorgid);
@@ -779,7 +779,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeContact
      */
-    public function testDocumentPayeeContact()
+    public function testDocumentPayeeContact(): void
     {
         self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
         $this->assertEquals("", $payeecontactpersonname);
@@ -792,7 +792,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUser
      */
-    public function testDocumentProductEndUserGeneral()
+    public function testDocumentProductEndUserGeneral(): void
     {
         self::$document->getDocumentProductEndUser($producendusername, $producenduserids, $producenduserdescription);
         $this->assertEquals("", $producendusername);
@@ -805,7 +805,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserGlobalId
      */
-    public function testDocumentProductEndUserGlobalId()
+    public function testDocumentProductEndUserGlobalId(): void
     {
         self::$document->getDocumentProductEndUserGlobalId($producenduserglobalids);
         $this->assertIsArray($producenduserglobalids);
@@ -815,7 +815,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserTaxRegistration
      */
-    public function testDocumentProductEndUserTaxRegistration()
+    public function testDocumentProductEndUserTaxRegistration(): void
     {
         self::$document->getDocumentProductEndUserTaxRegistration($producendusertaxreg);
         $this->assertIsArray($producendusertaxreg);
@@ -829,7 +829,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserAddress
      */
-    public function testDocumentProductEndUserAddress()
+    public function testDocumentProductEndUserAddress(): void
     {
         self::$document->getDocumentProductEndUserAddress($producenduserlineone, $producenduserlinetwo, $producenduserlinethree, $producenduserpostcode, $producendusercity, $producendusercountry, $producendusersubdivision);
         $this->assertEquals("", $producenduserlineone);
@@ -845,7 +845,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserLegalOrganisation
      */
-    public function testDocumentProductEndUserLegalOrganization()
+    public function testDocumentProductEndUserLegalOrganization(): void
     {
         self::$document->getDocumentProductEndUserLegalOrganisation($producenduserlegalorgid, $producenduserlegalorgtype, $producenduserlegalorgname);
         $this->assertEquals("", $producenduserlegalorgid);
@@ -856,7 +856,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserContact
      */
-    public function testDocumentProductEndUserContact()
+    public function testDocumentProductEndUserContact(): void
     {
         self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
         $this->assertEquals("", $producendusercontactpersonname);
@@ -869,7 +869,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerOrderReferencedDocument
      */
-    public function testDocumentSellerOrderReferencedDocument()
+    public function testDocumentSellerOrderReferencedDocument(): void
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
         $this->assertEquals("", $sellerorderrefdocid);
@@ -879,7 +879,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerOrderReferencedDocument
      */
-    public function testDocumentBuyerOrderReferencedDocument()
+    public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
         $this->assertEquals("", $buyerorderrefdocid);
@@ -889,7 +889,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentContractReferencedDocument
      */
-    public function testDocumentContractReferencedDocument()
+    public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
         $this->assertEquals("", $contractrefdocid);
@@ -899,7 +899,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocuments
      */
-    public function testDocumentAdditionalReferencedDocuments()
+    public function testDocumentAdditionalReferencedDocuments(): void
     {
         self::$document->getDocumentAdditionalReferencedDocuments($additionalrefdocs);
         $this->assertIsArray($additionalrefdocs);
@@ -909,7 +909,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProcuringProject
      */
-    public function testDocumentProcuringProject()
+    public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
         $this->assertEquals("", $projectid);
@@ -919,7 +919,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSupplyChainEvent
      */
-    public function testDocumentSupplyChainEvent()
+    public function testDocumentSupplyChainEvent(): void
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertNotNull($supplychainevent);
@@ -930,7 +930,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDespatchAdviceReferencedDocument
      */
-    public function testDocumentDespatchAdviceReferencedDocument()
+    public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertEquals("", $despatchdocid);
@@ -941,7 +941,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentReceivingAdviceReferencedDocument
      */
-    public function testDocumentReceivingAdviceReferencedDocument()
+    public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertEquals("", $recadvid);
@@ -952,7 +952,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDeliveryNoteReferencedDocument
      */
-    public function testDocumentDeliveryNoteReferencedDocument()
+    public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
         $this->assertEquals("", $deliverynoterefdocid);
@@ -963,7 +963,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBillingPeriod
      */
-    public function testDocumentBillingPeriod()
+    public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
         $this->assertNull($docbillingperiodstart);
@@ -975,7 +975,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAllowanceCharges
      */
-    public function testDocumentAllowanceCharges()
+    public function testDocumentAllowanceCharges(): void
     {
         self::$document->getDocumentAllowanceCharges($docallowancecharge);
         $this->assertIsArray($docallowancecharge);
@@ -985,7 +985,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerms
      */
-    public function testDocumentPaymentTerms()
+    public function testDocumentPaymentTerms(): void
     {
         self::$document->getDocumentPaymentTerms($docpaymentterms);
         $this->assertIsArray($docpaymentterms);
@@ -1006,7 +1006,7 @@ class ReaderBasicSimpleTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDeliveryTerms
      */
-    public function testDocumentDeliveryTerms()
+    public function testDocumentDeliveryTerms(): void
     {
         self::$document->getDocumentDeliveryTerms($devtermcode);
         $this->assertEquals("", $devtermcode);
@@ -1016,7 +1016,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument
      */
-    public function testDocumentAdditionalReferencedDocumentLoop()
+    public function testDocumentAdditionalReferencedDocumentLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentAdditionalReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentAdditionalReferencedDocument());
@@ -1026,7 +1026,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentUltimateCustomerOrderReferencedDocument
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentUltimateCustomerOrderReferencedDocument
      */
-    public function testDocumentUltimateCustomerOrderReferencedDocumentLoop()
+    public function testDocumentUltimateCustomerOrderReferencedDocumentLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
@@ -1036,7 +1036,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextGetDocumentPaymentMeans
      */
-    public function testDocumentPaymentMeansLoop()
+    public function testDocumentPaymentMeansLoop(): void
     {
         $this->assertFalse(self::$document->firstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->nextGetDocumentPaymentMeans());
@@ -1046,7 +1046,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentMeans
      */
-    public function testGetDocumentPaymentMeans()
+    public function testGetDocumentPaymentMeans(): void
     {
         $this->assertFalse(self::$document->firstGetDocumentPaymentMeans());
     }
@@ -1055,7 +1055,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentTax
      */
-    public function testDocumentTaxLoop()
+    public function testDocumentTaxLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentTax());
         $this->assertFalse(self::$document->nextDocumentTax());
@@ -1066,7 +1066,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentTax
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentTax
      */
-    public function testDocumentTax()
+    public function testDocumentTax(): void
     {
         $this->assertTrue(self::$document->firstDocumentTax());
         self::$document->getDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
@@ -1081,7 +1081,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAllowanceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAllowanceCharge
      */
-    public function testtDocumentAllowanceChargeLoop()
+    public function testtDocumentAllowanceChargeLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentAllowanceCharge());
         $this->assertFalse(self::$document->nextDocumentAllowanceCharge());
@@ -1091,7 +1091,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentLogisticsServiceCharge
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentLogisticsServiceCharge
      */
-    public function testtDocumentLogisticsServiceChargeLoop()
+    public function testtDocumentLogisticsServiceChargeLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentLogisticsServiceCharge());
         $this->assertFalse(self::$document->nextDocumentLogisticsServiceCharge());
@@ -1101,7 +1101,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
      */
-    public function testtDocumentPaymentTermsLoop()
+    public function testtDocumentPaymentTermsLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
@@ -1113,7 +1113,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerm
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDiscountTermsFromPaymentTerm
      */
-    public function testtDocumentPaymentTerms()
+    public function testtDocumentPaymentTerms(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
@@ -1136,7 +1136,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPosition
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
      */
-    public function testDocumentPositionLoop()
+    public function testDocumentPositionLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition(), "has a first position");
         $this->assertFalse(self::$document->nextDocumentPosition(), "has no second position");
@@ -1167,7 +1167,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
      */
-    public function testDocumentPositionFirst()
+    public function testDocumentPositionFirst(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());
 
@@ -1269,7 +1269,7 @@ class ReaderBasicSimpleTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionAdditionalReferencedDocument
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionAdditionalReferencedDocument
      */
-    public function testDocumentPositionAdditionalReferencedDocument()
+    public function testDocumentPositionAdditionalReferencedDocument(): void
     {
         $this->assertFalse(self::$document->firstDocumentPositionAdditionalReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentPositionAdditionalReferencedDocument());

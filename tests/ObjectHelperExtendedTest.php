@@ -22,7 +22,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeWithValue()
+    public function testGetIdTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -35,7 +35,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeWithValueAndScheme()
+    public function testGetIdTypeWithValueAndScheme(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -48,7 +48,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeAllEmpty()
+    public function testGetIdTypeAllEmpty(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -60,7 +60,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeAllNull()
+    public function testGetIdTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -72,7 +72,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeEmptyValue()
+    public function testGetIdTypeEmptyValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -84,7 +84,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeNullValue()
+    public function testGetIdTypeNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -96,7 +96,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
-    public function testGetIdTypeEmptyValueWithScheme()
+    public function testGetIdTypeEmptyValueWithScheme(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IDType
@@ -108,7 +108,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
      */
-    public function testGetTextTypeWithValue()
+    public function testGetTextTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -120,7 +120,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
      */
-    public function testGetTextTypeAllEmpty()
+    public function testGetTextTypeAllEmpty(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -132,7 +132,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
      */
-    public function testGetTextTypeNullValue()
+    public function testGetTextTypeNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -144,7 +144,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
      */
-    public function testGetCodeTypeWithValue()
+    public function testGetCodeTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -156,7 +156,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
      */
-    public function testGetCodeTypeAllEmpty()
+    public function testGetCodeTypeAllEmpty(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -168,7 +168,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
      */
-    public function testGetCodeTypeNullValue()
+    public function testGetCodeTypeNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\TextType
@@ -180,7 +180,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
      */
-    public function testGetIndicatorTypeWithTrueValue()
+    public function testGetIndicatorTypeWithTrueValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
@@ -192,7 +192,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
      */
-    public function testGetIndicatorTypeWithFalseValue()
+    public function testGetIndicatorTypeWithFalseValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
@@ -209,7 +209,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
      */
-    public function testGetIndicatorTypeNullValue()
+    public function testGetIndicatorTypeNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
@@ -221,7 +221,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
      */
-    public function testGetNoteTypeAllValues()
+    public function testGetNoteTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\NoteType
@@ -235,7 +235,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
      */
-    public function testGetNoteTypeAllNullValue()
+    public function testGetNoteTypeAllNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\NoteType
@@ -247,7 +247,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
      */
-    public function testGetNoteTypeWithEmptyContent()
+    public function testGetNoteTypeWithEmptyContent(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\NoteType
@@ -259,7 +259,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
      */
-    public function testGetNoteTypeWithEmptyContentButWithSubjectCode()
+    public function testGetNoteTypeWithEmptyContentButWithSubjectCode(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\NoteType
@@ -271,7 +271,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getFormattedDateTimeType
      */
-    public function testGetFormattedDateTimeType()
+    public function testGetFormattedDateTimeType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
@@ -284,7 +284,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getFormattedDateTimeType
      */
-    public function testGetFormattedDateTimeTypeWithNullValue()
+    public function testGetFormattedDateTimeTypeWithNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
@@ -296,7 +296,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateTimeType
      */
-    public function testGetDateTimeType()
+    public function testGetDateTimeType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType
@@ -309,7 +309,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateTimeType
      */
-    public function testGetDateTimeTypeWithNullValue()
+    public function testGetDateTimeTypeWithNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType
@@ -321,7 +321,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateType
      */
-    public function testGetDateType()
+    public function testGetDateType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\DateType
@@ -334,7 +334,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateType
      */
-    public function testGetDateTypeWithNullValue()
+    public function testGetDateTypeWithNullValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\DateType
@@ -346,7 +346,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
      */
-    public function testGetAmountTypeWithValue()
+    public function testGetAmountTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -359,7 +359,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
      */
-    public function testGetAmountTypeWithValueAndCurrency()
+    public function testGetAmountTypeWithValueAndCurrency(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -372,7 +372,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
      */
-    public function testGetAmountTypeAllNull()
+    public function testGetAmountTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -384,7 +384,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
      */
-    public function testGetAmountTypeWithValueAndEmptyCurrency()
+    public function testGetAmountTypeWithValueAndEmptyCurrency(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -397,7 +397,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
      */
-    public function testGetAmountTypeWithNullValueAndCurrency()
+    public function testGetAmountTypeWithNullValueAndCurrency(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -409,7 +409,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getPercentType
      */
-    public function testGetPercentTypeWithValue()
+    public function testGetPercentTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\PercentType
@@ -421,7 +421,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getPercentType
      */
-    public function testGetPercentTypeAllNull()
+    public function testGetPercentTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\PercentType
@@ -433,7 +433,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
      */
-    public function testGetQuantityTypeWithValue()
+    public function testGetQuantityTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
@@ -445,7 +445,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
      */
-    public function testGetQuantityTypeWithValueAndUnitCode()
+    public function testGetQuantityTypeWithValueAndUnitCode(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
@@ -458,7 +458,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
      */
-    public function testGetQuantityTypeAllNull()
+    public function testGetQuantityTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
@@ -470,7 +470,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
      */
-    public function testGetQuantityTypeWithNullValueAndUnitCode()
+    public function testGetQuantityTypeWithNullValueAndUnitCode(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
@@ -482,7 +482,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
      */
-    public function testGetMeasureTypeWithValue()
+    public function testGetMeasureTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
@@ -494,7 +494,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
      */
-    public function testGetMeasureTypeWithValueAndUnitCode()
+    public function testGetMeasureTypeWithValueAndUnitCode(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
@@ -507,7 +507,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
      */
-    public function testGetMeasureTypeAllNull()
+    public function testGetMeasureTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
@@ -519,7 +519,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
      */
-    public function testGetMeasureTypeWithNullValueAndUnitCode()
+    public function testGetMeasureTypeWithNullValueAndUnitCode(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
@@ -531,7 +531,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNumericType
      */
-    public function testGetNumericTypeWithValue()
+    public function testGetNumericTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\NumericType
@@ -543,7 +543,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNumericType
      */
-    public function testGetNumericTypeAllNull()
+    public function testGetNumericTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\NumericType
@@ -555,7 +555,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxCategoryCodeType
      */
-    public function testGetTaxCategoryCodeTypeWithValue()
+    public function testGetTaxCategoryCodeTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
@@ -567,7 +567,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxCategoryCodeType
      */
-    public function testGetTaxCategoryCodeTypeAllNull()
+    public function testGetTaxCategoryCodeTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
@@ -579,7 +579,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxTypeCodeType
      */
-    public function testGetTaxTypeCodeTypeWithValue()
+    public function testGetTaxTypeCodeTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
@@ -591,7 +591,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxTypeCodeType
      */
-    public function testGetTaxTypeCodeTypeAllNull()
+    public function testGetTaxTypeCodeTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
@@ -603,7 +603,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTimeReferenceCodeType
      */
-    public function testGetTimeReferenceCodeTypeWithValue()
+    public function testGetTimeReferenceCodeTypeWithValue(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
@@ -615,7 +615,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTimeReferenceCodeType
      */
-    public function testGetTimeReferenceCodeTypeAllNull()
+    public function testGetTimeReferenceCodeTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
@@ -627,7 +627,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSpecifiedPeriodType
      */
-    public function testGetSpecifiedPeriodTypeAllValues()
+    public function testGetSpecifiedPeriodTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType
@@ -645,7 +645,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSpecifiedPeriodType
      */
-    public function testGetSpecifiedPeriodTypeAllNull()
+    public function testGetSpecifiedPeriodTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType
@@ -657,7 +657,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
      */
-    public function testGetBinaryObjectTypeAllValues()
+    public function testGetBinaryObjectTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
@@ -671,7 +671,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
      */
-    public function testGetBinaryObjectTypeAllNull()
+    public function testGetBinaryObjectTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
@@ -683,7 +683,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
      */
-    public function testGetBinaryObjectTypeDataNull()
+    public function testGetBinaryObjectTypeDataNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
@@ -695,7 +695,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
      */
-    public function testGetBinaryObjectTypeMimeTypeNull()
+    public function testGetBinaryObjectTypeMimeTypeNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
@@ -707,7 +707,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
      */
-    public function testGetBinaryObjectTypeFilenameNull()
+    public function testGetBinaryObjectTypeFilenameNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
@@ -719,7 +719,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedDocumentType
      */
-    public function testGetReferencedDocumentTypeAllValues()
+    public function testGetReferencedDocumentTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
@@ -740,7 +740,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedDocumentType
      */
-    public function testGetReferencedDocumentTypeAllNull()
+    public function testGetReferencedDocumentTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
@@ -752,7 +752,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCrossIndustryInvoice
      */
-    public function testCrossIndustryInvoice()
+    public function testCrossIndustryInvoice(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice
@@ -764,7 +764,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeParty
      */
-    public function testGetTradePartyAllValues()
+    public function testGetTradePartyAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
@@ -780,7 +780,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeParty
      */
-    public function testGetTradePartyNullValues()
+    public function testGetTradePartyNullValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
@@ -792,7 +792,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAddress
      */
-    public function testGetTradeAddressAllValues()
+    public function testGetTradeAddressAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType
@@ -812,7 +812,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAddress
      */
-    public function testGetTradeAddressAllNull()
+    public function testGetTradeAddressAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType
@@ -824,7 +824,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLegalOrganization
      */
-    public function testGetLegalOrganizationAllValues()
+    public function testGetLegalOrganizationAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType
@@ -838,7 +838,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLegalOrganization
      */
-    public function testGetLegalOrganizationAllNull()
+    public function testGetLegalOrganizationAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType
@@ -850,7 +850,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeContact
      */
-    public function testGetTradeContactAllValues()
+    public function testGetTradeContactAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType
@@ -866,7 +866,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeContact
      */
-    public function testGetTradeContactAllNull()
+    public function testGetTradeContactAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType
@@ -878,7 +878,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getUniversalCommunicationType
      */
-    public function testGetUniversalCommunicationTypeAllValues()
+    public function testGetUniversalCommunicationTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
@@ -892,7 +892,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getUniversalCommunicationType
      */
-    public function testGetUniversalCommunicationTypeAllNull()
+    public function testGetUniversalCommunicationTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
@@ -904,7 +904,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
      */
-    public function testGetTaxRegistrationTypeAllValues()
+    public function testGetTaxRegistrationTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
@@ -917,7 +917,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
      */
-    public function testGetTaxRegistrationTypeAllNull()
+    public function testGetTaxRegistrationTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
@@ -929,7 +929,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
      */
-    public function testGetTaxRegistrationTypeIdNull()
+    public function testGetTaxRegistrationTypeIdNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
@@ -941,7 +941,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
      */
-    public function testGetTaxRegistrationTypeTypeNull()
+    public function testGetTaxRegistrationTypeTypeNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
@@ -953,7 +953,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeDeliveryTermsType
      */
-    public function testGetTradeDeliveryTermsTypeAllValues()
+    public function testGetTradeDeliveryTermsTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
@@ -965,7 +965,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeDeliveryTermsType
      */
-    public function testGetTradeDeliveryTermsTypeAllNull()
+    public function testGetTradeDeliveryTermsTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
@@ -977,7 +977,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
      */
-    public function testGetProcuringProjectTypeAllValues()
+    public function testGetProcuringProjectTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
@@ -990,7 +990,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
      */
-    public function testGetProcuringProjectTypeIdNull()
+    public function testGetProcuringProjectTypeIdNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
@@ -1002,7 +1002,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
      */
-    public function testGetProcuringProjectTypeNameNull()
+    public function testGetProcuringProjectTypeNameNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
@@ -1014,7 +1014,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
      */
-    public function testGetProcuringProjectTypeAllNull()
+    public function testGetProcuringProjectTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
@@ -1026,7 +1026,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainEventType
      */
-    public function testGetSupplyChainEventTypeAllValues()
+    public function testGetSupplyChainEventTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType
@@ -1039,7 +1039,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainEventType
      */
-    public function testGetSupplyChainEventTypeAllNull()
+    public function testGetSupplyChainEventTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType
@@ -1051,7 +1051,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementFinancialCardType
      */
-    public function testGetTradeSettlementFinancialCardTypeAllValues()
+    public function testGetTradeSettlementFinancialCardTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType
@@ -1065,7 +1065,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementFinancialCardType
      */
-    public function testGetTradeSettlementFinancialCardTypeAllNull()
+    public function testGetTradeSettlementFinancialCardTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType
@@ -1077,7 +1077,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDebtorFinancialAccountType
      */
-    public function testGetDebtorFinancialAccountTypeAllValues()
+    public function testGetDebtorFinancialAccountTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType
@@ -1089,7 +1089,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDebtorFinancialAccountType
      */
-    public function testGetDebtorFinancialAccountTypeAllNull()
+    public function testGetDebtorFinancialAccountTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType
@@ -1101,7 +1101,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialAccountType
      */
-    public function testGetCreditorFinancialAccountTypeAllValues()
+    public function testGetCreditorFinancialAccountTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType
@@ -1115,7 +1115,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialAccountType
      */
-    public function testGetCreditorFinancialAccountTypeAllNull()
+    public function testGetCreditorFinancialAccountTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType
@@ -1127,7 +1127,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialInstitutionType
      */
-    public function testGetCreditorFinancialInstitutionTypeAllValues()
+    public function testGetCreditorFinancialInstitutionTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType
@@ -1139,7 +1139,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialInstitutionType
      */
-    public function testGetCreditorFinancialInstitutionTypeAllNull()
+    public function testGetCreditorFinancialInstitutionTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType
@@ -1151,7 +1151,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementPaymentMeansType
      */
-    public function testGetTradeSettlementPaymentMeansTypeAllValues()
+    public function testGetTradeSettlementPaymentMeansTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType
@@ -1163,7 +1163,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementPaymentMeansType
      */
-    public function testGetTradeSettlementPaymentMeansTypeAllNull()
+    public function testGetTradeSettlementPaymentMeansTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType
@@ -1175,7 +1175,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentTermsType
      */
-    public function testGetTradePaymentTermsTypeAllValues()
+    public function testGetTradePaymentTermsTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType
@@ -1188,7 +1188,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentTermsType
      */
-    public function testGetTradePaymentTermsTypeAllNull()
+    public function testGetTradePaymentTermsTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType
@@ -1200,7 +1200,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentDiscountTermsType
      */
-    public function testGetTradePaymentDiscountTermsTypeAllValues()
+    public function testGetTradePaymentDiscountTermsTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
@@ -1224,7 +1224,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentDiscountTermsType
      */
-    public function testGetTradePaymentDiscountTermsTypeAllNull()
+    public function testGetTradePaymentDiscountTermsTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
@@ -1236,7 +1236,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeTaxType
      */
-    public function testGetTradeTaxTypeAllValues()
+    public function testGetTradeTaxTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
@@ -1262,7 +1262,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeTaxType
      */
-    public function testGetTradeTaxTypeAllNull()
+    public function testGetTradeTaxTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
@@ -1274,7 +1274,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAllowanceChargeType
      */
-    public function testGetTradeAllowanceChargeTypeAllValues()
+    public function testGetTradeAllowanceChargeTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType
@@ -1312,7 +1312,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAllowanceChargeType
      */
-    public function testGetTradeAllowanceChargeTypeAllNull()
+    public function testGetTradeAllowanceChargeTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType
@@ -1324,7 +1324,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLogisticsServiceChargeType
      */
-    public function testGetLogisticsServiceChargeTypeAllValues()
+    public function testGetLogisticsServiceChargeTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
@@ -1337,7 +1337,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLogisticsServiceChargeType
      */
-    public function testGetLogisticsServiceChargeTypeAllNull()
+    public function testGetLogisticsServiceChargeTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
@@ -1350,7 +1350,7 @@ class ObjectHelperExtendedTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationType
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
      */
-    public function testGetTradeSettlementHeaderMonetarySummationTypeAllValues()
+    public function testGetTradeSettlementHeaderMonetarySummationTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
@@ -1377,7 +1377,7 @@ class ObjectHelperExtendedTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationType
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
      */
-    public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull()
+    public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
@@ -1389,7 +1389,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
      */
-    public function testGetTradeSettlementHeaderMonetarySummationTypeOnly()
+    public function testGetTradeSettlementHeaderMonetarySummationTypeOnly(): void
     {
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationTypeOnly();
         $this->assertNotNull($summation);
@@ -1398,7 +1398,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAccountingAccountType
      */
-    public function testGetTradeAccountingAccountTypeAllValues()
+    public function testGetTradeAccountingAccountTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
@@ -1411,7 +1411,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAccountingAccountType
      */
-    public function testGetTradeAccountingAccountTypeAllNull()
+    public function testGetTradeAccountingAccountTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
@@ -1423,7 +1423,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentLineDocumentType
      */
-    public function testGetDocumentLineDocumentTypeAllValues()
+    public function testGetDocumentLineDocumentTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType
@@ -1435,7 +1435,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentLineDocumentType
      */
-    public function testGetDocumentLineDocumentTypeAllNull()
+    public function testGetDocumentLineDocumentTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType
@@ -1447,7 +1447,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainTradeLineItemType
      */
-    public function testGetSupplyChainTradeLineItemTypeAllValues()
+    public function testGetSupplyChainTradeLineItemTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType
@@ -1460,7 +1460,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainTradeLineItemType
      */
-    public function testGetSupplyChainTradeLineItemTypeAllNull()
+    public function testGetSupplyChainTradeLineItemTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType
@@ -1472,7 +1472,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
      */
-    public function testGetTradeProductTypeAllValues()
+    public function testGetTradeProductTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType
@@ -1489,7 +1489,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
      */
-    public function testGetTradeProductTypeAllNull()
+    public function testGetTradeProductTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType
@@ -1501,7 +1501,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductCharacteristicType
      */
-    public function testGetProductCharacteristicType()
+    public function testGetProductCharacteristicType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType
@@ -1517,7 +1517,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductClassificationType
      */
-    public function testGetProductClassificationType()
+    public function testGetProductClassificationType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ProductClassificationType
@@ -1532,7 +1532,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedProductType
      */
-    public function testGetReferencedProductType()
+    public function testGetReferencedProductType(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
@@ -1551,7 +1551,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
      */
-    public function testGetTradePriceTypeAllValues()
+    public function testGetTradePriceTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType
@@ -1565,7 +1565,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
      */
-    public function testGetTradePriceTypeAllNull()
+    public function testGetTradePriceTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType
@@ -1577,7 +1577,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementLineMonetarySummationType
      */
-    public function testGetTradeSettlementLineMonetarySummationTypeAllValues()
+    public function testGetTradeSettlementLineMonetarySummationTypeAllValues(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
@@ -1590,7 +1590,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementLineMonetarySummationType
      */
-    public function testGetTradeSettlementLineMonetarySummationTypeAllNull()
+    public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void
     {
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
@@ -1602,7 +1602,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTimeGeneral()
+    public function testToDateTimeGeneral(): void
     {
         $this->assertEquals("20200202", self::$objectHelper->toDateTime("20200202", "102")->format("Ymd"));
         $this->assertNull(self::$objectHelper->toDateTime("", "102"));
@@ -1621,7 +1621,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTime101()
+    public function testToDateTime101(): void
     {
         $this->assertEquals("20200202", self::$objectHelper->toDateTime("200202", "101")->format("Ymd"));
     }
@@ -1629,7 +1629,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTime201()
+    public function testToDateTime201(): void
     {
         $this->assertEquals("2002021031", self::$objectHelper->toDateTime("2002021031", "201")->format("ymdHi"));
     }
@@ -1637,7 +1637,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTime202()
+    public function testToDateTime202(): void
     {
         $this->assertEquals("200202103145", self::$objectHelper->toDateTime("200202103145", "202")->format("ymdHis"));
     }
@@ -1645,7 +1645,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTime203()
+    public function testToDateTime203(): void
     {
         $this->assertEquals("202002021031", self::$objectHelper->toDateTime("202002021031", "203")->format("YmdHi"));
     }
@@ -1653,7 +1653,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
      */
-    public function testToDateTime204()
+    public function testToDateTime204(): void
     {
         $this->assertEquals("20200202103145", self::$objectHelper->toDateTime("20200202103145", "204")->format("YmdHis"));
     }
@@ -1661,7 +1661,7 @@ class ObjectHelperExtendedTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::createClassInstance
      */
-    public function testCreateClassInstance()
+    public function testCreateClassInstance(): void
     {
         $instance = self::$objectHelper->createClassInstance('ram\TradeProductType');
         $this->assertNotNull($instance);

@@ -20,7 +20,7 @@ class ReaderEn16931Bank2Test extends TestCase
         self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/en16931_bank_2.xml");
     }
 
-    public function testDocumentProfile()
+    public function testDocumentProfile(): void
     {
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
@@ -31,7 +31,7 @@ class ReaderEn16931Bank2Test extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
      */
-    public function testDocumentGenerals()
+    public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('F20200024', $documentno);
@@ -50,7 +50,7 @@ class ReaderEn16931Bank2Test extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextGetDocumentPaymentMeans
      */
-    public function testDocumentPaymentMeansLoop()
+    public function testDocumentPaymentMeansLoop(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->nextGetDocumentPaymentMeans());
@@ -60,7 +60,7 @@ class ReaderEn16931Bank2Test extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
      */
-    public function testtDocumentPaymentTermsLoop()
+    public function testtDocumentPaymentTermsLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
@@ -69,7 +69,7 @@ class ReaderEn16931Bank2Test extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentGeneralPaymentInformation
      */
-    public function testDocumentGeneralPaymentInformation()
+    public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
         $this->assertEquals("CREDID", $creditorReferenceID);
@@ -80,7 +80,7 @@ class ReaderEn16931Bank2Test extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentMeans
      */
-    public function testGetDocumentPaymentMeans()
+    public function testGetDocumentPaymentMeans(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         self::$document->getDocumentPaymentMeans($typeCode, $information, $cardType, $cardId, $cardHolderName, $buyerIban, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
@@ -102,7 +102,7 @@ class ReaderEn16931Bank2Test extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerm
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDiscountTermsFromPaymentTerm
      */
-    public function testtDocumentPaymentTerms()
+    public function testtDocumentPaymentTerms(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);

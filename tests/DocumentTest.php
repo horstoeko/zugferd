@@ -13,7 +13,7 @@ class DocumentTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      */
-    public function testDocumentCreationBasic()
+    public function testDocumentCreationBasic(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASIC);
         $this->assertNotNull($doc);
@@ -27,7 +27,7 @@ class DocumentTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      */
-    public function testDocumentCreationBasicWl()
+    public function testDocumentCreationBasicWl(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASICWL);
         $this->assertNotNull($doc);
@@ -41,7 +41,7 @@ class DocumentTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      */
-    public function testDocumentCreationEn16931()
+    public function testDocumentCreationEn16931(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EN16931);
         $this->assertNotNull($doc);
@@ -55,7 +55,7 @@ class DocumentTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      */
-    public function testDocumentCreationExtended()
+    public function testDocumentCreationExtended(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EXTENDED);
         $this->assertNotNull($doc);
@@ -70,7 +70,7 @@ class DocumentTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      * @covers \horstoeko\zugferd\ZugferdDocument::initSerialzer()
      */
-    public function testDocumentInternals()
+    public function testDocumentInternals(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EXTENDED);
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'serializerBuilder');

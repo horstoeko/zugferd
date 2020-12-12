@@ -19,7 +19,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/xrechnung_simple_2.xml");
     }
 
-    public function testDocumentProfile()
+    public function testDocumentProfile(): void
     {
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
@@ -32,7 +32,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
      */
-    public function testDocumentGenerals()
+    public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertEquals('123456789', $documentno);
@@ -50,7 +50,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument
      */
-    public function testFirstDocumentAdditionalReferencedDocument()
+    public function testFirstDocumentAdditionalReferencedDocument(): void
     {
         $this->assertTrue((self::$document)->firstDocumentAdditionalReferencedDocument());
     }
@@ -59,7 +59,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
      */
-    public function testGetDocumentAdditionalReferencedDocumentNoDirectorySet()
+    public function testGetDocumentAdditionalReferencedDocumentNoDirectorySet(): void
     {
         self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->assertEquals("01_15_Anhang_01.pdf", $issuerassignedid);
@@ -75,7 +75,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
      */
-    public function testGetDocumentAdditionalReferencedDocument()
+    public function testGetDocumentAdditionalReferencedDocument(): void
     {
         self::$document->setBinaryDataDirectory(dirname(__FILE__));
         self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
@@ -95,7 +95,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument
      */
-    public function testNextDocumentAdditionalReferencedDocument()
+    public function testNextDocumentAdditionalReferencedDocument(): void
     {
         $this->assertFalse((self::$document)->nextDocumentAdditionalReferencedDocument());
     }
