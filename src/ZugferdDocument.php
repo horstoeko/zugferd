@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use \horstoeko\zugferd\ZugferdObjectHelper;
 use \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
 use \horstoeko\zugferd\jms\ZugferdTypesHandler;
 use \JMS\Serializer\Handler\HandlerRegistryInterface;
