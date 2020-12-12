@@ -12,6 +12,7 @@
     <property name="phploc" value="${project.basedir}/vendor/bin/phploc"/>
     <property name="phpmd" value="${project.basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${project.basedir}/vendor/bin/phpunit"/>
+    <property name="phpstan" value="${project.basedir}/vendor/bin/phpstan"/>
     <property name="sami" value="${project.basedir}/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
@@ -133,7 +134,32 @@
         </exec>
         <property name="phpcs.done" value="true"/>
     </target>
-    <target name="phpdox" unless="phpdox.done" depends="downloadphpdox,phploc-ci,phpcs-ci,phpmd-ci" description="Generate project documentation using phpDox.">
+    <target name="phpstan" unless="phpstan.done" description="Find coding standard violations using PHPStan and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${phpstan}" taskname="phpstan" passthru="true">
+            <arg value="analyze"/>
+            <arg value="-c"/>
+            <arg path="${project.basedir}/build/phpstan.neon"/>
+            <arg value="--autoload-file=${project.basedir}/vendor/autoload.php"/>
+            <arg value="--no-interaction"/>
+            <arg value="--no-progress"/>
+            <arg value="--error-format=table"/>
+        </exec>
+        <property name="phpstan.done" value="true"/>
+    </target>
+    <target name="phpstan-ci" unless="phpstan.done" depends="prepare" description="Find coding standard violations using PHPStan and log result in XML format. Intended for usage within a continuous integration environment.">
+        <exec executable="${phpstan}" taskname="phpstan" outputProperty="phpstan.output">
+            <arg value="analyze"/>
+            <arg value="-c"/>
+            <arg path="${project.basedir}/build/phpstan.neon"/>
+            <arg value="--autoload-file=${project.basedir}/vendor/autoload.php"/>
+            <arg value="--no-interaction"/>
+            <arg value="--no-progress"/>
+            <arg value="--error-format=checkstyle"/>
+        </exec>
+        <echo message="${phpstan.output}" file="${project.basedir}/build/logs/checkstyle_phpstan.xml"/>
+        <property name="phpstan.done" value="true"/>
+    </target>
+    <target name="phpdox" unless="phpdox.done" depends="downloadphpdox,phploc-ci,phpcs-ci,phpmd-ci,phpstan-ci" description="Generate project documentation using phpDox.">
         <exec executable="php" dir="${project.basedir}/build" taskname="phpdox">
             <arg path="${phpdox}"/>
         </exec>
@@ -221,7 +247,7 @@
     <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
         <echo message="Built"/>
     </target>
-    <target name="static-analysis" depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci" description="Perform static analysis.">
+    <target name="static-analysis" depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpstan-ci,phpcpd-ci" description="Perform static analysis.">
         <echo message="Done"/>
     </target>
     <target name="-check-failure">
