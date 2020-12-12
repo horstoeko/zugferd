@@ -66,6 +66,9 @@ class ZugferdDocumentPdfReader
             }
 
             if (true == $attachmentFound) {
+                /**
+                 * @var array<\Smalot\PdfParser\PDFObject>
+                 */
                 $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
                 foreach ($embeddedFiles as $embedFile) {
                     if ($attachmentIndex == $embeddedFileIndex) {
