@@ -3,6 +3,7 @@
     <project name="Easy ZUGFeRD for PHP" source="../src" workdir="../build/phpdox">
         <collector backend="parser" publiconly="true">
             <include mask="*.php"/>
+            <exclude mask="**entities**"/>
         </collector>
         <generator output="../build">
             <build engine="html" output="builddoc">
