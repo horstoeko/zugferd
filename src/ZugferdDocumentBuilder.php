@@ -2055,6 +2055,83 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Sets the document payment means to _SEPA Credit Transfer_
+     * German translation: _Überweisung_
+     *
+     * @param string $payeeIban
+     * Transfer: A unique identifier for the financial account held with a payment service provider to which
+     * the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID
+     * account number
+     * @param string|null $payeeAccountName
+     * The name of the payment account held with a payment service provider to which the payment should be made.
+     * Information only required if different from the name of the payee / seller
+     * @param string|null $payeePropId
+     * National account number (not for SEPA)
+     * @param string|null $payeeBic
+     * Seller's banking institution, An identifier for the payment service provider with whom the payment account
+     * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentMeanToCreditTransfer(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    {
+        $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType("58");
+        $payeefinancialaccount = $this->objectHelper->GetCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);
+        $payeefinancialInstitution = $this->objectHelper->GetCreditorFinancialInstitutionType($payeeBic);
+
+        $this->objectHelper->TryCall($paymentMeans, "setPayeePartyCreditorFinancialAccount", $payeefinancialaccount);
+        $this->objectHelper->TryCall($paymentMeans, "setPayeeSpecifiedCreditorFinancialInstitution", $payeefinancialInstitution);
+
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
+
+        return $this;
+    }
+
+    /**
+     * Sets the document payment means to _SEPA Direct Debit_
+     *
+     * @param string $buyerIban
+     * Direct debit: ID of the account to be debited
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentMeanToDirectDebit(string $buyerIban): ZugferdDocumentBuilder
+    {
+        $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType("59");
+        $buyerfinancialaccount = $this->objectHelper->GetDebtorFinancialAccountType($buyerIban);
+
+        $this->objectHelper->TryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
+
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
+
+        return $this;
+    }
+
+    /**
+     * Sets the document payment means to _Payment card_
+     *
+     * @param string $cardType
+     * The type of the card, such as VISA, American Express, Master Card.
+     * @param string $cardId
+     * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
+     * payment security standards, an invoice should never contain a full payment card master account number.
+     * The following specification of the PCI Security Standards Council currently applies: The first 6 and
+     * last 4 digits at most are to be displayed
+     * @param string|null $cardHolderName
+     * Name of the payment card holder
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentMeanToPaymentCard(string $cardType, string $cardId, ?string $cardHolderName = null): ZugferdDocumentBuilder
+    {
+        $paymentMeans = $this->objectHelper->GetTradeSettlementPaymentMeansType("48");
+        $financialCard = $this->objectHelper->GetTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
+
+        $this->objectHelper->TryCall($paymentMeans, "setApplicableTradeSettlementFinancialCard", $financialCard);
+
+        $this->objectHelper->TryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
+
+        return $this;
+    }
+
+    /**
      * Add a VAT breakdown (at document level)
      *
      * @param string $categoryCode
