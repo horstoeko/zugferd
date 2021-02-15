@@ -3,7 +3,6 @@
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
-    <property name="url.sami.download" value="http://get.sensiolabs.org/sami.phar"/>
     <property name="composer" value="${project.basedir}/composer.phar"/>
     <property name="pdepend" value="${project.basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${project.basedir}/vendor/bin/phpcpd"/>
@@ -13,7 +12,7 @@
     <property name="phpmd" value="${project.basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${project.basedir}/vendor/bin/phpunit"/>
     <property name="phpstan" value="${project.basedir}/vendor/bin/phpstan"/>
-    <property name="sami" value="${project.basedir}/sami.phar"/>
+    <property name="sami" value="/usr/local/sbin/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${project.basedir}/build/builddoc"/>
@@ -57,17 +56,6 @@
         <exec executable="chmod">
             <arg value="+x"/>
             <arg path="${phpdox}"/>
-        </exec>
-    </target>
-    <target name="downloadsami" description="Install Sami.">
-        <exec executable="wget">
-            <arg path="${url.sami.download}"/>
-            <arg value="-O"/>
-            <arg path="${sami}"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${sami}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
@@ -260,7 +248,7 @@
         </fail>
         <echo message="Checked failure"/>
     </target>
-    <target name="projectdoc" depends="prepare,downloadsami" description="Generator project documentation using sami.">
+    <target name="projectdoc" depends="prepare" description="Generator project documentation using sami.">
         <exec executable="php" taskname="projectdoc">
             <arg path="${sami}"/>
             <arg value="update"/>
@@ -322,21 +310,11 @@
         <delete dir="${project.basedir}/doc"/>
         <mkdir dir="${project.basedir}/cache"/>
         <mkdir dir="${project.basedir}/doc"/>
-        <exec executable="wget">
-            <arg path="${url.sami.download}"/>
-            <arg value="-O"/>
-            <arg path="${sami}"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${sami}"/>
-        </exec>
         <exec executable="php" taskname="projectdoc">
             <arg path="${sami}"/>
             <arg value="update"/>
             <arg path="${project.basedir}/build/sami.config.deploy.php"/>
         </exec>
-        <delete file="${sami}"/>
         <delete file="${project.basedir}/doc/PROJECT_VERSION"/>
         <delete file="${project.basedir}/doc/SAMI_VERSION"/>
         <delete file="${project.basedir}/doc/renderer.index"/>

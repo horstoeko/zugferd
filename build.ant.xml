@@ -3,7 +3,6 @@
     <!-- By default the tools are managed by Composer in ${basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
-    <property name="url.sami.download" value="http://get.sensiolabs.org/sami.phar"/>
     <property name="url.validator.download" value="https://github.com/itplr-kosit/validator/releases/download/v1.4.0/validationtool-1.4.0.zip"/>
     <property name="url.validator.scenarios.download" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2020-07-31/validator-configuration-xrechnung_2.0.0_2020-07-31.zip"/>
     <property name="validatorzipdir" value="${basedir}/build/validator"/>
@@ -21,7 +20,7 @@
     <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
     <property name="phpstan" value="${basedir}/vendor/bin/phpstan"/>
-    <property name="sami" value="${basedir}/sami.phar"/>
+    <property name="sami" value="/usr/local/sbin/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${basedir}/build/builddoc"/>
@@ -56,13 +55,6 @@
         <exec executable="chmod" failonerror="true">
             <arg value="+x"/>
             <arg value="${phpdox}"/>
-        </exec>
-    </target>
-    <target name="downloadsami" description="Install Sami.">
-        <get src="${url.sami.download}" dest="${sami}"/>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${sami}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,schematron,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
@@ -268,7 +260,7 @@
         </fail>
         <echo message="Checked failure"/>
     </target>
-    <target name="projectdoc" depends="prepare,downloadsami" description="Generator project documentation using Sami.">
+    <target name="projectdoc" depends="prepare" description="Generator project documentation using Sami.">
         <exec executable="php" taskname="projectdoc">
             <arg path="${sami}"/>
             <arg value="update"/>
@@ -330,21 +322,11 @@
         <delete dir="${basedir}/doc"/>
         <mkdir dir="${basedir}/cache"/>
         <mkdir dir="${basedir}/doc"/>
-        <exec executable="wget">
-            <arg path="${url.sami.download}"/>
-            <arg value="-O"/>
-            <arg path="${sami}"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${sami}"/>
-        </exec>
         <exec executable="php">
             <arg path="${sami}"/>
             <arg value="update"/>
             <arg path="${basedir}/build/sami.config.deploy.php"/>
         </exec>
-        <delete file="${sami}"/>
         <delete file="${basedir}/doc/PROJECT_VERSION"/>
         <delete file="${basedir}/doc/SAMI_VERSION"/>
         <delete file="${basedir}/doc/renderer.index"/>
