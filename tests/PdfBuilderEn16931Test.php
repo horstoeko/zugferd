@@ -94,10 +94,10 @@ class PdfBuilderEn16931Test extends BuilderBaseTest
         $pdfDetails = $pdfParsed->getDetails();
 
         $this->assertIsArray($pdfDetails);
-        $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.82"
+        $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.84"
         $this->assertArrayHasKey("CreationDate", $pdfDetails); //"2020-12-09T05:19:39+00:00"
         $this->assertArrayHasKey("Pages", $pdfDetails); //"1"
-        $this->assertEquals("FPDF 1.82", $pdfDetails["Producer"]);
+        $this->assertEquals("FPDF 1.84", $pdfDetails["Producer"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
     }
 
