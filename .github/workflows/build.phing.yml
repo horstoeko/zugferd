@@ -11,7 +11,7 @@ jobs:
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-            php-version: '7.3'
+            php-version: '8.1'
             extensions: imagick, swoole      
       - name: Phing Build
         uses: phingofficial/phing-github-action@main
