@@ -12,3 +12,5 @@ jobs:
         uses: phingofficial/phing-github-action@main
         with:
             targets: full-build
+            verbose: true
+            debug: true
