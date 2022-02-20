@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
-    <property name="url.composer.download" value="https://getcomposer.org/download/1.10.13/composer.phar"/>
+    <property name="url.composer.download" value="https://getcomposer.org/download/2.2.6/composer.phar"/>
     <property name="url.phpdox.download" value="http://phpdox.de/releases/phpdox.phar"/>
     <property name="composer" value="${project.basedir}/composer.phar"/>
     <property name="pdepend" value="${project.basedir}/vendor/bin/pdepend"/>
