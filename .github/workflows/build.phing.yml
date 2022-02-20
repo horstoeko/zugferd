@@ -16,7 +16,7 @@ jobs:
       - name: Phing Build
         uses: phingofficial/phing-github-action@main
         with:
+            version: 3.0.0-RC3
             targets: full-build
             verbose: true
             debug: true
-            version: 2.17.2
