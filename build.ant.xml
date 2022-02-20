@@ -47,7 +47,6 @@
         <exec executable="php" failonerror="true">
             <arg path="${composer}"/>
             <arg value="update"/>
-            <arg value="--dev"/>
         </exec>
     </target>
     <target name="downloadphpdox" description="Install phpdox.">
