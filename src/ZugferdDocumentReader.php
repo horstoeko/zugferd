@@ -2946,6 +2946,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentPosition(): bool
     {
         $this->positionPointer = 0;
+
+        $this->positionNotePointer = 0;
+        $this->positionGrossPriceAllowanceChargePointer = 0;
+        $this->positionTaxPointer = 0;
+        $this->positionAllowanceChargePointer = 0;
+        $this->positionAddRefDocPointer = 0;
+
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         return isset($tradeLineItem[$this->positionPointer]);
     }
@@ -2960,6 +2967,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentPosition(): bool
     {
         $this->positionPointer++;
+
+        $this->positionNotePointer = 0;
+        $this->positionGrossPriceAllowanceChargePointer = 0;
+        $this->positionTaxPointer = 0;
+        $this->positionAllowanceChargePointer = 0;
+        $this->positionAddRefDocPointer = 0;
+
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         return isset($tradeLineItem[$this->positionPointer]);
     }
