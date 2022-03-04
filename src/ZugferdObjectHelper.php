@@ -1269,7 +1269,7 @@ class ZugferdObjectHelper
 
         $referencedProduct = $this->createClassInstance('ram\ReferencedProductType');
 
-        $this->tryCallAll($referencedProduct, ["addToGlobalID", "setGlobalID"], $this->getIdType($globalID, $globalIDType));
+        $this->tryCall($referencedProduct, "setGlobalID", $this->getIdType($globalID, $globalIDType));
         $this->tryCall($referencedProduct, "setSellerAssignedID", $this->getIdType($sellerAssignedID));
         $this->tryCall($referencedProduct, "setBuyerAssignedID", $this->getIdType($buyerAssignedID));
         $this->tryCall($referencedProduct, "setName", $this->getTextType($name));

@@ -483,7 +483,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($sellerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($sellerTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -624,7 +624,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($buyerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($buyerTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -752,7 +752,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($taxrepresentativeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($taxrepresentativeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -894,7 +894,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($productEndUserTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($productEndUserTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1027,7 +1027,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($shipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1175,7 +1175,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($UltimateShipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($UltimateShipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1324,7 +1324,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipFromTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($shipFromTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1470,7 +1470,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($invoicerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($invoicerTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1619,7 +1619,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($invoiceeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($invoiceeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1752,7 +1752,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($payeeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($payeeTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -3104,7 +3104,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($shipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -3242,7 +3242,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($ultimateShipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCall($ultimateShipToTradeParty, "setDefinedTradeContact", $contact);
         return $this;
     }
 
