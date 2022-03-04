@@ -85,7 +85,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertArrayNotHasKey(1, $name);
         $this->assertEquals("Aufschlüsselung der einzelnen Leistungspositionen", $name[0]);
         $this->assertNotEquals("", $binarydatafilename);
-        $this->assertEquals(dirname(__FILE__) . "/01_15_Anhang_01.pdf", $binarydatafilename);
+        $this->assertEquals(dirname(__FILE__) . DIRECTORY_SEPARATOR . "01_15_Anhang_01.pdf", $binarydatafilename);
         $this->assertTrue(file_exists($binarydatafilename));
         $this->assertEquals(150128, filesize($binarydatafilename));
         $this->assertEquals("%PDF", substr(file_get_contents($binarydatafilename), 0, 4));
