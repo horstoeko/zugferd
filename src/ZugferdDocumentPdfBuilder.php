@@ -117,8 +117,7 @@ class ZugferdDocumentPdfBuilder
 
         // Get XML data from Builder
 
-        $xmlData = $this->documentBuiler->getContent();
-        $xmlDataRef = PdfStreamReader::createByString($xmlData);
+        $xmlDataRef = PdfStreamReader::createByString($this->xmlData->saveXML());
 
         // Get profile definition for later use
 
