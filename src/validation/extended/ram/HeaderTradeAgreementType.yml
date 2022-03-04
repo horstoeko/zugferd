@@ -14,6 +14,12 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
                         - xsd_rules
             -
                 Valid: null
+        salesAgentTradeParty:
+            -
+                Valid: null
+        buyerTaxRepresentativeTradeParty:
+            -
+                Valid: null
         sellerTaxRepresentativeTradeParty:
             -
                 Valid: null
@@ -29,10 +35,16 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
         buyerOrderReferencedDocument:
             -
                 Valid: null
+        quotationReferencedDocument:
+            -
+                Valid: null
         contractReferencedDocument:
             -
                 Valid: null
         additionalReferencedDocument:
+            -
+                Valid: null
+        buyerAgentTradeParty:
             -
                 Valid: null
         specifiedProcuringProject:

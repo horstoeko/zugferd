@@ -27,6 +27,16 @@ class HeaderTradeAgreementType
     private $buyerTradeParty = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty
+     */
+    private $salesAgentTradeParty = null;
+
+    /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty
+     */
+    private $buyerTaxRepresentativeTradeParty = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $sellerTaxRepresentativeTradeParty
      */
     private $sellerTaxRepresentativeTradeParty = null;
@@ -52,6 +62,11 @@ class HeaderTradeAgreementType
     private $buyerOrderReferencedDocument = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
+     */
+    private $quotationReferencedDocument = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument
      */
     private $contractReferencedDocument = null;
@@ -62,6 +77,11 @@ class HeaderTradeAgreementType
     private $additionalReferencedDocument = [
         
     ];
+
+    /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty
+     */
+    private $buyerAgentTradeParty = null;
 
     /**
      * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $specifiedProcuringProject
@@ -138,6 +158,50 @@ class HeaderTradeAgreementType
     public function setBuyerTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTradeParty)
     {
         $this->buyerTradeParty = $buyerTradeParty;
+        return $this;
+    }
+
+    /**
+     * Gets as salesAgentTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getSalesAgentTradeParty()
+    {
+        return $this->salesAgentTradeParty;
+    }
+
+    /**
+     * Sets a new salesAgentTradeParty
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty
+     * @return self
+     */
+    public function setSalesAgentTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty)
+    {
+        $this->salesAgentTradeParty = $salesAgentTradeParty;
+        return $this;
+    }
+
+    /**
+     * Gets as buyerTaxRepresentativeTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getBuyerTaxRepresentativeTradeParty()
+    {
+        return $this->buyerTaxRepresentativeTradeParty;
+    }
+
+    /**
+     * Sets a new buyerTaxRepresentativeTradeParty
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty
+     * @return self
+     */
+    public function setBuyerTaxRepresentativeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty)
+    {
+        $this->buyerTaxRepresentativeTradeParty = $buyerTaxRepresentativeTradeParty;
         return $this;
     }
 
@@ -252,6 +316,28 @@ class HeaderTradeAgreementType
     }
 
     /**
+     * Gets as quotationReferencedDocument
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+     */
+    public function getQuotationReferencedDocument()
+    {
+        return $this->quotationReferencedDocument;
+    }
+
+    /**
+     * Sets a new quotationReferencedDocument
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
+     * @return self
+     */
+    public function setQuotationReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument)
+    {
+        $this->quotationReferencedDocument = $quotationReferencedDocument;
+        return $this;
+    }
+
+    /**
      * Gets as contractReferencedDocument
      *
      * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
@@ -326,6 +412,28 @@ class HeaderTradeAgreementType
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
+        return $this;
+    }
+
+    /**
+     * Gets as buyerAgentTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getBuyerAgentTradeParty()
+    {
+        return $this->buyerAgentTradeParty;
+    }
+
+    /**
+     * Sets a new buyerAgentTradeParty
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty
+     * @return self
+     */
+    public function setBuyerAgentTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty)
+    {
+        $this->buyerAgentTradeParty = $buyerAgentTradeParty;
         return $this;
     }
 
@@ -406,4 +514,7 @@ class HeaderTradeAgreementType
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
         return $this;
     }
+
+
 }
+

@@ -199,4 +199,7 @@ class TradeAddressType
         $this->countrySubDivisionName = $countrySubDivisionName;
         return $this;
     }
+
+
 }
+

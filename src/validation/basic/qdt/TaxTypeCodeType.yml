@@ -1,0 +1,9 @@
+horstoeko\zugferd\entities\basic\qdt\TaxTypeCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - VAT
+                    groups:
+                        - xsd_rules

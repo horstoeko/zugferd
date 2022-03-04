@@ -54,7 +54,11 @@ horstoeko\zugferd\entities\basic\ram\TradeSettlementHeaderMonetarySummationType:
             accessor:
                 getter: getTaxTotalAmount
                 setter: setTaxTotalAmount
-            type: horstoeko\zugferd\entities\basic\udt\AmountType
+            xml_list:
+                inline: true
+                entry_name: TaxTotalAmount
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\basic\udt\AmountType>
         grandTotalAmount:
             expose: true
             access_type: public_method

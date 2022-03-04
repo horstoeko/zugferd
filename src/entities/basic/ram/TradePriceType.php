@@ -22,6 +22,11 @@ class TradePriceType
     private $basisQuantity = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     */
+    private $appliedTradeAllowanceCharge = null;
+
+    /**
      * Gets as chargeAmount
      *
      * @return \horstoeko\zugferd\entities\basic\udt\AmountType
@@ -64,4 +69,29 @@ class TradePriceType
         $this->basisQuantity = $basisQuantity;
         return $this;
     }
+
+    /**
+     * Gets as appliedTradeAllowanceCharge
+     *
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType
+     */
+    public function getAppliedTradeAllowanceCharge()
+    {
+        return $this->appliedTradeAllowanceCharge;
+    }
+
+    /**
+     * Sets a new appliedTradeAllowanceCharge
+     *
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @return self
+     */
+    public function setAppliedTradeAllowanceCharge(\horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge)
+    {
+        $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
+        return $this;
+    }
+
+
 }
+

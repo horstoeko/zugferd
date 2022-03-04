@@ -37,4 +37,7 @@ class CreditorFinancialInstitutionType
         $this->bICID = $bICID;
         return $this;
     }
+
+
 }
+

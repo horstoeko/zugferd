@@ -1,5 +1,8 @@
 horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType:
     properties:
+        grossPriceProductTradePrice:
+            -
+                Valid: null
         netPriceProductTradePrice:
             -
                 NotNull:

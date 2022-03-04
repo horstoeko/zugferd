@@ -22,6 +22,11 @@ class TradeContactType
     private $departmentName = null;
 
     /**
+     * @var string $typeCode
+     */
+    private $typeCode = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
      */
     private $telephoneUniversalCommunication = null;
@@ -77,6 +82,28 @@ class TradeContactType
     public function setDepartmentName($departmentName)
     {
         $this->departmentName = $departmentName;
+        return $this;
+    }
+
+    /**
+     * Gets as typeCode
+     *
+     * @return string
+     */
+    public function getTypeCode()
+    {
+        return $this->typeCode;
+    }
+
+    /**
+     * Sets a new typeCode
+     *
+     * @param string $typeCode
+     * @return self
+     */
+    public function setTypeCode($typeCode)
+    {
+        $this->typeCode = $typeCode;
         return $this;
     }
 
@@ -145,4 +172,7 @@ class TradeContactType
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
         return $this;
     }
+
+
 }
+

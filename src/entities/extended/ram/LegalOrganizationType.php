@@ -91,4 +91,7 @@ class LegalOrganizationType
         $this->postalTradeAddress = $postalTradeAddress;
         return $this;
     }
+
+
 }
+

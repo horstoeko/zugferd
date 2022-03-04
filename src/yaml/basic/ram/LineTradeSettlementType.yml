@@ -11,6 +11,17 @@ horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
                 getter: getApplicableTradeTax
                 setter: setApplicableTradeTax
             type: horstoeko\zugferd\entities\basic\ram\TradeTaxType
+        billingSpecifiedPeriod:
+            expose: true
+            access_type: public_method
+            serialized_name: BillingSpecifiedPeriod
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBillingSpecifiedPeriod
+                setter: setBillingSpecifiedPeriod
+            type: horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType
         specifiedTradeAllowanceCharge:
             expose: true
             access_type: public_method

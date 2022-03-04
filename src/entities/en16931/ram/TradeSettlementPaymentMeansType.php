@@ -172,4 +172,7 @@ class TradeSettlementPaymentMeansType
         $this->payeeSpecifiedCreditorFinancialInstitution = $payeeSpecifiedCreditorFinancialInstitution;
         return $this;
     }
+
+
 }
+

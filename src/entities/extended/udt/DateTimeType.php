@@ -17,11 +17,6 @@ class DateTimeType
     private $dateTimeString = null;
 
     /**
-     * @var \DateTime $dateTime
-     */
-    private $dateTime = null;
-
-    /**
      * Gets as dateTimeString
      *
      * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType\DateTimeStringAType
@@ -43,25 +38,6 @@ class DateTimeType
         return $this;
     }
 
-    /**
-     * Gets as dateTime
-     *
-     * @return \DateTime
-     */
-    public function getDateTime()
-    {
-        return $this->dateTime;
-    }
 
-    /**
-     * Sets a new dateTime
-     *
-     * @param \DateTime $dateTime
-     * @return self
-     */
-    public function setDateTime(\DateTime $dateTime)
-    {
-        $this->dateTime = $dateTime;
-        return $this;
-    }
 }
+

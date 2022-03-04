@@ -91,4 +91,7 @@ class CrossIndustryInvoiceType
         $this->supplyChainTradeTransaction = $supplyChainTradeTransaction;
         return $this;
     }
+
+
 }
+

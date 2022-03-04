@@ -32,9 +32,11 @@ class TradeSettlementHeaderMonetarySummationType
     private $taxBasisTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $taxTotalAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType[] $taxTotalAmount
      */
-    private $taxTotalAmount = null;
+    private $taxTotalAmount = [
+        
+    ];
 
     /**
      * @var \horstoeko\zugferd\entities\basic\udt\AmountType $grandTotalAmount
@@ -140,9 +142,43 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
+     * Adds as taxTotalAmount
+     *
+     * @return self
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $taxTotalAmount
+     */
+    public function addToTaxTotalAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $taxTotalAmount)
+    {
+        $this->taxTotalAmount[] = $taxTotalAmount;
+        return $this;
+    }
+
+    /**
+     * isset taxTotalAmount
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetTaxTotalAmount($index)
+    {
+        return isset($this->taxTotalAmount[$index]);
+    }
+
+    /**
+     * unset taxTotalAmount
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetTaxTotalAmount($index)
+    {
+        unset($this->taxTotalAmount[$index]);
+    }
+
+    /**
      * Gets as taxTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType[]
      */
     public function getTaxTotalAmount()
     {
@@ -152,10 +188,10 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\AmountType $taxTotalAmount
+     * @param \horstoeko\zugferd\entities\basic\udt\AmountType[] $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $taxTotalAmount)
+    public function setTaxTotalAmount(array $taxTotalAmount)
     {
         $this->taxTotalAmount = $taxTotalAmount;
         return $this;
@@ -226,4 +262,7 @@ class TradeSettlementHeaderMonetarySummationType
         $this->duePayableAmount = $duePayableAmount;
         return $this;
     }
+
+
 }
+

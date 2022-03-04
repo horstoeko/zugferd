@@ -12,6 +12,11 @@ class TradePaymentTermsType
 {
 
     /**
+     * @var string $description
+     */
+    private $description = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\basic\udt\DateTimeType $dueDateDateTime
      */
     private $dueDateDateTime = null;
@@ -20,6 +25,28 @@ class TradePaymentTermsType
      * @var \horstoeko\zugferd\entities\basic\udt\IDType $directDebitMandateID
      */
     private $directDebitMandateID = null;
+
+    /**
+     * Gets as description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Sets a new description
+     *
+     * @param string $description
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
 
     /**
      * Gets as dueDateDateTime
@@ -64,4 +91,7 @@ class TradePaymentTermsType
         $this->directDebitMandateID = $directDebitMandateID;
         return $this;
     }
+
+
 }
+

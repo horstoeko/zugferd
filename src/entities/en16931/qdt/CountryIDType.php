@@ -49,4 +49,7 @@ class CountryIDType
     {
         return strval($this->__value);
     }
+
+
 }
+

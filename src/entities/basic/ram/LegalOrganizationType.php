@@ -64,4 +64,7 @@ class LegalOrganizationType
         $this->tradingBusinessName = $tradingBusinessName;
         return $this;
     }
+
+
 }
+

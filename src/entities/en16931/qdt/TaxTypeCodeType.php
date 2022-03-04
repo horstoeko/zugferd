@@ -49,4 +49,7 @@ class TaxTypeCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+

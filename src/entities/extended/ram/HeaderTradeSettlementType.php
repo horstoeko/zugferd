@@ -52,6 +52,11 @@ class HeaderTradeSettlementType
     private $payeeTradeParty = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $payerTradeParty
+     */
+    private $payerTradeParty = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType $taxApplicableTradeCurrencyExchange
      */
     private $taxApplicableTradeCurrencyExchange = null;
@@ -293,6 +298,28 @@ class HeaderTradeSettlementType
     public function setPayeeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty)
     {
         $this->payeeTradeParty = $payeeTradeParty;
+        return $this;
+    }
+
+    /**
+     * Gets as payerTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getPayerTradeParty()
+    {
+        return $this->payerTradeParty;
+    }
+
+    /**
+     * Sets a new payerTradeParty
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $payerTradeParty
+     * @return self
+     */
+    public function setPayerTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $payerTradeParty)
+    {
+        $this->payerTradeParty = $payerTradeParty;
         return $this;
     }
 
@@ -775,4 +802,7 @@ class HeaderTradeSettlementType
         $this->specifiedAdvancePayment = $specifiedAdvancePayment;
         return $this;
     }
+
+
 }
+

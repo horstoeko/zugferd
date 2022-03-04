@@ -33,6 +33,28 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
                 getter: getBuyerTradeParty
                 setter: setBuyerTradeParty
             type: horstoeko\zugferd\entities\extended\ram\TradePartyType
+        salesAgentTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: SalesAgentTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSalesAgentTradeParty
+                setter: setSalesAgentTradeParty
+            type: horstoeko\zugferd\entities\extended\ram\TradePartyType
+        buyerTaxRepresentativeTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerTaxRepresentativeTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerTaxRepresentativeTradeParty
+                setter: setBuyerTaxRepresentativeTradeParty
+            type: horstoeko\zugferd\entities\extended\ram\TradePartyType
         sellerTaxRepresentativeTradeParty:
             expose: true
             access_type: public_method
@@ -88,6 +110,17 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
                 getter: getBuyerOrderReferencedDocument
                 setter: setBuyerOrderReferencedDocument
             type: horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+        quotationReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: QuotationReferencedDocument
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getQuotationReferencedDocument
+                setter: setQuotationReferencedDocument
+            type: horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
         contractReferencedDocument:
             expose: true
             access_type: public_method
@@ -114,6 +147,17 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeAgreementType:
                 entry_name: AdditionalReferencedDocument
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             type: array<horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType>
+        buyerAgentTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerAgentTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerAgentTradeParty
+                setter: setBuyerAgentTradeParty
+            type: horstoeko\zugferd\entities\extended\ram\TradePartyType
         specifiedProcuringProject:
             expose: true
             access_type: public_method

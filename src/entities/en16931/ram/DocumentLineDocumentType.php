@@ -64,4 +64,7 @@ class DocumentLineDocumentType
         $this->includedNote = $includedNote;
         return $this;
     }
+
+
 }
+

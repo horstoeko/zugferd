@@ -1,0 +1,17 @@
+horstoeko\zugferd\entities\en16931\qdt\TaxCategoryCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - AE
+                        - E
+                        - G
+                        - K
+                        - L
+                        - M
+                        - O
+                        - S
+                        - Z
+                    groups:
+                        - xsd_rules

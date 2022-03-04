@@ -64,4 +64,7 @@ class UniversalCommunicationType
         $this->completeNumber = $completeNumber;
         return $this;
     }
+
+
 }
+

@@ -1,0 +1,19 @@
+horstoeko\zugferd\entities\basic\qdt\PaymentMeansCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - '10'
+                        - '20'
+                        - '30'
+                        - '42'
+                        - '48'
+                        - '49'
+                        - '57'
+                        - '58'
+                        - '59'
+                        - '97'
+                        - ZZZ
+                    groups:
+                        - xsd_rules

@@ -22,6 +22,17 @@ horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType:
                 getter: getPaymentReference
                 setter: setPaymentReference
             type: horstoeko\zugferd\entities\basicwl\udt\TextType
+        taxCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxCurrencyCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxCurrencyCode
+                setter: setTaxCurrencyCode
+            type: horstoeko\zugferd\entities\basicwl\udt\CodeType
         invoiceCurrencyCode:
             expose: true
             access_type: public_method
@@ -54,11 +65,7 @@ horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradeSettlementPaymentMeans
                 setter: setSpecifiedTradeSettlementPaymentMeans
-            xml_list:
-                inline: true
-                entry_name: SpecifiedTradeSettlementPaymentMeans
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType>
+            type: horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType
         applicableTradeTax:
             expose: true
             access_type: public_method
@@ -143,8 +150,4 @@ horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getReceivableSpecifiedTradeAccountingAccount
                 setter: setReceivableSpecifiedTradeAccountingAccount
-            xml_list:
-                inline: true
-                entry_name: ReceivableSpecifiedTradeAccountingAccount
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType>
+            type: horstoeko\zugferd\entities\basicwl\ram\TradeAccountingAccountType

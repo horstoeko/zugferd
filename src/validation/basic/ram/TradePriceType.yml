@@ -5,3 +5,6 @@ horstoeko\zugferd\entities\basic\ram\TradePriceType:
                 NotNull:
                     groups:
                         - xsd_rules
+        appliedTradeAllowanceCharge:
+            -
+                Valid: null

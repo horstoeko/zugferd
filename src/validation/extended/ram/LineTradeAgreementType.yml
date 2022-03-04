@@ -3,6 +3,9 @@ horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
         buyerOrderReferencedDocument:
             -
                 Valid: null
+        quotationReferencedDocument:
+            -
+                Valid: null
         contractReferencedDocument:
             -
                 Valid: null

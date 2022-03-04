@@ -64,4 +64,7 @@ class ProductClassificationType
         $this->className = $className;
         return $this;
     }
+
+
 }
+

@@ -1,0 +1,21 @@
+horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - '1'
+                        - '2'
+                        - CFR
+                        - CIF
+                        - CIP
+                        - CPT
+                        - DAP
+                        - DAT
+                        - DDP
+                        - EXW
+                        - FAS
+                        - FCA
+                        - FOB
+                    groups:
+                        - xsd_rules

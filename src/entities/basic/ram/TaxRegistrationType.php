@@ -37,4 +37,7 @@ class TaxRegistrationType
         $this->iD = $iD;
         return $this;
     }
+
+
 }
+

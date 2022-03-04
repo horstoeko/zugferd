@@ -66,3 +66,14 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
                 getter: getApplicableTradePaymentDiscountTerms
                 setter: setApplicableTradePaymentDiscountTerms
             type: horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
+        payeeTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: PayeeTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayeeTradeParty
+                setter: setPayeeTradeParty
+            type: horstoeko\zugferd\entities\extended\ram\TradePartyType

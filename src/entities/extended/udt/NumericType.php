@@ -49,4 +49,7 @@ class NumericType
     {
         return strval($this->__value);
     }
+
+
 }
+

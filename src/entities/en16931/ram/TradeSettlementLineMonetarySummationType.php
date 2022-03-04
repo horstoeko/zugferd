@@ -37,4 +37,7 @@ class TradeSettlementLineMonetarySummationType
         $this->lineTotalAmount = $lineTotalAmount;
         return $this;
     }
+
+
 }
+

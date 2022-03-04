@@ -20,6 +20,9 @@ horstoeko\zugferd\entities\extended\ram\LineTradeSettlementType:
                         - xsd_rules
             -
                 Valid: null
+        invoiceReferencedDocument:
+            -
+                Valid: null
         additionalReferencedDocument:
             -
                 Valid: null

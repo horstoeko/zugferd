@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\basic\ram\DocumentContextParameterType:
+    properties:
+        iD:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

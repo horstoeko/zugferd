@@ -127,4 +127,7 @@ class AdvancePaymentType
         $this->includedTradeTax = $includedTradeTax;
         return $this;
     }
+
+
 }
+

@@ -12,6 +12,11 @@ class TradeProductType
 {
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     */
+    private $iD = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\udt\IDType $globalID
      */
     private $globalID = null;
@@ -51,6 +56,13 @@ class TradeProductType
     ];
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[] $individualTradeProductInstance
+     */
+    private $individualTradeProductInstance = [
+        
+    ];
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\TradeCountryType $originTradeCountry
      */
     private $originTradeCountry = null;
@@ -61,6 +73,28 @@ class TradeProductType
     private $includedReferencedProduct = [
         
     ];
+
+    /**
+     * Gets as iD
+     *
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     */
+    public function getID()
+    {
+        return $this->iD;
+    }
+
+    /**
+     * Sets a new iD
+     *
+     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @return self
+     */
+    public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
+    {
+        $this->iD = $iD;
+        return $this;
+    }
 
     /**
      * Gets as globalID
@@ -285,6 +319,62 @@ class TradeProductType
     }
 
     /**
+     * Adds as individualTradeProductInstance
+     *
+     * @return self
+     * @param \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType $individualTradeProductInstance
+     */
+    public function addToIndividualTradeProductInstance(\horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType $individualTradeProductInstance)
+    {
+        $this->individualTradeProductInstance[] = $individualTradeProductInstance;
+        return $this;
+    }
+
+    /**
+     * isset individualTradeProductInstance
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetIndividualTradeProductInstance($index)
+    {
+        return isset($this->individualTradeProductInstance[$index]);
+    }
+
+    /**
+     * unset individualTradeProductInstance
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetIndividualTradeProductInstance($index)
+    {
+        unset($this->individualTradeProductInstance[$index]);
+    }
+
+    /**
+     * Gets as individualTradeProductInstance
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[]
+     */
+    public function getIndividualTradeProductInstance()
+    {
+        return $this->individualTradeProductInstance;
+    }
+
+    /**
+     * Sets a new individualTradeProductInstance
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[] $individualTradeProductInstance
+     * @return self
+     */
+    public function setIndividualTradeProductInstance(array $individualTradeProductInstance)
+    {
+        $this->individualTradeProductInstance = $individualTradeProductInstance;
+        return $this;
+    }
+
+    /**
      * Gets as originTradeCountry
      *
      * @return \horstoeko\zugferd\entities\extended\ram\TradeCountryType
@@ -361,4 +451,7 @@ class TradeProductType
         $this->includedReferencedProduct = $includedReferencedProduct;
         return $this;
     }
+
+
 }
+

@@ -5,3 +5,6 @@ horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType:
                 NotNull:
                     groups:
                         - xsd_rules
+        includedNote:
+            -
+                Valid: null

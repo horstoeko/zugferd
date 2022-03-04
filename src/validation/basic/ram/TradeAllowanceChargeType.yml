@@ -2,6 +2,10 @@ horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType:
     properties:
         chargeIndicator:
             -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
                 Valid: null
         actualAmount:
             -

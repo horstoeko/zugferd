@@ -49,4 +49,7 @@ class DeliveryTermsCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+
