@@ -3485,7 +3485,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $account = $this->objectHelper->getTradeAccountingAccountType($id, $typeCode);
-        $this->objectHelper->tryCall($positionsettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
+        $this->objectHelper->tryCallAll($positionsettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
         return $this;
     }
 }

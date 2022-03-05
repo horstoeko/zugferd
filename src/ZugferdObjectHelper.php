@@ -1622,4 +1622,24 @@ class ZugferdObjectHelper
         }
         return false;
     }
+
+    /**
+     * If $value is an array and has at least one array element the first
+     * array element is returned otherwise null is returned. If $value is not an
+     * array $value is returned
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    public function getFirstFromArrayIfArray($value)
+    {
+        if (is_array($value)) {
+            $first = reset($value);
+            if ($first !== false) {
+                return $first;
+            }
+            return null;
+        }
+        return $value;
+    }
 }

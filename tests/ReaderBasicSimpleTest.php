@@ -119,7 +119,7 @@ class ReaderBasicSimpleTest extends TestCase
         $this->assertEquals(0.00, $chargeTotalAmount);
         $this->assertEquals(0.00, $allowanceTotalAmount);
         $this->assertEquals(198.0, $taxBasisTotalAmount);
-        $this->assertEquals(198.0, $taxTotalAmount);
+        $this->assertEquals(37.62, $taxTotalAmount);
         $this->assertEquals(0.00, $roundingAmount);
         $this->assertEquals(0.00, $totalPrepaidAmount);
     }
