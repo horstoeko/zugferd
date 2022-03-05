@@ -542,11 +542,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contactpersonname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact.getPersonName", "");
-        $contactdepartmentname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact.getDepartmentName", "");
-        $contactphoneno = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact.getTelephoneUniversalCommunication.getCompleteNumber", "");
-        $contactfaxno = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact.getFaxUniversalCommunication.getCompleteNumber", "");
-        $contactemailadd = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact.getEmailURIUniversalCommunication.getURIID", "");
+        $contact = $this->getInvoiceValueByPathArrFirst("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", null);
+        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
+        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
+        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
+        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber", "");
+        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID", "");
 
         return $this;
     }
@@ -3983,14 +3984,48 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @codeCoverageIgnore
      *
-     * @param object $from
+     * @param object|null $from
      * @param string $methods
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getInvoiceValueByPathFrom(object $from, string $methods, $defaultValue)
+    private function getInvoiceValueByPathFrom(?object $from, string $methods, $defaultValue)
     {
         return $this->objectHelper->tryCallByPathAndReturn($from, $methods) ?? $defaultValue;
+    }
+
+    /**
+     * Function to return a value from $invoiceObject by path. If the result
+     * value is an array, the first array element will be returned
+     *
+     * @codeCoverageIgnore
+     *
+     * @param string $methods
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getInvoiceValueByPathArrFirst(string $methods, $defaultValue)
+    {
+        return $this->getInvoiceValueByPathFromArrFirst($this->invoiceObject, $methods, $defaultValue);
+    }
+
+    /**
+     * Function to return a value from $from by path. If the result
+     * value is an array, the first array element will be returned
+     *
+     * @codeCoverageIgnore
+     *
+     * @param object|null $from
+     * @param string $methods
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getInvoiceValueByPathFromArrFirst(?object $from, string $methods, $defaultValue)
+    {
+        $result = $this->objectHelper->tryCallByPathAndReturn($from, $methods) ?? $defaultValue;
+        $result = is_array($result) ? (count($result) > 0 ? reset($result) : null) : $result;
+
+        return $result;
     }
 
     /**
