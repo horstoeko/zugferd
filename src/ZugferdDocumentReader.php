@@ -542,7 +542,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->getInvoiceValueByPathArrFirst("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", null);
+        $contact = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []))[0] ?? null;
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
