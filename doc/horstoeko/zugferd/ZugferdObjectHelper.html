@@ -763,6 +763,16 @@ in object $instance</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_tryCallIfMethodExists">tryCallIfMethodExists</a>(object $instance, string $methodToLookFor, string $methodToCall, mixed $value, mixed $value2)
+        
+                                            <p>Call $method if exists, otherwise $method2 is calles with $value</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     array
                 </div>
                 <div class="col-md-8 type">
@@ -809,6 +819,18 @@ in object $instance</p>                </div>
                     <a href="#method_isOneNullOrEmpty">isOneNullOrEmpty</a>(array $args)
         
                                             <p>Checks if all function arguments are null or empty</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFirstFromArrayIfArray">getFirstFromArrayIfArray</a>(mixed $value)
+        
+                                            <p>If $value is an array and has at least one array element the first
+array element is returned otherwise null is returned. If $value is not an
+array $value is returned</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -3932,8 +3954,68 @@ in object $instance</p>                                                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_tryCallIfMethodExists">
+        <div class="location">at         line 1538</div>
+        <code>                    <a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a>
+    <strong>tryCallIfMethodExists</strong>(object $instance, string $methodToLookFor, string $methodToCall, mixed $value, mixed $value2)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Call $method if exists, otherwise $method2 is calles with $value</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodToLookFor</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodToCall</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value2</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../horstoeko/zugferd/ZugferdObjectHelper.html"><abbr title="horstoeko\zugferd\ZugferdObjectHelper">ZugferdObjectHelper</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_ensureStringArray">
-        <div class="location">at         line 1535</div>
+        <div class="location">at         line 1567</div>
         <code>                    array
     <strong>ensureStringArray</strong>(mixed $input)
         </code>
@@ -3973,7 +4055,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureArray">
-        <div class="location">at         line 1551</div>
+        <div class="location">at         line 1583</div>
         <code>                    array
     <strong>ensureArray</strong>(mixed $value)
         </code>
@@ -4013,7 +4095,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isNullOrEmpty">
-        <div class="location">at         line 1569</div>
+        <div class="location">at         line 1601</div>
         <code>        static            boolean
     <strong>isNullOrEmpty</strong>(mixed $value)
         </code>
@@ -4053,7 +4135,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isAllNullOrEmpty">
-        <div class="location">at         line 1589</div>
+        <div class="location">at         line 1621</div>
         <code>        static            bool
     <strong>isAllNullOrEmpty</strong>(array $args)
         </code>
@@ -4093,7 +4175,7 @@ in object $instance</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isOneNullOrEmpty">
-        <div class="location">at         line 1610</div>
+        <div class="location">at         line 1642</div>
         <code>        static            bool
     <strong>isOneNullOrEmpty</strong>(array $args)
         </code>
@@ -4121,6 +4203,48 @@ in object $instance</p>                                                </div>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFirstFromArrayIfArray">
+        <div class="location">at         line 1666</div>
+        <code>                    mixed
+    <strong>getFirstFromArrayIfArray</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>If $value is an array and has at least one array element the first
+array element is returned otherwise null is returned. If $value is not an
+array $value is returned</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>

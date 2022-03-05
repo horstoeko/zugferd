@@ -1526,6 +1526,38 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Call $method if exists, otherwise $method2 is calles with $value
+     *
+     * @param object $instance
+     * @param string $methodToLookFor
+     * @param string $methodToCall
+     * @param mixed $value
+     * @param mixed $value2
+     * @return ZugferdObjectHelper
+     */
+    public function tryCallIfMethodExists($instance, string $methodToLookFor, string $methodToCall, $value, $value2): ZugferdObjectHelper
+    {
+        if (!$instance) {
+            return $this;
+        }
+        if (!$methodToLookFor) {
+            return $this;
+        }
+        if (!$methodToCall) {
+            return $this;
+        }
+        if (!method_exists($instance, $methodToCall)) {
+            return $this;
+        }
+        if (method_exists($instance, $methodToLookFor)) {
+            $instance->$methodToCall($value);
+        } else {
+            $instance->$methodToCall($value2);
+        }
+        return $this;
+    }
+
+    /**
      * Ensure that $input is an array
      *
      * @codeCoverageIgnore

@@ -483,7 +483,32 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($sellerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($sellerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add additional detailed information on the seller's contact person. Only supported
+     * in EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity,
+     * such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($sellerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -624,7 +649,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($buyerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($buyerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add additional contact of the buyer party. This only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the buyer's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the buyer's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the buyer's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($buyerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -752,7 +801,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($taxrepresentativeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($taxrepresentativeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the tax representative party. This is only supported in
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the seller's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the seller's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the seller's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSellerTaxRepresentativeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $taxrepresentativeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($taxrepresentativeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -894,7 +967,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($productEndUserTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($productEndUserTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the Product Enduser party. This is only supported in
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the product end user's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the product end user's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the product end user's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentProductEndUserContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $productEndUserTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($productEndUserTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1009,7 +1106,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set contact of the Ship-To party
+     * Set contact of the Ship-To party. All formerly assigned contacts will be
+     * overwritten
      *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
@@ -1027,7 +1125,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add a contact to the Ship-To party. This is actually only possible in
+     * the EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1156,9 +1278,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the different end recipient
      *
-     * __Notes__
-     *  - This is only available in the EXTENDED profile
-     *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
@@ -1175,7 +1294,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($UltimateShipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($UltimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the different end recipient. This is only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($UltimateShipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1305,9 +1448,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the deviating consignor party
      *
-     * __Notes__
-     *  - This is only available in the EXTENDED profile
-     *
      * @param string|null $contactpersonname
      * Contact point for a legal entity, such as a personal name of the contact person
      * @param string|null $contactdepartmentname
@@ -1324,7 +1464,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipFromTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($shipFromTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the deviating consignor party. This is only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentShipFromContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($shipFromTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1470,7 +1634,30 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($invoicerTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($invoicerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the ultimate Ship-from party
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoicerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($invoicerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1619,7 +1806,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($invoiceeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($invoiceeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the ultimate Ship-from party. This is only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoiceeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($invoiceeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -1752,7 +1963,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($payeeTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($payeeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the payee trade party. Note this is only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPayeeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($payeeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -3104,7 +3339,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($shipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact to the Ship-To party
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
+        $shipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 
@@ -3242,7 +3501,32 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
-        $this->objectHelper->tryCallAll($ultimateShipToTradeParty, ["addToDefinedTradeContact", "setDefinedTradeContact"], $contact);
+        $this->objectHelper->tryCallIfMethodExists($ultimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+        return $this;
+    }
+
+    /**
+     * Add an additional contact of the Ship-To party. This is only supported in the
+     * EXTENDED profile
+     *
+     * @param string|null $contactpersonname
+     * Contact point for a legal entity, such as a personal name of the contact person
+     * @param string|null $contactdepartmentname
+     * Contact point for a legal entity, such as a name of the department or office
+     * @param string|null $contactphoneno
+     * Detailed information on the party's phone number
+     * @param string|null $contactfaxno
+     * Detailed information on the party's fax number
+     * @param string|null $contactemailadd
+     * Detailed information on the party's email address
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    {
+        $positiondelivery = $this->objectHelper->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
+        $ultimateShipToTradeParty = $this->objectHelper->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+        $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $this->objectHelper->tryCall($ultimateShipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
 

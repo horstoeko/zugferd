@@ -224,4 +224,12 @@ class BuilderBaseTest extends TestCase
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayNotHasKey($index, $xmlvalue);
     }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::writeFile
+     */
+    public function debugWriteFile(): void
+    {
+        (self::$document)->writeFile(getcwd() . "/myfile_dbg.xml");
+    }
 }
