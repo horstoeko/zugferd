@@ -3378,9 +3378,9 @@ class ZugferdDocumentReader extends ZugferdDocument
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineID", "");
-        $lineStatusCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusCode", "");
-        $lineStatusReasonCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusReasonCode", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineID.value", "");
+        $lineStatusCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusCode.value", "");
+        $lineStatusReasonCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusReasonCode.value", "");
 
         return $this;
     }
@@ -4365,40 +4365,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     private function getInvoiceValueByPathFrom(?object $from, string $methods, $defaultValue)
     {
         return $this->objectHelper->tryCallByPathAndReturn($from, $methods) ?? $defaultValue;
-    }
-
-    /**
-     * Function to return a value from $invoiceObject by path. If the result
-     * value is an array, the first array element will be returned
-     *
-     * @codeCoverageIgnore
-     *
-     * @param string $methods
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getInvoiceValueByPathArrFirst(string $methods, $defaultValue)
-    {
-        return $this->getInvoiceValueByPathFromArrFirst($this->invoiceObject, $methods, $defaultValue);
-    }
-
-    /**
-     * Function to return a value from $from by path. If the result
-     * value is an array, the first array element will be returned
-     *
-     * @codeCoverageIgnore
-     *
-     * @param object|null $from
-     * @param string $methods
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getInvoiceValueByPathFromArrFirst(?object $from, string $methods, $defaultValue)
-    {
-        $result = $this->objectHelper->tryCallByPathAndReturn($from, $methods) ?? $defaultValue;
-        $result = is_array($result) ? (count($result) > 0 ? reset($result) : null) : $result;
-
-        return $result;
     }
 
     /**
