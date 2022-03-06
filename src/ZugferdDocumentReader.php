@@ -79,6 +79,76 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $documentTaxPointer = 0;
 
     /**
+     * Internal pointer for seller contacts
+     *
+     * @var integer
+     */
+    private $documentSellerContactPointer = 0;
+
+    /**
+     * Internal pointer for byuer contacts
+     *
+     * @var integer
+     */
+    private $documentBuyerContactPointer = 0;
+
+    /**
+     * Internal pointer for seller tax representativ party contacts
+     *
+     * @var integer
+     */
+    private $documentSellerTaxRepresentativeContactPointer = 0;
+
+    /**
+     * Internal pointer for product enduser contacts
+     *
+     * @var integer
+     */
+    private $documentProductEndUserContactPointer = 0;
+
+    /**
+     * Internal pointer for Ship-To contacts
+     *
+     * @var integer
+     */
+    private $documentShipToContactPointer = 0;
+
+    /**
+     * Internal pointer for Ultimate-Ship-To contacts
+     *
+     * @var integer
+     */
+    private $documentUltimateShipToContactPointer = 0;
+
+    /**
+     * Internal pointer for Ship-From contacts
+     *
+     * @var integer
+     */
+    private $documentShipFromContactPointer = 0;
+
+    /**
+     * Internal pointer for invoicer contacts
+     *
+     * @var integer
+     */
+    private $documentInvoicerContactPointer = 0;
+
+    /**
+     * Internal pointer for invoicee contacts
+     *
+     * @var integer
+     */
+    private $documentInvoiceeContactPointer = 0;
+
+    /**
+     * Internal pointer for payee contacts
+     *
+     * @var integer
+     */
+    private $documentPayeeContactPointer = 0;
+
+    /**
      * Internal pointer for the position
      *
      * @var integer
@@ -488,11 +558,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentSellerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineOne", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineTwo", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineThree", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getPostcodeCode", "");
-        $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCityName", "");
+        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCountryID.value", "");
         $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
@@ -519,9 +589,37 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
         $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName", "");
+        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
+    }
+
+    /**
+     * Seek to the first seller contact of the document.
+     * Returns true if a first seller contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerContact(): bool
+    {
+        $this->documentSellerContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentSellerContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first seller contact of the document.
+     * Returns true if another seller contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerContact(): bool
+    {
+        $this->documentSellerContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentSellerContactPointer]);
     }
 
     /**
@@ -542,12 +640,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID", "");
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentSellerContactPointer];
+        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -643,11 +742,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentBuyerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineOne", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineTwo", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineThree", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getPostcodeCode", "");
-        $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCityName", "");
+        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCountryID.value", "");
         $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
@@ -674,9 +773,37 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
         $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName", "");
+        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
+    }
+
+    /**
+     * Seek to the first buyer contact of the document.
+     * Returns true if a first buyer contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentBuyerContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentBuyerContact(): bool
+    {
+        $this->documentBuyerContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentBuyerContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first Buyer contact of the document.
+     * Returns true if another Buyer contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentBuyerContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentBuyerContact(): bool
+    {
+        $this->documentBuyerContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentBuyerContactPointer]);
     }
 
     /**
@@ -696,12 +823,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentBuyerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID", "");
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentBuyerContactPointer];
+        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -827,6 +955,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first Seller Tax Representative contact of the document.
+     * Returns true if a first Seller Tax Representative contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerTaxRepresentativeContact(): bool
+    {
+        $this->documentSellerTaxRepresentativeContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentSellerTaxRepresentativeContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first seller contact of the document.
+     * Returns true if another seller contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerTaxRepresentativeContact(): bool
+    {
+        $this->documentSellerTaxRepresentativeContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentSellerTaxRepresentativeContactPointer]);
+    }
+
+    /**
      * Get contact information of sellers tax agent
      *
      * @param string|null $contactpersonname
@@ -843,7 +999,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentSellerTaxRepresentativeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentSellerTaxRepresentativeContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -979,6 +1136,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first product end-user contact of the document.
+     * Returns true if a first product end-user contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentProductEndUserContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentProductEndUserContactContact(): bool
+    {
+        $this->documentProductEndUserContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentProductEndUserContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first product end-user contact of the document.
+     * Returns true if another product end-user contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentProductEndUserContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentProductEndUserContactContact(): bool
+    {
+        $this->documentProductEndUserContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentProductEndUserContactPointer]);
+    }
+
+    /**
      * Get detailed information on the product end user's contact person
      *
      * @param string|null $contactpersonname
@@ -995,7 +1180,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentProductEndUserContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentProductEndUserContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1130,6 +1316,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first Ship-To contact of the document.
+     * Returns true if a first ship-to contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentShipToContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipToContact(): bool
+    {
+        $this->documentShipToContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentShipToContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first ship-to contact of the document.
+     * Returns true if another ship-to contact is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentShipToContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipToContact(): bool
+    {
+        $this->documentShipToContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentShipToContactPointer]);
+    }
+
+    /**
      * Get detailed information on the contact person of the goods recipient
      *
      * @param string|null $contactpersonname
@@ -1146,7 +1360,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentShipToContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentShipToContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1288,6 +1503,36 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first contact person of the different end recipient party
+     * Returns true if a first contact person of the different end recipient party
+     * is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentUltimateShipToContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToContact(): bool
+    {
+        $this->documentUltimateShipToContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentUltimateShipToContactPointer]);
+    }
+
+    /**
+     * Seek to the next available contact person of the different end recipient party.
+     * Returns true if another contact person of the different end recipient party
+     * is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentUltimateShipToContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToContact(): bool
+    {
+        $this->documentUltimateShipToContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentUltimateShipToContactPointer]);
+    }
+
+    /**
      * Get detailed information on the contact person of the different end recipient party
      *
      * __Notes__
@@ -1307,7 +1552,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentUltimateShipToContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentUltimateShipToContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1450,6 +1696,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first contact information of the deviating consignor party of the document.
+     * Returns true if a first contact information of the deviating consignor party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentShipFromContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentShipFromContact(): bool
+    {
+        $this->documentShipFromContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentShipFromContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first contact information of the deviating consignor party of the document.
+     * Returns true if another contact information of the deviating consignor party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentShipFromContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentShipFromContact(): bool
+    {
+        $this->documentShipFromContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentShipFromContactPointer]);
+    }
+
+    /**
      * Get contact information of the deviating consignor party
      *
      * __Notes__
@@ -1469,7 +1743,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentShipFromContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentShipFromContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1612,6 +1887,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first contact information of the invoicer party of the document.
+     * Returns true if a first contact information of the invoicer party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentInvoicerContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoicerContact(): bool
+    {
+        $this->documentInvoiceeContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentInvoiceeContactPointer]);
+    }
+
+    /**
+     * Seek to the next available contact information of the invoicer party of the document.
+     * Returns true if another contact information of the invoicer party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentInvoicerContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoicerContact(): bool
+    {
+        $this->documentInvoiceeContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentInvoiceeContactPointer]);
+    }
+
+    /**
      * Get contact information of the invoicer party
      *
      * __Notes__
@@ -1631,7 +1934,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentInvoicerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentInvoiceeContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1774,6 +2078,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first contact information of the different invoice recipient party of the document.
+     * Returns true if a first contact information of the different invoice recipient party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentInvoiceeContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceeContact(): bool
+    {
+        $this->documentInvoiceeContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentInvoiceeContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first contact information of the different invoice recipient party of the document.
+     * Returns true if another contact information of the different invoice recipient party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentInvoiceeContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceeContact(): bool
+    {
+        $this->documentInvoiceeContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentInvoiceeContactPointer]);
+    }
+
+    /**
      * Get contact information of the different invoice recipient party
      *
      * __Notes__
@@ -1793,7 +2125,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentInvoiceeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentInvoiceeContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -1923,6 +2256,34 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first contact information of the payee party of the document.
+     * Returns true if a first contact information of the payee party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPayeeContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeContact(): bool
+    {
+        $this->documentPayeeContactPointer = 0;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentPayeeContactPointer]);
+    }
+
+    /**
+     * Seek to the next available first contact information of the payee party of the document.
+     * Returns true if another contact information of the payee party is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentPayeeContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeContact(): bool
+    {
+        $this->documentPayeeContactPointer++;
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+        return isset($contacts[$this->documentPayeeContactPointer]);
+    }
+
+    /**
      * Get contact information of the payee party
      *
      * @param string|null $contactpersonname
@@ -1939,7 +2300,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentPayeeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
-        $contact = $this->objectHelper->getFirstFromArrayIfArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+        $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+        $contact = $contacts[$this->documentPayeeContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
@@ -2112,9 +2474,11 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false &&
+        if (
+            StringUtils::stringIsNullOrEmpty($binarydatafilename) === false &&
             StringUtils::stringIsNullOrEmpty($binarydata) === false &&
-            StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false) {
+            StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
+        ) {
             $binarydatafilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binarydatafilename);
             FileUtils::base64ToFile($binarydata, $binarydatafilename);
         } else {

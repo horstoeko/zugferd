@@ -203,15 +203,19 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerContact
      */
     public function testDocumentSellerContact(): void
     {
+        $this->assertTrue(self::$document->firstDocumentSellerContact());
         self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
         $this->assertEquals("Max Mustermann", $sellercontactpersonname);
         $this->assertEquals("Muster-Einkauf", $sellercontactdepartmentname);
         $this->assertEquals("+49891234567", $sellercontactphoneno);
         $this->assertEquals("", $sellercontactfaxno);
         $this->assertEquals("Max@Mustermann.de", $sellercontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentSellerContact());
     }
 
     /**
@@ -277,15 +281,15 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentBuyerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentBuyerContact
      */
     public function testDocumentBuyerContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentBuyerContact());
+        $this->assertFalse(self::$document->nextDocumentBuyerContact());
+        $this->expectNotice();
         self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
-        $this->assertEquals("", $buyercontactpersonname);
-        $this->assertEquals("", $buyercontactdepartmentname);
-        $this->assertEquals("", $buyercontactphoneno);
-        $this->assertEquals("", $buyercontactfaxno);
-        $this->assertEquals("", $buyercontactemailaddr);
     }
 
     /**
@@ -349,15 +353,15 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerTaxRepresentativeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerTaxRepresentativeContact
      */
     public function testDocumentSellerTaxRepresentativeContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
+        $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
+        $this->expectNotice();
         self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
-        $this->assertEquals("", $sellertaxreprcontactpersonname);
-        $this->assertEquals("", $sellertaxreprcontactdepartmentname);
-        $this->assertEquals("", $sellertaxreprcontactphoneno);
-        $this->assertEquals("", $sellertaxreprcontactfaxno);
-        $this->assertEquals("", $sellertaxreprcontactemailaddr);
     }
 
     /**
@@ -421,15 +425,15 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentShipToContact
      */
     public function testDocumentShipToContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentShipToContact());
+        $this->assertFalse(self::$document->nextDocumentShipToContact());
+        $this->expectNotice();
         self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
-        $this->assertEquals("", $shiptocontactpersonname);
-        $this->assertEquals("", $shiptocontactdepartmentname);
-        $this->assertEquals("", $shiptocontactphoneno);
-        $this->assertEquals("", $shiptocontactfaxno);
-        $this->assertEquals("", $shiptocontactemailaddr);
     }
 
     /**
@@ -493,15 +497,17 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentUltimateShipToContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentUltimateShipToContact
      */
     public function testDocumentUltimateShipToContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
+        $this->expectNotice();
         self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
-        $this->assertEquals("", $ultimateshiptocontactpersonname);
-        $this->assertEquals("", $ultimateshiptocontactdepartmentname);
-        $this->assertEquals("", $ultimateshiptocontactphoneno);
-        $this->assertEquals("", $ultimateshiptocontactfaxno);
-        $this->assertEquals("", $ultimateshiptocontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
+        $this->expectNotice();
+        self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
     }
 
     /**
@@ -565,15 +571,17 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentShipFromContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentShipFromContact
      */
     public function testDocumentShipFromContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentShipFromContact());
+        $this->expectNotice();
         self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
-        $this->assertEquals("", $shipfromcontactpersonname);
-        $this->assertEquals("", $shipfromcontactdepartmentname);
-        $this->assertEquals("", $shipfromcontactphoneno);
-        $this->assertEquals("", $shipfromcontactfaxno);
-        $this->assertEquals("", $shipfromcontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentShipFromContact());
+        $this->expectNotice();
+        self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
     }
 
     /**
@@ -637,15 +645,17 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentInvoicerContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentInvoicerContact
      */
     public function testDocumentInvoicerContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentInvoicerContact());
+        $this->expectNotice();
         self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
-        $this->assertEquals("", $invoicercontactpersonname);
-        $this->assertEquals("", $invoicercontactdepartmentname);
-        $this->assertEquals("", $invoicercontactphoneno);
-        $this->assertEquals("", $invoicercontactfaxno);
-        $this->assertEquals("", $invoicercontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentInvoicerContact());
+        $this->expectNotice();
+        self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
     }
 
     /**
@@ -709,15 +719,17 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentInvoiceeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentInvoiceeContact
      */
     public function testDocumentInvoiceeContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
+        $this->expectNotice();
         self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
-        $this->assertEquals("", $invoiceecontactpersonname);
-        $this->assertEquals("", $invoiceecontactdepartmentname);
-        $this->assertEquals("", $invoiceecontactphoneno);
-        $this->assertEquals("", $invoiceecontactfaxno);
-        $this->assertEquals("", $invoiceecontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
+        $this->expectNotice();
+        self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
     }
 
     /**
@@ -781,15 +793,17 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPayeeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPayeeContact
      */
     public function testDocumentPayeeContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentPayeeContact());
+        $this->expectNotice();
         self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
-        $this->assertEquals("", $payeecontactpersonname);
-        $this->assertEquals("", $payeecontactdepartmentname);
-        $this->assertEquals("", $payeecontactphoneno);
-        $this->assertEquals("", $payeecontactfaxno);
-        $this->assertEquals("", $payeecontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentPayeeContact());
+        $this->expectNotice();
+        self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
     }
 
     /**
@@ -858,15 +872,15 @@ class ReaderXRechnungSimpleTest extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentProductEndUserContactContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentProductEndUserContactContact
      */
     public function testDocumentProductEndUserContact(): void
     {
+        $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
+        $this->expectNotice();
         self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
-        $this->assertEquals("", $producendusercontactpersonname);
-        $this->assertEquals("", $producendusercontactdepartmentname);
-        $this->assertEquals("", $producendusercontactphoneno);
-        $this->assertEquals("", $producendusercontactfaxno);
-        $this->assertEquals("", $producendusercontactemailaddr);
+        $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());
     }
 
     /**
