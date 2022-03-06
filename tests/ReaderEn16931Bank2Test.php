@@ -120,4 +120,78 @@ class ReaderEn16931Bank2Test extends TestCase
 
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentative
+     */
+    public function testDocumentSellerTaxRepresentativeGeneral(): void
+    {
+        self::$document->getDocumentSellerTaxRepresentative($sellertaxreprname, $sellertaxreprids, $sellertaxreprdescription);
+        $this->assertEquals("SELLER TAX REP", $sellertaxreprname);
+        $this->assertIsArray($sellertaxreprids);
+        $this->assertEmpty($sellertaxreprids);
+        $this->assertEquals("", $sellertaxreprdescription);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeGlobalId
+     */
+    public function testDocumentSellerTaxRepresentativeGlobalId(): void
+    {
+        self::$document->getDocumentSellerTaxRepresentativeGlobalId($sellertaxreprglobalids);
+        $this->assertIsArray($sellertaxreprglobalids);
+        $this->assertEmpty($sellertaxreprglobalids);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeTaxRegistration
+     */
+    public function testDocumentSellerTaxRepresentativeTaxRegistration(): void
+    {
+        self::$document->getDocumentSellerTaxRepresentativeTaxRegistration($sellertaxreprtaxreg);
+        $this->assertIsArray($sellertaxreprtaxreg);
+        $this->assertNotEmpty($sellertaxreprtaxreg);
+        $this->assertArrayHasKey("VA", $sellertaxreprtaxreg);
+        $this->assertEquals("FR 05 987 654 321", $sellertaxreprtaxreg["VA"]);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeAddress
+     */
+    public function testDocumentSellerTaxRepresentativeAddress(): void
+    {
+        self::$document->getDocumentSellerTaxRepresentativeAddress($sellertaxreprlineone, $sellertaxreprlinetwo, $sellertaxreprlinethree, $sellertaxreprpostcode, $sellertaxreprcity, $sellertaxreprcountry, $sellertaxreprsubdivision);
+        $this->assertEquals("35 rue d'ici", $sellertaxreprlineone);
+        $this->assertEquals("Seller line 2", $sellertaxreprlinetwo);
+        $this->assertEquals("Seller line 3", $sellertaxreprlinethree);
+        $this->assertEquals("75018", $sellertaxreprpostcode);
+        $this->assertEquals("PARIS", $sellertaxreprcity);
+        $this->assertEquals("FR", $sellertaxreprcountry);
+        $this->assertIsArray($sellertaxreprsubdivision);
+        $this->assertEmpty($sellertaxreprsubdivision);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeLegalOrganisation
+     */
+    public function testDocumentSellerTaxRepresentativeLegalOrganization(): void
+    {
+        self::$document->getDocumentSellerTaxRepresentativeLegalOrganisation($sellertaxreprlegalorgid, $sellertaxreprlegalorgtype, $sellertaxreprlegalorgname);
+        $this->assertEquals("", $sellertaxreprlegalorgid);
+        $this->assertEquals("", $sellertaxreprlegalorgtype);
+        $this->assertEquals("", $sellertaxreprlegalorgname);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerTaxRepresentativeContact
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerTaxRepresentativeContact
+     */
+    public function testDocumentSellerTaxRepresentativeContact(): void
+    {
+        $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
+        $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
+        $this->expectNotice();
+        self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
+    }
 }
