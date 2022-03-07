@@ -17,6 +17,11 @@ class DocumentLineDocumentType
     private $lineID = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType $parentLineID
+     */
+    private $parentLineID = null;
+
+    /**
      * @var string $lineStatusCode
      */
     private $lineStatusCode = null;
@@ -52,6 +57,28 @@ class DocumentLineDocumentType
     public function setLineID(\horstoeko\zugferd\entities\extended\udt\IDType $lineID)
     {
         $this->lineID = $lineID;
+        return $this;
+    }
+
+    /**
+     * Gets as parentLineID
+     *
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     */
+    public function getParentLineID()
+    {
+        return $this->parentLineID;
+    }
+
+    /**
+     * Sets a new parentLineID
+     *
+     * @param \horstoeko\zugferd\entities\extended\udt\IDType $parentLineID
+     * @return self
+     */
+    public function setParentLineID(\horstoeko\zugferd\entities\extended\udt\IDType $parentLineID)
+    {
+        $this->parentLineID = $parentLineID;
         return $this;
     }
 
@@ -154,4 +181,7 @@ class DocumentLineDocumentType
         $this->includedNote = $includedNote;
         return $this;
     }
+
+
 }
+

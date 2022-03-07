@@ -49,4 +49,7 @@ class LineStatusCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+

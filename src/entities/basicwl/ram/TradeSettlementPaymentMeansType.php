@@ -91,4 +91,7 @@ class TradeSettlementPaymentMeansType
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
         return $this;
     }
+
+
 }
+

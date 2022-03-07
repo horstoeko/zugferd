@@ -49,4 +49,7 @@ class AllowanceChargeReasonCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+

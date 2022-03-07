@@ -65,11 +65,7 @@ horstoeko\zugferd\entities\en16931\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradeSettlementPaymentMeans
                 setter: setSpecifiedTradeSettlementPaymentMeans
-            xml_list:
-                inline: true
-                entry_name: SpecifiedTradeSettlementPaymentMeans
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\en16931\ram\TradeSettlementPaymentMeansType>
+            type: horstoeko\zugferd\entities\en16931\ram\TradeSettlementPaymentMeansType
         applicableTradeTax:
             expose: true
             access_type: public_method

@@ -42,6 +42,11 @@ class TradePaymentTermsType
     private $applicableTradePaymentDiscountTerms = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty
+     */
+    private $payeeTradeParty = null;
+
+    /**
      * Gets as description
      *
      * @return string
@@ -172,4 +177,29 @@ class TradePaymentTermsType
         $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
         return $this;
     }
+
+    /**
+     * Gets as payeeTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getPayeeTradeParty()
+    {
+        return $this->payeeTradeParty;
+    }
+
+    /**
+     * Sets a new payeeTradeParty
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty
+     * @return self
+     */
+    public function setPayeeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty)
+    {
+        $this->payeeTradeParty = $payeeTradeParty;
+        return $this;
+    }
+
+
 }
+

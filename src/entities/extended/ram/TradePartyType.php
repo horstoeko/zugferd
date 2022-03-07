@@ -31,6 +31,11 @@ class TradePartyType
     private $name = null;
 
     /**
+     * @var string $roleCode
+     */
+    private $roleCode = null;
+
+    /**
      * @var string $description
      */
     private $description = null;
@@ -41,9 +46,11 @@ class TradePartyType
     private $specifiedLegalOrganization = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType $definedTradeContact
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType[] $definedTradeContact
      */
-    private $definedTradeContact = null;
+    private $definedTradeContact = [
+        
+    ];
 
     /**
      * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
@@ -197,6 +204,28 @@ class TradePartyType
     }
 
     /**
+     * Gets as roleCode
+     *
+     * @return string
+     */
+    public function getRoleCode()
+    {
+        return $this->roleCode;
+    }
+
+    /**
+     * Sets a new roleCode
+     *
+     * @param string $roleCode
+     * @return self
+     */
+    public function setRoleCode($roleCode)
+    {
+        $this->roleCode = $roleCode;
+        return $this;
+    }
+
+    /**
      * Gets as description
      *
      * @return string
@@ -241,9 +270,43 @@ class TradePartyType
     }
 
     /**
+     * Adds as definedTradeContact
+     *
+     * @return self
+     * @param \horstoeko\zugferd\entities\extended\ram\TradeContactType $definedTradeContact
+     */
+    public function addToDefinedTradeContact(\horstoeko\zugferd\entities\extended\ram\TradeContactType $definedTradeContact)
+    {
+        $this->definedTradeContact[] = $definedTradeContact;
+        return $this;
+    }
+
+    /**
+     * isset definedTradeContact
+     *
+     * @param int|string $index
+     * @return bool
+     */
+    public function issetDefinedTradeContact($index)
+    {
+        return isset($this->definedTradeContact[$index]);
+    }
+
+    /**
+     * unset definedTradeContact
+     *
+     * @param int|string $index
+     * @return void
+     */
+    public function unsetDefinedTradeContact($index)
+    {
+        unset($this->definedTradeContact[$index]);
+    }
+
+    /**
      * Gets as definedTradeContact
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\TradeContactType
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeContactType[]
      */
     public function getDefinedTradeContact()
     {
@@ -253,10 +316,10 @@ class TradePartyType
     /**
      * Sets a new definedTradeContact
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeContactType $definedTradeContact
+     * @param \horstoeko\zugferd\entities\extended\ram\TradeContactType[] $definedTradeContact
      * @return self
      */
-    public function setDefinedTradeContact(\horstoeko\zugferd\entities\extended\ram\TradeContactType $definedTradeContact)
+    public function setDefinedTradeContact(array $definedTradeContact)
     {
         $this->definedTradeContact = $definedTradeContact;
         return $this;
@@ -361,4 +424,7 @@ class TradePartyType
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
         return $this;
     }
+
+
 }
+

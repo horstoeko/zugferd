@@ -9,3 +9,6 @@ horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType:
         applicableTradePaymentDiscountTerms:
             -
                 Valid: null
+        payeeTradeParty:
+            -
+                Valid: null

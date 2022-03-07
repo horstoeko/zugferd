@@ -1,0 +1,62 @@
+horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - AAA
+                        - AAB
+                        - AAC
+                        - AAD
+                        - AAE
+                        - AAF
+                        - AAG
+                        - AAH
+                        - AAI
+                        - AAJ
+                        - AAK
+                        - AAL
+                        - AAM
+                        - ADD
+                        - BOL
+                        - CAP
+                        - CAR
+                        - COC
+                        - CST
+                        - CUD
+                        - CVD
+                        - ENV
+                        - EXC
+                        - EXP
+                        - FET
+                        - FRE
+                        - GCN
+                        - GST
+                        - ILL
+                        - IMP
+                        - IND
+                        - LAC
+                        - LCN
+                        - LDP
+                        - LOC
+                        - LST
+                        - MCA
+                        - MCD
+                        - OTH
+                        - PDB
+                        - PDC
+                        - PRF
+                        - SCN
+                        - SSS
+                        - STT
+                        - SUP
+                        - SUR
+                        - SWT
+                        - TAC
+                        - TOT
+                        - TOX
+                        - TTA
+                        - VAD
+                        - VAT
+                    groups:
+                        - xsd_rules

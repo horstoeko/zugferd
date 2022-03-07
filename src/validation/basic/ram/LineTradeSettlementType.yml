@@ -7,6 +7,9 @@ horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType:
                         - xsd_rules
             -
                 Valid: null
+        billingSpecifiedPeriod:
+            -
+                Valid: null
         specifiedTradeAllowanceCharge:
             -
                 Valid: null

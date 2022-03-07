@@ -17,6 +17,11 @@ class LineTradeSettlementType
     private $applicableTradeTax = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     */
+    private $billingSpecifiedPeriod = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      */
     private $specifiedTradeAllowanceCharge = [
@@ -47,6 +52,28 @@ class LineTradeSettlementType
     public function setApplicableTradeTax(\horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax)
     {
         $this->applicableTradeTax = $applicableTradeTax;
+        return $this;
+    }
+
+    /**
+     * Gets as billingSpecifiedPeriod
+     *
+     * @return \horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType
+     */
+    public function getBillingSpecifiedPeriod()
+    {
+        return $this->billingSpecifiedPeriod;
+    }
+
+    /**
+     * Sets a new billingSpecifiedPeriod
+     *
+     * @param \horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @return self
+     */
+    public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
+    {
+        $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
         return $this;
     }
 
@@ -127,4 +154,7 @@ class LineTradeSettlementType
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
         return $this;
     }
+
+
 }
+

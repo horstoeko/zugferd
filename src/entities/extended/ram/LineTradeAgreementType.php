@@ -17,6 +17,11 @@ class LineTradeAgreementType
     private $buyerOrderReferencedDocument = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
+     */
+    private $quotationReferencedDocument = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument
      */
     private $contractReferencedDocument = null;
@@ -64,6 +69,28 @@ class LineTradeAgreementType
     public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
     {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
+        return $this;
+    }
+
+    /**
+     * Gets as quotationReferencedDocument
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+     */
+    public function getQuotationReferencedDocument()
+    {
+        return $this->quotationReferencedDocument;
+    }
+
+    /**
+     * Sets a new quotationReferencedDocument
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
+     * @return self
+     */
+    public function setQuotationReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument)
+    {
+        $this->quotationReferencedDocument = $quotationReferencedDocument;
         return $this;
     }
 
@@ -244,4 +271,7 @@ class LineTradeAgreementType
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
         return $this;
     }
+
+
 }
+

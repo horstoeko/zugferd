@@ -64,4 +64,7 @@ class TradeProductType
         $this->name = $name;
         return $this;
     }
+
+
 }
+

@@ -1269,7 +1269,7 @@ class ZugferdObjectHelper
 
         $referencedProduct = $this->createClassInstance('ram\ReferencedProductType');
 
-        $this->tryCall($referencedProduct, "setGlobalID", $this->getIdType($globalID, $globalIDType));
+        $this->tryCallAll($referencedProduct, ["addToGlobalID", "setGlobalID"], $this->getIdType($globalID, $globalIDType));
         $this->tryCall($referencedProduct, "setSellerAssignedID", $this->getIdType($sellerAssignedID));
         $this->tryCall($referencedProduct, "setBuyerAssignedID", $this->getIdType($buyerAssignedID));
         $this->tryCall($referencedProduct, "setName", $this->getTextType($name));
@@ -1526,6 +1526,38 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Call $method if exists, otherwise $method2 is calles with $value
+     *
+     * @param object $instance
+     * @param string $methodToLookFor
+     * @param string $methodToCall
+     * @param mixed $value
+     * @param mixed $value2
+     * @return ZugferdObjectHelper
+     */
+    public function tryCallIfMethodExists($instance, string $methodToLookFor, string $methodToCall, $value, $value2): ZugferdObjectHelper
+    {
+        if (!$instance) {
+            return $this;
+        }
+        if (!$methodToLookFor) {
+            return $this;
+        }
+        if (!$methodToCall) {
+            return $this;
+        }
+        if (!method_exists($instance, $methodToCall)) {
+            return $this;
+        }
+        if (method_exists($instance, $methodToLookFor)) {
+            $instance->$methodToCall($value);
+        } else {
+            $instance->$methodToCall($value2);
+        }
+        return $this;
+    }
+
+    /**
      * Ensure that $input is an array
      *
      * @codeCoverageIgnore
@@ -1621,5 +1653,25 @@ class ZugferdObjectHelper
             }
         }
         return false;
+    }
+
+    /**
+     * If $value is an array and has at least one array element the first
+     * array element is returned otherwise null is returned. If $value is not an
+     * array $value is returned
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    public function getFirstFromArrayIfArray($value)
+    {
+        if (is_array($value)) {
+            $first = reset($value);
+            if ($first !== false) {
+                return $first;
+            }
+            return null;
+        }
+        return $value;
     }
 }

@@ -145,4 +145,7 @@ class TradePaymentDiscountTermsType
         $this->actualDiscountAmount = $actualDiscountAmount;
         return $this;
     }
+
+
 }
+

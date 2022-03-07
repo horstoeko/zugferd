@@ -11,3 +11,14 @@ horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType:
                 getter: getLineID
                 setter: setLineID
             type: horstoeko\zugferd\entities\basic\udt\IDType
+        includedNote:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludedNote
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIncludedNote
+                setter: setIncludedNote
+            type: horstoeko\zugferd\entities\basic\ram\NoteType

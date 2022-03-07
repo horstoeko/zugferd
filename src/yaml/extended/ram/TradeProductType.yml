@@ -1,5 +1,16 @@
 horstoeko\zugferd\entities\extended\ram\TradeProductType:
     properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
         globalID:
             expose: true
             access_type: public_method
@@ -85,6 +96,21 @@ horstoeko\zugferd\entities\extended\ram\TradeProductType:
                 entry_name: DesignatedProductClassification
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             type: array<horstoeko\zugferd\entities\extended\ram\ProductClassificationType>
+        individualTradeProductInstance:
+            expose: true
+            access_type: public_method
+            serialized_name: IndividualTradeProductInstance
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIndividualTradeProductInstance
+                setter: setIndividualTradeProductInstance
+            xml_list:
+                inline: true
+                entry_name: IndividualTradeProductInstance
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType>
         originTradeCountry:
             expose: true
             access_type: public_method

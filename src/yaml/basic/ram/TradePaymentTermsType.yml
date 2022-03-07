@@ -1,5 +1,16 @@
 horstoeko\zugferd\entities\basic\ram\TradePaymentTermsType:
     properties:
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: Description
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: horstoeko\zugferd\entities\basic\udt\TextType
         dueDateDateTime:
             expose: true
             access_type: public_method

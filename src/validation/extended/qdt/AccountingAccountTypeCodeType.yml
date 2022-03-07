@@ -1,0 +1,15 @@
+horstoeko\zugferd\entities\extended\qdt\AccountingAccountTypeCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - '1'
+                        - '2'
+                        - '3'
+                        - '4'
+                        - '5'
+                        - '6'
+                        - '7'
+                    groups:
+                        - xsd_rules

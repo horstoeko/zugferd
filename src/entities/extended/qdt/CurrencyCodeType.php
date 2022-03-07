@@ -49,4 +49,7 @@ class CurrencyCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+

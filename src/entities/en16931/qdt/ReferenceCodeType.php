@@ -49,4 +49,7 @@ class ReferenceCodeType
     {
         return strval($this->__value);
     }
+
+
 }
+

@@ -17,6 +17,11 @@ class DocumentLineDocumentType
     private $lineID = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\basic\ram\NoteType $includedNote
+     */
+    private $includedNote = null;
+
+    /**
      * Gets as lineID
      *
      * @return \horstoeko\zugferd\entities\basic\udt\IDType
@@ -37,4 +42,29 @@ class DocumentLineDocumentType
         $this->lineID = $lineID;
         return $this;
     }
+
+    /**
+     * Gets as includedNote
+     *
+     * @return \horstoeko\zugferd\entities\basic\ram\NoteType
+     */
+    public function getIncludedNote()
+    {
+        return $this->includedNote;
+    }
+
+    /**
+     * Sets a new includedNote
+     *
+     * @param \horstoeko\zugferd\entities\basic\ram\NoteType $includedNote
+     * @return self
+     */
+    public function setIncludedNote(\horstoeko\zugferd\entities\basic\ram\NoteType $includedNote)
+    {
+        $this->includedNote = $includedNote;
+        return $this;
+    }
+
+
 }
+

@@ -103,4 +103,7 @@ class BinaryObjectType
         $this->filename = $filename;
         return $this;
     }
+
+
 }
+

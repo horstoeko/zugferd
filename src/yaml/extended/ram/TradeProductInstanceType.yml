@@ -1,0 +1,24 @@
+horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType:
+    properties:
+        batchID:
+            expose: true
+            access_type: public_method
+            serialized_name: BatchID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBatchID
+                setter: setBatchID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
+        supplierAssignedSerialID:
+            expose: true
+            access_type: public_method
+            serialized_name: SupplierAssignedSerialID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSupplierAssignedSerialID
+                setter: setSupplierAssignedSerialID
+            type: horstoeko\zugferd\entities\extended\udt\IDType

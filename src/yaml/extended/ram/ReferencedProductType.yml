@@ -1,5 +1,16 @@
 horstoeko\zugferd\entities\extended\ram\ReferencedProductType:
     properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
         globalID:
             expose: true
             access_type: public_method
@@ -10,7 +21,11 @@ horstoeko\zugferd\entities\extended\ram\ReferencedProductType:
             accessor:
                 getter: getGlobalID
                 setter: setGlobalID
-            type: horstoeko\zugferd\entities\extended\udt\IDType
+            xml_list:
+                inline: true
+                entry_name: GlobalID
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\udt\IDType>
         sellerAssignedID:
             expose: true
             access_type: public_method
@@ -32,6 +47,17 @@ horstoeko\zugferd\entities\extended\ram\ReferencedProductType:
             accessor:
                 getter: getBuyerAssignedID
                 setter: setBuyerAssignedID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
+        industryAssignedID:
+            expose: true
+            access_type: public_method
+            serialized_name: IndustryAssignedID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIndustryAssignedID
+                setter: setIndustryAssignedID
             type: horstoeko\zugferd\entities\extended\udt\IDType
         name:
             expose: true

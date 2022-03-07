@@ -298,4 +298,7 @@ class TradeProductType
         $this->originTradeCountry = $originTradeCountry;
         return $this;
     }
+
+
 }
+

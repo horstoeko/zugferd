@@ -22,6 +22,11 @@ class HeaderTradeSettlementType
     private $paymentReference = null;
 
     /**
+     * @var string $taxCurrencyCode
+     */
+    private $taxCurrencyCode = null;
+
+    /**
      * @var string $invoiceCurrencyCode
      */
     private $invoiceCurrencyCode = null;
@@ -32,11 +37,9 @@ class HeaderTradeSettlementType
     private $payeeTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
      */
-    private $specifiedTradeSettlementPaymentMeans = [
-        
-    ];
+    private $specifiedTradeSettlementPaymentMeans = null;
 
     /**
      * @var \horstoeko\zugferd\entities\basic\ram\TradeTaxType[] $applicableTradeTax
@@ -122,6 +125,28 @@ class HeaderTradeSettlementType
     }
 
     /**
+     * Gets as taxCurrencyCode
+     *
+     * @return string
+     */
+    public function getTaxCurrencyCode()
+    {
+        return $this->taxCurrencyCode;
+    }
+
+    /**
+     * Sets a new taxCurrencyCode
+     *
+     * @param string $taxCurrencyCode
+     * @return self
+     */
+    public function setTaxCurrencyCode($taxCurrencyCode)
+    {
+        $this->taxCurrencyCode = $taxCurrencyCode;
+        return $this;
+    }
+
+    /**
      * Gets as invoiceCurrencyCode
      *
      * @return string
@@ -166,43 +191,9 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * Adds as specifiedTradeSettlementPaymentMeans
-     *
-     * @return self
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
-     */
-    public function addToSpecifiedTradeSettlementPaymentMeans(\horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans)
-    {
-        $this->specifiedTradeSettlementPaymentMeans[] = $specifiedTradeSettlementPaymentMeans;
-        return $this;
-    }
-
-    /**
-     * isset specifiedTradeSettlementPaymentMeans
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetSpecifiedTradeSettlementPaymentMeans($index)
-    {
-        return isset($this->specifiedTradeSettlementPaymentMeans[$index]);
-    }
-
-    /**
-     * unset specifiedTradeSettlementPaymentMeans
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetSpecifiedTradeSettlementPaymentMeans($index)
-    {
-        unset($this->specifiedTradeSettlementPaymentMeans[$index]);
-    }
-
-    /**
      * Gets as specifiedTradeSettlementPaymentMeans
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType[]
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType
      */
     public function getSpecifiedTradeSettlementPaymentMeans()
     {
@@ -212,10 +203,10 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementPaymentMeans
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
+     * @param \horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans
      * @return self
      */
-    public function setSpecifiedTradeSettlementPaymentMeans(array $specifiedTradeSettlementPaymentMeans)
+    public function setSpecifiedTradeSettlementPaymentMeans(\horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType $specifiedTradeSettlementPaymentMeans)
     {
         $this->specifiedTradeSettlementPaymentMeans = $specifiedTradeSettlementPaymentMeans;
         return $this;
@@ -442,4 +433,7 @@ class HeaderTradeSettlementType
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
         return $this;
     }
+
+
 }
+

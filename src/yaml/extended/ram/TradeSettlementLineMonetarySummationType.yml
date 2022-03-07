@@ -11,6 +11,50 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
                 getter: getLineTotalAmount
                 setter: setLineTotalAmount
             type: horstoeko\zugferd\entities\extended\udt\AmountType
+        chargeTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: ChargeTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getChargeTotalAmount
+                setter: setChargeTotalAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        allowanceTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: AllowanceTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getAllowanceTotalAmount
+                setter: setAllowanceTotalAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        taxTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxTotalAmount
+                setter: setTaxTotalAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
+        grandTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: GrandTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGrandTotalAmount
+                setter: setGrandTotalAmount
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
         totalAllowanceChargeAmount:
             expose: true
             access_type: public_method

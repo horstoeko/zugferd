@@ -22,6 +22,17 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
                 getter: getPaymentReference
                 setter: setPaymentReference
             type: horstoeko\zugferd\entities\basic\udt\TextType
+        taxCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxCurrencyCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxCurrencyCode
+                setter: setTaxCurrencyCode
+            type: horstoeko\zugferd\entities\en16931\qdt\CurrencyCodeType 
         invoiceCurrencyCode:
             expose: true
             access_type: public_method
@@ -54,11 +65,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getSpecifiedTradeSettlementPaymentMeans
                 setter: setSpecifiedTradeSettlementPaymentMeans
-            xml_list:
-                inline: true
-                entry_name: SpecifiedTradeSettlementPaymentMeans
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType>
+            type: horstoeko\zugferd\entities\basic\ram\TradeSettlementPaymentMeansType
         applicableTradeTax:
             expose: true
             access_type: public_method

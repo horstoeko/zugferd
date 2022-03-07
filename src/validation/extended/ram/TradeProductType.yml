@@ -11,6 +11,9 @@ horstoeko\zugferd\entities\extended\ram\TradeProductType:
         designatedProductClassification:
             -
                 Valid: null
+        individualTradeProductInstance:
+            -
+                Valid: null
         originTradeCountry:
             -
                 Valid: null

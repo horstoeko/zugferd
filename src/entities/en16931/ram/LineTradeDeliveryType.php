@@ -37,4 +37,7 @@ class LineTradeDeliveryType
         $this->billedQuantity = $billedQuantity;
         return $this;
     }
+
+
 }
+

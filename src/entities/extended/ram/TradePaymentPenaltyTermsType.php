@@ -145,4 +145,7 @@ class TradePaymentPenaltyTermsType
         $this->actualPenaltyAmount = $actualPenaltyAmount;
         return $this;
     }
+
+
 }
+

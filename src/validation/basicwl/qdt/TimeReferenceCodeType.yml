@@ -1,0 +1,11 @@
+horstoeko\zugferd\entities\basicwl\qdt\TimeReferenceCodeType:
+    properties:
+        __value:
+            -
+                Choice:
+                    choices:
+                        - '5'
+                        - '29'
+                        - '72'
+                    groups:
+                        - xsd_rules

@@ -42,6 +42,11 @@ class TradeAddressType
     private $countryID = null;
 
     /**
+     * @var string $countrySubDivisionName
+     */
+    private $countrySubDivisionName = null;
+
+    /**
      * Gets as postcodeCode
      *
      * @return string
@@ -172,4 +177,29 @@ class TradeAddressType
         $this->countryID = $countryID;
         return $this;
     }
+
+    /**
+     * Gets as countrySubDivisionName
+     *
+     * @return string
+     */
+    public function getCountrySubDivisionName()
+    {
+        return $this->countrySubDivisionName;
+    }
+
+    /**
+     * Sets a new countrySubDivisionName
+     *
+     * @param string $countrySubDivisionName
+     * @return self
+     */
+    public function setCountrySubDivisionName($countrySubDivisionName)
+    {
+        $this->countrySubDivisionName = $countrySubDivisionName;
+        return $this;
+    }
+
+
 }
+

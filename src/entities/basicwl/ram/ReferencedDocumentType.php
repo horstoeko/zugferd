@@ -64,4 +64,7 @@ class ReferencedDocumentType
         $this->formattedIssueDateTime = $formattedIssueDateTime;
         return $this;
     }
+
+
 }
+

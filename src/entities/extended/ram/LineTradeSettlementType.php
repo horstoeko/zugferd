@@ -36,6 +36,11 @@ class LineTradeSettlementType
     private $specifiedTradeSettlementLineMonetarySummation = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument
+     */
+    private $invoiceReferencedDocument = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
      */
     private $additionalReferencedDocument = [
@@ -43,11 +48,9 @@ class LineTradeSettlementType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      */
-    private $receivableSpecifiedTradeAccountingAccount = [
-        
-    ];
+    private $receivableSpecifiedTradeAccountingAccount = null;
 
     /**
      * Adds as applicableTradeTax
@@ -206,6 +209,28 @@ class LineTradeSettlementType
     }
 
     /**
+     * Gets as invoiceReferencedDocument
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+     */
+    public function getInvoiceReferencedDocument()
+    {
+        return $this->invoiceReferencedDocument;
+    }
+
+    /**
+     * Sets a new invoiceReferencedDocument
+     *
+     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument
+     * @return self
+     */
+    public function setInvoiceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument)
+    {
+        $this->invoiceReferencedDocument = $invoiceReferencedDocument;
+        return $this;
+    }
+
+    /**
      * Adds as additionalReferencedDocument
      *
      * @return self
@@ -262,43 +287,9 @@ class LineTradeSettlementType
     }
 
     /**
-     * Adds as receivableSpecifiedTradeAccountingAccount
-     *
-     * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
-     */
-    public function addToReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
-    {
-        $this->receivableSpecifiedTradeAccountingAccount[] = $receivableSpecifiedTradeAccountingAccount;
-        return $this;
-    }
-
-    /**
-     * isset receivableSpecifiedTradeAccountingAccount
-     *
-     * @param int|string $index
-     * @return bool
-     */
-    public function issetReceivableSpecifiedTradeAccountingAccount($index)
-    {
-        return isset($this->receivableSpecifiedTradeAccountingAccount[$index]);
-    }
-
-    /**
-     * unset receivableSpecifiedTradeAccountingAccount
-     *
-     * @param int|string $index
-     * @return void
-     */
-    public function unsetReceivableSpecifiedTradeAccountingAccount($index)
-    {
-        unset($this->receivableSpecifiedTradeAccountingAccount[$index]);
-    }
-
-    /**
      * Gets as receivableSpecifiedTradeAccountingAccount
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[]
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
      */
     public function getReceivableSpecifiedTradeAccountingAccount()
     {
@@ -308,12 +299,15 @@ class LineTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
-    public function setReceivableSpecifiedTradeAccountingAccount(array $receivableSpecifiedTradeAccountingAccount)
+    public function setReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
     {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
         return $this;
     }
+
+
 }
+
