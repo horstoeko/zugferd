@@ -82,3 +82,4 @@ _backup*
 /composer.lock
 /examples/fullpdf.pdf
 /examples/factur-x.xml
+myfile_dbg.xml
