@@ -253,7 +253,11 @@ class ZugferdPdfWriter extends PdfFpdi
         if (false === $fc) {
             $this->Error('Cannot open file: ' . $file_info['file']);
         }
-        $md = @date('YmdHis', filemtime($file_info['file']));
+        if (is_string($file_info['file'])) {
+            $md = @date('YmdHis', filemtime($file_info['file']));
+        } else {
+            $md = @date('YmdHis');
+        }
         $fc = gzcompress($fc);
         $this->_put('/Length ' . strlen($fc));
         $this->_put("/Params <</ModDate (D:$md)>>");
