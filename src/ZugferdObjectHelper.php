@@ -1427,7 +1427,7 @@ class ZugferdObjectHelper
         if (self::isNullOrEmpty($value)) {
             return $this;
         }
-        if (method_exists($instance, $method)) {
+        if ($this->methodExists($instance, $method)) {
             $instance->$method($value);
         }
         return $this;
@@ -1451,7 +1451,7 @@ class ZugferdObjectHelper
             return $this;
         }
         foreach ($methods as $method) {
-            if (method_exists($instance, $method)) {
+            if ($this->methodExists($instance, $method)) {
                 $instance->$method($value);
                 return $this;
             }
@@ -1476,7 +1476,7 @@ class ZugferdObjectHelper
         if (!$method) {
             return null;
         }
-        if (method_exists($instance, $method)) {
+        if ($this->methodExists($instance, $method)) {
             return $instance->$method();
         }
         return null;
@@ -1546,10 +1546,10 @@ class ZugferdObjectHelper
         if (!$methodToCall) {
             return $this;
         }
-        if (!method_exists($instance, $methodToCall)) {
+        if (!$this->methodExists($instance, $methodToCall)) {
             return $this;
         }
-        if (method_exists($instance, $methodToLookFor)) {
+        if ($this->methodExists($instance, $methodToLookFor)) {
             $instance->$methodToCall($value);
         } else {
             $instance->$methodToCall($value2);
@@ -1673,5 +1673,23 @@ class ZugferdObjectHelper
             return null;
         }
         return $value;
+    }
+
+    /**
+     * Wrapper for method_exists for use in PHP8
+     *
+     * @param string|object $instance
+     * @param string $method
+     * @return boolean
+     */
+    public function methodExists($instance, $method): bool
+    {
+        if ($instance == null) {
+            return false;
+        }
+        if (!is_object($instance) || !is_string($instance)) {
+            return false;
+        }
+        return method_exists($instance, $method);
     }
 }
