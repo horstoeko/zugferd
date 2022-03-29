@@ -1687,7 +1687,7 @@ class ZugferdObjectHelper
         if ($instance == null) {
             return false;
         }
-        if (!is_object($instance) || !is_string($instance)) {
+        if (!(is_object($instance) || is_string($instance))) {
             return false;
         }
         return method_exists($instance, $method);
