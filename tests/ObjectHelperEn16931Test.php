@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdObjectHelper;
 use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;

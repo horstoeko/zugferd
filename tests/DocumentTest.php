@@ -4,7 +4,7 @@ namespace horstoeko\zugferd\tests;
 
 use \ReflectionClass;
 use \ReflectionProperty;
-use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocument;
 

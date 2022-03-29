@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
@@ -224,7 +224,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerContact());
         $this->assertFalse(self::$document->nextDocumentSellerContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
     }
 
@@ -298,7 +298,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
     }
 
@@ -370,7 +370,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
     }
 
@@ -442,7 +442,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentShipToContact());
         $this->assertFalse(self::$document->nextDocumentShipToContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
     }
 
@@ -513,10 +513,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentUltimateShipToContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
     }
 
@@ -587,10 +587,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentShipFromContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
     }
 
@@ -661,10 +661,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentInvoicerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
     }
 
@@ -735,10 +735,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentInvoiceeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
     }
 
@@ -809,10 +809,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentPayeeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
     }
 
@@ -888,7 +888,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentProductEndUserContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());
     }

@@ -2,7 +2,7 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \PHPUnit\Framework\TestCase;
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
@@ -191,7 +191,7 @@ class ReaderEn16931Bank2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
-        $this->expectNotice();
+        $this->expectNoticeOrWarning();
         self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
     }
 }
