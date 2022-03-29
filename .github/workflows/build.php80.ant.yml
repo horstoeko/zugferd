@@ -1,4 +1,4 @@
-name: CI (Ant)
+name: CI (Ant, PHP 8.0)
 
 on: [push]
 
