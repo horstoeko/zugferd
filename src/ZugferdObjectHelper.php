@@ -1427,7 +1427,7 @@ class ZugferdObjectHelper
         if (self::isNullOrEmpty($value)) {
             return $this;
         }
-        if ($instance && method_exists($instance, $method)) {
+        if (method_exists($instance, $method)) {
             $instance->$method($value);
         }
         return $this;
@@ -1451,7 +1451,7 @@ class ZugferdObjectHelper
             return $this;
         }
         foreach ($methods as $method) {
-            if ($instance && method_exists($instance, $method)) {
+            if (method_exists($instance, $method)) {
                 $instance->$method($value);
                 return $this;
             }
@@ -1476,7 +1476,7 @@ class ZugferdObjectHelper
         if (!$method) {
             return null;
         }
-        if ($instance && method_exists($instance, $method)) {
+        if (method_exists($instance, $method)) {
             return $instance->$method();
         }
         return null;
@@ -1546,10 +1546,10 @@ class ZugferdObjectHelper
         if (!$methodToCall) {
             return $this;
         }
-        if (!$instance || !method_exists($instance, $methodToCall)) {
+        if (!method_exists($instance, $methodToCall)) {
             return $this;
         }
-        if ($instance && method_exists($instance, $methodToLookFor)) {
+        if (method_exists($instance, $methodToLookFor)) {
             $instance->$methodToCall($value);
         } else {
             $instance->$methodToCall($value2);
