@@ -229,7 +229,7 @@ class ObjectHelperEn16931Test extends TestCase
         $notetype = self::$objectHelper->getNoteType("content", "contentcode", "subjectcode");
         $this->assertEquals("content", $notetype->getContent());
         $this->assertEquals("subjectcode", $notetype->getSubjectCode()->value());
-        $this->assertFalse(method_exists($notetype, "getContentCode"));
+        $this->assertFalse(self::$objectHelper->methodExists($notetype, "getContentCode"));
     }
 
     /**
@@ -632,8 +632,8 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType
          */
         $periodtype = self::$objectHelper->getSpecifiedPeriodType(new \DateTime(), new \DateTime(), new \DateTime(), "Description");
-        $this->assertFalse(method_exists($periodtype, "getDescription"));
-        $this->assertFalse(method_exists($periodtype, "getCompleteDateTime"));
+        $this->assertFalse(self::$objectHelper->methodExists($periodtype, "getDescription"));
+        $this->assertFalse(self::$objectHelper->methodExists($periodtype, "getCompleteDateTime"));
         $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getStartDateTime()->getDateTimeString());
         $this->assertEquals("102", $periodtype->getStartDateTime()->getDateTimeString()->getFormat());
         $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getEndDateTime()->getDateTimeString());
@@ -853,7 +853,7 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("personname", $tradecontact->getPersonName());
         $this->assertEquals("departmentname", $tradecontact->getDepartmentName());
         $this->assertEquals("phone", $tradecontact->getTelephoneUniversalCommunication()->getCompleteNumber());
-        $this->assertFalse(method_exists($tradecontact, "getFaxUniversalCommunication"));
+        $this->assertFalse(self::$objectHelper->methodExists($tradecontact, "getFaxUniversalCommunication"));
         $this->assertEquals("mail", $tradecontact->getEmailURIUniversalCommunication()->getURIID());
     }
 
@@ -1231,8 +1231,8 @@ class ObjectHelperEn16931Test extends TestCase
         //$this->assertEquals(19.0, $tax->getRateApplicablePercent()->value());
         $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
         $this->assertEquals("reason", $tax->getExemptionReason());
-        $this->assertFalse(method_exists($tax, "getLineTotalBasisAmount"));
-        $this->assertFalse(method_exists($tax, "getAllowanceChargeBasisAmount"));
+        $this->assertFalse(self::$objectHelper->methodExists($tax, "getLineTotalBasisAmount"));
+        $this->assertFalse(self::$objectHelper->methodExists($tax, "getAllowanceChargeBasisAmount"));
     }
 
     /**
@@ -1272,10 +1272,10 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
         $this->assertEquals(19.0, $rateapplicablepercent->value());
-        $this->assertFalse(method_exists($allowancecharge, "getSequenceNumeric"));
+        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getSequenceNumeric"));
         $this->assertEquals(2.0, $calculationpercent->value());
-        $this->assertFalse(method_exists($allowancecharge, "getBasisQuantity"));
-        $this->assertFalse(method_exists($allowancecharge, "getBasisQuantity"));
+        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
+        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
         $this->assertEquals("reason", $allowancecharge->getReason());
         $this->assertEquals("reasoncode", $allowancecharge->getReasonCode());
     }
@@ -1301,9 +1301,9 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
          */
         $logcharge = self::$objectHelper->getLogisticsServiceChargeType("description", 10.0, ["taxtype"], ["taxcategpry"], [19]);
-        $this->assertFalse(method_exists($logcharge, "getDescription"));
-        $this->assertFalse(method_exists($logcharge, "getAppliedAmount"));
-        $this->assertFalse(method_exists($logcharge, "getAppliedTradeTax"));
+        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getDescription"));
+        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedAmount"));
+        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedTradeTax"));
     }
 
     /**
@@ -1373,7 +1373,7 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $accaccount = self::$objectHelper->getTradeAccountingAccountType("accid", "acctype");
         $this->assertEquals("accid", $accaccount->getID());
-        $this->assertFalse(method_exists($accaccount, "getTypeCode"));
+        $this->assertFalse(self::$objectHelper->methodExists($accaccount, "getTypeCode"));
     }
 
     /**
@@ -1565,7 +1565,7 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 2.0);
         $this->assertEquals(1.0, $summation->getLineTotalAmount()->value());
-        $this->assertFalse(method_exists($summation, "getTotalAllowanceChargeAmount"));
+        $this->assertFalse(self::$objectHelper->methodExists($summation, "getTotalAllowanceChargeAmount"));
     }
 
     /**
