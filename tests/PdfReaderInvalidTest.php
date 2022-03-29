@@ -2,7 +2,6 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 

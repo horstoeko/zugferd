@@ -3,7 +3,6 @@
 namespace horstoeko\zugferd\tests;
 
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 
