@@ -37,11 +37,11 @@
         "adrienrn/php-mimetyper": "^0.2",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "ext-simplexml": "*",
-        "symfony/validator": "^5",
+        "symfony/validator": "^6",
         "smalot/pdfparser": "^0",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2",
-        "symfony/yaml": "^5",
+        "symfony/yaml": "^6",
         "horstoeko/stringmanagement": "^1"
     },
     "require-dev": {
