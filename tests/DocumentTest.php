@@ -33,7 +33,7 @@ class DocumentTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->profile);
         $this->assertArrayHasKey("contextparameter", $doc->profiledef);
         $this->assertArrayHasKey("name", $doc->profiledef);
-        $this->assertEquals("urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic", $doc->profiledef["contextparameter"]);
+        $this->assertEquals("urn:factur-x.eu:1p0:basicwl", $doc->profiledef["contextparameter"]);
         $this->assertEquals("basicwl", $doc->profiledef["name"]);
     }
 

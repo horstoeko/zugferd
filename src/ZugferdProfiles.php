@@ -80,7 +80,7 @@ class ZugferdProfiles
             'description' => 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant ' .
                 'invoices. However, it contains all the information at document level that is required to post the invoice. ' .
                 'It is therefore a booking aid.',
-            'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic',
+            'contextparameter' => 'urn:factur-x.eu:1p0:basicwl',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC WL',
             'xsdfilename' => 'FACTUR-X_BASIC-WL.xsd',
