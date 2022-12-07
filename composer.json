@@ -59,6 +59,8 @@
     "scripts": {
         "tests": "./vendor/bin/phpunit ./tests/",
         "phpcs": "./vendor/bin/phpcs --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests",
-        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle"
+        "phpcbf": "./vendor/bin/phpcbf -q ./src ./tests",
+        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --xdebug",
+        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle --xdebug"
     }
 }
