@@ -22,6 +22,8 @@
     <property name="phpstan" value="${basedir}/vendor/bin/phpstan"/>
     <property name="sami" value="/usr/local/sbin/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
+    <property name="result.schematron.en16931" value="0"/>
+    <property name="result.schematron.xrechnung" value="0"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${basedir}/build/builddoc"/>
         <delete dir="${basedir}/build/doc"/>
