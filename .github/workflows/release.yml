@@ -35,4 +35,5 @@ jobs:
             repo_token: "${{ secrets.GITHUB_TOKEN }}"
             prerelease: false
             files: |
+                build/dist/doc.zip
                 build/dist/builddoc.zip

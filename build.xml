@@ -57,7 +57,7 @@
             <arg path="${phpdox}"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -247,22 +247,9 @@
         </fail>
         <echo message="Checked failure"/>
     </target>
-    <target name="projectdoc" depends="prepare" description="Generator project documentation using sami.">
-        <exec executable="php" taskname="projectdoc">
-            <arg path="${sami}"/>
-            <arg value="update"/>
-            <arg path="${project.basedir}/build/sami.config.php"/>
-        </exec>
-        <delete file="${project.basedir}/build/doc/PROJECT_VERSION"/>
-        <delete file="${project.basedir}/build/doc/SAMI_VERSION"/>
-        <delete file="${project.basedir}/build/doc/renderer.index"/>
-        <delete file="${project.basedir}/build/doc/opensearch.xml"/>
-        <delete dir="${project.basedir}/build/cache"/>
-        <property name="projectdoc.done" value="true"/>
-    </target>
     <target name="deploy" description="Deplay build">
         <zip destfile="${project.basedir}/build/dist/doc.zip">
-            <fileset dir="${project.basedir}/build/doc">
+            <fileset dir="${project.basedir}/doc">
                 <include name="**/*.*"/>
             </fileset>
         </zip>
@@ -281,30 +268,8 @@
                 <include name="phpdox/**/*.*"/>
             </fileset>
         </zip>
-        <!--
-        <copy todir="${project.basedir}/doc">
-            <fileset dir="${project.basedir}/build/doc">
-                <include name= "**/*.*" />
-            </fileset>
-        </copy>
-        <exec executable="${git}" passthru="true">
-            <arg value="add"/>
-            <arg path="${project.basedir}/doc"/>
-        </exec>
-        <exec executable="${git}" passthru="true">
-            <arg value="commit"/>
-            <arg value="-a"/>
-            <arg value="-m"/>
-            <arg value="Updated documentation"/>
-        </exec>
-        <exec executable="${git}" passthru="true">
-            <arg value="push"/>
-            <arg path="origin"/>
-            <arg path="master:master"/>
-        </exec>
-        -->
     </target>
-    <target name="projectdocstandalone" description="Generator project documentation using sami.">
+    <target name="projectdoc" description="Generator project documentation using sami.">
         <delete dir="${project.basedir}/cache"/>
         <delete dir="${project.basedir}/doc"/>
         <mkdir dir="${project.basedir}/cache"/>
