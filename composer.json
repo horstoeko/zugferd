@@ -61,6 +61,7 @@
         "phpcs": "./vendor/bin/phpcs --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests",
         "phpcbf": "./vendor/bin/phpcbf --ignore=/src/entities/* -q ./src ./tests",
         "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --xdebug",
-        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle --xdebug"
+        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle --xdebug",
+        "zugferddoc": "phing -f ./build.xml projectdoc"
     }
 }

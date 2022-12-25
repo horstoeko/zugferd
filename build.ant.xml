@@ -283,7 +283,7 @@
             </fileset>
         </zip>
     </target>
-    <target name="projectdoc" description="Generator project documentation using phpdocumentator.">
+    <target name="projectdoc" description="Generator project documentation using sami.">
         <delete dir="${basedir}/cache"/>
         <delete dir="${basedir}/doc"/>
         <mkdir dir="${basedir}/cache"/>
