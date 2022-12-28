@@ -45,7 +45,6 @@
         "horstoeko/stringmanagement": "^1"
     },
     "require-dev": {
-        "clean/phpdoc-md": "^0",
         "goetas-webservices/xsd2php": "^0",
         "pdepend/pdepend": "^2",
         "phploc/phploc": "^7",
