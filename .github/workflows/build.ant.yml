@@ -1,9 +1,10 @@
-name: CI (Ant)
+name: CI (Ant, PHP 7.3)
 
 on: [push]
 
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
