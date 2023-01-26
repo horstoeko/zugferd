@@ -9,9 +9,10 @@
 
 namespace horstoeko\zugferd;
 
-use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
-use \horstoeko\zugferd\ZugferdPdfWriter;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use \horstoeko\zugferd\ZugferdPackageVersion;
+use \horstoeko\zugferd\ZugferdPdfWriter;
+use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
  * Class representing the facillity adding XML data from ZugferdDocumentBuilder
@@ -161,7 +162,7 @@ class ZugferdDocumentPdfBuilder
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];
-        $descFx->children('fx', true)->ConformanceLevel = strtoupper($this->documentBuiler->profiledef["xmpname"]);
+        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->documentBuiler->profiledef["xmpname"]);
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
@@ -177,14 +178,14 @@ class ZugferdDocumentPdfBuilder
         $this->pdfWriter->addMetadataDescriptionNode($descDc->asXML());
 
         $descAdobe = $descriptionNodes[4];
-        $descAdobe->children('pdf', true)->Producer = 'FPDF';
+        $descAdobe->children('pdf', true)->{'Producer'} = 'FPDF';
         $this->pdfWriter->addMetadataDescriptionNode($descAdobe->asXML());
 
         $descXmp = $descriptionNodes[5];
         $xmpNodes = $descXmp->children('xmp', true);
-        $xmpNodes->CreatorTool = sprintf('Factur-X PHP library v%s by HorstOeko', "1.0");
-        $xmpNodes->CreateDate = $pdfMetadataInfos['createdDate'];
-        $xmpNodes->ModifyDate = $pdfMetadataInfos['modifiedDate'];
+        $xmpNodes->{'CreatorTool'} = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
+        $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
     }
 
