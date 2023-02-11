@@ -12,6 +12,7 @@
     <property name="validatorzip" value="${validatorzipdir}/${validatorzipname}"/>
     <property name="validatorconfigzip" value="${validatorconfigzipdir}/${validatorconfigzipname}"/>
     <property name="composer" value="${basedir}/composer.phar"/>
+    <property name="phpdocumentor" value="${basedir}/phpDocumentor.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${basedir}/vendor/bin/phpcs"/>
