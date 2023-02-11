@@ -49,7 +49,7 @@
         "pdepend/pdepend": "^2",
         "phploc/phploc": "^7",
         "phpmd/phpmd": "^2",
-        "phpstan/phpstan": "^0.12.59",
+        "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9",
         "sebastian/phpcpd": "^6",
         "squizlabs/php_codesniffer": "^3",
@@ -57,10 +57,16 @@
     },
     "scripts": {
         "tests": "./vendor/bin/phpunit ./tests/",
+        "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
         "phpcs": "./vendor/bin/phpcs --standard=./build/phpcsrules.xml --extensions=php --ignore=autoload.php ./src ./tests",
-        "phpcbf": "./vendor/bin/phpcbf --ignore=/src/entities/* -q ./src ./tests",
+        "phpcs12": "./vendor/bin/phpcs --standard=./build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php ./src ./tests",
+        "phpcbf": "./vendor/bin/phpcbf -q ./src ./tests",
+        "phpcbf1": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr1.xml -q ./src ./tests",
+        "phpcbf2": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr2.xml -q ./src ./tests",
+        "phpcbf12": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests",
+        "phpcbfsq": "./vendor/bin/phpcbf --standard=./build/phpcsrules_squiz.xml -q ./src ./tests",
         "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --xdebug",
         "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle --xdebug",
-        "zugferddoc": "phing -f ./build.xml projectdoc"
+        "makedoc": "phing -f ./build.xml projectdoc"
     }
 }
