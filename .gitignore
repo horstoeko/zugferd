@@ -78,6 +78,7 @@ _backup*
 /build/logs/
 /build/pdepend/
 /build/phpdox/
+/build/phpdoc/
 /*.phar
 /composer.lock
 /examples/fullpdf.pdf
