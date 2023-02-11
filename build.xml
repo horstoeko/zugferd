@@ -2,12 +2,10 @@
 <project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/2.2.6/composer.phar"/>
-    <property name="url.phpdox.download" value="https://github.com/theseer/phpdox/releases/download/0.12.0/phpdox-0.12.0.phar"/>
     <property name="composer" value="${project.basedir}/composer.phar"/>
     <property name="pdepend" value="${project.basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${project.basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${project.basedir}/vendor/bin/phpcs"/>
-    <property name="phpdox" value="${project.basedir}/phpdox.phar"/>
     <property name="phploc" value="${project.basedir}/vendor/bin/phploc"/>
     <property name="phpmd" value="${project.basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${project.basedir}/vendor/bin/phpunit"/>
@@ -21,7 +19,6 @@
         <delete dir="${project.basedir}/build/coverage"/>
         <delete dir="${project.basedir}/build/logs"/>
         <delete dir="${project.basedir}/build/pdepend"/>
-        <delete dir="${project.basedir}/build/phpdox"/>
         <delete dir="${project.basedir}/build/dist"/>
         <property name="clean.done" value="true"/>
     </target>
@@ -46,18 +43,7 @@
             <arg value="update"/>
         </exec>
     </target>
-    <target name="downloadphpdox" description="Install phpdox.">
-        <exec executable="wget">
-            <arg path="${url.phpdox.download}"/>
-            <arg value="-O"/>
-            <arg path="${phpdox}"/>
-        </exec>
-        <exec executable="chmod">
-            <arg value="+x"/>
-            <arg path="${phpdox}"/>
-        </exec>
-    </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -146,12 +132,6 @@
         <echo message="${phpstan.output}" file="${project.basedir}/build/logs/checkstyle_phpstan.xml"/>
         <property name="phpstan.done" value="true"/>
     </target>
-    <target name="phpdox" unless="phpdox.done" depends="downloadphpdox,phploc-ci,phpcs-ci,phpmd-ci,phpstan-ci" description="Generate project documentation using phpDox.">
-        <exec executable="php" dir="${project.basedir}/build" taskname="phpdox">
-            <arg path="${phpdox}"/>
-        </exec>
-        <property name="phpdox.done" value="true"/>
-    </target>
     <target name="phploc" unless="phploc.done" description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
         <exec executable="${phploc}" taskname="phploc">
             <arg value="--count-tests"/>
@@ -227,7 +207,6 @@
         <mkdir dir="${project.basedir}/build/coverage"/>
         <mkdir dir="${project.basedir}/build/logs"/>
         <mkdir dir="${project.basedir}/build/pdepend"/>
-        <mkdir dir="${project.basedir}/build/phpdox"/>
         <mkdir dir="${project.basedir}/build/dist"/>
         <property name="prepare.done" value="true"/>
     </target>
@@ -265,7 +244,6 @@
                 <include name="coverage-html/**/*.*"/>
                 <include name="logs/**/*.*"/>
                 <include name="pdepend/**/*.*"/>
-                <include name="phpdox/**/*.*"/>
             </fileset>
         </zip>
     </target>
