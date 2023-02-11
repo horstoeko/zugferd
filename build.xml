@@ -2,7 +2,9 @@
 <project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${project.basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/2.2.6/composer.phar"/>
+    <property name="url.phpdocumentor.download" value="https://phpdoc.org/phpDocumentor.phar"/>
     <property name="composer" value="${project.basedir}/composer.phar"/>
+    <property name="phpdocumentor" value="${project.basedir}/phpDocumentor.phar"/>
     <property name="pdepend" value="${project.basedir}/vendor/bin/pdepend"/>
     <property name="phpcpd" value="${project.basedir}/vendor/bin/phpcpd"/>
     <property name="phpcs" value="${project.basedir}/vendor/bin/phpcs"/>
@@ -19,6 +21,7 @@
         <delete dir="${project.basedir}/build/logs"/>
         <delete dir="${project.basedir}/build/pdepend"/>
         <delete dir="${project.basedir}/build/dist"/>
+        <delete dir="${project.basedir}/build/phpdoc"/>
         <property name="clean.done" value="true"/>
     </target>
     <target name="composer" description="Install composer packages including require-dev.">
@@ -33,6 +36,7 @@
         </exec>
         <exec executable="php">
             <arg path="${composer}"/>
+            <arg path="${composer}"/>
             <arg value="install"/>
             <arg value="--prefer-dist"/>
             <arg value="--no-progress"/>
@@ -40,6 +44,17 @@
         <exec executable="php">
             <arg path="${composer}"/>
             <arg value="update"/>
+        </exec>
+    </target>
+    <target name="downloadphpdocumentor" description="Install phpdocumentor">
+        <exec executable="wget">
+            <arg path="${url.phpdocumentor.download}"/>
+            <arg value="-O"/>
+            <arg path="${phpdocumentor}"/>
+        </exec>
+        <exec executable="chmod">
+            <arg value="+x"/>
+            <arg path="${phpdocumentor}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
@@ -207,6 +222,7 @@
         <mkdir dir="${project.basedir}/build/logs"/>
         <mkdir dir="${project.basedir}/build/pdepend"/>
         <mkdir dir="${project.basedir}/build/dist"/>
+        <mkdir dir="${project.basedir}/build/phpdoc"/>
         <property name="prepare.done" value="true"/>
     </target>
     <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
@@ -243,7 +259,15 @@
                 <include name="coverage-html/**/*.*"/>
                 <include name="logs/**/*.*"/>
                 <include name="pdepend/**/*.*"/>
+                <exclude name="phpdoc/**/*.*"/>
             </fileset>
         </zip>
+    </target>
+    <target name="projectdoc" description="Generate documentation" depends="clean,downloadphpdocumentor">
+        <delete dir="${project.basedir}/doc"/>
+        <exec executable="php" dir="${project.basedir}/build">
+            <arg path="${phpdocumentor}"/>
+        </exec>
+        <delete file="${phpdocumentor}"/>
     </target>
 </project>

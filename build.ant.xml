@@ -4,6 +4,7 @@
     <property name="url.composer.download" value="https://getcomposer.org/download/2.2.6/composer.phar"/>
     <property name="url.validator.download" value="https://github.com/itplr-kosit/validator/releases/download/v1.4.0/validationtool-1.4.0.zip"/>
     <property name="url.validator.scenarios.download" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2020-07-31/validator-configuration-xrechnung_2.0.0_2020-07-31.zip"/>
+    <property name="url.phpdocumentor.download" value="https://phpdoc.org/phpDocumentor.phar"/>
     <property name="validatorzipdir" value="${basedir}/build/validator"/>
     <property name="validatorconfigzipdir" value="${basedir}/build/validator"/>
     <property name="validatorzipname" value="validator.zip"/>
@@ -28,6 +29,7 @@
         <delete dir="${basedir}/build/logs"/>
         <delete dir="${basedir}/build/pdepend"/>
         <delete dir="${basedir}/build/dist"/>
+        <delete dir="${basedir}/build/phpdoc"/>
         <property name="clean.done" value="true"/>
     </target>
     <target name="composer" description="Install composer packages including require-dev.">
@@ -45,6 +47,13 @@
         <exec executable="php" failonerror="true">
             <arg path="${composer}"/>
             <arg value="update"/>
+        </exec>
+    </target>
+    <target name="downloadphpdocumentor" description="Install phpdocumentor.">
+        <get src="${url.phpdocumentor.download}" dest="${phpdocumentor}"/>
+        <exec executable="chmod" failonerror="true">
+            <arg value="+x"/>
+            <arg path="${phpdocumentor}"/>
         </exec>
     </target>
     <target name="full-build" depends="prepare,composer,static-analysis,phpunit,schematron,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
@@ -211,6 +220,7 @@
         <mkdir dir="${basedir}/build/logs"/>
         <mkdir dir="${basedir}/build/pdepend"/>
         <mkdir dir="${basedir}/build/dist"/>
+        <mkdir dir="${basedir}/build/phpdoc"/>
         <property name="prepare.done" value="true"/>
     </target>
     <target name="quick-build" depends="prepare,composer,lint,phpunit-no-coverage" description="Perform lint check and run tests without generating code coverage reports.">
@@ -261,6 +271,7 @@
                 <include name="coverage-html/**/*.*"/>
                 <include name="logs/**/*.*"/>
                 <include name="pdepend/**/*.*"/>
+                <exclude name="phpdoc/**/*.*"/>
             </fileset>
         </zip>
     </target>
@@ -328,5 +339,12 @@
             <arg path="${basedir}/build/validator/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
         </exec>
+    </target>
+    <target name="projectdoc" description="Generate documentation" depends="clean,downloadphpdocumentor">
+        <delete dir="${basedir}/doc"/>
+        <exec executable="php" dir="${basedir}/build">
+            <arg path="${phpdocumentor}"/>
+        </exec>
+        <delete file="${phpdocumentor}"/>
     </target>
 </project>
