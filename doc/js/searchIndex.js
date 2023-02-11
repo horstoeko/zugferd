@@ -3198,7 +3198,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\codelists\\ZugferdInvoiceType",
             "name": "ZugferdInvoiceType",
-            "summary": "",
+            "summary": "Class\u0020representing\u0020the\u0020different\u0020invoice\u0020types",
             "url": "classes/horstoeko-zugferd-codelists-ZugferdInvoiceType.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\codelists\\ZugferdInvoiceType\u003A\u003ADEBITNOTERELATEDTOFINANCIALADJUSTMENTS",
@@ -18973,7 +18973,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\exception\\ZugferdUnknownDateFormat",
             "name": "ZugferdUnknownDateFormat",
-            "summary": "",
+            "summary": "Class\u0020representing\u0020an\u0020exception\u0020for\u0020unknown\u0020date\u0020formates",
             "url": "classes/horstoeko-zugferd-exception-ZugferdUnknownDateFormat.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\jms\\ZugferdTypesHandler",
@@ -19258,7 +19258,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorEn16931",
             "name": "ZugferdQuickDescriptorEn16931",
-            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents.",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents\u0020in\u0020EN16931\u0020profile",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptorEn16931.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorEn16931\u003A\u003AgetProfile\u0028\u0029",
@@ -19268,7 +19268,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorExtended",
             "name": "ZugferdQuickDescriptorExtended",
-            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents.",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents\u0020in\u0020EXTENDED\u0020profile",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptorExtended.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorExtended\u003A\u003AgetProfile\u0028\u0029",
@@ -19278,7 +19278,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorXRechnung",
             "name": "ZugferdQuickDescriptorXRechnung",
-            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents.",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents\u0020in\u0020XRECHNUNG\u0020profile",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptorXRechnung.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorXRechnung\u003A\u003AgetProfile\u0028\u0029",
@@ -19288,7 +19288,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorXRechnung2",
             "name": "ZugferdQuickDescriptorXRechnung2",
-            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents.",
+            "summary": "Class\u0020representing\u0020the\u0020document\u0020descriptor\u0020for\u0020outgoing\u0020documents\u0020in\u0020XRECHNUNG\u00202.x\u0020profile",
             "url": "classes/horstoeko-zugferd-quick-ZugferdQuickDescriptorXRechnung2.html"
         },                {
             "fqsen": "\\horstoeko\\zugferd\\quick\\ZugferdQuickDescriptorXRechnung2\u003A\u003AgetProfile\u0028\u0029",

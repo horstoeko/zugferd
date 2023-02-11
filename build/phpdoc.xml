@@ -16,7 +16,6 @@
             <extensions>
                 <extension>php</extension>
             </extensions>
-            <default-package-name>horstoeko/zugferd</default-package-name>
             <include-source>true</include-source>
             <markers>
                 <marker>TODO</marker>
