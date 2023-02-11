@@ -262,11 +262,21 @@
             </fileset>
         </zip>
     </target>
-    <target name="projectdoc" description="Generate documentation" depends="clean,downloadphpdocumentor">
-        <delete dir="${project.basedir}/doc"/>
-        <exec executable="php" dir="${project.basedir}/build">
-            <arg path="${phpdocumentor}"/>
-        </exec>
-        <delete file="${phpdocumentor}"/>
+    <target name="projectdoc" description="Generate documentation">
+        <if>
+            <versioncompare version="${php.version}" desiredVersion="7.4" operator=">=" />
+            <then>
+                <phingcall target="clean" />
+                <phingcall target="downloadphpdocumentor" />
+                <delete dir="${project.basedir}/doc"/>
+                <exec executable="php" dir="${project.basedir}/build">
+                    <arg path="${phpdocumentor}"/>
+                </exec>
+                <delete file="${phpdocumentor}"/>
+            </then>
+            <else>
+                <echo message="Build documentation only on PHP7.4 or higher" />
+            </else>
+        </if>
     </target>
 </project>
