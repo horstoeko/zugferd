@@ -201,7 +201,6 @@
         <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
             <arg value="--configuration"/>
             <arg path="${basedir}/build/phpunit.xml"/>
-            <arg path="tests"/>
         </exec>
         <property name="phpunit.done" value="true"/>
     </target>
