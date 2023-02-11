@@ -1,0 +1,27 @@
+<phpdocumentor configVersion="3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpdoc.org" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/phpDocumentor/phpDocumentor/master/data/xsd/phpdoc.xsd">
+    <paths>
+        <output>../doc</output>
+        <cache>./phpdoc</cache>
+    </paths>
+    <version number="3.0">
+        <api format="php">
+            <source dsn="..">
+                <!--1 or more repetitions:-->
+                <path>src</path>
+            </source>
+            <ignore hidden="true" symlinks="true">
+                <path>src/entities/**/*</path>
+                <path>tests/**/*</path>
+            </ignore>
+            <extensions>
+                <extension>php</extension>
+            </extensions>
+            <default-package-name>horstoeko/zugferd</default-package-name>
+            <include-source>true</include-source>
+            <markers>
+                <marker>TODO</marker>
+                <marker>FIXME</marker>
+            </markers>
+        </api>
+    </version>
+</phpdocumentor>
