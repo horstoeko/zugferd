@@ -10,7 +10,6 @@
     <property name="phpmd" value="${project.basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${project.basedir}/vendor/bin/phpunit"/>
     <property name="phpstan" value="${project.basedir}/vendor/bin/phpstan"/>
-    <property name="sami" value="/usr/local/sbin/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <target name="clean" unless="clean.done" description="Cleanup build artifacts.">
         <delete dir="${project.basedir}/build/builddoc"/>
@@ -246,21 +245,5 @@
                 <include name="pdepend/**/*.*"/>
             </fileset>
         </zip>
-    </target>
-    <target name="projectdoc" description="Generator project documentation using sami.">
-        <delete dir="${project.basedir}/cache"/>
-        <delete dir="${project.basedir}/doc"/>
-        <mkdir dir="${project.basedir}/cache"/>
-        <mkdir dir="${project.basedir}/doc"/>
-        <exec executable="php" taskname="projectdoc">
-            <arg path="${sami}"/>
-            <arg value="update"/>
-            <arg path="${project.basedir}/build/sami.config.deploy.php"/>
-        </exec>
-        <delete file="${project.basedir}/doc/PROJECT_VERSION"/>
-        <delete file="${project.basedir}/doc/SAMI_VERSION"/>
-        <delete file="${project.basedir}/doc/renderer.index"/>
-        <delete file="${project.basedir}/doc/opensearch.xml"/>
-        <delete dir="${project.basedir}/cache"/>
     </target>
 </project>

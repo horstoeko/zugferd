@@ -18,7 +18,6 @@
     <property name="phpmd" value="${basedir}/vendor/bin/phpmd"/>
     <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
     <property name="phpstan" value="${basedir}/vendor/bin/phpstan"/>
-    <property name="sami" value="/usr/local/sbin/sami.phar"/>
     <property name="git" value="/usr/bin/git"/>
     <property name="result.schematron.en16931" value="0"/>
     <property name="result.schematron.xrechnung" value="0"/>
@@ -264,22 +263,6 @@
                 <include name="pdepend/**/*.*"/>
             </fileset>
         </zip>
-    </target>
-    <target name="projectdoc" description="Generator project documentation using sami.">
-        <delete dir="${basedir}/cache"/>
-        <delete dir="${basedir}/doc"/>
-        <mkdir dir="${basedir}/cache"/>
-        <mkdir dir="${basedir}/doc"/>
-        <exec executable="php">
-            <arg path="${sami}"/>
-            <arg value="update"/>
-            <arg path="${basedir}/build/sami.config.deploy.php"/>
-        </exec>
-        <delete file="${basedir}/doc/PROJECT_VERSION"/>
-        <delete file="${basedir}/doc/SAMI_VERSION"/>
-        <delete file="${basedir}/doc/renderer.index"/>
-        <delete file="${basedir}/doc/opensearch.xml"/>
-        <delete dir="${basedir}/cache"/>
     </target>
     <target name="schematron" description="Validate agains schematron">
         <!-- Clean -->
