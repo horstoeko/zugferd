@@ -36,7 +36,6 @@
         </exec>
         <exec executable="php">
             <arg path="${composer}"/>
-            <arg path="${composer}"/>
             <arg value="install"/>
             <arg value="--prefer-dist"/>
             <arg value="--no-progress"/>
