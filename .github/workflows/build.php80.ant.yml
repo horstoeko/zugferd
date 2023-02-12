@@ -1,6 +1,11 @@
 name: CI (Ant, PHP 8.0)
 
-on: [push]
+on:
+  push:
+    tags-ignore:
+      - '**'
+    branches:
+      - '**'
 
 jobs:
   build:
