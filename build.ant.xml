@@ -57,7 +57,7 @@
             <arg path="${phpdocumentor}"/>
         </exec>
     </target>
-    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,schematron,-check-failure,deploy" description="Perform static analysis, run tests, and generate project documentation.">
+    <target name="full-build" depends="prepare,composer,static-analysis,phpunit,schematron,-check-failure,projectdoc,deploy" description="Perform static analysis, run tests, and generate project documentation.">
         <echo message="Built"/>
     </target>
     <target name="lint" unless="lint.done" description="Perform syntax check of PHP sourcecode files.">
@@ -255,7 +255,7 @@
     </target>
     <target name="deploy" description="Deplay build">
         <zip destfile="${basedir}/build/dist/doc.zip">
-            <fileset dir="${basedir}/doc">
+            <fileset dir="${basedir}/build/doc">
                 <include name="**/*.*"/>
             </fileset>
         </zip>
@@ -343,7 +343,6 @@
     <target name="projectdoc" description="Generate documentation">
         <antcall target="clean"/>
         <antcall target="downloadphpdocumentor"/>
-        <delete dir="${basedir}/doc"/>
         <exec executable="php" dir="${basedir}/build">
             <arg path="${phpdocumentor}"/>
         </exec>
