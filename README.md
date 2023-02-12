@@ -29,7 +29,7 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
 
 ## Usage
 
-For detailed eplanation you may have a look in the `examples` and the `doc` folder of this package.
+For detailed eplanation you may have a look in the `examples` of this package and the documentation attached to every release.
 
 ### Reading a xml file
 
