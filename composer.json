@@ -52,8 +52,7 @@
         "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9",
         "sebastian/phpcpd": "^6",
-        "squizlabs/php_codesniffer": "^3",
-        "theseer/phpdox": "^0"
+        "squizlabs/php_codesniffer": "^3"
     },
     "scripts": {
         "tests": "./vendor/bin/phpunit ./tests/",
