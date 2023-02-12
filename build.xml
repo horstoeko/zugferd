@@ -272,6 +272,7 @@
                     <arg path="${phpdocumentor}"/>
                 </exec>
                 <delete file="${phpdocumentor}"/>
+                <phingcall target="clean" />
             </then>
             <else>
                 <echo message="Build documentation only on PHP7.4 or higher" />
