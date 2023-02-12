@@ -1,9 +1,6 @@
 name: CI (Ant, PHP 7.3)
 
-on:
-  push:
-    tags-ignore:
-      - '**'
+on: [push]
 
 jobs:
   build:
