@@ -21,10 +21,10 @@ class ReaderEn16931Bank2Test extends TestCase
 
     public function testDocumentProfile(): void
     {
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profileId);
     }
 
     /**
@@ -190,7 +190,8 @@ class ReaderEn16931Bank2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
-        $this->expectNoticeOrWarning();
-        self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
+        });
     }
 }

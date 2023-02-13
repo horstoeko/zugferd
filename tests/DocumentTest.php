@@ -16,11 +16,11 @@ class DocumentTest extends TestCase
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASIC);
         $this->assertNotNull($doc);
-        $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, $doc->profile);
-        $this->assertArrayHasKey("contextparameter", $doc->profiledef);
-        $this->assertArrayHasKey("name", $doc->profiledef);
-        $this->assertEquals("urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic", $doc->profiledef["contextparameter"]);
-        $this->assertEquals("basic", $doc->profiledef["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, $doc->profileId);
+        $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
+        $this->assertArrayHasKey("name", $doc->profileDefinition);
+        $this->assertEquals("urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic", $doc->profileDefinition["contextparameter"]);
+        $this->assertEquals("basic", $doc->profileDefinition["name"]);
     }
 
     /**
@@ -30,11 +30,11 @@ class DocumentTest extends TestCase
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASICWL);
         $this->assertNotNull($doc);
-        $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->profile);
-        $this->assertArrayHasKey("contextparameter", $doc->profiledef);
-        $this->assertArrayHasKey("name", $doc->profiledef);
-        $this->assertEquals("urn:factur-x.eu:1p0:basicwl", $doc->profiledef["contextparameter"]);
-        $this->assertEquals("basicwl", $doc->profiledef["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->profileId);
+        $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
+        $this->assertArrayHasKey("name", $doc->profileDefinition);
+        $this->assertEquals("urn:factur-x.eu:1p0:basicwl", $doc->profileDefinition["contextparameter"]);
+        $this->assertEquals("basicwl", $doc->profileDefinition["name"]);
     }
 
     /**
@@ -44,11 +44,11 @@ class DocumentTest extends TestCase
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EN16931);
         $this->assertNotNull($doc);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $doc->profile);
-        $this->assertArrayHasKey("contextparameter", $doc->profiledef);
-        $this->assertArrayHasKey("name", $doc->profiledef);
-        $this->assertEquals("urn:cen.eu:en16931:2017", $doc->profiledef["contextparameter"]);
-        $this->assertEquals("en16931", $doc->profiledef["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $doc->profileId);
+        $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
+        $this->assertArrayHasKey("name", $doc->profileDefinition);
+        $this->assertEquals("urn:cen.eu:en16931:2017", $doc->profileDefinition["contextparameter"]);
+        $this->assertEquals("en16931", $doc->profileDefinition["name"]);
     }
 
     /**
@@ -58,11 +58,11 @@ class DocumentTest extends TestCase
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EXTENDED);
         $this->assertNotNull($doc);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, $doc->profile);
-        $this->assertArrayHasKey("contextparameter", $doc->profiledef);
-        $this->assertArrayHasKey("name", $doc->profiledef);
-        $this->assertEquals("urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended", $doc->profiledef["contextparameter"]);
-        $this->assertEquals("extended", $doc->profiledef["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, $doc->profileId);
+        $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
+        $this->assertArrayHasKey("name", $doc->profileDefinition);
+        $this->assertEquals("urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended", $doc->profileDefinition["contextparameter"]);
+        $this->assertEquals("extended", $doc->profileDefinition["name"]);
     }
 
     /**

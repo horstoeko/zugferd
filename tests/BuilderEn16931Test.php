@@ -15,10 +15,10 @@ class BuilderEn16931Test extends BuilderBaseTest
 
     public function testDocumentProfile(): void
     {
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profileId);
     }
 
     public function testXmlGenerals(): void
@@ -29,7 +29,7 @@ class BuilderEn16931Test extends BuilderBaseTest
         $this->disableRenderXmlContent();
         $this->assertArrayHasKey("rsm", $namespaces);
         $this->assertArrayHasKey("ram", $namespaces);
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', (self::$document)->profiledef["contextparameter"]);
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', (self::$document)->profileDefinition["contextparameter"]);
     }
 
     /**

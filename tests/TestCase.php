@@ -20,4 +20,23 @@ class TestCase extends PhpUnitTestCase
             $this->expectNotice();
         }
     }
+
+    /**
+     * Use this with PHPunit 10
+     *
+     * @param \Closure $run
+     * @return void
+     */
+    public function expectNoticeOrWarningExt(\Closure $run): void
+    {
+        set_error_handler(static function (int $errno, string $errstr): never {
+            throw new \Exception($errstr, $errno);
+        }, E_ALL);
+
+        $this->expectException(\Exception::class);
+
+        call_user_func($run);
+
+        restore_error_handler();
+    }
 }

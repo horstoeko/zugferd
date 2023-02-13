@@ -21,10 +21,10 @@ class ReaderEn16931Bank1Test extends TestCase
 
     public function testDocumentProfile(): void
     {
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profile);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profile);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profileId);
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profileId);
     }
 
     /**
