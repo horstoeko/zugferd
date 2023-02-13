@@ -9,9 +9,10 @@
 
 namespace horstoeko\zugferd;
 
-use \Symfony\Component\Validator\Validation;
+use \horstoeko\stringmanagement\PathUtils;
+use \horstoeko\zugferd\ZugferdSettings;
 use \Symfony\Component\Validator\ConstraintViolationListInterface;
-use \Symfony\Component\Validator\Validator\ValidatorInterface;
+use \Symfony\Component\Validator\Validation;
 
 /**
  * Class representing the document validator for incoming documents
@@ -69,11 +70,19 @@ class ZugferdDocumentValidator
     private function initValidator(): void
     {
         $validatorBuilder = Validation::createValidatorBuilder();
-        $dirname = dirname(__FILE__) . '/validation/' . $this->document->profiledef['name'] . '/*.yml';
-        $files = $this->globRecursive($dirname);
 
-        foreach ($files as $file) {
-            $validatorBuilder->addYamlMapping($file);
+        $validatorYamlFiles = PathUtils::combinePathWithFile(
+            PathUtils::combineAllPaths(
+                ZugferdSettings::getValidationDirectory(),
+                $this->document->getProfileDefinition()['name']
+            ),
+            '*.yml'
+        );
+
+        $validatorYamlFiles = $this->globRecursive($validatorYamlFiles);
+
+        foreach ($validatorYamlFiles as $validatorYamlFile) {
+            $validatorBuilder->addYamlMapping($validatorYamlFile);
         }
 
         $this->validator = $validatorBuilder->getValidator();

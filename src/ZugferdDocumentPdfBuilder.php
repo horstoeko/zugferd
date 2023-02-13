@@ -13,6 +13,8 @@ use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use \horstoeko\zugferd\ZugferdPackageVersion;
 use \horstoeko\zugferd\ZugferdPdfWriter;
 use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
+use \horstoeko\stringmanagement\PathUtils;
+use \horstoeko\zugferd\ZugferdSettings;
 
 /**
  * Class representing the facillity adding XML data from ZugferdDocumentBuilder
@@ -122,7 +124,7 @@ class ZugferdDocumentPdfBuilder
 
         // Get profile definition for later use
 
-        $profileDef = $this->documentBuiler->profiledef;
+        $profileDef = $this->documentBuiler->profileDefinition;
 
         // Start
 
@@ -158,11 +160,11 @@ class ZugferdDocumentPdfBuilder
         $pdfMetadataInfos = $this->preparePdfMetadata();
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
-        $xmp = simplexml_load_file(dirname(__FILE__) . "/assets/facturx_extension_schema.xmp");
+        $xmp = simplexml_load_file(PathUtils::combinePathWithFile(ZugferdSettings::getAssetDirectory(), 'facturx_extension_schema.xmp'));
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];
-        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->documentBuiler->profiledef["xmpname"]);
+        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->documentBuiler->profileDefinition["xmpname"]);
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());

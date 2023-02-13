@@ -9,6 +9,7 @@
 
 namespace horstoeko\zugferd;
 
+use \horstoeko\zugferd\ZugferdSettings;
 use \setasign\Fpdi\Fpdi as PdfFpdi;
 
 /**
@@ -354,7 +355,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('endobj');
         $this->outputIntentIndex = $this->n;
 
-        $icc = file_get_contents($this::ICC_PROFILE_PATH);
+        $icc = file_get_contents(ZugferdSettings::getFullIccProfileFilename());
         $icc = gzcompress($icc);
         $this->_newobj();
         $this->_put('<<');

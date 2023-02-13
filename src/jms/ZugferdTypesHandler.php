@@ -11,10 +11,11 @@ namespace horstoeko\zugferd\jms;
 
 use \DOMText;
 use \DOMElement;
+use JMS\Serializer\Context;
+use JMS\Serializer\GraphNavigator;
+use horstoeko\zugferd\ZugferdSettings;
 use JMS\Serializer\XmlSerializationVisitor;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
-use JMS\Serializer\GraphNavigator;
-use JMS\Serializer\Context;
 
 /**
  * Class representing a collection of serialization handlers for amount formatting and so on
@@ -155,7 +156,14 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
-        $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 2, ".", ""));
+        $node = $visitor->getDocument()->createTextNode(
+            number_format(
+                $data->value(),
+                ZugferdSettings::getAmountDecimals(),
+                ZugferdSettings::getDecimalSeparator(),
+                ZugferdSettings::getThousandsSeparator()
+            )
+        );
 
         if ($data->getCurrencyID() != null) {
             $attr = $visitor->getDocument()->createAttribute("currencyID");
@@ -178,7 +186,14 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
-        $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 4, ".", ""));
+        $node = $visitor->getDocument()->createTextNode(
+            number_format(
+                $data->value(),
+                ZugferdSettings::getQuantityDecimals(),
+                ZugferdSettings::getDecimalSeparator(),
+                ZugferdSettings::getThousandsSeparator()
+            )
+        );
 
         if ($data->getUnitCode() != null) {
             $attr = $visitor->getDocument()->createAttribute("unitCode");
@@ -201,7 +216,15 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
     {
-        $node = $visitor->getDocument()->createTextNode(number_format($data->value(), 2, ".", ""));
+        $node = $visitor->getDocument()->createTextNode(
+            number_format(
+                $data->value(),
+                ZugferdSettings::getPercentDecimals(),
+                ZugferdSettings::getDecimalSeparator(),
+                ZugferdSettings::getThousandsSeparator()
+            )
+        );
+
         return $node;
     }
 

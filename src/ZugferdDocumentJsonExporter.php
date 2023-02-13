@@ -113,10 +113,10 @@ class ZugferdDocumentJsonExporter
     {
         $serializerBuilder = SerializerBuilder::create();
         $this->serializerBuilder = $serializerBuilder;
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profiledef["name"] . '/qdt', 'horstoeko\zugferd\entities\\' . $this->document->profiledef["name"] . '\qdt');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profiledef["name"] . '/ram', 'horstoeko\zugferd\entities\\' . $this->document->profiledef["name"] . '\ram');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profiledef["name"] . '/rsm', 'horstoeko\zugferd\entities\\' . $this->document->profiledef["name"] . '\rsm');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profiledef["name"] . '/udt', 'horstoeko\zugferd\entities\\' . $this->document->profiledef["name"] . '\udt');
+        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/qdt', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\qdt');
+        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/ram', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\ram');
+        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/rsm', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\rsm');
+        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/udt', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\udt');
         $this->serializerBuilder->addDefaultListeners();
         $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
             $serializerBuilder->addDefaultHandlers();
