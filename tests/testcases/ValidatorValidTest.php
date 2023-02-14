@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\ZugferdDocumentValidator;
 
@@ -23,7 +24,7 @@ class ValidatorValidTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/en16931_simple.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_simple.xml");
         self::$validator = new ZugferdDocumentValidator(self::$document);
     }
 

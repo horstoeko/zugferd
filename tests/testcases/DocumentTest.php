@@ -1,9 +1,10 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
 use \ReflectionClass;
 use \ReflectionProperty;
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocument;
 

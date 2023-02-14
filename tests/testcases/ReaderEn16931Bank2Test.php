@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
@@ -16,7 +17,7 @@ class ReaderEn16931Bank2Test extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/en16931_bank_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_bank_2.xml");
     }
 
     public function testDocumentProfile(): void

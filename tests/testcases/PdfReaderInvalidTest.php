@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 
@@ -17,7 +18,7 @@ class PdfReaderInvalidTest extends TestCase
      */
     public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/InvalidPDF.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/InvalidPDF.pdf");
         $this->assertNull(self::$document);
     }
 }

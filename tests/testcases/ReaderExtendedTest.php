@@ -1,12 +1,13 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 
-class ReaderExtended2Test extends TestCase
+class ReaderExtendedTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
@@ -15,7 +16,7 @@ class ReaderExtended2Test extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/extended_invoice_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/extended_invoice.xml");
     }
 
     public function testDocumentProfile(): void
@@ -32,13 +33,13 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
-        $this->assertEquals('F20200027', $documentno);
+        $this->assertEquals('KR87654321012', $documentno);
         $this->assertEquals(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertNotNull($documentdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20181006'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertEquals("EUR", $invoiceCurrency);
         $this->assertEquals("", $taxCurrency);
-        $this->assertEquals("", $documentname);
+        $this->assertEquals("KOSTENRECHNUNG", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
         $this->assertNotNull(self::$document->getInvoiceObject());
@@ -52,9 +53,10 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentNotes($notes);
         $this->assertIsArray($notes);
         $this->assertNotEmpty($notes);
-        $this->assertEquals(2, count($notes));
+        $this->assertEquals(3, count($notes));
         $this->assertArrayHasKey(0, $notes);
         $this->assertArrayHasKey(1, $notes);
+        $this->assertArrayHasKey(2, $notes);
         $this->assertIsArray($notes[0]);
         $this->assertNotEmpty($notes[0]);
         $this->assertArrayHasKey("content", $notes[0]);
@@ -65,12 +67,30 @@ class ReaderExtended2Test extends TestCase
         $this->assertArrayHasKey("content", $notes[1]);
         $this->assertArrayHasKey("subjectcode", $notes[1]);
         $this->assertArrayHasKey("contentcode", $notes[1]);
-        $this->assertEquals("", $notes[0]["contentcode"]);
-        $this->assertEquals("REG", $notes[0]["subjectcode"]);
-        $this->assertEquals("FOURNISSEUR F SARL au capital de 50 000 EUR", $notes[0]["content"]);
-        $this->assertEquals("", $notes[1]["contentcode"]);
-        $this->assertEquals("ABL", $notes[1]["subjectcode"]);
-        $this->assertEquals("RCS MAVILLE 123 456 789", $notes[1]["content"]);
+        $this->assertIsArray($notes[2]);
+        $this->assertNotEmpty($notes[2]);
+        $this->assertArrayHasKey("content", $notes[2]);
+        $this->assertArrayHasKey("subjectcode", $notes[2]);
+        $this->assertArrayHasKey("contentcode", $notes[2]);
+        $this->assertEquals("ST3", $notes[0]["contentcode"]);
+        $this->assertEquals("AAK", $notes[0]["subjectcode"]);
+        $this->assertEquals("Es bestehen Rabatt- oder Bonusvereinbarungen.", $notes[0]["content"]);
+        $this->assertEquals("EEV", $notes[1]["contentcode"]);
+        $this->assertEquals("AAJ", $notes[1]["subjectcode"]);
+        $this->assertEquals("Der Verkäufer bleibt Eigentümer der Waren bis zur vollständigen Erfüllung der Kaufpreisforderung.", $notes[1]["content"]);
+        $this->assertEquals("", $notes[2]["contentcode"]);
+        $this->assertEquals("REG", $notes[2]["subjectcode"]);
+        $this->assertStringContainsString("MUSTERLIEFERANT GMBH", $notes[2]["content"]);
+        $this->assertStringContainsString("BAHNHOFSTRASSE 99", $notes[2]["content"]);
+        $this->assertStringContainsString("99199 MUSTERHAUSEN", $notes[2]["content"]);
+        $this->assertStringContainsString("Geschäftsführung:", $notes[2]["content"]);
+        $this->assertStringContainsString("Max Mustermann", $notes[2]["content"]);
+        $this->assertStringContainsString("USt-IdNr: DE123456789", $notes[2]["content"]);
+        $this->assertStringContainsString("Telefon: +49 932 431 0", $notes[2]["content"]);
+        $this->assertStringContainsString("www.musterlieferant.de", $notes[2]["content"]);
+        $this->assertStringContainsString("HRB Nr. 372876", $notes[2]["content"]);
+        $this->assertStringContainsString("Amtsgericht Musterstadt", $notes[2]["content"]);
+        $this->assertStringContainsString("GLN 4304171000002", $notes[2]["content"]);
     }
 
     /**
@@ -80,7 +100,7 @@ class ReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
         $this->assertEquals("", $creditorReferenceID);
-        $this->assertEquals("F20180023BUYER", $paymentReference);
+        $this->assertEquals("", $paymentReference);
     }
 
     /**
@@ -98,7 +118,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentIsTestDocument(): void
     {
         self::$document->getIsTestDocument($istest);
-        $this->assertFalse($istest);
+        $this->assertTrue($istest);
     }
 
     /**
@@ -107,15 +127,15 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentSummation(): void
     {
         self::$document->getDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
-        $this->assertEquals(110.0, $grandTotalAmount);
-        $this->assertEquals(100.0, $duePayableAmount);
-        $this->assertEquals(95.0, $lineTotalAmount);
-        $this->assertEquals(10.0, $chargeTotalAmount);
-        $this->assertEquals(5.0, $allowanceTotalAmount);
-        $this->assertEquals(100.0, $taxBasisTotalAmount);
-        $this->assertEquals(10.0, $taxTotalAmount);
+        $this->assertEquals(480.22, $grandTotalAmount);
+        $this->assertEquals(480.22, $duePayableAmount);
+        $this->assertEquals(410.10, $lineTotalAmount);
+        $this->assertEquals(15.00, $chargeTotalAmount);
+        $this->assertEquals(21.55, $allowanceTotalAmount);
+        $this->assertEquals(403.55, $taxBasisTotalAmount);
+        $this->assertEquals(76.67, $taxTotalAmount);
         $this->assertEquals(0.00, $roundingAmount);
-        $this->assertEquals(10.00, $totalPrepaidAmount);
+        $this->assertEquals(0.00, $totalPrepaidAmount);
     }
 
     /**
@@ -124,7 +144,7 @@ class ReaderExtended2Test extends TestCase
     public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
-        $this->assertEquals("SERVEXEC", $buyerReference);
+        $this->assertEquals("08154712", $buyerReference);
     }
 
     /**
@@ -133,10 +153,11 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentSellerGeneral(): void
     {
         self::$document->getDocumentSeller($sellername, $sellerids, $sellerdescription);
-        $this->assertEquals("LE FOURNISSEUR", $sellername);
+        $this->assertEquals("MUSTERLIEFERANT GMBH", $sellername);
         $this->assertIsArray($sellerids);
-        $this->assertArrayNotHasKey(0, $sellerids);
+        $this->assertArrayHasKey(0, $sellerids);
         $this->assertArrayNotHasKey(1, $sellerids);
+        $this->assertEquals("549910", $sellerids[0]);
         $this->assertEquals("", $sellerdescription);
     }
 
@@ -148,7 +169,7 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentSellerGlobalId($sellerglobalids);
         $this->assertIsArray($sellerglobalids);
         $this->assertArrayHasKey("0088", $sellerglobalids);
-        $this->assertEquals("587451236587", $sellerglobalids["0088"]);
+        $this->assertEquals("4333741000005", $sellerglobalids["0088"]);
     }
 
     /**
@@ -158,12 +179,12 @@ class ReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentSellerTaxRegistration($sellertaxreg);
         $this->assertIsArray($sellertaxreg);
-        $this->assertArrayHasKey("VA", $sellertaxreg);
-        $this->assertArrayNotHasKey("FC", $sellertaxreg);
+        $this->assertArrayNotHasKey("VA", $sellertaxreg);
+        $this->assertArrayHasKey("FC", $sellertaxreg);
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey("ZZ", $sellertaxreg);
-        $this->assertEquals("FR32123456789", $sellertaxreg["VA"]);
+        $this->assertEquals("201/113/40209", $sellertaxreg["FC"]);
     }
 
     /**
@@ -172,12 +193,12 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentSellerAddress(): void
     {
         self::$document->getDocumentSellerAddress($sellerlineone, $sellerlinetwo, $sellerlinethree, $sellerpostcode, $sellercity, $sellercountry, $sellersubdivision);
-        $this->assertEquals("35 rue d'ici", $sellerlineone);
-        $this->assertEquals("Seller line 2", $sellerlinetwo);
+        $this->assertEquals("BAHNHOFSTRASSE 99", $sellerlineone);
+        $this->assertEquals("", $sellerlinetwo);
         $this->assertEquals("", $sellerlinethree);
-        $this->assertEquals("75018", $sellerpostcode);
-        $this->assertEquals("PARIS", $sellercity);
-        $this->assertEquals("FR", $sellercountry);
+        $this->assertEquals("99199", $sellerpostcode);
+        $this->assertEquals("MUSTERHAUSEN", $sellercity);
+        $this->assertEquals("DE", $sellercountry);
         $this->assertIsArray($sellersubdivision);
         $this->assertEmpty($sellersubdivision);
     }
@@ -188,9 +209,9 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentSellerLegalOrganization(): void
     {
         self::$document->getDocumentSellerLegalOrganisation($sellerlegalorgid, $sellerlegalorgtype, $sellerlegalorgname);
-        $this->assertEquals("12345678900014", $sellerlegalorgid);
-        $this->assertEquals("0002", $sellerlegalorgtype);
-        $this->assertEquals("SELLER TRADE NAME", $sellerlegalorgname);
+        $this->assertEquals("", $sellerlegalorgid);
+        $this->assertEquals("", $sellerlegalorgtype);
+        $this->assertEquals("", $sellerlegalorgname);
     }
 
     /**
@@ -200,11 +221,14 @@ class ReaderExtended2Test extends TestCase
      */
     public function testDocumentSellerContact(): void
     {
-        $this->assertFalse(self::$document->firstDocumentSellerContact());
+        $this->assertTrue(self::$document->firstDocumentSellerContact());
+        self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
+        $this->assertEquals("", $sellercontactpersonname);
+        $this->assertEquals("", $sellercontactdepartmentname);
+        $this->assertEquals("+49 932 431 500", $sellercontactphoneno);
+        $this->assertEquals("", $sellercontactfaxno);
+        $this->assertEquals("max.mustermann@musterlieferant.de", $sellercontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentSellerContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
-        });
     }
 
     /**
@@ -213,10 +237,11 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
-        $this->assertEquals("LE CLIENT", $buyername);
+        $this->assertEquals("MUSTER-KUNDE GMBH", $buyername);
         $this->assertIsArray($buyerids);
-        $this->assertArrayNotHasKey(0, $buyerids);
+        $this->assertArrayHasKey(0, $buyerids);
         $this->assertArrayNotHasKey(1, $buyerids);
+        $this->assertEquals("339420", $buyerids[0]);
         $this->assertEquals("", $buyerdescription);
     }
 
@@ -228,7 +253,7 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentBuyerGlobalId($buyerglobalids);
         $this->assertIsArray($buyerglobalids);
         $this->assertArrayHasKey("0088", $buyerglobalids);
-        $this->assertEquals("3654789851", $buyerglobalids["0088"]);
+        $this->assertEquals("4304171000002", $buyerglobalids["0088"]);
     }
 
     /**
@@ -238,12 +263,7 @@ class ReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentBuyerTaxRegistration($buyertaxreg);
         $this->assertIsArray($buyertaxreg);
-        $this->assertArrayHasKey("VA", $buyertaxreg);
-        $this->assertArrayNotHasKey("FC", $buyertaxreg);
-        $this->assertArrayNotHasKey(0, $buyertaxreg);
-        $this->assertArrayNotHasKey(1, $buyertaxreg);
-        $this->assertArrayNotHasKey("ZZ", $buyertaxreg);
-        $this->assertEquals("FR 05 987 654 321", $buyertaxreg["VA"]);
+        $this->assertEmpty($buyertaxreg);
     }
 
     /**
@@ -252,12 +272,12 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBuyerAddress(): void
     {
         self::$document->getDocumentBuyerAddress($buyerlineone, $buyerlinetwo, $buyerlinethree, $buyerpostcode, $buyercity, $buyercountry, $buyersubdivision);
-        $this->assertEquals("58 rue de la mer", $buyerlineone);
-        $this->assertEquals("Buyer line 2", $buyerlinetwo);
+        $this->assertEquals("KUNDENWEG 88", $buyerlineone);
+        $this->assertEquals("", $buyerlinetwo);
         $this->assertEquals("", $buyerlinethree);
-        $this->assertEquals("06000", $buyerpostcode);
-        $this->assertEquals("NICE", $buyercity);
-        $this->assertEquals("FR", $buyercountry);
+        $this->assertEquals("40235", $buyerpostcode);
+        $this->assertEquals("DUESSELDORF", $buyercity);
+        $this->assertEquals("DE", $buyercountry);
         $this->assertIsArray($buyersubdivision);
         $this->assertEmpty($buyersubdivision);
     }
@@ -268,8 +288,8 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBuyerLegalOrganization(): void
     {
         self::$document->getDocumentBuyerLegalOrganisation($buyerlegalorgid, $buyerlegalorgtype, $buyerlegalorgname);
-        $this->assertEquals("98765432100029", $buyerlegalorgid);
-        $this->assertEquals("0002", $buyerlegalorgtype);
+        $this->assertEquals("", $buyerlegalorgid);
+        $this->assertEquals("", $buyerlegalorgtype);
         $this->assertEquals("", $buyerlegalorgname);
     }
 
@@ -366,7 +386,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
-        $this->assertEquals("DEL Name", $shiptoname);
+        $this->assertEquals("MUSTER-MARKT", $shiptoname);
         $this->assertIsArray($shiptoids);
         $this->assertEmpty($shiptoids);
         $this->assertEquals("", $shiptodescription);
@@ -380,7 +400,6 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentShipToGlobalId($shiptoglobalids);
         $this->assertIsArray($shiptoglobalids);
         $this->assertArrayHasKey("0088", $shiptoglobalids);
-        $this->assertEquals("3654789851", $shiptoglobalids["0088"]);
     }
 
     /**
@@ -399,12 +418,12 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentShipToAddress(): void
     {
         self::$document->getDocumentShipToAddress($shiptolineone, $shiptolinetwo, $shiptolinethree, $shiptopostcode, $shiptocity, $shiptocountry, $shiptosubdivision);
-        $this->assertEquals("DEL 58 rue de la mer", $shiptolineone);
-        $this->assertEquals("DEL line 2", $shiptolinetwo);
+        $this->assertEquals("HAUPTSTRASSE 44", $shiptolineone);
+        $this->assertEquals("", $shiptolinetwo);
         $this->assertEquals("", $shiptolinethree);
-        $this->assertEquals("06000", $shiptopostcode);
-        $this->assertEquals("NICE", $shiptocity);
-        $this->assertEquals("FR", $shiptocountry);
+        $this->assertEquals("31157", $shiptopostcode);
+        $this->assertEquals("SARSTEDT", $shiptocity);
+        $this->assertEquals("DE", $shiptocountry);
         $this->assertIsArray($shiptosubdivision);
         $this->assertEmpty($shiptosubdivision);
     }
@@ -427,11 +446,14 @@ class ReaderExtended2Test extends TestCase
      */
     public function testDocumentShipToContact(): void
     {
-        $this->assertFalse(self::$document->firstDocumentShipToContact());
+        $this->assertTrue(self::$document->firstDocumentShipToContact());
+        self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
+        $this->assertEquals("", $shiptocontactpersonname);
+        $this->assertEquals("7322", $shiptocontactdepartmentname);
+        $this->assertEquals("", $shiptocontactphoneno);
+        $this->assertEquals("", $shiptocontactfaxno);
+        $this->assertEquals("", $shiptocontactemailaddr);
         $this->assertFalse(self::$document->nextDocumentShipToContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
-        });
     }
 
     /**
@@ -668,9 +690,10 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentInvoiceeGeneral(): void
     {
         self::$document->getDocumentInvoicee($invoiceename, $invoiceeids, $invoiceedescription);
-        $this->assertEquals("", $invoiceename);
+        $this->assertEquals("MUSTER-KUNDE GMBH", $invoiceename);
         $this->assertIsArray($invoiceeids);
-        $this->assertEmpty($invoiceeids);
+        $this->assertNotEmpty($invoiceeids);
+        $this->assertArrayHasKey(0, $invoiceeids);
         $this->assertEquals("", $invoiceedescription);
     }
 
@@ -681,7 +704,9 @@ class ReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentInvoiceeGlobalId($invoiceeglobalids);
         $this->assertIsArray($invoiceeglobalids);
-        $this->assertEmpty($invoiceeglobalids);
+        $this->assertNotEmpty($invoiceeglobalids);
+        $this->assertArrayHasKey("0088", $invoiceeglobalids);
+        $this->assertEquals("4304171000002", $invoiceeglobalids["0088"]);
     }
 
     /**
@@ -700,12 +725,12 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentInvoiceeAddress(): void
     {
         self::$document->getDocumentInvoiceeAddress($invoiceelineone, $invoiceelinetwo, $invoiceelinethree, $invoiceepostcode, $invoiceecity, $invoiceecountry, $invoiceesubdivision);
-        $this->assertEquals("", $invoiceelineone);
+        $this->assertEquals("KUNDENWEG 88", $invoiceelineone);
         $this->assertEquals("", $invoiceelinetwo);
         $this->assertEquals("", $invoiceelinethree);
-        $this->assertEquals("", $invoiceepostcode);
-        $this->assertEquals("", $invoiceecity);
-        $this->assertEquals("", $invoiceecountry);
+        $this->assertEquals("40235", $invoiceepostcode);
+        $this->assertEquals("DUESSELDORF", $invoiceecity);
+        $this->assertEquals("DE", $invoiceecountry);
         $this->assertIsArray($invoiceesubdivision);
         $this->assertEmpty($invoiceesubdivision);
     }
@@ -898,7 +923,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentSellerOrderReferencedDocument(): void
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
-        $this->assertEquals("SALES REF 2547", $sellerorderrefdocid);
+        $this->assertEquals("", $sellerorderrefdocid);
         $this->assertNull($sellerorderrefdocdate);
     }
 
@@ -908,7 +933,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
-        $this->assertEquals("PO201925478", $buyerorderrefdocid);
+        $this->assertEquals("", $buyerorderrefdocid);
         $this->assertNull($buyerorderrefdocdate);
     }
 
@@ -918,7 +943,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
-        $this->assertEquals("CT2018120802", $contractrefdocid);
+        $this->assertEquals("", $contractrefdocid);
         $this->assertNull($contractrefdocdate);
     }
 
@@ -934,8 +959,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertIsArray($additionalrefdocs[0]);
         $this->assertArrayHasKey("IssuerAssignedID", $additionalrefdocs[0]);
         $this->assertArrayHasKey("TypeCode", $additionalrefdocs[0]);
-        $this->assertEquals("SUPPort doc", $additionalrefdocs[0]["IssuerAssignedID"]);
-        $this->assertEquals("916", $additionalrefdocs[0]["TypeCode"]);
+        $this->assertEquals("A777123", $additionalrefdocs[0]["IssuerAssignedID"]);
+        $this->assertEquals("130", $additionalrefdocs[0]["TypeCode"]);
     }
 
     /**
@@ -944,8 +969,8 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
-        $this->assertEquals("PROJET2547", $projectid);
-        $this->assertEquals("Project reference", $projectname);
+        $this->assertEquals("", $projectid);
+        $this->assertEquals("", $projectname);
     }
 
     /**
@@ -956,7 +981,7 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertNotNull($supplychainevent);
         $this->assertInstanceOf("DateTime", $supplychainevent);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $supplychainevent->format('Ymd'));
+        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180930'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
     /**
@@ -965,7 +990,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
-        $this->assertEquals("DESPADV002", $despatchdocid);
+        $this->assertEquals("", $despatchdocid);
         $this->assertNull($despatchdocdate);
         $this->assertNotInstanceOf("DateTime", $despatchdocdate);
     }
@@ -976,7 +1001,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
-        $this->assertEquals("RECEIV-ADV002", $recadvid);
+        $this->assertEquals("", $recadvid);
         $this->assertNull($recadvdate);
         $this->assertNotInstanceOf("DateTime", $recadvdate);
     }
@@ -987,7 +1012,7 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
-        $this->assertEquals("", $deliverynoterefdocid);
+        $this->assertEquals("L87654321012", $deliverynoterefdocid);
         $this->assertNull($deliverynoterefdocdate);
         $this->assertNotInstanceOf("DateTime", $deliverynoterefdocdate);
     }
@@ -998,10 +1023,10 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
-        $this->assertInstanceOf("DateTime", $docbillingperiodstart);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docbillingperiodstart->format('Ymd'));
-        $this->assertInstanceOf("DateTime", $docbillingperiodend);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docbillingperiodend->format('Ymd'));
+        $this->assertNull($docbillingperiodstart);
+        $this->assertNotInstanceOf("DateTime", $docbillingperiodstart);
+        $this->assertNull($docbillingperiodend);
+        $this->assertNotInstanceOf("DateTime", $docbillingperiodend);
     }
 
     /**
@@ -1012,7 +1037,7 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentAllowanceCharges($docallowancecharge);
         $this->assertIsArray($docallowancecharge);
         $this->assertNotEmpty($docallowancecharge);
-        $this->assertEquals(2, count($docallowancecharge));
+        $this->assertEquals(1, count($docallowancecharge));
     }
 
     /**
@@ -1029,9 +1054,9 @@ class ReaderExtended2Test extends TestCase
         $this->assertArrayHasKey("duedate", $docpaymentterms[0]);
         $this->assertArrayHasKey("directdebitmandateid", $docpaymentterms[0]);
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
-        $this->assertEquals("", $docpaymentterms[0]["description"]);
-        $this->assertInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200215'))->format('Ymd'), $docpaymentterms[0]["duedate"]->format('Ymd'));
+        $this->assertEquals("Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum", $docpaymentterms[0]["description"]);
+        $this->assertNull($docpaymentterms[0]["duedate"]);
+        $this->assertNotInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEquals(0.0, $docpaymentterms[0]["partialpaymentamount"]);
     }
@@ -1052,8 +1077,6 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentAdditionalReferencedDocumentLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
-        $this->assertTrue(self::$document->nextDocumentAdditionalReferencedDocument());
-        $this->assertTrue(self::$document->nextDocumentAdditionalReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentAdditionalReferencedDocument());
     }
 
@@ -1065,12 +1088,11 @@ class ReaderExtended2Test extends TestCase
     {
         $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
         self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
-        $this->assertEquals("SUPPort doc", $issuerassignedid);
-        $this->assertEquals("916", $typecode);
-        $this->assertEquals("url:gffter", $uriid);
+        $this->assertEquals("A777123", $issuerassignedid);
+        $this->assertEquals("130", $typecode);
+        $this->assertEquals("", $uriid);
         $this->assertIsArray($name);
-        $this->assertNotEmpty($name);
-        $this->assertArrayHasKey(0, $name);
+        $this->assertEmpty($name);
         $this->assertEquals("", $reftypecode);
         $this->assertNull($issueddate);
         $this->assertEquals("", $binarydatafilename);
@@ -1104,13 +1126,13 @@ class ReaderExtended2Test extends TestCase
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         self::$document->getDocumentPaymentMeans($typeCode, $information, $cardType, $cardId, $cardHolderName, $buyerIban, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
-        $this->assertEquals("30", $typeCode);
+        $this->assertEquals("58", $typeCode);
         $this->assertEquals("", $information);
         $this->assertEquals("", $cardType);
         $this->assertEquals("", $cardId);
         $this->assertEquals("", $cardHolderName);
         $this->assertEquals("", $buyerIban);
-        $this->assertEquals("FR76 1254 2547 2569 8542 5874 698", $payeeIban);
+        $this->assertEquals("DE5467894567876500", $payeeIban);
         $this->assertEquals("", $payeeAccountName);
         $this->assertEquals("", $payeePropId);
         $this->assertEquals("", $payeeBic);
@@ -1137,10 +1159,10 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
         $this->assertEquals("S", $categoryCode);
         $this->assertEquals("VAT", $typeCode);
-        $this->assertEquals(100.0, $basisAmount);
-        $this->assertEquals(10.0, $calculatedAmount);
-        $this->assertEquals(10.0, $rateApplicablePercent);
-        $this->assertEquals(0.0, $allowanceChargeBasisAmount);
+        $this->assertEquals(403.55, $basisAmount);
+        $this->assertEquals(76.67, $calculatedAmount);
+        $this->assertEquals(19.0, $rateApplicablePercent);
+        $this->assertEquals(-6.55, $allowanceChargeBasisAmount);
     }
 
     /**
@@ -1150,7 +1172,6 @@ class ReaderExtended2Test extends TestCase
     public function testtDocumentAllowanceChargeLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
-        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
         $this->assertFalse(self::$document->nextDocumentAllowanceCharge());
     }
 
@@ -1163,33 +1184,18 @@ class ReaderExtended2Test extends TestCase
     {
         $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
         self::$document->getDocumentAllowanceCharge($actualAmount, $isCharge, $taxCategoryCode, $taxTypeCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
-        $this->assertEquals(5.0, $actualAmount);
+        $this->assertEquals(21.55, $actualAmount);
         $this->assertFalse($isCharge);
         $this->assertEquals("S", $taxCategoryCode);
         $this->assertEquals("VAT", $taxTypeCode);
-        $this->assertEquals(10.00, $rateApplicablePercent);
+        $this->assertEquals(19.00, $rateApplicablePercent);
         $this->assertEquals(0, $sequence);
         $this->assertEquals(0, $calculationPercent);
-        $this->assertEquals(0, $basisAmount);
+        $this->assertEquals(410.10, $basisAmount);
         $this->assertEquals(0, $basisQuantity);
         $this->assertEquals("", $basisQuantityUnitCode);
         $this->assertEquals("", $reasonCode);
-        $this->assertEquals("REMISE COMMERCIALE", $reason);
-
-        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
-        self::$document->getDocumentAllowanceCharge($actualAmount, $isCharge, $taxCategoryCode, $taxTypeCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
-        $this->assertEquals(10.0, $actualAmount);
-        $this->assertTrue($isCharge);
-        $this->assertEquals("S", $taxCategoryCode);
-        $this->assertEquals("VAT", $taxTypeCode);
-        $this->assertEquals(10.00, $rateApplicablePercent);
-        $this->assertEquals(0, $sequence);
-        $this->assertEquals(0, $calculationPercent);
-        $this->assertEquals(0, $basisAmount);
-        $this->assertEquals(0, $basisQuantity);
-        $this->assertEquals("", $basisQuantityUnitCode);
-        $this->assertEquals("", $reasonCode);
-        $this->assertEquals("FRAIS DEPLACEMENT", $reason);
+        $this->assertEquals("Sonderrabatt", $reason);
     }
 
     /**
@@ -1198,8 +1204,32 @@ class ReaderExtended2Test extends TestCase
      */
     public function testtDocumentLogisticsServiceChargeLoop(): void
     {
-        $this->assertFalse(self::$document->firstDocumentLogisticsServiceCharge());
+        $this->assertTrue(self::$document->firstDocumentLogisticsServiceCharge());
         $this->assertFalse(self::$document->nextDocumentLogisticsServiceCharge());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentLogisticsServiceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentLogisticsServiceCharge
+     */
+    public function testGetDocumentLogisticsServiceCharge(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentLogisticsServiceCharge());
+        self::$document->getDocumentLogisticsServiceCharge($description, $appliedAmount, $taxTypeCodes, $taxCategpryCodes, $rateApplicablePercents);
+        $this->assertEquals("Transportkosten: Frachbetrag", $description);
+        $this->assertEquals(15.00, $appliedAmount);
+        $this->assertIsArray($taxTypeCodes);
+        $this->assertEquals(1, count($taxTypeCodes));
+        $this->assertArrayHasKey(0, $taxTypeCodes);
+        $this->assertEquals("VAT", $taxTypeCodes[0]);
+        $this->assertIsArray($taxCategpryCodes);
+        $this->assertEquals(1, count($taxCategpryCodes));
+        $this->assertArrayHasKey(0, $taxCategpryCodes);
+        $this->assertEquals("S", $taxCategpryCodes[0]);
+        $this->assertIsArray($rateApplicablePercents);
+        $this->assertEquals(1, count($rateApplicablePercents));
+        $this->assertArrayHasKey(0, $rateApplicablePercents);
+        $this->assertEquals(19.0, $rateApplicablePercents[0]);
     }
 
     /**
@@ -1224,14 +1254,13 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
 
-        $this->assertEquals("", $termdescription);
-        $this->assertInstanceOf("DateTime", $termduedate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200215'))->format('Ymd'), $termduedate->format('Ymd'));
+        $this->assertEquals("Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum", $termdescription);
+        $this->assertNull($termduedate);
         $this->assertEquals("", $termmandate);
-        $this->assertEquals(0.0, $dispercent);
+        $this->assertEquals(2.0, $dispercent);
         $this->assertNull($discbasedatetime);
-        $this->assertEquals(0, $discmeasureval);
-        $this->assertEquals("", $discmeasureunit);
+        $this->assertEquals(10, $discmeasureval);
+        $this->assertEquals("DAY", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
         $this->assertEquals(0, $discamount);
 
@@ -1245,6 +1274,8 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentPositionLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(self::$document->nextDocumentPosition());
+        $this->assertTrue(self::$document->nextDocumentPosition());
         $this->assertTrue(self::$document->nextDocumentPosition());
         $this->assertTrue(self::$document->nextDocumentPosition());
         $this->assertFalse(self::$document->nextDocumentPosition());
@@ -1284,16 +1315,16 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $linestatusreasoncode);
 
         self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-        $this->assertEquals("PRESTATION SUPPORT", $prodname);
-        $this->assertEquals("Description", $proddesc);
-        $this->assertEquals("", $prodsellerid);
+        $this->assertEquals("Wirkarbeit HT", $prodname);
+        $this->assertEquals("", $proddesc);
+        $this->assertEquals("WA997", $prodsellerid);
         $this->assertEquals("", $prodbuyerid);
         $this->assertEquals("0088", $prodglobalidtype);
-        $this->assertEquals("598785412598745", $prodglobalid);
+        $this->assertEquals("4123456000014", $prodglobalid);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
-        $this->assertEquals("1", $doclineorderlineid);
+        $this->assertEquals("", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
@@ -1302,14 +1333,14 @@ class ReaderExtended2Test extends TestCase
         $this->assertNull($doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-        $this->assertEquals(0.0, $grosspriceamount);
+        $this->assertEquals(0.0520, $grosspriceamount);
         $this->assertEquals(0.0, $grosspricebasisquantity);
         $this->assertEquals("", $grosspricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $this->assertEquals(60.0, $netpriceamount);
-        $this->assertEquals(1.0, $netpricebasisquantity);
-        $this->assertEquals("C62", $netpricebasisquantityunitcode);
+        $this->assertEquals(0.0520, $netpriceamount);
+        $this->assertEquals(0.0, $netpricebasisquantity);
+        $this->assertEquals("", $netpricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertEquals("", $categoryCode);
@@ -1320,8 +1351,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-        $this->assertEquals(1.0, $billedquantity);
-        $this->assertEquals("C62", $billedquantityunitcode);
+        $this->assertEquals(10000.0, $billedquantity);
+        $this->assertEquals("KWH", $billedquantityunitcode);
         $this->assertEquals(0.0, $chargeFreeQuantity);
         $this->assertEquals("", $chargeFreeQuantityunitcode);
         $this->assertEquals(0.0, $packageQuantity);
@@ -1343,10 +1374,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertNull($docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertInstanceOf("DateTime", $docposstartdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docposstartdate->format('Ymd'));
-        $this->assertInstanceOf("DateTime", $docpostenddate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docpostenddate->format('Ymd'));
+        $this->assertNull($docposstartdate);
+        $this->assertNull($docpostenddate);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1361,13 +1390,13 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertEquals("S", $categoryCode);
         $this->assertEquals("VAT", $typeCode);
-        $this->assertEquals(10.0, $rateApplicablePercent);
+        $this->assertEquals(19.0, $rateApplicablePercent);
         $this->assertEquals(0.0, $calculatedAmount);
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
-        $this->assertEquals(60.00, $lineTotalAmount);
+        $this->assertEquals(52.00, $lineTotalAmount);
         $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1408,16 +1437,16 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $linestatusreasoncode);
 
         self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-        $this->assertEquals("FOURNITURES DIVERSES", $prodname);
-        $this->assertEquals("Description", $proddesc);
-        $this->assertEquals("", $prodsellerid);
+        $this->assertEquals("Ökosteuer Lieferant", $prodname);
+        $this->assertEquals("", $proddesc);
+        $this->assertEquals("ÖST250", $prodsellerid);
         $this->assertEquals("", $prodbuyerid);
-        $this->assertEquals("", $prodglobalidtype);
-        $this->assertEquals("", $prodglobalid);
+        $this->assertEquals("0088", $prodglobalidtype);
+        $this->assertEquals("4123456000021", $prodglobalid);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
-        $this->assertEquals("3", $doclineorderlineid);
+        $this->assertEquals("", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
@@ -1426,12 +1455,12 @@ class ReaderExtended2Test extends TestCase
         $this->assertNull($doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-        $this->assertEquals(0.0, $grosspriceamount);
+        $this->assertEquals(0.0205, $grosspriceamount);
         $this->assertEquals(0.0, $grosspricebasisquantity);
         $this->assertEquals("", $grosspricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $this->assertEquals(10.0, $netpriceamount);
+        $this->assertEquals(0.0205, $netpriceamount);
         $this->assertEquals(0.0, $netpricebasisquantity);
         $this->assertEquals("", $netpricebasisquantityunitcode);
 
@@ -1444,8 +1473,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-        $this->assertEquals(3, $billedquantity);
-        $this->assertEquals("C62", $billedquantityunitcode);
+        $this->assertEquals(10000, $billedquantity);
+        $this->assertEquals("KWH", $billedquantityunitcode);
         $this->assertEquals(0.0, $chargeFreeQuantity);
         $this->assertEquals("", $chargeFreeQuantityunitcode);
         $this->assertEquals(0.0, $packageQuantity);
@@ -1467,8 +1496,7 @@ class ReaderExtended2Test extends TestCase
         $this->assertNull($docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertInstanceOf("DateTime", $docposstartdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docposstartdate->format('Ymd'));
+        $this->assertNull($docposstartdate);
         $this->assertNull($docpostenddate);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
@@ -1484,13 +1512,13 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertEquals("S", $categoryCode);
         $this->assertEquals("VAT", $typeCode);
-        $this->assertEquals(10.0, $rateApplicablePercent);
+        $this->assertEquals(19.0, $rateApplicablePercent);
         $this->assertEquals(0.0, $calculatedAmount);
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
-        $this->assertEquals(30.0, $lineTotalAmount);
+        $this->assertEquals(20.50, $lineTotalAmount);
         $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1532,12 +1560,12 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $linestatusreasoncode);
 
         self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-        $this->assertEquals("APPEL", $prodname);
-        $this->assertEquals("Description", $proddesc);
+        $this->assertEquals("Kommissionierer 1250032 D. Muster", $prodname);
+        $this->assertEquals("Besteller: Hr. Mayer, Personalnr. 4488", $proddesc);
         $this->assertEquals("", $prodsellerid);
         $this->assertEquals("", $prodbuyerid);
-        $this->assertEquals("", $prodglobalidtype);
-        $this->assertEquals("", $prodglobalid);
+        $this->assertEquals("0088", $prodglobalidtype);
+        $this->assertEquals("4260331811362", $prodglobalid);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
@@ -1550,12 +1578,12 @@ class ReaderExtended2Test extends TestCase
         $this->assertNull($doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-        $this->assertEquals(0.0000, $grosspriceamount);
+        $this->assertEquals(15.0000, $grosspriceamount);
         $this->assertEquals(0.0, $grosspricebasisquantity);
         $this->assertEquals("", $grosspricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $this->assertEquals(5.0, $netpriceamount);
+        $this->assertEquals(10.5000, $netpriceamount);
         $this->assertEquals(0.0, $netpricebasisquantity);
         $this->assertEquals("", $netpricebasisquantityunitcode);
 
@@ -1568,8 +1596,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-        $this->assertEquals(1.0, $billedquantity);
-        $this->assertEquals("C62", $billedquantityunitcode);
+        $this->assertEquals(27.5000, $billedquantity);
+        $this->assertEquals("HUR", $billedquantityunitcode);
         $this->assertEquals(0.0, $chargeFreeQuantity);
         $this->assertEquals("", $chargeFreeQuantityunitcode);
         $this->assertEquals(0.0, $packageQuantity);
@@ -1592,8 +1620,157 @@ class ReaderExtended2Test extends TestCase
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertNull($docposstartdate);
-        $this->assertInstanceOf("DateTime", $docpostenddate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docpostenddate->format('Ymd'));
+        $this->assertNull($docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertTrue(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        self::$document->firstDocumentPositionGrossPriceAllowanceCharge();
+        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+            $docPosAllowanceChargeactualAmount,
+            $docPosAllowanceChargeisCharge,
+            $docPosAllowanceChargecalculationPercent,
+            $docPosAllowanceChargebasisAmount,
+            $docPosAllowanceChargereason,
+            $docPosAllowanceChargeTaxTypeCode,
+            $docPosAllowanceChargeTaxCategoryCode,
+            $docPosAllowanceChargerateApplicablePercent,
+            $docPosAllowanceChargesequence,
+            $docPosAllowanceChargebasisQuantity,
+            $docPosAllowanceChargebasisQuantityUnitCode,
+            $docPosAllowanceChargereasonCode
+        );
+        $this->assertEquals(4.5000, $docPosAllowanceChargeactualAmount);
+        $this->assertFalse($docPosAllowanceChargeisCharge);
+        $this->assertEquals(0, $docPosAllowanceChargecalculationPercent);
+        $this->assertEquals(0, $docPosAllowanceChargebasisAmount);
+        $this->assertEquals("Artikelrabatt 1", $docPosAllowanceChargereason);
+        $this->assertEquals("", $docPosAllowanceChargeTaxTypeCode);
+        $this->assertEquals("", $docPosAllowanceChargeTaxCategoryCode);
+        $this->assertEquals(0, $docPosAllowanceChargerateApplicablePercent);
+        $this->assertEquals(0, $docPosAllowanceChargesequence);
+        $this->assertEquals(0, $docPosAllowanceChargebasisQuantity);
+        $this->assertEquals("", $docPosAllowanceChargebasisQuantityUnitCode);
+        $this->assertEquals("", $docPosAllowanceChargereasonCode);
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertEquals("S", $categoryCode);
+        $this->assertEquals("VAT", $typeCode);
+        $this->assertEquals(19.0, $rateApplicablePercent);
+        $this->assertEquals(0.0, $calculatedAmount);
+        $this->assertEquals("", $exemptionReason);
+        $this->assertEquals("", $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        $this->assertEquals(288.75, $lineTotalAmount);
+        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGenerals
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionProductDetails
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBuyerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionContractReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPriceTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionQuantity
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDespatchAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionReceivingAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDeliveryNoteReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBillingPeriod
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionNote
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionNote
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionGrossPriceAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionGrossPriceAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
+     */
+    public function testDocumentPositionFourth(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertEquals("4", $lineid);
+        $this->assertEquals("", $linestatuscode);
+        $this->assertEquals("", $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertEquals("FALTENBEUTEL 16x6x28 CM", $prodname);
+        $this->assertEquals("", $proddesc);
+        $this->assertEquals("FB05", $prodsellerid);
+        $this->assertEquals("", $prodbuyerid);
+        $this->assertEquals("0088", $prodglobalidtype);
+        $this->assertEquals("2001015001325", $prodglobalid);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEquals(0.0105, $grosspriceamount);
+        $this->assertEquals(0.0, $grosspricebasisquantity);
+        $this->assertEquals("", $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEquals(0.0105, $netpriceamount);
+        $this->assertEquals(0.0, $netpricebasisquantity);
+        $this->assertEquals("", $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertEquals("", $categoryCode);
+        $this->assertEquals("", $typeCode);
+        $this->assertEquals(0.0, $rateApplicablePercent);
+        $this->assertEquals(0.0, $calculatedAmount);
+        $this->assertEquals("", $exemptionReason);
+        $this->assertEquals("", $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEquals(3500.0, $billedquantity);
+        $this->assertEquals("H87", $billedquantityunitcode);
+        $this->assertEquals(0.0, $chargeFreeQuantity);
+        $this->assertEquals("", $chargeFreeQuantityunitcode);
+        $this->assertEquals(0.0, $packageQuantity);
+        $this->assertEquals("", $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertEquals("", $docposdespadvid);
+        $this->assertEquals("", $docposdespadvlineid);
+        $this->assertNull($docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertEquals("", $docposrecadvid);
+        $this->assertEquals("", $docposrecadvlineid);
+        $this->assertNull($docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertEquals("", $docposdelnoteid);
+        $this->assertEquals("", $docposdelnotelineid);
+        $this->assertNull($docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNull($docposstartdate);
+        $this->assertNull($docpostenddate);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1608,13 +1785,135 @@ class ReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertEquals("S", $categoryCode);
         $this->assertEquals("VAT", $typeCode);
-        $this->assertEquals(10.0, $rateApplicablePercent);
+        $this->assertEquals(19.0, $rateApplicablePercent);
         $this->assertEquals(0.0, $calculatedAmount);
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
         self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
-        $this->assertEquals(5.0, $lineTotalAmount);
+        $this->assertEquals(36.75, $lineTotalAmount);
+        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNull($supplyeventdatetime);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGenerals
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionProductDetails
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBuyerOrderReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionContractReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPrice
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPriceTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionQuantity
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDespatchAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionReceivingAdviceReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDeliveryNoteReferencedDocument
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBillingPeriod
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionNote
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionNote
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionGrossPriceAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionGrossPriceAllowanceCharge
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionTax
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
+     */
+    public function testDocumentPositionFifth(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertEquals("5", $lineid);
+        $this->assertEquals("", $linestatuscode);
+        $this->assertEquals("", $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertEquals("Kopierpapier A4", $prodname);
+        $this->assertEquals("Zählerstand von-bis: 543210 - 544420", $proddesc);
+        $this->assertEquals("KOP05", $prodsellerid);
+        $this->assertEquals("", $prodbuyerid);
+        $this->assertEquals("0088", $prodglobalidtype);
+        $this->assertEquals("4123456000038", $prodglobalid);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEquals(0.0100, $grosspriceamount);
+        $this->assertEquals(0.0, $grosspricebasisquantity);
+        $this->assertEquals("", $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEquals(0.0100, $netpriceamount);
+        $this->assertEquals(0.0, $netpricebasisquantity);
+        $this->assertEquals("", $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertEquals("", $categoryCode);
+        $this->assertEquals("", $typeCode);
+        $this->assertEquals(0.0, $rateApplicablePercent);
+        $this->assertEquals(0.0, $calculatedAmount);
+        $this->assertEquals("", $exemptionReason);
+        $this->assertEquals("", $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEquals(1210.0, $billedquantity);
+        $this->assertEquals("H87", $billedquantityunitcode);
+        $this->assertEquals(0.0, $chargeFreeQuantity);
+        $this->assertEquals("", $chargeFreeQuantityunitcode);
+        $this->assertEquals(0.0, $packageQuantity);
+        $this->assertEquals("", $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertEquals("", $docposdespadvid);
+        $this->assertEquals("", $docposdespadvlineid);
+        $this->assertNull($docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertEquals("", $docposrecadvid);
+        $this->assertEquals("", $docposrecadvlineid);
+        $this->assertNull($docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertEquals("", $docposdelnoteid);
+        $this->assertEquals("", $docposdelnotelineid);
+        $this->assertNull($docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNull($docposstartdate);
+        $this->assertNull($docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertEquals("S", $categoryCode);
+        $this->assertEquals("VAT", $typeCode);
+        $this->assertEquals(19.0, $rateApplicablePercent);
+        $this->assertEquals(0.0, $calculatedAmount);
+        $this->assertEquals("", $exemptionReason);
+        $this->assertEquals("", $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        $this->assertEquals(12.10, $lineTotalAmount);
         $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);

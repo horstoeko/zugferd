@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
@@ -15,7 +16,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/data/xrechnung_simple_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xrechnung_simple_2.xml");
     }
 
     public function testDocumentProfile(): void

@@ -1,10 +1,10 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\traits;
 
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
-class BuilderTestCase extends TestCase
+trait HandlesXmlTests
 {
     /**
      * @var ZugferdDocumentBuilder

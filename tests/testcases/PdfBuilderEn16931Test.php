@@ -1,8 +1,10 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
+use \horstoeko\zugferd\tests\TestCase;
+use \horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 use \horstoeko\zugferd\ZugferdDocumentPdfBuilder;
@@ -10,8 +12,10 @@ use \horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \Smalot\PdfParser\Parser as PdfParser;
 
-class PdfBuilderEn16931Test extends BuilderTestCase
+class PdfBuilderEn16931Test extends TestCase
 {
+    use HandlesXmlTests;
+
     /**
      * Source pdf filename
      *
@@ -28,8 +32,8 @@ class PdfBuilderEn16931Test extends BuilderTestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$sourcePdfFilename = dirname(__FILE__) . "/data/EmpyPDF.pdf";
-        self::$destPdfFilename = dirname(__FILE__) . "/data/GeneratedPDF.pdf";
+        self::$sourcePdfFilename = dirname(__FILE__) . "/../assets/EmpyPDF.pdf";
+        self::$destPdfFilename = dirname(__FILE__) . "/../assets/GeneratedPDF.pdf";
 
         self::$document = (ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931))
             ->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")

@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdObjectHelper;
 use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
@@ -721,7 +722,7 @@ class ObjectHelperEn16931Test extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
          */
-        $refdoctype = self::$objectHelper->getReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), dirname(__FILE__) . "/data/en16931_allowancecharge.xml");
+        $refdoctype = self::$objectHelper->getReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), dirname(__FILE__) . "/../assets/en16931_allowancecharge.xml");
         $this->assertEquals("issuerid", $refdoctype->getIssuerAssignedID()->value());
         $this->assertEquals("uriid", $refdoctype->getURIID()->value());
         $this->assertEquals("lineid", $refdoctype->getLineID()->value());

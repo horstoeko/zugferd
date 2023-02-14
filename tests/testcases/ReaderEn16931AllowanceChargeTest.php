@@ -1,26 +1,22 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\ZugferdDocumentPdfReader;
+use \horstoeko\zugferd\tests\TestCase;
+use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\ZugferdProfiles;
 
-class PdfReaderEn16931AllowanceChargeTest extends TestCase
+class ReaderEn16931AllowanceChargeTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
      */
     protected static $document;
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
-     */
-    public function testCanReadPdf(): void
+    public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EN16931_Rabatte.pdf");
-        $this->assertNotNull(self::$document);
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_allowancecharge.xml");
     }
 
     public function testDocumentProfile(): void
@@ -29,7 +25,6 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->profileId);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->profileId);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->profileId);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->profileId);
     }
 
     /**
@@ -144,7 +139,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
-        $this->assertEquals("", $buyerReference);
+        $this->assertEquals("08154713", $buyerReference);
     }
 
     /**
@@ -592,11 +587,11 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentShipFromContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
         });
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
         });
     }
@@ -668,11 +663,11 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentInvoicerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
         });
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
         });
     }
@@ -744,11 +739,11 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentInvoiceeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
         });
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
         });
     }
@@ -820,11 +815,11 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentPayeeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
         });
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
         });
     }
@@ -901,7 +896,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentProductEndUserContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
-        $this->expectNoticeOrWarningExt(function() {
+        $this->expectNoticeOrWarningExt(function () {
             self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
         });
         $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());

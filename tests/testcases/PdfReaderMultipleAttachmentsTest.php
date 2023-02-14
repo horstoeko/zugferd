@@ -1,7 +1,8 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
+use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \horstoeko\zugferd\ZugferdDocumentReader;
 use \horstoeko\zugferd\ZugferdProfiles;
@@ -18,7 +19,7 @@ class PdfReaderMultipleAttachmentsTest extends TestCase
      */
     public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/data/zugferd_2p1_EN16931_Elektron.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/zugferd_2p1_EN16931_Elektron.pdf");
         $this->assertNotNull(self::$document);
     }
 

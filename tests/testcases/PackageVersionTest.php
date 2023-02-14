@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\tests;
+namespace horstoeko\zugferd\tests\testcases;
 
 use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\tests\TestCase;

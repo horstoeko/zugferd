@@ -2,45 +2,45 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php">
     <testsuites>
         <testsuite name="General">
-            <file>../tests/SettingsTest.php</file>
-            <file>../tests/PackageVersionTest.php</file>
+            <file>../tests/testcases/SettingsTest.php</file>
+            <file>../tests/testcases/PackageVersionTest.php</file>
         </testsuite>
         <testsuite name="ObjectHelper">
-            <file>../tests/ObjectHelperEn16931Test.php</file>
-            <file>../tests/ObjectHelperExtendedTest.php</file>
+            <file>../tests/testcases/ObjectHelperEn16931Test.php</file>
+            <file>../tests/testcases/ObjectHelperExtendedTest.php</file>
         </testsuite>
         <testsuite name="Base">
-            <file>../tests/DocumentTest.php</file>
+            <file>../tests/testcases/DocumentTest.php</file>
         </testsuite>
         <testsuite name="Reader">
-            <file>../tests/ReaderBasicSimpleTest.php</file>
-            <file>../tests/ReaderEn16931SimpleTest.php</file>
-            <file>../tests/ReaderEn16931AllowanceChargeTest.php</file>
-            <file>../tests/ReaderEn16931Bank1Test.php</file>
-            <file>../tests/ReaderExtendedTest.php</file>
-            <file>../tests/ReaderExtended2Test.php</file>
-            <file>../tests/ReaderXRechnungSimpleTest.php</file>
-            <file>../tests/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+            <file>../tests/testcases/ReaderBasicSimpleTest.php</file>
+            <file>../tests/testcases/ReaderEn16931SimpleTest.php</file>
+            <file>../tests/testcases/ReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/testcases/ReaderEn16931Bank1Test.php</file>
+            <file>../tests/testcases/ReaderExtendedTest.php</file>
+            <file>../tests/testcases/ReaderExtended2Test.php</file>
+            <file>../tests/testcases/ReaderXRechnungSimpleTest.php</file>
+            <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
         </testsuite>
         <testsuite name="Builder">
-            <file>../tests/BuilderEn16931Test.php</file>
-            <file>../tests/BuilderExtendedTest.php</file>
+            <file>../tests/testcases/BuilderEn16931Test.php</file>
+            <file>../tests/testcases/BuilderExtendedTest.php</file>
         </testsuite>
         <testsuite name="PDFReader">
-            <file>../tests/PdfReaderEn16931AllowanceChargeTest.php</file>
-            <file>../tests/PdfReaderEn16931SimpleTest.php</file>
-            <file>../tests/PdfReaderExtendedTest.php</file>
-            <file>../tests/PdfReaderExtended2Test.php</file>
-            <file>../tests/PdfReaderXRechnungSimpleTest.php</file>
-            <file>../tests/PdfReaderInvalidTest.php</file>
-            <file>../tests/PdfReaderMultipleAttachmentsTest.php</file>
+            <file>../tests/testcases/PdfReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/testcases/PdfReaderEn16931SimpleTest.php</file>
+            <file>../tests/testcases/PdfReaderExtendedTest.php</file>
+            <file>../tests/testcases/PdfReaderExtended2Test.php</file>
+            <file>../tests/testcases/PdfReaderXRechnungSimpleTest.php</file>
+            <file>../tests/testcases/PdfReaderInvalidTest.php</file>
+            <file>../tests/testcases/PdfReaderMultipleAttachmentsTest.php</file>
         </testsuite>
         <testsuite name="PDFBuilder">
-            <file>../tests/PdfBuilderEn16931Test.php</file>
+            <file>../tests/testcases/PdfBuilderEn16931Test.php</file>
         </testsuite>
         <testsuite name="Validator">
-            <file>../tests/ValidatorValidTest.php</file>
-            <file>../tests/ValidatorInvalidTest.php</file>
+            <file>../tests/testcases/ValidatorValidTest.php</file>
+            <file>../tests/testcases/ValidatorInvalidTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
