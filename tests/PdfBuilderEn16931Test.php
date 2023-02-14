@@ -10,7 +10,7 @@ use \horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use \horstoeko\zugferd\ZugferdDocumentPdfReader;
 use \Smalot\PdfParser\Parser as PdfParser;
 
-class PdfBuilderEn16931Test extends BuilderBaseTest
+class PdfBuilderEn16931Test extends BuilderTestCase
 {
     /**
      * Source pdf filename

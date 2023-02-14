@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php">
     <testsuites>
-        <testsuite name="default">
-            <directory>../tests</directory>
+        <testsuite name="General">
+            <file>../tests/SettingsTest.php</file>
+            <file>../tests/PackageVersionTest.php</file>
+        </testsuite>
+        <testsuite name="ObjectHelper">
+            <file>../tests/ObjectHelperEn16931Test.php</file>
+            <file>../tests/ObjectHelperExtendedTest.php</file>
+        </testsuite>
+        <testsuite name="Base">
+            <file>../tests/DocumentTest.php</file>
+        </testsuite>
+        <testsuite name="Reader">
+            <file>../tests/ReaderBasicSimpleTest.php</file>
+            <file>../tests/ReaderEn16931SimpleTest.php</file>
+            <file>../tests/ReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/ReaderEn16931Bank1Test.php</file>
+            <file>../tests/ReaderExtendedTest.php</file>
+            <file>../tests/ReaderExtended2Test.php</file>
+            <file>../tests/ReaderXRechnungSimpleTest.php</file>
+            <file>../tests/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+        </testsuite>
+        <testsuite name="Builder">
+            <file>../tests/BuilderEn16931Test.php</file>
+            <file>../tests/BuilderExtendedTest.php</file>
+        </testsuite>
+        <testsuite name="PDFReader">
+            <file>../tests/PdfReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/PdfReaderEn16931SimpleTest.php</file>
+            <file>../tests/PdfReaderExtendedTest.php</file>
+            <file>../tests/PdfReaderExtended2Test.php</file>
+            <file>../tests/PdfReaderXRechnungSimpleTest.php</file>
+            <file>../tests/PdfReaderInvalidTest.php</file>
+            <file>../tests/PdfReaderMultipleAttachmentsTest.php</file>
+        </testsuite>
+        <testsuite name="PDFBuilder">
+            <file>../tests/PdfBuilderEn16931Test.php</file>
+        </testsuite>
+        <testsuite name="Validator">
+            <file>../tests/ValidatorValidTest.php</file>
+            <file>../tests/ValidatorInvalidTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

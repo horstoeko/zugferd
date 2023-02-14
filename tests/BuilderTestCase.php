@@ -4,7 +4,7 @@ namespace horstoeko\zugferd\tests;
 
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
-class BuilderBaseTest extends TestCase
+class BuilderTestCase extends TestCase
 {
     /**
      * @var ZugferdDocumentBuilder

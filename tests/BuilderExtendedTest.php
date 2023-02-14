@@ -2,11 +2,11 @@
 
 namespace horstoeko\zugferd\tests;
 
-use \horstoeko\zugferd\tests\BuilderBaseTest;
+use \horstoeko\zugferd\tests\BuilderTestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
-class BuilderExtendedTest extends BuilderBaseTest
+class BuilderExtendedTest extends BuilderTestCase
 {
     public static function setUpBeforeClass(): void
     {

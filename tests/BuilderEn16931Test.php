@@ -6,7 +6,7 @@ use DateTime;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdDocumentBuilder;
 
-class BuilderEn16931Test extends BuilderBaseTest
+class BuilderEn16931Test extends BuilderTestCase
 {
     public static function setUpBeforeClass(): void
     {
