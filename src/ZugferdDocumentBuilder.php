@@ -2271,7 +2271,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function addDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
-        $cardId = substr($cardId, -4);
+        $cardId = substr($cardId ?? "", -4);
 
         $paymentMeans = $this->objectHelper->getTradeSettlementPaymentMeansType($typecode, $information);
         $financialCard = $this->objectHelper->getTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
