@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing TradeAccountingAccountType
  *
- *
  * XSD Type: TradeAccountingAccountType
  */
 class TradeAccountingAccountType
@@ -29,7 +28,7 @@ class TradeAccountingAccountType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\basicwl\udt\IDType $iD)

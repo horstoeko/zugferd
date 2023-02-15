@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing TradeProductType
  *
- *
  * XSD Type: TradeProductType
  */
 class TradeProductType
@@ -34,7 +33,7 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $globalID
      * @return self
      */
     public function setGlobalID(\horstoeko\zugferd\entities\basic\udt\IDType $globalID)
@@ -56,7 +55,7 @@ class TradeProductType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\qdt;
 /**
  * Class representing PaymentMeansCodeType
  *
- *
  * XSD Type: PaymentMeansCodeType
  */
 class PaymentMeansCodeType
@@ -29,7 +28,7 @@ class PaymentMeansCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

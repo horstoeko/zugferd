@@ -191,8 +191,10 @@ class ReaderEn16931Bank2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
+            }
+        );
     }
 }

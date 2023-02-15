@@ -61,7 +61,7 @@ class ZugferdDocumentPdfBuilder
      *
      * @param ZugferdDocumentBuilder $documentBuiler
      * The instance of the document builder. Needed to get the XML data
-     * @param string $pdfData
+     * @param string                 $pdfData
      * The full filename or a string containing the binary pdf data. This
      * is the original PDF (e.g. created by a ERP system)
      */
@@ -89,7 +89,7 @@ class ZugferdDocumentPdfBuilder
     /**
      * Saves the document generated with generateDocument to a file
      *
-     * @param string $toFilename
+     * @param  string $toFilename
      * The full qualified filename to which the generated PDF (with attachment)
      * is stored
      * @return ZugferdDocumentPdfBuilder
@@ -233,12 +233,12 @@ class ZugferdDocumentPdfBuilder
         $docType = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docType) {
-            case ZugferdInvoiceType::CREDITNOTE:
-                $docTypeName = 'Credit Note';
-                break;
-            default:
-                $docTypeName = 'Invoice';
-                break;
+        case ZugferdInvoiceType::CREDITNOTE:
+            $docTypeName = 'Credit Note';
+            break;
+        default:
+            $docTypeName = 'Invoice';
+            break;
         }
 
         $base_info = array(

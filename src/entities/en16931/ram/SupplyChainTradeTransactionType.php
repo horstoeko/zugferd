@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing SupplyChainTradeTransactionType
  *
- *
  * XSD Type: SupplyChainTradeTransactionType
  */
 class SupplyChainTradeTransactionType
@@ -37,7 +36,7 @@ class SupplyChainTradeTransactionType
      * Adds as includedSupplyChainTradeLineItem
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
+     * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem
      */
     public function addToIncludedSupplyChainTradeLineItem(\horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType $includedSupplyChainTradeLineItem)
     {
@@ -48,7 +47,7 @@ class SupplyChainTradeTransactionType
     /**
      * isset includedSupplyChainTradeLineItem
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIncludedSupplyChainTradeLineItem($index)
@@ -59,7 +58,7 @@ class SupplyChainTradeTransactionType
     /**
      * unset includedSupplyChainTradeLineItem
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIncludedSupplyChainTradeLineItem($index)
@@ -80,7 +79,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new includedSupplyChainTradeLineItem
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType[] $includedSupplyChainTradeLineItem
+     * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainTradeLineItemType[] $includedSupplyChainTradeLineItem
      * @return self
      */
     public function setIncludedSupplyChainTradeLineItem(array $includedSupplyChainTradeLineItem)
@@ -102,7 +101,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeAgreement
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @param  \horstoeko\zugferd\entities\en16931\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
      * @return self
      */
     public function setApplicableHeaderTradeAgreement(\horstoeko\zugferd\entities\en16931\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement)
@@ -124,7 +123,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeDelivery
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @param  \horstoeko\zugferd\entities\en16931\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
      * @return self
      */
     public function setApplicableHeaderTradeDelivery(\horstoeko\zugferd\entities\en16931\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery)
@@ -146,7 +145,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeSettlement
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @param  \horstoeko\zugferd\entities\en16931\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(\horstoeko\zugferd\entities\en16931\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement)

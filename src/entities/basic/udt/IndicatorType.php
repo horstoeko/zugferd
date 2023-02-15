@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\udt;
 /**
  * Class representing IndicatorType
  *
- *
  * XSD Type: IndicatorType
  */
 class IndicatorType
@@ -29,7 +28,7 @@ class IndicatorType
     /**
      * Sets a new indicator
      *
-     * @param bool $indicator
+     * @param  bool $indicator
      * @return self
      */
     public function setIndicator($indicator)

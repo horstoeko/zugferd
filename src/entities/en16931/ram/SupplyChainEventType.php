@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing SupplyChainEventType
  *
- *
  * XSD Type: SupplyChainEventType
  */
 class SupplyChainEventType
@@ -29,7 +28,7 @@ class SupplyChainEventType
     /**
      * Sets a new occurrenceDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType $occurrenceDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $occurrenceDateTime
      * @return self
      */
     public function setOccurrenceDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $occurrenceDateTime)

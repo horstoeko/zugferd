@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeSettlementLineMonetarySummationType
  *
- *
  * XSD Type: TradeSettlementLineMonetarySummationType
  */
 class TradeSettlementLineMonetarySummationType
@@ -54,7 +53,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new lineTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
      * @return self
      */
     public function setLineTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount)
@@ -76,7 +75,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new chargeTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
      * @return self
      */
     public function setChargeTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount)
@@ -98,7 +97,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new allowanceTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
      * @return self
      */
     public function setAllowanceTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount)
@@ -120,7 +119,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount)
@@ -142,7 +141,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new grandTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount)
@@ -164,7 +163,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new totalAllowanceChargeAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount
      * @return self
      */
     public function setTotalAllowanceChargeAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount)

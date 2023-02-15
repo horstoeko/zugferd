@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing LineTradeSettlementType
  *
- *
  * XSD Type: LineTradeSettlementType
  */
 class LineTradeSettlementType
@@ -56,7 +55,7 @@ class LineTradeSettlementType
     /**
      * Sets a new applicableTradeTax
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeTaxType $applicableTradeTax
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeTaxType $applicableTradeTax
      * @return self
      */
     public function setApplicableTradeTax(\horstoeko\zugferd\entities\en16931\ram\TradeTaxType $applicableTradeTax)
@@ -78,7 +77,7 @@ class LineTradeSettlementType
     /**
      * Sets a new billingSpecifiedPeriod
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param  \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
     public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
@@ -91,7 +90,7 @@ class LineTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
     public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
@@ -102,7 +101,7 @@ class LineTradeSettlementType
     /**
      * isset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedTradeAllowanceCharge($index)
@@ -113,7 +112,7 @@ class LineTradeSettlementType
     /**
      * unset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedTradeAllowanceCharge($index)
@@ -134,7 +133,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -156,7 +155,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementLineMonetarySummation
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)
@@ -178,7 +177,7 @@ class LineTradeSettlementType
     /**
      * Sets a new additionalReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $additionalReferencedDocument)
@@ -200,7 +199,7 @@ class LineTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\en16931\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeCountryType
  *
- *
  * XSD Type: TradeCountryType
  */
 class TradeCountryType
@@ -29,7 +28,7 @@ class TradeCountryType
     /**
      * Sets a new iD
      *
-     * @param string $iD
+     * @param  string $iD
      * @return self
      */
     public function setID($iD)

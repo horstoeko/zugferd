@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing UniversalCommunicationType
  *
- *
  * XSD Type: UniversalCommunicationType
  */
 class UniversalCommunicationType
@@ -29,7 +28,7 @@ class UniversalCommunicationType
     /**
      * Sets a new uRIID
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(\horstoeko\zugferd\entities\basic\udt\IDType $uRIID)

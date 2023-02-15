@@ -39,14 +39,14 @@ class ZugferdDocumentJsonExporter
     /**
      * @internal
      * Serializer builder
-     * @var SerializerBuilder
+     * @var      SerializerBuilder
      */
     private $serializerBuilder;
 
     /**
      * @internal
      * Serializer
-     * @var SerializerInterface
+     * @var      SerializerInterface
      */
     private $serializer;
 
@@ -118,12 +118,14 @@ class ZugferdDocumentJsonExporter
         $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/rsm', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\rsm');
         $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/udt', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\udt');
         $this->serializerBuilder->addDefaultListeners();
-        $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
-            $serializerBuilder->addDefaultHandlers();
-            $handler->registerSubscribingHandler(new BaseTypesHandler());
-            $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
-            $handler->registerSubscribingHandler(new ZugferdTypesHandler());
-        });
+        $this->serializerBuilder->configureHandlers(
+            function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
+                $serializerBuilder->addDefaultHandlers();
+                $handler->registerSubscribingHandler(new BaseTypesHandler());
+                $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
+                $handler->registerSubscribingHandler(new ZugferdTypesHandler());
+            }
+        );
 
         $this->serializer = $this->serializerBuilder->build();
 

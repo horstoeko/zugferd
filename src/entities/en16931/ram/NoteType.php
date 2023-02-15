@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing NoteType
  *
- *
  * XSD Type: NoteType
  */
 class NoteType
@@ -34,7 +33,7 @@ class NoteType
     /**
      * Sets a new content
      *
-     * @param string $content
+     * @param  string $content
      * @return self
      */
     public function setContent($content)
@@ -56,7 +55,7 @@ class NoteType
     /**
      * Sets a new subjectCode
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode
+     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode
      * @return self
      */
     public function setSubjectCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode)

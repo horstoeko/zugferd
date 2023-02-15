@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing UniversalCommunicationType
  *
- *
  * XSD Type: UniversalCommunicationType
  */
 class UniversalCommunicationType
@@ -34,7 +33,7 @@ class UniversalCommunicationType
     /**
      * Sets a new uRIID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(\horstoeko\zugferd\entities\en16931\udt\IDType $uRIID)
@@ -56,7 +55,7 @@ class UniversalCommunicationType
     /**
      * Sets a new completeNumber
      *
-     * @param string $completeNumber
+     * @param  string $completeNumber
      * @return self
      */
     public function setCompleteNumber($completeNumber)

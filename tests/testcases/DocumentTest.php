@@ -86,8 +86,8 @@ class DocumentTest extends TestCase
     /**
      * Access to private properties
      *
-     * @param string $className
-     * @param string $propertyName
+     * @param  string $className
+     * @param  string $propertyName
      * @return ReflectionProperty
      */
     public function getPrivateProperty($className, $propertyName): ReflectionProperty

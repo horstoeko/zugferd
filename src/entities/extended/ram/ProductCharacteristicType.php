@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing ProductCharacteristicType
  *
- *
  * XSD Type: ProductCharacteristicType
  */
 class ProductCharacteristicType
@@ -44,7 +43,7 @@ class ProductCharacteristicType
     /**
      * Sets a new typeCode
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\CodeType $typeCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $typeCode
      * @return self
      */
     public function setTypeCode(\horstoeko\zugferd\entities\extended\udt\CodeType $typeCode)
@@ -66,7 +65,7 @@ class ProductCharacteristicType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -88,7 +87,7 @@ class ProductCharacteristicType
     /**
      * Sets a new valueMeasure
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure
+     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure
      * @return self
      */
     public function setValueMeasure(\horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure)
@@ -110,7 +109,7 @@ class ProductCharacteristicType
     /**
      * Sets a new value
      *
-     * @param string $value
+     * @param  string $value
      * @return self
      */
     public function setValue($value)

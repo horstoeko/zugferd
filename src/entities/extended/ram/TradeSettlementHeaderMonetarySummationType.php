@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeSettlementHeaderMonetarySummationType
  *
- *
  * XSD Type: TradeSettlementHeaderMonetarySummationType
  */
 class TradeSettlementHeaderMonetarySummationType
@@ -75,7 +74,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new lineTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
      * @return self
      */
     public function setLineTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount)
@@ -97,7 +96,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new chargeTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
      * @return self
      */
     public function setChargeTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount)
@@ -119,7 +118,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new allowanceTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
      * @return self
      */
     public function setAllowanceTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount)
@@ -132,7 +131,7 @@ class TradeSettlementHeaderMonetarySummationType
      * Adds as taxBasisTotalAmount
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $taxBasisTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $taxBasisTotalAmount
      */
     public function addToTaxBasisTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $taxBasisTotalAmount)
     {
@@ -143,7 +142,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset taxBasisTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTaxBasisTotalAmount($index)
@@ -154,7 +153,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset taxBasisTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTaxBasisTotalAmount($index)
@@ -175,7 +174,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxBasisTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType[] $taxBasisTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType[] $taxBasisTotalAmount
      * @return self
      */
     public function setTaxBasisTotalAmount(array $taxBasisTotalAmount)
@@ -188,7 +187,7 @@ class TradeSettlementHeaderMonetarySummationType
      * Adds as taxTotalAmount
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
      */
     public function addToTaxTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount)
     {
@@ -199,7 +198,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset taxTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTaxTotalAmount($index)
@@ -210,7 +209,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset taxTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTaxTotalAmount($index)
@@ -231,7 +230,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType[] $taxTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType[] $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(array $taxTotalAmount)
@@ -253,7 +252,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new roundingAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $roundingAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $roundingAmount
      * @return self
      */
     public function setRoundingAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $roundingAmount)
@@ -266,7 +265,7 @@ class TradeSettlementHeaderMonetarySummationType
      * Adds as grandTotalAmount
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
      */
     public function addToGrandTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount)
     {
@@ -277,7 +276,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * isset grandTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetGrandTotalAmount($index)
@@ -288,7 +287,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * unset grandTotalAmount
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetGrandTotalAmount($index)
@@ -309,7 +308,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new grandTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType[] $grandTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType[] $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(array $grandTotalAmount)
@@ -331,7 +330,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new totalPrepaidAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $totalPrepaidAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $totalPrepaidAmount
      * @return self
      */
     public function setTotalPrepaidAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $totalPrepaidAmount)
@@ -353,7 +352,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new duePayableAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $duePayableAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $duePayableAmount
      * @return self
      */
     public function setDuePayableAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $duePayableAmount)

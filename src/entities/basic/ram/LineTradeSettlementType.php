@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing LineTradeSettlementType
  *
- *
  * XSD Type: LineTradeSettlementType
  */
 class LineTradeSettlementType
@@ -46,7 +45,7 @@ class LineTradeSettlementType
     /**
      * Sets a new applicableTradeTax
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax
      * @return self
      */
     public function setApplicableTradeTax(\horstoeko\zugferd\entities\basic\ram\TradeTaxType $applicableTradeTax)
@@ -68,7 +67,7 @@ class LineTradeSettlementType
     /**
      * Sets a new billingSpecifiedPeriod
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param  \horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
     public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\basic\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
@@ -81,7 +80,7 @@ class LineTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
     public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
@@ -92,7 +91,7 @@ class LineTradeSettlementType
     /**
      * isset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedTradeAllowanceCharge($index)
@@ -103,7 +102,7 @@ class LineTradeSettlementType
     /**
      * unset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedTradeAllowanceCharge($index)
@@ -124,7 +123,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -146,7 +145,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementLineMonetarySummation
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\entities\basic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)

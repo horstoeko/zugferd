@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradeProductType
  *
- *
  * XSD Type: TradeProductType
  */
 class TradeProductType
@@ -68,7 +67,7 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $globalID
      * @return self
      */
     public function setGlobalID(\horstoeko\zugferd\entities\en16931\udt\IDType $globalID)
@@ -90,7 +89,7 @@ class TradeProductType
     /**
      * Sets a new sellerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(\horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID)
@@ -112,7 +111,7 @@ class TradeProductType
     /**
      * Sets a new buyerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(\horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID)
@@ -134,7 +133,7 @@ class TradeProductType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -156,7 +155,7 @@ class TradeProductType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -169,7 +168,7 @@ class TradeProductType
      * Adds as applicableProductCharacteristic
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType $applicableProductCharacteristic
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType $applicableProductCharacteristic
      */
     public function addToApplicableProductCharacteristic(\horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType $applicableProductCharacteristic)
     {
@@ -180,7 +179,7 @@ class TradeProductType
     /**
      * isset applicableProductCharacteristic
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetApplicableProductCharacteristic($index)
@@ -191,7 +190,7 @@ class TradeProductType
     /**
      * unset applicableProductCharacteristic
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetApplicableProductCharacteristic($index)
@@ -212,7 +211,7 @@ class TradeProductType
     /**
      * Sets a new applicableProductCharacteristic
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType[] $applicableProductCharacteristic
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      * @return self
      */
     public function setApplicableProductCharacteristic(array $applicableProductCharacteristic)
@@ -225,7 +224,7 @@ class TradeProductType
      * Adds as designatedProductClassification
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType $designatedProductClassification
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType $designatedProductClassification
      */
     public function addToDesignatedProductClassification(\horstoeko\zugferd\entities\en16931\ram\ProductClassificationType $designatedProductClassification)
     {
@@ -236,7 +235,7 @@ class TradeProductType
     /**
      * isset designatedProductClassification
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDesignatedProductClassification($index)
@@ -247,7 +246,7 @@ class TradeProductType
     /**
      * unset designatedProductClassification
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDesignatedProductClassification($index)
@@ -268,7 +267,7 @@ class TradeProductType
     /**
      * Sets a new designatedProductClassification
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType[] $designatedProductClassification
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType[] $designatedProductClassification
      * @return self
      */
     public function setDesignatedProductClassification(array $designatedProductClassification)
@@ -290,7 +289,7 @@ class TradeProductType
     /**
      * Sets a new originTradeCountry
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry
      * @return self
      */
     public function setOriginTradeCountry(\horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing TradePartyType
  *
- *
  * XSD Type: TradePartyType
  */
 class TradePartyType
@@ -56,7 +55,7 @@ class TradePartyType
      * Adds as iD
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $iD
      */
     public function addToID(\horstoeko\zugferd\entities\basic\udt\IDType $iD)
     {
@@ -67,7 +66,7 @@ class TradePartyType
     /**
      * isset iD
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetID($index)
@@ -78,7 +77,7 @@ class TradePartyType
     /**
      * unset iD
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetID($index)
@@ -99,7 +98,7 @@ class TradePartyType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType[] $iD
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType[] $iD
      * @return self
      */
     public function setID(array $iD)
@@ -112,7 +111,7 @@ class TradePartyType
      * Adds as globalID
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $globalID
      */
     public function addToGlobalID(\horstoeko\zugferd\entities\basic\udt\IDType $globalID)
     {
@@ -123,7 +122,7 @@ class TradePartyType
     /**
      * isset globalID
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetGlobalID($index)
@@ -134,7 +133,7 @@ class TradePartyType
     /**
      * unset globalID
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetGlobalID($index)
@@ -155,7 +154,7 @@ class TradePartyType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType[] $globalID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType[] $globalID
      * @return self
      */
     public function setGlobalID(array $globalID)
@@ -177,7 +176,7 @@ class TradePartyType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -199,7 +198,7 @@ class TradePartyType
     /**
      * Sets a new specifiedLegalOrganization
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param  \horstoeko\zugferd\entities\basic\ram\LegalOrganizationType $specifiedLegalOrganization
      * @return self
      */
     public function setSpecifiedLegalOrganization(\horstoeko\zugferd\entities\basic\ram\LegalOrganizationType $specifiedLegalOrganization)
@@ -221,7 +220,7 @@ class TradePartyType
     /**
      * Sets a new postalTradeAddress
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradeAddressType $postalTradeAddress
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(\horstoeko\zugferd\entities\basic\ram\TradeAddressType $postalTradeAddress)
@@ -243,7 +242,7 @@ class TradePartyType
     /**
      * Sets a new uRIUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\basic\ram\UniversalCommunicationType $uRIUniversalCommunication
      * @return self
      */
     public function setURIUniversalCommunication(\horstoeko\zugferd\entities\basic\ram\UniversalCommunicationType $uRIUniversalCommunication)
@@ -256,7 +255,7 @@ class TradePartyType
      * Adds as specifiedTaxRegistration
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\basic\ram\TaxRegistrationType $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\basic\ram\TaxRegistrationType $specifiedTaxRegistration
      */
     public function addToSpecifiedTaxRegistration(\horstoeko\zugferd\entities\basic\ram\TaxRegistrationType $specifiedTaxRegistration)
     {
@@ -267,7 +266,7 @@ class TradePartyType
     /**
      * isset specifiedTaxRegistration
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedTaxRegistration($index)
@@ -278,7 +277,7 @@ class TradePartyType
     /**
      * unset specifiedTaxRegistration
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedTaxRegistration($index)
@@ -299,7 +298,7 @@ class TradePartyType
     /**
      * Sets a new specifiedTaxRegistration
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TaxRegistrationType[] $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\basic\ram\TaxRegistrationType[] $specifiedTaxRegistration
      * @return self
      */
     public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration)

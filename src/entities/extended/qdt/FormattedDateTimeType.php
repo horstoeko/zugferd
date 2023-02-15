@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\qdt;
 /**
  * Class representing FormattedDateTimeType
  *
- *
  * XSD Type: FormattedDateTimeType
  */
 class FormattedDateTimeType
@@ -29,7 +28,7 @@ class FormattedDateTimeType
     /**
      * Sets a new dateTimeString
      *
-     * @param \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
+     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
     public function setDateTimeString(\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing DocumentLineDocumentType
  *
- *
  * XSD Type: DocumentLineDocumentType
  */
 class DocumentLineDocumentType
@@ -34,7 +33,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new lineID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
      * @return self
      */
     public function setLineID(\horstoeko\zugferd\entities\en16931\udt\IDType $lineID)
@@ -56,7 +55,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
+     * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
      * @return self
      */
     public function setIncludedNote(\horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote)

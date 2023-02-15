@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing HeaderTradeDeliveryType
  *
- *
  * XSD Type: HeaderTradeDeliveryType
  */
 class HeaderTradeDeliveryType
@@ -44,7 +43,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(\horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty)
@@ -66,7 +65,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -88,7 +87,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
@@ -110,7 +109,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)

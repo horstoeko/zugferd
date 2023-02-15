@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing ProductClassificationType
  *
- *
  * XSD Type: ProductClassificationType
  */
 class ProductClassificationType
@@ -29,7 +28,7 @@ class ProductClassificationType
     /**
      * Sets a new classCode
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\CodeType $classCode
+     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $classCode
      * @return self
      */
     public function setClassCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $classCode)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing TaxRegistrationType
  *
- *
  * XSD Type: TaxRegistrationType
  */
 class TaxRegistrationType
@@ -29,7 +28,7 @@ class TaxRegistrationType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\basic\udt\IDType $iD)

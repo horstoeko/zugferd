@@ -148,10 +148,10 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize Anount type
      * The amounts will be serialized with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed $data
-     * @param array $type
-     * @param Context $context
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @param  array                   $type
+     * @param  Context                 $context
      * @return DOMText|false
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
@@ -178,10 +178,10 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize quantity type
      * The quantity will be serialized with a precission of 4 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed $data
-     * @param array $type
-     * @param Context $context
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @param  array                   $type
+     * @param  Context                 $context
      * @return DOMText|false
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
@@ -208,10 +208,10 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize a percantage value
      * The valze will be serialized with a precission of 2 digits
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed $data
-     * @param array $type
-     * @param Context $context
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @param  array                   $type
+     * @param  Context                 $context
      * @return DOMText|false
      */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
@@ -233,10 +233,10 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param XmlSerializationVisitor $visitor
-     * @param mixed $data
-     * @param array $type
-     * @param Context $context
+     * @param  XmlSerializationVisitor $visitor
+     * @param  mixed                   $data
+     * @param  array                   $type
+     * @param  Context                 $context
      * @return DOMElement|false
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)

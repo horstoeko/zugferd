@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing LegalOrganizationType
  *
- *
  * XSD Type: LegalOrganizationType
  */
 class LegalOrganizationType
@@ -34,7 +33,7 @@ class LegalOrganizationType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\basicwl\udt\IDType $iD)
@@ -56,7 +55,7 @@ class LegalOrganizationType
     /**
      * Sets a new tradingBusinessName
      *
-     * @param string $tradingBusinessName
+     * @param  string $tradingBusinessName
      * @return self
      */
     public function setTradingBusinessName($tradingBusinessName)

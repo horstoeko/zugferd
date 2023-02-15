@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\rsm;
 /**
  * Class representing CrossIndustryInvoiceType
  *
- *
  * XSD Type: CrossIndustryInvoiceType
  */
 class CrossIndustryInvoiceType
@@ -39,7 +38,7 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocumentContext
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @param  \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType $exchangedDocumentContext
      * @return self
      */
     public function setExchangedDocumentContext(\horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType $exchangedDocumentContext)
@@ -61,7 +60,7 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new exchangedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType $exchangedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType $exchangedDocument
      * @return self
      */
     public function setExchangedDocument(\horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType $exchangedDocument)
@@ -83,7 +82,7 @@ class CrossIndustryInvoiceType
     /**
      * Sets a new supplyChainTradeTransaction
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @param  \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
      * @return self
      */
     public function setSupplyChainTradeTransaction(\horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction)

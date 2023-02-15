@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing ReferencedDocumentType
  *
- *
  * XSD Type: ReferencedDocumentType
  */
 class ReferencedDocumentType
@@ -64,7 +63,7 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(\horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID)
@@ -86,7 +85,7 @@ class ReferencedDocumentType
     /**
      * Sets a new uRIID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(\horstoeko\zugferd\entities\en16931\udt\IDType $uRIID)
@@ -108,7 +107,7 @@ class ReferencedDocumentType
     /**
      * Sets a new lineID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
      * @return self
      */
     public function setLineID(\horstoeko\zugferd\entities\en16931\udt\IDType $lineID)
@@ -130,7 +129,7 @@ class ReferencedDocumentType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -152,7 +151,7 @@ class ReferencedDocumentType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -174,7 +173,7 @@ class ReferencedDocumentType
     /**
      * Sets a new attachmentBinaryObject
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject
+     * @param  \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject
      * @return self
      */
     public function setAttachmentBinaryObject(\horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject)
@@ -196,7 +195,7 @@ class ReferencedDocumentType
     /**
      * Sets a new referenceTypeCode
      *
-     * @param string $referenceTypeCode
+     * @param  string $referenceTypeCode
      * @return self
      */
     public function setReferenceTypeCode($referenceTypeCode)
@@ -218,7 +217,7 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime)

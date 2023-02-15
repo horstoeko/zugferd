@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradeAddressType
  *
- *
  * XSD Type: TradeAddressType
  */
 class TradeAddressType
@@ -59,7 +58,7 @@ class TradeAddressType
     /**
      * Sets a new postcodeCode
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode
+     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode
      * @return self
      */
     public function setPostcodeCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode)
@@ -81,7 +80,7 @@ class TradeAddressType
     /**
      * Sets a new lineOne
      *
-     * @param string $lineOne
+     * @param  string $lineOne
      * @return self
      */
     public function setLineOne($lineOne)
@@ -103,7 +102,7 @@ class TradeAddressType
     /**
      * Sets a new lineTwo
      *
-     * @param string $lineTwo
+     * @param  string $lineTwo
      * @return self
      */
     public function setLineTwo($lineTwo)
@@ -125,7 +124,7 @@ class TradeAddressType
     /**
      * Sets a new lineThree
      *
-     * @param string $lineThree
+     * @param  string $lineThree
      * @return self
      */
     public function setLineThree($lineThree)
@@ -147,7 +146,7 @@ class TradeAddressType
     /**
      * Sets a new cityName
      *
-     * @param string $cityName
+     * @param  string $cityName
      * @return self
      */
     public function setCityName($cityName)
@@ -169,7 +168,7 @@ class TradeAddressType
     /**
      * Sets a new countryID
      *
-     * @param string $countryID
+     * @param  string $countryID
      * @return self
      */
     public function setCountryID($countryID)
@@ -191,7 +190,7 @@ class TradeAddressType
     /**
      * Sets a new countrySubDivisionName
      *
-     * @param string $countrySubDivisionName
+     * @param  string $countrySubDivisionName
      * @return self
      */
     public function setCountrySubDivisionName($countrySubDivisionName)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradePaymentTermsType
  *
- *
  * XSD Type: TradePaymentTermsType
  */
 class TradePaymentTermsType
@@ -39,7 +38,7 @@ class TradePaymentTermsType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -61,7 +60,7 @@ class TradePaymentTermsType
     /**
      * Sets a new dueDateDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime
      * @return self
      */
     public function setDueDateDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime)
@@ -83,7 +82,7 @@ class TradePaymentTermsType
     /**
      * Sets a new directDebitMandateID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID
      * @return self
      */
     public function setDirectDebitMandateID(\horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID)

@@ -184,8 +184,8 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put files.
      *
-     * @throws \Exception
-     * @return void
+     * @throws                     \Exception
+     * @return                     void
      * @codingStandardsIgnoreStart
      */
     protected function _putfiles(): void
@@ -437,14 +437,14 @@ class ZugferdPdfWriter extends PdfFpdi
         }
         switch ($date_type) {
             case 'modified':
-                if (isset($this->metaDataInfos['modifiedDate'])) {
-                    $metadata_string .= $this->metaDataInfos['modifiedDate'];
+            if (isset($this->metaDataInfos['modifiedDate'])) {
+                $metadata_string .= $this->metaDataInfos['modifiedDate'];
                 }
                 break;
             case 'created':
             default:
-                if (isset($this->metaDataInfos['createdDate'])) {
-                    $metadata_string .= $this->metaDataInfos['createdDate'];
+            if (isset($this->metaDataInfos['createdDate'])) {
+                $metadata_string .= $this->metaDataInfos['createdDate'];
                 }
                 break;
         }

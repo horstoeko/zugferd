@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\udt;
 /**
  * Class representing AmountType
  *
- *
  * XSD Type: AmountType
  */
 class AmountType
@@ -34,7 +33,7 @@ class AmountType
     /**
      * Gets or sets the inner value
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value()
@@ -68,7 +67,7 @@ class AmountType
     /**
      * Sets a new currencyID
      *
-     * @param string $currencyID
+     * @param  string $currencyID
      * @return self
      */
     public function setCurrencyID($currencyID)

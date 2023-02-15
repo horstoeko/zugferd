@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing DebtorFinancialAccountType
  *
- *
  * XSD Type: DebtorFinancialAccountType
  */
 class DebtorFinancialAccountType
@@ -29,7 +28,7 @@ class DebtorFinancialAccountType
     /**
      * Sets a new iBANID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $iBANID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $iBANID
      * @return self
      */
     public function setIBANID(\horstoeko\zugferd\entities\en16931\udt\IDType $iBANID)

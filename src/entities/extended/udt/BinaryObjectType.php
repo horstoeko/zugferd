@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\udt;
 /**
  * Class representing BinaryObjectType
  *
- *
  * XSD Type: BinaryObjectType
  */
 class BinaryObjectType
@@ -39,7 +38,7 @@ class BinaryObjectType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()
@@ -73,7 +72,7 @@ class BinaryObjectType
     /**
      * Sets a new mimeCode
      *
-     * @param string $mimeCode
+     * @param  string $mimeCode
      * @return self
      */
     public function setMimeCode($mimeCode)
@@ -95,7 +94,7 @@ class BinaryObjectType
     /**
      * Sets a new filename
      *
-     * @param string $filename
+     * @param  string $filename
      * @return self
      */
     public function setFilename($filename)

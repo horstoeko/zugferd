@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\udt;
 /**
  * Class representing IDType
  *
- *
  * XSD Type: IDType
  */
 class IDType
@@ -34,7 +33,7 @@ class IDType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()
@@ -68,7 +67,7 @@ class IDType
     /**
      * Sets a new schemeID
      *
-     * @param string $schemeID
+     * @param  string $schemeID
      * @return self
      */
     public function setSchemeID($schemeID)

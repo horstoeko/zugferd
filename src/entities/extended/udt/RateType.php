@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\udt;
 /**
  * Class representing RateType
  *
- *
  * XSD Type: RateType
  */
 class RateType
@@ -29,7 +28,7 @@ class RateType
     /**
      * Gets or sets the inner value
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value()

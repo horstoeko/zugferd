@@ -91,13 +91,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Create a new invoice
      *
-     * @param string $invoiceNo
+     * @param  string      $invoiceNo
      * The document no issued by the seller
-     * @param \DateTime $invoiceDate
+     * @param  \DateTime   $invoiceDate
      * The date when the document was issued by the seller
-     * @param string $currency
+     * @param  string      $currency
      * The code for the invoice currency
-     * @param string|null $invoiceNoReferenceq
+     * @param  string|null $invoiceNoReferenceq
      * Intended use for payment. If null the number of the invoice is used
      * @return ZugferdQuickDescriptor
      */
@@ -111,13 +111,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Create a new credit memo
      *
-     * @param string $creditMemoNo
+     * @param  string    $creditMemoNo
      * The document no issued by the seller
-     * @param \DateTime $invoiceDate
+     * @param  \DateTime $invoiceDate
      * The date when the document was issued by the seller
-     * @param string $currency
+     * @param  string    $currency
      * The code for the invoice currency
-     * @param string $creditMemoNoReference
+     * @param  string    $creditMemoNoReference
      * Intended use for refund. If null the number of the credit memo is used
      * @return ZugferdQuickDescriptor
      */
@@ -131,11 +131,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add a payment term
      *
-     * @param string $description
+     * @param  string        $description
      * A text description of the payment terms that apply to the payment amount due (including a
      * description of possible penalties). Note: This element can contain multiple lines and
      * multiple conditions.
-     * @param DateTime|null $dueDate
+     * @param  DateTime|null $dueDate
      * The date by which payment is due Note: The payment due date reflects the net payment due
      * date. In the case of partial payments, this indicates the first due date of a net payment.
      * The corresponding description of more complex payment terms can be given in BT-20.
@@ -153,9 +153,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * If $isSEPA is true code __31__ wil be useed for payment means code.
      * If $isSEPA is false code __59__ wil be useed for payment means code.
      *
-     * @param boolean $isSEPA
+     * @param  boolean $isSEPA
      * Is it a SEPA transaction or not
-     * @param string $buyerIban
+     * @param  string  $buyerIban
      * Direct debit: ID of the account to be debited
      * @return ZugferdQuickDescriptor
      */
@@ -171,18 +171,18 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * If $isSEPA is true code __58__ wil be useed for payment means code.
      * If $isSEPA is false code __30__ wil be useed for payment means code.
      *
-     * @param boolean $isSEPA
+     * @param  boolean     $isSEPA
      * Is it a SEPA transaction or not
-     * @param string $payeeIban
+     * @param  string      $payeeIban
      * Transfer: A unique identifier for the financial account held with a payment service provider to which
      * the payment should be made, e.g. Use an IBAN (in the case of a SEPA payment) for a national ProprietaryID
      * account number
-     * @param string|null $payeeAccountName
+     * @param  string|null $payeeAccountName
      * The name of the payment account held with a payment service provider to which the payment should be made.
      * Information only required if different from the name of the payee / seller
-     * @param string|null $payeePropId
+     * @param  string|null $payeePropId
      * National account number (not for SEPA)
-     * @param string|null $payeeBic
+     * @param  string|null $payeeBic
      * Seller's banking institution, An identifier for the payment service provider with whom the payment account
      * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
      * @return ZugferdQuickDescriptor
@@ -196,14 +196,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set payment means to "Bank Card"
      *
-     * @param string $cardType
+     * @param  string $cardType
      * The type of the card
-     * @param string $cardId
+     * @param  string $cardId
      * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
      * payment security standards, an invoice should never contain a full payment card master account number.
      * The following specification of the PCI Security Standards Council currently applies: The first 6 and
      * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
+     * @param  string $cardHolderName
      * Name of the payment card holder
      * @return ZugferdQuickDescriptor
      */
@@ -216,14 +216,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set payment means to "Credit Card"
      *
-     * @param string $cardType
+     * @param  string $cardType
      * The type of the card
-     * @param string $cardId
+     * @param  string $cardId
      * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
      * payment security standards, an invoice should never contain a full payment card master account number.
      * The following specification of the PCI Security Standards Council currently applies: The first 6 and
      * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
+     * @param  string $cardHolderName
      * Name of the payment card holder
      * @return ZugferdQuickDescriptor
      */
@@ -236,14 +236,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set payment means to "Debit Card"
      *
-     * @param string $cardType
+     * @param  string $cardType
      * The type of the card
-     * @param string $cardId
+     * @param  string $cardId
      * The primary account number (PAN) to which the card used for payment belongs. In accordance with card
      * payment security standards, an invoice should never contain a full payment card master account number.
      * The following specification of the PCI Security Standards Council currently applies: The first 6 and
      * last 4 digits at most are to be displayed
-     * @param string $cardHolderName
+     * @param  string $cardHolderName
      * Name of the payment card holder
      * @return ZugferdQuickDescriptor
      */
@@ -256,11 +256,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add note to the document
      *
-     * @param string $note
+     * @param  string      $note
      * Free text on the invoice
-     * @param string|null $subjectCode
+     * @param  string|null $subjectCode
      * Code to qualify the free text for the invoice
-     * @param string|null $contentCode
+     * @param  string|null $contentCode
      * Free text at document level
      * @return ZugferdQuickDescriptor
      */
@@ -273,9 +273,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set details of the related buyer order
      *
-     * @param string $orderNo
+     * @param  string   $orderNo
      * An identifier issued by the buyer for a referenced order (order number)
-     * @param DateTime $orderDate
+     * @param  DateTime $orderDate
      * Date of order
      * @return ZugferdQuickDescriptor
      */
@@ -298,23 +298,23 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *    documents
      *
-     * @param string $issuerAssignedID
+     * @param  string        $issuerAssignedID
      * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
      * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param DateTime|null $issueDateTime
+     * @param  DateTime|null $issueDateTime
      * Document date
-     * @param string|null $typeCode
+     * @param  string|null   $typeCode
      * Type of referenced document (See codelist UNTDID 1001)
      *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
      *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
      *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param string|null $name
+     * @param  string|null   $name
      * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param string|null $referenceTypeCode
+     * @param  string|null   $referenceTypeCode
      * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
      * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
      * from UNTDID 1153 in accordance with the code list entries.
-     * @param string|null $filename
+     * @param  string|null   $filename
      * Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdQuickDescriptor
      */
@@ -330,9 +330,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param string $deliveryNoteNo
+     * @param  string   $deliveryNoteNo
      * Delivery receipt number
-     * @param DateTime $deliveryNoteDate
+     * @param  DateTime $deliveryNoteDate
      * Delivery receipt date
      * @return ZugferdQuickDescriptor
      */
@@ -350,9 +350,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - reference is made to previous partial invoices from a final invoice
      *  - Reference is made to previous invoices for advance payments from a final invoice
      *
-     * @param string $id
+     * @param  string        $id
      * Number of the previous invoice
-     * @param DateTime|null $issueDateTime
+     * @param  DateTime|null $issueDateTime
      * Date of the previous invoice
      * @return ZugferdQuickDescriptor
      */
@@ -365,9 +365,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set Details of a project reference
      *
-     * @param string $id
+     * @param  string $id
      * Project Data
-     * @param string $name
+     * @param  string $name
      * Project Name
      * @return ZugferdQuickDescriptor
      */
@@ -380,29 +380,29 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Detailed information about the buyer (service recipient)
      *
-     * @param string $name
+     * @param  string      $name
      * The full name of the buyer
-     * @param string $postcode
+     * @param  string      $postcode
      * Identifier for a group of properties, such as a zip code
-     * @param string $city
+     * @param  string      $city
      * Usual name of the city or municipality in which the buyers address is located
-     * @param string $street
+     * @param  string      $street
      * The main line in the buyers address. This is usually the street name and house number or
      * the post office box
-     * @param string $country
+     * @param  string      $country
      * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
      * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
      * representation of names of countries and their subdivisions”
-     * @param string $buyerReference
+     * @param  string      $buyerReference
      * An identifier assigned by the buyer and used for internal routing
-     * @param string $id
+     * @param  string      $id
      * An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be
      * assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given,
      * it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
-     * @param string|null $globalID
+     * @param  string|null $globalID
      * The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a
      * global registration organization.
-     * @param string|null $globalIDscheme
+     * @param  string|null $globalIDscheme
      * If the identifier is used for the identification scheme, it must be selected from the entries in
      * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdQuickDescriptor
@@ -421,15 +421,15 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set contact of the buyer party
      *
-     * @param string $name
+     * @param  string      $name
      * Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $orgunit
+     * @param  string|null $orgunit
      * Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $emailAddress
+     * @param  string|null $emailAddress
      * Detailed information on the buyer's phone number
-     * @param string|null $phoneno
+     * @param  string|null $phoneno
      * Detailed information on the buyer's phone number
-     * @param string|null $faxno
+     * @param  string|null $faxno
      * Detailed information on the buyer's fax number
      * @return ZugferdQuickDescriptor
      */
@@ -449,9 +449,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * buyer. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param string $no
+     * @param  string $no
      * Tax number of the buyers
-     * @param string $schemeID
+     * @param  string $schemeID
      * Tax number of the buyers or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdQuickDescriptor
      */
@@ -464,29 +464,29 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Detailed information about the seller (=service provider)
      *
-     * @param string $name
+     * @param  string      $name
      * The full formal name under which the seller is registered in the
      * National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
-     * @param string $postcode
+     * @param  string      $postcode
      * Identifier for a group of properties, such as a zip code
-     * @param string $city
+     * @param  string      $city
      * Usual name of the city or municipality in which the seller's address is located
-     * @param string $street
+     * @param  string      $street
      * The main line in the sellers address. This is usually the street name and house number or
      * the post office box
-     * @param string $country
+     * @param  string      $country
      * Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax
      * is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the
      * representation of names of countries and their subdivisions”
-     * @param string|null $id
+     * @param  string|null $id
      * An identifier of the seller. In many systems, seller identification
      * is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
      * by using different identification schemes. If no scheme is given, it should be known to the buyer
      * and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
-     * @param string|null $globalID
+     * @param  string|null $globalID
      * The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a
      * global registration organization.
-     * @param string|null $globalIDscheme
+     * @param  string|null $globalIDscheme
      * If the identifier is used for the identification scheme, it must be selected from the entries in
      * the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdQuickDescriptor
@@ -502,15 +502,15 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set contact of the seller party
      *
-     * @param string $name
+     * @param  string      $name
      * Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $orgunit
+     * @param  string|null $orgunit
      * Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $emailAddress
+     * @param  string|null $emailAddress
      * Detailed information on the seller's phone number
-     * @param string|null $phoneno
+     * @param  string|null $phoneno
      * Detailed information on the seller's phone number
-     * @param string|null $faxno
+     * @param  string|null $faxno
      * Detailed information on the seller's fax number
      * @return ZugferdQuickDescriptor
      */
@@ -530,9 +530,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param string $no
+     * @param  string $no
      * Tax number of the seller
-     * @param string $schemeID
+     * @param  string $schemeID
      * Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdQuickDescriptor
      */
@@ -545,9 +545,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add a new text position
      *
-     * @param string $lineId
+     * @param  string $lineId
      * A unique identifier for the relevant item within the invoice (item number)
-     * @param string $comment
+     * @param  string $comment
      * A free text that contains unstructured information that is relevant to the invoice item
      * @return ZugferdQuickDescriptor
      */
@@ -561,15 +561,15 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Adds a new position (line) to document
      *
-     * @param string $lineId
+     * @param  string $lineId
      * A unique identifier for the relevant item within the invoice (item number)
-     * @param string $productName
+     * @param  string $productName
      * A name of the item (item name)
-     * @param float $unitPrice
+     * @param  float  $unitPrice
      * Net price of the item
-     * @param float $quantity
+     * @param  float  $quantity
      * The quantity of individual items (goods or services) billed in the relevant line
-     * @param string $unitCode
+     * @param  string $unitCode
      * The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
      * lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
      * UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
@@ -578,12 +578,12 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * lists in their software. Sellers only need to support the entities necessary for their goods and services;
      * Buyers only need to verify that the units used in the invoice match those in other documents (such as in
      * Contracts, catalogs, orders and shipping notifications) match the units used.
-     * @param float $allowanceChargeAmount
+     * @param  float  $allowanceChargeAmount
      * The surcharge/discount amount excluding sales tax. If negative then its an allowance, if positive then
      * it's a charge
-     * @param string $allowanceChargeReason
+     * @param  string $allowanceChargeReason
      * The reason given in text form for the invoice item discount/surcharge
-     * @param string $taxCategoryCode
+     * @param  string $taxCategoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -607,11 +607,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param string $taxTypeCode
+     * @param  string $taxTypeCode
      * In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
      * specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
      * the tax type must then be taken from the code list UNTDID 5153.
-     * @param float $taxPercent
+     * @param  float  $taxPercent
      * The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
      * tax category and the category-specific sales tax rate  must correspond to one another. The value to be
      * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
@@ -653,7 +653,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add detailed information on the free text on the position
      *
-     * @param string $content
+     * @param  string $content
      * A free text that contains unstructured information that is relevant to the invoice item
      * @return ZugferdQuickDescriptor
      */
@@ -671,16 +671,16 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * A unique identifier for the relevant item within the invoice (item number)
      * @param string $productName
      * A name of the item (item name)
-     * @param float $unitPrice
+     * @param float  $unitPrice
      * Net price of the item
-     * @param float $chargeAmount
+     * @param float  $chargeAmount
      * The surcharge amount excluding sales tax
      * @param string $chargeReason
      * The reason given in text form for the invoice item discount/surcharge
      *
-     * @param float $quantity
+     * @param  float  $quantity
      * The quantity of individual items (goods or services) billed in the relevant line
-     * @param string $unitCode
+     * @param  string $unitCode
      * The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
      * lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
      * UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
@@ -689,7 +689,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * lists in their software. Sellers only need to support the entities necessary for their goods and services;
      * Buyers only need to verify that the units used in the invoice match those in other documents (such as in
      * Contracts, catalogs, orders and shipping notifications) match the units used.
-     * @param string $taxCategoryCode
+     * @param  string $taxCategoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -713,11 +713,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param string $taxTypeCode
+     * @param  string $taxTypeCode
      * In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
      * specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
      * the tax type must then be taken from the code list UNTDID 5153.
-     * @param float $taxPercent
+     * @param  float  $taxPercent
      * The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
      * tax category and the category-specific sales tax rate  must correspond to one another. The value to be
      * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
@@ -732,19 +732,19 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Adds a new position (line) to document with a surcharge amount
      *
-     * @param string $lineId
+     * @param  string $lineId
      * A unique identifier for the relevant item within the invoice (item number)
-     * @param string $productName
+     * @param  string $productName
      * A name of the item (item name)
-     * @param float $unitPrice
+     * @param  float  $unitPrice
      * Net price of the item
-     * @param float $discountAmount
+     * @param  float  $discountAmount
      * The discount amount excluding sales tax
-     * @param string $discountReason
+     * @param  string $discountReason
      * The reason given in text form for the invoice item discount/surcharge
-     * @param float $quantity
+     * @param  float  $quantity
      * The quantity of individual items (goods or services) billed in the relevant line
-     * @param string $unitCode
+     * @param  string $unitCode
      * The unit of measure applicable to the amount billed. Note: The unit of measurement must be taken from the
      * lists from UN / ECE Recommendation No. 20 "Codes for Units of Measure Used in International Trade" and
      * UN / ECE Recommendation No. 21 "Codes for Passengers, Types of Cargo, Packages and Packaging Materials
@@ -753,7 +753,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * lists in their software. Sellers only need to support the entities necessary for their goods and services;
      * Buyers only need to verify that the units used in the invoice match those in other documents (such as in
      * Contracts, catalogs, orders and shipping notifications) match the units used.
-     * @param string $taxCategoryCode
+     * @param  string $taxCategoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -777,11 +777,11 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param string $taxTypeCode
+     * @param  string $taxTypeCode
      * In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
      * specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
      * the tax type must then be taken from the code list UNTDID 5153.
-     * @param float $taxPercent
+     * @param  float  $taxPercent
      * The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
      * tax category and the category-specific sales tax rate  must correspond to one another. The value to be
      * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
@@ -799,13 +799,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param float $amount
+     * @param  float  $amount
      * Amount of the service fee
-     * @param string $description
+     * @param  string $description
      * Identification of the service fee
-     * @param string $taxTypeCode
+     * @param  string $taxTypeCode
      * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param string $taxCategoryCode
+     * @param  string $taxCategoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -829,7 +829,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param float $taxPercent
+     * @param  float  $taxPercent
      * The sales tax rate, expressed as the percentage applicable to the sales tax category in
      * question. Note: The code of the sales tax category and the category-specific sales tax rate
      * must correspond to one another. The value to be given is the percentage. For example, the
@@ -857,12 +857,12 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * Add information about surcharges and charges applicable to the bill as a whole, Deductions,
      * such as for withheld taxes may also be specified in this group
      *
-     * @param float $actualAmount
+     * @param  float  $actualAmount
      * Amount of the surcharge or discount at document level
-     * @param string $reason
-     * @param string $taxCategoryCode
-     * @param string $taxTypeCode
-     * @param float $taxPercent
+     * @param  string $reason
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
      * @return ZugferdQuickDescriptor
      */
     public function doAddTradeAllowanceCharge(float $actualAmount, string $reason, string $taxCategoryCode, string $taxTypeCode, float $taxPercent): ZugferdQuickDescriptor
@@ -893,14 +893,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add a VAT breakdown (at document level)
      *
-     * @param float $basisAmount
+     * @param  float       $basisAmount
      * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param float $percent
+     * @param  float       $percent
      * The sales tax rate, expressed as the percentage applicable to the sales tax category in
      * question. Note: The code of the sales tax category and the category-specific sales tax rate
      * must correspond to one another. The value to be given is the percentage. For example, the
      * value 20 is given for 20% (and not 0.2)
-     * @param string $categoryCode
+     * @param  string      $categoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -924,14 +924,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param string|null $typeCode
+     * @param  string|null $typeCode
      * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param float|null $allowanceChargeBasisAmount
+     * @param  float|null  $allowanceChargeBasisAmount
      * Total amount of surcharges and deductions of the tax rate at document level
-     * @param string|null $exemptionReasonCode
+     * @param  string|null $exemptionReasonCode
      * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
      * and maintained by the Connecting Europe Facility.
-     * @param string|null $exemptionReason
+     * @param  string|null $exemptionReason
      * Reason for tax exemption (free text)
      * @return ZugferdQuickDescriptor
      */
@@ -944,13 +944,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add a VAT breakdown (at document level)
      *
-     * @param float $basisAmount
+     * @param  float       $basisAmount
      * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param float $calculatedAmount
+     * @param  float       $calculatedAmount
      * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
      * the amount to be taxed according to the sales tax category by the sales tax rate applicable
      * for the sales tax category concerned
-     * @param string $categoryCode
+     * @param  string      $categoryCode
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -974,14 +974,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param string|null $typeCode
+     * @param  string|null $typeCode
      * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param float|null $allowanceChargeBasisAmount
+     * @param  float|null  $allowanceChargeBasisAmount
      * Total amount of surcharges and deductions of the tax rate at document level
-     * @param string|null $exemptionReasonCode
+     * @param  string|null $exemptionReasonCode
      * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
      * and maintained by the Connecting Europe Facility.
-     * @param string|null $exemptionReason
+     * @param  string|null $exemptionReason
      * Reason for tax exemption (free text)
      * @return ZugferdQuickDescriptor
      */
@@ -994,7 +994,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Sets the prepaid amount
      *
-     * @param float $totalPrepaidAmount
+     * @param  float $totalPrepaidAmount
      * @return ZugferdQuickDescriptor
      */
     public function doSetPrepaidAmount(float $totalPrepaidAmount = 0.0): ZugferdQuickDescriptor
@@ -1029,12 +1029,12 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * Insert into internal vat table for later using, e.g. when creating
      * the vat breakdown
      *
-     * @param string $taxCategoryCode
-     * @param string $taxTypeCode
-     * @param float $taxPercent
-     * @param float $lineTotalAmount
-     * @param float $chargeAmount
-     * @param float $allowanceAmount
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @param  float  $lineTotalAmount
+     * @param  float  $chargeAmount
+     * @param  float  $allowanceAmount
      * @return void
      */
     protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
@@ -1099,7 +1099,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Summarizes an array element in the internal vat table
      *
-     * @param integer $index
+     * @param  integer $index
      * @return float
      */
     protected function summarizeVatTableElement(int $index): float

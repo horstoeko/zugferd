@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing SupplyChainConsignmentType
  *
- *
  * XSD Type: SupplyChainConsignmentType
  */
 class SupplyChainConsignmentType
@@ -22,7 +21,7 @@ class SupplyChainConsignmentType
      * Adds as specifiedLogisticsTransportMovement
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
      */
     public function addToSpecifiedLogisticsTransportMovement(\horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement)
     {
@@ -33,7 +32,7 @@ class SupplyChainConsignmentType
     /**
      * isset specifiedLogisticsTransportMovement
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedLogisticsTransportMovement($index)
@@ -44,7 +43,7 @@ class SupplyChainConsignmentType
     /**
      * unset specifiedLogisticsTransportMovement
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedLogisticsTransportMovement($index)
@@ -65,7 +64,7 @@ class SupplyChainConsignmentType
     /**
      * Sets a new specifiedLogisticsTransportMovement
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $specifiedLogisticsTransportMovement
+     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $specifiedLogisticsTransportMovement
      * @return self
      */
     public function setSpecifiedLogisticsTransportMovement(array $specifiedLogisticsTransportMovement)

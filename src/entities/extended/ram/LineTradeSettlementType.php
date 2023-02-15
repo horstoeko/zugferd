@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LineTradeSettlementType
  *
- *
  * XSD Type: LineTradeSettlementType
  */
 class LineTradeSettlementType
@@ -56,7 +55,7 @@ class LineTradeSettlementType
      * Adds as applicableTradeTax
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeTaxType $applicableTradeTax
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType $applicableTradeTax
      */
     public function addToApplicableTradeTax(\horstoeko\zugferd\entities\extended\ram\TradeTaxType $applicableTradeTax)
     {
@@ -67,7 +66,7 @@ class LineTradeSettlementType
     /**
      * isset applicableTradeTax
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetApplicableTradeTax($index)
@@ -78,7 +77,7 @@ class LineTradeSettlementType
     /**
      * unset applicableTradeTax
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetApplicableTradeTax($index)
@@ -99,7 +98,7 @@ class LineTradeSettlementType
     /**
      * Sets a new applicableTradeTax
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeTaxType[] $applicableTradeTax
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType[] $applicableTradeTax
      * @return self
      */
     public function setApplicableTradeTax(array $applicableTradeTax)
@@ -121,7 +120,7 @@ class LineTradeSettlementType
     /**
      * Sets a new billingSpecifiedPeriod
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param  \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
     public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
@@ -134,7 +133,7 @@ class LineTradeSettlementType
      * Adds as specifiedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
      */
     public function addToSpecifiedTradeAllowanceCharge(\horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge)
     {
@@ -145,7 +144,7 @@ class LineTradeSettlementType
     /**
      * isset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedTradeAllowanceCharge($index)
@@ -156,7 +155,7 @@ class LineTradeSettlementType
     /**
      * unset specifiedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedTradeAllowanceCharge($index)
@@ -177,7 +176,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
     public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
@@ -199,7 +198,7 @@ class LineTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementLineMonetarySummation
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)
@@ -221,7 +220,7 @@ class LineTradeSettlementType
     /**
      * Sets a new invoiceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument
      * @return self
      */
     public function setInvoiceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument)
@@ -234,7 +233,7 @@ class LineTradeSettlementType
      * Adds as additionalReferencedDocument
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument
      */
     public function addToAdditionalReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument)
     {
@@ -245,7 +244,7 @@ class LineTradeSettlementType
     /**
      * isset additionalReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAdditionalReferencedDocument($index)
@@ -256,7 +255,7 @@ class LineTradeSettlementType
     /**
      * unset additionalReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAdditionalReferencedDocument($index)
@@ -277,7 +276,7 @@ class LineTradeSettlementType
     /**
      * Sets a new additionalReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
@@ -299,7 +298,7 @@ class LineTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)

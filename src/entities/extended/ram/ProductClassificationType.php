@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing ProductClassificationType
  *
- *
  * XSD Type: ProductClassificationType
  */
 class ProductClassificationType
@@ -34,7 +33,7 @@ class ProductClassificationType
     /**
      * Sets a new classCode
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\CodeType $classCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $classCode
      * @return self
      */
     public function setClassCode(\horstoeko\zugferd\entities\extended\udt\CodeType $classCode)
@@ -56,7 +55,7 @@ class ProductClassificationType
     /**
      * Sets a new className
      *
-     * @param string $className
+     * @param  string $className
      * @return self
      */
     public function setClassName($className)

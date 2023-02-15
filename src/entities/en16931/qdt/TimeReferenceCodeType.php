@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\qdt;
 /**
  * Class representing TimeReferenceCodeType
  *
- *
  * XSD Type: TimeReferenceCodeType
  */
 class TimeReferenceCodeType
@@ -29,7 +28,7 @@ class TimeReferenceCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

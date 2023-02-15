@@ -80,8 +80,8 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value
      *
-     * @param string $xpath
-     * @param string $expected
+     * @param  string $xpath
+     * @param  string $expected
      * @return void
      */
     protected function assertXPathValue(string $xpath, string $expected): void
@@ -95,9 +95,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param string $xpath
-     * @param integer $index
-     * @param string $expected
+     * @param  string  $xpath
+     * @param  integer $index
+     * @param  string  $expected
      * @return void
      */
     protected function assertXPathValueWithIndex(string $xpath, int $index, string $expected): void
@@ -111,9 +111,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param string $xpath
-     * @param integer $index
-     * @param string $expected
+     * @param  string  $xpath
+     * @param  integer $index
+     * @param  string  $expected
      * @return void
      */
     protected function assertXPathValueStartsWithIndex(string $xpath, int $index, string $expected): void
@@ -127,10 +127,10 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value and an expected attribute value
      *
-     * @param string $xpath
-     * @param string $expected
-     * @param string $expectedAttribute
-     * @param string $expectedAttributeValue
+     * @param  string $xpath
+     * @param  string $expected
+     * @param  string $expectedAttribute
+     * @param  string $expectedAttributeValue
      * @return void
      */
     protected function assertXPathValueWithAttribute(string $xpath, string $expected, string $expectedAttribute, string $expectedAttributeValue): void
@@ -147,10 +147,10 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple resule and an expected attribute value
      *
-     * @param string $xpath
-     * @param string $expected
-     * @param string $expectedAttribute
-     * @param string $expectedAttributeValue
+     * @param  string $xpath
+     * @param  string $expected
+     * @param  string $expectedAttribute
+     * @param  string $expectedAttributeValue
      * @return void
      */
     protected function assertXPathValueWithIndexAndAttribute(string $xpath, int $index, string $expected, string $expectedAttribute, string $expectedAttributeValue): void
@@ -167,10 +167,10 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple resule and an expected attribute value
      *
-     * @param string $xpath
-     * @param string $expected
-     * @param string $expectedAttribute
-     * @param string $expectedAttributeValue
+     * @param  string $xpath
+     * @param  string $expected
+     * @param  string $expectedAttribute
+     * @param  string $expectedAttributeValue
      * @return void
      */
     protected function assertXPathValueStartsWithIndexAndAttribute(string $xpath, int $index, string $expected, string $expectedAttribute, string $expectedAttributeValue): void
@@ -187,7 +187,7 @@ trait HandlesXmlTests
     /**
      * Test that an xml element does not exist
      *
-     * @param string $xpath
+     * @param  string $xpath
      * @return void
      */
     protected function assertXPathExists(string $xpath)
@@ -200,7 +200,7 @@ trait HandlesXmlTests
     /**
      * Test that an xml element does not exist
      *
-     * @param string $xpath
+     * @param  string $xpath
      * @return void
      */
     protected function assertXPathNotExists(string $xpath)
@@ -213,8 +213,8 @@ trait HandlesXmlTests
     /**
      * Test that an xml element does not exist at index
      *
-     * @param string $xpath
-     * @param integer $index
+     * @param  string  $xpath
+     * @param  integer $index
      * @return void
      */
     protected function assertXPathNotExistsWithIndex(string $xpath, int $index)

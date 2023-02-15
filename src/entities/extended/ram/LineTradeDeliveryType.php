@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LineTradeDeliveryType
  *
- *
  * XSD Type: LineTradeDeliveryType
  */
 class LineTradeDeliveryType
@@ -69,7 +68,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new billedQuantity
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity
      * @return self
      */
     public function setBilledQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity)
@@ -91,7 +90,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new chargeFreeQuantity
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\QuantityType $chargeFreeQuantity
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $chargeFreeQuantity
      * @return self
      */
     public function setChargeFreeQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $chargeFreeQuantity)
@@ -113,7 +112,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new packageQuantity
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\QuantityType $packageQuantity
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $packageQuantity
      * @return self
      */
     public function setPackageQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $packageQuantity)
@@ -135,7 +134,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty)
@@ -157,7 +156,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new ultimateShipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty
      * @return self
      */
     public function setUltimateShipToTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty)
@@ -179,7 +178,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -201,7 +200,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
@@ -223,7 +222,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)
@@ -245,7 +244,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new deliveryNoteReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      * @return self
      */
     public function setDeliveryNoteReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument)

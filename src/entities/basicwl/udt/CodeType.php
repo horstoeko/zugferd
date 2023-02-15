@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\udt;
 /**
  * Class representing CodeType
  *
- *
  * XSD Type: CodeType
  */
 class CodeType
@@ -29,7 +28,7 @@ class CodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

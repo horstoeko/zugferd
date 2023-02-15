@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing TradeTaxType
  *
- *
  * XSD Type: TradeTaxType
  */
 class TradeTaxType
@@ -64,7 +63,7 @@ class TradeTaxType
     /**
      * Sets a new calculatedAmount
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $calculatedAmount
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $calculatedAmount
      * @return self
      */
     public function setCalculatedAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $calculatedAmount)
@@ -86,7 +85,7 @@ class TradeTaxType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -108,7 +107,7 @@ class TradeTaxType
     /**
      * Sets a new exemptionReason
      *
-     * @param string $exemptionReason
+     * @param  string $exemptionReason
      * @return self
      */
     public function setExemptionReason($exemptionReason)
@@ -130,7 +129,7 @@ class TradeTaxType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount)
@@ -152,7 +151,7 @@ class TradeTaxType
     /**
      * Sets a new categoryCode
      *
-     * @param string $categoryCode
+     * @param  string $categoryCode
      * @return self
      */
     public function setCategoryCode($categoryCode)
@@ -174,7 +173,7 @@ class TradeTaxType
     /**
      * Sets a new exemptionReasonCode
      *
-     * @param string $exemptionReasonCode
+     * @param  string $exemptionReasonCode
      * @return self
      */
     public function setExemptionReasonCode($exemptionReasonCode)
@@ -196,7 +195,7 @@ class TradeTaxType
     /**
      * Sets a new dueDateTypeCode
      *
-     * @param string $dueDateTypeCode
+     * @param  string $dueDateTypeCode
      * @return self
      */
     public function setDueDateTypeCode($dueDateTypeCode)
@@ -218,7 +217,7 @@ class TradeTaxType
     /**
      * Sets a new rateApplicablePercent
      *
-     * @param float $rateApplicablePercent
+     * @param  float $rateApplicablePercent
      * @return self
      */
     public function setRateApplicablePercent($rateApplicablePercent)

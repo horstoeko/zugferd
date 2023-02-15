@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing TradeSettlementPaymentMeansType
  *
- *
  * XSD Type: TradeSettlementPaymentMeansType
  */
 class TradeSettlementPaymentMeansType
@@ -39,7 +38,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -61,7 +60,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payerPartyDebtorFinancialAccount
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+     * @param  \horstoeko\zugferd\entities\basic\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(\horstoeko\zugferd\entities\basic\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount)
@@ -83,7 +82,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payeePartyCreditorFinancialAccount
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+     * @param  \horstoeko\zugferd\entities\basic\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(\horstoeko\zugferd\entities\basic\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount)

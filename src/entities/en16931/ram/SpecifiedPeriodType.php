@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing SpecifiedPeriodType
  *
- *
  * XSD Type: SpecifiedPeriodType
  */
 class SpecifiedPeriodType
@@ -34,7 +33,7 @@ class SpecifiedPeriodType
     /**
      * Sets a new startDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType $startDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $startDateTime
      * @return self
      */
     public function setStartDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $startDateTime)
@@ -56,7 +55,7 @@ class SpecifiedPeriodType
     /**
      * Sets a new endDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType $endDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $endDateTime
      * @return self
      */
     public function setEndDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $endDateTime)

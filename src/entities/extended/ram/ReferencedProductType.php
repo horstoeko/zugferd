@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing ReferencedProductType
  *
- *
  * XSD Type: ReferencedProductType
  */
 class ReferencedProductType
@@ -66,7 +65,7 @@ class ReferencedProductType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
@@ -79,7 +78,7 @@ class ReferencedProductType
      * Adds as globalID
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $globalID
      */
     public function addToGlobalID(\horstoeko\zugferd\entities\extended\udt\IDType $globalID)
     {
@@ -90,7 +89,7 @@ class ReferencedProductType
     /**
      * isset globalID
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetGlobalID($index)
@@ -101,7 +100,7 @@ class ReferencedProductType
     /**
      * unset globalID
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetGlobalID($index)
@@ -122,7 +121,7 @@ class ReferencedProductType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType[] $globalID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $globalID
      * @return self
      */
     public function setGlobalID(array $globalID)
@@ -144,7 +143,7 @@ class ReferencedProductType
     /**
      * Sets a new sellerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID)
@@ -166,7 +165,7 @@ class ReferencedProductType
     /**
      * Sets a new buyerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID)
@@ -188,7 +187,7 @@ class ReferencedProductType
     /**
      * Sets a new industryAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $industryAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $industryAssignedID
      * @return self
      */
     public function setIndustryAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $industryAssignedID)
@@ -210,7 +209,7 @@ class ReferencedProductType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -232,7 +231,7 @@ class ReferencedProductType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -254,7 +253,7 @@ class ReferencedProductType
     /**
      * Sets a new unitQuantity
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\QuantityType $unitQuantity
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $unitQuantity
      * @return self
      */
     public function setUnitQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $unitQuantity)

@@ -69,8 +69,8 @@ class ZugferdObjectHelper
     /**
      * Creates an instance of IDType
      *
-     * @param string|null $value
-     * @param string|null $schemeId
+     * @param  string|null $value
+     * @param  string|null $schemeId
      * @return object
      */
     public function getIdType(?string $value = null, ?string $schemeId = null): ?object
@@ -89,7 +89,7 @@ class ZugferdObjectHelper
     /**
      * Creates an instance of TextType
      *
-     * @param string|null $value
+     * @param  string|null $value
      * @return object
      */
     public function getTextType(?string $value = null): ?object
@@ -104,7 +104,7 @@ class ZugferdObjectHelper
     /**
      * Creates an instance of CodeType
      *
-     * @param string|null $value
+     * @param  string|null $value
      * @return object|null
      */
     public function getCodeType(?string $value = null): ?object
@@ -120,9 +120,9 @@ class ZugferdObjectHelper
      * Creates an instance of CodeType with extended list
      * information
      *
-     * @param string|null $value
-     * @param string|null $listID
-     * @param string|null $listVersionID
+     * @param  string|null $value
+     * @param  string|null $listID
+     * @param  string|null $listVersionID
      * @return object|null
      */
     public function getCodeType2(?string $value = null, ?string $listID = null, ?string $listVersionID = null): ?object
@@ -142,7 +142,7 @@ class ZugferdObjectHelper
     /**
      * Get indicator type
      *
-     * @param bool|null $value
+     * @param  bool|null $value
      * @return object|null
      */
     public function getIndicatorType(?bool $value = null): ?object
@@ -161,9 +161,9 @@ class ZugferdObjectHelper
     /**
      * Get Note type
      *
-     * @param string|null $content
-     * @param string|null $contentCode
-     * @param string|null $subjectCode
+     * @param  string|null $content
+     * @param  string|null $contentCode
+     * @param  string|null $subjectCode
      * @return object|null
      */
     public function getNoteType(?string $content = null, ?string $contentCode = null, ?string $subjectCode = null): ?object
@@ -187,7 +187,7 @@ class ZugferdObjectHelper
     /**
      * Get formatted issue date
      *
-     * @param DateTime|null $datetime
+     * @param  DateTime|null $datetime
      * @return object|null
      */
     public function getFormattedDateTimeType(?DateTime $datetime = null): ?object
@@ -209,7 +209,7 @@ class ZugferdObjectHelper
     /**
      * Get formatted issue date
      *
-     * @param DateTime|null $datetime
+     * @param  DateTime|null $datetime
      * @return object|null
      */
     public function getDateTimeType(?DateTime $datetime = null): ?object
@@ -231,7 +231,7 @@ class ZugferdObjectHelper
     /**
      * Get date
      *
-     * @param DateTime|null $datetime
+     * @param  DateTime|null $datetime
      * @return object|null
      */
     public function getDateType(?DateTime $datetime = null): ?object
@@ -253,8 +253,8 @@ class ZugferdObjectHelper
     /**
      * Representation of Amount
      *
-     * @param float|null $value
-     * @param string|null $currencyCode
+     * @param  float|null  $value
+     * @param  string|null $currencyCode
      * @return object|null
      */
     public function getAmountType(?float $value, ?string $currencyCode = null): ?object
@@ -277,7 +277,7 @@ class ZugferdObjectHelper
     /**
      * Representation of Percdnt
      *
-     * @param float|null $value
+     * @param  float|null $value
      * @return object|null
      */
     public function getPercentType(?float $value): ?object
@@ -296,8 +296,8 @@ class ZugferdObjectHelper
     /**
      * Representation of Quantity
      *
-     * @param float|null $value
-     * @param string|null $unitCode
+     * @param  float|null  $value
+     * @param  string|null $unitCode
      * @return object|null
      */
     public function getQuantityType(?float $value, ?string $unitCode = null): ?object
@@ -320,8 +320,8 @@ class ZugferdObjectHelper
     /**
      * Representation of Quantity Measure
      *
-     * @param float|null $value
-     * @param string|null $unitCode
+     * @param  float|null  $value
+     * @param  string|null $unitCode
      * @return object|null
      */
     public function getMeasureType(?float $value, ?string $unitCode = null): ?object
@@ -344,7 +344,7 @@ class ZugferdObjectHelper
     /**
      * Get an instance of GetNumericType
      *
-     * @param float|null $value
+     * @param  float|null $value
      * @return object|null
      */
     public function getNumericType(?float $value = null): ?object
@@ -363,7 +363,7 @@ class ZugferdObjectHelper
     /**
      * Representation of Tax Category
      *
-     * @param string|null $taxCategoryCode
+     * @param  string|null $taxCategoryCode
      * @return object|null
      */
     public function getTaxCategoryCodeType(?string $taxCategoryCode = null): ?object
@@ -382,7 +382,7 @@ class ZugferdObjectHelper
     /**
      * Representation of Tax Type
      *
-     * @param string|null $taxTypeCode
+     * @param  string|null $taxTypeCode
      * @return object|null
      */
     public function getTaxTypeCodeType(?string $taxTypeCode = null): ?object
@@ -401,7 +401,7 @@ class ZugferdObjectHelper
     /**
      * Representation of Time Reference Code
      *
-     * @param string|null $value
+     * @param  string|null $value
      * @return object|null
      */
     public function getTimeReferenceCodeType(?string $value = null): ?object
@@ -420,10 +420,10 @@ class ZugferdObjectHelper
     /**
      * Get Specified Period type
      *
-     * @param DateTime|null $startdate
-     * @param DateTime|null $endDate
-     * @param DateTime|null $completedate
-     * @param string|null $description
+     * @param  DateTime|null $startdate
+     * @param  DateTime|null $endDate
+     * @param  DateTime|null $completedate
+     * @param  string|null   $description
      * @return object|null
      */
     public function getSpecifiedPeriodType(?DateTime $startdate = null, ?DateTime $endDate = null, ?DateTime $completedate = null, ?string $description = null): ?object
@@ -445,9 +445,9 @@ class ZugferdObjectHelper
     /**
      * Get a BinaryObjectType object
      *
-     * @param string|null $binarydata
-     * @param string|null $mimetype
-     * @param string|null $filename
+     * @param  string|null $binarydata
+     * @param  string|null $mimetype
+     * @param  string|null $filename
      * @return object|null
      */
     public function getBinaryObjectType(?string $binarydata = null, ?string $mimetype = null, ?string $filename = null): ?object
@@ -468,14 +468,14 @@ class ZugferdObjectHelper
     /**
      * Get a reference document object
      *
-     * @param string|null $issuerassignedid
-     * @param string|null $uriid
-     * @param string|null $lineid
-     * @param string|null $typecode
-     * @param string|array|null $name
-     * @param string|null $reftypecode
-     * @param DateTime|null $issueddate
-     * @param string|null $binarydatafilename
+     * @param  string|null       $issuerassignedid
+     * @param  string|null       $uriid
+     * @param  string|null       $lineid
+     * @param  string|null       $typecode
+     * @param  string|array|null $name
+     * @param  string|null       $reftypecode
+     * @param  DateTime|null     $issueddate
+     * @param  string|null       $binarydatafilename
      * @return object|null
      */
     public function getReferencedDocumentType(?string $issuerassignedid = null, ?string $uriid = null, ?string $lineid = null, ?string $typecode = null, $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ?object
@@ -521,7 +521,7 @@ class ZugferdObjectHelper
     /**
      * Get instance of CountryID
      *
-     * @param string|null $id
+     * @param  string|null $id
      * @return object|null
      */
     public function getCountryIDType(?string $id = null): ?object
@@ -538,7 +538,7 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradeCountry
      *
-     * @param string|null $id
+     * @param  string|null $id
      * @return object|null
      */
     public function getTradeCountryType(?string $id = null): ?object
@@ -577,9 +577,9 @@ class ZugferdObjectHelper
     /**
      * Tradeparty type^^
      *
-     * @param string|null $name
-     * @param string|null $ID
-     * @param string|null $description
+     * @param  string|null $name
+     * @param  string|null $ID
+     * @param  string|null $description
      * @return object|null
      */
     public function getTradeParty(?string $name = null, ?string $ID = null, ?string $description = null): ?object
@@ -600,13 +600,13 @@ class ZugferdObjectHelper
     /**
      * Address type
      *
-     * @param string|null $lineone
-     * @param string|null $linetwo
-     * @param string|null $linethree
-     * @param string|null $postcode
-     * @param string|null $city
-     * @param string|null $country
-     * @param string|null $subdivision
+     * @param  string|null $lineone
+     * @param  string|null $linetwo
+     * @param  string|null $linethree
+     * @param  string|null $postcode
+     * @param  string|null $city
+     * @param  string|null $country
+     * @param  string|null $subdivision
      * @return object|null
      */
     public function getTradeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ?object
@@ -631,9 +631,9 @@ class ZugferdObjectHelper
     /**
      * Legal organization type
      *
-     * @param string|null $legalorgid
-     * @param string|null $legalorgtype
-     * @param string|null $legalorgname
+     * @param  string|null $legalorgid
+     * @param  string|null $legalorgtype
+     * @param  string|null $legalorgname
      * @return object|null
      */
     public function getLegalOrganization(?string $legalorgid = null, ?string $legalorgtype = null, ?string $legalorgname = null): ?object
@@ -653,11 +653,11 @@ class ZugferdObjectHelper
     /**
      * Contact type
      *
-     * @param string|null $contactpersonname
-     * @param string|null $contactdepartmentname
-     * @param string|null $contactphoneno
-     * @param string|null $contactfaxno
-     * @param string|null $contactemailaddr
+     * @param  string|null $contactpersonname
+     * @param  string|null $contactdepartmentname
+     * @param  string|null $contactphoneno
+     * @param  string|null $contactfaxno
+     * @param  string|null $contactemailaddr
      * @return object|null
      */
     public function getTradeContact(?string $contactpersonname = null, ?string $contactdepartmentname = null, ?string $contactphoneno = null, ?string $contactfaxno = null, ?string $contactemailaddr = null): ?object
@@ -683,9 +683,9 @@ class ZugferdObjectHelper
     /**
      * Communication type
      *
-     * @param string|null $number
-     * @param string|null $uriid
-     * @param string|null $urischeme
+     * @param  string|null $number
+     * @param  string|null $uriid
+     * @param  string|null $urischeme
      * @return object|null
      */
     public function getUniversalCommunicationType(?string $number = null, ?string $uriid = null, ?string $urischeme = null): ?object
@@ -705,8 +705,8 @@ class ZugferdObjectHelper
     /**
      * Tax registration type
      *
-     * @param string|null $taxregtype
-     * @param string|null $taxregid
+     * @param  string|null $taxregtype
+     * @param  string|null $taxregid
      * @return object|null
      */
     public function getTaxRegistrationType(?string $taxregtype = null, ?string $taxregid = null): ?object
@@ -729,7 +729,7 @@ class ZugferdObjectHelper
     /**
      * Delivery terms type
      *
-     * @param string|null $code
+     * @param  string|null $code
      * @return object|null
      */
     public function getTradeDeliveryTermsType(?string $code = null): ?object
@@ -748,8 +748,8 @@ class ZugferdObjectHelper
     /**
      * Procuring project type
      *
-     * @param string|null $id
-     * @param string|null $name
+     * @param  string|null $id
+     * @param  string|null $name
      * @return object|null
      */
     public function getProcuringProjectType(?string $id = null, ?string $name = null): ?object
@@ -769,7 +769,7 @@ class ZugferdObjectHelper
     /**
      * Undocumented function
      *
-     * @param DateTime|null $date
+     * @param  DateTime|null $date
      * @return object|null
      */
     public function getSupplyChainEventType(?DateTime $date = null): ?object
@@ -788,9 +788,9 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradeSettlementFinancialCardType
      *
-     * @param string|null $type
-     * @param string|null $id
-     * @param string|null $holderName
+     * @param  string|null $type
+     * @param  string|null $id
+     * @param  string|null $holderName
      * @return object|null
      */
     public function getTradeSettlementFinancialCardType(?string $type = null, ?string $id = null, ?string $holderName = null): ?object
@@ -810,7 +810,7 @@ class ZugferdObjectHelper
     /**
      * Get instance of DebtorFinancialAccountType
      *
-     * @param string|null $iban
+     * @param  string|null $iban
      * @return object|null
      */
     public function getDebtorFinancialAccountType(?string $iban = null): ?object
@@ -829,9 +829,9 @@ class ZugferdObjectHelper
     /**
      * Get instance of CreditorFinancialAccountType
      *
-     * @param string|null $iban
-     * @param string|null $accountName
-     * @param string|null $proprietaryID
+     * @param  string|null $iban
+     * @param  string|null $accountName
+     * @param  string|null $proprietaryID
      * @return object|null
      */
     public function getCreditorFinancialAccountType(?string $iban = null, ?string $accountName = null, ?string $proprietaryID = null): ?object
@@ -852,7 +852,7 @@ class ZugferdObjectHelper
     /**
      * Undocumented function
      *
-     * @param string|null $bic
+     * @param  string|null $bic
      * @return object|null
      */
     public function getCreditorFinancialInstitutionType(?string $bic = null): ?object
@@ -871,8 +871,8 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradeSettlementPaymentMeansType
      *
-     * @param string|null $typecode
-     * @param string|null $information
+     * @param  string|null $typecode
+     * @param  string|null $information
      * @return object|null
      */
     public function getTradeSettlementPaymentMeansType(?string $typecode = null, ?string $information = null): ?object
@@ -892,9 +892,9 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentTermsType
      *
-     * @param string|null $description
-     * @param DateTime|null $dueDate
-     * @param string|null $directDebitMandateID
+     * @param  string|null   $description
+     * @param  DateTime|null $dueDate
+     * @param  string|null   $directDebitMandateID
      * @return object|null
      */
     public function getTradePaymentTermsType(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ?object
@@ -915,12 +915,12 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentDiscountTermsType
      *
-     * @param DateTime|null $basisDateTime
-     * @param float|null $basisPeriodMeasureValue
-     * @param string|null $basisPeriodMeasureUnitCode
-     * @param float|null $basisAmount
-     * @param float|null $calculationPercent
-     * @param float|null $actualDiscountAmount
+     * @param  DateTime|null $basisDateTime
+     * @param  float|null    $basisPeriodMeasureValue
+     * @param  string|null   $basisPeriodMeasureUnitCode
+     * @param  float|null    $basisAmount
+     * @param  float|null    $calculationPercent
+     * @param  float|null    $actualDiscountAmount
      * @return object|null
      */
     public function getTradePaymentDiscountTermsType(?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
@@ -944,17 +944,17 @@ class ZugferdObjectHelper
      * Get instance of TradeTaxType
      * Sales tax breakdown, Umsatzsteueraufschlüsselung
      *
-     * @param string|null $categoryCode
-     * @param string|null $typeCode
-     * @param float|null $basisAmount
-     * @param float|null $calculatedAmount
-     * @param float|null $rateApplicablePercent
-     * @param string|null $exemptionReason
-     * @param string|null $exemptionReasonCode
-     * @param float|null $lineTotalBasisAmount
-     * @param float|null $allowanceChargeBasisAmount
-     * @param DateTime|null $taxPointDate
-     * @param string|null $dueDateTypeCode
+     * @param  string|null   $categoryCode
+     * @param  string|null   $typeCode
+     * @param  float|null    $basisAmount
+     * @param  float|null    $calculatedAmount
+     * @param  float|null    $rateApplicablePercent
+     * @param  string|null   $exemptionReason
+     * @param  string|null   $exemptionReasonCode
+     * @param  float|null    $lineTotalBasisAmount
+     * @param  float|null    $allowanceChargeBasisAmount
+     * @param  DateTime|null $taxPointDate
+     * @param  string|null   $dueDateTypeCode
      * @return object|null
      */
     public function getTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
@@ -984,18 +984,18 @@ class ZugferdObjectHelper
      * Get Allowance/Charge type
      * Zu- und Abschläge
      *
-     * @param float|null $actualAmount
-     * @param boolean|null $isCharge
-     * @param string|null $taxTypeCode
-     * @param string|null $taxCategoryCode
-     * @param float|null $rateApplicablePercent
-     * @param float|null $sequence
-     * @param float|null $calculationPercent
-     * @param float|null $basisAmount
-     * @param float|null $basisQuantity
-     * @param string|null $basisQuantityUnitCode
-     * @param string|null $reasonCode
-     * @param string|null $reason
+     * @param  float|null   $actualAmount
+     * @param  boolean|null $isCharge
+     * @param  string|null  $taxTypeCode
+     * @param  string|null  $taxCategoryCode
+     * @param  float|null   $rateApplicablePercent
+     * @param  float|null   $sequence
+     * @param  float|null   $calculationPercent
+     * @param  float|null   $basisAmount
+     * @param  float|null   $basisQuantity
+     * @param  string|null  $basisQuantityUnitCode
+     * @param  string|null  $reasonCode
+     * @param  string|null  $reason
      * @return object|null
      */
     public function getTradeAllowanceChargeType(?float $actualAmount = null, ?bool $isCharge = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ?object
@@ -1025,11 +1025,11 @@ class ZugferdObjectHelper
     /**
      * Get instance of
      *
-     * @param string|null $description
-     * @param float|null $appliedAmount
-     * @param array|null $taxTypeCodes
-     * @param array|null $taxCategpryCodes
-     * @param array|null $rateApplicablePercents
+     * @param  string|null $description
+     * @param  float|null  $appliedAmount
+     * @param  array|null  $taxTypeCodes
+     * @param  array|null  $taxCategpryCodes
+     * @param  array|null  $rateApplicablePercents
      * @return object|null
      */
     public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ?object
@@ -1056,15 +1056,15 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradeSettlementHeaderMonetarySummationType
      *
-     * @param float|null $grandTotalAmount
-     * @param float|null $duePayableAmount
-     * @param float|null $lineTotalAmount
-     * @param float|null $chargeTotalAmount
-     * @param float|null $allowanceTotalAmount
-     * @param float|null $taxBasisTotalAmount
-     * @param float|null $taxTotalAmount
-     * @param float|null $roundingAmount
-     * @param float|null $totalPrepaidAmount
+     * @param  float|null $grandTotalAmount
+     * @param  float|null $duePayableAmount
+     * @param  float|null $lineTotalAmount
+     * @param  float|null $chargeTotalAmount
+     * @param  float|null $allowanceTotalAmount
+     * @param  float|null $taxBasisTotalAmount
+     * @param  float|null $taxTotalAmount
+     * @param  float|null $roundingAmount
+     * @param  float|null $totalPrepaidAmount
      * @return object|null
      */
     public function getTradeSettlementHeaderMonetarySummationType(?float $grandTotalAmount = null, ?float $duePayableAmount = null, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ?object
@@ -1101,8 +1101,8 @@ class ZugferdObjectHelper
     /**
      * Get an instance of TradeAccountingAccountType
      *
-     * @param string|null $id
-     * @param string|null $typeCode
+     * @param  string|null $id
+     * @param  string|null $typeCode
      * @return object|null
      */
     public function getTradeAccountingAccountType(?string $id = null, ?string $typeCode = null): ?object
@@ -1122,7 +1122,7 @@ class ZugferdObjectHelper
     /**
      * Get Document line
      *
-     * @param string|null $lineid
+     * @param  string|null $lineid
      * @return object|null
      */
     public function getDocumentLineDocumentType(?string $lineid = null): ?object
@@ -1141,10 +1141,10 @@ class ZugferdObjectHelper
     /**
      * Get instance of SupplyChainTradeLineItemType
      *
-     * @param string|null $lineid
-     * @param string|null $lineStatusCode
-     * @param string|null $lineStatusReasonCode
-     * @param boolean $isTextPosition
+     * @param  string|null $lineid
+     * @param  string|null $lineStatusCode
+     * @param  string|null $lineStatusReasonCode
+     * @param  boolean     $isTextPosition
      * @return object|null
      */
     public function getSupplyChainTradeLineItemType(?string $lineid = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null, bool $isTextPosition = false): ?object
@@ -1174,12 +1174,12 @@ class ZugferdObjectHelper
     /**
      * Get product specification
      *
-     * @param string|null $name
-     * @param string|null $description
-     * @param string|null $sellerAssignedID
-     * @param string|null $buyerAssignedID
-     * @param string|null $globalIDType
-     * @param string|null $globalID
+     * @param  string|null $name
+     * @param  string|null $description
+     * @param  string|null $sellerAssignedID
+     * @param  string|null $buyerAssignedID
+     * @param  string|null $globalIDType
+     * @param  string|null $globalID
      * @return object|null
      */
     public function getTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ?object
@@ -1202,11 +1202,11 @@ class ZugferdObjectHelper
     /**
      * Get Product Characteristic
      *
-     * @param string|null $typeCode
-     * @param string|null $description
-     * @param float|null $valueMeasure
-     * @param string|null $valueMeasureUnitCode
-     * @param string|null $value
+     * @param  string|null $typeCode
+     * @param  string|null $description
+     * @param  float|null  $valueMeasure
+     * @param  string|null $valueMeasureUnitCode
+     * @param  string|null $value
      * @return object|null
      */
     public function getProductCharacteristicType(?string $typeCode = null, ?string $description = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null, ?string $value): ?object
@@ -1228,10 +1228,10 @@ class ZugferdObjectHelper
     /**
      * Get Product Classification
      *
-     * @param string|null $classCode
-     * @param string|null $className
-     * @param string|null $listID
-     * @param string|null $listVersionID
+     * @param  string|null $classCode
+     * @param  string|null $className
+     * @param  string|null $listID
+     * @param  string|null $listVersionID
      * @return object|null
      */
     public function getProductClassificationType(?string $classCode = null, ?string $className = null, ?string $listID = null, ?string $listVersionID = null): ?object
@@ -1251,14 +1251,14 @@ class ZugferdObjectHelper
     /**
      * Get product reference product
      *
-     * @param string|null $globalID
-     * @param string|null $globalIDType
-     * @param string|null $sellerAssignedID
-     * @param string|null $buyerAssignedID
-     * @param string|null $name
-     * @param string|null $description
-     * @param float|null $unitQuantity
-     * @param string|null $unitCode
+     * @param  string|null $globalID
+     * @param  string|null $globalIDType
+     * @param  string|null $sellerAssignedID
+     * @param  string|null $buyerAssignedID
+     * @param  string|null $name
+     * @param  string|null $description
+     * @param  float|null  $unitQuantity
+     * @param  string|null $unitCode
      * @return object|null
      */
     public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $name, ?string $description = null, ?float $unitQuantity, ?string $unitCode): ?object
@@ -1282,9 +1282,9 @@ class ZugferdObjectHelper
     /**
      * Get trade price
      *
-     * @param float|null $amount
-     * @param float|null $basisQuantity
-     * @param string|null $basisQuantityUnitCode
+     * @param  float|null  $amount
+     * @param  float|null  $basisQuantity
+     * @param  string|null $basisQuantityUnitCode
      * @return object|null
      */
     public function getTradePriceType(?float $amount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null): ?object
@@ -1304,8 +1304,8 @@ class ZugferdObjectHelper
     /**
      * Get Line Summation
      *
-     * @param float|null $lineTotalAmount
-     * @param float|null $totalAllowanceChargeAmount
+     * @param  float|null $lineTotalAmount
+     * @param  float|null $totalAllowanceChargeAmount
      * @return object|null
      */
     public function getTradeSettlementLineMonetarySummationType(?float $lineTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ?object
@@ -1325,10 +1325,10 @@ class ZugferdObjectHelper
     /**
      * Undocumented function
      *
-     * @param string|null $sourceCurrencyCode
-     * @param string|null $targetCurrencyCode
-     * @param float|null $rate
-     * @param DateTime|null $rateDateTime
+     * @param  string|null   $sourceCurrencyCode
+     * @param  string|null   $targetCurrencyCode
+     * @param  float|null    $rate
+     * @param  DateTime|null $rateDateTime
      * @return object|null
      */
     public function getTaxApplicableTradeCurrencyExchangeType(?string $sourceCurrencyCode = null, ?string $targetCurrencyCode = null, ?float $rate = null, ?DateTime $rateDateTime = null): ?object
@@ -1349,8 +1349,8 @@ class ZugferdObjectHelper
     /**
      * Create a datetime object
      *
-     * @param string|null $dateTimeString
-     * @param string|null $format
+     * @param  string|null $dateTimeString
+     * @param  string|null $format
      * @return DateTime|null
      * @throws \Exception
      */
@@ -1379,7 +1379,7 @@ class ZugferdObjectHelper
     /**
      * Get Exchange rate type instance
      *
-     * @param float|null $rateValue
+     * @param  float|null $rateValue
      * @return object|null
      */
     public function getRateType(?float $rateValue): ?object
@@ -1392,8 +1392,8 @@ class ZugferdObjectHelper
     /**
      * Creates an instance of a class needed by $invoiceObject
      *
-     * @param string $classname
-     * @param mixed $constructorvalue
+     * @param  string $classname
+     * @param  mixed  $constructorvalue
      * @return object|null
      */
     public function createClassInstance($classname, $constructorvalue = null): ?object
@@ -1411,10 +1411,10 @@ class ZugferdObjectHelper
      * Tries to call a method
      *
      * @codeCoverageIgnore
-     * @param object $instance
-     * @param string $method
-     * @param mixed $value
-     * @return ZugferdObjectHelper
+     * @param              object $instance
+     * @param              string $method
+     * @param              mixed  $value
+     * @return             ZugferdObjectHelper
      */
     public function tryCall($instance, string $method, $value): ZugferdObjectHelper
     {
@@ -1437,10 +1437,10 @@ class ZugferdObjectHelper
      * Try call all methods
      *
      * @codeCoverageIgnore
-     * @param object $instance
-     * @param string[] $methods
-     * @param mixed $value
-     * @return ZugferdObjectHelper
+     * @param              object   $instance
+     * @param              string[] $methods
+     * @param              mixed    $value
+     * @return             ZugferdObjectHelper
      */
     public function tryCallAll($instance, array $methods, $value): ZugferdObjectHelper
     {
@@ -1464,9 +1464,9 @@ class ZugferdObjectHelper
      * in object $instance
      *
      * @codeCoverageIgnore
-     * @param object $instance
-     * @param string $method
-     * @return mixed
+     * @param              object $instance
+     * @param              string $method
+     * @return             mixed
      */
     public function tryCallAndReturn($instance, string $method)
     {
@@ -1486,10 +1486,10 @@ class ZugferdObjectHelper
      * Try call methods in a form .object.method1.method2.method3
      *
      * @codeCoverageIgnore
-     * @param object $instance
-     * @param string $methods
-     * @param mixed $value
-     * @return void
+     * @param              object $instance
+     * @param              string $methods
+     * @param              mixed  $value
+     * @return             void
      */
     public function tryCallByPath($instance, string $methods, $value)
     {
@@ -1508,9 +1508,9 @@ class ZugferdObjectHelper
      * Try call methods in a form .object.method1.method2.method3
      *
      * @codeCoverageIgnore
-     * @param object $instance
-     * @param string $methods
-     * @return mixed
+     * @param              object $instance
+     * @param              string $methods
+     * @return             mixed
      */
     public function tryCallByPathAndReturn($instance, string $methods)
     {
@@ -1528,11 +1528,11 @@ class ZugferdObjectHelper
     /**
      * Call $method if exists, otherwise $method2 is calles with $value
      *
-     * @param object $instance
-     * @param string $methodToLookFor
-     * @param string $methodToCall
-     * @param mixed $value
-     * @param mixed $value2
+     * @param  object $instance
+     * @param  string $methodToLookFor
+     * @param  string $methodToCall
+     * @param  mixed  $value
+     * @param  mixed  $value2
      * @return ZugferdObjectHelper
      */
     public function tryCallIfMethodExists($instance, string $methodToLookFor, string $methodToCall, $value, $value2): ZugferdObjectHelper
@@ -1561,8 +1561,8 @@ class ZugferdObjectHelper
      * Ensure that $input is an array
      *
      * @codeCoverageIgnore
-     * @param mixed $input
-     * @return array
+     * @param              mixed $input
+     * @return             array
      */
     public function ensureStringArray($input): array
     {
@@ -1577,7 +1577,7 @@ class ZugferdObjectHelper
      *
      * @codeCoverageIgnore
      *
-     * @param mixed $value
+     * @param  mixed $value
      * @return array
      */
     public function ensureArray($value): array
@@ -1595,8 +1595,8 @@ class ZugferdObjectHelper
      * Test if a value is null or empty
      *
      * @codeCoverageIgnore
-     * @param mixed $value
-     * @return boolean
+     * @param              mixed $value
+     * @return             boolean
      */
     public static function isNullOrEmpty($value)
     {
@@ -1615,8 +1615,8 @@ class ZugferdObjectHelper
      * Checks if all function arguments are null or empty
      *
      * @codeCoverageIgnore
-     * @param array $args
-     * @return boolean
+     * @param              array $args
+     * @return             boolean
      */
     public static function isAllNullOrEmpty(array $args): bool
     {
@@ -1636,8 +1636,8 @@ class ZugferdObjectHelper
      * Checks if all function arguments are null or empty
      *
      * @codeCoverageIgnore
-     * @param array $args
-     * @return boolean
+     * @param              array $args
+     * @return             boolean
      */
     public static function isOneNullOrEmpty(array $args): bool
     {
@@ -1660,7 +1660,7 @@ class ZugferdObjectHelper
      * array element is returned otherwise null is returned. If $value is not an
      * array $value is returned
      *
-     * @param mixed $value
+     * @param  mixed $value
      * @return mixed
      */
     public function getFirstFromArrayIfArray($value)
@@ -1678,8 +1678,8 @@ class ZugferdObjectHelper
     /**
      * Wrapper for method_exists for use in PHP8
      *
-     * @param string|object $instance
-     * @param string $method
+     * @param  string|object $instance
+     * @param  string        $method
      * @return boolean
      */
     public function methodExists($instance, $method): bool

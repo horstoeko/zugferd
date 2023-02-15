@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing HeaderTradeDeliveryType
  *
- *
  * XSD Type: HeaderTradeDeliveryType
  */
 class HeaderTradeDeliveryType
@@ -55,7 +54,7 @@ class HeaderTradeDeliveryType
      * Adds as specifiedLogisticsTransportMovement
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
      */
     public function addToRelatedSupplyChainConsignment(\horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement)
     {
@@ -66,7 +65,7 @@ class HeaderTradeDeliveryType
     /**
      * isset relatedSupplyChainConsignment
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetRelatedSupplyChainConsignment($index)
@@ -77,7 +76,7 @@ class HeaderTradeDeliveryType
     /**
      * unset relatedSupplyChainConsignment
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetRelatedSupplyChainConsignment($index)
@@ -98,7 +97,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new relatedSupplyChainConsignment
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $relatedSupplyChainConsignment
+     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $relatedSupplyChainConsignment
      * @return self
      */
     public function setRelatedSupplyChainConsignment(array $relatedSupplyChainConsignment)
@@ -120,7 +119,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty)
@@ -142,7 +141,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new ultimateShipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty
      * @return self
      */
     public function setUltimateShipToTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $ultimateShipToTradeParty)
@@ -164,7 +163,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipFromTradeParty
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipFromTradeParty
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipFromTradeParty
      * @return self
      */
     public function setShipFromTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $shipFromTradeParty)
@@ -186,7 +185,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -208,7 +207,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
@@ -230,7 +229,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)
@@ -252,7 +251,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new deliveryNoteReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
      * @return self
      */
     public function setDeliveryNoteReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument)

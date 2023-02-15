@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradeTaxType
  *
- *
  * XSD Type: TradeTaxType
  */
 class TradeTaxType
@@ -69,7 +68,7 @@ class TradeTaxType
     /**
      * Sets a new calculatedAmount
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\AmountType $calculatedAmount
+     * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $calculatedAmount
      * @return self
      */
     public function setCalculatedAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $calculatedAmount)
@@ -91,7 +90,7 @@ class TradeTaxType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -113,7 +112,7 @@ class TradeTaxType
     /**
      * Sets a new exemptionReason
      *
-     * @param string $exemptionReason
+     * @param  string $exemptionReason
      * @return self
      */
     public function setExemptionReason($exemptionReason)
@@ -135,7 +134,7 @@ class TradeTaxType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount)
@@ -157,7 +156,7 @@ class TradeTaxType
     /**
      * Sets a new categoryCode
      *
-     * @param string $categoryCode
+     * @param  string $categoryCode
      * @return self
      */
     public function setCategoryCode($categoryCode)
@@ -179,7 +178,7 @@ class TradeTaxType
     /**
      * Sets a new exemptionReasonCode
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\CodeType $exemptionReasonCode
+     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $exemptionReasonCode
      * @return self
      */
     public function setExemptionReasonCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $exemptionReasonCode)
@@ -201,7 +200,7 @@ class TradeTaxType
     /**
      * Sets a new taxPointDate
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateType $taxPointDate
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateType $taxPointDate
      * @return self
      */
     public function setTaxPointDate(\horstoeko\zugferd\entities\en16931\udt\DateType $taxPointDate)
@@ -223,7 +222,7 @@ class TradeTaxType
     /**
      * Sets a new dueDateTypeCode
      *
-     * @param string $dueDateTypeCode
+     * @param  string $dueDateTypeCode
      * @return self
      */
     public function setDueDateTypeCode($dueDateTypeCode)
@@ -245,7 +244,7 @@ class TradeTaxType
     /**
      * Sets a new rateApplicablePercent
      *
-     * @param float $rateApplicablePercent
+     * @param  float $rateApplicablePercent
      * @return self
      */
     public function setRateApplicablePercent($rateApplicablePercent)

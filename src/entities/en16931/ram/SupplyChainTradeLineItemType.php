@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing SupplyChainTradeLineItemType
  *
- *
  * XSD Type: SupplyChainTradeLineItemType
  */
 class SupplyChainTradeLineItemType
@@ -49,7 +48,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new associatedDocumentLineDocument
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType $associatedDocumentLineDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType $associatedDocumentLineDocument
      * @return self
      */
     public function setAssociatedDocumentLineDocument(\horstoeko\zugferd\entities\en16931\ram\DocumentLineDocumentType $associatedDocumentLineDocument)
@@ -71,7 +70,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedTradeProduct
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeProductType $specifiedTradeProduct
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeProductType $specifiedTradeProduct
      * @return self
      */
     public function setSpecifiedTradeProduct(\horstoeko\zugferd\entities\en16931\ram\TradeProductType $specifiedTradeProduct)
@@ -93,7 +92,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedLineTradeAgreement
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\LineTradeAgreementType $specifiedLineTradeAgreement
+     * @param  \horstoeko\zugferd\entities\en16931\ram\LineTradeAgreementType $specifiedLineTradeAgreement
      * @return self
      */
     public function setSpecifiedLineTradeAgreement(\horstoeko\zugferd\entities\en16931\ram\LineTradeAgreementType $specifiedLineTradeAgreement)
@@ -115,7 +114,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedLineTradeDelivery
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
+     * @param  \horstoeko\zugferd\entities\en16931\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
      * @return self
      */
     public function setSpecifiedLineTradeDelivery(\horstoeko\zugferd\entities\en16931\ram\LineTradeDeliveryType $specifiedLineTradeDelivery)
@@ -137,7 +136,7 @@ class SupplyChainTradeLineItemType
     /**
      * Sets a new specifiedLineTradeSettlement
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType $specifiedLineTradeSettlement
+     * @param  \horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType $specifiedLineTradeSettlement
      * @return self
      */
     public function setSpecifiedLineTradeSettlement(\horstoeko\zugferd\entities\en16931\ram\LineTradeSettlementType $specifiedLineTradeSettlement)

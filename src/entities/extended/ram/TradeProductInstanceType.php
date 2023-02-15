@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeProductInstanceType
  *
- *
  * XSD Type: TradeProductInstanceType
  */
 class TradeProductInstanceType
@@ -34,7 +33,7 @@ class TradeProductInstanceType
     /**
      * Sets a new batchID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $batchID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $batchID
      * @return self
      */
     public function setBatchID(\horstoeko\zugferd\entities\extended\udt\IDType $batchID)
@@ -56,7 +55,7 @@ class TradeProductInstanceType
     /**
      * Sets a new supplierAssignedSerialID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID
      * @return self
      */
     public function setSupplierAssignedSerialID(\horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID)

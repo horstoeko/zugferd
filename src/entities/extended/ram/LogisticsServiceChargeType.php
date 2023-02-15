@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LogisticsServiceChargeType
  *
- *
  * XSD Type: LogisticsServiceChargeType
  */
 class LogisticsServiceChargeType
@@ -41,7 +40,7 @@ class LogisticsServiceChargeType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -63,7 +62,7 @@ class LogisticsServiceChargeType
     /**
      * Sets a new appliedAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $appliedAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $appliedAmount
      * @return self
      */
     public function setAppliedAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $appliedAmount)
@@ -76,7 +75,7 @@ class LogisticsServiceChargeType
      * Adds as appliedTradeTax
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeTaxType $appliedTradeTax
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType $appliedTradeTax
      */
     public function addToAppliedTradeTax(\horstoeko\zugferd\entities\extended\ram\TradeTaxType $appliedTradeTax)
     {
@@ -87,7 +86,7 @@ class LogisticsServiceChargeType
     /**
      * isset appliedTradeTax
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAppliedTradeTax($index)
@@ -98,7 +97,7 @@ class LogisticsServiceChargeType
     /**
      * unset appliedTradeTax
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAppliedTradeTax($index)
@@ -119,7 +118,7 @@ class LogisticsServiceChargeType
     /**
      * Sets a new appliedTradeTax
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeTaxType[] $appliedTradeTax
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType[] $appliedTradeTax
      * @return self
      */
     public function setAppliedTradeTax(array $appliedTradeTax)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\udt;
 /**
  * Class representing DateTimeType
  *
- *
  * XSD Type: DateTimeType
  */
 class DateTimeType
@@ -29,7 +28,7 @@ class DateTimeType
     /**
      * Sets a new dateTimeString
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
     public function setDateTimeString(\horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString)

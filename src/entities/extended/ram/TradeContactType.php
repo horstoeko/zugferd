@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeContactType
  *
- *
  * XSD Type: TradeContactType
  */
 class TradeContactType
@@ -54,7 +53,7 @@ class TradeContactType
     /**
      * Sets a new personName
      *
-     * @param string $personName
+     * @param  string $personName
      * @return self
      */
     public function setPersonName($personName)
@@ -76,7 +75,7 @@ class TradeContactType
     /**
      * Sets a new departmentName
      *
-     * @param string $departmentName
+     * @param  string $departmentName
      * @return self
      */
     public function setDepartmentName($departmentName)
@@ -98,7 +97,7 @@ class TradeContactType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -120,7 +119,7 @@ class TradeContactType
     /**
      * Sets a new telephoneUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
      * @return self
      */
     public function setTelephoneUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication)
@@ -142,7 +141,7 @@ class TradeContactType
     /**
      * Sets a new faxUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication
      * @return self
      */
     public function setFaxUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication)
@@ -164,7 +163,7 @@ class TradeContactType
     /**
      * Sets a new emailURIUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication
      * @return self
      */
     public function setEmailURIUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication)

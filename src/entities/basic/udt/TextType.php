@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\udt;
 /**
  * Class representing TextType
  *
- *
  * XSD Type: TextType
  */
 class TextType
@@ -29,7 +28,7 @@ class TextType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

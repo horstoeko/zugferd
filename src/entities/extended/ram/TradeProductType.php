@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeProductType
  *
- *
  * XSD Type: TradeProductType
  */
 class TradeProductType
@@ -87,7 +86,7 @@ class TradeProductType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
@@ -109,7 +108,7 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $globalID
      * @return self
      */
     public function setGlobalID(\horstoeko\zugferd\entities\extended\udt\IDType $globalID)
@@ -131,7 +130,7 @@ class TradeProductType
     /**
      * Sets a new sellerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $sellerAssignedID)
@@ -153,7 +152,7 @@ class TradeProductType
     /**
      * Sets a new buyerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $buyerAssignedID)
@@ -175,7 +174,7 @@ class TradeProductType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -197,7 +196,7 @@ class TradeProductType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -210,7 +209,7 @@ class TradeProductType
      * Adds as applicableProductCharacteristic
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType $applicableProductCharacteristic
+     * @param  \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType $applicableProductCharacteristic
      */
     public function addToApplicableProductCharacteristic(\horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType $applicableProductCharacteristic)
     {
@@ -221,7 +220,7 @@ class TradeProductType
     /**
      * isset applicableProductCharacteristic
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetApplicableProductCharacteristic($index)
@@ -232,7 +231,7 @@ class TradeProductType
     /**
      * unset applicableProductCharacteristic
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetApplicableProductCharacteristic($index)
@@ -253,7 +252,7 @@ class TradeProductType
     /**
      * Sets a new applicableProductCharacteristic
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType[] $applicableProductCharacteristic
+     * @param  \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      * @return self
      */
     public function setApplicableProductCharacteristic(array $applicableProductCharacteristic)
@@ -266,7 +265,7 @@ class TradeProductType
      * Adds as designatedProductClassification
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ProductClassificationType $designatedProductClassification
+     * @param  \horstoeko\zugferd\entities\extended\ram\ProductClassificationType $designatedProductClassification
      */
     public function addToDesignatedProductClassification(\horstoeko\zugferd\entities\extended\ram\ProductClassificationType $designatedProductClassification)
     {
@@ -277,7 +276,7 @@ class TradeProductType
     /**
      * isset designatedProductClassification
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDesignatedProductClassification($index)
@@ -288,7 +287,7 @@ class TradeProductType
     /**
      * unset designatedProductClassification
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDesignatedProductClassification($index)
@@ -309,7 +308,7 @@ class TradeProductType
     /**
      * Sets a new designatedProductClassification
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ProductClassificationType[] $designatedProductClassification
+     * @param  \horstoeko\zugferd\entities\extended\ram\ProductClassificationType[] $designatedProductClassification
      * @return self
      */
     public function setDesignatedProductClassification(array $designatedProductClassification)
@@ -322,7 +321,7 @@ class TradeProductType
      * Adds as individualTradeProductInstance
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType $individualTradeProductInstance
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType $individualTradeProductInstance
      */
     public function addToIndividualTradeProductInstance(\horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType $individualTradeProductInstance)
     {
@@ -333,7 +332,7 @@ class TradeProductType
     /**
      * isset individualTradeProductInstance
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIndividualTradeProductInstance($index)
@@ -344,7 +343,7 @@ class TradeProductType
     /**
      * unset individualTradeProductInstance
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIndividualTradeProductInstance($index)
@@ -365,7 +364,7 @@ class TradeProductType
     /**
      * Sets a new individualTradeProductInstance
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[] $individualTradeProductInstance
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[] $individualTradeProductInstance
      * @return self
      */
     public function setIndividualTradeProductInstance(array $individualTradeProductInstance)
@@ -387,7 +386,7 @@ class TradeProductType
     /**
      * Sets a new originTradeCountry
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeCountryType $originTradeCountry
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeCountryType $originTradeCountry
      * @return self
      */
     public function setOriginTradeCountry(\horstoeko\zugferd\entities\extended\ram\TradeCountryType $originTradeCountry)
@@ -400,7 +399,7 @@ class TradeProductType
      * Adds as includedReferencedProduct
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedProductType $includedReferencedProduct
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedProductType $includedReferencedProduct
      */
     public function addToIncludedReferencedProduct(\horstoeko\zugferd\entities\extended\ram\ReferencedProductType $includedReferencedProduct)
     {
@@ -411,7 +410,7 @@ class TradeProductType
     /**
      * isset includedReferencedProduct
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIncludedReferencedProduct($index)
@@ -422,7 +421,7 @@ class TradeProductType
     /**
      * unset includedReferencedProduct
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIncludedReferencedProduct($index)
@@ -443,7 +442,7 @@ class TradeProductType
     /**
      * Sets a new includedReferencedProduct
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedProductType[] $includedReferencedProduct
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedProductType[] $includedReferencedProduct
      * @return self
      */
     public function setIncludedReferencedProduct(array $includedReferencedProduct)

@@ -33,42 +33,42 @@ class ZugferdDocument
     /**
      * @internal
      * Internal profile id (see ZugferdProfiles.php)
-     * @var integer
+     * @var      integer
      */
     public $profileId = -1;
 
     /**
      * @internal
      * Internal profile definition (see ZugferdProfiles.php)
-     * @var array
+     * @var      array
      */
     public $profileDefinition = [];
 
     /**
      * @internal
      * Serializer builder
-     * @var SerializerBuilder
+     * @var      SerializerBuilder
      */
     protected $serializerBuilder;
 
     /**
      * @internal
      * Serializer
-     * @var SerializerInterface
+     * @var      SerializerInterface
      */
     protected $serializer;
 
     /**
      * @internal
      * The internal invoice object
-     * @var CrossIndustryInvoiceType
+     * @var      CrossIndustryInvoiceType
      */
     protected $invoiceObject = null;
 
     /**
      * @internal
      * Object Helper
-     * @var ZugferdObjectHelper
+     * @var      ZugferdObjectHelper
      */
     protected $objectHelper = null;
 
@@ -213,11 +213,13 @@ class ZugferdDocument
         $this->serializerBuilder->addDefaultListeners();
         $this->serializerBuilder->addDefaultHandlers();
 
-        $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handler) {
-            $handler->registerSubscribingHandler(new BaseTypesHandler());
-            $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
-            $handler->registerSubscribingHandler(new ZugferdTypesHandler());
-        });
+        $this->serializerBuilder->configureHandlers(
+            function (HandlerRegistryInterface $handler) {
+                $handler->registerSubscribingHandler(new BaseTypesHandler());
+                $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
+                $handler->registerSubscribingHandler(new ZugferdTypesHandler());
+            }
+        );
 
         $this->serializer = $this->serializerBuilder->build();
 

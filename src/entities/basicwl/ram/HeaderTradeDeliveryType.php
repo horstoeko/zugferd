@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing HeaderTradeDeliveryType
  *
- *
  * XSD Type: HeaderTradeDeliveryType
  */
 class HeaderTradeDeliveryType
@@ -39,7 +38,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\TradePartyType $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(\horstoeko\zugferd\entities\basicwl\ram\TradePartyType $shipToTradeParty)
@@ -61,7 +60,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\basicwl\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
@@ -83,7 +82,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)

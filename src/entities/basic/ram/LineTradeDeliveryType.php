@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing LineTradeDeliveryType
  *
- *
  * XSD Type: LineTradeDeliveryType
  */
 class LineTradeDeliveryType
@@ -29,7 +28,7 @@ class LineTradeDeliveryType
     /**
      * Sets a new billedQuantity
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity
+     * @param  \horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity
      * @return self
      */
     public function setBilledQuantity(\horstoeko\zugferd\entities\basic\udt\QuantityType $billedQuantity)

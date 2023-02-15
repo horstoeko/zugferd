@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\udt;
 /**
  * Class representing CodeType
  *
- *
  * XSD Type: CodeType
  */
 class CodeType
@@ -39,7 +38,7 @@ class CodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()
@@ -73,7 +72,7 @@ class CodeType
     /**
      * Sets a new listID
      *
-     * @param string $listID
+     * @param  string $listID
      * @return self
      */
     public function setListID($listID)
@@ -95,7 +94,7 @@ class CodeType
     /**
      * Sets a new listVersionID
      *
-     * @param string $listVersionID
+     * @param  string $listVersionID
      * @return self
      */
     public function setListVersionID($listVersionID)

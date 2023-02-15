@@ -302,9 +302,11 @@ class ReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -375,9 +377,11 @@ class ReaderExtendedTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -523,13 +527,17 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentUltimateShipToContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -599,13 +607,17 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentShipFromContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -675,13 +687,17 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentInvoicerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -754,13 +770,17 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentInvoiceeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -830,13 +850,17 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentPayeeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
+            }
+        );
     }
 
     /**
@@ -911,9 +935,11 @@ class ReaderExtendedTest extends TestCase
     public function testDocumentProductEndUserContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
-        $this->expectNoticeOrWarningExt(function () {
-            self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
-        });
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());
     }
 

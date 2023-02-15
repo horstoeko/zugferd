@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing ReferencedDocumentType
  *
- *
  * XSD Type: ReferencedDocumentType
  */
 class ReferencedDocumentType
@@ -34,7 +33,7 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\basic\udt\IDType $issuerAssignedID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(\horstoeko\zugferd\entities\basic\udt\IDType $issuerAssignedID)
@@ -56,7 +55,7 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param  \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime)

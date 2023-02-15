@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\udt;
 /**
  * Class representing QuantityType
  *
- *
  * XSD Type: QuantityType
  */
 class QuantityType
@@ -34,7 +33,7 @@ class QuantityType
     /**
      * Gets or sets the inner value
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value()
@@ -68,7 +67,7 @@ class QuantityType
     /**
      * Sets a new unitCode
      *
-     * @param string $unitCode
+     * @param  string $unitCode
      * @return self
      */
     public function setUnitCode($unitCode)

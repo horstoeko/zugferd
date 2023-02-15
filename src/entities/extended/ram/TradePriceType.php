@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradePriceType
  *
- *
  * XSD Type: TradePriceType
  */
 class TradePriceType
@@ -46,7 +45,7 @@ class TradePriceType
     /**
      * Sets a new chargeAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $chargeAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $chargeAmount
      * @return self
      */
     public function setChargeAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $chargeAmount)
@@ -68,7 +67,7 @@ class TradePriceType
     /**
      * Sets a new basisQuantity
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity
      * @return self
      */
     public function setBasisQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity)
@@ -81,7 +80,7 @@ class TradePriceType
      * Adds as appliedTradeAllowanceCharge
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
      */
     public function addToAppliedTradeAllowanceCharge(\horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge)
     {
@@ -92,7 +91,7 @@ class TradePriceType
     /**
      * isset appliedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAppliedTradeAllowanceCharge($index)
@@ -103,7 +102,7 @@ class TradePriceType
     /**
      * unset appliedTradeAllowanceCharge
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAppliedTradeAllowanceCharge($index)
@@ -124,7 +123,7 @@ class TradePriceType
     /**
      * Sets a new appliedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
      * @return self
      */
     public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge)
@@ -146,7 +145,7 @@ class TradePriceType
     /**
      * Sets a new includedTradeTax
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax
      * @return self
      */
     public function setIncludedTradeTax(\horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax)

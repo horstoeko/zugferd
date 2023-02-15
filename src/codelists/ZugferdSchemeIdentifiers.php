@@ -69,7 +69,6 @@ class ZugferdSchemeIdentifiers
     /**
      * International Code Designator for the Identification of OSI-based,
      * Amateur Radio Organizations, Network Objects and Application Services.
-     *
      */
     const ISO_6523_0011 = '0011';
 

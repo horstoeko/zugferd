@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing ExchangedDocumentType
  *
- *
  * XSD Type: ExchangedDocumentType
  */
 class ExchangedDocumentType
@@ -46,7 +45,7 @@ class ExchangedDocumentType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\en16931\udt\IDType $iD)
@@ -68,7 +67,7 @@ class ExchangedDocumentType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -90,7 +89,7 @@ class ExchangedDocumentType
     /**
      * Sets a new issueDateTime
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\DateTimeType $issueDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $issueDateTime
      * @return self
      */
     public function setIssueDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $issueDateTime)
@@ -103,7 +102,7 @@ class ExchangedDocumentType
      * Adds as includedNote
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
+     * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
      */
     public function addToIncludedNote(\horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote)
     {
@@ -114,7 +113,7 @@ class ExchangedDocumentType
     /**
      * isset includedNote
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIncludedNote($index)
@@ -125,7 +124,7 @@ class ExchangedDocumentType
     /**
      * unset includedNote
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIncludedNote($index)
@@ -146,7 +145,7 @@ class ExchangedDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\NoteType[] $includedNote
+     * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType[] $includedNote
      * @return self
      */
     public function setIncludedNote(array $includedNote)

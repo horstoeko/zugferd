@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradePaymentDiscountTermsType
  *
- *
  * XSD Type: TradePaymentDiscountTermsType
  */
 class TradePaymentDiscountTermsType
@@ -49,7 +48,7 @@ class TradePaymentDiscountTermsType
     /**
      * Sets a new basisDateTime
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime
      * @return self
      */
     public function setBasisDateTime(\horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime)
@@ -71,7 +70,7 @@ class TradePaymentDiscountTermsType
     /**
      * Sets a new basisPeriodMeasure
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure
+     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure
      * @return self
      */
     public function setBasisPeriodMeasure(\horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure)
@@ -93,7 +92,7 @@ class TradePaymentDiscountTermsType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount)
@@ -115,7 +114,7 @@ class TradePaymentDiscountTermsType
     /**
      * Sets a new calculationPercent
      *
-     * @param float $calculationPercent
+     * @param  float $calculationPercent
      * @return self
      */
     public function setCalculationPercent($calculationPercent)
@@ -137,7 +136,7 @@ class TradePaymentDiscountTermsType
     /**
      * Sets a new actualDiscountAmount
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount
      * @return self
      */
     public function setActualDiscountAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount)

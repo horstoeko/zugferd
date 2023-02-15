@@ -24,7 +24,7 @@ use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
 class ZugferdQuickDescriptorXRechnung extends ZugferdQuickDescriptor
 {
     /**
-     *@inheritDoc
+     * @inheritDoc
      */
     protected static function getProfile(): int
     {

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\udt;
 /**
  * Class representing NumericType
  *
- *
  * XSD Type: NumericType
  */
 class NumericType
@@ -29,7 +28,7 @@ class NumericType
     /**
      * Gets or sets the inner value
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value()

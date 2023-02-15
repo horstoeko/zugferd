@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeSettlementFinancialCardType
  *
- *
  * XSD Type: TradeSettlementFinancialCardType
  */
 class TradeSettlementFinancialCardType
@@ -34,7 +33,7 @@ class TradeSettlementFinancialCardType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
@@ -56,7 +55,7 @@ class TradeSettlementFinancialCardType
     /**
      * Sets a new cardholderName
      *
-     * @param string $cardholderName
+     * @param  string $cardholderName
      * @return self
      */
     public function setCardholderName($cardholderName)

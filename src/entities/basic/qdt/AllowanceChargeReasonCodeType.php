@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\qdt;
 /**
  * Class representing AllowanceChargeReasonCodeType
  *
- *
  * XSD Type: AllowanceChargeReasonCodeType
  */
 class AllowanceChargeReasonCodeType
@@ -29,7 +28,7 @@ class AllowanceChargeReasonCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

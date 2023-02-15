@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\qdt;
 /**
  * Class representing TaxCategoryCodeType
  *
- *
  * XSD Type: TaxCategoryCodeType
  */
 class TaxCategoryCodeType
@@ -29,7 +28,7 @@ class TaxCategoryCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

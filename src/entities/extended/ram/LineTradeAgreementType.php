@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LineTradeAgreementType
  *
- *
  * XSD Type: LineTradeAgreementType
  */
 class LineTradeAgreementType
@@ -63,7 +62,7 @@ class LineTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
@@ -85,7 +84,7 @@ class LineTradeAgreementType
     /**
      * Sets a new quotationReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
      * @return self
      */
     public function setQuotationReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument)
@@ -107,7 +106,7 @@ class LineTradeAgreementType
     /**
      * Sets a new contractReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument
      * @return self
      */
     public function setContractReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument)
@@ -120,7 +119,7 @@ class LineTradeAgreementType
      * Adds as additionalReferencedDocument
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument
      */
     public function addToAdditionalReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $additionalReferencedDocument)
     {
@@ -131,7 +130,7 @@ class LineTradeAgreementType
     /**
      * isset additionalReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAdditionalReferencedDocument($index)
@@ -142,7 +141,7 @@ class LineTradeAgreementType
     /**
      * unset additionalReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAdditionalReferencedDocument($index)
@@ -163,7 +162,7 @@ class LineTradeAgreementType
     /**
      * Sets a new additionalReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
     public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
@@ -185,7 +184,7 @@ class LineTradeAgreementType
     /**
      * Sets a new grossPriceProductTradePrice
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePriceType $grossPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePriceType $grossPriceProductTradePrice
      * @return self
      */
     public function setGrossPriceProductTradePrice(\horstoeko\zugferd\entities\extended\ram\TradePriceType $grossPriceProductTradePrice)
@@ -207,7 +206,7 @@ class LineTradeAgreementType
     /**
      * Sets a new netPriceProductTradePrice
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice
      * @return self
      */
     public function setNetPriceProductTradePrice(\horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice)
@@ -220,7 +219,7 @@ class LineTradeAgreementType
      * Adds as ultimateCustomerOrderReferencedDocument
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
      */
     public function addToUltimateCustomerOrderReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument)
     {
@@ -231,7 +230,7 @@ class LineTradeAgreementType
     /**
      * isset ultimateCustomerOrderReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetUltimateCustomerOrderReferencedDocument($index)
@@ -242,7 +241,7 @@ class LineTradeAgreementType
     /**
      * unset ultimateCustomerOrderReferencedDocument
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetUltimateCustomerOrderReferencedDocument($index)
@@ -263,7 +262,7 @@ class LineTradeAgreementType
     /**
      * Sets a new ultimateCustomerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
      * @return self
      */
     public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument)

@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing LineTradeAgreementType
  *
- *
  * XSD Type: LineTradeAgreementType
  */
 class LineTradeAgreementType
@@ -39,7 +38,7 @@ class LineTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
@@ -61,7 +60,7 @@ class LineTradeAgreementType
     /**
      * Sets a new grossPriceProductTradePrice
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice
      * @return self
      */
     public function setGrossPriceProductTradePrice(\horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice)
@@ -83,7 +82,7 @@ class LineTradeAgreementType
     /**
      * Sets a new netPriceProductTradePrice
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradePriceType $netPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePriceType $netPriceProductTradePrice
      * @return self
      */
     public function setNetPriceProductTradePrice(\horstoeko\zugferd\entities\en16931\ram\TradePriceType $netPriceProductTradePrice)

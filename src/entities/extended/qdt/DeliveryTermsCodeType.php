@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\qdt;
 /**
  * Class representing DeliveryTermsCodeType
  *
- *
  * XSD Type: DeliveryTermsCodeType
  */
 class DeliveryTermsCodeType
@@ -29,7 +28,7 @@ class DeliveryTermsCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

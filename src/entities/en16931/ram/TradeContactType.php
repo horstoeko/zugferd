@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradeContactType
  *
- *
  * XSD Type: TradeContactType
  */
 class TradeContactType
@@ -44,7 +43,7 @@ class TradeContactType
     /**
      * Sets a new personName
      *
-     * @param string $personName
+     * @param  string $personName
      * @return self
      */
     public function setPersonName($personName)
@@ -66,7 +65,7 @@ class TradeContactType
     /**
      * Sets a new departmentName
      *
-     * @param string $departmentName
+     * @param  string $departmentName
      * @return self
      */
     public function setDepartmentName($departmentName)
@@ -88,7 +87,7 @@ class TradeContactType
     /**
      * Sets a new telephoneUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $telephoneUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $telephoneUniversalCommunication
      * @return self
      */
     public function setTelephoneUniversalCommunication(\horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $telephoneUniversalCommunication)
@@ -110,7 +109,7 @@ class TradeContactType
     /**
      * Sets a new emailURIUniversalCommunication
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $emailURIUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $emailURIUniversalCommunication
      * @return self
      */
     public function setEmailURIUniversalCommunication(\horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $emailURIUniversalCommunication)

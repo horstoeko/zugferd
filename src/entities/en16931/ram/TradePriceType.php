@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing TradePriceType
  *
- *
  * XSD Type: TradePriceType
  */
 class TradePriceType
@@ -39,7 +38,7 @@ class TradePriceType
     /**
      * Sets a new chargeAmount
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\AmountType $chargeAmount
+     * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $chargeAmount
      * @return self
      */
     public function setChargeAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $chargeAmount)
@@ -61,7 +60,7 @@ class TradePriceType
     /**
      * Sets a new basisQuantity
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\QuantityType $basisQuantity
+     * @param  \horstoeko\zugferd\entities\en16931\udt\QuantityType $basisQuantity
      * @return self
      */
     public function setBasisQuantity(\horstoeko\zugferd\entities\en16931\udt\QuantityType $basisQuantity)
@@ -83,7 +82,7 @@ class TradePriceType
     /**
      * Sets a new appliedTradeAllowanceCharge
      *
-     * @param \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
      * @return self
      */
     public function setAppliedTradeAllowanceCharge(\horstoeko\zugferd\entities\en16931\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge)

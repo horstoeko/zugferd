@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeDeliveryTermsType
  *
- *
  * XSD Type: TradeDeliveryTermsType
  */
 class TradeDeliveryTermsType
@@ -29,7 +28,7 @@ class TradeDeliveryTermsType
     /**
      * Sets a new deliveryTypeCode
      *
-     * @param string $deliveryTypeCode
+     * @param  string $deliveryTypeCode
      * @return self
      */
     public function setDeliveryTypeCode($deliveryTypeCode)

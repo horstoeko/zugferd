@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basic\ram;
 /**
  * Class representing HeaderTradeAgreementType
  *
- *
  * XSD Type: HeaderTradeAgreementType
  */
 class HeaderTradeAgreementType
@@ -54,7 +53,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new buyerReference
      *
-     * @param string $buyerReference
+     * @param  string $buyerReference
      * @return self
      */
     public function setBuyerReference($buyerReference)
@@ -76,7 +75,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new sellerTradeParty
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTradeParty
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTradeParty
      * @return self
      */
     public function setSellerTradeParty(\horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTradeParty)
@@ -98,7 +97,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new buyerTradeParty
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradePartyType $buyerTradeParty
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradePartyType $buyerTradeParty
      * @return self
      */
     public function setBuyerTradeParty(\horstoeko\zugferd\entities\basic\ram\TradePartyType $buyerTradeParty)
@@ -120,7 +119,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new sellerTaxRepresentativeTradeParty
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTaxRepresentativeTradeParty
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTaxRepresentativeTradeParty
      * @return self
      */
     public function setSellerTaxRepresentativeTradeParty(\horstoeko\zugferd\entities\basic\ram\TradePartyType $sellerTaxRepresentativeTradeParty)
@@ -142,7 +141,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
@@ -164,7 +163,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new contractReferencedDocument
      *
-     * @param \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $contractReferencedDocument
+     * @param  \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $contractReferencedDocument
      * @return self
      */
     public function setContractReferencedDocument(\horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $contractReferencedDocument)

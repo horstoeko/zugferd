@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing CreditorFinancialAccountType
  *
- *
  * XSD Type: CreditorFinancialAccountType
  */
 class CreditorFinancialAccountType
@@ -39,7 +38,7 @@ class CreditorFinancialAccountType
     /**
      * Sets a new iBANID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iBANID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iBANID
      * @return self
      */
     public function setIBANID(\horstoeko\zugferd\entities\extended\udt\IDType $iBANID)
@@ -61,7 +60,7 @@ class CreditorFinancialAccountType
     /**
      * Sets a new accountName
      *
-     * @param string $accountName
+     * @param  string $accountName
      * @return self
      */
     public function setAccountName($accountName)
@@ -83,7 +82,7 @@ class CreditorFinancialAccountType
     /**
      * Sets a new proprietaryID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID
      * @return self
      */
     public function setProprietaryID(\horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID)

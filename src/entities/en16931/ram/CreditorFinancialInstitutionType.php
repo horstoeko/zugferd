@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing CreditorFinancialInstitutionType
  *
- *
  * XSD Type: CreditorFinancialInstitutionType
  */
 class CreditorFinancialInstitutionType
@@ -29,7 +28,7 @@ class CreditorFinancialInstitutionType
     /**
      * Sets a new bICID
      *
-     * @param \horstoeko\zugferd\entities\en16931\udt\IDType $bICID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $bICID
      * @return self
      */
     public function setBICID(\horstoeko\zugferd\entities\en16931\udt\IDType $bICID)

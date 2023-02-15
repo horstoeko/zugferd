@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing TradeCurrencyExchangeType
  *
- *
  * XSD Type: TradeCurrencyExchangeType
  */
 class TradeCurrencyExchangeType
@@ -44,7 +43,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new sourceCurrencyCode
      *
-     * @param string $sourceCurrencyCode
+     * @param  string $sourceCurrencyCode
      * @return self
      */
     public function setSourceCurrencyCode($sourceCurrencyCode)
@@ -66,7 +65,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new targetCurrencyCode
      *
-     * @param string $targetCurrencyCode
+     * @param  string $targetCurrencyCode
      * @return self
      */
     public function setTargetCurrencyCode($targetCurrencyCode)
@@ -88,7 +87,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new conversionRate
      *
-     * @param float $conversionRate
+     * @param  float $conversionRate
      * @return self
      */
     public function setConversionRate($conversionRate)
@@ -110,7 +109,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new conversionRateDateTime
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime
      * @return self
      */
     public function setConversionRateDateTime(\horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime)

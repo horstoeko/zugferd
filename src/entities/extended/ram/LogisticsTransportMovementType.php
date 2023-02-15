@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LogisticsTransportMovementType
  *
- *
  * XSD Type: LogisticsTransportMovementType
  */
 class LogisticsTransportMovementType
@@ -29,7 +28,7 @@ class LogisticsTransportMovementType
     /**
      * Sets a new modeCode
      *
-     * @param string $modeCode
+     * @param  string $modeCode
      * @return self
      */
     public function setModeCode($modeCode)

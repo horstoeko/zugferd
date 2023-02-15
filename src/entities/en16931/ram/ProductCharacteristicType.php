@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\en16931\ram;
 /**
  * Class representing ProductCharacteristicType
  *
- *
  * XSD Type: ProductCharacteristicType
  */
 class ProductCharacteristicType
@@ -34,7 +33,7 @@ class ProductCharacteristicType
     /**
      * Sets a new description
      *
-     * @param string $description
+     * @param  string $description
      * @return self
      */
     public function setDescription($description)
@@ -56,7 +55,7 @@ class ProductCharacteristicType
     /**
      * Sets a new value
      *
-     * @param string $value
+     * @param  string $value
      * @return self
      */
     public function setValue($value)

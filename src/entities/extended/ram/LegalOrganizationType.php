@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing LegalOrganizationType
  *
- *
  * XSD Type: LegalOrganizationType
  */
 class LegalOrganizationType
@@ -39,7 +38,7 @@ class LegalOrganizationType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
@@ -61,7 +60,7 @@ class LegalOrganizationType
     /**
      * Sets a new tradingBusinessName
      *
-     * @param string $tradingBusinessName
+     * @param  string $tradingBusinessName
      * @return self
      */
     public function setTradingBusinessName($tradingBusinessName)
@@ -83,7 +82,7 @@ class LegalOrganizationType
     /**
      * Sets a new postalTradeAddress
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(\horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress)

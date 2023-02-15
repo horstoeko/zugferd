@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\udt;
 /**
  * Class representing PercentType
  *
- *
  * XSD Type: PercentType
  */
 class PercentType
@@ -29,7 +28,7 @@ class PercentType
     /**
      * Gets or sets the inner value
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value()

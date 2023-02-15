@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing SupplyChainTradeTransactionType
  *
- *
  * XSD Type: SupplyChainTradeTransactionType
  */
 class SupplyChainTradeTransactionType
@@ -39,7 +38,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeAgreement
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
      * @return self
      */
     public function setApplicableHeaderTradeAgreement(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement)
@@ -61,7 +60,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeDelivery
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
      * @return self
      */
     public function setApplicableHeaderTradeDelivery(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery)
@@ -83,7 +82,7 @@ class SupplyChainTradeTransactionType
     /**
      * Sets a new applicableHeaderTradeSettlement
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(\horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement)

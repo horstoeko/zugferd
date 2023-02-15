@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing ExchangedDocumentContextType
  *
- *
  * XSD Type: ExchangedDocumentContextType
  */
 class ExchangedDocumentContextType
@@ -39,7 +38,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new testIndicator
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator
+     * @param  \horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator
      * @return self
      */
     public function setTestIndicator(\horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator)
@@ -61,7 +60,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new businessProcessSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @param  \horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(\horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter)
@@ -83,7 +82,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new guidelineSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+     * @param  \horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(\horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter)

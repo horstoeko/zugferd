@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\basicwl\ram;
 /**
  * Class representing TradeAllowanceChargeType
  *
- *
  * XSD Type: TradeAllowanceChargeType
  */
 class TradeAllowanceChargeType
@@ -59,7 +58,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new chargeIndicator
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\IndicatorType $chargeIndicator
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\IndicatorType $chargeIndicator
      * @return self
      */
     public function setChargeIndicator(\horstoeko\zugferd\entities\basicwl\udt\IndicatorType $chargeIndicator)
@@ -81,7 +80,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new calculationPercent
      *
-     * @param float $calculationPercent
+     * @param  float $calculationPercent
      * @return self
      */
     public function setCalculationPercent($calculationPercent)
@@ -103,7 +102,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new basisAmount
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
      * @return self
      */
     public function setBasisAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount)
@@ -125,7 +124,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new actualAmount
      *
-     * @param \horstoeko\zugferd\entities\basicwl\udt\AmountType $actualAmount
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $actualAmount
      * @return self
      */
     public function setActualAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $actualAmount)
@@ -147,7 +146,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new reasonCode
      *
-     * @param string $reasonCode
+     * @param  string $reasonCode
      * @return self
      */
     public function setReasonCode($reasonCode)
@@ -169,7 +168,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new reason
      *
-     * @param string $reason
+     * @param  string $reason
      * @return self
      */
     public function setReason($reason)
@@ -191,7 +190,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new categoryTradeTax
      *
-     * @param \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $categoryTradeTax
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $categoryTradeTax
      * @return self
      */
     public function setCategoryTradeTax(\horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $categoryTradeTax)

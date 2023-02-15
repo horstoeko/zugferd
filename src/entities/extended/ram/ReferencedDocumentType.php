@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\extended\ram;
 /**
  * Class representing ReferencedDocumentType
  *
- *
  * XSD Type: ReferencedDocumentType
  */
 class ReferencedDocumentType
@@ -66,7 +65,7 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID)
@@ -88,7 +87,7 @@ class ReferencedDocumentType
     /**
      * Sets a new uRIID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
      * @return self
      */
     public function setURIID(\horstoeko\zugferd\entities\extended\udt\IDType $uRIID)
@@ -110,7 +109,7 @@ class ReferencedDocumentType
     /**
      * Sets a new lineID
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\IDType $lineID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $lineID
      * @return self
      */
     public function setLineID(\horstoeko\zugferd\entities\extended\udt\IDType $lineID)
@@ -132,7 +131,7 @@ class ReferencedDocumentType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -145,7 +144,7 @@ class ReferencedDocumentType
      * Adds as name
      *
      * @return self
-     * @param string $name
+     * @param  string $name
      */
     public function addToName($name)
     {
@@ -156,7 +155,7 @@ class ReferencedDocumentType
     /**
      * isset name
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetName($index)
@@ -167,7 +166,7 @@ class ReferencedDocumentType
     /**
      * unset name
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetName($index)
@@ -188,7 +187,7 @@ class ReferencedDocumentType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(array $name)
@@ -210,7 +209,7 @@ class ReferencedDocumentType
     /**
      * Sets a new attachmentBinaryObject
      *
-     * @param \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
+     * @param  \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
      * @return self
      */
     public function setAttachmentBinaryObject(\horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject)
@@ -232,7 +231,7 @@ class ReferencedDocumentType
     /**
      * Sets a new referenceTypeCode
      *
-     * @param string $referenceTypeCode
+     * @param  string $referenceTypeCode
      * @return self
      */
     public function setReferenceTypeCode($referenceTypeCode)
@@ -254,7 +253,7 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime)
