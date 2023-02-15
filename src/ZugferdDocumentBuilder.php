@@ -9,7 +9,9 @@
 
 namespace horstoeko\zugferd;
 
-use \DateTime;
+use DateTime;
+use DOMDocument;
+use DOMXPath;
 
 /**
  * Class representing the document builder for outgoing documents
@@ -125,6 +127,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $this->onBeforeGetContent();
         return $this->serializer->serialize($this->invoiceObject, 'xml');
+    }
+
+    /**
+     * Write the content of a invoice object to a DOMDocument instance
+     *
+     * @return DOMDocument
+     */
+    public function getContentAsDomDocument(): DOMDocument
+    {
+        $domDocument = new DOMDocument();
+        $domDocument->loadXML($this->getContent());
+
+        return $domDocument;
+    }
+
+    /**
+     * Write the content of a invoice object to a DOMXpath instance
+     *
+     * @return DOMXpath
+     */
+    public function getContentAsDomXPath(): DOMXpath
+    {
+        $domXPath = new DOMXPath($this->getContentAsDomDocument());
+
+        return $domXPath;
     }
 
     /**

@@ -50,13 +50,6 @@ class ZugferdDocumentPdfBuilder
     private $pdfData = "";
 
     /**
-     * Contains the XML data DOMDocument instance
-     *
-     * @var \DOMDocument
-     */
-    private $xmlData = null;
-
-    /**
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuiler
@@ -70,8 +63,6 @@ class ZugferdDocumentPdfBuilder
         $this->documentBuiler = $documentBuiler;
         $this->pdfData = $pdfData;
         $this->pdfWriter = new ZugferdPdfWriter();
-        $this->xmlData = new \DOMDocument();
-        $this->xmlData->loadXML($this->documentBuiler->getContent());
     }
 
     /**
@@ -112,7 +103,7 @@ class ZugferdDocumentPdfBuilder
 
         $pdfDataRef = null;
 
-        if (@is_file($this->pdfData)) {
+        if ($this->pdfDataIsFile($this->pdfData)) {
             $pdfDataRef = $this->pdfData;
         } elseif (is_string($this->pdfData)) {
             $pdfDataRef = PdfStreamReader::createByString($this->pdfData);
@@ -120,7 +111,7 @@ class ZugferdDocumentPdfBuilder
 
         // Get XML data from Builder
 
-        $xmlDataRef = PdfStreamReader::createByString($this->xmlData->saveXML());
+        $documentBuilderXmlDataRef = PdfStreamReader::createByString($this->documentBuiler->getContentAsDomDocument()->saveXML());
 
         // Get profile definition for later use
 
@@ -128,7 +119,14 @@ class ZugferdDocumentPdfBuilder
 
         // Start
 
-        $this->pdfWriter->attach($xmlDataRef, $profileDef['attachmentfilename'], 'Factur-X Invoice', 'Data', 'text#2Fxml');
+        $this->pdfWriter->attach(
+            $documentBuilderXmlDataRef,
+            $profileDef['attachmentfilename'],
+            'Factur-X Invoice',
+            'Data',
+            'text#2Fxml'
+        );
+
         $this->pdfWriter->openAttachmentPane();
 
         // Copy pages from the original PDF
@@ -199,10 +197,12 @@ class ZugferdDocumentPdfBuilder
     private function preparePdfMetadata(): array
     {
         $invoiceInformations = $this->extractInvoiceInformations();
+
         $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
         $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
         $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
-        $pdf_metadata = array(
+
+        $pdfMetadata = array(
             'author' => $invoiceInformations['seller'],
             'keywords' => sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']),
             'title' => $title,
@@ -211,7 +211,7 @@ class ZugferdDocumentPdfBuilder
             'modifiedDate' => date('Y-m-d\TH:i:s') . '+00:00',
         );
 
-        return $pdf_metadata;
+        return $pdfMetadata;
     }
 
     /**
@@ -221,33 +221,53 @@ class ZugferdDocumentPdfBuilder
      */
     protected function extractInvoiceInformations(): array
     {
-        $xpath = new \DOMXpath($this->xmlData);
+        $xpath = $this->documentBuiler->getContentAsDomXPath();
+
         $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
         $date = $dateXpath->item(0)->nodeValue;
         $dateReformatted = date('Y-m-d\TH:i:s', strtotime($date)) . '+00:00';
+
         $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
         $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
-        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
-        $seller = $sellerXpath->item(0)->nodeValue;
-        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
-        $docType = $docTypeXpath->item(0)->nodeValue;
 
-        switch ($docType) {
-            case ZugferdInvoiceType::CREDITNOTE:
-                $docTypeName = 'Credit Note';
-                break;
-            default:
-                $docTypeName = 'Invoice';
-                break;
+        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
+        $sellerName = $sellerXpath->item(0)->nodeValue;
+
+        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
+        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
+
+        switch ($docTypeCode) {
+        case ZugferdInvoiceType::CREDITNOTE:
+            $docTypeName = 'Credit Note';
+            break;
+        default:
+            $docTypeName = 'Invoice';
+            break;
         }
 
-        $base_info = array(
+        $invoiceInformation = array(
             'invoiceId' => $invoiceId,
             'docTypeName' => $docTypeName,
-            'seller' => $seller,
+            'seller' => $sellerName,
             'date' => $dateReformatted,
         );
 
-        return $base_info;
+        return $invoiceInformation;
+    }
+
+    /**
+     * Returns true if the submittet parameter $pdfData is a valid file.
+     * Otherwise it will return false
+     *
+     * @param  string $pdfData
+     * @return boolean
+     */
+    private function pdfDataIsFile($pdfData): bool
+    {
+        try {
+            return @is_file($pdfData);
+        } catch (\TypeError $ex) {
+            return false;
+        }
     }
 }
