@@ -63,7 +63,4 @@ class NoteType
         $this->subjectCode = $subjectCode;
         return $this;
     }
-
-
 }
-

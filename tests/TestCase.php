@@ -35,7 +35,8 @@ class TestCase extends PhpUnitTestCase
         set_error_handler(
             static function (int $errno, string $errstr): never {
                 throw new \Exception($errstr, $errno);
-            }, E_ALL
+            },
+            E_ALL
         );
 
         $this->expectException(\Exception::class);

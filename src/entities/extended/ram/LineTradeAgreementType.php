@@ -270,7 +270,4 @@ class LineTradeAgreementType
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
         return $this;
     }
-
-
 }
-

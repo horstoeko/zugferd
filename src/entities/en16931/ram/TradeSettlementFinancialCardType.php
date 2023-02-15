@@ -63,7 +63,4 @@ class TradeSettlementFinancialCardType
         $this->cardholderName = $cardholderName;
         return $this;
     }
-
-
 }
-

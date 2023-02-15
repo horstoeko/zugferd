@@ -63,7 +63,4 @@ class SpecifiedPeriodType
         $this->endDateTime = $endDateTime;
         return $this;
     }
-
-
 }
-

@@ -75,7 +75,4 @@ class AmountType
         $this->currencyID = $currencyID;
         return $this;
     }
-
-
 }
-

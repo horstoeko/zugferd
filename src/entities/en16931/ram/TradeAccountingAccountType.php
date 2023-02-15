@@ -36,7 +36,4 @@ class TradeAccountingAccountType
         $this->iD = $iD;
         return $this;
     }
-
-
 }
-

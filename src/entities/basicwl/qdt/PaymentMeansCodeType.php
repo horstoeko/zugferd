@@ -48,7 +48,4 @@ class PaymentMeansCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

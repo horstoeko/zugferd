@@ -48,7 +48,4 @@ class PercentType
     {
         return strval($this->__value);
     }
-
-
 }
-

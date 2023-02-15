@@ -63,7 +63,4 @@ class TradeProductInstanceType
         $this->supplierAssignedSerialID = $supplierAssignedSerialID;
         return $this;
     }
-
-
 }
-

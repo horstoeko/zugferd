@@ -73,7 +73,4 @@ class DateStringAType
         $this->format = $format;
         return $this;
     }
-
-
 }
-

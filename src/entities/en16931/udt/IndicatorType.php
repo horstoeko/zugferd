@@ -36,7 +36,4 @@ class IndicatorType
         $this->indicator = $indicator;
         return $this;
     }
-
-
 }
-

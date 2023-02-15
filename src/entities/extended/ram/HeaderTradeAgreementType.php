@@ -513,7 +513,4 @@ class HeaderTradeAgreementType
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
         return $this;
     }
-
-
 }
-

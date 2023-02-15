@@ -48,7 +48,4 @@ class ContactTypeCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

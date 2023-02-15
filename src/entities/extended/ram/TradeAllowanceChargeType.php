@@ -252,7 +252,4 @@ class TradeAllowanceChargeType
         $this->categoryTradeTax = $categoryTradeTax;
         return $this;
     }
-
-
 }
-

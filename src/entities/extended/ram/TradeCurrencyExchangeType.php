@@ -117,7 +117,4 @@ class TradeCurrencyExchangeType
         $this->conversionRateDateTime = $conversionRateDateTime;
         return $this;
     }
-
-
 }
-

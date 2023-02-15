@@ -450,7 +450,4 @@ class TradeProductType
         $this->includedReferencedProduct = $includedReferencedProduct;
         return $this;
     }
-
-
 }
-

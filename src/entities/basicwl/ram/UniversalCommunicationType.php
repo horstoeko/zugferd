@@ -36,7 +36,4 @@ class UniversalCommunicationType
         $this->uRIID = $uRIID;
         return $this;
     }
-
-
 }
-

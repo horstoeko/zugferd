@@ -801,7 +801,4 @@ class HeaderTradeSettlementType
         $this->specifiedAdvancePayment = $specifiedAdvancePayment;
         return $this;
     }
-
-
 }
-

@@ -153,7 +153,4 @@ class ExchangedDocumentType
         $this->includedNote = $includedNote;
         return $this;
     }
-
-
 }
-

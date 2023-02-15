@@ -75,7 +75,4 @@ class IDType
         $this->schemeID = $schemeID;
         return $this;
     }
-
-
 }
-

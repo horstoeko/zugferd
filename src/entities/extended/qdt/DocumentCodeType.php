@@ -48,7 +48,4 @@ class DocumentCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

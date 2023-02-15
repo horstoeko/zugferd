@@ -48,7 +48,4 @@ class CodeType
     {
         return strval($this->__value);
     }
-
-
 }
-

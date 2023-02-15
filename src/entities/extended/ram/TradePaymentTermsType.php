@@ -198,7 +198,4 @@ class TradePaymentTermsType
         $this->payeeTradeParty = $payeeTradeParty;
         return $this;
     }
-
-
 }
-

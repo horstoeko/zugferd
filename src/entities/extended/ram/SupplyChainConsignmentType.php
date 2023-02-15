@@ -72,7 +72,4 @@ class SupplyChainConsignmentType
         $this->specifiedLogisticsTransportMovement = $specifiedLogisticsTransportMovement;
         return $this;
     }
-
-
 }
-

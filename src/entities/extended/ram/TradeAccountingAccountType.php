@@ -63,7 +63,4 @@ class TradeAccountingAccountType
         $this->typeCode = $typeCode;
         return $this;
     }
-
-
 }
-

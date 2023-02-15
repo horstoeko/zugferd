@@ -36,7 +36,4 @@ class DocumentContextParameterType
         $this->iD = $iD;
         return $this;
     }
-
-
 }
-

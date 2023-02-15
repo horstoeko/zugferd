@@ -48,7 +48,4 @@ class RateType
     {
         return strval($this->__value);
     }
-
-
 }
-

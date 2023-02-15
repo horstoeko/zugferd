@@ -297,7 +297,4 @@ class ExchangedDocumentType
         $this->effectiveSpecifiedPeriod = $effectiveSpecifiedPeriod;
         return $this;
     }
-
-
 }
-

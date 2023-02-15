@@ -144,7 +144,4 @@ class SupplyChainTradeLineItemType
         $this->specifiedLineTradeSettlement = $specifiedLineTradeSettlement;
         return $this;
     }
-
-
 }
-

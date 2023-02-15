@@ -36,7 +36,4 @@ class SupplyChainEventType
         $this->occurrenceDateTime = $occurrenceDateTime;
         return $this;
     }
-
-
 }
-

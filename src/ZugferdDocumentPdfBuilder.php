@@ -233,12 +233,12 @@ class ZugferdDocumentPdfBuilder
         $docType = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docType) {
-        case ZugferdInvoiceType::CREDITNOTE:
-            $docTypeName = 'Credit Note';
-            break;
-        default:
-            $docTypeName = 'Invoice';
-            break;
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
         }
 
         $base_info = array(

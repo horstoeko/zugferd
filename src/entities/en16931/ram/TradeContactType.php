@@ -117,7 +117,4 @@ class TradeContactType
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
         return $this;
     }
-
-
 }
-

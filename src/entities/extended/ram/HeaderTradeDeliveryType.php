@@ -259,7 +259,4 @@ class HeaderTradeDeliveryType
         $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
         return $this;
     }
-
-
 }
-

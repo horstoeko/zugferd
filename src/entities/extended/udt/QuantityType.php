@@ -75,7 +75,4 @@ class QuantityType
         $this->unitCode = $unitCode;
         return $this;
     }
-
-
 }
-

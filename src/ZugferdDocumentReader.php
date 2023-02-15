@@ -438,7 +438,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $notes = $this->getInvoiceValueByPath("getExchangedDocument.getIncludedNote", []);
         $notes = $this->convertToArray(
-            $notes, [
+            $notes,
+            [
             "contentcode" => ["getContentCode.value", ""],
             "subjectcode" => ["getSubjectCode.value", ""],
             "content" => ["getContent.value", ""],
@@ -2476,8 +2477,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false 
-            && StringUtils::stringIsNullOrEmpty($binarydata) === false 
+        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
+            && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
             $binarydatafilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binarydatafilename);
@@ -2501,7 +2502,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $refdocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
         $refdocs = $this->convertToArray(
-            $refdocs, [
+            $refdocs,
+            [
             "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
             "URIID" => ["getURIID.value", ""],
             "LineID" => ["getLineID.value", ""],
@@ -2941,7 +2943,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
         $allowanceCharge = $this->convertToArray(
-            $allowanceCharge, [
+            $allowanceCharge,
+            [
             "chargeindicator" => ["getChargeIndicator.getIndicator", false],
             "sequencenumeric" => ["getSequenceNumeric.value", 0],
             "calculationpercent" => ["getCalculationPercent.value", 0.0],
@@ -3182,17 +3185,20 @@ class ZugferdDocumentReader extends ZugferdDocument
         $appliedAmount = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedAmount.value", 0.0);
         $appliedTradeTax = $this->getInvoiceValueByPathFrom($serviceCharge, "getAppliedTradeTax", []);
         $taxTypeCodes = $this->convertToArray(
-            $appliedTradeTax, [
+            $appliedTradeTax,
+            [
             "typecode" => ["getTypeCode.value", ""],
             ]
         );
         $taxCategpryCodes = $this->convertToArray(
-            $appliedTradeTax, [
+            $appliedTradeTax,
+            [
             "categorycode" => ["getCategoryCode.value", ""],
             ]
         );
         $rateApplicablePercents = $this->convertToArray(
-            $appliedTradeTax, [
+            $appliedTradeTax,
+            [
             "percent" => ["getRateApplicablePercent.value", 0.0],
             ]
         );
@@ -3210,7 +3216,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $paymentTerms = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []);
         $paymentTerms = $this->convertToArray(
-            $paymentTerms, [
+            $paymentTerms,
+            [
             "description" => ["getDescription.value", ""],
             "duedate" => function ($item) {
                 return $this->objectHelper->toDateTime(

@@ -306,7 +306,4 @@ class TradePartyType
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
         return $this;
     }
-
-
 }
-

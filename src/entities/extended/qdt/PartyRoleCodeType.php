@@ -48,7 +48,4 @@ class PartyRoleCodeType
     {
         return strval($this->__value);
     }
-
-
 }
-
