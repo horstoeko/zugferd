@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use \horstoeko\stringmanagement\PathUtils;
 use \horstoeko\zugferd\jms\ZugferdTypesHandler;
 use \JMS\Serializer\Handler\HandlerRegistryInterface;
 use \JMS\Serializer\SerializerBuilder;
@@ -111,16 +112,58 @@ class ZugferdDocumentJsonExporter
      */
     private function initSerialzer(): ZugferdDocumentJsonExporter
     {
-        $serializerBuilder = SerializerBuilder::create();
-        $this->serializerBuilder = $serializerBuilder;
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/qdt', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\qdt');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/ram', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\ram');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/rsm', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\rsm');
-        $this->serializerBuilder->addMetadataDir(dirname(__FILE__) . '/yaml/' . $this->document->profileDefinition["name"] . '/udt', 'horstoeko\zugferd\entities\\' . $this->document->profileDefinition["name"] . '\udt');
+        $this->serializerBuilder = SerializerBuilder::create();
+
+        $this->serializerBuilder->addMetadataDir(
+            PathUtils::combineAllPaths(
+                ZugferdSettings::getYamlDirectory(),
+                $this->document->getProfileDefinition()["name"],
+                'qdt'
+            ),
+            sprintf(
+                'horstoeko\zugferd\entities\%s\qdt',
+                $this->document->getProfileDefinition()["name"]
+            )
+        );
+        $this->serializerBuilder->addMetadataDir(
+            PathUtils::combineAllPaths(
+                ZugferdSettings::getYamlDirectory(),
+                $this->document->getProfileDefinition()["name"],
+                'ram'
+            ),
+            sprintf(
+                'horstoeko\zugferd\entities\%s\ram',
+                $this->document->getProfileDefinition()["name"]
+            )
+        );
+        $this->serializerBuilder->addMetadataDir(
+            PathUtils::combineAllPaths(
+                ZugferdSettings::getYamlDirectory(),
+                $this->document->getProfileDefinition()["name"],
+                'rsm'
+            ),
+            sprintf(
+                'horstoeko\zugferd\entities\%s\rsm',
+                $this->document->getProfileDefinition()["name"]
+            )
+        );
+        $this->serializerBuilder->addMetadataDir(
+            PathUtils::combineAllPaths(
+                ZugferdSettings::getYamlDirectory(),
+                $this->document->getProfileDefinition()["name"],
+                'udt'
+            ),
+            sprintf(
+                'horstoeko\zugferd\entities\%s\udt',
+                $this->document->getProfileDefinition()["name"]
+            )
+        );
+
         $this->serializerBuilder->addDefaultListeners();
+        $this->serializerBuilder->addDefaultHandlers();
+
         $this->serializerBuilder->configureHandlers(
-            function (HandlerRegistryInterface $handler) use ($serializerBuilder) {
-                $serializerBuilder->addDefaultHandlers();
+            function (HandlerRegistryInterface $handler) {
                 $handler->registerSubscribingHandler(new BaseTypesHandler());
                 $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
                 $handler->registerSubscribingHandler(new ZugferdTypesHandler());
