@@ -113,15 +113,11 @@ class ZugferdDocumentPdfBuilder
 
         $documentBuilderXmlDataRef = PdfStreamReader::createByString($this->documentBuiler->getContentAsDomDocument()->saveXML());
 
-        // Get profile definition for later use
-
-        $profileDef = $this->documentBuiler->profileDefinition;
-
         // Start
 
         $this->pdfWriter->attach(
             $documentBuilderXmlDataRef,
-            $profileDef['attachmentfilename'],
+            $this->documentBuiler->getProfileDefinition()['attachmentfilename'],
             'Factur-X Invoice',
             'Data',
             'text#2Fxml'
@@ -162,7 +158,7 @@ class ZugferdDocumentPdfBuilder
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];
-        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->documentBuiler->profileDefinition["xmpname"]);
+        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->documentBuiler->getProfileDefinition()["xmpname"]);
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
@@ -237,12 +233,12 @@ class ZugferdDocumentPdfBuilder
         $docTypeCode = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docTypeCode) {
-        case ZugferdInvoiceType::CREDITNOTE:
-            $docTypeName = 'Credit Note';
-            break;
-        default:
-            $docTypeName = 'Invoice';
-            break;
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
         }
 
         $invoiceInformation = array(
