@@ -384,10 +384,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information about the seller (=service provider)
      *
-     * @param string      $name        The full formal name under which the seller is registered in the
-     *                                 National Register of Legal Entities, Taxable Person or otherwise
-     *                                 acting as person(s)
-
+     * @param string      $name
+     * The full formal name under which the seller is registered in the
+     * National Register of Legal Entities, Taxable Person or otherwise
+     * acting as person(s)
      * @param  string|null $id
      * An identifier of the seller. In many systems, seller identification
      * is key information. Multiple seller IDs can be assigned or specified. They can be differentiated
