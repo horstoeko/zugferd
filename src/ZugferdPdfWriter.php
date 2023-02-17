@@ -101,10 +101,10 @@ class ZugferdPdfWriter extends PdfFpdi
         if (true == $binary_data) {
             $this->PDFVersion .=
                 "\n" . '%' .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256));
+                chr(\rand(128, 256)) .
+                chr(\rand(128, 256)) .
+                chr(\rand(128, 256)) .
+                chr(\rand(128, 256));
         }
     }
 
@@ -134,7 +134,7 @@ class ZugferdPdfWriter extends PdfFpdi
             }
         }
         if (!$isUTF8) {
-            $desc = utf8_encode($desc);
+            $desc = self::utf8_encode($desc);
         }
         if ('' == $mimetype) {
             $mimetype = mime_content_type($file);
@@ -213,7 +213,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
-        $this->_put('/UF ' . $this->_textstring(utf8_encode($file_info['name'])));
+        $this->_put('/UF ' . $this->_textstring(self::utf8_encode($file_info['name'])));
         if ($file_info['relationship']) {
             $this->_put('/AFRelationship /' . $file_info['relationship']);
         }
@@ -437,18 +437,48 @@ class ZugferdPdfWriter extends PdfFpdi
         }
         switch ($date_type) {
             case 'modified':
-            if (isset($this->metaDataInfos['modifiedDate'])) {
-                $metadata_string .= $this->metaDataInfos['modifiedDate'];
+                if (isset($this->metaDataInfos['modifiedDate'])) {
+                    $metadata_string .= $this->metaDataInfos['modifiedDate'];
                 }
                 break;
             case 'created':
             default:
-            if (isset($this->metaDataInfos['createdDate'])) {
-                $metadata_string .= $this->metaDataInfos['createdDate'];
+                if (isset($this->metaDataInfos['createdDate'])) {
+                    $metadata_string .= $this->metaDataInfos['createdDate'];
                 }
                 break;
         }
 
         return $metadata_string;
+    }
+
+    /**
+     * Internal wraooer for deprecated utf8_encode function
+     *
+     * @param string $string
+     * @return string
+     */
+    private static function utf8_encode(string $string): string
+    {
+        $string .= $string;
+        $len = \strlen($string);
+
+        for ($i = $len >> 1, $j = 0; $i < $len; ++$i, ++$j) {
+            switch (true) {
+                case $string[$i] < "\x80":
+                    $string[$j] = $string[$i];
+                    break;
+                case $string[$i] < "\xC0":
+                    $string[$j] = "\xC2";
+                    $string[++$j] = $string[$i];
+                    break;
+                default:
+                    $string[$j] = "\xC3";
+                    $string[++$j] = \chr(\ord($string[$i]) - 64);
+                    break;
+            }
+        }
+
+        return substr($string, 0, $j);
     }
 }
