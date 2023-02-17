@@ -9,8 +9,7 @@
 
 namespace horstoeko\zugferd;
 
-use \horstoeko\zugferd\ZugferdSettings;
-use \setasign\Fpdi\Fpdi as PdfFpdi;
+use setasign\Fpdi\Fpdi as PdfFpdi;
 
 /**
  * Class representing some tools for pdf generation
@@ -25,11 +24,6 @@ use \setasign\Fpdi\Fpdi as PdfFpdi;
  */
 class ZugferdPdfWriter extends PdfFpdi
 {
-    /**
-     * Full path to the ICC-Profile
-     */
-    const ICC_PROFILE_PATH = __DIR__ . '/assets/sRGB_v4_ICC.icc';
-
     /**
      * Contains all attached files
      *
@@ -77,7 +71,7 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @var integer
      */
-    protected $n_files;
+    protected $filesIndex;
 
     /**
      * Internal flag that indicates that the attachment
@@ -98,26 +92,32 @@ class ZugferdPdfWriter extends PdfFpdi
     public function setPdfVersion($version = '1.3', $binary_data = false): void
     {
         $this->PDFVersion = sprintf('%.1F', $version);
+
         if (true == $binary_data) {
             $this->PDFVersion .=
                 "\n" . '%' .
-                chr(\rand(128, 256)) .
-                chr(\rand(128, 256)) .
-                chr(\rand(128, 256)) .
-                chr(\rand(128, 256));
+                chr(rand(128, 256)) .
+                chr(rand(128, 256)) .
+                chr(rand(128, 256)) .
+                chr(rand(128, 256));
         }
     }
 
     /**
      * Attach file to PDF.
      *
-     * @param mixed  $file         Data to embed to the pdf
-     * @param string $name         The visible attachment filename
-     * @param string $desc         The description for the attached file
-     * @param string $relationship The type of the relationship of the attached file
-     * @param string $mimetype     The url-encoded mimetype of the attached file
-     * @param bool   $isUTF8       Set to true, if the attached file is UTF-8 encoded
-     *
+     * @param  mixed  $file
+     * Data to embed to the pdf
+     * @param  string $name
+     * The visible attachment filename
+     * @param  string $desc
+     * The description for the attached file
+     * @param  string $relationship
+     * The type of the relationship of the attached file
+     * @param  string $mimetype
+     * The url-encoded mimetype of the attached file
+     * @param  bool   $isUTF8
+     * Set to true, if the attached file is UTF-8 encoded
      * @return void
      */
     public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false): void
@@ -133,15 +133,18 @@ class ZugferdPdfWriter extends PdfFpdi
                 $name = $file;
             }
         }
+
         if (!$isUTF8) {
             $desc = mb_convert_encoding($desc, 'UTF-8', mb_list_encodings());
         }
+
         if ('' == $mimetype) {
             $mimetype = mime_content_type($file);
             if (!$mimetype) {
                 $mimetype = 'application/octet-stream';
             }
         }
+
         $mimetype = str_replace('/', '#2F', $mimetype);
         $this->files[] = array('file' => $file, 'name' => $name, 'desc' => $desc, 'relationship' => $relationship, 'subtype' => $mimetype);
     }
@@ -159,8 +162,8 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Add metadata description node.
      *
-     * @param string $description The description of the metadata
-     *
+     * @param  string $description
+     * The description of the metadata
      * @return void
      */
     public function addMetadataDescriptionNode($description): void
@@ -171,9 +174,8 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Set PDF metadata infos.
      *
-     * @param array $metaDataInfos The array with metadata information
-     *                             applied to the pdf
-     *
+     * @param  array $metaDataInfos
+     * The array with metadata information applied to the pdf
      * @return void
      */
     public function setPdfMetadataInfos(array $metaDataInfos): void
@@ -184,8 +186,9 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put files.
      *
-     * @throws                     \Exception
-     * @return                     void
+     * @throws \Exception
+     * @return void
+     *
      * @codingStandardsIgnoreStart
      */
     protected function _putfiles(): void
@@ -203,7 +206,6 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put file attachment specification.
      *
      * @param array $file_info
-     *
      * @return void
      */
     protected function putFileSpecification(array $file_info): void
@@ -232,7 +234,6 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put file stream.
      *
      * @param array $file_info
-     *
      * @throws \Exception
      */
     protected function putFileStream(array $file_info): void
@@ -275,7 +276,7 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function putFileDictionary(): void
     {
         $this->_newobj();
-        $this->n_files = $this->n;
+        $this->filesIndex = $this->n;
         $this->_put('<<');
         $s = '';
         $files = $this->files;
@@ -320,16 +321,20 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put resources including files and metadata descriptions.
      *
+     * @return void
      * @throws \Exception
      * @codingStandardsIgnoreStart
      */
     protected function _putresources(): void
     {
         parent::_putresources();
+
         if (!empty($this->files)) {
             $this->_putfiles();
         }
+
         $this->_putoutputintent();
+
         if (!empty($this->metaDataDescriptions)) {
             $this->putMetadataDescriptions();
         }
@@ -357,6 +362,7 @@ class ZugferdPdfWriter extends PdfFpdi
 
         $icc = file_get_contents(ZugferdSettings::getFullIccProfileFilename());
         $icc = gzcompress($icc);
+
         $this->_newobj();
         $this->_put('<<');
         $this->_put('/Length ' . strlen($icc));
@@ -376,6 +382,7 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function _putcatalog(): void
     {
         parent::_putcatalog();
+
         if (!empty($this->files)) {
             if (is_array($this->files)) {
                 $files_ref_str = '';
@@ -387,19 +394,23 @@ class ZugferdPdfWriter extends PdfFpdi
                 }
                 $this->_put(sprintf('/AF [%s]', $files_ref_str));
             } else {
-                $this->_put(sprintf('/AF %s 0 R', $this->n_files));
+                $this->_put(sprintf('/AF %s 0 R', $this->filesIndex));
             }
+
             if (0 != $this->descriptionIndex) {
                 $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
             }
+
             $this->_put('/Names <<');
             $this->_put('/EmbeddedFiles ');
-            $this->_put(sprintf('%s 0 R', $this->n_files));
+            $this->_put(sprintf('%s 0 R', $this->filesIndex));
             $this->_put('>>');
         }
+
         if (0 != $this->outputIntentIndex) {
             $this->_put(sprintf('/OutputIntents [%s 0 R]', $this->outputIntentIndex));
         }
+
         if ($this->openAttachmentPane) {
             $this->_put('/PageMode /UseAttachments');
         }
@@ -414,41 +425,42 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function _puttrailer(): void
     {
         parent::_puttrailer();
-        $created_id = md5($this->generateMetadataString('created'));
-        $modified_id = md5($this->generateMetadataString('modified'));
+
+        $created_id = md5($this->generateMetadataString("created"));
+        $modified_id = md5($this->generateMetadataString("modified"));
+
         $this->_put(sprintf('/ID [<%s><%s>]', $created_id, $modified_id));
     }
 
     /**
      * Generate metadata string.
      *
-     * @param string $date_type The type of the metadata date
+     * @param string|null $dateType
+     * The type of the metadata date
      * @return string
      * @codingStandardsIgnoreStart
      */
-    protected function generateMetadataString($date_type = 'created')
+    protected function generateMetadataString(?string $dateType = null)
     {
-        $metadata_string = '';
+        $dateType = $dateType ?? "created";
+        $metaDataString = '';
+
         if (isset($this->metaDataInfos['title'])) {
-            $metadata_string .= $this->metaDataInfos['title'];
-        }
-        if (isset($this->metaDataInfos['subject'])) {
-            $metadata_string .= $this->metaDataInfos['subject'];
-        }
-        switch ($date_type) {
-            case 'modified':
-                if (isset($this->metaDataInfos['modifiedDate'])) {
-                    $metadata_string .= $this->metaDataInfos['modifiedDate'];
-                }
-                break;
-            case 'created':
-            default:
-                if (isset($this->metaDataInfos['createdDate'])) {
-                    $metadata_string .= $this->metaDataInfos['createdDate'];
-                }
-                break;
+            $metaDataString .= $this->metaDataInfos['title'];
         }
 
-        return $metadata_string;
+        if (isset($this->metaDataInfos['subject'])) {
+            $metaDataString .= $this->metaDataInfos['subject'];
+        }
+
+        if ($dateType == "modified" && isset($this->metaDataInfos['modifiedDate'])) {
+            $metaDataString .= $this->metaDataInfos['modifiedDate'];
+        }
+
+        if ($dateType == "created" && isset($this->metaDataInfos['createdDate'])) {
+            $metaDataString .= $this->metaDataInfos['createdDate'];
+        }
+
+        return $metaDataString;
     }
 }
