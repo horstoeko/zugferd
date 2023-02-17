@@ -134,7 +134,7 @@ class ZugferdPdfWriter extends PdfFpdi
             }
         }
         if (!$isUTF8) {
-            $desc = self::utf8_encode($desc);
+            $desc = mb_convert_encoding($desc, 'UTF-8', mb_list_encodings());
         }
         if ('' == $mimetype) {
             $mimetype = mime_content_type($file);
@@ -213,7 +213,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
-        $this->_put('/UF ' . $this->_textstring(self::utf8_encode($file_info['name'])));
+        $this->_put('/UF ' . $this->_textstring(mb_convert_encoding($file_info['name'], 'UTF-8', mb_list_encodings())));
         if ($file_info['relationship']) {
             $this->_put('/AFRelationship /' . $file_info['relationship']);
         }
@@ -450,35 +450,5 @@ class ZugferdPdfWriter extends PdfFpdi
         }
 
         return $metadata_string;
-    }
-
-    /**
-     * Internal wraooer for deprecated utf8_encode function
-     *
-     * @param string $string
-     * @return string
-     */
-    private static function utf8_encode(string $string): string
-    {
-        $string .= $string;
-        $len = \strlen($string);
-
-        for ($i = $len >> 1, $j = 0; $i < $len; ++$i, ++$j) {
-            switch (true) {
-                case $string[$i] < "\x80":
-                    $string[$j] = $string[$i];
-                    break;
-                case $string[$i] < "\xC0":
-                    $string[$j] = "\xC2";
-                    $string[++$j] = $string[$i];
-                    break;
-                default:
-                    $string[$j] = "\xC3";
-                    $string[++$j] = \chr(\ord($string[$i]) - 64);
-                    break;
-            }
-        }
-
-        return substr($string, 0, $j);
     }
 }
