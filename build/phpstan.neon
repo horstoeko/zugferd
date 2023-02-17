@@ -5,5 +5,5 @@ parameters:
     level: 5
     treatPhpDocTypesAsCertain: false
     checkMissingIterableValueType: false
-    excludes_analyse:
+    excludePaths:
         - ../src/entities/*

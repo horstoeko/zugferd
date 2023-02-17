@@ -10,6 +10,7 @@
 namespace horstoeko\zugferd\quick;
 
 use DateTime;
+use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
@@ -124,7 +125,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     public function doCreateCreditMemo(string $creditMemoNo, \DateTime $invoiceDate, string $currency, string $creditMemoNoReference = ""): ZugferdQuickDescriptor
     {
         $this->setDocumentInformation($creditMemoNo, ZugferdInvoiceType::CREDITNOTE, $invoiceDate, $currency);
-        $this->setDocumentGeneralPaymentInformation(null, $creditMemoNoReference ?? $creditMemoNo);
+        $this->setDocumentGeneralPaymentInformation(null, StringUtils::stringIsNullOrEmpty($creditMemoNoReference) ? $creditMemoNo : $creditMemoNoReference);
         return $this;
     }
 

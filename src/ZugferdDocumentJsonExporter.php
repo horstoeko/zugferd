@@ -77,10 +77,10 @@ class ZugferdDocumentJsonExporter
     /**
      * Returns the invoice object as a json object
      *
-     * @return string
+     * @return \stdClass
      * @throws RuntimeException
      */
-    public function toJsonObject(): object
+    public function toJsonObject(): \stdClass
     {
         $jsonObject = json_decode($this->toJsonString());
 

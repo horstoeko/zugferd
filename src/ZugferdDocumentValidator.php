@@ -35,7 +35,7 @@ class ZugferdDocumentValidator
     /**
      * The validator instance
      *
-     * @var ValidatorInterface;
+     * @var \Symfony\Component\Validator\Validator\ValidatorInterface;
      */
     private $validator = null;
 
@@ -43,7 +43,7 @@ class ZugferdDocumentValidator
      * Constructor
      *
      * @codeCoverageIgnore
-     * @param              ZugferdDocument $document
+     * @param ZugferdDocument $document
      */
     public function __construct(ZugferdDocument $document)
     {

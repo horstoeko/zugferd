@@ -141,7 +141,7 @@ class ZugferdDocumentPdfBuilder
 
         // Update meta data (e.g. such as author, producer, title)
 
-        $this->updatePdfMetaData();
+        $this->updatePdfMetadata();
     }
 
     /**

@@ -1898,9 +1898,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function firstDocumentInvoicerContact(): bool
     {
-        $this->documentInvoiceeContactPointer = 0;
+        $this->documentInvoicerContactPointer = 0;
         $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
-        return isset($contacts[$this->documentInvoiceeContactPointer]);
+        return isset($contacts[$this->documentInvoicerContactPointer]);
     }
 
     /**
@@ -1912,9 +1912,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function nextDocumentInvoicerContact(): bool
     {
-        $this->documentInvoiceeContactPointer++;
+        $this->documentInvoicerContactPointer++;
         $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
-        return isset($contacts[$this->documentInvoiceeContactPointer]);
+        return isset($contacts[$this->documentInvoicerContactPointer]);
     }
 
     /**
@@ -1938,7 +1938,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentInvoicerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
     {
         $contacts = $this->objectHelper->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
-        $contact = $contacts[$this->documentInvoiceeContactPointer];
+        $contact = $contacts[$this->documentInvoicerContactPointer];
         $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
