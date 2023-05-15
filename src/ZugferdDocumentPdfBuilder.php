@@ -132,7 +132,7 @@ class ZugferdDocumentPdfBuilder
         for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
             $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox');
             $this->pdfWriter->AddPage();
-            $this->pdfWriter->useTemplate($pageContent);
+            $this->pdfWriter->useTemplate($pageContent, 0, 0, null, null, true);
         }
 
         // Set PDF version 1.7 according to PDF/A-3 ISO 32000-1
