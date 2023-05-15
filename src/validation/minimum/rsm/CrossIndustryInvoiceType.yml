@@ -1,0 +1,23 @@
+horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoiceType:
+    properties:
+        exchangedDocumentContext:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        exchangedDocument:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        supplyChainTradeTransaction:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

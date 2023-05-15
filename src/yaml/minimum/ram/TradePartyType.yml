@@ -1,0 +1,50 @@
+horstoeko\zugferd\entities\minimum\ram\TradePartyType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        specifiedLegalOrganization:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedLegalOrganization
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedLegalOrganization
+                setter: setSpecifiedLegalOrganization
+            type: horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType
+        postalTradeAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: PostalTradeAddress
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPostalTradeAddress
+                setter: setPostalTradeAddress
+            type: horstoeko\zugferd\entities\minimum\ram\TradeAddressType
+        specifiedTaxRegistration:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTaxRegistration
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTaxRegistration
+                setter: setSpecifiedTaxRegistration
+            xml_list:
+                inline: true
+                entry_name: SpecifiedTaxRegistration
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType>

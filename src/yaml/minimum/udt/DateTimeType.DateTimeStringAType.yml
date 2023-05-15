@@ -1,0 +1,21 @@
+horstoeko\zugferd\entities\minimum\udt\DateTimeType\DateTimeStringAType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: string
+            xml_element:
+                cdata: false
+        format:
+            expose: true
+            access_type: public_method
+            serialized_name: format
+            accessor:
+                getter: getFormat
+                setter: setFormat
+            xml_attribute: true
+            type: string

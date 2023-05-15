@@ -1,0 +1,13 @@
+horstoeko\zugferd\entities\minimum\udt\DateTimeType:
+    properties:
+        dateTimeString:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTimeString
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100'
+            accessor:
+                getter: getDateTimeString
+                setter: setDateTimeString
+            type: horstoeko\zugferd\entities\minimum\udt\DateTimeType\DateTimeStringAType

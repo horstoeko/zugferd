@@ -1,0 +1,46 @@
+horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType:
+    properties:
+        taxBasisTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxBasisTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxBasisTotalAmount
+                setter: setTaxBasisTotalAmount
+            type: horstoeko\zugferd\entities\minimum\udt\AmountType
+        taxTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: TaxTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTaxTotalAmount
+                setter: setTaxTotalAmount
+            type: horstoeko\zugferd\entities\minimum\udt\AmountType
+        grandTotalAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: GrandTotalAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getGrandTotalAmount
+                setter: setGrandTotalAmount
+            type: horstoeko\zugferd\entities\minimum\udt\AmountType
+        duePayableAmount:
+            expose: true
+            access_type: public_method
+            serialized_name: DuePayableAmount
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getDuePayableAmount
+                setter: setDuePayableAmount
+            type: horstoeko\zugferd\entities\minimum\udt\AmountType

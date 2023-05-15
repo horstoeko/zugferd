@@ -1,0 +1,46 @@
+horstoeko\zugferd\entities\minimum\ram\HeaderTradeAgreementType:
+    properties:
+        buyerReference:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerReference
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerReference
+                setter: setBuyerReference
+            type: string
+        sellerTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: SellerTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSellerTradeParty
+                setter: setSellerTradeParty
+            type: horstoeko\zugferd\entities\minimum\ram\TradePartyType
+        buyerTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerTradeParty
+                setter: setBuyerTradeParty
+            type: horstoeko\zugferd\entities\minimum\ram\TradePartyType
+        buyerOrderReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: BuyerOrderReferencedDocument
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBuyerOrderReferencedDocument
+                setter: setBuyerOrderReferencedDocument
+            type: horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType

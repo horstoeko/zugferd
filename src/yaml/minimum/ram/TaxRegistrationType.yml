@@ -1,0 +1,13 @@
+horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            type: horstoeko\zugferd\entities\minimum\udt\IDType

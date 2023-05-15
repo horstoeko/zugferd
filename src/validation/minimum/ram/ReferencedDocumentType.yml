@@ -1,0 +1,7 @@
+horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType:
+    properties:
+        issuerAssignedID:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules

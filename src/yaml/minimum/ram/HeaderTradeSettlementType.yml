@@ -1,0 +1,24 @@
+horstoeko\zugferd\entities\minimum\ram\HeaderTradeSettlementType:
+    properties:
+        invoiceCurrencyCode:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceCurrencyCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getInvoiceCurrencyCode
+                setter: setInvoiceCurrencyCode
+            type: string
+        specifiedTradeSettlementHeaderMonetarySummation:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedTradeSettlementHeaderMonetarySummation
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedTradeSettlementHeaderMonetarySummation
+                setter: setSpecifiedTradeSettlementHeaderMonetarySummation
+            type: horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType

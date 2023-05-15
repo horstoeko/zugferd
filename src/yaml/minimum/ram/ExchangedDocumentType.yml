@@ -1,0 +1,35 @@
+horstoeko\zugferd\entities\minimum\ram\ExchangedDocumentType:
+    properties:
+        iD:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getID
+                setter: setID
+            type: horstoeko\zugferd\entities\minimum\udt\IDType
+        typeCode:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeCode
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getTypeCode
+                setter: setTypeCode
+            type: string
+        issueDateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: IssueDateTime
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIssueDateTime
+                setter: setIssueDateTime
+            type: horstoeko\zugferd\entities\minimum\udt\DateTimeType

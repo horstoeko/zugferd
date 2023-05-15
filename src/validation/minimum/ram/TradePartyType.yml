@@ -1,0 +1,16 @@
+horstoeko\zugferd\entities\minimum\ram\TradePartyType:
+    properties:
+        name:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        specifiedLegalOrganization:
+            -
+                Valid: null
+        postalTradeAddress:
+            -
+                Valid: null
+        specifiedTaxRegistration:
+            -
+                Valid: null

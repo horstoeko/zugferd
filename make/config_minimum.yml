@@ -1,0 +1,27 @@
+xsd2php:
+  namespaces:
+    'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100': 'horstoeko\zugferd\entities\minimum\rsm'
+    'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100': 'horstoeko\zugferd\entities\minimum\ram'
+    'urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100': 'horstoeko\zugferd\entities\minimum\udt'
+    'urn:un:unece:uncefact:data:standard:QualifiedDataType:100': 'horstoeko\zugferd\entities\minimum\qdt'
+  destinations_php: 
+    'horstoeko\zugferd\entities\minimum\rsm': '../src/entities/minimum/rsm'
+    'horstoeko\zugferd\entities\minimum\ram': '../src/entities/minimum/ram'
+    'horstoeko\zugferd\entities\minimum\udt': '../src/entities/minimum/udt'
+    'horstoeko\zugferd\entities\minimum\qdt': '../src/entities/minimum/qdt'
+  destinations_jms: 
+    'horstoeko\zugferd\entities\minimum\rsm': '../src/yaml/minimum/rsm'
+    'horstoeko\zugferd\entities\minimum\ram': '../src/yaml/minimum/ram'
+    'horstoeko\zugferd\entities\minimum\udt': '../src/yaml/minimum/udt'
+    'horstoeko\zugferd\entities\minimum\qdt': '../src/yaml/minimum/qdt'
+  destinations_validation:
+    'horstoeko\zugferd\entities\minimum\rsm': '../src/validation/minimum/rsm'
+    'horstoeko\zugferd\entities\minimum\ram': '../src/validation/minimum/ram'
+    'horstoeko\zugferd\entities\minimum\udt': '../src/validation/minimum/udt'
+    'horstoeko\zugferd\entities\minimum\qdt': '../src/validation/minimum/qdt'
+  configs_jms:
+    xml_cdata: false
+  aliases:
+    'http://www.w3.org/2001/XMLSchema':
+      anyType: 'string'
+      anySimpleType: 'string'

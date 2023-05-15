@@ -1,0 +1,14 @@
+horstoeko\zugferd\entities\minimum\ram\HeaderTradeSettlementType:
+    properties:
+        invoiceCurrencyCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+        specifiedTradeSettlementHeaderMonetarySummation:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null

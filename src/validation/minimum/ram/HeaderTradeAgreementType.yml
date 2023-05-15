@@ -1,0 +1,19 @@
+horstoeko\zugferd\entities\minimum\ram\HeaderTradeAgreementType:
+    properties:
+        sellerTradeParty:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        buyerTradeParty:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
+            -
+                Valid: null
+        buyerOrderReferencedDocument:
+            -
+                Valid: null

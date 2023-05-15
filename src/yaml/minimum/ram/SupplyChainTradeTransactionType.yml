@@ -1,0 +1,35 @@
+horstoeko\zugferd\entities\minimum\ram\SupplyChainTradeTransactionType:
+    properties:
+        applicableHeaderTradeAgreement:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeAgreement
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeAgreement
+                setter: setApplicableHeaderTradeAgreement
+            type: horstoeko\zugferd\entities\minimum\ram\HeaderTradeAgreementType
+        applicableHeaderTradeDelivery:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeDelivery
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeDelivery
+                setter: setApplicableHeaderTradeDelivery
+            type: horstoeko\zugferd\entities\minimum\ram\HeaderTradeDeliveryType
+        applicableHeaderTradeSettlement:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableHeaderTradeSettlement
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableHeaderTradeSettlement
+                setter: setApplicableHeaderTradeSettlement
+            type: horstoeko\zugferd\entities\minimum\ram\HeaderTradeSettlementType

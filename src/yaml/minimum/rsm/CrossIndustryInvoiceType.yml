@@ -1,0 +1,43 @@
+horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoiceType:
+    xml_namespaces:
+        a: urn:un:unece:uncefact:data:standard:QualifiedDataType:100
+        rsm: urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100
+        qdt: urn:un:unece:uncefact:data:standard:QualifiedDataType:10
+        ram: urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100
+        xs: http://www.w3.org/2001/XMLSchema
+        udt: urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100
+        xsi: http://www.w3.org/2001/XMLSchema-instance
+    properties:
+        exchangedDocumentContext:
+            expose: true
+            access_type: public_method
+            serialized_name: ExchangedDocumentContext
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getExchangedDocumentContext
+                setter: setExchangedDocumentContext
+            type: horstoeko\zugferd\entities\minimum\ram\ExchangedDocumentContextType
+        exchangedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: ExchangedDocument
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getExchangedDocument
+                setter: setExchangedDocument
+            type: horstoeko\zugferd\entities\minimum\ram\ExchangedDocumentType
+        supplyChainTradeTransaction:
+            expose: true
+            access_type: public_method
+            serialized_name: SupplyChainTradeTransaction
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
+            accessor:
+                getter: getSupplyChainTradeTransaction
+                setter: setSupplyChainTradeTransaction
+            type: horstoeko\zugferd\entities\minimum\ram\SupplyChainTradeTransactionType
