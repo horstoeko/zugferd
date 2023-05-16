@@ -10,4 +10,5 @@ horstoeko\zugferd\entities\minimum\ram\TradeAddressType:
             accessor:
                 getter: getCountryID
                 setter: setCountryID
-            type: string
+            type: horstoeko\zugferd\entities\minimum\qdt\CountryIDType
+

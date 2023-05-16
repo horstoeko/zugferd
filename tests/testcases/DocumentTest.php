@@ -13,6 +13,20 @@ class DocumentTest extends TestCase
     /**
      * @covers \horstoeko\zugferd\ZugferdDocument::__construct
      */
+    public function testDocumentCreationMinimum(): void
+    {
+        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_MINIMUM);
+        $this->assertNotNull($doc);
+        $this->assertEquals(ZugferdProfiles::PROFILE_MINIMUM, $doc->profileId);
+        $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
+        $this->assertArrayHasKey("name", $doc->profileDefinition);
+        $this->assertEquals("urn:factur-x.eu:1p0:minimum", $doc->profileDefinition["contextparameter"]);
+        $this->assertEquals("minimum", $doc->profileDefinition["name"]);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
+     */
     public function testDocumentCreationBasic(): void
     {
         $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASIC);

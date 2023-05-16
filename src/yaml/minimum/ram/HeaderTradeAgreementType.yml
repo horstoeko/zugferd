@@ -10,7 +10,7 @@ horstoeko\zugferd\entities\minimum\ram\HeaderTradeAgreementType:
             accessor:
                 getter: getBuyerReference
                 setter: setBuyerReference
-            type: string
+            type: horstoeko\zugferd\entities\minimum\udt\TextType
         sellerTradeParty:
             expose: true
             access_type: public_method

@@ -23,10 +23,12 @@
             <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
         </testsuite>
         <testsuite name="Builder">
+            <file>../tests/testcases/BuilderMinimumTest.php</file>
             <file>../tests/testcases/BuilderEn16931Test.php</file>
             <file>../tests/testcases/BuilderExtendedTest.php</file>
         </testsuite>
         <testsuite name="PDFReader">
+            <file>../tests/testcases/PdfReaderMinimumSimpleTest.php</file>
             <file>../tests/testcases/PdfReaderEn16931AllowanceChargeTest.php</file>
             <file>../tests/testcases/PdfReaderEn16931SimpleTest.php</file>
             <file>../tests/testcases/PdfReaderExtendedTest.php</file>

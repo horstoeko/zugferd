@@ -67,6 +67,21 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Creates an instance of DocumentCodeType
+     *
+     * @param  string|null $value
+     * @return object|null
+     */
+    public function getDocumentCodeType(?string $value = null): ?object
+    {
+        if (self::isAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        return $this->createClassInstance('qdt\DocumentCodeType', $value);
+    }
+
+    /**
      * Creates an instance of IDType
      *
      * @param  string|null $value

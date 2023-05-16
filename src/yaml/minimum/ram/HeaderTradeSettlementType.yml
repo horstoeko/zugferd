@@ -10,7 +10,7 @@ horstoeko\zugferd\entities\minimum\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getInvoiceCurrencyCode
                 setter: setInvoiceCurrencyCode
-            type: string
+            type: horstoeko\zugferd\entities\minimum\qdt\CurrencyCodeType
         specifiedTradeSettlementHeaderMonetarySummation:
             expose: true
             access_type: public_method

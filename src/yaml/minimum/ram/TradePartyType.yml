@@ -10,7 +10,7 @@ horstoeko\zugferd\entities\minimum\ram\TradePartyType:
             accessor:
                 getter: getName
                 setter: setName
-            type: string
+            type: horstoeko\zugferd\entities\minimum\udt\TextType
         specifiedLegalOrganization:
             expose: true
             access_type: public_method

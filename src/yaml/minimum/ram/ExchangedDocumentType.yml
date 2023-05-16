@@ -21,7 +21,7 @@ horstoeko\zugferd\entities\minimum\ram\ExchangedDocumentType:
             accessor:
                 getter: getTypeCode
                 setter: setTypeCode
-            type: string
+            type: horstoeko\zugferd\entities\minimum\qdt\DocumentCodeType
         issueDateTime:
             expose: true
             access_type: public_method
