@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing ReferencedDocumentType
  *
- *
  * XSD Type: ReferencedDocumentType
  */
 class ReferencedDocumentType
@@ -29,7 +28,7 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\IDType $issuerAssignedID
+     * @param  \horstoeko\zugferd\entities\minimum\udt\IDType $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(\horstoeko\zugferd\entities\minimum\udt\IDType $issuerAssignedID)

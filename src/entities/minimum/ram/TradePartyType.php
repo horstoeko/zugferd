@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing TradePartyType
  *
- *
  * XSD Type: TradePartyType
  */
 class TradePartyType
@@ -46,7 +45,7 @@ class TradePartyType
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -68,7 +67,7 @@ class TradePartyType
     /**
      * Sets a new specifiedLegalOrganization
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param  \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization
      * @return self
      */
     public function setSpecifiedLegalOrganization(?\horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization = null)
@@ -90,7 +89,7 @@ class TradePartyType
     /**
      * Sets a new postalTradeAddress
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(?\horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress = null)
@@ -103,7 +102,7 @@ class TradePartyType
      * Adds as specifiedTaxRegistration
      *
      * @return self
-     * @param \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType $specifiedTaxRegistration
      */
     public function addToSpecifiedTaxRegistration(\horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType $specifiedTaxRegistration)
     {
@@ -114,7 +113,7 @@ class TradePartyType
     /**
      * isset specifiedTaxRegistration
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetSpecifiedTaxRegistration($index)
@@ -125,7 +124,7 @@ class TradePartyType
     /**
      * unset specifiedTaxRegistration
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetSpecifiedTaxRegistration($index)
@@ -146,7 +145,7 @@ class TradePartyType
     /**
      * Sets a new specifiedTaxRegistration
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType[] $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType[] $specifiedTaxRegistration
      * @return self
      */
     public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration = null)

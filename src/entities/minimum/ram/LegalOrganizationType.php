@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing LegalOrganizationType
  *
- *
  * XSD Type: LegalOrganizationType
  */
 class LegalOrganizationType
@@ -29,7 +28,7 @@ class LegalOrganizationType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\minimum\udt\IDType $iD
      * @return self
      */
     public function setID(?\horstoeko\zugferd\entities\minimum\udt\IDType $iD = null)

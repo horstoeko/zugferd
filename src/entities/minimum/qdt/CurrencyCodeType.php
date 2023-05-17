@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\qdt;
 /**
  * Class representing CurrencyCodeType
  *
- *
  * XSD Type: CurrencyCodeType
  */
 class CurrencyCodeType
@@ -29,7 +28,7 @@ class CurrencyCodeType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value()

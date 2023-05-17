@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing ExchangedDocumentContextType
  *
- *
  * XSD Type: ExchangedDocumentContextType
  */
 class ExchangedDocumentContextType
@@ -34,7 +33,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new businessProcessSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @param  \horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(?\horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter = null)
@@ -56,7 +55,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new guidelineSpecifiedDocumentContextParameter
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+     * @param  \horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(\horstoeko\zugferd\entities\minimum\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter)

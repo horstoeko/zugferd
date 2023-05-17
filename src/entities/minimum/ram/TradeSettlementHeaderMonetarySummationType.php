@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing TradeSettlementHeaderMonetarySummationType
  *
- *
  * XSD Type: TradeSettlementHeaderMonetarySummationType
  */
 class TradeSettlementHeaderMonetarySummationType
@@ -44,7 +43,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxBasisTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\AmountType $taxBasisTotalAmount
+     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType $taxBasisTotalAmount
      * @return self
      */
     public function setTaxBasisTotalAmount(\horstoeko\zugferd\entities\minimum\udt\AmountType $taxBasisTotalAmount)
@@ -66,7 +65,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\AmountType $taxTotalAmount
+     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(?\horstoeko\zugferd\entities\minimum\udt\AmountType $taxTotalAmount = null)
@@ -88,7 +87,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new grandTotalAmount
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\AmountType $grandTotalAmount
+     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(\horstoeko\zugferd\entities\minimum\udt\AmountType $grandTotalAmount)
@@ -110,7 +109,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new duePayableAmount
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\AmountType $duePayableAmount
+     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType $duePayableAmount
      * @return self
      */
     public function setDuePayableAmount(\horstoeko\zugferd\entities\minimum\udt\AmountType $duePayableAmount)

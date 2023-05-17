@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing TradeAddressType
  *
- *
  * XSD Type: TradeAddressType
  */
 class TradeAddressType
@@ -29,7 +28,7 @@ class TradeAddressType
     /**
      * Sets a new countryID
      *
-     * @param string $countryID
+     * @param  string $countryID
      * @return self
      */
     public function setCountryID($countryID)

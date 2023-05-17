@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing HeaderTradeSettlementType
  *
- *
  * XSD Type: HeaderTradeSettlementType
  */
 class HeaderTradeSettlementType
@@ -34,7 +33,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new invoiceCurrencyCode
      *
-     * @param string $invoiceCurrencyCode
+     * @param  string $invoiceCurrencyCode
      * @return self
      */
     public function setInvoiceCurrencyCode($invoiceCurrencyCode)
@@ -56,7 +55,7 @@ class HeaderTradeSettlementType
     /**
      * Sets a new specifiedTradeSettlementHeaderMonetarySummation
      *
-     * @param \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementHeaderMonetarySummation(\horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation)

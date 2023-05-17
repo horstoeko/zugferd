@@ -384,7 +384,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information about the seller (=service provider)
      *
-     * @param string      $name
+     * @param  string      $name
      * The full formal name under which the seller is registered in the
      * National Register of Legal Entities, Taxable Person or otherwise
      * acting as person(s)
@@ -3508,10 +3508,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided,
      * it should be known to the buyer or seller party
      * @param  string|null $legalorgtype The identifier for the identification scheme of the legal
-     * registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
-     * 0060 : DUNS, 0177 : ODETTE
+     *                                   registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,
+     *                                   0060 : DUNS, 0177 : ODETTE
      * @param  string|null $legalorgname A name by which the party is known, if different from the party's name
-     * (also known as the company name)
+     *                                   (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder

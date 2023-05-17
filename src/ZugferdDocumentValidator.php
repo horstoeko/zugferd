@@ -43,7 +43,7 @@ class ZugferdDocumentValidator
      * Constructor
      *
      * @codeCoverageIgnore
-     * @param ZugferdDocument $document
+     * @param              ZugferdDocument $document
      */
     public function __construct(ZugferdDocument $document)
     {

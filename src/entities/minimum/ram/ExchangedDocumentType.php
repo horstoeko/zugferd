@@ -5,7 +5,6 @@ namespace horstoeko\zugferd\entities\minimum\ram;
 /**
  * Class representing ExchangedDocumentType
  *
- *
  * XSD Type: ExchangedDocumentType
  */
 class ExchangedDocumentType
@@ -39,7 +38,7 @@ class ExchangedDocumentType
     /**
      * Sets a new iD
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\minimum\udt\IDType $iD
      * @return self
      */
     public function setID(\horstoeko\zugferd\entities\minimum\udt\IDType $iD)
@@ -61,7 +60,7 @@ class ExchangedDocumentType
     /**
      * Sets a new typeCode
      *
-     * @param string $typeCode
+     * @param  string $typeCode
      * @return self
      */
     public function setTypeCode($typeCode)
@@ -83,7 +82,7 @@ class ExchangedDocumentType
     /**
      * Sets a new issueDateTime
      *
-     * @param \horstoeko\zugferd\entities\minimum\udt\DateTimeType $issueDateTime
+     * @param  \horstoeko\zugferd\entities\minimum\udt\DateTimeType $issueDateTime
      * @return self
      */
     public function setIssueDateTime(\horstoeko\zugferd\entities\minimum\udt\DateTimeType $issueDateTime)
