@@ -44,6 +44,9 @@
             <file>../tests/testcases/ValidatorValidTest.php</file>
             <file>../tests/testcases/ValidatorInvalidTest.php</file>
         </testsuite>
+        <testsuite name="issues">
+            <file>../tests/testcases/issues/Issue10Test.php</file>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
