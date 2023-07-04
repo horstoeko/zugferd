@@ -48,6 +48,12 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
             [
                 'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\minimum\udt\AmountType',
+                'method' => 'serializeAmountType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
