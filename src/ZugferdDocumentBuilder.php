@@ -382,6 +382,23 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set the routing-id (needed for German XRechnung)
+     * This is an alias-method for setDocumentBuyerReference
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
+     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
+     * Cross Industry Invoice (CII).
+     *
+     * @param string $routingId
+     * The routing ID
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
+    {
+        return $this->setDocumentBuyerReference($routingId);
+    }
+
+    /**
      * Detailed information about the seller (=service provider)
      *
      * @param  string      $name
