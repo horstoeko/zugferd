@@ -54,6 +54,17 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentAbstractPdfBuilder
     {
         return $this->documentBuiler->getContentAsDomDocument()->saveXML();
     }
+    
+    /**
+     * Returns the PDF as a string
+     *
+     * @param  string $toFilename
+     * @return string
+     */
+    public function downloadString(string $toFilename): string
+    {
+        return $this->pdfWriter->Output($toFilename, 'S');
+    }
 
     /**
      * @inheritDoc
