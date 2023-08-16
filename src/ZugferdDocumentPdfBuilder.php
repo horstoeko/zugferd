@@ -91,6 +91,17 @@ class ZugferdDocumentPdfBuilder
 
         return $this;
     }
+    
+    /**
+     * Returns the PDF as a string
+     *
+     * @param  string $toFilename
+     * @return string
+     */
+    public function downloadString(string $toFilename): string
+    {
+        return $this->pdfWriter->Output($toFilename, 'S');
+    }
 
     /**
      * Internal function which sets up the PDF

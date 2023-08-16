@@ -91,6 +91,15 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertTrue(file_exists(self::$destPdfFilename));
     }
 
+    public function testBuildPdfString(): void
+    {
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->downloadString(self::$destPdfFilename);
+
+        $this->assertIsString(self::$destPdfFilename);
+    }
+
     public function testPdfMetaData(): void
     {
         $pdfParser = new PdfParser();
