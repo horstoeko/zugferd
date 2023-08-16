@@ -87,6 +87,17 @@ abstract class ZugferdDocumentAbstractPdfBuilder
     }
 
     /**
+     * Returns the PDF as a string
+     *
+     * @param  string $toFilename
+     * @return string
+     */
+    public function downloadString(string $toFilename): string
+    {
+        return $this->pdfWriter->Output($toFilename, 'S');
+    }
+
+    /**
      * Get the content of XML to attach
      *
      * @return string
