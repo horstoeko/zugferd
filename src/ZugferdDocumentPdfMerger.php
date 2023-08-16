@@ -41,13 +41,6 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentAbstractPdfBuilder
     private $xmlDataCache = "";
 
     /**
-     * Flag that indicated (if true) the data are always reloaded
-     *
-     * @var boolean
-     */
-    private $xmlDataCacheDisabled = false;
-
-    /**
      * Constructor
      *
      * @param string $xmlDataOrFilename
@@ -65,35 +58,11 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentAbstractPdfBuilder
     }
 
     /**
-     * Enable the XML cache
-     *
-     * @return ZugferdDocumentPdfMerger
-     */
-    public function enableXmlDataCache(): ZugferdDocumentPdfMerger
-    {
-        $this->xmlDataCacheDisabled = false;
-
-        return $this;
-    }
-
-    /**
-     * Disable the XML cache
-     *
-     * @return ZugferdDocumentPdfMerger
-     */
-    public function disableXmlDataCache(): ZugferdDocumentPdfMerger
-    {
-        $this->xmlDataCacheDisabled = true;
-
-        return $this;
-    }
-
-    /**
      * @inheritDoc
      */
     protected function getXmlContent(): string
     {
-        if ($this->xmlDataCache && ($this->xmlDataCacheDisabled !== true)) {
+        if ($this->xmlDataCache) {
             return $this->xmlDataCache;
         }
 
