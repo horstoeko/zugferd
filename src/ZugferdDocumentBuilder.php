@@ -389,7 +389,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
      * Cross Industry Invoice (CII).
      *
-     * @param string $routingId
+     * @param  string $routingId
      * The routing ID
      * @return ZugferdDocumentBuilder
      */

@@ -102,21 +102,21 @@ abstract class ZugferdDocumentAbstractPdfBuilder
      *
      * @return string
      */
-    protected abstract function getXmlContent(): string;
+    abstract protected function getXmlContent(): string;
 
     /**
      * Get the filename of the XML to attach
      *
      * @return string
      */
-    protected abstract function getXmlAttachmentFilename(): string;
+    abstract protected function getXmlAttachmentFilename(): string;
 
     /**
      * Get the XMP name for the XML to attach
      *
      * @return string
      */
-    protected abstract function getXmlAttachmentXmpName(): string;
+    abstract protected function getXmlAttachmentXmpName(): string;
 
     /**
      * Internal function which sets up the PDF
@@ -262,12 +262,12 @@ abstract class ZugferdDocumentAbstractPdfBuilder
         $docTypeCode = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docTypeCode) {
-        case ZugferdInvoiceType::CREDITNOTE:
-            $docTypeName = 'Credit Note';
-            break;
-        default:
-            $docTypeName = 'Invoice';
-            break;
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
         }
 
         $invoiceInformation = array(

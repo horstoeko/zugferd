@@ -36,7 +36,4 @@ class ReferencedDocumentType
         $this->issuerAssignedID = $issuerAssignedID;
         return $this;
     }
-
-
 }
-

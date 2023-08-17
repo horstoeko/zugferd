@@ -90,7 +90,4 @@ class ExchangedDocumentType
         $this->issueDateTime = $issueDateTime;
         return $this;
     }
-
-
 }
-

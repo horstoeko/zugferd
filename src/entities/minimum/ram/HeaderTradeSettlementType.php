@@ -63,7 +63,4 @@ class HeaderTradeSettlementType
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
         return $this;
     }
-
-
 }
-

@@ -117,7 +117,4 @@ class HeaderTradeAgreementType
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
         return $this;
     }
-
-
 }
-

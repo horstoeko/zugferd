@@ -19,7 +19,7 @@ class Issue10Test extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue #10
+     * @issue  #10
      */
     public function testTotalPrepaidAmountPayed(): void
     {
@@ -40,7 +40,7 @@ class Issue10Test extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue #10
+     * @issue  #10
      */
     public function testTotalPrepaidAmountUnpayed(): void
     {
@@ -61,7 +61,7 @@ class Issue10Test extends TestCase
 
     /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue #10
+     * @issue  #10
      */
     public function testTotalPrepaidAmountIsNull(): void
     {

@@ -36,7 +36,4 @@ class LegalOrganizationType
         $this->iD = $iD;
         return $this;
     }
-
-
 }
-
