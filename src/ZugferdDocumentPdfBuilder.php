@@ -32,6 +32,13 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentAbstractPdfBuilder
     private $documentBuiler = null;
 
     /**
+     * Cached XML data
+     *
+     * @var string
+     */
+    private $xmlDataCache = "";
+
+    /**
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuiler
@@ -52,7 +59,13 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentAbstractPdfBuilder
      */
     protected function getXmlContent(): string
     {
-        return $this->documentBuiler->getContentAsDomDocument()->saveXML();
+        if ($this->xmlDataCache) {
+            return $this->xmlDataCache;
+        }
+
+        $this->xmlDataCache = $this->documentBuiler->getContentAsDomDocument()->saveXML();
+
+        return $this->xmlDataCache;
     }
 
     /**
