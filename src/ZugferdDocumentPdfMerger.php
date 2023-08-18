@@ -12,7 +12,7 @@ namespace horstoeko\zugferd;
 use Exception;
 use SimpleXMLElement;
 use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdDocumentAbstractPdfBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 
 /**
  * Class representing the facillity adding existing XML data (file or data-string)
@@ -24,7 +24,7 @@ use horstoeko\zugferd\ZugferdDocumentAbstractPdfBuilder;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdDocumentPdfMerger extends ZugferdDocumentAbstractPdfBuilder
+class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
 {
     /**
      * Internal reference to the xml data (file or data-string)

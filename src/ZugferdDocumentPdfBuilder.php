@@ -9,7 +9,7 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdDocumentAbstractPdfBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 
 /**
@@ -22,7 +22,7 @@ use horstoeko\zugferd\ZugferdDocumentBuilder;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdDocumentPdfBuilder extends ZugferdDocumentAbstractPdfBuilder
+class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
 {
     /**
      * Internal reference to the xml builder instance

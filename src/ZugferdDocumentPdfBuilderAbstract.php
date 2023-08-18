@@ -28,7 +28,7 @@ use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-abstract class ZugferdDocumentAbstractPdfBuilder
+abstract class ZugferdDocumentPdfBuilderAbstract
 {
     /**
      * Instance of the pdfwriter
@@ -62,9 +62,9 @@ abstract class ZugferdDocumentAbstractPdfBuilder
     /**
      * Generates the final document
      *
-     * @return ZugferdDocumentAbstractPdfBuilder
+     * @return static
      */
-    public function generateDocument(): ZugferdDocumentAbstractPdfBuilder
+    public function generateDocument(): static
     {
         $this->startCreatePdf();
 
@@ -77,9 +77,9 @@ abstract class ZugferdDocumentAbstractPdfBuilder
      * @param  string $toFilename
      * The full qualified filename to which the generated PDF (with attachment)
      * is stored
-     * @return ZugferdDocumentAbstractPdfBuilder
+     * @return static
      */
-    public function saveDocument(string $toFilename): ZugferdDocumentAbstractPdfBuilder
+    public function saveDocument(string $toFilename): static
     {
         $this->pdfWriter->Output($toFilename, 'F');
 
