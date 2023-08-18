@@ -62,9 +62,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Generates the final document
      *
-     * @return static
+     * @return self
      */
-    public function generateDocument(): static
+    public function generateDocument()
     {
         $this->startCreatePdf();
 
@@ -77,9 +77,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $toFilename
      * The full qualified filename to which the generated PDF (with attachment)
      * is stored
-     * @return static
+     * @return self
      */
-    public function saveDocument(string $toFilename): static
+    public function saveDocument(string $toFilename)
     {
         $this->pdfWriter->Output($toFilename, 'F');
 
