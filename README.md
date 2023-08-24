@@ -6,8 +6,8 @@
 
 - [ZUGFeRD/XRechnung/Factur-X](#zugferdxrechnungfactur-x)
   - [Table of Contents](#table-of-contents)
-    - [Overview](#overview)
-    - [Further information](#further-information)
+  - [Overview](#overview)
+  - [Further information](#further-information)
     - [Dependencies](#dependencies)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -18,13 +18,13 @@
       - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
     - [Note](#note)
 
-### Overview
+## Overview
 
 With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the Minimum-, Basic-, EN16931-, Extended- and XRechnung Profile. In addition, it is possible to attach the XML data to an existing PDF file, which was created from an ERP system, for example. If both an XML file (or XML string) and a PDF file (or a PDF in the form of a string) exist, then a compliant PDF file with attachment can be created using the `ZugferdDocumentPdfMerger` class.
 
 **The advantage of this library is that you don't have to worry about whether a particular XML element exists in a desired profile - you can use the same program code for all supported profiles.**
 
-### Further information
+## Further information
 
 * [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
 * [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
@@ -122,6 +122,8 @@ public static function setThousandsSeparator(string $thousandsSeparator): void
 Set the character to use as the thousands separator.
 
 #### Reading a xml file
+
+The central entry point to read XML data is the class `ZugferdDocumentReader`. Among other things, this provides methods for reading header and line information, as can be seen in the following example:
 
 ```php
 use horstoeko\zugferd\ZugferdDocumentReader;
@@ -241,7 +243,7 @@ echo "  - Due payable amount               {$duePayableAmount}\r\n";
 
 #### Reading a pdf file with xml attachment
 
-Reading invoice data from a PDF is similar: you just need to use the ZugferdDocumentPdfReader class instead of ZugferdDocumentReader:
+Reading invoice data from a PDF is similar: you just need to use the `ZugferdDocumentPdfReader` class instead of `ZugferdDocumentReader`:
 
 ```php
   use horstoeko\zugferd\ZugferdDocumentPdfReader;
@@ -249,9 +251,11 @@ Reading invoice data from a PDF is similar: you just need to use the ZugferdDocu
   $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/xml/factur-x.pdf");
 ```
 
-The reading of the data is then analogous to [Reading a xml file](#reading-a-xml-file)
+The further reading of the invoice data is then identical with [Reading a xml file](#reading-a-xml-file)
 
 #### Writing a xml file
+
+The `ZugferdDocumentBuilder` class is again the central entry point to generate compliant XML data:
 
 ```php
   use horstoeko\zugferd\ZugferdDocumentBuilder;
