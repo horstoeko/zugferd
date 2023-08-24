@@ -6,17 +6,21 @@
 
 - [ZUGFeRD/XRechnung/Factur-X](#zugferdxrechnungfactur-x)
   - [Table of Contents](#table-of-contents)
+  - [License](#license)
   - [Overview](#overview)
   - [Further information](#further-information)
-    - [Dependencies](#dependencies)
-    - [Installation](#installation)
-    - [Usage](#usage)
-      - [Configuration](#configuration)
-      - [Reading a xml file](#reading-a-xml-file)
-      - [Reading a pdf file with xml attachment](#reading-a-pdf-file-with-xml-attachment)
-      - [Writing a xml file](#writing-a-xml-file)
-      - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
-    - [Note](#note)
+  - [Dependencies](#dependencies)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Configuration](#configuration)
+    - [Reading a xml file](#reading-a-xml-file)
+    - [Reading a pdf file with xml attachment](#reading-a-pdf-file-with-xml-attachment)
+    - [Writing a xml file](#writing-a-xml-file)
+    - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
+
+## License
+
+The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license.
 
 ## Overview
 
@@ -30,7 +34,7 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 * [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
 * [Factur-X](http://fnfe-mpe.org/factur-x/factur-x_en) (France)
 
-### Dependencies
+## Dependencies
 
 This package makes use of
 
@@ -39,7 +43,7 @@ This package makes use of
 - [FPDF](https://github.com/Setasign/FPDF)
 - [FPDI](https://github.com/Setasign/FPDI).
 
-### Installation
+## Installation
 
 There is one recommended way to install `horstoeko/zugferd` via [Composer](https://getcomposer.org/):
 
@@ -53,11 +57,11 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
   },
 ```
 
-### Usage
+## Usage
 
 For detailed eplanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples) of this package and the documentation attached to every release.
 
-#### Configuration
+### Configuration
 
 By means of the `ZugferdSettings` class it is possible to control various options for XML and PDF generation:
 
@@ -121,7 +125,7 @@ public static function setThousandsSeparator(string $thousandsSeparator): void
 
 Set the character to use as the thousands separator.
 
-#### Reading a xml file
+### Reading a xml file
 
 The central entry point to read XML data is the class `ZugferdDocumentReader`. Among other things, this provides methods for reading header and line information, as can be seen in the following example:
 
@@ -241,7 +245,7 @@ echo "  - Grant total amount               {$grandTotalAmount}\r\n";
 echo "  - Due payable amount               {$duePayableAmount}\r\n";
 ```
 
-#### Reading a pdf file with xml attachment
+### Reading a pdf file with xml attachment
 
 Reading invoice data from a PDF is similar: you just need to use the `ZugferdDocumentPdfReader` class instead of `ZugferdDocumentReader`:
 
@@ -253,7 +257,7 @@ Reading invoice data from a PDF is similar: you just need to use the `ZugferdDoc
 
 The further reading of the invoice data is then identical with [Reading a xml file](#reading-a-xml-file)
 
-#### Writing a xml file
+### Writing a xml file
 
 The `ZugferdDocumentBuilder` class is again the central entry point to generate compliant XML data:
 
@@ -297,7 +301,7 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->writeFile(getcwd() . "/factur-x.xml");
 ```
 
-#### Writing a pdf file with attached xml file
+### Writing a pdf file with attached xml file
 
 ```php
   use horstoeko\zugferd\ZugferdDocumentBuilder;
@@ -343,7 +347,3 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
   $pdfBuilder->generateDocument();
   $pdfBuilder->saveDocument("/tmp/new.pdf");
 ```
-
-### Note
-
-The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license.
