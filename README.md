@@ -4,7 +4,7 @@
 
 A simple ZUGFeRD/XRechnung/Factur-X Library
 
-With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the basic-, EN16931- and Extended-Profile.
+With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the Minimum-, Basic-, EN16931-, Extended- and XRechnung Profile. In addition, it is possible to attach the XML data to an existing PDF file, which was created from an ERP system, for example. If both an XML file (or XML string) and a PDF file (or a PDF in the form of a string) exist, then a compliant PDF file with attachment can be created using the `ZugferdDocumentPdfMerger` class.
 
 Information about...
 * [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
@@ -29,7 +29,71 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
 
 ## Usage
 
-For detailed eplanation you may have a look in the `examples` of this package and the documentation attached to every release.
+For detailed eplanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples) of this package and the documentation attached to every release.
+
+### Configuration
+
+By means of the `ZugferdSettings` class it is possible to control various options for XML and PDF generation:
+
+```php
+public static function getAmountDecimals(): int
+```
+
+Returns the currently configured number of decimal places for amount fields _(Default: 2)_.
+
+```php
+public static function setAmountDecimals(int $amountDecimals): void
+```
+
+Set the number of decimal places for amount fields.
+
+```php
+public static function getQuantityDecimals(): int
+```
+
+Returns the currently configured number of decimal places for quantity fields _(Default: 2)_.
+
+```php
+public static function setQuantityDecimals(int $quantityDecimals): void
+```
+
+Set the number of decimal places for quantity fields.
+
+```php
+public static function getPercentDecimals(): int
+```
+
+Returns the currently configured number of decimal places for percentage fields _(Default: 2)_.
+
+```php
+public static function setPercentDecimals(int $percentDecimals): void
+```
+
+Set the number of decimal places for percentage fields.
+
+```php
+public static function getDecimalSeparator(): string
+```
+
+Returns the currently configured character for the decimal separator. _(Default: .)
+
+```php
+public static function setDecimalSeparator(string $decimalSeparator): void
+```
+
+Set the character to use as the decimal separator.
+
+```php
+public static function getThousandsSeparator(): string
+```
+
+Returns the currently configured character for the thousands separator. _(Default: Empty)_
+
+```php
+public static function setThousandsSeparator(string $thousandsSeparator): void
+```
+
+Set the character to use as the thousands separator.
 
 ### Reading a xml file
 
@@ -39,12 +103,12 @@ For detailed eplanation you may have a look in the `examples` of this package an
   $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/xml/factur-x.xml");
 
   $document ->getDocumentInformation($documentno,
-     $documenttypecode, 
-     $documentdate, 
-     $duedate, 
-     $invoiceCurrency, 
-     $taxCurrency, 
-     $documentname, 
+     $documenttypecode,
+     $documentdate,
+     $duedate,
+     $invoiceCurrency,
+     $taxCurrency,
+     $documentname,
      $documentlanguage,
      $effectiveSpecifiedPeriod)
 
@@ -59,12 +123,12 @@ For detailed eplanation you may have a look in the `examples` of this package an
   $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/xml/factur-x.pdf");
 
   $document ->getDocumentInformation($documentno,
-     $documenttypecode, 
-     $documentdate, 
-     $duedate, 
-     $invoiceCurrency, 
-     $taxCurrency, 
-     $documentname, 
+     $documenttypecode,
+     $documentdate,
+     $duedate,
+     $invoiceCurrency,
+     $taxCurrency,
+     $documentname,
      $documentlanguage,
      $effectiveSpecifiedPeriod)
 
@@ -160,6 +224,6 @@ For detailed eplanation you may have a look in the `examples` of this package an
   $pdfBuilder->saveDocument("/tmp/new.pdf");
 ```
 
-## Note 
+## Note
 
-The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license. 
+The code in this project is provided under the [MIT](https://opensource.org/licenses/MIT) license.
