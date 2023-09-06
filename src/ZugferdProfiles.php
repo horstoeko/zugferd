@@ -66,6 +66,11 @@ class ZugferdProfiles
     const PROFILE_MINIMUM = 8;
 
     /**
+     * Internal constant that identifies the XRECHNUNG profile version 2.3 (germany only)
+     */
+    const PROFILE_XRECHNUNG_2_3 = 9;
+
+    /**
      * The definitions of the several profiles
      */
     const PROFILEDEF = [
@@ -172,6 +177,18 @@ class ZugferdProfiles
             'xmpname' => 'MINIMUM',
             'xsdfilename' => 'FACTUR-X_MINIMUM.xsd',
             'schematronfilename' => 'FACTUR-X_MINIMUM.sch',
+        ],
+        self::PROFILE_XRECHNUNG_2_3 => [
+            'name' => 'en16931',
+            'altname' => 'XRECHNUNG',
+            'description' => 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an ' .
+                'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more ' .
+                'specific than the EN 16931 (COMFORT) profile.',
+            'contextparameter' => 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3',
+            'attachmentfilename' => 'xrechnung.xml',
+            'xmpname' => 'EN 16931',
+            'xsdfilename' => 'FACTUR-X_EN16931.xsd',
+            'schematronfilename' => 'FACTUR-X_EN16931.sch',
         ],
     ];
 }
