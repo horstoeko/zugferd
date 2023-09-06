@@ -582,6 +582,10 @@ class ZugferdObjectHelper
         $result->setSupplyChainTradeTransaction($this->createClassInstance('ram\SupplyChainTradeTransactionType'));
         $result->getExchangedDocumentContext()->setGuidelineSpecifiedDocumentContextParameter($this->createClassInstance('ram\DocumentContextParameterType'));
         $result->getExchangedDocumentContext()->getGuidelineSpecifiedDocumentContextParameter()->setID($this->getIdType($this->profiledef['contextparameter']));
+        if ($this->profiledef['businessprocess']) {
+            $result->getExchangedDocumentContext()->setBusinessProcessSpecifiedDocumentContextParameter($this->createClassInstance('ram\DocumentContextParameterType'));
+            $result->getExchangedDocumentContext()->getBusinessProcessSpecifiedDocumentContextParameter()->setID($this->getIdType($this->profiledef['businessprocess']));
+        }
         $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeAgreement($this->createClassInstance('ram\HeaderTradeAgreementType'));
         $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeDelivery($this->createClassInstance('ram\HeaderTradeDeliveryType'));
         $result->getSupplyChainTradeTransaction()->setApplicableHeaderTradeSettlement($this->createClassInstance('ram\HeaderTradeSettlementType'));
