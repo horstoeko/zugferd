@@ -572,6 +572,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set Sellers electronic communication information
+     *
+     * @param string|null $uriScheme
+     * @param string|null $uri
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSellerCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $communication = $this->objectHelper->getUniversalCommunicationType(null, $uri, $uriScheme);
+        $this->objectHelper->tryCall($sellerTradeParty, "setURIUniversalCommunication", $communication);
+        return $this;
+    }
+
+    /**
      * Detailed information about the buyer (service recipient)
      *
      * @param  string      $name
@@ -733,6 +748,21 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $buyerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->objectHelper->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
         $this->objectHelper->tryCall($buyerTradeParty, "addToDefinedTradeContact", $contact);
+        return $this;
+    }
+
+    /**
+     * Set Buyers electronic communication information
+     *
+     * @param string|null $uriScheme
+     * @param string|null $uri
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentBuyerCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->objectHelper->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $communication = $this->objectHelper->getUniversalCommunicationType(null, $uri, $uriScheme);
+        $this->objectHelper->tryCall($buyerTradeParty, "setURIUniversalCommunication", $communication);
         return $this;
     }
 
