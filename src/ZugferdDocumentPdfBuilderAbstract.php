@@ -185,6 +185,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descFx = $descriptionNodes[0];
         $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->getXmlAttachmentXmpName());
+        $descFx->children('fx', true)->{'DocumentFileName'} = $this->getXmlAttachmentFilename();
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 
         $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
