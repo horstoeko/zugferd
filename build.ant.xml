@@ -2,7 +2,7 @@
 <project name="php-automate-build-ant" default="full-build" basedir=".">
     <!-- By default the tools are managed by Composer in ${basedir}/vendor/bin -->
     <property name="url.composer.download" value="https://getcomposer.org/download/2.2.6/composer.phar"/>
-    <property name="url.validator.download" value="https://github.com/itplr-kosit/validator/releases/download/v1.4.0/validationtool-1.4.0.zip"/>
+    <property name="url.validator.download" value="https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip"/>
     <property name="url.validator.scenarios.download" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2020-07-31/validator-configuration-xrechnung_2.0.0_2020-07-31.zip"/>
     <property name="url.phpdocumentor.download" value="https://phpdoc.org/phpDocumentor.phar"/>
     <property name="validatorzipdir" value="${basedir}/build/validator"/>
@@ -319,7 +319,7 @@
         <!-- Validate XRechnugn 2.0 -->
         <exec executable="java" resultproperty="result.schematron.xrechnung">
             <arg value="-jar"/>
-            <arg path="${basedir}/build/validator/validationtool-1.4.0-standalone.jar"/>
+            <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
             <arg value="-s"/>
             <arg path="${basedir}/build/validator/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
@@ -334,7 +334,7 @@
         <!-- Validate XRechnugn 2.0 -->
         <exec executable="java" resultproperty="result.schematron.en16931">
             <arg value="-jar"/>
-            <arg path="${basedir}/build/validator/validationtool-1.4.0-standalone.jar"/>
+            <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
             <arg value="-s"/>
             <arg path="${basedir}/build/validator/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
