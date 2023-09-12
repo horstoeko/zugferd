@@ -309,14 +309,14 @@
             <arg path="${validatorconfigzipdir}"/>
         </exec>
         <echo message="Unpacked."/>
-        <!-- XRechnung 2.0 -->
-        <echo message="Creating XRechnung 2.0..."/>
+        <!-- XRechnung 3.0 -->
+        <echo message="Creating XRechnung 3.0..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
-            <arg path="./examples/XRechnung2SimpleQuick.php"/>
+            <arg path="./examples/XRechnung3SimpleQuick.php"/>
         </exec>
-        <echo message="Created XRechnung 2.0."/>
-        <!-- Validate XRechnugn 2.0 -->
+        <echo message="Created XRechnung 3.0."/>
+        <!-- Validate XRechnugn 3.0 -->
         <exec executable="java" resultproperty="result.schematron.xrechnung">
             <arg value="-jar"/>
             <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
@@ -333,7 +333,7 @@
             <arg path="./examples/En16931SimpleQuick.php"/>
         </exec>
         <echo message="Created EN16931."/>
-        <!-- Validate XRechnugn 2.0 -->
+        <!-- Validate EN16931 -->
         <exec executable="java" resultproperty="result.schematron.en16931">
             <arg value="-jar"/>
             <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
