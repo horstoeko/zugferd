@@ -21,13 +21,13 @@ use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdQuickDescriptorXRechnung2 extends ZugferdQuickDescriptor
+class ZugferdQuickDescriptorXRechnung3 extends ZugferdQuickDescriptor
 {
     /**
      * @inheritDoc
      */
     protected static function getProfile(): int
     {
-        return ZugferdProfiles::PROFILE_XRECHNUNG_2_3;
+        return ZugferdProfiles::PROFILE_XRECHNUNG_3;
     }
 }
