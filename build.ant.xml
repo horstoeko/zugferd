@@ -317,7 +317,7 @@
         </exec>
         <echo message="Created XRechnung 3.0."/>
         <!-- Validate XRechnugn 3.0 -->
-        <exec executable="java" resultproperty="result.schematron.xrechnung">
+        <exec executable="java" resultproperty="result.schematron.xrechnung" failonerror="false">
             <arg value="-jar"/>
             <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
             <arg value="-r"/>
@@ -334,7 +334,7 @@
         </exec>
         <echo message="Created EN16931."/>
         <!-- Validate EN16931 -->
-        <exec executable="java" resultproperty="result.schematron.en16931">
+        <exec executable="java" resultproperty="result.schematron.en16931" failonerror="false">
             <arg value="-jar"/>
             <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
             <arg value="-r"/>
