@@ -6,11 +6,12 @@
     <property name="url.validator.scenarios.download" value="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-07-31/validator-configuration-xrechnung_3.0.0_2023-07-31.zip"/>
     <property name="url.phpdocumentor.download" value="https://phpdoc.org/phpDocumentor.phar"/>
     <property name="validatorzipdir" value="${basedir}/build/validator"/>
-    <property name="validatorconfigzipdir" value="${basedir}/build/validator"/>
+    <property name="validatorconfigzipdir" value="${validatorzipdir}"/>
     <property name="validatorzipname" value="validator.zip"/>
     <property name="validatorconfigzipname" value="validator-configuration.zip"/>
     <property name="validatorzip" value="${validatorzipdir}/${validatorzipname}"/>
     <property name="validatorconfigzip" value="${validatorconfigzipdir}/${validatorconfigzipname}"/>
+    <property name="validatorjarfilename" value="validationtool-1.5.0-standalone.jar"/>
     <property name="composer" value="${basedir}/composer.phar"/>
     <property name="phpdocumentor" value="${basedir}/phpDocumentor.phar"/>
     <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
@@ -277,9 +278,11 @@
     </target>
     <target name="schematron" description="Validate agains schematron">
         <!-- Clean -->
-        <delete dir="${basedir}/build/validator"/>
+        <delete dir="${validatorzipdir}"/>
+        <delete dir="${validatorconfigzipdir}"/>
         <delete file="${basedir}/examples/factur-x.xml"/>
-        <mkdir dir="${basedir}/build/validator"/>
+        <mkdir dir="${validatorzipdir}"/>
+        <mkdir dir="${validatorconfigzipdir}"/>
         <!-- Get Validator -->
         <echo message="Downloading validator..."/>
         <exec executable="wget" failonerror="true">
@@ -309,7 +312,7 @@
             <arg path="${validatorconfigzipdir}"/>
         </exec>
         <echo message="Unpacked."/>
-        <!-- XRechnung 3.0 -->
+        <!-- Create XRechnung 3.0 -->
         <echo message="Creating XRechnung 3.0..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
@@ -319,14 +322,14 @@
         <!-- Validate XRechnugn 3.0 -->
         <exec executable="java" resultproperty="result.schematron.xrechnung" failonerror="false">
             <arg value="-jar"/>
-            <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
+            <arg path="${validatorzipdir}/${validatorjarfilename}"/>
             <arg value="-r"/>
-            <arg path="${basedir}/build/validator/"/>
+            <arg path="${validatorconfigzipdir}/"/>
             <arg value="-s"/>
-            <arg path="${basedir}/build/validator/scenarios.xml"/>
+            <arg path="${validatorconfigzipdir}/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
         </exec>
-        <!-- EN16931 -->
+        <!-- Create EN16931 -->
         <echo message="Creating EN16931..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
@@ -336,13 +339,17 @@
         <!-- Validate EN16931 -->
         <exec executable="java" resultproperty="result.schematron.en16931" failonerror="false">
             <arg value="-jar"/>
-            <arg path="${basedir}/build/validator/validationtool-1.5.0-standalone.jar"/>
+            <arg path="${validatorzipdir}/${validatorjarfilename}"/>
             <arg value="-r"/>
-            <arg path="${basedir}/build/validator/"/>
+            <arg path="${validatorconfigzipdir}/"/>
             <arg value="-s"/>
-            <arg path="${basedir}/build/validator/scenarios.xml"/>
+            <arg path="${validatorconfigzipdir}/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
         </exec>
+        <!-- Clean -->
+        <delete dir="${validatorzipdir}"/>
+        <delete dir="${validatorconfigzipdir}"/>
+        <delete file="${basedir}/examples/factur-x.xml"/>
     </target>
     <target name="projectdoc" description="Generate documentation">
         <antcall target="clean"/>
