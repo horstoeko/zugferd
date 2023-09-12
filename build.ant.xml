@@ -312,7 +312,7 @@
             <arg path="${validatorconfigzipdir}"/>
         </exec>
         <echo message="Unpacked."/>
-        <!-- XRechnung 3.0 -->
+        <!-- Create XRechnung 3.0 -->
         <echo message="Creating XRechnung 3.0..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
@@ -329,7 +329,7 @@
             <arg path="${validatorconfigzipdir}/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
         </exec>
-        <!-- EN16931 -->
+        <!-- Create EN16931 -->
         <echo message="Creating EN16931..."/>
         <exec executable="php" dir="${basedir}/examples" failonerror="true">
             <arg value="-f"/>
@@ -346,6 +346,10 @@
             <arg path="${validatorconfigzipdir}/scenarios.xml"/>
             <arg path="${basedir}/examples/factur-x.xml"/>
         </exec>
+        <!-- Clean -->
+        <delete dir="${validatorzipdir}"/>
+        <delete dir="${validatorconfigzipdir}"/>
+        <delete file="${basedir}/examples/factur-x.xml"/>
     </target>
     <target name="projectdoc" description="Generate documentation">
         <antcall target="clean"/>
