@@ -463,6 +463,19 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Set Buyers electronic communication information
+     *
+     * @param string $uri
+     * @param string $uriScheme
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetBuyerElectronicCommunication(string $uri, string $uriScheme = "EM"): ZugferdQuickDescriptor
+    {
+        $this->setDocumentBuyerCommunication($uriScheme, $uri);
+        return $this;
+    }
+
+    /**
      * Detailed information about the seller (=service provider)
      *
      * @param  string      $name
@@ -540,6 +553,19 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     public function doAddSellerTaxRegistration(string $no, string $schemeID): ZugferdQuickDescriptor
     {
         $this->addDocumentSellerTaxRegistration($no, $schemeID);
+        return $this;
+    }
+
+    /**
+     * Set Sellers electronic communication information
+     *
+     * @param string $uri
+     * @param string $uriScheme
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetSellerElectronicCommunication(string $uri, string $uriScheme = "EM"): ZugferdQuickDescriptor
+    {
+        $this->setDocumentSellerCommunication($uriScheme, $uri);
         return $this;
     }
 
