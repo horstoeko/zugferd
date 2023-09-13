@@ -47,8 +47,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param ZugferdDocumentBuilder $documentBuiler
-     * The instance of the document builder. Needed to get the XML data
      * @param string                 $pdfData
      * The full filename or a string containing the binary pdf data. This
      * is the original PDF (e.g. created by a ERP system)
