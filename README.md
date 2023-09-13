@@ -10,6 +10,7 @@
   - [Table of Contents](#table-of-contents)
   - [License](#license)
   - [Overview](#overview)
+  - [Supported profiles](#supported-profiles)
   - [Further information](#further-information)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
@@ -29,6 +30,19 @@ The code in this project is provided under the [MIT](https://opensource.org/lice
 With `horstoeko/zugferd` you can read and write xml files containing electronic invoice data in the Minimum-, Basic-, EN16931-, Extended- and XRechnung Profile. In addition, it is possible to attach the XML data to an existing PDF file, which was created from an ERP system, for example. If both an XML file (or XML string) and a PDF file (or a PDF in the form of a string) exist, then a compliant PDF file with attachment can be created using the `ZugferdDocumentPdfMerger` class.
 
 **The advantage of this library is that you don't have to worry about whether a particular XML element exists in a desired profile - you can use the same program code for all supported profiles.**
+
+## Supported profiles
+
+- EN16931 Minimum
+- EN16931 Basic
+- EN16931 Basic WL
+- EN16931 Comfort
+- EN16931 Extended
+- EN16931 XRechnung 1.x
+- EN16931 XRechnung 2.x
+- EN16931 XRechnung 3.x
+
+**Note: This package provides only support for CII - not UBL**
 
 ## Further information
 
