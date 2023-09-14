@@ -1,4 +1,4 @@
-name: CI (Ant, PHP 8.1)
+name: CI (Ant, PHP All Versions)
 
 on:
   push:
