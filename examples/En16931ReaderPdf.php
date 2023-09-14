@@ -2,7 +2,7 @@
 
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
 
-require getcwd() . "/../vendor/autoload.php";
+require dirname(__FILE__) . "/../vendor/autoload.php";
 
 $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/invoice_1.pdf");
 

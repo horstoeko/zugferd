@@ -5,7 +5,7 @@ use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\ZugferdDocumentJsonExporter;
 
-require getcwd() . "/../vendor/autoload.php";
+require dirname(__FILE__) . "/../vendor/autoload.php";
 
 $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
 $document
@@ -48,7 +48,7 @@ $document
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
     ->SetDocumentPositionLineSummation(275.0)
-    ->writeFile(getcwd() . "/factur-x.xml");
+    ->writeFile(dirname(__FILE__) . "/factur-x.xml");
 
 $jsonExporter = new ZugferdDocumentJsonExporter($document);
 echo $jsonExporter->toPrettyJsonString();

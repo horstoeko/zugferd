@@ -5,7 +5,7 @@ use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 
-require getcwd() . "/../vendor/autoload.php";
+require dirname(__FILE__) . "/../vendor/autoload.php";
 
 $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
 $document

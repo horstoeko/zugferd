@@ -3,7 +3,7 @@
 use horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung3;
 use horstoeko\zugferd\codelists\ZugferdTextSubjectCodeQualifiers;
 
-require getcwd() . "/../vendor/autoload.php";
+require dirname(__FILE__) . "/../vendor/autoload.php";
 
 $document = (ZugferdQuickDescriptorXRechnung3::doCreateNew())
     ->doCreateInvoice("471102", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")
@@ -30,4 +30,4 @@ $document = (ZugferdQuickDescriptorXRechnung3::doCreateNew())
     ->doAddTradeAllowanceCharge(-2.61, "Rechnungsrabatt 1", "S", "VAT", 7.0)
     ->doAddTradeAllowanceCharge(-2.50, "Rechnungsrabatt 2", "S", "VAT", 19.0)
     ->doAddTradeAllowanceCharge(-0.50, "Rechnungsrabatt 2", "S", "VAT", 7.0)
-    ->writeFile(getcwd() . "/factur-x.xml");
+    ->writeFile(dirname(__FILE__) . "/factur-x.xml");
