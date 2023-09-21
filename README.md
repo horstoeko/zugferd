@@ -12,6 +12,7 @@
   - [Overview](#overview)
   - [Supported profiles](#supported-profiles)
   - [Further information](#further-information)
+  - [Related projects](#related-projects)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -49,6 +50,13 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 * [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
 * [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
 * [Factur-X](http://fnfe-mpe.org/factur-x/factur-x_en) (France)
+
+## Related projects
+
+* [ZUGFeRD Visualizer](https://github.com/horstoeko/zugferdvisualizer)
+* [ZUGFeRD Laravel](https://github.com/horstoeko/zugferd-laravel)
+* [ZUGFeRD UBL Syntax](https://github.com/horstoeko/ubl)
+* [Order-X](https://github.com/horstoeko/orderx)
 
 ## Dependencies
 
