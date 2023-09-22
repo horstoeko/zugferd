@@ -1228,7 +1228,7 @@ class ZugferdObjectHelper
      * @param  string|null $value
      * @return object|null
      */
-    public function getProductCharacteristicType(?string $typeCode = null, ?string $description = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null, ?string $value): ?object
+    public function getProductCharacteristicType(?string $typeCode = null, ?string $description = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null, ?string $value = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1280,7 +1280,7 @@ class ZugferdObjectHelper
      * @param  string|null $unitCode
      * @return object|null
      */
-    public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $name, ?string $description = null, ?float $unitQuantity, ?string $unitCode): ?object
+    public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $name, ?string $description, ?float $unitQuantity, ?string $unitCode): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
