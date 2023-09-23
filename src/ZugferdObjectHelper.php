@@ -10,10 +10,10 @@
 namespace horstoeko\zugferd;
 
 use DateTime;
-use \MimeTyper\Repository\MimeDbRepository;
-use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use \horstoeko\mimedb\MimeDb;
 use \horstoeko\stringmanagement\FileUtils;
 use \horstoeko\stringmanagement\StringUtils;
+use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 
 /**
  * Class representing a collection of common helpers and class factories
@@ -514,18 +514,19 @@ class ZugferdObjectHelper
 
         if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false) {
             if (FileUtils::fileExists($binarydatafilename)) {
-                $mimetyper = new MimeDbRepository();
-                $mimeType = $mimetyper->findType(FileUtils::getFileExtension($binarydatafilename));
+                $mimeDb = new MimeDb();
+                $mimeTypes = $mimeDb->findAllMimeTypesByExtension(FileUtils::getFileExtension($binarydatafilename));
+                $mimeTypesSupported = array_intersect($mimeTypes, self::SUPPORTEDTMIMETYPES);
 
-                if (in_array($mimeType, self::SUPPORTEDTMIMETYPES)) {
+                if (count($mimeTypesSupported) > 0) {
                     $content = FileUtils::fileToBase64($binarydatafilename);
                     $this->tryCall(
                         $refdoctype,
                         'setAttachmentBinaryObject',
-                        $this->getBinaryObjectType($content, $mimeType, FileUtils::getFilenameWithExtension($binarydatafilename))
+                        $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binarydatafilename))
                     );
                 } else {
-                    throw new \Exception(sprintf("Invalid attachment. Mimetype %s not supported", $mimeType));
+                    throw new \Exception(sprintf("Invalid attachment. Mimetype not supported"));
                 }
             }
         }
