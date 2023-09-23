@@ -14,7 +14,7 @@ A clear and concise description of what feature/improvement you like to have
 A clear and concise description of what you expected to happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain your feature request.
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the feature request here.
