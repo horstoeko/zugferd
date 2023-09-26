@@ -327,6 +327,9 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
 
 ### Writing a pdf file with attached xml file
 
+Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing print output of the invoice (for example from an ERP system) and want to add an XML data stream to the existing PDF:
+
+
 ```php
   use horstoeko\zugferd\ZugferdDocumentBuilder;
   use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
@@ -367,7 +370,7 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->SetDocumentPositionLineSummation(275.0)
     ->writeFile(getcwd() . "/factur-x.xml");
 
-  $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/original.pdf");
+  $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
   $pdfBuilder->generateDocument();
-  $pdfBuilder->saveDocument("/tmp/new.pdf");
+  $pdfBuilder->saveDocument("/tmp/merged.pdf");
 ```
