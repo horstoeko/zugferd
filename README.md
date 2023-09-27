@@ -375,5 +375,5 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
 
   // Alternatively, you can also return the merged output (existing original and XML) as a binary string
   $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
-  $pdfBuilder->generateDocument()->downloadString("merged.pdf");
+  $pdfBinaryString = $pdfBuilder->generateDocument()->downloadString("merged.pdf");
 ```
