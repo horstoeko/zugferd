@@ -322,7 +322,7 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
     ->SetDocumentPositionLineSummation(275.0)
-    ->writeFile(getcwd() . "/factur-x.xml");
+    ->writeFile("/tmp/factur-x.xml");
 ```
 
 ### Writing a pdf file with attached xml file
@@ -367,10 +367,13 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
     ->SetDocumentPositionNetPrice(5.5000)
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
-    ->SetDocumentPositionLineSummation(275.0)
-    ->writeFile(getcwd() . "/factur-x.xml");
+    ->SetDocumentPositionLineSummation(275.0);
 
+  // Save merged PDF (existing original and XML) to a file
   $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
-  $pdfBuilder->generateDocument();
-  $pdfBuilder->saveDocument("/tmp/merged.pdf");
+  $pdfBuilder->generateDocument()->saveDocument("/tmp/merged.pdf");
+
+  // Alternatively, you can also return the merged output (existing original and XML) as a binary string
+  $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
+  $pdfBuilder->generateDocument()->downloadString("merged.pdf");
 ```
