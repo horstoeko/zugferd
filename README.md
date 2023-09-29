@@ -43,7 +43,7 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 - EN16931 XRechnung 2.x
 - EN16931 XRechnung 3.x
 
-$${\color{red}This \space package \space provides \space only \space support \space for \space CII \space - \space not \space UBL}$$
+**Note: This package provides only support for CII - not UBL**
 
 ## Further information
 
