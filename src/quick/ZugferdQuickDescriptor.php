@@ -465,8 +465,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set Buyers electronic communication information
      *
-     * @param string $uri
-     * @param string $uriScheme
+     * @param  string $uri
+     * @param  string $uriScheme
      * @return ZugferdQuickDescriptor
      */
     public function doSetBuyerElectronicCommunication(string $uri, string $uriScheme = "EM"): ZugferdQuickDescriptor
@@ -559,8 +559,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set Sellers electronic communication information
      *
-     * @param string $uri
-     * @param string $uriScheme
+     * @param  string $uri
+     * @param  string $uriScheme
      * @return ZugferdQuickDescriptor
      */
     public function doSetSellerElectronicCommunication(string $uri, string $uriScheme = "EM"): ZugferdQuickDescriptor

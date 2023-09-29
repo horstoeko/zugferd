@@ -574,8 +574,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Sellers electronic communication information
      *
-     * @param string|null $uriScheme
-     * @param string|null $uri
+     * @param  string|null $uriScheme
+     * @param  string|null $uri
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder
@@ -754,8 +754,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Buyers electronic communication information
      *
-     * @param string|null $uriScheme
-     * @param string|null $uri
+     * @param  string|null $uriScheme
+     * @param  string|null $uri
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBuyerCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder

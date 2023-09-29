@@ -47,7 +47,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param string                 $pdfData
+     * @param string $pdfData
      * The full filename or a string containing the binary pdf data. This
      * is the original PDF (e.g. created by a ERP system)
      */
@@ -261,12 +261,12 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $docTypeCode = $docTypeXpath->item(0)->nodeValue;
 
         switch ($docTypeCode) {
-            case ZugferdInvoiceType::CREDITNOTE:
-                $docTypeName = 'Credit Note';
-                break;
-            default:
-                $docTypeName = 'Invoice';
-                break;
+        case ZugferdInvoiceType::CREDITNOTE:
+            $docTypeName = 'Credit Note';
+            break;
+        default:
+            $docTypeName = 'Invoice';
+            break;
         }
 
         $invoiceInformation = array(
