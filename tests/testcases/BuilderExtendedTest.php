@@ -2124,4 +2124,14 @@ class BuilderExtendedTest extends TestCase
         $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
         @unlink(getcwd() . "/myfile.xml");
     }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::__toString
+     */
+    public function testToString(): void
+    {
+        $xmlContent = (string)self::$document;
+        $this->assertIsString($xmlContent);
+        $this->assertStringStartsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rsm:CrossIndustryInvoice", $xmlContent);
+    }
 }
