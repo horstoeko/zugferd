@@ -80,6 +80,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Receive the content as XML string
+     *
+     * @return string
+     * @see https://www.php.net/manual/en/language.oop5.magic.php#object.tostring
+     */
+    public function __toString()
+    {
+        return $this->getContent();
+    }
+
+    /**
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
      * @codeCoverageIgnore
