@@ -21,6 +21,7 @@
     - [Reading a pdf file with xml attachment](#reading-a-pdf-file-with-xml-attachment)
     - [Writing a xml file](#writing-a-xml-file)
     - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
+    - [Merge existing PDF and XML](#merge-existing-pdf-and-xml)
 
 ## License
 
@@ -376,4 +377,38 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
   // Alternatively, you can also return the merged output (existing original and XML) as a binary string
   $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
   $pdfBinaryString = $pdfBuilder->generateDocument()->downloadString("merged.pdf");
+```
+
+### Merge existing PDF and XML
+
+Let's assume we already have a compliant XML (for example in the Comfort profile) and a PDF that already contains the print layout. Then it is possible to merge these two files into a compliant PDF (with XML attachment) using the class ```ZugferdDocumentPdfMerger```.
+
+```php
+use horstoeko\zugferd\ZugferdDocumentPdfMerger;
+
+require dirname(__FILE__) . "/../vendor/autoload.php";
+
+$existingXml = dirname(__FILE__) . "/invoice_1.xml";
+$existingPdf = dirname(__FILE__) . "/emptypdf.pdf";
+$mergeToPdf = dirname(__FILE__) . "/fullpdf.pdf";
+
+if (!file_exists($existingXml) || !file_exists($existingPdf)) {
+    throw new \Exception("XML and/or PDF does not exist");
+}
+
+(new ZugferdDocumentPdfMerger($existingXml, $existingPdf))->generateDocument()->saveDocument($mergeToPdf);
+```
+
+XML and/or PDF do not have to be available as a file. Strings containing the corresponding data can also be passed to the ZugferdDocumentPdfMerger class.
+
+```php
+use horstoeko\zugferd\ZugferdDocumentPdfMerger;
+
+require dirname(__FILE__) . "/../vendor/autoload.php";
+
+$existingXml = "<xml>,,,,,</xml>";
+$existingPdf = "%PDF-1.5...........";
+$mergeToPdf = dirname(__FILE__) . "/fullpdf.pdf";
+
+(new ZugferdDocumentPdfMerger($existingXml, $existingPdf))->generateDocument()->saveDocument($mergeToPdf);
 ```
