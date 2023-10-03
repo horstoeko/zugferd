@@ -11,17 +11,17 @@ class TradeCurrencyExchangeType
 {
 
     /**
-     * @var string $sourceCurrencyCode
+     * @var \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $sourceCurrencyCode
      */
     private $sourceCurrencyCode = null;
 
     /**
-     * @var string $targetCurrencyCode
+     * @var \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $targetCurrencyCode
      */
     private $targetCurrencyCode = null;
 
     /**
-     * @var float $conversionRate
+     * @var \horstoeko\zugferd\entities\extended\udt\RateType $conversionRate
      */
     private $conversionRate = null;
 
@@ -33,7 +33,8 @@ class TradeCurrencyExchangeType
     /**
      * Gets as sourceCurrencyCode
      *
-     * @return string
+     * @return \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType
+
      */
     public function getSourceCurrencyCode()
     {
@@ -43,7 +44,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new sourceCurrencyCode
      *
-     * @param  string $sourceCurrencyCode
+     * @param  \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode
      * @return self
      */
     public function setSourceCurrencyCode($sourceCurrencyCode)
@@ -55,7 +56,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as targetCurrencyCode
      *
-     * @return string
+     * @return \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode
      */
     public function getTargetCurrencyCode()
     {
@@ -65,7 +66,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new targetCurrencyCode
      *
-     * @param  string $targetCurrencyCode
+     * @param  \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $targetCurrencyCode
      * @return self
      */
     public function setTargetCurrencyCode($targetCurrencyCode)
