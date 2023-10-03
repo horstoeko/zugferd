@@ -204,10 +204,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader
     {
-        $this->binarydatadirectory = "";
-
         if ($binarydatadirectory) {
-            if (is_dir($binarydatadirectory) && is_writable($binarydatadirectory)) {
+            if (is_dir($binarydatadirectory)) {
                 $this->binarydatadirectory = $binarydatadirectory;
             }
         }
@@ -440,9 +438,9 @@ class ZugferdDocumentReader extends ZugferdDocument
         $notes = $this->convertToArray(
             $notes,
             [
-            "contentcode" => ["getContentCode.value", ""],
-            "subjectcode" => ["getSubjectCode.value", ""],
-            "content" => ["getContent.value", ""],
+                "contentcode" => ["getContentCode.value", ""],
+                "subjectcode" => ["getSubjectCode.value", ""],
+                "content" => ["getContent.value", ""],
             ]
         );
 
@@ -2477,7 +2475,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
+        if (
+            StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
@@ -2504,12 +2503,12 @@ class ZugferdDocumentReader extends ZugferdDocument
         $refdocs = $this->convertToArray(
             $refdocs,
             [
-            "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
-            "URIID" => ["getURIID.value", ""],
-            "LineID" => ["getLineID.value", ""],
-            "TypeCode" => ["getTypeCode.value", ""],
-            "ReferenceTypeCode" => ["getReferenceTypeCode.value", ""],
-            "FormattedIssueDateTime" => ["getFormattedIssueDateTime.getDateTimeString.value", ""],
+                "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
+                "URIID" => ["getURIID.value", ""],
+                "LineID" => ["getLineID.value", ""],
+                "TypeCode" => ["getTypeCode.value", ""],
+                "ReferenceTypeCode" => ["getReferenceTypeCode.value", ""],
+                "FormattedIssueDateTime" => ["getFormattedIssueDateTime.getDateTimeString.value", ""],
             ]
         );
 
@@ -2945,30 +2944,30 @@ class ZugferdDocumentReader extends ZugferdDocument
         $allowanceCharge = $this->convertToArray(
             $allowanceCharge,
             [
-            "chargeindicator" => ["getChargeIndicator.getIndicator", false],
-            "sequencenumeric" => ["getSequenceNumeric.value", 0],
-            "calculationpercent" => ["getCalculationPercent.value", 0.0],
-            "basisamount" => ["getBasisAmount.value", 0.0],
-            "basisquantity" => ["getBasisQuantity.value", 0.0],
-            "actualAmount" => ["getActualAmount.value", 0.0],
-            "reasoncode" => ["getReasonCode.value", ""],
-            "reason" => ["getReason.value", ""],
-            "taxcalculatedamount" => ["getCategoryTradeTax.getCalculatedAmount.value", 0.0],
-            "taxtypecode" => ["getCategoryTradeTax.getTypeCode.value", ""],
-            "taxexemptionreason" => ["getCategoryTradeTax.getExemptionReason.value", ""],
-            "taxbasisamount" => ["getCategoryTradeTax.getBasisAmount.value", 0.0],
-            "taxlinetotalbasisamount" => ["getCategoryTradeTax.getLineTotalBasisAmount.value", 0.0],
-            "taxallowancechargebasisamount" => ["getCategoryTradeTax.getAllowanceChargeBasisAmount.value", 0.0],
-            "taxcategorycode" => ["getCategoryTradeTax.getCategoryCode.value", ""],
-            "taxexemptionreasoncode" => ["getCategoryTradeTax.getExemptionReasonCode.value", ""],
-            "taxpointdate" => function ($item) {
-                return $this->objectHelper->toDateTime(
-                    $this->objectHelper->tryCallByPathAndReturn($item, "getCategoryTradeTax.getTaxPointDate.getDateString.value"),
-                    $this->objectHelper->tryCallByPathAndReturn($item, "getCategoryTradeTax.getTaxPointDate.getDateString.getFormat")
-                );
-            },
-            "taxduedatetypecode" => ["getCategoryTradeTax.getDueDateTypeCode.value", ""],
-            "taxrateapplicablepercent" => ["getCategoryTradeTax.getRateApplicablePercent.value", 0.0],
+                "chargeindicator" => ["getChargeIndicator.getIndicator", false],
+                "sequencenumeric" => ["getSequenceNumeric.value", 0],
+                "calculationpercent" => ["getCalculationPercent.value", 0.0],
+                "basisamount" => ["getBasisAmount.value", 0.0],
+                "basisquantity" => ["getBasisQuantity.value", 0.0],
+                "actualAmount" => ["getActualAmount.value", 0.0],
+                "reasoncode" => ["getReasonCode.value", ""],
+                "reason" => ["getReason.value", ""],
+                "taxcalculatedamount" => ["getCategoryTradeTax.getCalculatedAmount.value", 0.0],
+                "taxtypecode" => ["getCategoryTradeTax.getTypeCode.value", ""],
+                "taxexemptionreason" => ["getCategoryTradeTax.getExemptionReason.value", ""],
+                "taxbasisamount" => ["getCategoryTradeTax.getBasisAmount.value", 0.0],
+                "taxlinetotalbasisamount" => ["getCategoryTradeTax.getLineTotalBasisAmount.value", 0.0],
+                "taxallowancechargebasisamount" => ["getCategoryTradeTax.getAllowanceChargeBasisAmount.value", 0.0],
+                "taxcategorycode" => ["getCategoryTradeTax.getCategoryCode.value", ""],
+                "taxexemptionreasoncode" => ["getCategoryTradeTax.getExemptionReasonCode.value", ""],
+                "taxpointdate" => function ($item) {
+                    return $this->objectHelper->toDateTime(
+                        $this->objectHelper->tryCallByPathAndReturn($item, "getCategoryTradeTax.getTaxPointDate.getDateString.value"),
+                        $this->objectHelper->tryCallByPathAndReturn($item, "getCategoryTradeTax.getTaxPointDate.getDateString.getFormat")
+                    );
+                },
+                "taxduedatetypecode" => ["getCategoryTradeTax.getDueDateTypeCode.value", ""],
+                "taxrateapplicablepercent" => ["getCategoryTradeTax.getRateApplicablePercent.value", 0.0],
             ]
         );
 
@@ -3187,19 +3186,19 @@ class ZugferdDocumentReader extends ZugferdDocument
         $taxTypeCodes = $this->convertToArray(
             $appliedTradeTax,
             [
-            "typecode" => ["getTypeCode.value", ""],
+                "typecode" => ["getTypeCode.value", ""],
             ]
         );
         $taxCategpryCodes = $this->convertToArray(
             $appliedTradeTax,
             [
-            "categorycode" => ["getCategoryCode.value", ""],
+                "categorycode" => ["getCategoryCode.value", ""],
             ]
         );
         $rateApplicablePercents = $this->convertToArray(
             $appliedTradeTax,
             [
-            "percent" => ["getRateApplicablePercent.value", 0.0],
+                "percent" => ["getRateApplicablePercent.value", 0.0],
             ]
         );
 
@@ -3218,15 +3217,15 @@ class ZugferdDocumentReader extends ZugferdDocument
         $paymentTerms = $this->convertToArray(
             $paymentTerms,
             [
-            "description" => ["getDescription.value", ""],
-            "duedate" => function ($item) {
-                return $this->objectHelper->toDateTime(
-                    $this->objectHelper->tryCallByPathAndReturn($item, "getDueDateDateTime.getDateTimeString.value"),
-                    $this->objectHelper->tryCallByPathAndReturn($item, "getDueDateDateTime.getDateTimeString.getFormat")
-                );
-            },
-            "directdebitmandateid" => ["getDirectDebitMandateID.value", ""],
-            "partialpaymentamount" => ["getPartialPaymentAmount.value", 0.0],
+                "description" => ["getDescription.value", ""],
+                "duedate" => function ($item) {
+                    return $this->objectHelper->toDateTime(
+                        $this->objectHelper->tryCallByPathAndReturn($item, "getDueDateDateTime.getDateTimeString.value"),
+                        $this->objectHelper->tryCallByPathAndReturn($item, "getDueDateDateTime.getDateTimeString.getFormat")
+                    );
+                },
+                "directdebitmandateid" => ["getDirectDebitMandateID.value", ""],
+                "partialpaymentamount" => ["getPartialPaymentAmount.value", 0.0],
             ]
         );
 
