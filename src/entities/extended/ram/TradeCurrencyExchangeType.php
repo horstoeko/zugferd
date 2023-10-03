@@ -77,7 +77,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as conversionRate
      *
-     * @return float
+     * @return \horstoeko\zugferd\entities\extended\udt\RateType
      */
     public function getConversionRate()
     {
@@ -87,7 +87,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new conversionRate
      *
-     * @param  float $conversionRate
+     * @param  \horstoeko\zugferd\entities\extended\udt\RateType $conversionRate
      * @return self
      */
     public function setConversionRate($conversionRate)

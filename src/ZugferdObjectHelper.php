@@ -1548,6 +1548,7 @@ class ZugferdObjectHelper
     /**
      * Call $method if exists, otherwise $method2 is calles with $value
      *
+     * @codeCoverageIgnore
      * @param  object $instance
      * @param  string $methodToLookFor
      * @param  string $methodToCall

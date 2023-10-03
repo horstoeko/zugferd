@@ -2,6 +2,7 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
+use DateTime;
 use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdObjectHelper;
@@ -151,6 +152,42 @@ class ObjectHelperExtendedTest extends TestCase
          */
         $texttype = self::$objectHelper->getCodeType("test");
         $this->assertEquals("test", $texttype->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType2
+     */
+    public function testGetCodeType2WithValue(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertNull($texttype->getListID());
+        $this->assertNull($texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test", "listid");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertEquals("listid", $texttype->getListID());
+        $this->assertNull($texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test", "listid", "listversion");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertEquals("listid", $texttype->getListID());
+        $this->assertEquals("listversion", $texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2();
+        $this->assertNull($texttype);
     }
 
     /**
@@ -1527,6 +1564,12 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("listid", $productClassification->getClassCode()->getListID());
         $this->assertEquals("listversionid", $productClassification->getClassCode()->getListVersionID());
         $this->assertEquals("classname", $productClassification->getClassName());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType
+         */
+        $productCharacteristic = self::$objectHelper->getProductCharacteristicType();
+        $this->assertNull($productCharacteristic);
     }
 
     /**
@@ -1546,6 +1589,12 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("description", $referencedProduct->getDescription());
         $this->assertEquals(10, $referencedProduct->getUnitQuantity()->value());
         $this->assertEquals("C62", $referencedProduct->getUnitQuantity()->getUnitCode());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
+         */
+        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null);
+        $this->assertNull($referencedProduct);
     }
 
     /**
@@ -1656,6 +1705,39 @@ class ObjectHelperExtendedTest extends TestCase
     public function testToDateTime204(): void
     {
         $this->assertEquals("20200202103145", self::$objectHelper->toDateTime("20200202103145", "204")->format("YmdHis"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getRateType
+     */
+    public function testGetRateType(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\RateType
+         */
+        $rateType = self::$objectHelper->getRateType(10);
+        $this->assertEquals(10, $rateType->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxApplicableTradeCurrencyExchangeType
+     */
+    public function testGetTaxApplicableTradeCurrencyExchangeType(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         */
+        $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType("EUR", "USD", 10.0, DateTime::createFromFormat("Ymd", "20180305"));
+        $this->assertNotNull($currencyExchangeType);
+        $this->assertEquals("EUR", $currencyExchangeType->getSourceCurrencyCode());
+        $this->assertEquals("USD", $currencyExchangeType->getTargetCurrencyCode());
+        $this->assertEquals(10.0, $currencyExchangeType->getConversionRate()->value());
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         */
+        $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType(null, null, null, null);
+        $this->assertNull($currencyExchangeType);
     }
 
     /**

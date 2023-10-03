@@ -2,6 +2,7 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
+use DateTime;
 use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdObjectHelper;
@@ -147,10 +148,46 @@ class ObjectHelperEn16931Test extends TestCase
     public function testGetCodeTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\en16931\udt\TextType
+         * @var \horstoeko\zugferd\entities\en16931\udt\CodeType
          */
         $texttype = self::$objectHelper->getCodeType("test");
         $this->assertEquals("test", $texttype->value());
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType2
+     */
+    public function testGetCodeType2WithValue(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertNull($texttype->getListID());
+        $this->assertNull($texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test", "listid");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertEquals("listid", $texttype->getListID());
+        $this->assertNull($texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2("test", "listid", "listversion");
+        $this->assertEquals("test", $texttype->value());
+        $this->assertEquals("listid", $texttype->getListID());
+        $this->assertEquals("listversion", $texttype->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\udt\CodeType
+         */
+        $texttype = self::$objectHelper->getCodeType2();
+        $this->assertNull($texttype);
     }
 
     /**
@@ -1465,6 +1502,12 @@ class ObjectHelperEn16931Test extends TestCase
         $productCharacteristic = self::$objectHelper->getProductCharacteristicType("typecode", "description", 0, "valuemeasureunit", "value");
         $this->assertEquals("description", $productCharacteristic->getDescription());
         $this->assertEquals("value", $productCharacteristic->getValue());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType
+         */
+        $productCharacteristic = self::$objectHelper->getProductCharacteristicType();
+        $this->assertNull($productCharacteristic);
     }
 
     /**
@@ -1479,6 +1522,12 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("classcode", $productClassification->getClassCode()->value());
         $this->assertEquals("listid", $productClassification->getClassCode()->getListID());
         $this->assertEquals("listversionid", $productClassification->getClassCode()->getListVersionID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType
+         */
+        $productClassification = self::$objectHelper->getProductClassificationType();
+        $this->assertNull($productClassification);
     }
 
     /**
@@ -1491,6 +1540,12 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "name", "description", 10, "C62");
         $this->assertNull($referencedProduct, "The referenced product is not available in EN16931 profile");
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
+         */
+        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null);
+        $this->assertNull($referencedProduct);
     }
 
     /**
@@ -1503,6 +1558,12 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $countryId = self::$objectHelper->getCountryIDType("DE");
         $this->assertEquals("DE", $countryId->value());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\qdt\CountryIDType
+         */
+        $countryId = self::$objectHelper->getCountryIDType();
+        $this->assertNull($countryId);
     }
 
     /**
@@ -1515,6 +1576,12 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $tradeCountry = self::$objectHelper->getTradeCountryType("DE");
         $this->assertEquals("DE", $tradeCountry->getID());
+
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeCountryType
+         */
+        $tradeCountry = self::$objectHelper->getTradeCountryType();
+        $this->assertNull($tradeCountry);
     }
 
     /**
@@ -1637,6 +1704,36 @@ class ObjectHelperEn16931Test extends TestCase
     public function testToDateTime204(): void
     {
         $this->assertEquals("20200202103145", self::$objectHelper->toDateTime("20200202103145", "204")->format("YmdHis"));
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getRateType
+     */
+    public function testGetRateType(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\RateType
+         */
+        $rateType = self::$objectHelper->getRateType(10);
+        $this->assertNull($rateType);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxApplicableTradeCurrencyExchangeType
+     */
+    public function testGetTaxApplicableTradeCurrencyExchangeType(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         */
+        $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType("EUR", "USD", 10.0, DateTime::createFromFormat("Ymd", "20180305"));
+        $this->assertNull($currencyExchangeType);
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         */
+        $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType(null, null, null, null);
+        $this->assertNull($currencyExchangeType);
     }
 
     /**

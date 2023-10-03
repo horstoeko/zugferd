@@ -13,10 +13,12 @@ use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use \horstoeko\stringmanagement\PathUtils;
 use \horstoeko\zugferd\jms\ZugferdTypesHandler;
+use JMS\Serializer\Exception\RuntimeException as ExceptionRuntimeException;
 use \JMS\Serializer\Handler\HandlerRegistryInterface;
 use \JMS\Serializer\SerializerBuilder;
 use \JMS\Serializer\SerializerInterface;
 use RuntimeException;
+use stdClass;
 
 /**
  * Class representing the export of a zugferd document
@@ -76,17 +78,13 @@ class ZugferdDocumentJsonExporter
 
     /**
      * Returns the invoice object as a json object
-     *
-     * @return \stdClass
-     * @throws RuntimeException
+     * 
+     * @return null|stdClass
+     * @throws ExceptionRuntimeException
      */
-    public function toJsonObject(): \stdClass
+    public function toJsonObject(): ?\stdClass
     {
         $jsonObject = json_decode($this->toJsonString());
-
-        if ($jsonObject === null) {
-            throw new \RuntimeException("Invalid JSON");
-        }
 
         return $jsonObject;
     }
