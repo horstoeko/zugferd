@@ -140,17 +140,15 @@ class PdfBuilderEn16931Test extends TestCase
             ->getMock();
 
         /**
-         * @var \PHPUnit\Framework\MockObject\MockObject
+         * @var \PHPUnit\Framework\MockObject\MockObject $mockedObject
          */
-        $mockedObject = $mockedObject;
         $mockedObject->expects($this->exactly(2))
             ->method("getXmlContent")
             ->willReturn(self::$document->getContent());
 
         /**
-         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder $mockedObject
          */
-        $mockedObject = $mockedObject;
         $result = $mockedObject->generateDocument();
 
         $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
@@ -171,17 +169,15 @@ class PdfBuilderEn16931Test extends TestCase
             ->getMock();
 
         /**
-         * @var \PHPUnit\Framework\MockObject\MockObject
+         * @var \PHPUnit\Framework\MockObject\MockObject $mockedObject
          */
-        $mockedObject = $mockedObject;
         $mockedObject->expects($this->exactly(2))
             ->method("getXmlAttachmentFilename")
             ->willReturn(self::$document->getProfileDefinition()['attachmentfilename']);
 
         /**
-         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder $mockedObject
          */
-        $mockedObject = $mockedObject;
         $result = $mockedObject->generateDocument();
 
         $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
@@ -202,17 +198,15 @@ class PdfBuilderEn16931Test extends TestCase
             ->getMock();
 
         /**
-         * @var \PHPUnit\Framework\MockObject\MockObject
+         * @var \PHPUnit\Framework\MockObject\MockObject $mockedObject
          */
-        $mockedObject = $mockedObject;
         $mockedObject->expects($this->exactly(1))
             ->method("getXmlAttachmentXmpName")
             ->willReturn(self::$document->getProfileDefinition()["xmpname"]);
 
         /**
-         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder $mockedObject
          */
-        $mockedObject = $mockedObject;
         $result = $mockedObject->generateDocument();
 
         $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
