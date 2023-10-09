@@ -124,4 +124,97 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, $document->profileId);
         $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, $document->profileId);
     }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlContent
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlContent
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlContent
+     *
+     * @return void
+     */
+    public function testGetXmlContent(): void
+    {
+        $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)
+            ->setConstructorArgs([self::$document, self::$sourcePdfFilename])
+            ->onlyMethods(['getXmlContent'])
+            ->getMock();
+
+        /**
+         * @var \PHPUnit\Framework\MockObject\MockObject
+         */
+        $mockedObject = $mockedObject;
+        $mockedObject->expects($this->exactly(2))
+            ->method("getXmlContent")
+            ->willReturn(self::$document->getContent());
+
+        /**
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         */
+        $mockedObject = $mockedObject;
+        $result = $mockedObject->generateDocument();
+
+        $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlAttachmentFilename
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlAttachmentFilename
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlAttachmentFilename
+     *
+     * @return void
+     */
+    public function testGetXmlAttachmentFilename(): void
+    {
+        $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)
+            ->setConstructorArgs([self::$document, self::$sourcePdfFilename])
+            ->onlyMethods(['getXmlAttachmentFilename'])
+            ->getMock();
+
+        /**
+         * @var \PHPUnit\Framework\MockObject\MockObject
+         */
+        $mockedObject = $mockedObject;
+        $mockedObject->expects($this->exactly(2))
+            ->method("getXmlAttachmentFilename")
+            ->willReturn(self::$document->getProfileDefinition()['attachmentfilename']);
+
+        /**
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         */
+        $mockedObject = $mockedObject;
+        $result = $mockedObject->generateDocument();
+
+        $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlAttachmentXmpName
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlAttachmentXmpName
+     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlAttachmentXmpName
+     *
+     * @return void
+     */
+    public function testGetXmlAttachmentXmpName(): void
+    {
+        $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)
+            ->setConstructorArgs([self::$document, self::$sourcePdfFilename])
+            ->onlyMethods(['getXmlAttachmentXmpName'])
+            ->getMock();
+
+        /**
+         * @var \PHPUnit\Framework\MockObject\MockObject
+         */
+        $mockedObject = $mockedObject;
+        $mockedObject->expects($this->exactly(1))
+            ->method("getXmlAttachmentXmpName")
+            ->willReturn(self::$document->getProfileDefinition()["xmpname"]);
+
+        /**
+         * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder
+         */
+        $mockedObject = $mockedObject;
+        $result = $mockedObject->generateDocument();
+
+        $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
+    }
 }
