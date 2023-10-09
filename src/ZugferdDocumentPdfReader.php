@@ -48,7 +48,7 @@ class ZugferdDocumentPdfReader
 
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseFile($pdfFilename);
-        $filespec = $pdfParsed->getObjectsByType('Filespec');
+        $filespecs = $pdfParsed->getObjectsByType('Filespec');
 
         $attachmentFound = false;
         $attachmentIndex = 0;
@@ -56,9 +56,9 @@ class ZugferdDocumentPdfReader
         $returnValue = null;
 
         try {
-            foreach ($filespec as $spec) {
-                $specDetails = $spec->getDetails();
-                if (in_array($specDetails['F'], static::ATTACHMENT_FILEAMES)) {
+            foreach ($filespecs as $filespec) {
+                $filespecDetails = $filespec->getDetails();
+                if (in_array($filespecDetails['F'], static::ATTACHMENT_FILEAMES)) {
                     $attachmentFound = true;
                     break;
                 }
@@ -70,9 +70,9 @@ class ZugferdDocumentPdfReader
                  * @var array<\Smalot\PdfParser\PDFObject>
                  */
                 $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
-                foreach ($embeddedFiles as $embedFile) {
+                foreach ($embeddedFiles as $embeddedFile) {
                     if ($attachmentIndex == $embeddedFileIndex) {
-                        $returnValue = ZugferdDocumentReader::readAndGuessFromContent($embedFile->getContent());
+                        $returnValue = ZugferdDocumentReader::readAndGuessFromContent($embeddedFile->getContent());
                         break;
                     }
                     $embeddedFileIndex++;
