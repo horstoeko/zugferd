@@ -14,6 +14,7 @@
   - [Further information](#further-information)
   - [Related projects](#related-projects)
   - [Dependencies](#dependencies)
+  - [Our Wiki](#our-wiki)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Configuration](#configuration)
@@ -67,6 +68,12 @@ This package makes use of
 - [Xsd2Php](https://github.com/goetas-webservices/xsd2php)
 - [FPDF](https://github.com/Setasign/FPDF)
 - [FPDI](https://github.com/Setasign/FPDI).
+
+## Our Wiki
+
+We offer you a wiki that is currently under construction. This wiki lives from your questions, but also from your cooperation. If you find that something is unclear or not described at all during your work with this library, please let us know.
+
+[You can find our Wiki here...](https://github.com/horstoeko/zugferd/wiki)
 
 ## Installation
 
