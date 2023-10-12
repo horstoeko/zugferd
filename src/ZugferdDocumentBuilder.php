@@ -72,7 +72,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @codeCoverageIgnore
      * @param              int $profile
      */
-    public function __construct(int $profile)
+    protected function __construct(int $profile)
     {
         parent::__construct($profile);
 

@@ -75,7 +75,7 @@ class ZugferdDocument
      *
      * @codeCoverageIgnore
      */
-    public function __construct(int $profile)
+    protected function __construct(int $profile)
     {
         $this->initProfile($profile);
         $this->initObjectHelper();

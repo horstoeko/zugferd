@@ -6,7 +6,7 @@ use \ReflectionClass;
 use \ReflectionProperty;
 use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdDocument;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
 
 class DocumentTest extends TestCase
 {
@@ -15,7 +15,7 @@ class DocumentTest extends TestCase
      */
     public function testDocumentCreationMinimum(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_MINIMUM);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_MINIMUM);
         $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_MINIMUM, $doc->profileId);
         $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
@@ -29,7 +29,7 @@ class DocumentTest extends TestCase
      */
     public function testDocumentCreationBasic(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASIC);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASIC);
         $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, $doc->profileId);
         $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
@@ -43,7 +43,7 @@ class DocumentTest extends TestCase
      */
     public function testDocumentCreationBasicWl(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_BASICWL);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASICWL);
         $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->profileId);
         $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
@@ -57,7 +57,7 @@ class DocumentTest extends TestCase
      */
     public function testDocumentCreationEn16931(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EN16931);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EN16931);
         $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $doc->profileId);
         $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
@@ -71,7 +71,7 @@ class DocumentTest extends TestCase
      */
     public function testDocumentCreationExtended(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EXTENDED);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
         $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, $doc->profileId);
         $this->assertArrayHasKey("contextparameter", $doc->profileDefinition);
@@ -86,13 +86,13 @@ class DocumentTest extends TestCase
      */
     public function testDocumentInternals(): void
     {
-        $doc = new ZugferdDocument(ZugferdProfiles::PROFILE_EXTENDED);
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'serializerBuilder');
         $this->assertNotNull($property->getValue($doc));
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'serializer');
         $this->assertNotNull($property->getValue($doc));
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'invoiceObject');
-        $this->assertNull($property->getValue($doc));
+        $this->assertNotNull($property->getValue($doc));
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'objectHelper');
         $this->assertNotNull($property->getValue($doc));
     }
