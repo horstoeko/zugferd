@@ -67,19 +67,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     protected $currentPosition = null;
 
     /**
-     * Constructor
-     *
-     * @codeCoverageIgnore
-     * @param              int $profile
-     */
-    protected function __construct(int $profile)
-    {
-        parent::__construct($profile);
-
-        $this->initNewDocument();
-    }
-
-    /**
      * Receive the content as XML string
      *
      * @return string
@@ -100,7 +87,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public static function createNew(int $profile): ZugferdDocumentBuilder
     {
-        return (new self($profile));
+        return (new self($profile))->initNewDocument();
     }
 
     /**
