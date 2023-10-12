@@ -10,6 +10,7 @@
             <file>../tests/testcases/ObjectHelperExtendedTest.php</file>
         </testsuite>
         <testsuite name="Base">
+            <file>../tests/testcases/ProfileResolverTest.php</file>
             <file>../tests/testcases/DocumentTest.php</file>
         </testsuite>
         <testsuite name="Reader">
