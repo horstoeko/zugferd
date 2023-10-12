@@ -226,7 +226,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $profileId = ZugferdProfileResolver::resolveProfileId($xmlcontent);
 
-        return (new self($profileId))->readContent($xmlcontent);
+        return (new static($profileId))->readContent($xmlcontent);
     }
 
     /**
