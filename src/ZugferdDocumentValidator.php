@@ -9,10 +9,10 @@
 
 namespace horstoeko\zugferd;
 
-use \horstoeko\stringmanagement\PathUtils;
-use \horstoeko\zugferd\ZugferdSettings;
-use \Symfony\Component\Validator\ConstraintViolationListInterface;
-use \Symfony\Component\Validator\Validation;
+use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\ZugferdSettings;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
+use Symfony\Component\Validator\Validation;
 
 /**
  * Class representing the document validator for incoming documents

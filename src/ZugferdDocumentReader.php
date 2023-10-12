@@ -9,13 +9,13 @@
 
 namespace horstoeko\zugferd;
 
-use \Closure;
-use \DateTime;
-use \Exception;
-use \horstoeko\stringmanagement\FileUtils;
-use \horstoeko\stringmanagement\PathUtils;
-use \horstoeko\stringmanagement\StringUtils;
-use \horstoeko\zugferd\ZugferdProfileResolver;
+use Closure;
+use DateTime;
+use Exception;
+use horstoeko\stringmanagement\FileUtils;
+use horstoeko\stringmanagement\PathUtils;
+use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
  * Class representing the document reader for incoming XML-Documents with

@@ -9,9 +9,9 @@
 
 namespace horstoeko\zugferd;
 
-use \Exception;
-use \SimpleXMLElement;
-use \horstoeko\zugferd\ZugferdProfiles;
+use Exception;
+use SimpleXMLElement;
+use horstoeko\zugferd\ZugferdProfiles;
 
 /**
  * Class representing the profile resolver

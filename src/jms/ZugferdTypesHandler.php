@@ -9,8 +9,8 @@
 
 namespace horstoeko\zugferd\jms;
 
-use \DOMText;
-use \DOMElement;
+use DOMText;
+use DOMElement;
 use JMS\Serializer\Context;
 use JMS\Serializer\GraphNavigator;
 use horstoeko\zugferd\ZugferdSettings;

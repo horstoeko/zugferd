@@ -9,14 +9,14 @@
 
 namespace horstoeko\zugferd;
 
-use \DOMDocument;
-use \DOMXpath;
-use \horstoeko\stringmanagement\PathUtils;
-use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\ZugferdPackageVersion;
-use \horstoeko\zugferd\ZugferdPdfWriter;
-use \horstoeko\zugferd\ZugferdSettings;
-use \setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
+use DOMDocument;
+use DOMXpath;
+use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\ZugferdPackageVersion;
+use horstoeko\zugferd\ZugferdPdfWriter;
+use horstoeko\zugferd\ZugferdSettings;
+use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
  * Class representing the base facillity adding XML data

@@ -9,15 +9,14 @@
 
 namespace horstoeko\zugferd;
 
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use \horstoeko\stringmanagement\PathUtils;
-use \horstoeko\zugferd\jms\ZugferdTypesHandler;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\jms\ZugferdTypesHandler;
 use JMS\Serializer\Exception\RuntimeException as ExceptionRuntimeException;
-use \JMS\Serializer\Handler\HandlerRegistryInterface;
-use \JMS\Serializer\SerializerBuilder;
-use \JMS\Serializer\SerializerInterface;
-use RuntimeException;
+use JMS\Serializer\Handler\HandlerRegistryInterface;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
 use stdClass;
 
 /**

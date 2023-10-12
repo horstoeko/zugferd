@@ -9,7 +9,7 @@
 
 namespace horstoeko\zugferd;
 
-use \Composer\InstalledVersions as ComposerInstalledVersions;
+use Composer\InstalledVersions as ComposerInstalledVersions;
 
 /**
  * Class representing some tools for getting the package version

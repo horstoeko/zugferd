@@ -9,8 +9,8 @@
 
 namespace horstoeko\zugferd;
 
-use \Exception;
-use \Smalot\PdfParser\Parser as PdfParser;
+use Exception;
+use Smalot\PdfParser\Parser as PdfParser;
 
 /**
  * Class representing the document reader for incoming PDF/A-Documents with
