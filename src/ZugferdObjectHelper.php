@@ -10,10 +10,11 @@
 namespace horstoeko\zugferd;
 
 use DateTime;
-use \horstoeko\mimedb\MimeDb;
-use \horstoeko\stringmanagement\FileUtils;
-use \horstoeko\stringmanagement\StringUtils;
-use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use horstoeko\mimedb\MimeDb;
+use horstoeko\stringmanagement\FileUtils;
+use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
  * Class representing a collection of common helpers and class factories
@@ -27,14 +28,14 @@ use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
 class ZugferdObjectHelper
 {
     /**
-     * Internal profile id (see ZugferdProfiles.php)
+     * Internal profile id
      *
      * @var integer
      */
     public $profile = -1;
 
     /**
-     * Internal profile definition (see ZugferdProfiles.php)
+     * Internal profile definition
      *
      * @var array
      */
@@ -63,7 +64,7 @@ class ZugferdObjectHelper
     public function __construct(int $profile)
     {
         $this->profile = $profile;
-        $this->profiledef = ZugferdProfiles::PROFILEDEF[$profile];
+        $this->profiledef = ZugferdProfileResolver::resolveProfileDefById($profile);
     }
 
     /**

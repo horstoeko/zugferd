@@ -9,15 +9,16 @@
 
 namespace horstoeko\zugferd;
 
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use \GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use \horstoeko\stringmanagement\PathUtils;
-use \horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
-use \horstoeko\zugferd\jms\ZugferdTypesHandler;
-use \horstoeko\zugferd\ZugferdObjectHelper;
-use \JMS\Serializer\Handler\HandlerRegistryInterface;
-use \JMS\Serializer\SerializerBuilder;
-use \JMS\Serializer\SerializerInterface;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
+use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
+use horstoeko\zugferd\jms\ZugferdTypesHandler;
+use horstoeko\zugferd\ZugferdObjectHelper;
+use horstoeko\zugferd\ZugferdProfileResolver;
+use JMS\Serializer\Handler\HandlerRegistryInterface;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
 
 /**
  * Class representing the document basics
@@ -32,43 +33,37 @@ class ZugferdDocument
 {
     /**
      * @internal
-     * Internal profile id (see ZugferdProfiles.php)
-     * @var      integer
+     * @var      integer    Internal profile id
      */
     public $profileId = -1;
 
     /**
      * @internal
-     * Internal profile definition (see ZugferdProfiles.php)
-     * @var      array
+     * @var      array  Internal profile definition
      */
     public $profileDefinition = [];
 
     /**
      * @internal
-     * Serializer builder
-     * @var      SerializerBuilder
+     * @var      SerializerBuilder  Serializer builder
      */
     protected $serializerBuilder;
 
     /**
      * @internal
-     * Serializer
-     * @var      SerializerInterface
+     * @var      SerializerInterface    Serializer
      */
     protected $serializer;
 
     /**
      * @internal
-     * The internal invoice object
-     * @var      CrossIndustryInvoiceType
+     * @var      CrossIndustryInvoiceType   The internal invoice object
      */
     protected $invoiceObject = null;
 
     /**
      * @internal
-     * Object Helper
-     * @var      ZugferdObjectHelper
+     * @var      ZugferdObjectHelper    Object Helper
      */
     protected $objectHelper = null;
 
@@ -126,14 +121,14 @@ class ZugferdDocument
      * Sets the internal profile definitions
      *
      * @param integer $profile
-     * The internal id of the profile (see ZugferdProfiles.php)
+     * The internal id of the profile
      *
      * @return ZugferdDocument
      */
     private function initProfile(int $profile): ZugferdDocument
     {
         $this->profileId = $profile;
-        $this->profileDefinition = ZugferdProfiles::PROFILEDEF[$profile];
+        $this->profileDefinition = ZugferdProfileResolver::resolveProfileDefById($profile);
 
         return $this;
     }

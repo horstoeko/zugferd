@@ -78,7 +78,7 @@ class ZugferdDocumentJsonExporter
 
     /**
      * Returns the invoice object as a json object
-     * 
+     *
      * @return null|stdClass
      * @throws ExceptionRuntimeException
      */

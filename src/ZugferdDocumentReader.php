@@ -196,24 +196,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $binarydatadirectory = "";
 
     /**
-     * Set the directory where the attached binary data from
-     * additional referenced documents are temporary stored
-     *
-     * @param  string $binarydatadirectory
-     * @return ZugferdDocumentReader
-     */
-    public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader
-    {
-        if ($binarydatadirectory) {
-            if (is_dir($binarydatadirectory)) {
-                $this->binarydatadirectory = $binarydatadirectory;
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * Guess the profile type of a xml file
      *
      * @codeCoverageIgnore
@@ -245,6 +227,24 @@ class ZugferdDocumentReader extends ZugferdDocument
         $profileId = ZugferdProfileResolver::resolveProfileId($xmlcontent);
 
         return (new self($profileId))->readContent($xmlcontent);
+    }
+
+    /**
+     * Set the directory where the attached binary data from
+     * additional referenced documents are temporary stored
+     *
+     * @param  string $binarydatadirectory
+     * @return ZugferdDocumentReader
+     */
+    public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader
+    {
+        if ($binarydatadirectory) {
+            if (is_dir($binarydatadirectory)) {
+                $this->binarydatadirectory = $binarydatadirectory;
+            }
+        }
+
+        return $this;
     }
 
     /**
