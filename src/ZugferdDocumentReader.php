@@ -12,10 +12,10 @@ namespace horstoeko\zugferd;
 use \Closure;
 use \DateTime;
 use \Exception;
-use \SimpleXMLElement;
 use \horstoeko\stringmanagement\FileUtils;
-use \horstoeko\stringmanagement\StringUtils;
 use \horstoeko\stringmanagement\PathUtils;
+use \horstoeko\stringmanagement\StringUtils;
+use \horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -242,20 +242,9 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
     {
-        $xmldocument = new SimpleXMLElement($xmlcontent);
-        $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
+        $profileId = ZugferdProfileResolver::resolveProfileId($xmlcontent);
 
-        if (!is_array($typeelement) || !isset($typeelement[0])) {
-            throw new Exception('Coult not determaine the profile...');
-        }
-
-        foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
-            if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return (new self($profile))->readContent($xmlcontent);
-            }
-        }
-
-        throw new Exception('Could not determine the profile...');
+        return (new self($profileId))->readContent($xmlcontent);
     }
 
     /**

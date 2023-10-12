@@ -10,9 +10,8 @@
 namespace horstoeko\zugferd;
 
 use Exception;
-use SimpleXMLElement;
-use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
+use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
  * Class representing the facillity adding existing XML data (file or data-string)
@@ -121,21 +120,6 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      */
     private function getProfileDefinition(): array
     {
-        $xmlContent = $this->getXmlContent();
-
-        $xmldocument = new SimpleXMLElement($xmlContent);
-        $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
-
-        if (!is_array($typeelement) || !isset($typeelement[0])) {
-            throw new Exception('Coult not determaine the profile...');
-        }
-
-        foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
-            if ($typeelement[0] == $profiledef["contextparameter"]) {
-                return $profiledef;
-            }
-        }
-
-        throw new Exception('Could not determine the profile...');
+        return ZugferdProfileResolver::resolveProfileDef($this->getXmlContent());
     }
 }
