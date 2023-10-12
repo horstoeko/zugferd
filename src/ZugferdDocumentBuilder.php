@@ -82,12 +82,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @codeCoverageIgnore
      *
-     * @param  integer $profile
+     * @param  integer $profileId
      * @return ZugferdDocumentBuilder
      */
-    public static function createNew(int $profile): ZugferdDocumentBuilder
+    public static function createNew(int $profileId): ZugferdDocumentBuilder
     {
-        return (new self($profile))->initNewDocument();
+        return (new self($profileId))->initNewDocument();
     }
 
     /**
