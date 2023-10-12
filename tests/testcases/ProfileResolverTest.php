@@ -155,4 +155,78 @@ HDR;
 
         ZugferdProfileResolver::resolveProfileId($this->deliverInvalidXml());
     }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveById
+     */
+    public function testResolveProfileByIdEn16931()
+    {
+        $resolved = ZugferdProfileResolver::resolveById(ZugferdProfiles::PROFILE_EN16931);
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey(0, $resolved);
+        $this->assertArrayHasKey(1, $resolved);
+        $this->assertIsInt($resolved[0]);
+        $this->assertIsArray($resolved[1]);
+        $this->assertArrayHasKey("name", $resolved[1]);
+        $this->assertArrayHasKey("altname", $resolved[1]);
+        $this->assertArrayHasKey("description", $resolved[1]);
+        $this->assertArrayHasKey("contextparameter", $resolved[1]);
+        $this->assertArrayHasKey("businessprocess", $resolved[1]);
+        $this->assertArrayHasKey("attachmentfilename", $resolved[1]);
+        $this->assertArrayHasKey("xmpname", $resolved[1]);
+        $this->assertArrayHasKey("xsdfilename", $resolved[1]);
+        $this->assertArrayHasKey("schematronfilename", $resolved[1]);
+
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved[0]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['name'], $resolved[1]["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['altname'], $resolved[1]["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['description'], $resolved[1]["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['contextparameter'], $resolved[1]["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved[1]["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved[1]["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved[1]["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved[1]["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]["schematronfilename"]);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileDefById
+     */
+    public function testResolveProfileDefByIdEn16931()
+    {
+        $resolved = ZugferdProfileResolver::resolveProfileDefById(ZugferdProfiles::PROFILE_EN16931);
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileDefById
+     */
+    public function testResolveProfileDefByIdUnknown()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Could not determine the profile...');
+
+        ZugferdProfileResolver::resolveProfileDefById(-1);
+    }
 }

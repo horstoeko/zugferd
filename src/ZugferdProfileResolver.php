@@ -29,6 +29,7 @@ class ZugferdProfileResolver
      *
      * @param string $xmlContent
      * @return array
+     * @throws Exception
      */
     public static function resolve(string $xmlContent): array
     {
@@ -74,5 +75,35 @@ class ZugferdProfileResolver
     public static function resolveProfileDef(string $xmlContent): array
     {
         return static::resolve($xmlContent)[1];
+    }
+
+    /**
+     * Resolve profile id and profile definition by it's id
+     *
+     * @param integer $profileId
+     * @return array
+     * @throws Exception
+    */
+    public static function resolveById(int $profileId): array
+    {
+        if (!isset(ZugferdProfiles::PROFILEDEF[$profileId])) {
+            throw new Exception('Could not determine the profile...');
+        }
+
+        return [$profileId, ZugferdProfiles::PROFILEDEF[$profileId]];
+    }
+
+    /**
+     * Resolve profile profile definition by it's id
+     *
+     * @param int $profileId
+     * @return array
+     * @throws Exception
+     */
+    public static function resolveProfileDefById(int $profileId): array
+    {
+        $resolved = static::resolveById($profileId);
+
+        return $resolved[1];
     }
 }
