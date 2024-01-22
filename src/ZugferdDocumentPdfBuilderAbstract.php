@@ -83,6 +83,17 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         return $this;
     }
+    
+    /**
+     * Returns the PDF as an inline file
+     *
+     * @param  string $toFilename
+     * @return string
+     */
+    public function saveDocumentInline(string $toFilename): string
+    {
+        return $this->pdfWriter->Output($toFilename, 'I');
+    }
 
     /**
      * Returns the PDF as a string
