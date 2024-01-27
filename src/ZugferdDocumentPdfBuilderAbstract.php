@@ -83,7 +83,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         return $this;
     }
-    
+
     /**
      * Returns the PDF as an inline file
      *
@@ -189,7 +189,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $pdfMetadataInfos = $this->preparePdfMetadata();
         $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
 
-        $xmp = simplexml_load_file(PathUtils::combinePathWithFile(ZugferdSettings::getAssetDirectory(), 'facturx_extension_schema.xmp'));
+        $xmp = simplexml_load_file(ZugferdSettings::getFullXmpMetaDataFilename());
         $descriptionNodes = $xmp->xpath('rdf:Description');
 
         $descFx = $descriptionNodes[0];

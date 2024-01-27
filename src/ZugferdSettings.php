@@ -65,13 +65,20 @@ class ZugferdSettings
     protected static $iccProfileFilename = "sRGB_v4_ICC.icc";
 
     /**
+     * The filename of the XMP meta data
+     *
+     * @var string
+     */
+    protected static $xmpMetaDataFilename = "facturx_extension_schema.xmp";
+
+    /**
      * Get the number of decimals to use for amount values
      *
      * @return integer
      */
     public static function getAmountDecimals(): int
     {
-        return self::$amountDecimals;
+        return static::$amountDecimals;
     }
 
     /**
@@ -82,7 +89,7 @@ class ZugferdSettings
      */
     public static function setAmountDecimals(int $amountDecimals): void
     {
-        self::$amountDecimals = $amountDecimals;
+        static::$amountDecimals = $amountDecimals;
     }
 
     /**
@@ -92,7 +99,7 @@ class ZugferdSettings
      */
     public static function getQuantityDecimals(): int
     {
-        return self::$quantityDecimals;
+        return static::$quantityDecimals;
     }
 
     /**
@@ -103,7 +110,7 @@ class ZugferdSettings
      */
     public static function setQuantityDecimals(int $quantityDecimals): void
     {
-        self::$quantityDecimals = $quantityDecimals;
+        static::$quantityDecimals = $quantityDecimals;
     }
 
     /**
@@ -113,7 +120,7 @@ class ZugferdSettings
      */
     public static function getPercentDecimals(): int
     {
-        return self::$percentDecimals;
+        return static::$percentDecimals;
     }
 
     /**
@@ -124,7 +131,7 @@ class ZugferdSettings
      */
     public static function setPercentDecimals(int $percentDecimals): void
     {
-        self::$percentDecimals = $percentDecimals;
+        static::$percentDecimals = $percentDecimals;
     }
 
     /**
@@ -134,7 +141,7 @@ class ZugferdSettings
      */
     public static function getDecimalSeparator(): string
     {
-        return self::$decimalSeparator;
+        return static::$decimalSeparator;
     }
 
     /**
@@ -145,7 +152,7 @@ class ZugferdSettings
      */
     public static function setDecimalSeparator(string $decimalSeparator): void
     {
-        self::$decimalSeparator = $decimalSeparator;
+        static::$decimalSeparator = $decimalSeparator;
     }
 
     /**
@@ -155,7 +162,7 @@ class ZugferdSettings
      */
     public static function getThousandsSeparator(): string
     {
-        return self::$thousandsSeparator;
+        return static::$thousandsSeparator;
     }
 
     /**
@@ -166,7 +173,7 @@ class ZugferdSettings
      */
     public static function setThousandsSeparator(string $thousandsSeparator): void
     {
-        self::$thousandsSeparator = $thousandsSeparator;
+        static::$thousandsSeparator = $thousandsSeparator;
     }
 
     /**
@@ -176,7 +183,7 @@ class ZugferdSettings
      */
     public static function getIccProfileFilename(): string
     {
-        return self::$iccProfileFilename;
+        return static::$iccProfileFilename;
     }
 
     /**
@@ -187,7 +194,28 @@ class ZugferdSettings
      */
     public static function setIccProfileFilename(string $iccProfileFilename): void
     {
-        self::$iccProfileFilename = $iccProfileFilename;
+        static::$iccProfileFilename = $iccProfileFilename;
+    }
+
+    /**
+     * Get the filename for the XMP meta data
+     *
+     * @return string
+     */
+    public static function getXmpMetaDataFilename(): string
+    {
+        return static::$xmpMetaDataFilename;
+    }
+
+    /**
+     * Set the filename for the XMP meta data
+     *
+     * @param string $xmpMetaDataFilename
+     * @return void
+     */
+    public static function setXmpMetaDataFilename(string $xmpMetaDataFilename): void
+    {
+        static::$xmpMetaDataFilename = $xmpMetaDataFilename;
     }
 
     /**
@@ -207,7 +235,7 @@ class ZugferdSettings
      */
     public static function getSourceDirectory(): string
     {
-        return PathUtils::combineAllPaths(self::getRootDirectory(), "src");
+        return PathUtils::combineAllPaths(static::getRootDirectory(), "src");
     }
 
     /**
@@ -217,7 +245,7 @@ class ZugferdSettings
      */
     public static function getAssetDirectory(): string
     {
-        return PathUtils::combineAllPaths(self::getSourceDirectory(), "assets");
+        return PathUtils::combineAllPaths(static::getSourceDirectory(), "assets");
     }
 
     /**
@@ -227,7 +255,7 @@ class ZugferdSettings
      */
     public static function getYamlDirectory(): string
     {
-        return PathUtils::combineAllPaths(self::getSourceDirectory(), "yaml");
+        return PathUtils::combineAllPaths(static::getSourceDirectory(), "yaml");
     }
 
     /**
@@ -237,7 +265,7 @@ class ZugferdSettings
      */
     public static function getValidationDirectory(): string
     {
-        return PathUtils::combineAllPaths(self::getSourceDirectory(), "validation");
+        return PathUtils::combineAllPaths(static::getSourceDirectory(), "validation");
     }
 
     /**
@@ -247,6 +275,16 @@ class ZugferdSettings
      */
     public static function getFullIccProfileFilename(): string
     {
-        return PathUtils::combinePathWithFile(self::getAssetDirectory(), self::$iccProfileFilename);
+        return PathUtils::combinePathWithFile(static::getAssetDirectory(), static::$iccProfileFilename);
+    }
+
+    /**
+     * Get the full filename containg the XNP information to user
+     *
+     * @return string
+     */
+    public static function getFullXmpMetaDataFilename(): string
+    {
+        return PathUtils::combinePathWithFile(static::getAssetDirectory(), static::$xmpMetaDataFilename);
     }
 }
