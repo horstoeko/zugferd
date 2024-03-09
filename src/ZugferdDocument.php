@@ -35,25 +35,25 @@ class ZugferdDocument
      * @internal
      * @var      integer    Internal profile id
      */
-    public $profileId = -1;
+    private $profileId = -1;
 
     /**
      * @internal
      * @var      array  Internal profile definition
      */
-    public $profileDefinition = [];
+    private $profileDefinition = [];
 
     /**
      * @internal
      * @var      SerializerBuilder  Serializer builder
      */
-    protected $serializerBuilder;
+    private $serializerBuilder;
 
     /**
      * @internal
      * @var      SerializerInterface    Serializer
      */
-    protected $serializer;
+    private $serializer;
 
     /**
      * @internal
@@ -93,6 +93,16 @@ class ZugferdDocument
     public function getInvoiceObject()
     {
         return $this->invoiceObject;
+    }
+
+    /**
+     * Get the instance of the internal serializuer
+     *
+     * @return SerializerInterface
+     */
+    public function getSerializer()
+    {
+        return $this->serializer;
     }
 
     /**

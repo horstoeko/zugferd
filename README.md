@@ -2,9 +2,9 @@
 
 [![Latest Stable Version](https://poser.pugx.org/horstoeko/zugferd/v/stable.png)](https://packagist.org/packages/horstoeko/zugferd) [![Total Downloads](https://poser.pugx.org/horstoeko/zugferd/downloads.png)](https://packagist.org/packages/horstoeko/zugferd) [![Latest Unstable Version](https://poser.pugx.org/horstoeko/zugferd/v/unstable.png)](https://packagist.org/packages/horstoeko/zugferd) [![License](https://poser.pugx.org/horstoeko/zugferd/license.png)](https://packagist.org/packages/horstoeko/zugferd) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/horstoeko/zugferd)
 
-[![CI (Ant, PHP 7.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml) 
-[![CI (Ant, PHP 7.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml) 
-[![CI (PHP 8.0)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml) 
+[![CI (Ant, PHP 7.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml)
+[![CI (Ant, PHP 7.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml)
+[![CI (PHP 8.0)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml)
 [![CI (PHP 8.1)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml)
 [![CI (PHP 8.2)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml)
 [![CI (PHP 8.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml)
@@ -175,8 +175,8 @@ $document->getDocumentInformation($documentno, $documenttypecode, $documentdate,
 
 echo "\r\nGeneral document information\r\n";
 echo "----------------------------------------------------------------------\r\n";
-echo "Profile:               {$document->profileDefinition["name"]}\r\n";
-echo "Profile:               {$document->profileDefinition["altname"]}\r\n";
+echo "Profile:               {$document->getProfileDefinition()["name"]}\r\n";
+echo "Profile:               {$document->getProfileDefinition()["altname"]}\r\n";
 echo "Document No:           {$documentno}\r\n";
 echo "Document Type:         {$documenttypecode}\r\n";
 echo "Document Date:         {$documentdate->format("Y-m-d")}\r\n";

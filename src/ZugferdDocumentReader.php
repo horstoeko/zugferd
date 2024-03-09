@@ -257,7 +257,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     private function readContent(string $xmlcontent): ZugferdDocumentReader
     {
-        $this->invoiceObject = $this->serializer->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->getProfileDefinition()["name"] . '\rsm\CrossIndustryInvoice', 'xml');
+        $this->invoiceObject = $this->getSerializer()->deserialize($xmlcontent, 'horstoeko\zugferd\entities\\' . $this->getProfileDefinition()["name"] . '\rsm\CrossIndustryInvoice', 'xml');
         return $this;
     }
 

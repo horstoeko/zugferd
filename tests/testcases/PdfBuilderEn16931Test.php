@@ -118,11 +118,11 @@ class PdfBuilderEn16931Test extends TestCase
         $document = ZugferdDocumentPdfReader::readAndGuessFromFile(self::$destPdfFilename);
 
         $this->assertNotNull($document);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $document->profileId);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, $document->profileId);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, $document->profileId);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, $document->profileId);
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, $document->profileId);
+        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $document->getProfileId());
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, $document->getProfileId());
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, $document->getProfileId());
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, $document->getProfileId());
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, $document->getProfileId());
     }
 
     /**

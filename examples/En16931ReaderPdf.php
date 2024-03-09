@@ -10,8 +10,8 @@ $document->getDocumentInformation($documentno, $documenttypecode, $documentdate,
 
 echo "\r\nGeneral document information\r\n";
 echo "----------------------------------------------------------------------\r\n";
-echo "Profile:               {$document->profileDefinition["name"]}\r\n";
-echo "Profile:               {$document->profileDefinition["altname"]}\r\n";
+echo "Profile:               {$document->getProfileDefinition()["name"]}\r\n";
+echo "Profile:               {$document->getProfileDefinition()["altname"]}\r\n";
 echo "Document No:           {$documentno}\r\n";
 echo "Document Type:         {$documenttypecode}\r\n";
 echo "Document Date:         {$documentdate->format("Y-m-d")}\r\n";
