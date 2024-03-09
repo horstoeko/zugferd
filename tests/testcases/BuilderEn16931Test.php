@@ -33,7 +33,7 @@ class BuilderEn16931Test extends TestCase
         $this->disableRenderXmlContent();
         $this->assertArrayHasKey("rsm", $namespaces);
         $this->assertArrayHasKey("ram", $namespaces);
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', (self::$document)->getProfileDefinition()["contextparameter"]);
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', (self::$document)->getProfileDefinitionParameter("contextparameter"));
     }
 
     /**

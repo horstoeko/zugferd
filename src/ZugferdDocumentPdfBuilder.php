@@ -73,7 +73,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      */
     protected function getXmlAttachmentFilename(): string
     {
-        return $this->documentBuilder->getProfileDefinition()['attachmentfilename'];
+        return $this->documentBuilder->getProfileDefinitionParameter('attachmentfilename');
     }
 
     /**
@@ -81,6 +81,6 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      */
     protected function getXmlAttachmentXmpName(): string
     {
-        return $this->documentBuilder->getProfileDefinition()["xmpname"];
+        return $this->documentBuilder->getProfileDefinitionParameter("xmpname");
     }
 }

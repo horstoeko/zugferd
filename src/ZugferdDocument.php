@@ -9,6 +9,7 @@
 
 namespace horstoeko\zugferd;
 
+use Exception;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\stringmanagement\PathUtils;
@@ -126,6 +127,23 @@ class ZugferdDocument
     }
 
     /**
+     * Get a parameter from profile definition
+     *
+     * @param string $parameterName
+     * @return mixed
+     */
+    public function getProfileDefinitionParameter(string $parameterName)
+    {
+        $profileDefinition = $this->getProfileDefinition();
+
+        if (is_array($profileDefinition) && isset($profileDefinition[$parameterName])) {
+            return $profileDefinition[$parameterName];
+        }
+
+        throw new Exception(sprintf("Unknown profile definition parameter %s", $parameterName));
+    }
+
+    /**
      * @internal
      *
      * Sets the internal profile definitions
@@ -173,45 +191,45 @@ class ZugferdDocument
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->getProfileDefinition()["name"],
+                $this->getProfileDefinitionParameter("name"),
                 'qdt'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\qdt',
-                $this->getProfileDefinition()["name"]
+                $this->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->getProfileDefinition()["name"],
+                $this->getProfileDefinitionParameter("name"),
                 'ram'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\ram',
-                $this->getProfileDefinition()["name"]
+                $this->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->getProfileDefinition()["name"],
+                $this->getProfileDefinitionParameter("name"),
                 'rsm'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\rsm',
-                $this->getProfileDefinition()["name"]
+                $this->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->getProfileDefinition()["name"],
+                $this->getProfileDefinitionParameter("name"),
                 'udt'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\udt',
-                $this->getProfileDefinition()["name"]
+                $this->getProfileDefinitionParameter("name")
             )
         );
 

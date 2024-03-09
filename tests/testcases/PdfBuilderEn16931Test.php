@@ -173,7 +173,7 @@ class PdfBuilderEn16931Test extends TestCase
          */
         $mockedObject->expects($this->exactly(2))
             ->method("getXmlAttachmentFilename")
-            ->willReturn(self::$document->getProfileDefinition()['attachmentfilename']);
+            ->willReturn(self::$document->getProfileDefinitionParameter('attachmentfilename'));
 
         /**
          * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder $mockedObject
@@ -202,7 +202,7 @@ class PdfBuilderEn16931Test extends TestCase
          */
         $mockedObject->expects($this->exactly(1))
             ->method("getXmlAttachmentXmpName")
-            ->willReturn(self::$document->getProfileDefinition()["xmpname"]);
+            ->willReturn(self::$document->getProfileDefinitionParameter("xmpname"));
 
         /**
          * @var \horstoeko\zugferd\ZugferdDocumentPdfBuilder $mockedObject

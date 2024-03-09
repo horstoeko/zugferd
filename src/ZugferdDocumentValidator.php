@@ -74,7 +74,7 @@ class ZugferdDocumentValidator
         $validatorYamlFiles = PathUtils::combinePathWithFile(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getValidationDirectory(),
-                $this->document->getProfileDefinition()['name']
+                $this->document->getProfileDefinitionParameter('name')
             ),
             '*.yml'
         );

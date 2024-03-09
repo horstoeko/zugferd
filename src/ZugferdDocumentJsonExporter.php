@@ -114,45 +114,45 @@ class ZugferdDocumentJsonExporter
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinition()["name"],
+                $this->document->getProfileDefinitionParameter("name"),
                 'qdt'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\qdt',
-                $this->document->getProfileDefinition()["name"]
+                $this->document->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinition()["name"],
+                $this->document->getProfileDefinitionParameter("name"),
                 'ram'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\ram',
-                $this->document->getProfileDefinition()["name"]
+                $this->document->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinition()["name"],
+                $this->document->getProfileDefinitionParameter("name"),
                 'rsm'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\rsm',
-                $this->document->getProfileDefinition()["name"]
+                $this->document->getProfileDefinitionParameter("name")
             )
         );
         $this->serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinition()["name"],
+                $this->document->getProfileDefinitionParameter("name"),
                 'udt'
             ),
             sprintf(
                 'horstoeko\zugferd\entities\%s\udt',
-                $this->document->getProfileDefinition()["name"]
+                $this->document->getProfileDefinitionParameter("name")
             )
         );
 
