@@ -60,13 +60,13 @@ class ZugferdDocument
      * @internal
      * @var      CrossIndustryInvoiceType   The internal invoice object
      */
-    protected $invoiceObject = null;
+    private $invoiceObject = null;
 
     /**
      * @internal
      * @var      ZugferdObjectHelper    Object Helper
      */
-    protected $objectHelper = null;
+    private $objectHelper = null;
 
     /**
      * Constructor
@@ -84,15 +84,26 @@ class ZugferdDocument
     }
 
     /**
-     * @internal
-     *
      * Returns the internal invoice object (created by the
      * serializer). This is used e.g. in the validator
      *
-     * @return object
+     * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
      */
     public function getInvoiceObject()
     {
+        return $this->invoiceObject;
+    }
+
+    /**
+     * Sets the reference to the internal invoice object
+     *
+     * @param \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice $invoiceObject
+     * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
+     */
+    protected function setInvoiceObject($invoiceObject)
+    {
+        $this->invoiceObject = $invoiceObject;
+
         return $this->invoiceObject;
     }
 
@@ -104,6 +115,16 @@ class ZugferdDocument
     public function getSerializer()
     {
         return $this->serializer;
+    }
+
+    /**
+     * Get object helper instance
+     *
+     * @return \horstoeko\zugferd\ZugferdObjectHelper
+     */
+    public function getObjectHelper()
+    {
+        return $this->objectHelper;
     }
 
     /**
@@ -247,5 +268,38 @@ class ZugferdDocument
         $this->serializer = $this->serializerBuilder->build();
 
         return $this;
+    }
+
+    /**
+     * Deserialize XML content to internal invoice object
+     *
+     * @param string $xmlContent
+     * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
+     */
+    public function deserialize($xmlContent)
+    {
+        $this->invoiceObject = $this->getSerializer()->deserialize($xmlContent, 'horstoeko\zugferd\entities\\' . $this->getProfileDefinitionParameter("name") . '\rsm\CrossIndustryInvoice', 'xml');
+
+        return $this->invoiceObject;
+    }
+
+    /**
+     * Serialize internal invoice object as XML
+     *
+     * @return string
+     */
+    public function serializeAsXml(): string
+    {
+        return $this->getSerializer()->serialize($this->getInvoiceObject(), 'xml');
+    }
+
+    /**
+     * Serialize internal invoice object as JSON
+     *
+     * @return string
+     */
+    public function serializeAsJson(): string
+    {
+        return $this->getSerializer()->serialize($this->getInvoiceObject(), 'json');
     }
 }

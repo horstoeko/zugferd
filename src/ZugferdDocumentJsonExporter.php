@@ -9,14 +9,6 @@
 
 namespace horstoeko\zugferd;
 
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use horstoeko\stringmanagement\PathUtils;
-use horstoeko\zugferd\jms\ZugferdTypesHandler;
-use JMS\Serializer\Exception\RuntimeException as ExceptionRuntimeException;
-use JMS\Serializer\Handler\HandlerRegistryInterface;
-use JMS\Serializer\SerializerBuilder;
-use JMS\Serializer\SerializerInterface;
 use stdClass;
 
 /**
@@ -39,20 +31,6 @@ class ZugferdDocumentJsonExporter
     private $document = null;
 
     /**
-     * @internal
-     * Serializer builder
-     * @var      SerializerBuilder
-     */
-    private $serializerBuilder;
-
-    /**
-     * @internal
-     * Serializer
-     * @var      SerializerInterface
-     */
-    private $serializer;
-
-    /**
      * Constructor
      *
      * @param ZugferdDocument $document
@@ -62,7 +40,6 @@ class ZugferdDocumentJsonExporter
     public function __construct(ZugferdDocument $document)
     {
         $this->document = $document;
-        $this->initSerialzer();
     }
 
     /**
@@ -72,14 +49,13 @@ class ZugferdDocumentJsonExporter
      */
     public function toJsonString(): string
     {
-        return $this->serializer->serialize($this->document->getInvoiceObject(), 'json');
+        return $this->document->serializeAsJson();
     }
 
     /**
      * Returns the invoice object as a json object
      *
      * @return null|stdClass
-     * @throws ExceptionRuntimeException
      */
     public function toJsonObject(): ?\stdClass
     {
@@ -96,79 +72,5 @@ class ZugferdDocumentJsonExporter
     public function toPrettyJsonString()
     {
         return json_encode($this->toJsonObject(), JSON_PRETTY_PRINT);
-    }
-
-    /**
-     * @internal
-     *
-     * Build the internal serialzer
-     *
-     * @return ZugferdDocumentJsonExporter
-     *
-     * @codeCoverageIgnore
-     */
-    private function initSerialzer(): ZugferdDocumentJsonExporter
-    {
-        $this->serializerBuilder = SerializerBuilder::create();
-
-        $this->serializerBuilder->addMetadataDir(
-            PathUtils::combineAllPaths(
-                ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinitionParameter("name"),
-                'qdt'
-            ),
-            sprintf(
-                'horstoeko\zugferd\entities\%s\qdt',
-                $this->document->getProfileDefinitionParameter("name")
-            )
-        );
-        $this->serializerBuilder->addMetadataDir(
-            PathUtils::combineAllPaths(
-                ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinitionParameter("name"),
-                'ram'
-            ),
-            sprintf(
-                'horstoeko\zugferd\entities\%s\ram',
-                $this->document->getProfileDefinitionParameter("name")
-            )
-        );
-        $this->serializerBuilder->addMetadataDir(
-            PathUtils::combineAllPaths(
-                ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinitionParameter("name"),
-                'rsm'
-            ),
-            sprintf(
-                'horstoeko\zugferd\entities\%s\rsm',
-                $this->document->getProfileDefinitionParameter("name")
-            )
-        );
-        $this->serializerBuilder->addMetadataDir(
-            PathUtils::combineAllPaths(
-                ZugferdSettings::getYamlDirectory(),
-                $this->document->getProfileDefinitionParameter("name"),
-                'udt'
-            ),
-            sprintf(
-                'horstoeko\zugferd\entities\%s\udt',
-                $this->document->getProfileDefinitionParameter("name")
-            )
-        );
-
-        $this->serializerBuilder->addDefaultListeners();
-        $this->serializerBuilder->addDefaultHandlers();
-
-        $this->serializerBuilder->configureHandlers(
-            function (HandlerRegistryInterface $handler) {
-                $handler->registerSubscribingHandler(new BaseTypesHandler());
-                $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
-                $handler->registerSubscribingHandler(new ZugferdTypesHandler());
-            }
-        );
-
-        $this->serializer = $this->serializerBuilder->build();
-
-        return $this;
     }
 }
