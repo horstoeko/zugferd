@@ -97,7 +97,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function initNewDocument(): ZugferdDocumentBuilder
     {
-        $this->setInvoiceObject($this->getObjectHelper()->getCrossIndustryInvoice());
+        $this->createInvoiceObject();
+
         $this->headerTradeAgreement = $this->getInvoiceObject()->getSupplyChainTradeTransaction()->getApplicableHeaderTradeAgreement();
         $this->headerTradeDelivery = $this->getInvoiceObject()->getSupplyChainTradeTransaction()->getApplicableHeaderTradeDelivery();
         $this->headerTradeSettlement = $this->getInvoiceObject()->getSupplyChainTradeTransaction()->getApplicableHeaderTradeSettlement();

@@ -95,14 +95,13 @@ class ZugferdDocument
     }
 
     /**
-     * Sets the reference to the internal invoice object
+     * Create a new instance of the internal invoice object
      *
-     * @param \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice $invoiceObject
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwö\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
      */
-    protected function setInvoiceObject($invoiceObject)
+    protected function createInvoiceObject()
     {
-        $this->invoiceObject = $invoiceObject;
+        $this->invoiceObject = $this->getObjectHelper()->getCrossIndustryInvoice();
 
         return $this->invoiceObject;
     }
