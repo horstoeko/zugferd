@@ -269,6 +269,16 @@ class ZugferdSettings
     }
 
     /**
+     * Get the directory where all the schema (XSD) files are located
+     *
+     * @return string
+     */
+    public static function getSchemaDirectory(): string
+    {
+        return PathUtils::combineAllPaths(static::getSourceDirectory(), "schema");
+    }
+
+    /**
      * Get the full filename of the ICC profile to use
      *
      * @return string
