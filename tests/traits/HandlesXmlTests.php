@@ -7,7 +7,7 @@ use \horstoeko\zugferd\ZugferdDocumentBuilder;
 trait HandlesXmlTests
 {
     /**
-     * @var ZugferdDocumentBuilder
+     * @var \horstoeko\zugferd\ZugferdDocumentBuilder|\horstoeko\zugferd\quick\ZugferdQuickDescriptor
      */
     protected static $document;
 
