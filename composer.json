@@ -46,6 +46,7 @@
     },
     "require-dev": {
         "goetas-webservices/xsd2php": "^0",
+        "nette/php-generator": "*",
         "pdepend/pdepend": "^2",
         "phploc/phploc": "^7",
         "phpmd/phpmd": "^2",

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo -u www-data php -f ./gencodelists.php
+sudo -u www-data ../vendor/bin/phpcbf --standard=./../build/phpcsrules_psr12.xml -q ./classes/
