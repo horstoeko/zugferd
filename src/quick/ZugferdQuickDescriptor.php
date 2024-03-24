@@ -651,7 +651,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($allowanceChargeAmount) : 0.0;
         $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($allowanceChargeAmount) : 0.0;
         $allowanceChargeAmount = abs($allowanceChargeAmount);
-        $lineTotalAmount = $unitPrice * $quantity + $chargeAmount - $allowanceAmount;
+        $lineTotalAmount = round($unitPrice * $quantity + $chargeAmount - $allowanceAmount, 2);
 
         $this->addNewPosition($lineId);
         $this->setDocumentPositionProductDetails($productName);
