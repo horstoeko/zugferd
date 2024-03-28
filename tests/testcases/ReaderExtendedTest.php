@@ -28,6 +28,29 @@ class ReaderExtendedTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getInvoiceObject
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getSerializer
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getObjectHelper
+     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getProfileDefinitionParameter
+     */
+    public function testDocumentGetters(): void
+    {
+        $this->assertNotNull(self::$document->getInvoiceObject());
+        $this->assertNotNull(self::$document->getSerializer());
+        $this->assertNotNull(self::$document->getObjectHelper());
+        $this->assertEquals('extended', self::$document->getProfileDefinitionParameter('name'));
+        $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('altname'));
+        $this->assertEquals('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', self::$document->getProfileDefinitionParameter('contextparameter'));
+        $this->assertEquals('factur-x.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
+        $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getProfileDefinitionParameter('unknownparameter');
+            }
+        );
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
      */
     public function testDocumentGenerals(): void
@@ -42,7 +65,6 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("KOSTENRECHNUNG", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
-        $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
     /**

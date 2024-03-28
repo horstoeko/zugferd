@@ -21,6 +21,28 @@ class ObjectHelperEn16931Test extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentCodeType
+     */
+    public function testGetDocumentCodeTypeEmpty(): void
+    {
+        $codeType = self::$objectHelper->getDocumentCodeType();
+        $this->assertNull($codeType);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentCodeType
+     */
+    public function testGetDocumentCodeTypeNotEmpty(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\qdt\DocumentCodeType
+         */
+        $codeType = self::$objectHelper->getDocumentCodeType("380");
+        $this->assertNotNull($codeType);
+        $this->assertEquals("380", $codeType->value());
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
      */
     public function testGetIdTypeWithValue(): void

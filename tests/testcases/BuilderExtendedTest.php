@@ -24,6 +24,29 @@ class BuilderExtendedTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
     }
 
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getInvoiceObject
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getSerializer
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getObjectHelper
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getProfileDefinitionParameter
+     */
+    public function testDocumentGetters(): void
+    {
+        $this->assertNotNull(self::$document->getInvoiceObject());
+        $this->assertNotNull(self::$document->getSerializer());
+        $this->assertNotNull(self::$document->getObjectHelper());
+        $this->assertEquals('extended', self::$document->getProfileDefinitionParameter('name'));
+        $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('altname'));
+        $this->assertEquals('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', self::$document->getProfileDefinitionParameter('contextparameter'));
+        $this->assertEquals('factur-x.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
+        $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->expectNoticeOrWarningExt(
+            function () {
+                self::$document->getProfileDefinitionParameter('unknownparameter');
+            }
+        );
+    }
+
     public function testXmlGenerals(): void
     {
         $xml = $this->getXml();
@@ -2133,5 +2156,23 @@ class BuilderExtendedTest extends TestCase
         $xmlContent = (string)self::$document;
         $this->assertIsString($xmlContent);
         $this->assertStringStartsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rsm:CrossIndustryInvoice", $xmlContent);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getContentAsDomDocument
+     */
+    public function testGetContentAsDomDocument(): void
+    {
+        $domDocument = self::$document->getContentAsDomDocument();
+        $this->assertInstanceOf(\DOMDocument::class, $domDocument);
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::getContentAsDomXPath
+     */
+    public function testGetContentAsDomXPath(): void
+    {
+        $domXPath = self::$document->getContentAsDomXPath();
+        $this->assertInstanceOf(\DOMXpath::class, $domXPath);
     }
 }

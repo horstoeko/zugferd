@@ -98,6 +98,7 @@ class ZugferdDocument
      * Create a new instance of the internal invoice object
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
+     * @codeCoverageIgnore
      */
     protected function createInvoiceObject()
     {

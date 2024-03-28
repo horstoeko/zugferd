@@ -98,6 +98,19 @@ class DocumentTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocument::getInvoiceObject
+     * @covers \horstoeko\zugferd\ZugferdDocument::getSerializer
+     * @covers \horstoeko\zugferd\ZugferdDocument::getObjectHelper
+     */
+    public function testDocumentGetters(): void
+    {
+        $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
+        $this->assertNotNull($doc->getInvoiceObject());
+        $this->assertNotNull($doc->getSerializer());
+        $this->assertNotNull($doc->getObjectHelper());
+    }
+
+    /**
      * Access to private properties
      *
      * @param  string $className
