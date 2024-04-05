@@ -74,6 +74,23 @@ class BuilderEn16931Test extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentBusinessProcess
+     */
+    public function testSetDocumentBusinessProcess(): void
+    {
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID');
+
+        (self::$document)->setDocumentBusinessProcess("");
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID');
+
+        (self::$document)->setDocumentBusinessProcess("GENERAL INVOICE");
+        $this->disableRenderXmlContent();
+        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', "GENERAL INVOICE");
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::setDocumentGeneralPaymentInformation
      */
     public function testSetDocumentGeneralPaymentInformation(): void

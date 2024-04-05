@@ -214,6 +214,29 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set grouping of business process information
+     *
+     * @param string $id
+     * Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to
+     * process the invoice in an appropriate manner.
+     * __Note__: These data make it possible to define the purpose of the settlement (invoice of the authorised person,
+     * contractual partner, subcontractor, settlement document for a building contract etc.).
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentBusinessProcess(string $id): ZugferdDocumentBuilder
+    {
+        if ($this->getObjectHelper()->isNullOrEmpty($id)) {
+            return $this;
+        }
+
+        $busProcessCtxParameter = $this->getObjectHelper()->createClassInstance('ram\DocumentContextParameterType');
+        $this->getObjectHelper()->tryCall($busProcessCtxParameter, 'setID', $this->getObjectHelper()->getIdType($id));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocumentContext(), 'setBusinessProcessSpecifiedDocumentContextParameter', $busProcessCtxParameter);
+
+        return $this;
+    }
+
+    /**
      * Set general payment information
      *
      * @param  string|null $creditorReferenceID
