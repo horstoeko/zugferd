@@ -85,6 +85,20 @@ class ZugferdKositValidator
     private $validatorAppJarFilename = "validationtool-1.5.0-standalone.jar";
 
     /**
+     * The java application scenario filename
+     *
+     * @var string
+     */
+    private $validatorAppScenarioFilename = "scenarios.xml";
+
+    /**
+     * The temporary filename which contains the xml data to validate
+     *
+     * @var string
+     */
+    private $fileToValidateFilename = "filetovalidate.xml";
+
+    /**
      * Internal status of the requirements check
      *
      * @var boolean
@@ -216,6 +230,32 @@ class ZugferdKositValidator
     }
 
     /**
+     * Set the filename of the application scenario file
+     *
+     * @param string $newValidatorAppScenarioFilename
+     * @return ZugferdKositValidator
+     */
+    public function setValidatorAppScenarioFilename(string $newValidatorAppScenarioFilename): ZugferdKositValidator
+    {
+        $this->validatorAppScenarioFilename = $newValidatorAppScenarioFilename;
+
+        return $this;
+    }
+
+    /**
+     * Set the filename of the file which contains the temporary xml data to validate
+     *
+     * @param string $newFileToValidateFilename
+     * @return ZugferdKositValidator
+     */
+    public function setFileToValidateFilename(string $newFileToValidateFilename): ZugferdKositValidator
+    {
+        $this->fileToValidateFilename = $newFileToValidateFilename;
+
+        return $this;
+    }
+
+    /**
      * Perform validation
      *
      * @return ZugferdKositValidator
@@ -270,7 +310,7 @@ class ZugferdKositValidator
      */
     private function resolveAppScenarioFilename(): string
     {
-        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'scenarios.xml');
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppScenarioFilename);
     }
 
     /**
@@ -280,7 +320,7 @@ class ZugferdKositValidator
      */
     private function resolveFileToValidateFilename(): string
     {
-        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'filetovalidate.xml', '');
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->fileToValidateFilename);
     }
 
     /**
