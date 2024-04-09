@@ -64,7 +64,7 @@ _backup*
 /nbproject/
 
 !/setup/.htaccess
-.vscode 
+.vscode
 .idea
 
 /vendor/
@@ -83,4 +83,5 @@ _backup*
 /composer.lock
 /examples/fullpdf.pdf
 /examples/factur-x.xml
+/examples/filetovalidate-report.xml
 myfile_dbg.xml

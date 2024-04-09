@@ -15,6 +15,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ExecutableFinder;
 use Throwable;
+use ZipArchive;
 
 /**
  * Class representing the validator against Schematron (Kosit) for documents
@@ -231,7 +232,7 @@ class ZugferdKositValidator
             }
         }
 
-        $this->cleanupBaseDirectory();
+        //$this->cleanupBaseDirectory();
 
         return $this;
     }
@@ -250,6 +251,36 @@ class ZugferdKositValidator
         }
 
         return $baseDirectory;
+    }
+
+    /**
+     * Get the full filename of the validator application jar file
+     *
+     * @return string
+     */
+    private function resolveAppJarFilename(): string
+    {
+        return PathUtils::combineAllPaths($this->resolveBaseDirectory(), $this->validatorAppJarFilename);
+    }
+
+    /**
+     * Get the full filename of the validator application scenario file
+     *
+     * @return string
+     */
+    private function resolveAppScenarioFilename(): string
+    {
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'scenarios.xml');
+    }
+
+    /**
+     * Get the full filename which contains the xml to validate
+     *
+     * @return string
+     */
+    private function resolveFileToValidateFilename(): string
+    {
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'filetovalidate.xml', '');
     }
 
     /**
@@ -325,12 +356,12 @@ class ZugferdKositValidator
             return false;
         }
 
-        $executeableFinder = new ExecutableFinder();
-
-        if (is_null($executeableFinder->find('unzip'))) {
-            $this->addToErrorBag("UNZIP not installed on this machine");
+        if (!extension_loaded('zip')) {
+            $this->addToErrorBag("ZIP extension not installed");
             return false;
         }
+
+        $executeableFinder = new ExecutableFinder();
 
         if (is_null($executeableFinder->find('java'))) {
             $this->addToErrorBag("JAVA not installed on this machine");
@@ -383,16 +414,41 @@ class ZugferdKositValidator
         $validatorAppFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppZipFilename);
         $validatorScenarioFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
 
-        if (!$this->runProcess(['unzip', $validatorAppFile, '-d', $this->resolveBaseDirectory()])) {
+        if ($this->unpackRequiredFile($validatorAppFile) !== true) {
+            $this->addToErrorBag("Unable to unpack ZIP archive $validatorAppFile");
             return false;
         }
 
-        if (!$this->runProcess(['unzip', $validatorScenarioFile, '-d', $this->resolveBaseDirectory()])) {
+        if ($this->unpackRequiredFile($validatorScenarioFile) !== true) {
+            $this->addToErrorBag("Unable to unpack ZIP archive $validatorScenarioFile");
             return false;
         }
 
         $this->requiredFilesUnpacked = true;
 
+        return true;
+    }
+
+    /**
+     * Unpack single required file
+     *
+     * @param string $filename
+     * @return boolean
+     */
+    private function unpackRequiredFile(string $filename): bool
+    {
+        $zip = new ZipArchive();
+
+        if ($zip->open($filename) !== true) {
+            return false;
+        }
+
+        if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {;
+            $zip->close();
+            return false;
+        }
+
+        $zip->close();
         return true;
     }
 
@@ -403,16 +459,16 @@ class ZugferdKositValidator
      */
     private function runValidator(): bool
     {
-        $jarFilename = PathUtils::combineAllPaths($this->resolveBaseDirectory(), $this->validatorAppJarFilename);
-        $scenarioFilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'scenarios.xml', '');
-        $xmlFilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'filetovalidate.xml', '');
+        $jarFilename = $this->resolveAppJarFilename();
+        $scenarioFilename = $this->resolveAppScenarioFilename();
+        $fileToValidateFilename = $this->resolveFileToValidateFilename();
 
-        if (file_put_contents($xmlFilename, $this->document->serializeAsXml()) === false) {
+        if (file_put_contents($fileToValidateFilename, $this->document->serializeAsXml()) === false) {
             $this->addToErrorBag("Cannot create temporary file which contains the XML to validate");
             return false;
         }
 
-        if (!$this->runProcess(['java', '-jar', $jarFilename, '-r', $this->resolveBaseDirectory(), '-s', $scenarioFilename, $xmlFilename])) {
+        if (!$this->runProcess(['java', '-jar', $jarFilename, '-r', $this->resolveBaseDirectory(), '-s', $scenarioFilename, $fileToValidateFilename])) {
             return false;
         }
 
