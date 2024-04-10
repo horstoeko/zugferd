@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use Exception;
 use horstoeko\stringmanagement\PathUtils;
+use SebastianBergmann\CodeCoverage\Driver\PathExistsButIsNotDirectoryException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ExecutableFinder;
@@ -99,25 +100,11 @@ class ZugferdKositValidator
     private $fileToValidateFilename = "filetovalidate.xml";
 
     /**
-     * Internal status of the requirements check
+     * Internal flag which indicates that the cleanup of the base directory is disables
      *
      * @var boolean
      */
-    private $requirementsChecked = false;
-
-    /**
-     * Internal state of the download of requirements
-     *
-     * @var boolean
-     */
-    private $requiredFilesDownloaded = false;
-
-    /**
-     * Internal state of the unpack of requirements
-     *
-     * @var boolean
-     */
-    private $requiredFilesUnpacked = false;
+    private $cleanupBaseDirectoryIsDisabled = false;
 
     /**
      * Constructor
@@ -256,6 +243,30 @@ class ZugferdKositValidator
     }
 
     /**
+     * Disable cleanup base directory
+     *
+     * @return ZugferdKositValidator
+     */
+    public function disableCleanup(): ZugferdKositValidator
+    {
+        $this->cleanupBaseDirectoryIsDisabled = true;
+
+        return $this;
+    }
+
+    /**
+     * Enable cleanup base directory
+     *
+     * @return ZugferdKositValidator
+     */
+    public function enableCleanup(): ZugferdKositValidator
+    {
+        $this->cleanupBaseDirectoryIsDisabled = false;
+
+        return $this;
+    }
+
+    /**
      * Perform validation
      *
      * @return ZugferdKositValidator
@@ -264,13 +275,21 @@ class ZugferdKositValidator
     {
         $this->clearErrorBag();
 
-        if ($this->checkRequirements()) {
-            if ($this->downloadRequiredFiles()) {
-                if ($this->unpackRequiredFiles()) {
-                    $this->runValidator();
-                }
-            }
+        if ($this->checkRequirements() === false) {
+            return $this;
         }
+
+        if ($this->downloadRequiredFiles() === false) {
+            $this->cleanupBaseDirectory();
+            return $this;
+        }
+
+        if ($this->unpackRequiredFiles() === false) {
+            $this->cleanupBaseDirectory();
+            return $this;
+        }
+
+        $this->runValidator();
 
         //$this->cleanupBaseDirectory();
 
@@ -291,6 +310,26 @@ class ZugferdKositValidator
         }
 
         return $baseDirectory;
+    }
+
+    /**
+     * Get the full filename of the archive to download which contains the Java validation application
+     *
+     * @return string
+     */
+    private function resolveAppZipFilename(): string
+    {
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppZipFilename);
+    }
+
+    /**
+     * Get the full filename of the archive to download which contains the Java validation application scenarios
+     *
+     * @return string
+     */
+    public function resolveScenatioZipFilename(): string
+    {
+        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
     }
 
     /**
@@ -387,10 +426,6 @@ class ZugferdKositValidator
      */
     private function checkRequirements(): bool
     {
-        if ($this->requirementsChecked === true) {
-            return true;
-        }
-
         if (is_null($this->document)) {
             $this->addToErrorBag("You must specify an instance of the ZugferdDocument class");
             return false;
@@ -408,8 +443,6 @@ class ZugferdKositValidator
             return false;
         }
 
-        $this->requirementsChecked = true;
-
         return true;
     }
 
@@ -420,22 +453,13 @@ class ZugferdKositValidator
      */
     private function downloadRequiredFiles(): bool
     {
-        if ($this->requiredFilesDownloaded === true) {
-            return true;
-        }
-
-        $validatorAppFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppZipFilename);
-        $validatorScenarioFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
-
-        if (!$this->runFileDownload($this->validatorDownloadUrl, $validatorAppFile)) {
+        if (!$this->runFileDownload($this->validatorDownloadUrl, $this->resolveAppZipFilename())) {
             return false;
         }
 
-        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $validatorScenarioFile)) {
+        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveAppScenarioFilename())) {
             return false;
         }
-
-        $this->requiredFilesDownloaded = true;
 
         return true;
     }
@@ -447,10 +471,6 @@ class ZugferdKositValidator
      */
     private function unpackRequiredFiles(): bool
     {
-        if ($this->requiredFilesUnpacked === true) {
-            return true;
-        }
-
         $validatorAppFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppZipFilename);
         $validatorScenarioFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
 
@@ -463,8 +483,6 @@ class ZugferdKositValidator
             $this->addToErrorBag("Unable to unpack ZIP archive $validatorScenarioFile");
             return false;
         }
-
-        $this->requiredFilesUnpacked = true;
 
         return true;
     }
@@ -483,12 +501,27 @@ class ZugferdKositValidator
             return false;
         }
 
+        $numFilesExists = 0;
+
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+            $zipStat = $zip->statIndex($i);
+            $realfilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $zipStat['name']);
+            if (file_exists($realfilename)) {
+                $numFilesExists++;
+            }
+        }
+
+        if ($numFilesExists == $zip->numFiles) {
+            return true;
+        }
+
         if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {;
             $zip->close();
             return false;
         }
 
         $zip->close();
+
         return true;
     }
 
@@ -499,6 +532,10 @@ class ZugferdKositValidator
      */
     private function runValidator(): bool
     {
+        if ($this->cleanupBaseDirectoryIsDisabled === true) {
+            return true;
+        }
+
         $jarFilename = $this->resolveAppJarFilename();
         $scenarioFilename = $this->resolveAppScenarioFilename();
         $fileToValidateFilename = $this->resolveFileToValidateFilename();
