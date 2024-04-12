@@ -9,12 +9,14 @@
 
 namespace horstoeko\zugferd;
 
+use DOMDocument;
+use DOMXPath;
 use Exception;
+use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
-use SebastianBergmann\CodeCoverage\Driver\PathExistsButIsNotDirectoryException;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
+use horstoeko\stringmanagement\StringUtils;
 use Symfony\Component\Process\ExecutableFinder;
+use Symfony\Component\Process\Process;
 use Throwable;
 use ZipArchive;
 
@@ -37,11 +39,11 @@ class ZugferdKositValidator
     private $document = null;
 
     /**
-     * Internal error bag
+     * Internal message bag
      *
      * @var array
      */
-    private $errorBag = [];
+    private $messageBag = [];
 
     /**
      * Base directory (download)
@@ -107,10 +109,30 @@ class ZugferdKositValidator
     private $cleanupBaseDirectoryIsDisabled = false;
 
     /**
+     * Message Type "Internal Error"
+     */
+    public const MSG_TYPE_INTERNALERROR = 'internalerror';
+
+    /**
+     * Message Type "Validation Error"
+     */
+    public const MSG_TYPE_VALIDATIONERROR = 'validationerror';
+
+    /**
+     * Message Type "Validation Warning"
+     */
+    public const MSG_TYPE_VALIDATIONWARNING = 'validationwarning';
+
+    /**
+     * Message Type "Validation info"
+     */
+    public const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
+
+    /**
      * Constructor
      *
      * @codeCoverageIgnore
-     * @param ZugferdDocument|null $document
+     * @param              ZugferdDocument|null $document
      */
     public function __construct(?ZugferdDocument $document = null)
     {
@@ -121,7 +143,7 @@ class ZugferdKositValidator
     /**
      * Set the ZugferdDocument instance to validate
      *
-     * @param ZugferdDocument $document
+     * @param  ZugferdDocument $document
      * @return ZugferdKositValidator
      */
     public function setDocument(ZugferdDocument $document): ZugferdKositValidator
@@ -135,7 +157,7 @@ class ZugferdKositValidator
      * Setup the base directory. In the base directory all files will be downloaded
      * and created
      *
-     * @param string $newBaseDirectory
+     * @param  string $newBaseDirectory
      * @return ZugferdKositValidator
      */
     public function setBaseDirectory(string $newBaseDirectory): ZugferdKositValidator
@@ -150,7 +172,7 @@ class ZugferdKositValidator
     /**
      * Setup the KOSIT validator application download url
      *
-     * @param string $newValidatorDownloadUrl
+     * @param  string $newValidatorDownloadUrl
      * @return ZugferdKositValidator
      */
     public function setValidatorDownloadUrl(string $newValidatorDownloadUrl): ZugferdKositValidator
@@ -165,7 +187,7 @@ class ZugferdKositValidator
     /**
      * Setup the KOSIT validator scenario download url
      *
-     * @param string $newValidatorScenarioDownloadUrl
+     * @param  string $newValidatorScenarioDownloadUrl
      * @return ZugferdKositValidator
      */
     public function setValidatorScenarioDownloadUrl(string $newValidatorScenarioDownloadUrl): ZugferdKositValidator
@@ -180,7 +202,7 @@ class ZugferdKositValidator
     /**
      * Set the filename of the ZIP file which contains the validation application
      *
-     * @param string $newValidatorAppZipFilename
+     * @param  string $newValidatorAppZipFilename
      * @return ZugferdKositValidator
      */
     public function setValidatorAppZipFilename(string $newValidatorAppZipFilename): ZugferdKositValidator
@@ -193,7 +215,7 @@ class ZugferdKositValidator
     /**
      * Set the filename of the ZIP file which contains the validation scenarios
      *
-     * @param string $newValidatorScenarioZipFilename
+     * @param  string $newValidatorScenarioZipFilename
      * @return ZugferdKositValidator
      */
     public function setValidatorScenarioZipFilename(string $newValidatorScenarioZipFilename): ZugferdKositValidator
@@ -206,7 +228,7 @@ class ZugferdKositValidator
     /**
      * Set the filename of the applications JAR
      *
-     * @param string $newValidatorAppJarFilename
+     * @param  string $newValidatorAppJarFilename
      * @return ZugferdKositValidator
      */
     public function setValidatorAppJarFilename(string $newValidatorAppJarFilename): ZugferdKositValidator
@@ -219,7 +241,7 @@ class ZugferdKositValidator
     /**
      * Set the filename of the application scenario file
      *
-     * @param string $newValidatorAppScenarioFilename
+     * @param  string $newValidatorAppScenarioFilename
      * @return ZugferdKositValidator
      */
     public function setValidatorAppScenarioFilename(string $newValidatorAppScenarioFilename): ZugferdKositValidator
@@ -232,7 +254,7 @@ class ZugferdKositValidator
     /**
      * Set the filename of the file which contains the temporary xml data to validate
      *
-     * @param string $newFileToValidateFilename
+     * @param  string $newFileToValidateFilename
      * @return ZugferdKositValidator
      */
     public function setFileToValidateFilename(string $newFileToValidateFilename): ZugferdKositValidator
@@ -273,7 +295,7 @@ class ZugferdKositValidator
      */
     public function validate(): ZugferdKositValidator
     {
-        $this->clearErrorBag();
+        $this->clearMessageBag();
 
         if ($this->checkRequirements() === false) {
             return $this;
@@ -289,9 +311,9 @@ class ZugferdKositValidator
             return $this;
         }
 
-        $this->runValidator();
+        $this->performValidation();
 
-        //$this->cleanupBaseDirectory();
+        $this->cleanupBaseDirectory();
 
         return $this;
     }
@@ -367,46 +389,28 @@ class ZugferdKositValidator
      *
      * @return void
      */
-    private function clearErrorBag(): void
+    private function clearMessageBag(): void
     {
-        $this->errorBag = [];
+        $this->messageBag = [];
     }
 
     /**
      * Add message to error bag
      *
-     * @param string|Exception|Throwable $error
+     * @param  string|Exception|Throwable $error
      * @return void
      */
-    private function addToErrorBag($error): void
+    private function addToMessageBag($error, string $messageType = ""): void
     {
+        $messageType = StringUtils::stringIsNullOrEmpty($messageType) ? static::MSG_TYPE_INTERNALERROR : $messageType;
+
         if (is_string($error)) {
-            $this->errorBag[] = $error;
+            $this->messageBag[] = ["type" => $messageType, "message" => $error];
         } elseif ($error instanceof Exception) {
-            $this->errorBag[] = $error->getMessage();
+            $this->messageBag[] = ["type" => $messageType, "message" => $error->getMessage()];
         } elseif ($error instanceof Throwable) {
-            $this->errorBag[] = $error->getMessage();
+            $this->messageBag[] = ["type" => $messageType, "message" => $error->getMessage()];
         }
-    }
-
-    /**
-     * Returns true if validation passed otherwise false
-     *
-     * @return boolean
-     */
-    public function validationPased(): bool
-    {
-        return empty($this->errorBag);
-    }
-
-    /**
-     * Returns true if validation failed otherwise false
-     *
-     * @return boolean
-     */
-    public function validationFailed(): bool
-    {
-        return !$this->validationPased();
     }
 
     /**
@@ -414,9 +418,139 @@ class ZugferdKositValidator
      *
      * @return array
      */
-    public function validationErrors(): array
+    public function getValidationErrors(): array
     {
-        return $this->errorBag;
+        return array_filter(
+            $this->messageBag,
+            function ($data) {
+                return $data['type'] == static::MSG_TYPE_VALIDATIONERROR;
+            }
+        );
+    }
+
+    /**
+     * Returns true if __no__ validation errors are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasNoValidationErrors(): bool
+    {
+        return empty($this->getValidationErrors());
+    }
+
+    /**
+     * Returns true if validation errors are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasValidationErrors(): bool
+    {
+        return !$this->hasNoValidationErrors();
+    }
+
+    /**
+     * Returns an array of all validation warnings
+     *
+     * @return array
+     */
+    public function getValidationWarnings(): array
+    {
+        return array_filter(
+            $this->messageBag,
+            function ($data) {
+                return $data['type'] == static::MSG_TYPE_VALIDATIONWARNING;
+            }
+        );
+    }
+
+    /**
+     * Returns true if __no__ validation warnings are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasNoValidationWarnings(): bool
+    {
+        return empty($this->getValidationWarnings());
+    }
+
+    /**
+     * Returns true if validation warnings are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasValidationWarnings(): bool
+    {
+        return !$this->hasNoValidationWarnings();
+    }
+
+    /**
+     * Returns an array of all validation information
+     *
+     * @return array
+     */
+    public function getValidationInformation(): array
+    {
+        return array_filter(
+            $this->messageBag,
+            function ($data) {
+                return $data['type'] == static::MSG_TYPE_VALIDATIONINFORMATION;
+            }
+        );
+    }
+
+    /**
+     * Returns true if __no__ validation information are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasNoValidationInformation(): bool
+    {
+        return empty($this->getValidationInformation());
+    }
+
+    /**
+     * Returns true if validation Information are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasValidationInformation(): bool
+    {
+        return !$this->hasNoValidationInformation();
+    }
+
+    /**
+     * Return an array of all internal errors (such as download error or system exceptions)
+     *
+     * @return array
+     */
+    public function getProcessErrors(): array
+    {
+        return array_filter(
+            $this->messageBag,
+            function ($data) {
+                return $data['type'] == static::MSG_TYPE_INTERNALERROR;
+            }
+        );
+    }
+
+    /**
+     * Returns true if there are __no__ system errors (e.g. exceptions before the validation app was called)
+     *
+     * @return boolean
+     */
+    public function hasNoProcessErrors(): bool
+    {
+        return empty($this->getProcessErrors());
+    }
+
+    /**
+     * Returns true if there are any system errors (e.g. exceptions before the validation app was called)
+     *
+     * @return boolean
+     */
+    public function hasProcessErrors(): bool
+    {
+        return !$this->hasNoProcessErrors();
     }
 
     /**
@@ -427,19 +561,19 @@ class ZugferdKositValidator
     private function checkRequirements(): bool
     {
         if (is_null($this->document)) {
-            $this->addToErrorBag("You must specify an instance of the ZugferdDocument class");
+            $this->addToMessageBag("You must specify an instance of the ZugferdDocument class");
             return false;
         }
 
         if (!extension_loaded('zip')) {
-            $this->addToErrorBag("ZIP extension not installed");
+            $this->addToMessageBag("ZIP extension not installed");
             return false;
         }
 
         $executeableFinder = new ExecutableFinder();
 
         if (is_null($executeableFinder->find('java'))) {
-            $this->addToErrorBag("JAVA not installed on this machine");
+            $this->addToMessageBag("JAVA not installed on this machine");
             return false;
         }
 
@@ -475,12 +609,12 @@ class ZugferdKositValidator
         $validatorScenarioFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
 
         if ($this->unpackRequiredFile($validatorAppFile) !== true) {
-            $this->addToErrorBag("Unable to unpack ZIP archive $validatorAppFile");
+            $this->addToMessageBag("Unable to unpack ZIP archive $validatorAppFile");
             return false;
         }
 
         if ($this->unpackRequiredFile($validatorScenarioFile) !== true) {
-            $this->addToErrorBag("Unable to unpack ZIP archive $validatorScenarioFile");
+            $this->addToMessageBag("Unable to unpack ZIP archive $validatorScenarioFile");
             return false;
         }
 
@@ -490,7 +624,7 @@ class ZugferdKositValidator
     /**
      * Unpack single required file
      *
-     * @param string $filename
+     * @param  string $filename
      * @return boolean
      */
     private function unpackRequiredFile(string $filename): bool
@@ -515,7 +649,7 @@ class ZugferdKositValidator
             return true;
         }
 
-        if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {;
+        if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {
             $zip->close();
             return false;
         }
@@ -530,26 +664,81 @@ class ZugferdKositValidator
      *
      * @return boolean
      */
-    private function runValidator(): bool
+    private function performValidation(): bool
     {
-        if ($this->cleanupBaseDirectoryIsDisabled === true) {
-            return true;
-        }
-
         $jarFilename = $this->resolveAppJarFilename();
         $scenarioFilename = $this->resolveAppScenarioFilename();
         $fileToValidateFilename = $this->resolveFileToValidateFilename();
 
         if (file_put_contents($fileToValidateFilename, $this->document->serializeAsXml()) === false) {
-            $this->addToErrorBag("Cannot create temporary file which contains the XML to validate");
+            $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
             return false;
         }
 
-        if (!$this->runProcess(['java', '-jar', $jarFilename, '-r', $this->resolveBaseDirectory(), '-s', $scenarioFilename, $fileToValidateFilename])) {
+        $applicationOptions = [
+            'java',
+            '-jar',
+            $jarFilename,
+            '-r',
+            $this->resolveBaseDirectory(),
+            '-s',
+            $scenarioFilename,
+            $fileToValidateFilename
+        ];
+
+        if (!$this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory())) {
+            $this->parseValidatorXmlReport();
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * Parses the XML report from the validation app (JAVA application) and put errors
+     * to messagebag
+     *
+     * @return void
+     */
+    private function parseValidatorXmlReport(): void
+    {
+        $reportFilename =
+            PathUtils::combinePathWithFile(
+                $this->resolveBaseDirectory(),
+                FileUtils::getFilenameWithoutExtension($this->resolveFileToValidateFilename()) . '-report.xml'
+            );
+
+        if (!file_exists($reportFilename)) {
+            return;
+        }
+
+        $domDocument = new DOMDocument();
+        $domDocument->load($reportFilename);
+
+        $domXPath = new DOMXPath($domDocument);
+
+        $messageTypeMaps = [
+            static::MSG_TYPE_VALIDATIONERROR => 'error',
+            static::MSG_TYPE_VALIDATIONWARNING => 'warning',
+            static::MSG_TYPE_VALIDATIONINFORMATION => 'information',
+        ];
+
+        $resultAreas = [
+            'val-xsd',
+            'val-sch.1',
+            'val-xml',
+        ];
+
+        foreach ($resultAreas as $resultArea) {
+            $queryResult = $domXPath->query("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='$resultArea']/s:resource/s:name");
+            $resourceName = isset($queryResult[0]) ? $queryResult[0]->nodeValue : $resultArea;
+            foreach ($messageTypeMaps as $messageType => $reportMessageType) {
+                $queryResult = $domXPath->query("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='$resultArea']/rep:message[@level='$reportMessageType']");
+                foreach ($queryResult as $queryItem) {
+                    $this->addToMessageBag(sprintf("%s: %s", $resourceName, $queryItem->nodeValue), $messageType);
+                }
+            }
+        }
     }
 
     /**
@@ -559,6 +748,10 @@ class ZugferdKositValidator
      */
     private function cleanupBaseDirectory(): void
     {
+        if ($this->cleanupBaseDirectoryIsDisabled === true) {
+            return;
+        }
+
         if (!is_dir($this->resolveBaseDirectory())) {
             return;
         }
@@ -569,7 +762,7 @@ class ZugferdKositValidator
     /**
      * Helper method for removeBaseDirectory
      *
-     * @param string $directoryToRemove
+     * @param  string $directoryToRemove
      * @return void
      */
     private function cleanupBaseDirectoryInternal(string $directoryToRemove): void
@@ -583,10 +776,11 @@ class ZugferdKositValidator
         foreach ($objects as $object) {
             if ($object != "." && $object != "..") {
                 $fullFilename = PathUtils::combinePathWithFile($directoryToRemove, $object);
-                if (is_dir($fullFilename) && !is_link($fullFilename))
+                if (is_dir($fullFilename) && !is_link($fullFilename)) {
                     $this->cleanupBaseDirectoryInternal($fullFilename);
-                else
+                } else {
                     unlink($fullFilename);
+                }
             }
         }
 
@@ -597,24 +791,36 @@ class ZugferdKositValidator
      * Runs a process. If the process runned successfully this method
      * returns true, otherwise false
      *
-     * @param array $command
+     * @param  array  $command
+     * @param  string $workingdirectory
+     * @param  string $processOutput
      * @return boolean
      */
-    private function runProcess(array $command): bool
+    private function runValidationApplication(array $command, string $workingdirectory): bool
     {
         try {
             $process = new Process($command);
             $process->setTimeout(0.0);
+            $process->setWorkingDirectory($workingdirectory);
             $process->run();
 
             if (!$process->isSuccessful()) {
-                throw new ProcessFailedException($process);
+                if ($process->getExitCode() == -1) {
+                    $this->addToMessageBag("Parsing error. The commandline arguments specified are incorrect", static::MSG_TYPE_VALIDATIONERROR);
+                }
+                if ($process->getExitCode() == -2) {
+                    $this->addToMessageBag("Configuration error. There is an error loading the configuration and/or validation targets", static::MSG_TYPE_VALIDATIONERROR);
+                }
+                if ($process->getExitCode() > 0) {
+                    $this->addToMessageBag("Validation error. One ore more files were rejected", static::MSG_TYPE_VALIDATIONERROR);
+                }
+                return false;
             }
-        } catch (ProcessFailedException $e) {
-            $this->addToErrorBag($e);
-            return false;
         } catch (Exception $e) {
-            $this->addToErrorBag($e);
+            $this->addToMessageBag($e, static::MSG_TYPE_VALIDATIONERROR);
+            return false;
+        } catch (Throwable $e) {
+            $this->addToMessageBag($e, static::MSG_TYPE_VALIDATIONERROR);
             return false;
         }
 
@@ -624,9 +830,9 @@ class ZugferdKositValidator
     /**
      * Run a file download.
      *
-     * @param string $url
-     * @param string $toFilePath
-     * @param boolean $forceOverwrite
+     * @param  string  $url
+     * @param  string  $toFilePath
+     * @param  boolean $forceOverwrite
      * @return boolean
      */
     private function runFileDownload(string $url, string $toFilePath, bool $forceOverwrite = false): bool
@@ -637,10 +843,10 @@ class ZugferdKositValidator
             }
             file_put_contents($toFilePath, file_get_contents($url));
         } catch (Exception $e) {
-            $this->addToErrorBag($e);
+            $this->addToMessageBag($e);
             return false;
         } catch (Throwable $e) {
-            $this->addToErrorBag($e);
+            $this->addToMessageBag($e);
             return false;
         }
 

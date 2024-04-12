@@ -84,4 +84,5 @@ _backup*
 /examples/fullpdf.pdf
 /examples/factur-x.xml
 /examples/filetovalidate-report.xml
+/examples/filetovalidate-report.html
 myfile_dbg.xml
