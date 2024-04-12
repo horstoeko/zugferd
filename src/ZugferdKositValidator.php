@@ -325,7 +325,9 @@ class ZugferdKositValidator
      */
     private function resolveBaseDirectory(): string
     {
-        $baseDirectory = PathUtils::combinePathWithPath($this->baseDirectory, "kositvalidator");
+        $baseDirectorySuffix = md5($this->validatorDownloadUrl . $this->validatorScenarioDownloadUrl);
+
+        $baseDirectory = PathUtils::combinePathWithPath($this->baseDirectory, sprintf("kositvalidator-%s", $baseDirectorySuffix));
 
         if (!is_dir($baseDirectory)) {
             @mkdir($baseDirectory);
@@ -666,11 +668,7 @@ class ZugferdKositValidator
      */
     private function performValidation(): bool
     {
-        $jarFilename = $this->resolveAppJarFilename();
-        $scenarioFilename = $this->resolveAppScenarioFilename();
-        $fileToValidateFilename = $this->resolveFileToValidateFilename();
-
-        if (file_put_contents($fileToValidateFilename, $this->document->serializeAsXml()) === false) {
+        if (file_put_contents($this->resolveFileToValidateFilename(), $this->document->serializeAsXml()) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
             return false;
         }
@@ -678,12 +676,12 @@ class ZugferdKositValidator
         $applicationOptions = [
             'java',
             '-jar',
-            $jarFilename,
+            $this->resolveAppJarFilename(),
             '-r',
             $this->resolveBaseDirectory(),
             '-s',
-            $scenarioFilename,
-            $fileToValidateFilename
+            $this->resolveAppScenarioFilename(),
+            $this->resolveFileToValidateFilename()
         ];
 
         if (!$this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory())) {
@@ -805,6 +803,8 @@ class ZugferdKositValidator
             $process->run();
 
             if (!$process->isSuccessful()) {
+                echo "Dir " . $this->resolveBaseDirectory();
+                echo "Exitcode " . $process->getExitCode();
                 if ($process->getExitCode() == -1) {
                     $this->addToMessageBag("Parsing error. The commandline arguments specified are incorrect", static::MSG_TYPE_VALIDATIONERROR);
                 }
