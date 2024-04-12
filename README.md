@@ -28,6 +28,7 @@
     - [Writing a xml file](#writing-a-xml-file)
     - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
     - [Merge existing PDF and XML](#merge-existing-pdf-and-xml)
+    - [Validation](#validation)
 
 ## License
 
