@@ -64,7 +64,7 @@ class ZugferdKositValidator
      *
      * @var string
      */
-    private $validatorScenarioDownloadUrl = "https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-07-31/validator-configuration-xrechnung_3.0.0_2023-07-31.zip";
+    private $validatorScenarioDownloadUrl = "https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-11-15/validator-configuration-xrechnung_3.0.1_2023-11-15.zip";
 
     /**
      * The filename of the validation application zip archive
@@ -591,7 +591,7 @@ class ZugferdKositValidator
             return false;
         }
 
-        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveAppScenarioFilename())) {
+        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenatioZipFilename())) {
             return false;
         }
 
@@ -605,16 +605,16 @@ class ZugferdKositValidator
      */
     private function unpackRequiredFiles(): bool
     {
-        $validatorAppFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorAppZipFilename);
-        $validatorScenarioFile = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
+        $validatorAppFile = $this->resolveAppZipFilename();
+        $validatorScenarioFile = $this->resolveScenatioZipFilename();
 
         if ($this->unpackRequiredFile($validatorAppFile) !== true) {
-            $this->addToMessageBag("Unable to unpack ZIP archive $validatorAppFile");
+            $this->addToMessageBag("Unable to unpack archive $validatorAppFile containing the JAVA-Application");
             return false;
         }
 
         if ($this->unpackRequiredFile($validatorScenarioFile) !== true) {
-            $this->addToMessageBag("Unable to unpack ZIP archive $validatorScenarioFile");
+            $this->addToMessageBag("Unable to unpack archive $validatorScenarioFile containing the validation scenarios");
             return false;
         }
 
