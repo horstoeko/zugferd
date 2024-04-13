@@ -14,15 +14,19 @@ require dirname(__FILE__) . "/../vendor/autoload.php";
  */
 function showValidationResult(ZugferdKositValidator $kositValidator)
 {
+    foreach ($kositValidator->getProcessOutput() as $output) {
+        echo $output . PHP_EOL;
+    }
+
     if ($kositValidator->hasProcessErrors()) {
         echo "\033[01;31mProcess failed\e[0m\n";
         foreach ($kositValidator->getProcessErrors() as $processError) {
-            echo " - " . $processError["message"] . PHP_EOL;
+            echo " - " . $processError . PHP_EOL;
         }
     } elseif ($kositValidator->hasValidationErrors()) {
         echo "\033[01;31mValidation failed\e[0m\n";
         foreach ($kositValidator->getValidationErrors() as $validationError) {
-            echo " - " . $validationError["message"] . PHP_EOL;
+            echo " - " . $validationError . PHP_EOL;
         }
     } else {
         echo "\033[01;32mValidation passed\e[0m\n";

@@ -129,6 +129,11 @@ class ZugferdKositValidator
     public const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
 
     /**
+     * Message Type "Process Output"
+     */
+    public const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
+
+    /**
      * Constructor
      *
      * @codeCoverageIgnore
@@ -416,18 +421,34 @@ class ZugferdKositValidator
     }
 
     /**
+     * Get messages from messagebag filtered by message type
+     *
+     * @param string $messageType
+     * @return array
+     */
+    private function getMessageBagFiltered(string $messageType): array
+    {
+        return array_map(
+            function ($data) {
+                return $data["message"];
+            },
+            array_filter(
+                $this->messageBag,
+                function ($data) use ($messageType) {
+                    return $data['type'] == $messageType;
+                }
+            )
+        );
+    }
+
+    /**
      * Returns an array of all validation errors
      *
      * @return array
      */
     public function getValidationErrors(): array
     {
-        return array_filter(
-            $this->messageBag,
-            function ($data) {
-                return $data['type'] == static::MSG_TYPE_VALIDATIONERROR;
-            }
-        );
+        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONERROR);
     }
 
     /**
@@ -457,12 +478,7 @@ class ZugferdKositValidator
      */
     public function getValidationWarnings(): array
     {
-        return array_filter(
-            $this->messageBag,
-            function ($data) {
-                return $data['type'] == static::MSG_TYPE_VALIDATIONWARNING;
-            }
-        );
+        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONWARNING);
     }
 
     /**
@@ -492,12 +508,7 @@ class ZugferdKositValidator
      */
     public function getValidationInformation(): array
     {
-        return array_filter(
-            $this->messageBag,
-            function ($data) {
-                return $data['type'] == static::MSG_TYPE_VALIDATIONINFORMATION;
-            }
-        );
+        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONINFORMATION);
     }
 
     /**
@@ -527,12 +538,7 @@ class ZugferdKositValidator
      */
     public function getProcessErrors(): array
     {
-        return array_filter(
-            $this->messageBag,
-            function ($data) {
-                return $data['type'] == static::MSG_TYPE_INTERNALERROR;
-            }
-        );
+        return $this->getMessageBagFiltered(static::MSG_TYPE_INTERNALERROR);
     }
 
     /**
@@ -553,6 +559,16 @@ class ZugferdKositValidator
     public function hasProcessErrors(): bool
     {
         return !$this->hasNoProcessErrors();
+    }
+
+    /**
+     * Returns an array of all messages from process system (calling external applications)
+     *
+     * @return array
+     */
+    public function getProcessOutput(): array
+    {
+        return $this->getMessageBagFiltered(static::MSG_TYPE_PROCESSOUTPUT);
     }
 
     /**
@@ -802,9 +818,11 @@ class ZugferdKositValidator
             $process->setWorkingDirectory($workingdirectory);
             $process->run();
 
+            foreach (preg_split("/\r\n|\n|\r/", $process->getOutput()) as $outputLine) {
+                $this->addToMessageBag($outputLine, static::MSG_TYPE_PROCESSOUTPUT);
+            }
+
             if (!$process->isSuccessful()) {
-                echo "Dir " . $this->resolveBaseDirectory();
-                echo "Exitcode " . $process->getExitCode();
                 if ($process->getExitCode() == -1) {
                     $this->addToMessageBag("Parsing error. The commandline arguments specified are incorrect", static::MSG_TYPE_VALIDATIONERROR);
                 }
