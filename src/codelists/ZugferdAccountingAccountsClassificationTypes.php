@@ -9,6 +9,15 @@
 
 namespace horstoeko\zugferd\codelists;
 
+/**
+ * Class representing Accounting Account classifications
+ *
+ * @category Zugferd
+ * @package  Zugferd
+ * @author   D. Erling <horstoeko@erling.com.de>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @link     https://github.com/horstoeko/zugferd
+ */
 class ZugferdAccountingAccountsClassificationTypes
 {
     /**
