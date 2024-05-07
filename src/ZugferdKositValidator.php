@@ -111,27 +111,27 @@ class ZugferdKositValidator
     /**
      * Message Type "Internal Error"
      */
-    public const MSG_TYPE_INTERNALERROR = 'internalerror';
+    private const MSG_TYPE_INTERNALERROR = 'internalerror';
 
     /**
      * Message Type "Validation Error"
      */
-    public const MSG_TYPE_VALIDATIONERROR = 'validationerror';
+    private const MSG_TYPE_VALIDATIONERROR = 'validationerror';
 
     /**
      * Message Type "Validation Warning"
      */
-    public const MSG_TYPE_VALIDATIONWARNING = 'validationwarning';
+    private const MSG_TYPE_VALIDATIONWARNING = 'validationwarning';
 
     /**
      * Message Type "Validation info"
      */
-    public const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
+    private const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
 
     /**
      * Message Type "Process Output"
      */
-    public const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
+    private const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
 
     /**
      * Constructor
