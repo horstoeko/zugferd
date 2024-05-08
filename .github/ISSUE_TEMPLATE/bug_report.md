@@ -19,6 +19,9 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+**Sample Code
+If applicable, add (sample) code to help explain your problem.
+
 **Additional information:**
  - OS: [e.g. Windows/Limux/etc.]
  - OS-Version [e.g. Windows10,Debian10,etc.]

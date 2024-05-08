@@ -16,5 +16,8 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your feature request.
 
+**Sample Code
+If applicable, add (sample) code to help explain your feature request.
+
 **Additional context**
 Add any other context about the feature request here.
