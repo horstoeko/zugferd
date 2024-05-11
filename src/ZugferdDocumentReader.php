@@ -191,6 +191,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $positionAddRefDocPointer = 0;
 
     /**
+     * Internal pointer for the positions product characteristics
+     *
+     * @var integer
+     */
+    private $positionProductCharacteristicPointer = 0;
+
+    /**
+     * Internal pointer for the positions product classification
+     *
+     * @var integer
+     */
+    private $positionProductClassificationPointer = 0;
+
+    /**
+     * Internal pointer for the positions referenced product
+     *
+     * @var integer
+     */
+    private $positionReferencedProductPointer = 0;
+
+    /**
      * @var string
      */
     private $binarydatadirectory = "";
@@ -3335,6 +3356,9 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionTaxPointer = 0;
         $this->positionAllowanceChargePointer = 0;
         $this->positionAddRefDocPointer = 0;
+        $this->positionProductCharacteristicPointer = 0;
+        $this->positionProductClassificationPointer = 0;
+        $this->positionReferencedProductPointer = 0;
 
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         return isset($tradeLineItem[$this->positionPointer]);
@@ -4341,6 +4365,232 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         $lineTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getLineTotalAmount.value", 0.0);
         $totalAllowanceChargeAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTotalAllowanceChargeAmount.value", 0.0);
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position's product characteristic
+     * Returns true if the first position propduct characteristic is available, otherwise false
+     * You may use it together with getDocumentPositionProductCharacteristic
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductCharacteristic(): bool
+    {
+        $this->positionProductCharacteristicPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemProductCharacteristic = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getApplicableProductCharacteristic", []));
+
+        return isset($tradeLineItemProductCharacteristic[$this->positionProductCharacteristicPointer]);
+    }
+
+    /**
+     * Seek to the next document position's product characteristic
+     * Returns true if more position propduct characteristics are available, otherwise false
+     * You may use it together with getDocumentPositionProductCharacteristic
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductCharacteristic(): bool
+    {
+        $this->positionProductCharacteristicPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemProductCharacteristic = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getApplicableProductCharacteristic", []));
+
+        return isset($tradeLineItemProductCharacteristic[$this->positionProductCharacteristicPointer]);
+    }
+
+    /**
+     * Get extra characteristics to the formerly added product.
+     * Contains information about the characteristics of the goods and services invoiced
+     *
+     * @param  string      $description
+     * The name of the attribute or property of the product such as "Colour"
+     * @param  string      $value
+     * The value of the attribute or property of the product such as "Red"
+     * @param  string|null $typecode
+     * Type of product property (code). The codes must be taken from the
+     * UNTDID 6313 codelist. Available only in the Extended-Profile
+     * @param  float|null  $valueMeasure
+     * Value of the product property (numerical measurand)
+     * @param  string|null $valueMeasureUnitCode
+     * Unit of measurement of the measurand
+     *  - Codeliste: Rec. N°20 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
+     *    beide Listen kombiniert anzuwenden sind.
+     *  - Codeliste: Rec. N°21 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
+     *    beide Listen kombiniert anzuwenden sind.
+     * @return ZugferdDocumentBuilder
+     */
+    public function getDocumentPositionProductCharacteristic(?string &$description, ?string &$value, ?string &$typecode, ?float &$valueMeasure, ?string &$valueMeasureUnitCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+        $tradeLineItemProductCharacteristic = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getApplicableProductCharacteristic", []));
+        $tradeLineItemProductCharacteristic = $tradeLineItemProductCharacteristic[$this->positionProductCharacteristicPointer];
+
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getDescription.value", "");
+        $value = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValue.value", "");
+        $typecode = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getTypeCode.value", "");
+        $valueMeasure = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValueMeasure.value", 0.0);
+        $valueMeasureUnitCode = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValueMeasure.getUnitCode", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position's product classification
+     * Returns true if the first position propduct classification is available, otherwise false
+     * You may use it together with getDocumentPositionProductClassification
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductClassification(): bool
+    {
+        $this->positionProductClassificationPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemProductClassification = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDesignatedProductClassification", []));
+
+        return isset($tradeLineItemProductClassification[$this->positionProductClassificationPointer]);
+    }
+
+    /**
+     * Seek to the next document position's product classification
+     * Returns true if more position propduct classifications are available, otherwise false
+     * You may use it together with getDocumentPositionProductClassification
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductClassification(): bool
+    {
+        $this->positionProductClassificationPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemProductClassification = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDesignatedProductClassification", []));
+
+        return isset($tradeLineItemProductClassification[$this->positionProductClassificationPointer]);
+    }
+
+    /**
+     * Get detailed information on product classification
+     *
+     * @param  string      $classCode
+     * A code for classifying the item by type or nature or essence or condition.
+     * __Note__: Classification codes are used to group similar items for different purposes, such as public
+     * procurement (using the Common Procurement Vocabulary [CPV]), e-commerce (UNSPSC), etc.
+     * @param  string|null $className
+     * Classification name
+     * @param  string|null $listID
+     * The identifier for the identification scheme of the identifier of the article classification
+     * __Note__: The identification scheme must be selected from the entries from UNTDID 7143.
+     * @param  string|null $listVersionID
+     * The version of the identification scheme
+     * @return ZugferdDocumentBuilder
+     */
+    public function getDocumentPositionProductClassification(?string &$classCode, ?string &$className, ?string &$listID, ?string &$listVersionID): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+        $tradeLineItemProductClassification = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDesignatedProductClassification", []));
+        $tradeLineItemProductClassification = $tradeLineItemProductClassification[$this->positionProductClassificationPointer];
+
+        $classCode = $this->getInvoiceValueByPathFrom($tradeLineItemProductClassification, "getClassCode.value", "");
+        $className = $this->getInvoiceValueByPathFrom($tradeLineItemProductClassification, "getClassName.value", "");
+        $listID = $this->getInvoiceValueByPathFrom($tradeLineItemProductClassification, "getClassCode.getListID", "");
+        $listVersionID = $this->getInvoiceValueByPathFrom($tradeLineItemProductClassification, "getClassCode.getListVersionID", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position's referenced product
+     * Returns true if the first position referenced product is available, otherwise false
+     * You may use it together with getDocumentPositionReferencedProduct
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionReferencedProduct(): bool
+    {
+        $this->positionReferencedProductPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemReferencedProduct = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getIncludedReferencedProduct", []));
+
+        return isset($tradeLineItemReferencedProduct[$this->positionReferencedProductPointer]);
+    }
+
+    /**
+     * Seek to the next document position's referenced product
+     * Returns true if more position referenced products are available, otherwise false
+     * You may use it together with getDocumentPositionReferencedProduct
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionReferencedProduct(): bool
+    {
+        $this->positionReferencedProductPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $tradeLineItemReferencedProduct = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getIncludedReferencedProduct", []));
+
+        return isset($tradeLineItemReferencedProduct[$this->positionReferencedProductPointer]);
+    }
+
+    /**
+     * Get detailed information on included products. This information relates to the
+     * product that has just been added
+     *
+     * @param  string $name
+     * Item name
+     * @param  string $description
+     * Item description
+     * @param  string $sellerAssignedID
+     * Item number of the seller
+     * @param  string $buyerAssignedID
+     * Item number of the buyer
+     * __Note__: The identifier of the product is a unique, bilaterally agreed identification of the
+     * product. It can, for example, be the customer article number or the article number assigned by
+     * the manufacturer.
+     * @param  array $globalID
+     * Array of the global ids indexed by the identification scheme. The identification scheme results
+     * from the list published by the ISO/IEC 6523 Maintenance Agency. In particular, the following scheme
+     * codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  float  $unitQuantity
+     * Included quantity
+     * @param  string $unitCode
+     * Unit of measurement of the included quantity
+     * @return ZugferdDocumentBuilder
+     */
+    public function getDocumentPositionReferencedProduct(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?array &$globalID, ?float &$unitQuantity, ?string &$unitCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+        $tradeLineItemReferencedProduct = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getIncludedReferencedProduct", []));
+        $tradeLineItemReferencedProduct = $tradeLineItemReferencedProduct[$this->positionReferencedProductPointer];
+
+        $name = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getName.value", "");
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getDescription.value", "");
+        $sellerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getSellerAssignedID.value", "");
+        $buyerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getBuyerAssignedID.value", "");
+        $unitQuantity = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getUnitQuantity.value", 0);
+        $unitCode = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getUnitQuantity.getUnitCode", "");
+        $globalID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getGlobalID", []);
+        $globalID = $this->convertToAssociativeArray($globalID, "getSchemeID", "value");
 
         return $this;
     }
