@@ -13,7 +13,7 @@ use DateTime;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
-use horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
@@ -1373,7 +1373,6 @@ class ZugferdObjectHelper
      * @param  string|null $dateTimeString
      * @param  string|null $format
      * @return DateTime|null
-     * @throws \Exception
      */
     public function toDateTime(?string $dateTimeString, ?string $format): ?DateTime
     {
@@ -1393,7 +1392,7 @@ class ZugferdObjectHelper
         } elseif ($format == "204") {
             return DateTime::createFromFormat("YmdHis", $dateTimeString);
         } else {
-            throw new ZugferdUnknownDateFormat();
+            throw new ZugferdUnknownDateFormatException($format);
         }
     }
 

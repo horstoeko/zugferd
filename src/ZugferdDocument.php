@@ -9,11 +9,11 @@
 
 namespace horstoeko\zugferd;
 
-use Exception;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\jms\ZugferdTypesHandler;
 use horstoeko\zugferd\ZugferdObjectHelper;
 use horstoeko\zugferd\ZugferdProfileResolver;
@@ -161,7 +161,7 @@ class ZugferdDocument
             return $profileDefinition[$parameterName];
         }
 
-        throw new Exception(sprintf("Unknown profile definition parameter %s", $parameterName));
+        throw new ZugferdUnknownProfileParameterException($parameterName);
     }
 
     /**

@@ -186,7 +186,6 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put files.
      *
-     * @throws \Exception
      * @return void
      *
      * @codingStandardsIgnoreStart
@@ -234,7 +233,6 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put file stream.
      *
      * @param array $file_info
-     * @throws \Exception
      */
     protected function putFileStream(array $file_info): void
     {
@@ -322,7 +320,6 @@ class ZugferdPdfWriter extends PdfFpdi
      * Put resources including files and metadata descriptions.
      *
      * @return void
-     * @throws \Exception
      * @codingStandardsIgnoreStart
      */
     protected function _putresources(): void

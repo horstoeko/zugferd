@@ -9,9 +9,11 @@
 
 namespace horstoeko\zugferd;
 
-use Exception;
 use SimpleXMLElement;
 use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
+use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
 
 /**
  * Class representing the profile resolver
@@ -29,7 +31,6 @@ class ZugferdProfileResolver
      *
      * @param string $xmlContent
      * @return array
-     * @throws Exception
      */
     public static function resolve(string $xmlContent): array
     {
@@ -37,7 +38,7 @@ class ZugferdProfileResolver
         $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
 
         if (!is_array($typeelement) || !isset($typeelement[0])) {
-            throw new Exception('Could not determine the profile...');
+            throw new ZugferdUnknownXmlContentException();
         }
 
         /**
@@ -50,7 +51,7 @@ class ZugferdProfileResolver
             }
         }
 
-        throw new Exception('Could not determine the profile...');
+        throw new ZugferdUnknownProfileException((string)$typeelement[0]);
     }
 
     /**
@@ -58,7 +59,6 @@ class ZugferdProfileResolver
      *
      * @param string $xmlContent
      * @return int
-     * @throws Exception
      */
     public static function resolveProfileId(string $xmlContent): int
     {
@@ -70,7 +70,6 @@ class ZugferdProfileResolver
      *
      * @param string $xmlContent
      * @return array
-     * @throws Exception
      */
     public static function resolveProfileDef(string $xmlContent): array
     {
@@ -82,12 +81,11 @@ class ZugferdProfileResolver
      *
      * @param integer $profileId
      * @return array
-     * @throws Exception
     */
     public static function resolveById(int $profileId): array
     {
         if (!isset(ZugferdProfiles::PROFILEDEF[$profileId])) {
-            throw new Exception('Could not determine the profile...');
+            throw new ZugferdUnknownProfileIdException($profileId);
         }
 
         return [$profileId, ZugferdProfiles::PROFILEDEF[$profileId]];
@@ -98,7 +96,6 @@ class ZugferdProfileResolver
      *
      * @param int $profileId
      * @return array
-     * @throws Exception
      */
     public static function resolveProfileDefById(int $profileId): array
     {

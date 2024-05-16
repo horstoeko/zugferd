@@ -6,7 +6,7 @@ use DateTime;
 use \horstoeko\zugferd\tests\TestCase;
 use \horstoeko\zugferd\ZugferdProfiles;
 use \horstoeko\zugferd\ZugferdObjectHelper;
-use \horstoeko\zugferd\exception\ZugferdUnknownDateFormat;
+use \horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 
 class ObjectHelperEn16931Test extends TestCase
 {
@@ -1684,7 +1684,8 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull(self::$objectHelper->toDateTime("", null));
         $this->assertNull(self::$objectHelper->toDateTime(null, ""));
         $this->assertNull(self::$objectHelper->toDateTime(null, null));
-        $this->expectException(ZugferdUnknownDateFormat::class);
+        $this->expectException(ZugferdUnknownDateFormatException::class);
+        $this->expectExceptionMessage("The date format identifier 999 is unknown or not supported");
         $this->assertNull(self::$objectHelper->toDateTime("20200202", "999"));
     }
 

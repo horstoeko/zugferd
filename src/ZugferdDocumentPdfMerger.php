@@ -9,7 +9,8 @@
 
 namespace horstoeko\zugferd;
 
-use Exception;
+use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\ZugferdProfileResolver;
 
@@ -68,7 +69,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
         if ($this->xmlDataIsFile()) {
             $xmlContent = file_get_contents($this->xmlDataOrFilename);
             if ($xmlContent === false) {
-                throw new Exception('Could read XML file...');
+                throw new ZugferdFileNotReadableException('Could read XML file...');
             }
         } else {
             $xmlContent = $this->xmlDataOrFilename;
@@ -116,7 +117,6 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      * @codeCoverageIgnore
      *
      * @return array
-     * @throws Exception
      */
     private function getProfileDefinition(): array
     {
@@ -137,6 +137,6 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
             return $profileDefinition[$parameterName];
         }
 
-        throw new Exception(sprintf("Unknown profile definition parameter %s", $parameterName));
+        throw new ZugferdUnknownProfileParameterException($parameterName);
     }
 }

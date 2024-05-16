@@ -13,8 +13,11 @@ use Exception;
 use DOMDocument;
 use LibXMLError;
 use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\ZugferdDocument;
 use horstoeko\zugferd\ZugferdSettings;
+use PhpParser\Node\Expr\Throw_;
+use Throwable;
 
 /**
  * Class representing the validator against XSD for documents
@@ -162,7 +165,7 @@ class ZugferdXsdValidator
         );
 
         if (!file_exists($xsdFilename)) {
-            throw new Exception(sprintf("XSD file '%s' not found", $xsdFilename));
+            throw new ZugferdFileNotFoundException($xsdFilename);
         }
 
         return $xsdFilename;
@@ -181,7 +184,7 @@ class ZugferdXsdValidator
     /**
      * Add message to error bag
      *
-     * @param string|Exception|LibXMLError $error
+     * @param string|Exception|Throwable|LibXMLError $error
      * @return void
      */
     private function addToErrorBag($error): void
@@ -189,6 +192,8 @@ class ZugferdXsdValidator
         if (is_string($error)) {
             $this->errorBag[] = $error;
         } elseif ($error instanceof Exception) {
+            $this->errorBag[] = $error->getMessage();
+        } elseif ($error instanceof Throwable) {
             $this->errorBag[] = $error->getMessage();
         } elseif ($error instanceof LibXMLError) {
             $this->errorBag[] = sprintf('[line %d] %s : %s', $error->line, $error->code, $error->message);

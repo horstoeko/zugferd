@@ -9,8 +9,8 @@
 
 namespace horstoeko\zugferd;
 
-use Exception;
 use Smalot\PdfParser\Parser as PdfParser;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 
 /**
  * Class representing the document reader for incoming PDF/A-Documents with
@@ -35,15 +35,11 @@ class ZugferdDocumentPdfReader
      * @param  string $pdfFilename
      * Contains a full-qualified filename which must exist and must be readable
      * @return ZugferdDocumentReader|null
-     * @throws Exception
      */
     public static function readAndGuessFromFile(string $pdfFilename): ?ZugferdDocumentReader
     {
         if (!file_exists($pdfFilename)) {
-            throw new Exception("File {$pdfFilename} not found.");
-        }
-        if (!is_readable($pdfFilename)) {
-            throw new Exception("File {$pdfFilename} could not be read.");
+            throw new ZugferdFileNotFoundException($pdfFilename);
         }
 
         $pdfParser = new PdfParser();
@@ -78,7 +74,7 @@ class ZugferdDocumentPdfReader
                     $embeddedFileIndex++;
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $returnValue = null;
         }
 

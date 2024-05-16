@@ -11,10 +11,10 @@ namespace horstoeko\zugferd;
 
 use Closure;
 use DateTime;
-use Exception;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
@@ -223,12 +223,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param  string $xmlfilename The filename to read invoice data from
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public static function readAndGuessFromFile(string $xmlfilename): ZugferdDocumentReader
     {
         if (!file_exists($xmlfilename)) {
-            throw new Exception("File {$xmlfilename} does not exist...");
+            throw new ZugferdFileNotFoundException($xmlfilename);
         }
 
         return self::readAndGuessFromContent(file_get_contents($xmlfilename));
@@ -241,7 +240,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param  string $xmlcontent The XML content as a string to read the invoice data from
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
     {
@@ -295,7 +293,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $documentlanguage         Returns the language code in which the document was written
      * @param  DateTime|null $effectiveSpecifiedPeriod Returns the contractual due date of the invoice
      * @return ZugferdDocumentReader
-     * @throws Exception when the value of datetime cannot be parsed
      */
     public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {
@@ -2348,7 +2345,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Order confirmation date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentSellerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2369,7 +2365,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Date of order
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentBuyerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2391,7 +2386,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Contract date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentContractReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2468,7 +2462,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Contains a file name of an attachment document embedded as a binary object or sent with the invoice. Where the
      * binary attached file is stored can be controlled by using the methud ZugferdDocumentReader::setBinaryDataDirectory()
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid = null, ?array &$name = null, ?string &$reftypecode = null, ?DateTime &$issueddate = null, ?string &$binarydatafilename = null): ZugferdDocumentReader
     {
@@ -2575,7 +2568,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $issuerassignedid
      * @param  DateTime|null $issueddate
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2610,7 +2602,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Actual delivery time. In Germany, the delivery and service date is a mandatory requirement on invoices.
      * This can be done here or at item level.
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentSupplyChainEvent(?DateTime &$date): ZugferdDocumentReader
     {
@@ -2630,7 +2621,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Shipping notification date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2651,7 +2641,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Goods receipt date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2675,7 +2664,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Delivery receipt date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -2893,7 +2881,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * In Germany, the date of delivery and service is decisive.
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentTax(?string &$categoryCode, ?string &$typeCode, ?float &$basisAmount, ?float &$calculatedAmount, ?float &$rateApplicablePercent, ?string &$exemptionReason, ?string &$exemptionReasonCode, ?float &$lineTotalBasisAmount, ?float &$allowanceChargeBasisAmount, ?DateTime &$taxPointDate, ?string &$dueDateTypeCode): ZugferdDocumentReader
     {
@@ -2926,7 +2913,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $endDate
      * End of the billing period
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
     {
@@ -3287,7 +3273,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Unique identifier assigned by the payee to reference the direct debit authorization.
      * __Note:__ Used to inform the buyer in advance about a SEPA direct debit. __Synonym:__ mandate reference for SEPA
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPaymentTerm(?string &$description, ?DateTime &$dueDate, ?string &$directDebitMandateID): ZugferdDocumentReader
     {
@@ -3320,7 +3305,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  float|null    $actualDiscountAmount
      * Amount of the down payment
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDiscountTermsFromPaymentTerm(?float &$calculationPercent, ?DateTime &$basisDateTime, ?float &$basisPeriodMeasureValue, ?string &$basisPeriodMeasureUnitCode, ?float &$basisAmount, ?float &$actualDiscountAmount): ZugferdDocumentReader
     {
@@ -3529,7 +3513,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Date of order
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionBuyerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -3557,7 +3540,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Contract date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionContractReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -3643,7 +3625,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Document date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid, ?string &$lineid, ?string &$name, ?string &$reftypecode, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -3905,7 +3886,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $date
      * Actual delivery time. In Germany, the delivery and service date is a mandatory requirement on invoices.
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionSupplyChainEvent(?DateTime &$date): ZugferdDocumentReader
     {
@@ -3930,7 +3910,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueddate
      * Shipping notification date
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid = null, ?DateTime &$issueddate = null): ZugferdDocumentReader
     {
@@ -3954,7 +3933,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $lineid
      * @param  DateTime|null $issueddate
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -3978,7 +3956,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $lineid
      * @param  DateTime|null $issueddate
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
     {
@@ -4106,7 +4083,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $endDate
      * End of the billing period
      * @return ZugferdDocumentReader
-     * @throws Exception
      */
     public function getDocumentPositionBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
     {

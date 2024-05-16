@@ -3,8 +3,9 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use \horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\ZugferdProfileResolver;
 use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\ZugferdProfileResolver;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 
 class ProfileResolverTest extends TestCase
 {
@@ -140,7 +141,7 @@ HDR;
     public function testResolveUnknownProfile()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Could not determine the profile...');
+        $this->expectExceptionMessage('A context parameter was found, but the content of "unknown" is not a valid profile');
 
         ZugferdProfileResolver::resolveProfileId($this->deliverUnknownProfile());
     }
@@ -151,7 +152,7 @@ HDR;
     public function testResolveInvalidXml()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Could not determine the profile...');
+        $this->expectExceptionMessage('The XML does not match the requirements for an XML in CII-Syntax');
 
         ZugferdProfileResolver::resolveProfileId($this->deliverInvalidXml());
     }
@@ -224,8 +225,8 @@ HDR;
      */
     public function testResolveProfileDefByIdUnknown()
     {
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Could not determine the profile...');
+        $this->expectException(ZugferdUnknownProfileIdException::class);
+        $this->expectExceptionMessage('The profile id -1 is uknown');
 
         ZugferdProfileResolver::resolveProfileDefById(-1);
     }
