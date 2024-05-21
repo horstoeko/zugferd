@@ -31,6 +31,13 @@ use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
     /**
+     * Addition creator (e.g. ERP software that called the PHP library)
+     *
+     * @var string
+     */
+    private $additionalCreatorTool = null;
+
+    /**
      * Instance of the pdfwriter
      *
      * @var ZugferdPdfWriter
@@ -38,7 +45,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $pdfWriter = null;
 
     /**
-     * Contains the data of the original PDF documjent
+     * Contains the data of the original PDF document
      *
      * @var string
      */
@@ -104,6 +111,20 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function downloadString(string $toFilename): string
     {
         return $this->pdfWriter->Output($toFilename, 'S');
+    }
+
+    /**
+     * Sets an addition creator (e.g. ERP software that called the PHP library)
+     *
+     * @param  string $additionalCreatorTool
+     * The name of the creator
+     * @return self
+     */
+    public function setAdditionalCreatorTool(string $additionalCreatorTool)
+    {
+        $this->additionalCreatorTool = $additionalCreatorTool;
+
+        return $this;
     }
 
     /**
@@ -215,7 +236,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descXmp = $descriptionNodes[5];
         $xmpNodes = $descXmp->children('xmp', true);
-        $xmpNodes->{'CreatorTool'} = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        if ($this->additionalCreatorTool) {
+            $xmpNodes->{'CreatorTool'} = sprintf($this->additionalCreatorTool . ' / Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        } else {
+            $xmpNodes->{'CreatorTool'} = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        }
         $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
         $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
