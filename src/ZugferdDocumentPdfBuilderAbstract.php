@@ -31,11 +31,11 @@ use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
     /**
-     * Addition creator (e.g. ERP software that called the PHP library)
+     * Additional creator tool (e.g. the ERP software that called the PHP library)
      *
      * @var string
      */
-    private $additionalCreatorTool = null;
+    private $additionalCreatorTool = "";
 
     /**
      * Instance of the pdfwriter
@@ -125,6 +125,15 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $this->additionalCreatorTool = $additionalCreatorTool;
 
         return $this;
+    }
+
+    public function getCreatorToolName(): string
+    {
+        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        if ($this->additionalCreatorTool) {
+            return $this->additionalCreatorTool . ' / ' . $toolName;
+        }
+        return $toolName;
     }
 
     /**
@@ -236,11 +245,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descXmp = $descriptionNodes[5];
         $xmpNodes = $descXmp->children('xmp', true);
-        if ($this->additionalCreatorTool) {
-            $xmpNodes->{'CreatorTool'} = sprintf($this->additionalCreatorTool . ' / Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
-        } else {
-            $xmpNodes->{'CreatorTool'} = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
-        }
+        $xmpNodes->{'CreatorTool'} = $this->getCreatorToolName();
         $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
         $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
