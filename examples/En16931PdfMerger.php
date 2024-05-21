@@ -12,4 +12,4 @@ if (!file_exists($existingXml) || !file_exists($existingPdf)) {
     throw new \Exception("XML and/or PDF does not exist");
 }
 
-(new ZugferdDocumentPdfMerger($existingXml, $existingPdf))->generateDocument()->saveDocument($mergeToPdf);
+(new ZugferdDocumentPdfMerger($existingXml, $existingPdf))->setAdditionalCreatorTool('Contoso ERP 1.0')->generateDocument()->saveDocument($mergeToPdf);

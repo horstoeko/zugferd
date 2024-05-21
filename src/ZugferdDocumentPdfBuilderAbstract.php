@@ -31,6 +31,13 @@ use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
     /**
+     * Additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @var string
+     */
+    private $additionalCreatorTool = "";
+
+    /**
      * Instance of the pdfwriter
      *
      * @var ZugferdPdfWriter
@@ -38,7 +45,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $pdfWriter = null;
 
     /**
-     * Contains the data of the original PDF documjent
+     * Contains the data of the original PDF document
      *
      * @var string
      */
@@ -104,6 +111,34 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function downloadString(string $toFilename): string
     {
         return $this->pdfWriter->Output($toFilename, 'S');
+    }
+
+    /**
+     * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @param  string $additionalCreatorTool
+     * The name of the creator
+     * @return self
+     */
+    public function setAdditionalCreatorTool(string $additionalCreatorTool)
+    {
+        $this->additionalCreatorTool = $additionalCreatorTool;
+
+        return $this;
+    }
+
+    /**
+     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
+     *
+     * @return string
+     */
+    public function getCreatorToolName(): string
+    {
+        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        if ($this->additionalCreatorTool) {
+            return $this->additionalCreatorTool . ' / ' . $toolName;
+        }
+        return $toolName;
     }
 
     /**
@@ -215,7 +250,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descXmp = $descriptionNodes[5];
         $xmpNodes = $descXmp->children('xmp', true);
-        $xmpNodes->{'CreatorTool'} = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+        $xmpNodes->{'CreatorTool'} = $this->getCreatorToolName();
         $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
         $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
