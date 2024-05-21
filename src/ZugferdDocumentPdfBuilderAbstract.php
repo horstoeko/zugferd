@@ -114,7 +114,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Sets an addition creator (e.g. ERP software that called the PHP library)
+     * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
      *
      * @param  string $additionalCreatorTool
      * The name of the creator
