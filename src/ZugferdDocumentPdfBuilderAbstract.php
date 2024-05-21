@@ -127,6 +127,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         return $this;
     }
 
+    /**
+     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
+     *
+     * @return string
+     */
     public function getCreatorToolName(): string
     {
         $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
