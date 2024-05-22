@@ -2439,9 +2439,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string $buyerIban
      * Direct debit: ID of the account to be debited
+     * @param  string|null $creditorReferenceID
+     * Identifier of the creditor (German: "Glaeubiger ID")
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentMeanToDirectDebit(string $buyerIban): ZugferdDocumentBuilder
+    public function addDocumentPaymentMeanToDirectDebit(string $buyerIban, string $creditorReferenceID): ZugferdDocumentBuilder
     {
         $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType("59");
         $buyerfinancialaccount = $this->getObjectHelper()->getDebtorFinancialAccountType($buyerIban);
@@ -2449,6 +2451,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
 
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
 
         return $this;
     }
