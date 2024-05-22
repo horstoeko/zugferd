@@ -2418,9 +2418,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $payeeBic
      * Seller's banking institution, An identifier for the payment service provider with whom the payment account
      * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
+     * @param string|null $paymentReference
+     * Intended use for payment
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentMeanToCreditTransfer(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function addDocumentPaymentMeanToCreditTransfer(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null, ?string $paymentReference = null): ZugferdDocumentBuilder
     {
         $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType("58");
         $payeefinancialaccount = $this->getObjectHelper()->getCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);
@@ -2430,6 +2432,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayeeSpecifiedCreditorFinancialInstitution", $payeefinancialInstitution);
 
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+
+        if (!is_null($paymentReference)) {
+            $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+        }
 
         return $this;
     }
