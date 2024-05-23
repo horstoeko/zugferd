@@ -13,6 +13,8 @@ use DateTime;
 use DOMDocument;
 use DOMXPath;
 
+use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+
 /**
  * Class representing the document builder for outgoing documents
  *
@@ -2422,7 +2424,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function addDocumentPaymentMeanToCreditTransfer(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
-        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType("58");
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_58);
         $payeefinancialaccount = $this->getObjectHelper()->getCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);
         $payeefinancialInstitution = $this->getObjectHelper()->getCreditorFinancialInstitutionType($payeeBic);
 
@@ -2439,16 +2441,23 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string $buyerIban
      * Direct debit: ID of the account to be debited
+     * @param  string|null $creditorReferenceID
+     * Identifier of the creditor (German: "Glaeubiger ID").
+     * It can also be set using setDocumentGeneralPaymentInformation().
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentMeanToDirectDebit(string $buyerIban): ZugferdDocumentBuilder
+    public function addDocumentPaymentMeanToDirectDebit(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
     {
-        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType("59");
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_59);
         $buyerfinancialaccount = $this->getObjectHelper()->getDebtorFinancialAccountType($buyerIban);
 
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
 
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+
+        if (!is_null($creditorReferenceID)) {
+            $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
+        }
 
         return $this;
     }
@@ -2469,7 +2478,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function addDocumentPaymentMeanToPaymentCard(string $cardType, string $cardId, ?string $cardHolderName = null): ZugferdDocumentBuilder
     {
-        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType("48");
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_48);
         $financialCard = $this->getObjectHelper()->getTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
 
         $this->getObjectHelper()->tryCall($paymentMeans, "setApplicableTradeSettlementFinancialCard", $financialCard);
