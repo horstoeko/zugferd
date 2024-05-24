@@ -39,6 +39,17 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     private $xmlDataCache = "";
 
     /**
+     * @see self::__construct
+     */
+    public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfData): self
+    {
+        if (!is_file($pdfData)) {
+            throw new \InvalidArgumentException("The given PDF file does not exist.");
+        }
+        return new self($documentBuilder, $pdfData);
+    }
+    
+    /**
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuilder
