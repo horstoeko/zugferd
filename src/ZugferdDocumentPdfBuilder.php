@@ -41,13 +41,22 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     /**
      * @see self::__construct
      */
-    public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfData): self
+    public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): self
     {
         if (!is_file($pdfData)) {
             throw new \InvalidArgumentException("The given PDF file does not exist.");
         }
-        return new self($documentBuilder, $pdfData);
+        return new self($documentBuilder, $pdfFileName);
     }
+
+    /**
+     * @see self::__construct
+     */
+    public static function fromPdfString(ZugferdDocumentBuilder $documentBuilder, string $pdfContent): self
+    {
+        return new self($documentBuilder, $pdfContent);
+    }
+    
     
     /**
      * Constructor
