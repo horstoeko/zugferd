@@ -2421,7 +2421,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Seller's banking institution, An identifier for the payment service provider with whom the payment account
      * is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
      * @param string|null $paymentReference
-     * Intended use for payment
+     * Intended use for payment. It can also be set using `setDocumentGeneralPaymentInformation()`.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentMeanToCreditTransfer(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null, ?string $paymentReference = null): ZugferdDocumentBuilder
@@ -2448,8 +2448,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string $buyerIban
      * Direct debit: ID of the account to be debited
      * @param  string|null $creditorReferenceID
-     * Identifier of the creditor (German: "Glaeubiger ID").
-     * It can also be set using setDocumentGeneralPaymentInformation().
+     * Identifier of the creditor (German: "Gläubiger ID").
+     * It can also be set using `setDocumentGeneralPaymentInformation()`.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentMeanToDirectDebit(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
