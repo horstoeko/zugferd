@@ -165,7 +165,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getAmountDecimals(),
+                ZugferdSettings::getAmountDecimals($visitor->getCurrentNode()->tagName),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )
@@ -195,7 +195,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getQuantityDecimals(),
+                ZugferdSettings::getQuantityDecimals($visitor->getCurrentNode()->tagName),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )
@@ -225,7 +225,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getPercentDecimals(),
+                ZugferdSettings::getPercentDecimals($visitor->getCurrentNode()->tagName),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )

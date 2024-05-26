@@ -25,23 +25,23 @@ class ZugferdSettings
     /**
      * The number of decimals for amount values
      *
-     * @var integer
+     * @var array
      */
-    protected static $amountDecimals = 2;
+    private static $amountDecimals = [];
 
     /**
      * The number of decimals for quantity values
      *
-     * @var integer
+     * @var array
      */
-    protected static $quantityDecimals = 2;
+    private static $quantityDecimals = [];
 
     /**
      * The number of decimals for percent values
      *
-     * @var integer
+     * @var array
      */
-    protected static $percentDecimals = 2;
+    private static $percentDecimals = [];
 
     /**
      * The decimal separator
@@ -74,64 +74,70 @@ class ZugferdSettings
     /**
      * Get the number of decimals to use for amount values
      *
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return integer
      */
-    public static function getAmountDecimals(): int
+    public static function getAmountDecimals(?string $tagName=null): int
     {
-        return static::$amountDecimals;
+        return static::$amountDecimals[$tagName??""] ?? 2;
     }
 
     /**
      * Set the number of decimals to use for amount values
      *
      * @param  integer $amountDecimals
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return void
      */
-    public static function setAmountDecimals(int $amountDecimals): void
+    public static function setAmountDecimals(int $amountDecimals, ?string $tagName=null): void
     {
-        static::$amountDecimals = $amountDecimals;
+        static::$amountDecimals[$tagName??""] = $amountDecimals;
     }
 
     /**
      * Get the number of decimals to use for amount values
      *
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return integer
      */
-    public static function getQuantityDecimals(): int
+    public static function getQuantityDecimals(?string $tagName=null): int
     {
-        return static::$quantityDecimals;
+        return static::$quantityDecimals[$tagName??""] ?? 2;
     }
 
     /**
      * Set the number of decimals to use for quantity values
      *
      * @param  integer $quantityDecimals
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return void
      */
-    public static function setQuantityDecimals(int $quantityDecimals): void
+    public static function setQuantityDecimals(int $quantityDecimals, ?string $tagName=null): void
     {
-        static::$quantityDecimals = $quantityDecimals;
+        static::$quantityDecimals[$tagName??""] = $quantityDecimals;
     }
 
     /**
      * Get the number of decimals to use for percent values
      *
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return integer
      */
-    public static function getPercentDecimals(): int
+    public static function getPercentDecimals(?string $tagName=null): int
     {
-        return static::$percentDecimals;
+        return static::$percentDecimals[$tagName??""] ?? 2;
     }
 
     /**
      * Set the number of decimals to use for percent values
      *
      * @param  integer $percentDecimals
+     * @param  string|null $tagName  The tag name, e.g. "ram:ChargeAmount", or null for the rest
      * @return void
      */
-    public static function setPercentDecimals(int $percentDecimals): void
+    public static function setPercentDecimals(int $percentDecimals, ?string $tagName=null): void
     {
-        static::$percentDecimals = $percentDecimals;
+        static::$percentDecimals[$tagName??""] = $percentDecimals;
     }
 
     /**
