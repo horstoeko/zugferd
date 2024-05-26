@@ -104,64 +104,65 @@ For detailed eplanation you may have a look in the [examples](https://github.com
 By means of the `ZugferdSettings` class it is possible to control various options for XML and PDF generation:
 
 ```php
-public static function getAmountDecimals(): int
+public static function setAmountDecimals(int $amountDecimals, ?string $tagName = null): void
+```
+
+Sets the number of decimal places for amount fields, where `$tagName` can be `null` to set the decimals for all tag types (this will break validation though),
+or can be set to the tag name you want to set the decimals to, e.g. `ZugferdSettings::setAmountDecimals(5, "ram:ChargeAmount")`.
+
+```php
+public static function getAmountDecimals(?string $tagName = null): int
 ```
 
 Returns the currently configured number of decimal places for amount fields _(Default: 2)_.
 
 ```php
-public static function setAmountDecimals(int $amountDecimals): void
+public static function getQuantityDecimals(?string $tagName = null): int
 ```
 
-Set the number of decimal places for amount fields.
+Sets the number of decimal places for quantity fields.
 
 ```php
-public static function getQuantityDecimals(): int
+public static function getPercentDecimals(?string $tagName = null): int
 ```
 
 Returns the currently configured number of decimal places for quantity fields _(Default: 2)_.
 
 ```php
-public static function setQuantityDecimals(int $quantityDecimals): void
+public static function setQuantityDecimals(int $quantityDecimals, ?string $tagName = null): void
 ```
 
-Set the number of decimal places for quantity fields.
-
-```php
-public static function getPercentDecimals(): int
-```
-
-Returns the currently configured number of decimal places for percentage fields _(Default: 2)_.
-
-```php
-public static function setPercentDecimals(int $percentDecimals): void
-```
-
-Set the number of decimal places for percentage fields.
+Sets the number of decimal places for percentage fields.
 
 ```php
 public static function getDecimalSeparator(): string
 ```
 
-Returns the currently configured character for the decimal separator. _(Default: .)
+Returns the currently configured number of decimal places for percentage fields _(Default: 2)_.
 
 ```php
 public static function setDecimalSeparator(string $decimalSeparator): void
 ```
 
-Set the character to use as the decimal separator.
+Sets the character to use as the decimal separator.
+
+```php
+public static function setPercentDecimals(int $percentDecimals): void
+```
+
+Returns the currently configured character for the decimal separator. _(Default: .)
+
+```php
+public static function setThousandsSeparator(string $thousandsSeparator): void
+```
+
+Sets the character to use as the thousands separator.
 
 ```php
 public static function getThousandsSeparator(): string
 ```
 
 Returns the currently configured character for the thousands separator. _(Default: Empty)_
-
-```php
-public static function setThousandsSeparator(string $thousandsSeparator): void
-```
-
-Set the character to use as the thousands separator.
 
 ### Reading a xml file
 
