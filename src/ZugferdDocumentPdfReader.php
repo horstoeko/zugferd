@@ -27,7 +27,7 @@ class ZugferdDocumentPdfReader
     /**
      * List of filenames which are possible in PDF
      */
-    const ATTACHMENT_FILEAMES = ['factur-x.xml', 'zugferd-invoice.xml', 'xrechnung.xml'];
+    const ATTACHMENT_FILENAMES = ['ZUGFeRD-invoice.xml'/*1.0*/, 'zugferd-invoice.xml'/*2.0*/, 'factur-x.xml'/*2.1*/, 'xrechnung.xml'];
 
     /**
      * Load a PDF file (ZUGFeRD/Factur-X)
@@ -54,7 +54,7 @@ class ZugferdDocumentPdfReader
         try {
             foreach ($filespecs as $filespec) {
                 $filespecDetails = $filespec->getDetails();
-                if (in_array($filespecDetails['F'], static::ATTACHMENT_FILEAMES)) {
+                if (in_array($filespecDetails['F'], static::ATTACHMENT_FILENAMES)) {
                     $attachmentFound = true;
                     break;
                 }
