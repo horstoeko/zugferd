@@ -15,8 +15,11 @@ class SettingsTest extends TestCase
     public static function tearDownAfterClass(): void
     {
         ZugferdSettings::setAmountDecimals(2);
+        ZugferdSettings::setAmountDecimals(2, "foo");
         ZugferdSettings::setQuantityDecimals(2);
+        ZugferdSettings::setQuantityDecimals(2, "foo");
         ZugferdSettings::setPercentDecimals(2);
+        ZugferdSettings::setPercentDecimals(2, "foo");
         ZugferdSettings::setDecimalSeparator(".");
         ZugferdSettings::setThousandsSeparator("");
         ZugferdSettings::setIccProfileFilename("sRGB_v4_ICC.icc");
@@ -28,14 +31,18 @@ class SettingsTest extends TestCase
     public function testAmountDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getAmountDecimals());
+        $this->assertEquals(2, ZugferdSettings::getAmountDecimals("foo"));
 
         ZugferdSettings::setAmountDecimals(3);
+        ZugferdSettings::setAmountDecimals(4, "foo");
 
         $this->assertEquals(3, ZugferdSettings::getAmountDecimals());
+        $this->assertEquals(4, ZugferdSettings::getAmountDecimals("foo"));
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "amountDecimals");
 
-        $this->assertEquals(3, $property->getValue());
+        $this->assertEquals(3, $property->getValue()[""]);
+        $this->assertEquals(4, $property->getValue()["foo"]);
     }
 
     /**
@@ -44,14 +51,18 @@ class SettingsTest extends TestCase
     public function testQuantityDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getQuantityDecimals());
+        $this->assertEquals(2, ZugferdSettings::getQuantityDecimals("foo"));
 
         ZugferdSettings::setQuantityDecimals(3);
+        ZugferdSettings::setQuantityDecimals(4, "foo");
 
         $this->assertEquals(3, ZugferdSettings::getQuantityDecimals());
+        $this->assertEquals(4, ZugferdSettings::getQuantityDecimals("foo"));
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "quantityDecimals");
 
-        $this->assertEquals(3, $property->getValue());
+        $this->assertEquals(3, $property->getValue()[""]);
+        $this->assertEquals(4, $property->getValue()["foo"]);
     }
 
     /**
@@ -60,14 +71,18 @@ class SettingsTest extends TestCase
     public function testPercentDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getPercentDecimals());
+        $this->assertEquals(2, ZugferdSettings::getPercentDecimals("foo"));
 
         ZugferdSettings::setPercentDecimals(3);
+        ZugferdSettings::setPercentDecimals(4, "foo");
 
         $this->assertEquals(3, ZugferdSettings::getPercentDecimals());
+        $this->assertEquals(4, ZugferdSettings::getPercentDecimals("foo"));
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "percentDecimals");
 
-        $this->assertEquals(3, $property->getValue());
+        $this->assertEquals(3, $property->getValue()[""]);
+        $this->assertEquals(4, $property->getValue()["foo"]);
     }
 
     /**
