@@ -117,25 +117,25 @@ public static function getAmountDecimals(?string $tagName = null): int
 Returns the currently configured number of decimal places for amount fields _(Default: 2)_.
 
 ```php
-public static function getQuantityDecimals(?string $tagName = null): int
+public static function setQuantityDecimals(int $quantityDecimals, ?string $tagName = null): void
 ```
 
 Sets the number of decimal places for quantity fields.
 
 ```php
-public static function getPercentDecimals(?string $tagName = null): int
+public static function getQuantityDecimals(?string $tagName = null): int
 ```
 
 Returns the currently configured number of decimal places for quantity fields _(Default: 2)_.
 
 ```php
-public static function setQuantityDecimals(int $quantityDecimals, ?string $tagName = null): void
+public static function setPercentDecimals(int $percentDecimals): void
 ```
 
 Sets the number of decimal places for percentage fields.
 
 ```php
-public static function getDecimalSeparator(): string
+public static function getPercentDecimals(?string $tagName = null): int
 ```
 
 Returns the currently configured number of decimal places for percentage fields _(Default: 2)_.
@@ -147,10 +147,10 @@ public static function setDecimalSeparator(string $decimalSeparator): void
 Sets the character to use as the decimal separator.
 
 ```php
-public static function setPercentDecimals(int $percentDecimals): void
+public static function getDecimalSeparator(): string
 ```
 
-Returns the currently configured character for the decimal separator. _(Default: .)
+Returns the currently configured character for the decimal separator. _(Default: .)_.
 
 ```php
 public static function setThousandsSeparator(string $thousandsSeparator): void
