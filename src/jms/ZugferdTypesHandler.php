@@ -9,13 +9,13 @@
 
 namespace horstoeko\zugferd\jms;
 
-use DOMText;
 use DOMElement;
+use DOMText;
+use horstoeko\zugferd\ZugferdSettings;
 use JMS\Serializer\Context;
 use JMS\Serializer\GraphNavigator;
-use horstoeko\zugferd\ZugferdSettings;
-use JMS\Serializer\XmlSerializationVisitor;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
+use JMS\Serializer\XmlSerializationVisitor;
 
 /**
  * Class representing a collection of serialization handlers for amount formatting and so on
@@ -152,7 +152,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
 
     /**
      * Serialize Anount type
-     * The amounts will be serialized with a precission of 2 digits
+     * The amounts will be serialized (by default) with a precission of 2 digits
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
@@ -165,7 +165,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getAmountDecimals(),
+                ZugferdSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), ZugferdSettings::getAmountDecimals()),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )
@@ -182,7 +182,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
 
     /**
      * Serialize quantity type
-     * The quantity will be serialized with a precission of 4 digits
+     * The quantity will be serialized (by default) with a precission of 2 digits
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
@@ -195,7 +195,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getQuantityDecimals(),
+                ZugferdSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), ZugferdSettings::getQuantityDecimals()),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )
@@ -212,7 +212,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
 
     /**
      * Serialize a percantage value
-     * The valze will be serialized with a precission of 2 digits
+     * The valze will be serialized (by default) with a precission of 2 digits
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
@@ -225,7 +225,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
         $node = $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
-                ZugferdSettings::getPercentDecimals(),
+                ZugferdSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), ZugferdSettings::getPercentDecimals()),
                 ZugferdSettings::getDecimalSeparator(),
                 ZugferdSettings::getThousandsSeparator()
             )
