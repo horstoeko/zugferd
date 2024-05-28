@@ -1263,17 +1263,17 @@ class ReaderExtendedTest extends TestCase
     public function testGetDocumentLogisticsServiceCharge(): void
     {
         $this->assertTrue(self::$document->firstDocumentLogisticsServiceCharge());
-        self::$document->getDocumentLogisticsServiceCharge($description, $appliedAmount, $taxTypeCodes, $taxCategpryCodes, $rateApplicablePercents);
+        self::$document->getDocumentLogisticsServiceCharge($description, $appliedAmount, $taxTypeCodes, $taxCategoryCodes, $rateApplicablePercents);
         $this->assertEquals("Transportkosten: Frachbetrag", $description);
         $this->assertEquals(15.00, $appliedAmount);
         $this->assertIsArray($taxTypeCodes);
         $this->assertEquals(1, count($taxTypeCodes));
         $this->assertArrayHasKey(0, $taxTypeCodes);
         $this->assertEquals("VAT", $taxTypeCodes[0]);
-        $this->assertIsArray($taxCategpryCodes);
-        $this->assertEquals(1, count($taxCategpryCodes));
-        $this->assertArrayHasKey(0, $taxCategpryCodes);
-        $this->assertEquals("S", $taxCategpryCodes[0]);
+        $this->assertIsArray($taxCategoryCodes);
+        $this->assertEquals(1, count($taxCategoryCodes));
+        $this->assertArrayHasKey(0, $taxCategoryCodes);
+        $this->assertEquals("S", $taxCategoryCodes[0]);
         $this->assertIsArray($rateApplicablePercents);
         $this->assertEquals(1, count($rateApplicablePercents));
         $this->assertArrayHasKey(0, $rateApplicablePercents);
