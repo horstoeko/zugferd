@@ -3155,7 +3155,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Amount of the service fee
      * @param  array|null  $taxTypeCodes
      * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param  array|null  $taxCategpryCodes
+     * @param  array|null  $taxCategoryCodes
      * Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
@@ -3186,7 +3186,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * value 20 is given for 20% (and not 0.2)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategpryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
+    public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategoryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
     {
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
         $serviceCharge = $serviceCharge[$this->documentLogisticServiceChargePointer];
@@ -3200,7 +3200,7 @@ class ZugferdDocumentReader extends ZugferdDocument
                 "typecode" => ["getTypeCode.value", ""],
             ]
         );
-        $taxCategpryCodes = $this->convertToArray(
+        $taxCategoryCodes = $this->convertToArray(
             $appliedTradeTax,
             [
                 "categorycode" => ["getCategoryCode.value", ""],

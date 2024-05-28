@@ -1049,11 +1049,11 @@ class ZugferdObjectHelper
      * @param  string|null $description
      * @param  float|null  $appliedAmount
      * @param  array|null  $taxTypeCodes
-     * @param  array|null  $taxCategpryCodes
+     * @param  array|null  $taxCategoryCodes
      * @param  array|null  $rateApplicablePercents
      * @return object|null
      */
-    public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategpryCodes = null, ?array $rateApplicablePercents = null): ?object
+    public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategoryCodes = null, ?array $rateApplicablePercents = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1064,9 +1064,9 @@ class ZugferdObjectHelper
         $this->tryCall($logCharge, "setDescription", $this->getTextType($description));
         $this->tryCall($logCharge, "setAppliedAmount", $this->getAmountType($appliedAmount));
 
-        if (!is_null($taxCategpryCodes) && !is_null($taxTypeCodes) && !is_null($rateApplicablePercents)) {
+        if (!is_null($taxCategoryCodes) && !is_null($taxTypeCodes) && !is_null($rateApplicablePercents)) {
             foreach ($rateApplicablePercents as $index => $rateApplicablePercent) {
-                $taxBreakdown = $this->getTradeTaxType($taxCategpryCodes[$index], $taxTypeCodes[$index], null, null, $rateApplicablePercent);
+                $taxBreakdown = $this->getTradeTaxType($taxCategoryCodes[$index], $taxTypeCodes[$index], null, null, $rateApplicablePercent);
                 $this->tryCall($logCharge, "addToAppliedTradeTax", $taxBreakdown);
             }
         }
