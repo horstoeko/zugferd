@@ -76,4 +76,4 @@ horstoeko\zugferd\entities\basic\ram\TradeAddressType:
             accessor:
                 getter: getCountrySubDivisionName
                 setter: setCountrySubDivisionName
-            type: horstoeko\zugferd\entities\en16931\udt\TextType
+            type: horstoeko\zugferd\entities\basic\udt\TextType

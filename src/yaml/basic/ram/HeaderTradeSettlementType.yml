@@ -32,7 +32,7 @@ horstoeko\zugferd\entities\basic\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getTaxCurrencyCode
                 setter: setTaxCurrencyCode
-            type: horstoeko\zugferd\entities\en16931\qdt\CurrencyCodeType 
+            type: horstoeko\zugferd\entities\basic\qdt\CurrencyCodeType 
         invoiceCurrencyCode:
             expose: true
             access_type: public_method
