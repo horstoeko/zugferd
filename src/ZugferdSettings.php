@@ -76,11 +76,7 @@ class ZugferdSettings
      *
      * @var array
      */
-    protected static $specialDecimalPlacesMaps = [
-        //Examples:
-        //'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount' => 2,
-        //'/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount' => 2,
-    ];
+    protected static $specialDecimalPlacesMaps = [];
 
     /**
      * Get the number of decimals to use for amount values
@@ -273,6 +269,18 @@ class ZugferdSettings
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
     {
         static::$specialDecimalPlacesMaps[$nodePath] = $defaultDecimalPlaces;
+    }
+
+    /**
+     * Set the number of decimals to use for unit single amount (unit prices) values
+     *
+     * @param  integer $amountDecimals
+     * @return void
+     */
+    public static function setUnitAmountDecimals(int $amountDecimals): void
+    {
+        ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
+        ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
     }
 
     /**
