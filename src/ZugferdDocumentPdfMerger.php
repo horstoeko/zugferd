@@ -69,7 +69,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
         if ($this->xmlDataIsFile()) {
             $xmlContent = file_get_contents($this->xmlDataOrFilename);
             if ($xmlContent === false) {
-                throw new ZugferdFileNotReadableException('Could read XML file...');
+                throw new ZugferdFileNotReadableException('Could not read XML file');
             }
         } else {
             $xmlContent = $this->xmlDataOrFilename;
