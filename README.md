@@ -101,67 +101,7 @@ For detailed eplanation you may have a look in the [examples](https://github.com
 
 ### Configuration
 
-By means of the `ZugferdSettings` class it is possible to control various options for XML and PDF generation:
-
-```php
-public static function getAmountDecimals(): int
-```
-
-Returns the currently configured number of decimal places for amount fields _(Default: 2)_.
-
-```php
-public static function setAmountDecimals(int $amountDecimals): void
-```
-
-Set the number of decimal places for amount fields.
-
-```php
-public static function getQuantityDecimals(): int
-```
-
-Returns the currently configured number of decimal places for quantity fields _(Default: 2)_.
-
-```php
-public static function setQuantityDecimals(int $quantityDecimals): void
-```
-
-Set the number of decimal places for quantity fields.
-
-```php
-public static function getPercentDecimals(): int
-```
-
-Returns the currently configured number of decimal places for percentage fields _(Default: 2)_.
-
-```php
-public static function setPercentDecimals(int $percentDecimals): void
-```
-
-Set the number of decimal places for percentage fields.
-
-```php
-public static function getDecimalSeparator(): string
-```
-
-Returns the currently configured character for the decimal separator. _(Default: .)
-
-```php
-public static function setDecimalSeparator(string $decimalSeparator): void
-```
-
-Set the character to use as the decimal separator.
-
-```php
-public static function getThousandsSeparator(): string
-```
-
-Returns the currently configured character for the thousands separator. _(Default: Empty)_
-
-```php
-public static function setThousandsSeparator(string $thousandsSeparator): void
-```
-
-Set the character to use as the thousands separator.
+This library can be configured in various ways. For more information please visit our [Wiki](https://github.com/horstoeko/zugferd/wiki/Configuration).
 
 ### Reading a xml file
 

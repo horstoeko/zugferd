@@ -72,6 +72,13 @@ class ZugferdSettings
     protected static $xmpMetaDataFilename = "facturx_extension_schema.xmp";
 
     /**
+     * Node paths which present a unit amount. Used for special amount formatting. See unitAmountDecimals property.
+     *
+     * @var array
+     */
+    protected static $specialDecimalPlacesMaps = [];
+
+    /**
      * Get the number of decimals to use for amount values
      *
      * @return integer
@@ -216,6 +223,64 @@ class ZugferdSettings
     public static function setXmpMetaDataFilename(string $xmpMetaDataFilename): void
     {
         static::$xmpMetaDataFilename = $xmpMetaDataFilename;
+    }
+
+    /**
+     * Returns a list of node paths which have a special number of decimal places
+     *
+     * @return array
+     */
+    public static function getSpecialDecimalPlacesMaps(): array
+    {
+        return static::$specialDecimalPlacesMaps;
+    }
+
+    /**
+     * Get a specific map for node paths with a special number of decimal places. If not map
+     * is found then the default value is returns
+     *
+     * @param string $nodePath
+     * @param integer $defaultDecimalPlaces
+     * @return integer
+     */
+    public static function getSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): int
+    {
+        return static::$specialDecimalPlacesMaps[$nodePath] ?? $defaultDecimalPlaces;
+    }
+
+    /**
+     * Update the map of node paths which have a special number of decimal places
+     *
+     * @param array $specialDecimalPlacesMaps
+     * @return void
+     */
+    public static function setSpecialDecimalPlacesMaps(array $specialDecimalPlacesMaps): void
+    {
+        static::$specialDecimalPlacesMaps = $specialDecimalPlacesMaps;
+    }
+
+    /**
+     * Add a new map for a node path with a special number of decimal places
+     *
+     * @param string $nodePath
+     * @param integer $defaultDecimalPlaces
+     * @return void
+     */
+    public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
+    {
+        static::$specialDecimalPlacesMaps[$nodePath] = $defaultDecimalPlaces;
+    }
+
+    /**
+     * Set the number of decimals to use for unit single amount (unit prices) values
+     *
+     * @param  integer $amountDecimals
+     * @return void
+     */
+    public static function setUnitAmountDecimals(int $amountDecimals): void
+    {
+        ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
+        ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
     }
 
     /**
