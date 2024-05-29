@@ -643,7 +643,7 @@ class ZugferdObjectHelper
         $this->tryCall($address, "setLineThree", $this->getTextType($linethree));
         $this->tryCall($address, "setPostcodeCode", $this->getCodeType($postcode));
         $this->tryCall($address, "setCityName", $this->getTextType($city));
-        $this->tryCall($address, "setCountryID", $this->getCodeType($country));
+        $this->tryCall($address, "setCountryID", $this->getCountryIDType($country));
         $this->tryCallAll($address, ["addToCountrySubDivisionName", "setCountrySubDivisionName"], $this->getTextType($subdivision));
 
         return $address;
