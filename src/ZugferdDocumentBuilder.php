@@ -480,8 +480,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype Type of tax number of the seller
-     * @param  string|null $taxregid   Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * @param  string|null $taxregtype
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxregid
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -661,9 +663,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * identification number, unless he uses a tax agent.
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the buyers
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the buyers or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
+     * Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -832,7 +835,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to tax representative party
      *
      * @param  string|null $taxregtype
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerTaxRepresentativeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -994,9 +999,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * identification number, unless he uses a tax agent.
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1153,9 +1158,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to Ship-To Trade party
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1317,9 +1322,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1487,9 +1492,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipFromTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1654,9 +1659,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoicerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1826,9 +1831,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -1992,9 +1997,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to payee trade party
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -3377,9 +3382,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * identification number, unless he uses a tax agent.
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -3539,9 +3544,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to Ship-To Trade party
      *
      * @param  string|null $taxregtype
-     * Type of tax number of the party
+     * Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid
-     * Tax number of the party or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
+     * Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
