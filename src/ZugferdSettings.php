@@ -245,6 +245,7 @@ class ZugferdSettings
      */
     public static function getSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): int
     {
+        $nodePath = preg_replace('@\[\d+\]@', '', $nodePath);
         return static::$specialDecimalPlacesMaps[$nodePath] ?? $defaultDecimalPlaces;
     }
 
@@ -268,6 +269,7 @@ class ZugferdSettings
      */
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
     {
+        $nodePath = preg_replace('@\[\d+\]@', '', $nodePath);
         static::$specialDecimalPlacesMaps[$nodePath] = $defaultDecimalPlaces;
     }
 
