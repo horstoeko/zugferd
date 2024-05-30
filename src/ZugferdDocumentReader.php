@@ -529,8 +529,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *    for tax, the buyer will withhold the tax amount and pay it on behalf of the seller
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the seller indexed by __FC__ for _Tax number of the seller_ and __VA__
-     * for _Sales tax identification number of the seller_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -713,8 +712,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *    enables the buyer to indicate his reporting status for tax purposes.
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the buyer indexed by __VA__ for _Sales tax identification number of the buyer_
-     * Only the code __VA__ is permitted as an identification scheme
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentBuyerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -891,8 +889,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *    or a reference that enables the sellers tax agent to indicate his reporting status for tax purposes.
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the sellers tax agent indexed by __VA__ for _Sales tax identification
-     * number of the tax agent. _ Only the code __VA__ is permitted as an identification scheme
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentSellerTaxRepresentativeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -1070,8 +1067,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get detailed information on the tax number of the product end user
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the product end user indexed by __FC__ for _Tax number of the product end user_ and __VA__
-     * for _Sales tax identification number of the product end user_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentProductEndUserTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -1247,8 +1243,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get detailed information on tax details of the goods recipient
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipToTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -1433,8 +1428,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentUltimateShipToTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -1626,8 +1620,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentShipFromTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -1817,8 +1810,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentInvoicerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -2008,8 +2000,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *  - This is only available in the EXTENDED profile
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentInvoiceeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
@@ -2192,8 +2183,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get detailed information on tax details of the payee party
      *
      * @param  array|null $taxreg
-     * Array of sales tax identification numbers of the party indexed by __FC__ for _Tax number of the party_ and __VA__
-     * for _Sales tax identification number of the party_
+     * Array of tax numbers indexed by __FC__ for _Tax number_ and __VA__ for _Sales tax identification number_
      * @return ZugferdDocumentReader
      */
     public function getDocumentPayeeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
