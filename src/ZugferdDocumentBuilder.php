@@ -172,13 +172,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set main information about this document
      *
-     * @param string         $documentno                  __BT1, From MINIMUM__ The document no issued by the seller
-     * @param string         $documenttypecode            __BT3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
-     * @param DateTime       $documentdate                __BT2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
-     * @param string         $invoiceCurrency             __BT5, From MINIMUM__ Code for the invoice currency. The code for the invoice currency
-     * @param string|null    $documentname                Document Type. The documenttype (free text)
-     * @param string|null    $documentlanguage            Language indicator. The language code in which the document was written
-     * @param  DateTime|null $effectiveSpecifiedPeriod    The contractual due date of the invoice
+     * @param string        $documentno
+     * The document no issued by the seller
+     * @param string        $documenttypecode
+     * The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
+     * @param DateTime      $documentdate             Date of invoice
+     *                                                The date when
+     *                                                the document
+     *                                                was issued by
+     *                                                the seller
+
+     * @param string        $invoiceCurrency          Code for the invoice currency
+     *                                                The code for the invoice
+     *                                                currency
+
+     * @param string|null   $documentname             Document Type
+     *                                                The document
+     *                                                type (free
+     *                                                text)
+
+     * @param string|null   $documentlanguage         Language indicator
+     *                                                The language code
+     *                                                in which the
+     *                                                document was
+     *                                                written
+
+     * @param  DateTime|null $effectiveSpecifiedPeriod
+     * The contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInformation(string $documentno, string $documenttypecode, DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
@@ -198,8 +218,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set grouping of business process information
      *
-     * @param string $id    __BT23, From MINIMUM__ Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to process the invoice in an appropriate manner.
-     * __Note__: These data make it possible to define the purpose of the settlement (invoice of the authorised person, contractual partner, subcontractor, settlement document for a building contract etc.).
+     * @param string $id
+     * Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to
+     * process the invoice in an appropriate manner.
+     * __Note__: These data make it possible to define the purpose of the settlement (invoice of the authorised person,
+     * contractual partner, subcontractor, settlement document for a building contract etc.).
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBusinessProcess(string $id): ZugferdDocumentBuilder
