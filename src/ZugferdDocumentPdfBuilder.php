@@ -58,7 +58,6 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
         return new self($documentBuilder, $pdfContent);
     }
 
-
     /**
      * Constructor
      *
