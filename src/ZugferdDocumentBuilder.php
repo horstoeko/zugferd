@@ -991,7 +991,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $description __BT, From __ Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentShipTo(?string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setShipToTradeParty", $shipToTradeParty);
