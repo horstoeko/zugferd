@@ -1031,4 +1031,50 @@ class ZugferdSchemeIdentifiers
      * Leitweg-ID
      */
     const ISO_6523_0204 = '0204';
+
+    /**
+     * CODDEST
+     */
+    const ISO_6523_0205 = '0205';
+
+    /**
+     * Registre du Commerce et de l’Industrie : RCI
+     */ 
+    const ISO_6523_0206 = '0206';
+
+    /**
+     * PiLog Ontology Codification Identifier (POCI)
+     */
+    const ISO_6523_0207 = '0207';
+
+    /**
+     * Numero d'entreprise / ondernemingsnummer / Unternehmensnummer
+     */
+    const ISO_6523_0208 = '0208';
+
+    /**
+     * GS1 identification keys
+     */
+    const ISO_6523_0209 = '0209';
+
+    /**
+     * CODICE FISCALE
+     */
+    const ISO_6523_0210 = '0210';
+
+    /**
+     * PARTITA IVA
+     */
+    const ISO_6523_0211 = '0211';
+
+    /**
+     * Finnish Organization Identifier
+     */
+    const ISO_6523_0212 = '0212';
+    
+    /**
+     * Finnish Organization Value Add Tax Identifier
+     */
+    const ISO_6523_0213 = '0213';
+    
 }
