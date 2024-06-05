@@ -349,9 +349,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a note to the docuzment
      *
-     * @param  string      $content     __BT, From __ Free text on the invoice
+     * @param  string      $content     __BT22, From BASIC WL__ Free text on the invoice
      * @param  string|null $contentCode __BT, From __ Free text at document level
-     * @param  string|null $subjectCode __BT, From __ Code to qualify the free text for the invoice
+     * @param  string|null $subjectCode __BT21, From BASIC WL__ Code to qualify the free text for the invoice
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
@@ -421,7 +421,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *   assigned to a seller by a global registration organization
      *
      * @param  string|null $globalID     __BT29, From BASIC WL__ The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
-     * @param  string|null $globalIDType __BT, From __ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalIDType __BT29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -441,7 +441,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype __BT, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxregtype __BT31-0/BT32-0, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid   __BT31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
@@ -477,7 +477,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set Organization details
      *
      * @param  string|null $legalorgid   __BT30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
-     * @param  string|null $legalorgtype __BT, From __ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalorgtype __BT30-1, From __ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param  string|null $legalorgname __BT28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return ZugferdDocumentBuilder
      */
@@ -529,7 +529,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Sellers electronic communication information
      *
-     * @param  string|null $uriScheme __BT, From __ 
+     * @param  string|null $uriScheme __BT34-1, From BASIC WL__ 
      * @param  string|null $uri       __BT34, From BASIC WL__ 
      * @return ZugferdDocumentBuilder
      */
@@ -545,7 +545,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information about the buyer (service recipient)
      *
      * @param  string      $name        __BT44, From MINIMUM__ The full name of the buyer
-     * @param  string|null $id          __BT, From __ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param  string|null $id          __BT46, From __ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @param  string|null $description __BT, From __  Further legal information about the buyer
      * @return ZugferdDocumentBuilder
      */
@@ -559,8 +559,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the buyer
      *
-     * @param  string|null $globalID     __BT46, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param  string|null $globalIDType __CodeListe:ISO 6523__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT46/BT46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
+     * @param  string|null $globalIDType __BT46-1__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -580,7 +580,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * buyers. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype __BT, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxregtype __BT48-0, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid   __BT48, From BASIC WL__ Tax number of the seller or sales tax identification number of the seller. Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
@@ -616,7 +616,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set legal organisation of the buyer party
      *
      * @param  string|null $legalorgid   __BT47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param  string|null $legalorgtype __BT, From __ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalorgtype __BT47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param  string|null $legalorgname __BT45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
@@ -716,7 +716,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to tax representative party
      *
-     * @param  string|null $taxregtype __BT, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxregtype __BT63-0, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid   __BT63, From BASIC WL__ Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
@@ -2302,9 +2302,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a VAT breakdown (at document level)
      *
-     * @param  string        $categoryCode
-     * Coded description of a sales tax category
-     *
+     * @param  string        $categoryCode               __BT118, From BASIC WL__ Coded description of a sales tax category
      * The following entries from UNTDID 5305 are used (details in brackets):
      *  - Standard rate (sales tax is due according to the normal procedure)
      *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
@@ -2326,59 +2324,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param  string        $typeCode
-     * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param  float         $basisAmount
-     * Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param  float         $calculatedAmount
-     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
-     * the amount to be taxed according to the sales tax category by the sales tax rate applicable
-     * for the sales tax category concerned
-     * @param  float|null    $rateApplicablePercent
-     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
-     * question. Note: The code of the sales tax category and the category-specific sales tax rate
-     * must correspond to one another. The value to be given is the percentage. For example, the
-     * value 20 is given for 20% (and not 0.2)
-     * @param  string|null   $exemptionReason
-     * Reason for tax exemption (free text)
-     * @param  string|null   $exemptionReasonCode
-     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
-     * and maintained by the Connecting Europe Facility.
-     * @param  float|null    $lineTotalBasisAmount
-     * Tax rate goods amount
-     * @param  float|null    $allowanceChargeBasisAmount
-     * Total amount of surcharges and deductions of the tax rate at document level
-     * @param  DateTime|null $taxPointDate
-     * Specification of a date, in accordance with the sales tax guideline, on which the sales tax
-     * for the seller and for the buyer becomes relevant for accounting, insofar as this date can be
-     * determined and differs from the invoice date
-     * Note: The tax collection date for VAT purposes is usually the date the goods were delivered or
-     * the service was completed (the base tax date). There are a few variations. For further information,
-     * please refer to Article 226 (7) of Council Directive 2006/112 / EC. This element is required
-     * if the date set for the sales tax return differs from the invoice date. Both the buyer and the
-     * seller should use the delivery date for VAT returns, if provided by the seller.
-     * This is not used in Germany. Instead, the delivery and service date must be specified.
-     * @param  string|null   $dueDateTypeCode
-     * The code for the date on which sales tax becomes relevant for the seller and the buyer.
+     * @param  string        $typeCode                   __BT118-0, From BASIC WL__ Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param  float         $basisAmount                __BT116, From BASIC WL__ Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
+     * @param  float         $calculatedAmount           __BT117, From BASIC WL__ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
+     * @param  float|null    $rateApplicablePercent      __BT119, From BASIC WL__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  string|null   $exemptionReason            __BT120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param  string|null   $exemptionReasonCode        __BT121, From BASIC WL__ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
+     * @param  float|null    $lineTotalBasisAmount       __BT, From __ Tax rate goods amount
+     * @param  float|null    $allowanceChargeBasisAmount __BT, From __ Total amount of surcharges and deductions of the tax rate at document level
+     * @param  DateTime|null $taxPointDate               __BT, From __ Specification of a date, in accordance with the sales tax guideline, on which the sales tax for the seller and for the buyer becomes relevant for accounting, insofar as this date can be determined and differs from the invoice date
+     * Note: The tax collection date for VAT purposes is usually the date the goods were delivered or the service was completed (the base tax date). There are a few variations. For further information, please refer to Article 226 (7) of Council Directive 2006/112 / EC. This element is required if the date set for the sales tax return differs from the invoice date. Both the buyer and the seller should use the delivery date for VAT returns, if provided by the seller. This is not used in Germany. Instead, the delivery and service date must be specified.
+     * @param  string|null   $dueDateTypeCode            __BT8, From BASIC WL__ The code for the date on which sales tax becomes relevant for the seller and the buyer.
      * The code must distinguish between the following entries from UNTDID 2005:
      *  - date of issue of the invoice document
      *  - actual delivery date
      *  - Date of payment.
-     *
      * The VAT Collection Date Code is used when the VAT Collection Date is not known for VAT purposes
      * when the invoice is issued.
-     *
      * The semantic values cited in the standard, which are represented by the values 3, 35, 432 in
      * UNTDID2005, are mapped to the following values of UNTDID2475, which is the relevant code list
      * supported by CII 16B:
      *  - 5: date of issue of the invoice
      *  - 29: Delivery date, current status
      *  - 72: Paid to date
-     *
      * In Germany, the date of delivery and service is decisive.
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
+    public function addDocumentTax(string $categoryCode, string $typeCode = 'VAT', float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
     {
         $tax = $this->getObjectHelper()->getTradeTaxType($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToApplicableTradeTax", $tax);
@@ -2451,14 +2423,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add information about surcharges and charges applicable to the bill as a whole, Deductions,
      * such as for withheld taxes may also be specified in this group
      *
-     * @param  float       $actualAmount
-     * Amount of the surcharge or discount at document level
-     * @param  boolean     $isCharge
-     * Switch that indicates whether the following data refer to an surcharge or a discount, true means that
-     * this an charge
-     * @param  string      $taxCategoryCode
-     * A coded indication of which sales tax category applies to the surcharge or deduction at document level
-     *
+     * @param  float       $actualAmount          __BT92/BT99, From BASIC WL__ Amount of the surcharge or discount at document level
+     * @param  boolean     $isCharge              __BT20-1/BT21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  string      $taxCategoryCode       __BT95/BT102, From BASIC WL__ A coded indication of which sales tax category applies to the surcharge or deduction at document level
      * The following entries from UNTDID 5305 are used (details in brackets):
      *  - Standard rate (sales tax is due according to the normal procedure)
      *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
@@ -2469,7 +2436,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
      *  - Canary Islands general indirect tax (IGIC tax applies)
      *  - IPSI (tax for Ceuta / Melilla) applies.
-     *
      * The codes for the VAT category are as follows:
      *  - S = sales tax is due at the normal rate
      *  - Z = goods to be taxed according to the zero rate
@@ -2480,32 +2446,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta/Melilla)
-     * @param  string      $taxTypeCode
-     * Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
-     * @param  float       $rateApplicablePercent
-     * VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category
-     * and the category-specific sales tax rate must correspond to one another. The value to be given is
-     * the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @param  float|null  $sequence
-     * Calculation order
-     * @param  float|null  $calculationPercent
-     * Percentage surcharge or discount at document level
-     * @param  float|null  $basisAmount
-     * The base amount that may be used in conjunction with the percentage of the surcharge or discount
-     * at document level to calculate the amount of the discount at document level
-     * @param  float|null  $basisQuantity
-     * Basismenge des Rabatts
-     * @param  string|null $basisQuantityUnitCode
-     * Einheit der Preisbasismenge
+     * @param  string      $taxTypeCode           __BT95-0/BT102-0, From BASIC WL__ Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
+     * @param  float       $rateApplicablePercent __BT96/BT103, From BASIC WL__ VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  float|null  $sequence              __BT, From __ Calculation order
+     * @param  float|null  $calculationPercent    __BT94/BT101, From BASIC WL__ Percentage surcharge or discount at document level
+     * @param  float|null  $basisAmount           __BT93/BT100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount at document level to calculate the amount of the discount at document level
+     * @param  float|null  $basisQuantity         __BT, From __ Basismenge des Rabatts
+     * @param  string|null $basisQuantityUnitCode __BT, From __ Einheit der Preisbasismenge
      *  - Codeliste: Rec. N°20 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
      *    beide Listen kombiniert anzuwenden sind.
      *  - Codeliste: Rec. N°21 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
      *    beide Listen kombiniert anzuwenden sind.
-     * @param  string|null $reasonCode
-     * The reason given as a code for the surcharge or discount at document level. Note: Use entries from
-     * the UNTDID 5189 code list. The code of the reason for the surcharge or discount at document level
-     * and the reason for the surcharge or discount at document level must correspond to each other
-     *
+     * @param  string|null $reasonCode            __BT98/BT105, From BASIC WL__ The reason given as a code for the surcharge or discount at document level. Note: Use entries from the UNTDID 5189 code list. The code of the reason for the surcharge or discount at document level and the reason for the surcharge or discount at document level must correspond to each other
      * Code list: UNTDID 7161 Complete list, code list: UNTDID 5189 Restricted
      * Include PEPPOL subset:
      *  - 41 - Bonus for works ahead of schedule
@@ -2527,11 +2479,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - 103 - Temporary
      *  - 104 - Standard
      *  - 105 - Yearly turnover
-     * @param  string|null $reason
-     * The reason given in text form for the surcharge or discount at document level
+     * @param  string|null $reason                __BT97/BT104, From BASIC WL__ The reason given in text form for the surcharge or discount at document level
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode, string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    public function addDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode = 'VAT', string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $allowanceCharge = $this->getObjectHelper()->getTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
@@ -2588,16 +2539,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a payment term
      *
-     * @param  string|null   $description
-     * A text description of the payment terms that apply to the payment amount due (including a
-     * description of possible penalties). Note: This element can contain multiple lines and
-     * multiple conditions.
-     * @param  DateTime|null $dueDate
-     * The date by which payment is due Note: The payment due date reflects the net payment due
-     * date. In the case of partial payments, this indicates the first due date of a net payment.
-     * The corresponding description of more complex payment terms can be given in BT-20.
-     * @param  string|null   $directDebitMandateID
-     * Unique identifier assigned by the payee to reference the direct debit authorization.
+     * @param  string|null   $description          __BT20, From _BASIC WL__ A text description of the payment terms that apply to the payment amount due (including a description of possible penalties). Note: This element can contain multiple lines and multiple conditions.
+     * @param  DateTime|null $dueDate              __BT9, From BASIC WL__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
+     * @param  string|null   $directDebitMandateID __BT89, From BASIC WL__ Unique identifier assigned by the payee to reference the direct debit authorization.
      * __Note:__ Used to inform the buyer in advance about a SEPA direct debit. __Synonym:__ mandate reference for SEPA
      * @return ZugferdDocumentBuilder
      */
@@ -2637,8 +2581,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add an AccountingAccount
      * Detailinformationen zur Buchungsreferenz
      *
-     * @param  string      $id
-     * @param  string|null $typeCode
+     * @param  string      $id       __BT19, From BASIC WL__
+     * @param  string|null $typeCode __BT, From __
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
@@ -2651,14 +2595,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Adds a new position (line) to document
      *
-     * @param  string      $lineid
-     * A unique identifier for the relevant item within the invoice (item number)
-     * @param  string|null $lineStatusCode
-     * Indicates whether the invoice item contains prices that must be taken into account when
-     * calculating the invoice amount, or whether it only contains information.
-     * The following code should be used: TYPE_LINE
-     * @param  string|null $lineStatusReasonCode
-     * Adds the type to specify whether the invoice line is:
+     * @param  string      $lineid               __BT126, From BASIC__ A unique identifier for the relevant item within the invoice (item number)
+     * @param  string|null $lineStatusCode       __BT, From BASIC__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount, or whether it only contains information. The following code should be used: TYPE_LINE
+     * @param  string|null $lineStatusReasonCode __BT, From BASIC__ Adds the type to specify whether the invoice line is:
      *  - detail (normal position)
      *  - Subtotal
      *  - Information only
@@ -2953,8 +2892,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  float       $amount                __BT148, From BASIC__ The unit price excluding sales tax before deduction of the discount on the item price.
      * Note: If the price is shown according to the net calculation, the price must also be shown according to the gross calculation.
-     * @param  float|null  $basisQuantity         __BT, From __ The number of item units for which the price applies (price base quantity)
-     * @param  string|null $basisQuantityUnitCode __BT, From __ The unit code of the number of item units for which the price applies (price base quantity)
+     * @param  float|null  $basisQuantity         __BT149-1, From BASIC__ The number of item units for which the price applies (price base quantity)
+     * @param  string|null $basisQuantityUnitCode __BT150-1, From BASIC__ The unit code of the number of item units for which the price applies (price base quantity)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionGrossPrice(float $amount, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null): ZugferdDocumentBuilder
@@ -2968,25 +2907,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on surcharges and discounts on item gross price
      *
-     * @param  float       $actualAmount
-     * Discount on the item price. The total discount subtracted from the gross price to calculate the
-     * net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
-     * @param  boolean     $isCharge
-     * Switch for surcharge/discount, if true then its an charge
-     * @param  float|null  $calculationPercent
-     * Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount)
-     * is transferred
-     * @param  float|null  $basisAmount
-     * Base amount of the discount/surcharge
-     * @param  string|null $reason
-     * Reason for surcharge/discount (free text)
-     * @param  string|null $taxTypeCode
-     * @param  string|null $taxCategoryCode
-     * @param  float|null  $rateApplicablePercent
-     * @param  float|null  $sequence
-     * @param  float|null  $basisQuantity
-     * @param  string|null $basisQuantityUnitCode
-     * @param  string|null $reasonCode
+     * @param  float       $actualAmount          __BT147, From BASIC__ Discount on the item price. The total discount subtracted from the gross price to calculate the net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
+     * @param  boolean     $isCharge              __BT147-02, From BASIC__ Switch for surcharge/discount, if true then its an charge
+     * @param  float|null  $calculationPercent    __BT, From BASIC__Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount) is transferred
+     * @param  float|null  $basisAmount           __BT, From BASIC__ Base amount of the discount/surcharge
+     * @param  string|null $reason                __BT, From BASIC__ Reason for surcharge/discount (free text)
+     * @param  string|null $taxTypeCode           __BT, From BASIC__
+     * @param  string|null $taxCategoryCode       __BT, From BASIC__
+     * @param  float|null  $rateApplicablePercent __BT, From BASIC__
+     * @param  float|null  $sequence              __BT, From BASIC__
+     * @param  float|null  $basisQuantity         __BT, From BASIC__
+     * @param  string|null $basisQuantityUnitCode __BT, From BASIC__
+     * @param  string|null $reasonCode            __BT, From BASIC__
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionGrossPriceAllowanceCharge(float $actualAmount, bool $isCharge, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reason = null, ?string $taxTypeCode = null, ?string $taxCategoryCode = null, ?float $rateApplicablePercent = null, ?float $sequence = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null): ZugferdDocumentBuilder
@@ -3017,8 +2949,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Tax included for B2C on position level
      *
-     * @param  string      $categoryCode
-     * Coded description of a sales tax category
+     * @param  string      $categoryCode          __BT, From __ Coded description of a sales tax category
      *
      * The following entries from UNTDID 5305 are used (details in brackets):
      *  - Standard rate (sales tax is due according to the normal procedure)
@@ -3041,22 +2972,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param  string      $typeCode
-     * Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param  float       $rateApplicablePercent
-     * The sales tax rate, expressed as the percentage applicable to the sales tax category in
-     * question. Note: The code of the sales tax category and the category-specific sales tax rate
-     * must correspond to one another. The value to be given is the percentage. For example, the
-     * value 20 is given for 20% (and not 0.2)
-     * @param  float       $calculatedAmount
-     * The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying
-     * the amount to be taxed according to the sales tax category by the sales tax rate applicable
-     * for the sales tax category concerned
-     * @param  string|null $exemptionReason
-     * Reason for tax exemption (free text)
-     * @param  string|null $exemptionReasonCode
-     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
-     * and maintained by the Connecting Europe Facility.
+     * @param  string      $typeCode              __BT, From __ Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param  float       $rateApplicablePercent __BT, From __ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  float       $calculatedAmount      __BT, From __ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
+     * @param  string|null $exemptionReason       __BT, From __ Reason for tax exemption (free text)
+     * @param  string|null $exemptionReasonCode   __BT, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionNetPriceTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, float $calculatedAmount, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
@@ -3488,9 +3408,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add information about the sales tax that applies to the goods and services invoiced
      * in the relevant invoice line
      *
-     * @param  string      $categoryCode
-     * Coded description of a sales tax category
-     *
+     * @param  string      $categoryCode          __BT151, From BASIC__ Coded description of a sales tax category
      * The following entries from UNTDID 5305 are used (details in brackets):
      *  - Standard rate (sales tax is due according to the normal procedure)
      *  - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
@@ -3512,24 +3430,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - O = Outside the tax scope
      *  - L = IGIC (Canary Islands)
      *  - M = IPSI (Ceuta / Melilla)
-     * @param  string      $typeCode
-     * In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be
-     * specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for
-     * the tax type must then be taken from the code list UNTDID 5153.
-     * @param  float       $rateApplicablePercent
-     * The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales
-     * tax category and the category-specific sales tax rate  must correspond to one another. The value to be
-     * given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @param  float|null  $calculatedAmount
-     * Tax amount. Information only for taxes that are not VAT.
-     * @param  string|null $exemptionReason
-     * Reason for tax exemption (free text)
-     * @param  string|null $exemptionReasonCode
-     * Reason given in code form for the exemption of the amount from VAT. Note: Code list issued
-     * and maintained by the Connecting Europe Facility.
+     * @param  string      $typeCode              __BT151-0, From BASIC__ In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for the tax type must then be taken from the code list UNTDID 5153.
+     * @param  float       $rateApplicablePercent __BT152, From BASIC__ The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales tax category and the category-specific sales tax rate  must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  float|null  $calculatedAmount      __BT, From __ Tax amount. Information only for taxes that are not VAT.
+     * @param  string|null $exemptionReason       __BT, From __ Reason for tax exemption (free text)
+     * @param  string|null $exemptionReasonCode   __BT, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionTax(string $categoryCode, string $typeCode, float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
+    public function addDocumentPositionTax(string $categoryCode, string $typeCode = "VAT", ?float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $tax = $this->getObjectHelper()->getTradeTaxType($categoryCode, $typeCode, null, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, null, null, null, null);
@@ -3556,20 +3464,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add surcharges and discounts on position level
      *
-     * @param  float       $actualAmount
-     * The surcharge/discount amount excluding sales tax
-     * @param  boolean     $isCharge
-     * Switch that indicates whether the following data refer to an allowance or a discount,
+     * @param  float       $actualAmount       __BT136/BT141, From BASIC__ The surcharge/discount amount excluding sales tax
+     * @param  boolean     $isCharge           __BT27-1/BT28-1, From BASIC__ (true for BT/ and false for /BT) Switch that indicates whether the following data refer to an allowance or a discount,
      * true means that
-     * @param  float|null  $calculationPercent
-     * The percentage that may be used in conjunction with the base invoice line discount
-     * amount to calculate the invoice line discount amount
-     * @param  float|null  $basisAmount
-     * The base amount that may be used in conjunction with the invoice line discount percentage
-     * to calculate the invoice line discount amount
-     * @param  string|null $reasonCode
-     * The reason given as a code for the invoice line discount
-     *
+     * @param  float|null  $calculationPercent __BT, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
+     * @param  float|null  $basisAmount        __BT, From BASIC__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
+     * @param  string|null $reasonCode         __BT140/BT145, From BASIC__ The reason given as a code for the invoice line discount
      * __Notes__
      *  - Use entries from the UNTDID 5189 code list (discounts) or the UNTDID 7161 code list
      *    (surcharges). The invoice line discount reason code and the invoice line discount reason must
@@ -3608,9 +3508,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - 105 - Yearly turnover
      *
      * Codelists: UNTDID 7161 (Complete list), UNTDID 5189 (Restricted)
-     * @param  string|null $reason
-     * The reason given in text form for the invoice item discount/surcharge
-     *
+     * @param  string|null $reason             __BT139/BT144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
      * __Notes__
      *  - The invoice line discount reason code (BT-140) and the invoice line discount reason
      *    (BT-139) must show the same allowance type.
