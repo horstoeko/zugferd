@@ -297,8 +297,7 @@ class ZugferdInvoiceType
      * Buchungshilfe - KEINE Rechnung
      *
      * Für die Profile BASIC WL und MINIMUM darf ausschließlich dieser
-     * Code 751 "Buchungshilfe - KEINE Rechnung" verwendet werden,
-     * da diese
+     * Code 751 "Buchungshilfe - KEINE Rechnung" verwendet werden, da diese
      * Profile in DE steuerrechtlich keine Rechnungen darstellen!
      *
      * For the BASIC WL and MINIMUM profiles only this code 751 "Booking
@@ -318,4 +317,12 @@ class ZugferdInvoiceType
      * is an Invoice
      */
     public const CUSTOMSINVOICE = "935";
+
+    /**
+     * Corrected invoice (1380)
+     * is an Invoice
+     *
+     * Old ZUGFeRD variant, use Corrected Invoice (384) instead
+     */
+    public const CORRECTIONOLD = "1380";
 }
