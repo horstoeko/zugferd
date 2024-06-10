@@ -291,10 +291,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * is calculated by tax amounts
      *
      * @param  string $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
-     * @param  float  $foreignTaxAmount    __BT-, From __ Tax total amount in the foreign currency
+     * @param  float  $foreignTaxAmount    __BT-, From __ Required from EXTENDED Tax total amount in the foreign currency
      * @return ZugferdDocumentBuilder
      */
-    public function setForeignCurrency(string $foreignCurrencyCode, float $foreignTaxAmount): ZugferdDocumentBuilder
+    public function setForeignCurrency(string $foreignCurrencyCode, ?float $foreignTaxAmount): ZugferdDocumentBuilder
     {
         $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
 
@@ -2475,7 +2475,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $reason                __BT-97/BT-104, From BASIC WL__ The reason given in text form for the surcharge or discount at document level
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode = 'VAT', string $taxTypeCode, float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
+    public function addDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode = 'VAT', string $taxTypeCode, ?float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $allowanceCharge = $this->getObjectHelper()->getTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
@@ -2578,7 +2578,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $typeCode __BT-, From __
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
+    public function addDocumentReceivableSpecifiedTradeAccountingAccount(?string $id, ?string $typeCode): ZugferdDocumentBuilder
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
