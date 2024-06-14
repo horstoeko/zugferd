@@ -260,7 +260,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
      * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
      * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
-     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
+     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT--6 is not null $taxTotalAmount = BT--111. Total amount of the invoice sales tax, Total tax amount in the booking currency
      * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
      * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
      * @return ZugferdDocumentBuilder
@@ -445,7 +445,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $taxregid   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentSellerTaxRegistration(string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentSellerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
@@ -584,7 +584,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $taxregid   __BT-48, From BASIC WL__ Tax number of the seller or sales tax identification number of the seller. Tax number of the seller or sales tax identification number of the (FC = Tax number, VA = Sales tax number)
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentBuyerTaxRegistration(string $taxregtype = null, string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
@@ -620,7 +620,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $legalorgname __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerLegalOrganisation(string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
@@ -672,7 +672,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $uri       __BT-49, From BASIC WL__
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerCommunication(string $uriScheme, string $uri): ZugferdDocumentBuilder
+    public function setDocumentBuyerCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $communication = $this->getObjectHelper()->getUniversalCommunicationType(null, $uri, $uriScheme);
@@ -1001,11 +1001,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the Ship-to Trade Party
      *
-     * @param  string|null $globalID     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
-     * @param  string|null $globalIDType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-71-0, From __ Global identifier of the goods recipient
+     * @param  string|null $globalIDType __BT-71-1, From __ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentShipToGlobalId(?string $globalID, ?string $globalIDType): ZugferdDocumentBuilder
+    public function addDocumentShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
@@ -1886,7 +1886,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $legalorgname __BT-, From __ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPayeeLegalOrganisation(string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentPayeeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
@@ -2097,7 +2097,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  DateTime|null $date __BT-72, From BASIC WL__ Actual delivery time
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSupplyChainEvent(DateTime $date): ZugferdDocumentBuilder
+    public function setDocumentSupplyChainEvent(?DateTime $date): ZugferdDocumentBuilder
     {
         $supplyChainevent = $this->getObjectHelper()->getSupplyChainEventType($date);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setActualDeliverySupplyChainEvent", $supplyChainevent);
@@ -2111,7 +2111,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  DateTime|null $issueddate       __BT-, From __ Shipping notification date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentDespatchAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentDespatchAdviceReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
         $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
@@ -2182,7 +2182,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $payeeBic         __BT-, From __ Seller's banking institution, An identifier for the payment service provider with whom the payment account is managed, such as the BIC or a national bank code, if required. No identification scheme is to be used.
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, string $buyerIban, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function addDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
         $cardId = substr($cardId ?? "", -4);
 
@@ -2578,7 +2578,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $typeCode __BT-, From __
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
+    public function addDocumentReceivableSpecifiedTradeAccountingAccount(?string $id, ?string $typeCode): ZugferdDocumentBuilder
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
@@ -2646,7 +2646,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Codelist:__ UNTDID 4451
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
+    public function setDocumentPositionNote(?string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
     {
         $linedoc = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getAssociatedDocumentLineDocument");
         $note = $this->getObjectHelper()->getNoteType($content, $contentCode, $subjectCode);
