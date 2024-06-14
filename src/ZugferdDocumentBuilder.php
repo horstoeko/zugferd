@@ -413,6 +413,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add an id to the document seller
+     *
+     * @param  string|null $id          __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSellerId(string $id): ZugferdDocumentBuilder
+    {
+        $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+        $this->getObjectHelper()->tryCall($sellerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+        return $this;
+    }
+
+    /**
      * Add a global id for the seller
      *
      * __Notes__
@@ -553,6 +566,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerTradeParty", $buyerTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add an id to the document buyer
+     *
+     * @param  string|null $id          __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentBuyerId(string $id): ZugferdDocumentBuilder
+    {
+        $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+        $this->getObjectHelper()->tryCall($buyerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
         return $this;
     }
 
