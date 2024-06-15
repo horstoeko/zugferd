@@ -738,6 +738,21 @@ class BuilderMinimumTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipTolId
+     */
+    public function testAddDocumentShipTolId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentShipTolId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:ID', 1);
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipToTaxRegistration
      */
     public function testAddDocumentShipToTaxRegistration(): void
@@ -839,6 +854,21 @@ class BuilderMinimumTest extends TestCase
         $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:Name');
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentUltimateShipToId
+     */
+    public function testAddDocumentUltimateShipToId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentUltimateShipToId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:UltimateShipToTradeParty/ram:ID', 1);
     }
 
     /**
@@ -958,6 +988,21 @@ class BuilderMinimumTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromId
+     */
+    public function testAddDocumentShipFromId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentShipFromId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipFromTradeParty/ram:ID', 1);
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentShipFromGlobalId
      */
     public function testAddDocumentShipFromGlobalId(): void
@@ -1071,6 +1116,21 @@ class BuilderMinimumTest extends TestCase
         $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:Name');
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoicerId
+     */
+    public function testAddDocumentInvoicerId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentBuyerId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoicerTradeParty/ram:ID', 1);
     }
 
     /**
@@ -1208,6 +1268,21 @@ class BuilderMinimumTest extends TestCase
     }
 
     /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeId
+     */
+    public function testAddDocumentInvoiceeId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentInvoiceeId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceeTradeParty/ram:ID', 1);
+    }
+
+    /**
      * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentInvoiceeTaxRegistration
      */
     public function testAddDocumentInvoiceeTaxRegistration(): void
@@ -1310,6 +1385,21 @@ class BuilderMinimumTest extends TestCase
         $this->disableRenderXmlContent();
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID');
         $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:Name');
+    }
+
+    /**
+     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::addDocumentPayeeId
+     */
+    public function testAddDocumentPayeeId(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', 1);
+
+        (self::$document)->addDocumentPayeeId('549911');
+
+        $this->disableRenderXmlContent();
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PayeeTradeParty/ram:ID', 1);
     }
 
     /**

@@ -1025,6 +1025,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add an id to the Ship-to Trade Party
+     *
+     * @param  string|null $id          __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentShipTolId(string $id): ZugferdDocumentBuilder
+    {
+        $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+        $this->getObjectHelper()->tryCall($shipToTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+        return $this;
+    }
+
+    /**
      * Add a global id for the Ship-to Trade Party
      *
      * @param  string|null $globalID     __BT-71-0, From __ Global identifier of the goods recipient
@@ -1162,6 +1175,24 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add an id to the different end recipient party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param  string|null $id
+     * Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be
+     * differentiated by using different identification schemes.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentUltimateShipToId(string $id): ZugferdDocumentBuilder
+    {
+        $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+        $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
         return $this;
     }
 
@@ -1336,6 +1367,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add an id to the deviating consignor party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param  string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentShipFromId(string $id): ZugferdDocumentBuilder
+    {
+        $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+        $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+        return $this;
+    }
+
+    /**
      * Add a global id for the deviating consignor party
      *
      * __Notes__
@@ -1499,6 +1549,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setInvoicerTradeParty", $invoicerTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add an id to the Invoicer Trade Party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param  string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoicerId(string $id): ZugferdDocumentBuilder
+    {
+        $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+        $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
         return $this;
     }
 
@@ -1675,6 +1744,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add an id to the Invoicee Trade Party
+     *
+     * __Notes__
+     *  - This is only available in the EXTENDED profile
+     *
+     * @param  string|null $id
+     * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
+     * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
+     * a previously exchanged identifier assigned by the buyer or seller.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoiceeId(string $id): ZugferdDocumentBuilder
+    {
+        $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+        $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+        return $this;
+    }
+
+    /**
      * Add a global id for the Invoicee Trade Party
      *
      * __Notes__
@@ -1837,6 +1925,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPayeeTradeParty", $payeeTradeParty);
+        return $this;
+    }
+
+    /**
+     * Add an id to the payee trade party
+     *
+     * @param  string|null $id          __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPayeeId(string $id): ZugferdDocumentBuilder
+    {
+        $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+        $this->getObjectHelper()->tryCall($payeeTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
         return $this;
     }
 
