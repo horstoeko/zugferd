@@ -41,7 +41,7 @@ jobs:
       - name: Build with Ant
         run: ant -noinput -buildfile build.ant.xml
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: github.event_name != 'pull_request'
         with:
             files: "./build/logs/junit.xml"
