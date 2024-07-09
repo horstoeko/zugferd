@@ -393,11 +393,13 @@ class ZugferdPdfWriter extends PdfFpdi
             } else {
                 $this->_put(sprintf('/AF %s 0 R', $this->filesIndex));
             }
+        }
 
-            if (0 != $this->descriptionIndex) {
-                $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
-            }
+        if (0 != $this->descriptionIndex) {
+            $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
+        }
 
+        if (!empty($this->files)) {
             $this->_put('/Names <<');
             $this->_put('/EmbeddedFiles ');
             $this->_put(sprintf('%s 0 R', $this->filesIndex));
