@@ -65,11 +65,11 @@ jobs:
         with:
           version: '9'
           php_version: ${{ matrix.phpversion }}
-          php_extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          configuration: './build/phpunit.xml'
+          php_extensions: xdebug
+          configuration: 'build/phpunit.xml'
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: github.event_name != 'pull_request'
         with:
-            files: './build/logs/junit.xml'
+            files: 'build/logs/junit.xml'
