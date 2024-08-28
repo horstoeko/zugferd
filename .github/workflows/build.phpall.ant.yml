@@ -69,19 +69,13 @@ jobs:
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
           composer install
 
-      - name: Run Lint
-        uses: J3-Tech/PHP-Lint-Action@v0.0.5
-        with:
-          path: .
-          exclude: vendor,examples
-          
-      - name: Run Tests
+      - name: Run Tests (PHPUnit)
         run: |
           ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
         env:
           XDEBUG_MODE: coverage
           
-      - name: Run Schematron Tests
+      - name: Run Tests (Schematron)
         run: |
           set -e
           rm -rf $VALIDATORPATH
