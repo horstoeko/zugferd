@@ -77,7 +77,7 @@ jobs:
           unzip build/validator/validator.zip -d build/validator
           unzip build/validator/validator-configuration.zip -d build/validator
           php -f examples/XRechnung3SimpleQuick.php
-          java -jar build/validator/validationtool-1.5.0-standalone.jar -f build/validator -s build/validator/scenarios.xml examples/factur-x.xml
+          java -jar build/validator/validationtool-1.5.0-standalone.jar -r build/validator -s build/validator/scenarios.xml examples/factur-x.xml
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
