@@ -61,12 +61,8 @@ jobs:
           composer install
 
       - name: Run Testsuite
-        uses: php-actions/phpunit@v3
-        with:
-          version: '9'
-          php_version: ${{ matrix.phpversion }}
-          php_extensions: xdebug
-          configuration: 'build/phpunit.xml'
+        run: |
+          ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
