@@ -63,6 +63,8 @@ jobs:
       - name: Run Testsuite
         run: |
           ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+        env:
+          XDEBUG_MODE: coverage
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
