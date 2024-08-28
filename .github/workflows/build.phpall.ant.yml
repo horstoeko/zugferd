@@ -16,6 +16,15 @@ on:
     branches:
       - 'master'
   workflow_dispatch:
+  
+env:
+  VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip
+  VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-07-31/validator-configuration-xrechnung_3.0.0_2023-07-31.zip
+  VALIDATORPATH: build/validator
+  VALIDATORZIPFILENAME: validator.zip
+  VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
+  VALIDATORJARFILENAME: validationtool-1.5.0-standalone.jar
+  VALIDATORSCENARIOFILENAME: scenarios.xml
 
 jobs:
   build:
@@ -68,16 +77,20 @@ jobs:
           
       - name: Run Schematron Tests
         run: |
-          rm -rf build/validator
-          rm -rf
+          set -e
+          rm -rf $VALIDATORPATH
+          mkdir $VALIDATORPATH
+          wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
+          wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
+          unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
+          unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
           rm -f examples/factur-x.xml
-          mkdir build/validator
-          wget https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip -O build/validator/validator.zip
-          wget https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-07-31/validator-configuration-xrechnung_3.0.0_2023-07-31.zip -O build/validator/validator-configuration.zip
-          unzip build/validator/validator.zip -d build/validator
-          unzip build/validator/validator-configuration.zip -d build/validator
           php -f examples/XRechnung3SimpleQuick.php
-          java -jar build/validator/validationtool-1.5.0-standalone.jar -r build/validator -s build/validator/scenarios.xml examples/factur-x.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
+          rm -f examples/factur-x.xml
+          php -f examples/En16931SimpleQuick.php
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
+          rm -rf build/validator
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
