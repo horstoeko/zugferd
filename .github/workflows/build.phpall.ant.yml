@@ -69,7 +69,13 @@ jobs:
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
           composer install
 
-      - name: Run Testsuite
+      - name: Run Lint
+        uses: J3-Tech/PHP-Lint-Action@v0.0.5
+        with:
+          path: .
+          exclude: vendor,examples
+          
+      - name: Run Tests
         run: |
           ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
         env:
