@@ -34,8 +34,12 @@ class ZugferdProfileResolver
      */
     public static function resolve(string $xmlContent): array
     {
-        $xmldocument = new SimpleXMLElement($xmlContent);
-        $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
+        try {
+            $xmldocument = new SimpleXMLElement($xmlContent);
+            $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
+        } catch (\Throwable $e) {
+            throw new ZugferdUnknownXmlContentException();
+        }
 
         if (!is_array($typeelement) || !isset($typeelement[0])) {
             throw new ZugferdUnknownXmlContentException();
@@ -81,7 +85,7 @@ class ZugferdProfileResolver
      *
      * @param integer $profileId
      * @return array
-    */
+     */
     public static function resolveById(int $profileId): array
     {
         if (!isset(ZugferdProfiles::PROFILEDEF[$profileId])) {
