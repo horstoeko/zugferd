@@ -3,20 +3,20 @@ name: CI (Matrix Build)
 on:
   push:
     tags-ignore:
-      - '**'
+      - "**"
     branches:
-      - '**'
+      - "**"
     paths-ignore:
-      - '**.md'
-      - '.github/**'
-      - 'examples/**'
+      - "**.md"
+      - ".github/**"
+      - "examples/**"
   pull_request:
     types:
       - opened
     branches:
-      - 'master'
+      - "master"
   workflow_dispatch:
-  
+
 env:
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip
   VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-07-31/validator-configuration-xrechnung_3.0.0_2023-07-31.zip
@@ -32,8 +32,8 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: ['ubuntu-22.04','ubuntu-24.04']
-        phpversion: ['7.3','7.4','8.0','8.1','8.2','8.3']
+        operating-system: ["ubuntu-22.04", "ubuntu-24.04"]
+        phpversion: ["7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
 
     steps:
       - name: Checkout Sources
@@ -42,15 +42,15 @@ jobs:
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-            php-version: ${{ matrix.phpversion }}
-            extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-            coverage: xdebug
+          php-version: ${{ matrix.phpversion }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          coverage: xdebug
 
       - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
-            java-version: '11'
-            distribution: 'adopt'
+          java-version: "11"
+          distribution: "adopt"
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -74,7 +74,7 @@ jobs:
           ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
         env:
           XDEBUG_MODE: coverage
-          
+
       - name: Run Tests (Schematron)
         run: |
           set -e
@@ -96,4 +96,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: github.event_name != 'pull_request'
         with:
-            files: 'build/logs/junit.xml'
+          files: "build/logs/junit.xml"
