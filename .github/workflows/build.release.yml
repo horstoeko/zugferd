@@ -4,18 +4,10 @@ on:
   push:
     tags:
       - "v*"
-    branches:
-      - "**"
     paths-ignore:
       - "**.md"
       - ".github/**"
       - "examples/**"
-  pull_request:
-    types:
-      - opened
-    branches:
-      - "master"
-  workflow_dispatch:
 
 env:
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip
@@ -31,11 +23,7 @@ env:
 jobs:
   build:
     permissions: write-all
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: ["ubuntu-22.04", "ubuntu-24.04"]
-        phpversion: ["7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
+    runs-on: "ubuntu-24.04"
 
     steps:
       - name: Checkout Sources
@@ -44,7 +32,7 @@ jobs:
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.phpversion }}
+          php-version: "8.3"
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           coverage: xdebug
 
@@ -62,9 +50,9 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.phpversion }}-composer-
+            ${{ runner.os }}-8.3-composer-
 
       - name: Install composer dependencies
         run: |
@@ -135,7 +123,7 @@ jobs:
           rm -rf build/validator
 
       - name: Documentation
-        if: startsWith(github.ref, 'refs/tags/v')
+        continue-on-error: true
         run: |
           wget $PHPDOCUMENTORURL -O $PHPDOCUMENTORFILENAME
           chmod +x $PHPDOCUMENTORFILENAME
@@ -145,7 +133,6 @@ jobs:
           rm -f $PHPDOCUMENTORFILENAME
 
       - name: Deploy
-        if: startsWith(github.ref, 'refs/tags/v')
         run: |
           zip -r build/dist/builddoc.zip build
           zip -r build/dist/doc.zip build/doc
@@ -159,10 +146,9 @@ jobs:
 
       - name: Make Release
         uses: "marvinpinto/action-automatic-releases@latest"
-        if: startsWith(github.ref, 'refs/tags/v')
         with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            prerelease: false
-            files: |
-                build/dist/doc.zip
-                build/dist/builddoc.zip
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            build/dist/doc.zip
+            build/dist/builddoc.zip
