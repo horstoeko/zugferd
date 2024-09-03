@@ -4,7 +4,7 @@
 [![PHP version](https://img.shields.io/packagist/php-v/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
 [![License](https://img.shields.io/packagist/l/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
 
-![CI (Matrix Build)](https://github.com/horstoeko/zugferd/actions/workflows/build.phpall.ant.yml/badge.svg)
+[![CI (Matrix Build)](https://github.com/horstoeko/zugferd/actions/workflows/build.phpall.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.phpall.ant.yml)
 
 <!--
 [![CI (Ant, PHP 7.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml)
