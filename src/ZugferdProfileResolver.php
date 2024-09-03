@@ -9,6 +9,7 @@
 
 namespace horstoeko\zugferd;
 
+use Throwable;
 use SimpleXMLElement;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
@@ -34,11 +35,18 @@ class ZugferdProfileResolver
      */
     public static function resolve(string $xmlContent): array
     {
+        $prevUseInternalErrors = \libxml_use_internal_errors(true);
+
         try {
             $xmldocument = new SimpleXMLElement($xmlContent);
             $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
-        } catch (\Throwable $e) {
+            if (libxml_get_last_error()) {
+                throw new ZugferdUnknownXmlContentException();
+            }
+        } catch (Throwable $e) {
             throw new ZugferdUnknownXmlContentException();
+        } finally {
+            libxml_use_internal_errors($prevUseInternalErrors);
         }
 
         if (!is_array($typeelement) || !isset($typeelement[0])) {
