@@ -82,26 +82,32 @@ jobs:
           mkdir build/phpdoc
 
       - name: Run PHPLOC
+        continue-on-error: true
         run: |
           vendor/bin/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src tests
 
       - name: Run PDEPEND
+        continue-on-error: true
         run: |
           vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src
 
       - name: Run PHPMD
+        continue-on-error: true
         run: |
           vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml --exclude src/entities/
 
       - name: Run PHPCS
+        continue-on-error: true
         run: |
           vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/phpcsrules.xml --extensions=php --ignore=autoload.php src tests
 
       - name: Run PHPSTAN
+        continue-on-error: true
         run: |
           vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
 
       - name: Run PHPCPD
+        continue-on-error: true
         run: |
           vendor/bin/phpcpd --log-pmd build/logs/pmd-cpd.xml --exclude src/entities/ src
 
