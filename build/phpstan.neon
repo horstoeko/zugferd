@@ -4,6 +4,5 @@ parameters:
         - ../tests
     level: 5
     treatPhpDocTypesAsCertain: false
-    checkMissingIterableValueType: false
     excludePaths:
         - ../src/entities/*
