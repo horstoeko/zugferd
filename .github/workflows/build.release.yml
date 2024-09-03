@@ -1,4 +1,4 @@
-name: CI (Matrix Build)
+name: Release (Matrix Build)
 
 on:
   push:
