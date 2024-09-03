@@ -2,8 +2,8 @@ name: CI (Matrix Build)
 
 on:
   push:
-    tags-ignore:
-      - "**"
+    tags:
+      - "v*"
     branches:
       - "**"
     paths-ignore:
@@ -25,6 +25,8 @@ env:
   VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
   VALIDATORJARFILENAME: validationtool-1.5.0-standalone.jar
   VALIDATORSCENARIOFILENAME: scenarios.xml
+  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
+  PHPDOCUMENTORFILENAME: phpDocumentor.phar
 
 jobs:
   build:
@@ -69,9 +71,43 @@ jobs:
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
           composer install
 
+      - name: Prepare Directories
+        run: |
+          mkdir build/builddoc
+          mkdir build/doc
+          mkdir build/coverage
+          mkdir build/logs
+          mkdir build/pdepend
+          mkdir build/dist
+          mkdir build/phpdoc
+
+      - name: Run PHPLOC
+        run: |
+          vendor/bin/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src tests
+
+      - name: Run PDEPEND
+        run: |
+          vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src
+
+      - name: Run PHPMD
+        run: |
+          vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml --exclude src/entities/
+
+      - name: Run PHPCS
+        run: |
+          vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/phpcsrules.xml --extensions=php --ignore=autoload.php src tests
+
+      - name: Run PHPSTAN
+        run: |
+          vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
+
+      - name: Run PHPCPD
+        run: |
+          vendor/bin/phpcpd --log-pmd build/logs/pmd-cpd.xml --exclude src/entities/ src
+
       - name: Run Tests (PHPUnit)
         run: |
-          ./vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+          vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
         env:
           XDEBUG_MODE: coverage
 
@@ -92,8 +128,35 @@ jobs:
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
           rm -rf build/validator
 
+      - name: Documentation
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          wget $PHPDOCUMENTORURL -O $PHPDOCUMENTORFILENAME
+          chmod +x $PHPDOCUMENTORFILENAME
+          cd build
+          php ../$PHPDOCUMENTORFILENAME
+          cd ..
+          rm -f $PHPDOCUMENTORFILENAME
+
+      - name: Deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          zip -r build/dist/builddoc.zip build
+          zip -r build/dist/doc.zip build/doc
+          zip -r build/dist/src.zip src
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: github.event_name != 'pull_request'
         with:
           files: "build/logs/junit.xml"
+
+      - name: Make Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            prerelease: false
+            files: |
+                build/dist/doc.zip
+                build/dist/builddoc.zip
