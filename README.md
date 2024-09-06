@@ -58,7 +58,8 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 - EN16931 XRechnung 2.x
 - EN16931 XRechnung 3.x
 
-**Note: This package provides only support for CII - not UBL**
+> [!IMPORTANT]
+> This package provides only support for CII-Syntax - not UBL-Syntax
 
 ## Further information
 
