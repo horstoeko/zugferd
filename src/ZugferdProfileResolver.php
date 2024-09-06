@@ -46,6 +46,7 @@ class ZugferdProfileResolver
         } catch (Throwable $e) {
             throw new ZugferdUnknownXmlContentException();
         } finally {
+            libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);
         }
 
