@@ -267,8 +267,8 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->setDocumentBuyer("Kunden AG Mitte", "GE2020211")
     ->setDocumentBuyerAddress("Kundenstraße 15", "", "", "69876", "Frankfurt", "DE")
     ->addDocumentTax("S", "VAT", 275.0, 19.25, 7.0)
-    ->addDocumentTax("S", "VAT", 198.0, 37.02, 19.0)
-    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.27, null, 0.0)
+    ->addDocumentTax("S", "VAT", 198.0, 37.62, 19.0)
+    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87, null, 0.0)
     ->addDocumentPaymentTerm("Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018")
     ->addNewPosition("1")
     ->setDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4", null, "0160", "4012345001235")
@@ -284,7 +284,7 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->SetDocumentPositionQuantity(50, "H87")
     ->AddDocumentPositionTax('S', 'VAT', 7)
     ->SetDocumentPositionLineSummation(275.0)
-    ->writeFile("/tmp/factur-x.xml");
+    ->writeFile(dirname(__FILE__) . "/factur-x.xml");
 ```
 
 ### Writing a pdf file with attached xml file
@@ -313,8 +313,8 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
     ->setDocumentBuyer("Kunden AG Mitte", "GE2020211")
     ->setDocumentBuyerAddress("Kundenstraße 15", "", "", "69876", "Frankfurt", "DE")
     ->addDocumentTax("S", "VAT", 275.0, 19.25, 7.0)
-    ->addDocumentTax("S", "VAT", 198.0, 37.02, 19.0)
-    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.27, null, 0.0)
+    ->addDocumentTax("S", "VAT", 198.0, 37.62, 19.0)
+    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87, null, 0.0)
     ->addDocumentPaymentTerm("Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018")
     ->addNewPosition("1")
     ->setDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4", null, "0160", "4012345001235")
