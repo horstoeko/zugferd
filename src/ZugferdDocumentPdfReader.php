@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use Smalot\PdfParser\Parser as PdfParser;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 
 /**
  * Class representing the document reader for incoming PDF/A-Documents with
@@ -27,7 +28,7 @@ class ZugferdDocumentPdfReader
     /**
      * List of filenames which are possible in PDF
      */
-    const ATTACHMENT_FILENAMES = ['ZUGFeRD-invoice.xml'/*1.0*/, 'zugferd-invoice.xml'/*2.0*/, 'factur-x.xml'/*2.1*/, 'xrechnung.xml'];
+    public const ATTACHMENT_FILENAMES = ['ZUGFeRD-invoice.xml'/*1.0*/, 'zugferd-invoice.xml'/*2.0*/, 'factur-x.xml'/*2.1*/, 'xrechnung.xml'];
 
     /**
      * Load a PDF file (ZUGFeRD/Factur-X)
@@ -42,8 +43,26 @@ class ZugferdDocumentPdfReader
             throw new ZugferdFileNotFoundException($pdfFilename);
         }
 
+        $pdfContent = file_get_contents($pdfFilename);
+
+        if ($pdfContent === false) {
+            throw new ZugferdFileNotReadableException($pdfFilename);
+        }
+
+        return static::readAndGuessFromContent($pdfContent);
+    }
+
+    /**
+     * Load a PDF content (ZUGFeRD/Factur-X)
+     *
+     * @param  string $pdfContent
+     * String Containing the binary pdf data
+     * @return ZugferdDocumentReader|null
+     */
+    public static function readAndGuessFromContent(string $pdfContent): ?ZugferdDocumentReader
+    {
         $pdfParser = new PdfParser();
-        $pdfParsed = $pdfParser->parseFile($pdfFilename);
+        $pdfParsed = $pdfParser->parseContent($pdfContent);
         $filespecs = $pdfParsed->getObjectsByType('Filespec');
 
         $attachmentFound = false;
