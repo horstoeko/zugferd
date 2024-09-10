@@ -4392,7 +4392,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *    beide Listen kombiniert anzuwenden sind.
      *  - Codeliste: Rec. N°21 Vollständige Liste, In Recommendation N°20 Intro 2.a ist beschrieben, dass
      *    beide Listen kombiniert anzuwenden sind.
-     * @return ZugferdDocumentBuilder
+     * @return ZugferdDocumentReader
      */
     public function getDocumentPositionProductCharacteristic(?string &$description, ?string &$value, ?string &$typecode, ?float &$valueMeasure, ?string &$valueMeasureUnitCode): ZugferdDocumentReader
     {
@@ -4462,7 +4462,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * __Note__: The identification scheme must be selected from the entries from UNTDID 7143.
      * @param  string|null $listVersionID
      * The version of the identification scheme
-     * @return ZugferdDocumentBuilder
+     * @return ZugferdDocumentReader
      */
     public function getDocumentPositionProductClassification(?string &$classCode, ?string &$className, ?string &$listID, ?string &$listVersionID): ZugferdDocumentReader
     {
@@ -4540,7 +4540,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Included quantity
      * @param  string $unitCode
      * Unit of measurement of the included quantity
-     * @return ZugferdDocumentBuilder
+     * @return ZugferdDocumentReader
      */
     public function getDocumentPositionReferencedProduct(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?array &$globalID, ?float &$unitQuantity, ?string &$unitCode): ZugferdDocumentReader
     {

@@ -1039,7 +1039,7 @@ class ZugferdSchemeIdentifiers
 
     /**
      * Registre du Commerce et de l’Industrie : RCI
-     */ 
+     */
     const ISO_6523_0206 = '0206';
 
     /**
@@ -1071,10 +1071,9 @@ class ZugferdSchemeIdentifiers
      * Finnish Organization Identifier
      */
     const ISO_6523_0212 = '0212';
-    
+
     /**
      * Finnish Organization Value Add Tax Identifier
      */
     const ISO_6523_0213 = '0213';
-    
 }

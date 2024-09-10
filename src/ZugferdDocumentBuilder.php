@@ -415,7 +415,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the document seller
      *
-     * @param  string|null $id          __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
+     * @param  string $id          __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerId(string $id): ZugferdDocumentBuilder
@@ -572,7 +572,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the document buyer
      *
-     * @param  string|null $id          __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @param  string $id               __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentBuyerId(string $id): ZugferdDocumentBuilder
@@ -1027,7 +1027,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the Ship-to Trade Party
      *
-     * @param  string|null $id          __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string $id               __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipTolId(string $id): ZugferdDocumentBuilder
@@ -1184,7 +1184,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param  string|null $id
+     * @param  string $id
      * Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be
      * differentiated by using different identification schemes.
      * @return ZugferdDocumentBuilder
@@ -1372,7 +1372,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param  string|null $id
+     * @param  string $id
      * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
      * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
      * a previously exchanged identifier assigned by the buyer or seller.
@@ -1558,7 +1558,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param  string|null $id
+     * @param  string $id
      * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
      * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
      * a previously exchanged identifier assigned by the buyer or seller.
@@ -1749,7 +1749,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Notes__
      *  - This is only available in the EXTENDED profile
      *
-     * @param  string|null $id
+     * @param  string $id
      * An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using
      * different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g.
      * a previously exchanged identifier assigned by the buyer or seller.
@@ -1931,7 +1931,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the payee trade party
      *
-     * @param  string|null $id          __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string $id          __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeId(string $id): ZugferdDocumentBuilder
