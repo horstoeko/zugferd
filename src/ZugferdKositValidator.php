@@ -111,27 +111,27 @@ class ZugferdKositValidator
     /**
      * Message Type "Internal Error"
      */
-    private const MSG_TYPE_INTERNALERROR = 'internalerror';
+    protected const MSG_TYPE_INTERNALERROR = 'internalerror';
 
     /**
      * Message Type "Validation Error"
      */
-    private const MSG_TYPE_VALIDATIONERROR = 'validationerror';
+    protected const MSG_TYPE_VALIDATIONERROR = 'validationerror';
 
     /**
      * Message Type "Validation Warning"
      */
-    private const MSG_TYPE_VALIDATIONWARNING = 'validationwarning';
+    protected const MSG_TYPE_VALIDATIONWARNING = 'validationwarning';
 
     /**
      * Message Type "Validation info"
      */
-    private const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
+    protected const MSG_TYPE_VALIDATIONINFORMATION = 'validationinformation';
 
     /**
      * Message Type "Process Output"
      */
-    private const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
+    protected const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
 
     /**
      * Constructor
@@ -807,7 +807,6 @@ class ZugferdKositValidator
      *
      * @param  array  $command
      * @param  string $workingdirectory
-     * @param  string $processOutput
      * @return boolean
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool

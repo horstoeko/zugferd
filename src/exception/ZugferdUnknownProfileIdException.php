@@ -25,7 +25,7 @@ class ZugferdUnknownProfileIdException extends Exception
     /**
      * The context of the type element
      *
-     * @var string
+     * @var integer
      */
     private $profileId = 0;
 
