@@ -269,9 +269,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $summation = $this->getObjectHelper()->getTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
-        $taxTotalAmount = $this->getObjectHelper()->tryCallAndReturn($summation, "getTaxTotalAmount");
-        $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
-        $this->getObjectHelper()->tryCall($this->getObjectHelper()->ensureArray($taxTotalAmount)[0], 'setCurrencyID', $invoiceCurrencyCode);
+        $taxTotalAmount = $this->getObjectHelper()->ensureArray($this->getObjectHelper()->tryCallAndReturn($summation, "getTaxTotalAmount"));
+        if (isset($taxTotalAmount[0])) {
+            $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
+            $this->getObjectHelper()->tryCall($taxTotalAmount[0], 'setCurrencyID', $invoiceCurrencyCode);
+        }
         return $this;
     }
 
