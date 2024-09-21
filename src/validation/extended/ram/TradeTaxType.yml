@@ -1,5 +1,10 @@
 horstoeko\zugferd\entities\extended\ram\TradeTaxType:
     properties:
+        typeCode:
+            -
+                NotNull:
+                    groups:
+                        - xsd_rules
         categoryCode:
             -
                 NotNull:

@@ -22,9 +22,6 @@ class SettingsTest extends TestCase
         ZugferdSettings::setIccProfileFilename("sRGB_v4_ICC.icc");
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testAmountDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getAmountDecimals());
@@ -38,9 +35,6 @@ class SettingsTest extends TestCase
         $this->assertEquals(3, $property->getValue());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testQuantityDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getQuantityDecimals());
@@ -54,9 +48,6 @@ class SettingsTest extends TestCase
         $this->assertEquals(3, $property->getValue());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testPercentDecimals(): void
     {
         $this->assertEquals(2, ZugferdSettings::getPercentDecimals());
@@ -70,9 +61,6 @@ class SettingsTest extends TestCase
         $this->assertEquals(3, $property->getValue());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testDecimalSeparator(): void
     {
         $this->assertEquals(".", ZugferdSettings::getDecimalSeparator());
@@ -86,9 +74,6 @@ class SettingsTest extends TestCase
         $this->assertEquals(",", $property->getValue());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testThousandsSeparator(): void
     {
         $this->assertEquals("", ZugferdSettings::getThousandsSeparator());
@@ -102,9 +87,6 @@ class SettingsTest extends TestCase
         $this->assertEquals(",", $property->getValue());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testIccProfileFilename(): void
     {
         $this->assertEquals("sRGB_v4_ICC.icc", ZugferdSettings::getIccProfileFilename());
@@ -116,9 +98,6 @@ class SettingsTest extends TestCase
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "iccProfileFilename");
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetRootDirectory(): void
     {
         $this->assertEquals(
@@ -127,9 +106,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetSourceDirectory(): void
     {
         $this->assertEquals(
@@ -138,9 +114,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetAssetDirectory(): void
     {
         $this->assertEquals(
@@ -149,9 +122,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetYamlDirectory(): void
     {
         $this->assertEquals(
@@ -160,9 +130,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetValidationDirectory(): void
     {
         $this->assertEquals(
@@ -171,9 +138,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testGetFullIccProfileFilename(): void
     {
         $expected = PathUtils::combinePathWithFile(
@@ -191,9 +155,6 @@ class SettingsTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdSettings
-     */
     public function testSpecialDecimalPlacesMaps(): void
     {
         $this->assertEquals(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));

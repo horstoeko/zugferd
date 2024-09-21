@@ -36,7 +36,7 @@ class TradeProductInstanceType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $batchID
      * @return self
      */
-    public function setBatchID(\horstoeko\zugferd\entities\extended\udt\IDType $batchID)
+    public function setBatchID(?\horstoeko\zugferd\entities\extended\udt\IDType $batchID = null)
     {
         $this->batchID = $batchID;
         return $this;
@@ -58,7 +58,7 @@ class TradeProductInstanceType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID
      * @return self
      */
-    public function setSupplierAssignedSerialID(\horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID)
+    public function setSupplierAssignedSerialID(?\horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID = null)
     {
         $this->supplierAssignedSerialID = $supplierAssignedSerialID;
         return $this;

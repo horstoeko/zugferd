@@ -83,7 +83,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $dueDateDateTime
      * @return self
      */
-    public function setDueDateDateTime(\horstoeko\zugferd\entities\extended\udt\DateTimeType $dueDateDateTime)
+    public function setDueDateDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $dueDateDateTime = null)
     {
         $this->dueDateDateTime = $dueDateDateTime;
         return $this;
@@ -105,7 +105,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $directDebitMandateID
      * @return self
      */
-    public function setDirectDebitMandateID(\horstoeko\zugferd\entities\extended\udt\IDType $directDebitMandateID)
+    public function setDirectDebitMandateID(?\horstoeko\zugferd\entities\extended\udt\IDType $directDebitMandateID = null)
     {
         $this->directDebitMandateID = $directDebitMandateID;
         return $this;
@@ -127,7 +127,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $partialPaymentAmount
      * @return self
      */
-    public function setPartialPaymentAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $partialPaymentAmount)
+    public function setPartialPaymentAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $partialPaymentAmount = null)
     {
         $this->partialPaymentAmount = $partialPaymentAmount;
         return $this;
@@ -149,7 +149,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
      * @return self
      */
-    public function setApplicableTradePaymentPenaltyTerms(\horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms)
+    public function setApplicableTradePaymentPenaltyTerms(?\horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms = null)
     {
         $this->applicableTradePaymentPenaltyTerms = $applicableTradePaymentPenaltyTerms;
         return $this;
@@ -171,7 +171,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
      * @return self
      */
-    public function setApplicableTradePaymentDiscountTerms(\horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms)
+    public function setApplicableTradePaymentDiscountTerms(?\horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms = null)
     {
         $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
         return $this;
@@ -193,9 +193,10 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty
      * @return self
      */
-    public function setPayeeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty)
+    public function setPayeeTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $payeeTradeParty = null)
     {
         $this->payeeTradeParty = $payeeTradeParty;
         return $this;
     }
 }
+

@@ -20,18 +20,12 @@ class ObjectHelperEn16931Test extends TestCase
         self::$objectHelper = new ZugferdObjectHelper(ZugferdProfiles::PROFILE_EN16931);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentCodeType
-     */
     public function testGetDocumentCodeTypeEmpty(): void
     {
         $codeType = self::$objectHelper->getDocumentCodeType();
         $this->assertNull($codeType);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentCodeType
-     */
     public function testGetDocumentCodeTypeNotEmpty(): void
     {
         /**
@@ -42,9 +36,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("380", $codeType->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeWithValue(): void
     {
         /**
@@ -55,9 +46,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("", $idtype->getSchemeID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeWithValueAndScheme(): void
     {
         /**
@@ -68,9 +56,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("0088", $idtype->getSchemeID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeAllEmpty(): void
     {
         /**
@@ -80,9 +65,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($idtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeAllNull(): void
     {
         /**
@@ -92,9 +74,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($idtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeEmptyValue(): void
     {
         /**
@@ -104,9 +83,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($idtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeNullValue(): void
     {
         /**
@@ -116,9 +92,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($idtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIdType
-     */
     public function testGetIdTypeEmptyValueWithScheme(): void
     {
         /**
@@ -128,9 +101,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($idtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
-     */
     public function testGetTextTypeWithValue(): void
     {
         /**
@@ -140,9 +110,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("test", $texttype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
-     */
     public function testGetTextTypeAllEmpty(): void
     {
         /**
@@ -152,9 +119,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($texttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTextType
-     */
     public function testGetTextTypeNullValue(): void
     {
         /**
@@ -164,9 +128,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($texttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
-     */
     public function testGetCodeTypeWithValue(): void
     {
         /**
@@ -176,9 +137,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("test", $texttype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType2
-     */
     public function testGetCodeType2WithValue(): void
     {
         /**
@@ -212,9 +170,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($texttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
-     */
     public function testGetCodeTypeAllEmpty(): void
     {
         /**
@@ -224,9 +179,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($texttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCodeType
-     */
     public function testGetCodeTypeNullValue(): void
     {
         /**
@@ -236,9 +188,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($texttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
-     */
     public function testGetIndicatorTypeWithTrueValue(): void
     {
         /**
@@ -248,9 +197,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertTrue($indicatortype->getIndicator());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
-     */
     public function testGetIndicatorTypeWithFalseValue(): void
     {
         /**
@@ -265,9 +211,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals(true, $indicatortype->getIndicator());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getIndicatorType
-     */
     public function testGetIndicatorTypeNullValue(): void
     {
         /**
@@ -277,9 +220,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($indicatortype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
-     */
     public function testGetNoteTypeAllValues(): void
     {
         /**
@@ -291,9 +231,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertFalse(self::$objectHelper->methodExists($notetype, "getContentCode"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
-     */
     public function testGetNoteTypeAllNullValue(): void
     {
         /**
@@ -303,9 +240,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($notetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
-     */
     public function testGetNoteTypeWithEmptyContent(): void
     {
         /**
@@ -315,9 +249,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($notetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNoteType
-     */
     public function testGetNoteTypeWithEmptyContentButWithSubjectCode(): void
     {
         /**
@@ -327,9 +258,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($notetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getFormattedDateTimeType
-     */
     public function testGetFormattedDateTimeType(): void
     {
         /**
@@ -340,9 +268,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $datetimetype->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getFormattedDateTimeType
-     */
     public function testGetFormattedDateTimeTypeWithNullValue(): void
     {
         /**
@@ -352,9 +277,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($datetimetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateTimeType
-     */
     public function testGetDateTimeType(): void
     {
         /**
@@ -365,9 +287,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $datetimetype->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateTimeType
-     */
     public function testGetDateTimeTypeWithNullValue(): void
     {
         /**
@@ -377,9 +296,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($datetimetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateType
-     */
     public function testGetDateType(): void
     {
         /**
@@ -390,9 +306,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $datetimetype->getDateString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDateType
-     */
     public function testGetDateTypeWithNullValue(): void
     {
         /**
@@ -402,9 +315,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($datetimetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
-     */
     public function testGetAmountTypeWithValue(): void
     {
         /**
@@ -415,9 +325,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
-     */
     public function testGetAmountTypeWithValueAndCurrency(): void
     {
         /**
@@ -428,9 +335,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("EUR", $amounttype->getCurrencyID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
-     */
     public function testGetAmountTypeAllNull(): void
     {
         /**
@@ -440,9 +344,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($amounttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
-     */
     public function testGetAmountTypeWithValueAndEmptyCurrency(): void
     {
         /**
@@ -453,9 +354,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getAmountType
-     */
     public function testGetAmountTypeWithNullValueAndCurrency(): void
     {
         /**
@@ -465,9 +363,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($amounttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getPercentType
-     */
     public function testGetPercentTypeWithValue(): void
     {
         /**
@@ -477,9 +372,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals(100.0, $percenttype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getPercentType
-     */
     public function testGetPercentTypeAllNull(): void
     {
         /**
@@ -489,9 +381,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($percenttype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
-     */
     public function testGetQuantityTypeWithValue(): void
     {
         /**
@@ -501,9 +390,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals(100.0, $quantitytype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
-     */
     public function testGetQuantityTypeWithValueAndUnitCode(): void
     {
         /**
@@ -514,9 +400,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("C62", $quantitytype->getUnitCode());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
-     */
     public function testGetQuantityTypeAllNull(): void
     {
         /**
@@ -526,9 +409,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($quantitytype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getQuantityType
-     */
     public function testGetQuantityTypeWithNullValueAndUnitCode(): void
     {
         /**
@@ -538,9 +418,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($quantitytype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
-     */
     public function testGetMeasureTypeWithValue(): void
     {
         /**
@@ -550,9 +427,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($measuretype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
-     */
     public function testGetMeasureTypeWithValueAndUnitCode(): void
     {
         /**
@@ -562,9 +436,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($measuretype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
-     */
     public function testGetMeasureTypeAllNull(): void
     {
         /**
@@ -574,9 +445,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($measuretype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getMeasureType
-     */
     public function testGetMeasureTypeWithNullValueAndUnitCode(): void
     {
         /**
@@ -586,9 +454,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($measuretype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNumericType
-     */
     public function testGetNumericTypeWithValue(): void
     {
         /**
@@ -598,9 +463,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($numerictype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getNumericType
-     */
     public function testGetNumericTypeAllNull(): void
     {
         /**
@@ -610,9 +472,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($numerictype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxCategoryCodeType
-     */
     public function testGetTaxCategoryCodeTypeWithValue(): void
     {
         /**
@@ -622,9 +481,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("VAT", $taxcategorycodetype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxCategoryCodeType
-     */
     public function testGetTaxCategoryCodeTypeAllNull(): void
     {
         /**
@@ -634,9 +490,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxcategorycodetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxTypeCodeType
-     */
     public function testGetTaxTypeCodeTypeWithValue(): void
     {
         /**
@@ -646,9 +499,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("S", $taxtypecodetype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxTypeCodeType
-     */
     public function testGetTaxTypeCodeTypeAllNull(): void
     {
         /**
@@ -658,9 +508,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxtypecodetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTimeReferenceCodeType
-     */
     public function testGetTimeReferenceCodeTypeWithValue(): void
     {
         /**
@@ -670,9 +517,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("REF", $timereferencecodetype->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTimeReferenceCodeType
-     */
     public function testGetTimeReferenceCodeTypeAllNull(): void
     {
         /**
@@ -682,9 +526,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($timereferencecodetype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSpecifiedPeriodType
-     */
     public function testGetSpecifiedPeriodTypeAllValues(): void
     {
         /**
@@ -699,9 +540,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $periodtype->getEndDateTime()->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSpecifiedPeriodType
-     */
     public function testGetSpecifiedPeriodTypeAllNull(): void
     {
         /**
@@ -711,9 +549,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($periodtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
-     */
     public function testGetBinaryObjectTypeAllValues(): void
     {
         /**
@@ -725,9 +560,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("mypdf.pdf", $binaryobject->getFilename());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
-     */
     public function testGetBinaryObjectTypeAllNull(): void
     {
         /**
@@ -737,9 +569,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($binaryobject);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
-     */
     public function testGetBinaryObjectTypeDataNull(): void
     {
         /**
@@ -749,9 +578,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($binaryobject);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
-     */
     public function testGetBinaryObjectTypeMimeTypeNull(): void
     {
         /**
@@ -761,9 +587,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($binaryobject);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getBinaryObjectType
-     */
     public function testGetBinaryObjectTypeFilenameNull(): void
     {
         /**
@@ -773,9 +596,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($binaryobject);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedDocumentType
-     */
     public function testGetReferencedDocumentTypeAllValues(): void
     {
         /**
@@ -792,9 +612,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $refdoctype->getFormattedIssueDateTime()->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedDocumentType
-     */
     public function testGetReferencedDocumentTypeAllNull(): void
     {
         /**
@@ -804,9 +621,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($refdoctype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCrossIndustryInvoice
-     */
     public function testCrossIndustryInvoice(): void
     {
         /**
@@ -816,9 +630,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNotNull($crossindusty);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeParty
-     */
     public function testGetTradePartyAllValues(): void
     {
         /**
@@ -832,9 +643,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("description", $tradeparty->getDescription());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeParty
-     */
     public function testGetTradePartyNullValues(): void
     {
         /**
@@ -844,9 +652,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tradeparty);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAddress
-     */
     public function testGetTradeAddressAllValues(): void
     {
         /**
@@ -862,9 +667,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("county", $tradeaddress->getCountrySubDivisionName());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAddress
-     */
     public function testGetTradeAddressAllNull(): void
     {
         /**
@@ -874,9 +676,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tradeaddress);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLegalOrganization
-     */
     public function testGetLegalOrganizationAllValues(): void
     {
         /**
@@ -888,9 +687,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("orgname", $legalorg->getTradingBusinessName());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLegalOrganization
-     */
     public function testGetLegalOrganizationAllNull(): void
     {
         /**
@@ -900,9 +696,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($legalorg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeContact
-     */
     public function testGetTradeContactAllValues(): void
     {
         /**
@@ -916,9 +709,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("mail", $tradecontact->getEmailURIUniversalCommunication()->getURIID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeContact
-     */
     public function testGetTradeContactAllNull(): void
     {
         /**
@@ -928,9 +718,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tradecontact);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getUniversalCommunicationType
-     */
     public function testGetUniversalCommunicationTypeAllValues(): void
     {
         /**
@@ -942,9 +729,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("smtp", $commtype->getURIID()->getSchemeID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getUniversalCommunicationType
-     */
     public function testGetUniversalCommunicationTypeAllNull(): void
     {
         /**
@@ -954,9 +738,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($commtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
-     */
     public function testGetTaxRegistrationTypeAllValues(): void
     {
         /**
@@ -967,9 +748,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("taxid", $taxregtype->getID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
-     */
     public function testGetTaxRegistrationTypeAllNull(): void
     {
         /**
@@ -979,9 +757,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxregtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
-     */
     public function testGetTaxRegistrationTypeIdNull(): void
     {
         /**
@@ -991,9 +766,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxregtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxRegistrationType
-     */
     public function testGetTaxRegistrationTypeTypeNull(): void
     {
         /**
@@ -1003,9 +775,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxregtype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeDeliveryTermsType
-     */
     public function testGetTradeDeliveryTermsTypeAllValues(): void
     {
         /**
@@ -1015,9 +784,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($devterms);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeDeliveryTermsType
-     */
     public function testGetTradeDeliveryTermsTypeAllNull(): void
     {
         /**
@@ -1027,9 +793,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($devterms);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
-     */
     public function testGetProcuringProjectTypeAllValues(): void
     {
         /**
@@ -1040,9 +803,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("projectname", $project->getName());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
-     */
     public function testGetProcuringProjectTypeIdNull(): void
     {
         /**
@@ -1052,9 +812,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($project);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
-     */
     public function testGetProcuringProjectTypeNameNull(): void
     {
         /**
@@ -1064,9 +821,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($project);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProcuringProjectType
-     */
     public function testGetProcuringProjectTypeAllNull(): void
     {
         /**
@@ -1076,9 +830,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($project);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainEventType
-     */
     public function testGetSupplyChainEventTypeAllValues(): void
     {
         /**
@@ -1089,9 +840,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $supplychainevent->getOccurrenceDateTime()->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainEventType
-     */
     public function testGetSupplyChainEventTypeAllNull(): void
     {
         /**
@@ -1101,9 +849,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($supplychainevent);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementFinancialCardType
-     */
     public function testGetTradeSettlementFinancialCardTypeAllValues(): void
     {
         /**
@@ -1115,9 +860,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("name", $fincard->getCardholderName());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementFinancialCardType
-     */
     public function testGetTradeSettlementFinancialCardTypeAllNull(): void
     {
         /**
@@ -1127,9 +869,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($fincard);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDebtorFinancialAccountType
-     */
     public function testGetDebtorFinancialAccountTypeAllValues(): void
     {
         /**
@@ -1139,9 +878,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("iban", $finacc->getIBANID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDebtorFinancialAccountType
-     */
     public function testGetDebtorFinancialAccountTypeAllNull(): void
     {
         /**
@@ -1151,9 +887,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($finacc);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialAccountType
-     */
     public function testGetCreditorFinancialAccountTypeAllValues(): void
     {
         /**
@@ -1165,9 +898,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("propid", $finacc->getProprietaryID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialAccountType
-     */
     public function testGetCreditorFinancialAccountTypeAllNull(): void
     {
         /**
@@ -1177,9 +907,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($finacc);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialInstitutionType
-     */
     public function testGetCreditorFinancialInstitutionTypeAllValues(): void
     {
         /**
@@ -1189,9 +916,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("bic", $fininst->getBICID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCreditorFinancialInstitutionType
-     */
     public function testGetCreditorFinancialInstitutionTypeAllNull(): void
     {
         /**
@@ -1201,9 +925,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($fininst);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementPaymentMeansType
-     */
     public function testGetTradeSettlementPaymentMeansTypeAllValues(): void
     {
         /**
@@ -1213,9 +934,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("code", $paymentmeans->getTypeCode());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementPaymentMeansType
-     */
     public function testGetTradeSettlementPaymentMeansTypeAllNull(): void
     {
         /**
@@ -1225,9 +943,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($paymentmeans);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentTermsType
-     */
     public function testGetTradePaymentTermsTypeAllValues(): void
     {
         /**
@@ -1238,9 +953,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("102", $paymentterms->getDueDateDateTime()->getDateTimeString()->getFormat());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentTermsType
-     */
     public function testGetTradePaymentTermsTypeAllNull(): void
     {
         /**
@@ -1250,9 +962,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($paymentmeans);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentDiscountTermsType
-     */
     public function testGetTradePaymentDiscountTermsTypeAllValues(): void
     {
         /**
@@ -1262,9 +971,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($discountterms);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePaymentDiscountTermsType
-     */
     public function testGetTradePaymentDiscountTermsTypeAllNull(): void
     {
         /**
@@ -1274,9 +980,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($discountterms);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeTaxType
-     */
     public function testGetTradeTaxTypeAllValues(): void
     {
         /**
@@ -1294,9 +997,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertFalse(self::$objectHelper->methodExists($tax, "getAllowanceChargeBasisAmount"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeTaxType
-     */
     public function testGetTradeTaxTypeAllNull(): void
     {
         /**
@@ -1306,9 +1006,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tax);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAllowanceChargeType
-     */
     public function testGetTradeAllowanceChargeTypeAllValues(): void
     {
         /**
@@ -1339,9 +1036,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("reasoncode", $allowancecharge->getReasonCode());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAllowanceChargeType
-     */
     public function testGetTradeAllowanceChargeTypeAllNull(): void
     {
         /**
@@ -1351,9 +1045,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($allowancecharge);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLogisticsServiceChargeType
-     */
     public function testGetLogisticsServiceChargeTypeAllValues(): void
     {
         /**
@@ -1365,9 +1056,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedTradeTax"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getLogisticsServiceChargeType
-     */
     public function testGetLogisticsServiceChargeTypeAllNull(): void
     {
         /**
@@ -1377,10 +1065,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($logcharge);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationType
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
-     */
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllValues(): void
     {
         /**
@@ -1400,10 +1084,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals(10.0, $summation->getTotalPrepaidAmount()->value());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationType
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
-     */
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull(): void
     {
         /**
@@ -1413,18 +1093,12 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($summation);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementHeaderMonetarySummationTypeOnly
-     */
     public function testGetTradeSettlementHeaderMonetarySummationTypeOnly(): void
     {
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationTypeOnly();
         $this->assertNotNull($summation);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAccountingAccountType
-     */
     public function testGetTradeAccountingAccountTypeAllValues(): void
     {
         /**
@@ -1435,9 +1109,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertFalse(self::$objectHelper->methodExists($accaccount, "getTypeCode"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeAccountingAccountType
-     */
     public function testGetTradeAccountingAccountTypeAllNull(): void
     {
         /**
@@ -1447,9 +1118,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($accaccount);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentLineDocumentType
-     */
     public function testGetDocumentLineDocumentTypeAllValues(): void
     {
         /**
@@ -1459,9 +1127,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("lineid", $doclinedoctype->getLineID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getDocumentLineDocumentType
-     */
     public function testGetDocumentLineDocumentTypeAllNull(): void
     {
         /**
@@ -1471,9 +1136,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($doclinedoctype);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainTradeLineItemType
-     */
     public function testGetSupplyChainTradeLineItemTypeAllValues(): void
     {
         /**
@@ -1484,9 +1146,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("lineid", $line->getAssociatedDocumentLineDocument()->getLineID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getSupplyChainTradeLineItemType
-     */
     public function testGetSupplyChainTradeLineItemTypeAllNull(): void
     {
         /**
@@ -1496,9 +1155,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($line);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
-     */
     public function testGetTradeProductTypeAllValues(): void
     {
         /**
@@ -1513,9 +1169,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("globalid", $product->getGlobalID());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductCharacteristicType
-     */
     public function testGetProductCharacteristicType(): void
     {
         /**
@@ -1532,9 +1185,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($productCharacteristic);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getProductClassificationType
-     */
     public function testGetProductClassificationType(): void
     {
         /**
@@ -1552,9 +1202,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($productClassification);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getReferencedProductType
-     */
     public function testGetReferencedProductType(): void
     {
         /**
@@ -1570,9 +1217,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($referencedProduct);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getCountryIDType
-     */
     public function testGetCountryIDType(): void
     {
         /**
@@ -1588,9 +1232,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($countryId);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeCountryType
-     */
     public function testGetTradeCountryType(): void
     {
         /**
@@ -1606,9 +1247,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tradeCountry);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeProductType
-     */
     public function testGetTradeProductTypeAllNull(): void
     {
         /**
@@ -1618,9 +1256,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($product);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
-     */
     public function testGetTradePriceTypeAllValues(): void
     {
         /**
@@ -1632,9 +1267,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("C62", $price->getBasisQuantity()->getUnitCode());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradePriceType
-     */
     public function testGetTradePriceTypeAllNull(): void
     {
         /**
@@ -1644,9 +1276,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($price);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementLineMonetarySummationType
-     */
     public function testGetTradeSettlementLineMonetarySummationTypeAllValues(): void
     {
         /**
@@ -1657,9 +1286,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertFalse(self::$objectHelper->methodExists($summation, "getTotalAllowanceChargeAmount"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTradeSettlementLineMonetarySummationType
-     */
     public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void
     {
         /**
@@ -1669,9 +1295,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($summation);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTimeGeneral(): void
     {
         $this->assertEquals("20200202", self::$objectHelper->toDateTime("20200202", "102")->format("Ymd"));
@@ -1689,49 +1312,31 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull(self::$objectHelper->toDateTime("20200202", "999"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTime101(): void
     {
         $this->assertEquals("20200202", self::$objectHelper->toDateTime("200202", "101")->format("Ymd"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTime201(): void
     {
         $this->assertEquals("2002021031", self::$objectHelper->toDateTime("2002021031", "201")->format("ymdHi"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTime202(): void
     {
         $this->assertEquals("200202103145", self::$objectHelper->toDateTime("200202103145", "202")->format("ymdHis"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTime203(): void
     {
         $this->assertEquals("202002021031", self::$objectHelper->toDateTime("202002021031", "203")->format("YmdHi"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::toDateTime
-     */
     public function testToDateTime204(): void
     {
         $this->assertEquals("20200202103145", self::$objectHelper->toDateTime("20200202103145", "204")->format("YmdHis"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getRateType
-     */
     public function testGetRateType(): void
     {
         /**
@@ -1741,9 +1346,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($rateType);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::getTaxApplicableTradeCurrencyExchangeType
-     */
     public function testGetTaxApplicableTradeCurrencyExchangeType(): void
     {
         /**
@@ -1759,9 +1361,6 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($currencyExchangeType);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdObjectHelper::createClassInstance
-     */
     public function testCreateClassInstance(): void
     {
         $instance = self::$objectHelper->createClassInstance('ram\TradeProductType');

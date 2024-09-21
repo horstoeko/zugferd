@@ -20,7 +20,8 @@ namespace horstoeko\zugferd\codelists;
  * @link     https://github.com/horstoeko/zugferd
  */
 
-class ZugferdElectronicAddressScheme {
+class ZugferdElectronicAddressScheme
+{
     /**
      * O.F.T.P. (ODETTE File Transfer Protocol)
      */

@@ -41,7 +41,7 @@ class LegalOrganizationType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iD
      * @return self
      */
-    public function setID(\horstoeko\zugferd\entities\extended\udt\IDType $iD)
+    public function setID(?\horstoeko\zugferd\entities\extended\udt\IDType $iD = null)
     {
         $this->iD = $iD;
         return $this;
@@ -85,7 +85,7 @@ class LegalOrganizationType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
-    public function setPostalTradeAddress(\horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress)
+    public function setPostalTradeAddress(?\horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress = null)
     {
         $this->postalTradeAddress = $postalTradeAddress;
         return $this;

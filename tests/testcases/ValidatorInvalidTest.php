@@ -28,9 +28,6 @@ class ValidatorInvalidTest extends TestCase
         self::$validator = new ZugferdDocumentValidator(self::$document);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentValidator::validateDocument
-     */
     public function testValidateDocument(): void
     {
         $validationResult = self::$validator->validateDocument();

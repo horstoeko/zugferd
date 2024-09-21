@@ -51,7 +51,7 @@ class TradePaymentDiscountTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime
      * @return self
      */
-    public function setBasisDateTime(\horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime)
+    public function setBasisDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime = null)
     {
         $this->basisDateTime = $basisDateTime;
         return $this;
@@ -73,7 +73,7 @@ class TradePaymentDiscountTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure
      * @return self
      */
-    public function setBasisPeriodMeasure(\horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure)
+    public function setBasisPeriodMeasure(?\horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure = null)
     {
         $this->basisPeriodMeasure = $basisPeriodMeasure;
         return $this;
@@ -95,7 +95,7 @@ class TradePaymentDiscountTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount)
+    public function setBasisAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount = null)
     {
         $this->basisAmount = $basisAmount;
         return $this;
@@ -139,7 +139,7 @@ class TradePaymentDiscountTermsType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount
      * @return self
      */
-    public function setActualDiscountAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount)
+    public function setActualDiscountAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $actualDiscountAmount = null)
     {
         $this->actualDiscountAmount = $actualDiscountAmount;
         return $this;

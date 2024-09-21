@@ -14,9 +14,6 @@ class PdfReaderMultipleAttachmentsTest extends TestCase
      */
     protected static $document;
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
-     */
     public function testCanReadPdf(): void
     {
         self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/zugferd_2p1_EN16931_Elektron.pdf");
@@ -32,9 +29,6 @@ class PdfReaderMultipleAttachmentsTest extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->getProfileId());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
-     */
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);

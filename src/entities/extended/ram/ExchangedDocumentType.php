@@ -36,11 +36,9 @@ class ExchangedDocumentType
     private $copyIndicator = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType[] $languageID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType $languageID
      */
-    private $languageID = [
-        
-    ];
+    private $languageID = null;
 
     /**
      * @var \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
@@ -158,50 +156,16 @@ class ExchangedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator
      * @return self
      */
-    public function setCopyIndicator(\horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator)
+    public function setCopyIndicator(?\horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator = null)
     {
         $this->copyIndicator = $copyIndicator;
         return $this;
     }
 
     /**
-     * Adds as languageID
-     *
-     * @return self
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $languageID
-     */
-    public function addToLanguageID(\horstoeko\zugferd\entities\extended\udt\IDType $languageID)
-    {
-        $this->languageID[] = $languageID;
-        return $this;
-    }
-
-    /**
-     * isset languageID
-     *
-     * @param  int|string $index
-     * @return bool
-     */
-    public function issetLanguageID($index)
-    {
-        return isset($this->languageID[$index]);
-    }
-
-    /**
-     * unset languageID
-     *
-     * @param  int|string $index
-     * @return void
-     */
-    public function unsetLanguageID($index)
-    {
-        unset($this->languageID[$index]);
-    }
-
-    /**
      * Gets as languageID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType[]
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType
      */
     public function getLanguageID()
     {
@@ -211,10 +175,10 @@ class ExchangedDocumentType
     /**
      * Sets a new languageID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $languageID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $languageID
      * @return self
      */
-    public function setLanguageID(array $languageID)
+    public function setLanguageID(?\horstoeko\zugferd\entities\extended\udt\IDType $languageID = null)
     {
         $this->languageID = $languageID;
         return $this;
@@ -270,7 +234,7 @@ class ExchangedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote)
+    public function setIncludedNote(array $includedNote = null)
     {
         $this->includedNote = $includedNote;
         return $this;
@@ -292,7 +256,7 @@ class ExchangedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
      * @return self
      */
-    public function setEffectiveSpecifiedPeriod(\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod)
+    public function setEffectiveSpecifiedPeriod(?\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod = null)
     {
         $this->effectiveSpecifiedPeriod = $effectiveSpecifiedPeriod;
         return $this;

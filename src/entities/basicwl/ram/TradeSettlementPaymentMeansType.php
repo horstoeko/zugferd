@@ -63,7 +63,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      * @return self
      */
-    public function setPayerPartyDebtorFinancialAccount(\horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount)
+    public function setPayerPartyDebtorFinancialAccount(?\horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null)
     {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
         return $this;
@@ -85,7 +85,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      * @return self
      */
-    public function setPayeePartyCreditorFinancialAccount(\horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount)
+    public function setPayeePartyCreditorFinancialAccount(?\horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null)
     {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
         return $this;

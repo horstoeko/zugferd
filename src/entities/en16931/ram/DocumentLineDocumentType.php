@@ -58,7 +58,7 @@ class DocumentLineDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
      * @return self
      */
-    public function setIncludedNote(\horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote)
+    public function setIncludedNote(?\horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote = null)
     {
         $this->includedNote = $includedNote;
         return $this;

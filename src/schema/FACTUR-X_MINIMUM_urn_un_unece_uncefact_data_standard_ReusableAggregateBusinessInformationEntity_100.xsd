@@ -78,7 +78,7 @@
   <xs:complexType name="TradeSettlementHeaderMonetarySummationType">
     <xs:sequence>
       <xs:element name="TaxBasisTotalAmount" type="udt:AmountType"/>
-      <xs:element name="TaxTotalAmount" type="udt:AmountType" minOccurs="0"/>
+      <xs:element name="TaxTotalAmount" type="udt:AmountType" minOccurs="0" maxOccurs="2"/>
       <xs:element name="GrandTotalAmount" type="udt:AmountType"/>
       <xs:element name="DuePayableAmount" type="udt:AmountType"/>
     </xs:sequence>

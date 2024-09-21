@@ -36,7 +36,7 @@ class UniversalCommunicationType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
      * @return self
      */
-    public function setURIID(\horstoeko\zugferd\entities\extended\udt\IDType $uRIID)
+    public function setURIID(?\horstoeko\zugferd\entities\extended\udt\IDType $uRIID = null)
     {
         $this->uRIID = $uRIID;
         return $this;

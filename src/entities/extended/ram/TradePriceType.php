@@ -70,7 +70,7 @@ class TradePriceType
      * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity
      * @return self
      */
-    public function setBasisQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity)
+    public function setBasisQuantity(?\horstoeko\zugferd\entities\extended\udt\QuantityType $basisQuantity = null)
     {
         $this->basisQuantity = $basisQuantity;
         return $this;
@@ -126,7 +126,7 @@ class TradePriceType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
      * @return self
      */
-    public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge)
+    public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge = null)
     {
         $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
         return $this;
@@ -148,7 +148,7 @@ class TradePriceType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax
      * @return self
      */
-    public function setIncludedTradeTax(\horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax)
+    public function setIncludedTradeTax(?\horstoeko\zugferd\entities\extended\ram\TradeTaxType $includedTradeTax = null)
     {
         $this->includedTradeTax = $includedTradeTax;
         return $this;

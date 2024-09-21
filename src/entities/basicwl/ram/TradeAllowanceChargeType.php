@@ -105,7 +105,7 @@ class TradeAllowanceChargeType
      * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount)
+    public function setBasisAmount(?\horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount = null)
     {
         $this->basisAmount = $basisAmount;
         return $this;

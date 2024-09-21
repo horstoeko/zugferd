@@ -15,9 +15,6 @@ class PdfReaderExtended2Test extends TestCase
      */
     protected static $document;
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
-     */
     public function testCanReadPdf(): void
     {
         self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/Facture_F20200027_EXTENDED.pdf");
@@ -32,9 +29,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
-     */
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
@@ -50,9 +44,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentNotes
-     */
     public function testDocumentNotes(): void
     {
         self::$document->getDocumentNotes($notes);
@@ -79,9 +70,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("RCS MAVILLE 123 456 789", $notes[1]["content"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentGeneralPaymentInformation
-     */
     public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
@@ -89,27 +77,18 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("F20180023BUYER", $paymentReference);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getIsDocumentCopy
-     */
     public function testDocumentIsCopy(): void
     {
         self::$document->getIsDocumentCopy($iscopy);
         $this->assertFalse($iscopy);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getIsTestDocument
-     */
     public function testDocumentIsTestDocument(): void
     {
         self::$document->getIsTestDocument($istest);
         $this->assertFalse($istest);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSummation
-     */
     public function testDocumentSummation(): void
     {
         self::$document->getDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
@@ -124,18 +103,12 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals(10.00, $totalPrepaidAmount);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerReference
-     */
     public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
         $this->assertEquals("SERVEXEC", $buyerReference);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSeller
-     */
     public function testDocumentSellerGeneral(): void
     {
         self::$document->getDocumentSeller($sellername, $sellerids, $sellerdescription);
@@ -146,9 +119,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $sellerdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerGlobalId
-     */
     public function testDocumentSellerGlobalId(): void
     {
         self::$document->getDocumentSellerGlobalId($sellerglobalids);
@@ -157,9 +127,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("587451236587", $sellerglobalids["0088"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRegistration
-     */
     public function testDocumentSellerTaxRegistration(): void
     {
         self::$document->getDocumentSellerTaxRegistration($sellertaxreg);
@@ -172,9 +139,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("FR32123456789", $sellertaxreg["VA"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerAddress
-     */
     public function testDocumentSellerAddress(): void
     {
         self::$document->getDocumentSellerAddress($sellerlineone, $sellerlinetwo, $sellerlinethree, $sellerpostcode, $sellercity, $sellercountry, $sellersubdivision);
@@ -188,9 +152,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($sellersubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerLegalOrganisation
-     */
     public function testDocumentSellerLegalOrganization(): void
     {
         self::$document->getDocumentSellerLegalOrganisation($sellerlegalorgid, $sellerlegalorgtype, $sellerlegalorgname);
@@ -199,11 +160,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("SELLER TRADE NAME", $sellerlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerContact
-     */
     public function testDocumentSellerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentSellerContact());
@@ -215,9 +171,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyer
-     */
     public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
@@ -228,9 +181,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $buyerdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerGlobalId
-     */
     public function testDocumentBuyerGlobalId(): void
     {
         self::$document->getDocumentBuyerGlobalId($buyerglobalids);
@@ -239,9 +189,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("3654789851", $buyerglobalids["0088"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerTaxRegistration
-     */
     public function testDocumentBuyerTaxRegistration(): void
     {
         self::$document->getDocumentBuyerTaxRegistration($buyertaxreg);
@@ -254,9 +201,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("FR 05 987 654 321", $buyertaxreg["VA"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerAddress
-     */
     public function testDocumentBuyerAddress(): void
     {
         self::$document->getDocumentBuyerAddress($buyerlineone, $buyerlinetwo, $buyerlinethree, $buyerpostcode, $buyercity, $buyercountry, $buyersubdivision);
@@ -270,9 +214,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($buyersubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerLegalOrganisation
-     */
     public function testDocumentBuyerLegalOrganization(): void
     {
         self::$document->getDocumentBuyerLegalOrganisation($buyerlegalorgid, $buyerlegalorgtype, $buyerlegalorgname);
@@ -281,11 +222,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $buyerlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentBuyerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentBuyerContact
-     */
     public function testDocumentBuyerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
@@ -297,9 +233,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentative
-     */
     public function testDocumentSellerTaxRepresentativeGeneral(): void
     {
         self::$document->getDocumentSellerTaxRepresentative($sellertaxreprname, $sellertaxreprids, $sellertaxreprdescription);
@@ -309,9 +242,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $sellertaxreprdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeGlobalId
-     */
     public function testDocumentSellerTaxRepresentativeGlobalId(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeGlobalId($sellertaxreprglobalids);
@@ -319,9 +249,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($sellertaxreprglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeTaxRegistration
-     */
     public function testDocumentSellerTaxRepresentativeTaxRegistration(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeTaxRegistration($sellertaxreprtaxreg);
@@ -329,9 +256,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($sellertaxreprtaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeAddress
-     */
     public function testDocumentSellerTaxRepresentativeAddress(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeAddress($sellertaxreprlineone, $sellertaxreprlinetwo, $sellertaxreprlinethree, $sellertaxreprpostcode, $sellertaxreprcity, $sellertaxreprcountry, $sellertaxreprsubdivision);
@@ -345,9 +269,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($sellertaxreprsubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeLegalOrganisation
-     */
     public function testDocumentSellerTaxRepresentativeLegalOrganization(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeLegalOrganisation($sellertaxreprlegalorgid, $sellertaxreprlegalorgtype, $sellertaxreprlegalorgname);
@@ -356,11 +277,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $sellertaxreprlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerTaxRepresentativeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerTaxRepresentativeContact
-     */
     public function testDocumentSellerTaxRepresentativeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
@@ -372,9 +288,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipTo
-     */
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
@@ -384,9 +297,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $shiptodescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToGlobalId
-     */
     public function testDocumentShipToGlobalId(): void
     {
         self::$document->getDocumentShipToGlobalId($shiptoglobalids);
@@ -395,9 +305,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("3654789851", $shiptoglobalids["0088"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToTaxRegistration
-     */
     public function testDocumentShipToTaxRegistration(): void
     {
         self::$document->getDocumentShipToTaxRegistration($shiptotaxreg);
@@ -405,9 +312,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($shiptotaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToAddress
-     */
     public function testDocumentShipToAddress(): void
     {
         self::$document->getDocumentShipToAddress($shiptolineone, $shiptolinetwo, $shiptolinethree, $shiptopostcode, $shiptocity, $shiptocountry, $shiptosubdivision);
@@ -421,9 +325,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($shiptosubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToLegalOrganisation
-     */
     public function testDocumentShipToLegalOrganization(): void
     {
         self::$document->getDocumentShipToLegalOrganisation($shiptolegalorgid, $shiptolegalorgtype, $shiptolegalorgname);
@@ -432,11 +333,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $shiptolegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentShipToContact
-     */
     public function testDocumentShipToContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipToContact());
@@ -448,9 +344,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipTo
-     */
     public function testDocumentUltimateShipToGeneral(): void
     {
         self::$document->getDocumentUltimateShipTo($ultimateshiptoname, $ultimateshiptoids, $ultimateshiptodescription);
@@ -460,9 +353,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $ultimateshiptodescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToGlobalId
-     */
     public function testDocumentUltimateShipToGlobalId(): void
     {
         self::$document->getDocumentUltimateShipToGlobalId($ultimateshiptoglobalids);
@@ -470,9 +360,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($ultimateshiptoglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToTaxRegistration
-     */
     public function testDocumentUltimateShipToTaxRegistration(): void
     {
         self::$document->getDocumentUltimateShipToTaxRegistration($ultimateshiptotaxreg);
@@ -480,9 +367,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($ultimateshiptotaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToAddress
-     */
     public function testDocumentUltimateShipToAddress(): void
     {
         self::$document->getDocumentUltimateShipToAddress($ultimateshiptolineone, $ultimateshiptolinetwo, $ultimateshiptolinethree, $ultimateshiptopostcode, $ultimateshiptocity, $ultimateshiptocountry, $ultimateshiptosubdivision);
@@ -496,9 +380,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($ultimateshiptosubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToLegalOrganisation
-     */
     public function testDocumentUltimateShipToLegalOrganization(): void
     {
         self::$document->getDocumentUltimateShipToLegalOrganisation($ultimateshiptolegalorgid, $ultimateshiptolegalorgtype, $ultimateshiptolegalorgname);
@@ -507,11 +388,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $ultimateshiptolegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentUltimateShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentUltimateShipToContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentUltimateShipToContact
-     */
     public function testDocumentUltimateShipToContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
@@ -528,9 +404,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFrom
-     */
     public function testDocumentShipFromGeneral(): void
     {
         self::$document->getDocumentShipFrom($shipfromname, $shipfromids, $shipfromdescription);
@@ -540,9 +413,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $shipfromdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromGlobalId
-     */
     public function testDocumentShipFromGlobalId(): void
     {
         self::$document->getDocumentShipFromGlobalId($shipfromglobalids);
@@ -550,9 +420,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($shipfromglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromTaxRegistration
-     */
     public function testDocumentShipFromTaxRegistration(): void
     {
         self::$document->getDocumentShipFromTaxRegistration($shipfromtaxreg);
@@ -560,9 +427,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($shipfromtaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromAddress
-     */
     public function testDocumentShipFromAddress(): void
     {
         self::$document->getDocumentShipFromAddress($shipfromlineone, $shipfromlinetwo, $shipfromlinethree, $shipfrompostcode, $shipfromcity, $shipfromcountry, $shipfromsubdivision);
@@ -576,9 +440,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($shipfromsubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromLegalOrganisation
-     */
     public function testDocumentShipFromLegalOrganization(): void
     {
         self::$document->getDocumentShipFromLegalOrganisation($shipfromlegalorgid, $shipfromlegalorgtype, $shipfromlegalorgname);
@@ -587,11 +448,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $shipfromlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentShipFromContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentShipFromContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentShipFromContact
-     */
     public function testDocumentShipFromContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
@@ -608,9 +464,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicer
-     */
     public function testDocumentInvoicerGeneral(): void
     {
         self::$document->getDocumentInvoicer($invoicername, $invoicerids, $invoicerdescription);
@@ -620,9 +473,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $invoicerdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerGlobalId
-     */
     public function testDocumentInvoicerGlobalId(): void
     {
         self::$document->getDocumentInvoicerGlobalId($invoicerglobalids);
@@ -630,9 +480,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoicerglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerTaxRegistration
-     */
     public function testDocumentInvoicerTaxRegistration(): void
     {
         self::$document->getDocumentInvoicerTaxRegistration($invoicertaxreg);
@@ -640,9 +487,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoicertaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerAddress
-     */
     public function testDocumentInvoicerAddress(): void
     {
         self::$document->getDocumentInvoicerAddress($invoicerlineone, $invoicerlinetwo, $invoicerlinethree, $invoicerpostcode, $invoicercity, $invoicercountry, $invoicersubdivision);
@@ -656,9 +500,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoicersubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerLegalOrganisation
-     */
     public function testDocumentInvoicerLegalOrganization(): void
     {
         self::$document->getDocumentInvoicerLegalOrganisation($invoicerlegalorgid, $invoicerlegalorgtype, $invoicerlegalorgname);
@@ -667,11 +508,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $invoicerlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentInvoicerContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentInvoicerContact
-     */
     public function testDocumentInvoicerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
@@ -688,9 +524,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoicee
-     */
     public function testDocumentInvoiceeGeneral(): void
     {
         self::$document->getDocumentInvoicee($invoiceename, $invoiceeids, $invoiceedescription);
@@ -700,9 +533,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $invoiceedescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeGlobalId
-     */
     public function testDocumentInvoiceeGlobalId(): void
     {
         self::$document->getDocumentInvoiceeGlobalId($invoiceeglobalids);
@@ -710,9 +540,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoiceeglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeTaxRegistration
-     */
     public function testDocumentInvoiceeTaxRegistration(): void
     {
         self::$document->getDocumentInvoiceeTaxRegistration($invoiceetaxreg);
@@ -720,9 +547,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoiceetaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeAddress
-     */
     public function testDocumentInvoiceeAddress(): void
     {
         self::$document->getDocumentInvoiceeAddress($invoiceelineone, $invoiceelinetwo, $invoiceelinethree, $invoiceepostcode, $invoiceecity, $invoiceecountry, $invoiceesubdivision);
@@ -736,9 +560,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($invoiceesubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeLegalOrganisation
-     */
     public function testDocumentInvoiceeLegalOrganization(): void
     {
         self::$document->getDocumentInvoiceeLegalOrganisation($invoiceelegalorgid, $invoiceelegalorgtype, $invoiceelegalorgname);
@@ -747,11 +568,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $invoiceelegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInvoiceeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentInvoiceeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentInvoiceeContact
-     */
     public function testDocumentInvoiceeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
@@ -768,9 +584,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayee
-     */
     public function testDocumentPayeeGeneral(): void
     {
         self::$document->getDocumentPayee($payeename, $payeeids, $payeedescription);
@@ -780,9 +593,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $payeedescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeGlobalId
-     */
     public function testDocumentPayeeGlobalId(): void
     {
         self::$document->getDocumentPayeeGlobalId($payeeglobalids);
@@ -790,9 +600,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($payeeglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeTaxRegistration
-     */
     public function testDocumentPayeeTaxRegistration(): void
     {
         self::$document->getDocumentPayeeTaxRegistration($payeetaxreg);
@@ -800,9 +607,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($payeetaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeAddress
-     */
     public function testDocumentPayeeAddress(): void
     {
         self::$document->getDocumentPayeeAddress($payeelineone, $payeelinetwo, $payeelinethree, $payeepostcode, $payeecity, $payeecountry, $payeesubdivision);
@@ -816,9 +620,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($payeesubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeLegalOrganisation
-     */
     public function testDocumentPayeeLegalOrganization(): void
     {
         self::$document->getDocumentPayeeLegalOrganisation($payeelegalorgid, $payeelegalorgtype, $payeelegalorgname);
@@ -827,11 +628,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $payeelegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPayeeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPayeeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPayeeContact
-     */
     public function testDocumentPayeeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
@@ -848,9 +644,6 @@ class PdfReaderExtended2Test extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUser
-     */
     public function testDocumentProductEndUserGeneral(): void
     {
         self::$document->getDocumentProductEndUser($producendusername, $producenduserids, $producenduserdescription);
@@ -861,9 +654,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $producenduserdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserGlobalId
-     */
     public function testDocumentProductEndUserGlobalId(): void
     {
         self::$document->getDocumentProductEndUserGlobalId($producenduserglobalids);
@@ -871,9 +661,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertArrayNotHasKey("0088", $producenduserglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserTaxRegistration
-     */
     public function testDocumentProductEndUserTaxRegistration(): void
     {
         self::$document->getDocumentProductEndUserTaxRegistration($producendusertaxreg);
@@ -885,9 +672,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertArrayNotHasKey("ZZ", $producendusertaxreg);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserAddress
-     */
     public function testDocumentProductEndUserAddress(): void
     {
         self::$document->getDocumentProductEndUserAddress($producenduserlineone, $producenduserlinetwo, $producenduserlinethree, $producenduserpostcode, $producendusercity, $producendusercountry, $producendusersubdivision);
@@ -901,9 +685,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEmpty($producendusersubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserLegalOrganisation
-     */
     public function testDocumentProductEndUserLegalOrganization(): void
     {
         self::$document->getDocumentProductEndUserLegalOrganisation($producenduserlegalorgid, $producenduserlegalorgtype, $producenduserlegalorgname);
@@ -912,11 +693,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $producenduserlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProductEndUserContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentProductEndUserContactContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentProductEndUserContactContact
-     */
     public function testDocumentProductEndUserContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
@@ -928,9 +704,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerOrderReferencedDocument
-     */
     public function testDocumentSellerOrderReferencedDocument(): void
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
@@ -938,9 +711,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($sellerorderrefdocdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBuyerOrderReferencedDocument
-     */
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
@@ -948,9 +718,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($buyerorderrefdocdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentContractReferencedDocument
-     */
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
@@ -958,9 +725,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($contractrefdocdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocuments
-     */
     public function testDocumentAdditionalReferencedDocuments(): void
     {
         self::$document->getDocumentAdditionalReferencedDocuments($additionalrefdocs);
@@ -974,9 +738,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("916", $additionalrefdocs[0]["TypeCode"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentProcuringProject
-     */
     public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
@@ -984,9 +745,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("Project reference", $projectname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSupplyChainEvent
-     */
     public function testDocumentSupplyChainEvent(): void
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
@@ -995,9 +753,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDespatchAdviceReferencedDocument
-     */
     public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
@@ -1006,9 +761,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNotInstanceOf("DateTime", $despatchdocdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentReceivingAdviceReferencedDocument
-     */
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
@@ -1017,9 +769,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNotInstanceOf("DateTime", $recadvdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDeliveryNoteReferencedDocument
-     */
     public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
@@ -1028,9 +777,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNotInstanceOf("DateTime", $deliverynoterefdocdate);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentBillingPeriod
-     */
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
@@ -1040,9 +786,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docbillingperiodend->format('Ymd'));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAllowanceCharges
-     */
     public function testDocumentAllowanceCharges(): void
     {
         self::$document->getDocumentAllowanceCharges($docallowancecharge);
@@ -1051,9 +794,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals(2, count($docallowancecharge));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerms
-     */
     public function testDocumentPaymentTerms(): void
     {
         self::$document->getDocumentPaymentTerms($docpaymentterms);
@@ -1072,19 +812,12 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals(0.0, $docpaymentterms[0]["partialpaymentamount"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentDeliveryTerms
-     */
     public function testDocumentDeliveryTerms(): void
     {
         self::$document->getDocumentDeliveryTerms($devtermcode);
         $this->assertEquals("", $devtermcode);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument
-     */
     public function testDocumentAdditionalReferencedDocumentLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
@@ -1093,10 +826,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentAdditionalReferencedDocument());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
-     */
     public function testGetDocumentAdditionalReferencedDocument(): void
     {
         $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
@@ -1112,30 +841,18 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $binarydatafilename);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentUltimateCustomerOrderReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentUltimateCustomerOrderReferencedDocument
-     */
     public function testDocumentUltimateCustomerOrderReferencedDocumentLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextGetDocumentPaymentMeans
-     */
     public function testDocumentPaymentMeansLoop(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->nextGetDocumentPaymentMeans());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentMeans
-     */
     public function testGetDocumentPaymentMeans(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
@@ -1152,21 +869,12 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $payeeBic);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentTax
-     */
     public function testDocumentTaxLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentTax());
         $this->assertFalse(self::$document->nextDocumentTax());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentTax
-     */
     public function testDocumentTax(): void
     {
         $this->assertTrue(self::$document->firstDocumentTax());
@@ -1179,10 +887,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals(0.0, $allowanceChargeBasisAmount);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAllowanceCharge
-     */
     public function testtDocumentAllowanceChargeLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
@@ -1191,10 +895,6 @@ class PdfReaderExtended2Test extends TestCase
     }
 
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAllowanceCharge
-     */
     public function testtDocumentAllowanceCharge(): void
     {
         $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
@@ -1228,32 +928,18 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("FRAIS DEPLACEMENT", $reason);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentLogisticsServiceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentLogisticsServiceCharge
-     */
     public function testtDocumentLogisticsServiceChargeLoop(): void
     {
         $this->assertFalse(self::$document->firstDocumentLogisticsServiceCharge());
         $this->assertFalse(self::$document->nextDocumentLogisticsServiceCharge());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
-     */
     public function testtDocumentPaymentTermsLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerm
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDiscountTermsFromPaymentTerm
-     */
     public function testtDocumentPaymentTerms(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
@@ -1274,10 +960,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPosition
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
-     */
     public function testDocumentPositionLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());
@@ -1286,30 +968,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentPosition());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPosition
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGenerals
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionProductDetails
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBuyerOrderReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionContractReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPriceTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionQuantity
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDespatchAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionReceivingAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDeliveryNoteReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBillingPeriod
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
-     */
     public function testDocumentPositionFirst(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());
@@ -1410,30 +1068,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($supplyeventdatetime);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGenerals
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionProductDetails
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBuyerOrderReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionContractReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPriceTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionQuantity
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDespatchAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionReceivingAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDeliveryNoteReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBillingPeriod
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
-     */
     public function testDocumentPositionSecond(): void
     {
         $this->assertTrue(self::$document->nextDocumentPosition());
@@ -1533,31 +1167,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($supplyeventdatetime);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPosition
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGenerals
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionProductDetails
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBuyerOrderReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionContractReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPrice
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionNetPriceTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionQuantity
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDespatchAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionReceivingAdviceReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionDeliveryNoteReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionBillingPeriod
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionNote
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionGrossPriceAllowanceCharge
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionTax
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionLineSummation
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPositionSupplyChainEvent
-     */
     public function testDocumentPositionThird(): void
     {
         $this->assertTrue(self::$document->nextDocumentPosition());
@@ -1657,10 +1266,6 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($supplyeventdatetime);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPositionAdditionalReferencedDocument
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPositionAdditionalReferencedDocument
-     */
     public function testDocumentPositionAdditionalReferencedDocument(): void
     {
         $this->assertFalse(self::$document->firstDocumentPositionAdditionalReferencedDocument());

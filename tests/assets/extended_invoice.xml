@@ -49,7 +49,12 @@
             <ram:SpecifiedTradeProduct>
                 <ram:GlobalID schemeID="0088">4123456000014</ram:GlobalID>
                 <ram:SellerAssignedID>WA997</ram:SellerAssignedID>
+                <ram:IndustryAssignedID>IndustryId</ram:IndustryAssignedID>
+                <ram:ModelID>ModelId</ram:ModelID>
                 <ram:Name>Wirkarbeit HT</ram:Name>
+                <ram:BatchID>BatchId</ram:BatchID>
+                <ram:BrandName>BrandeName</ram:BrandName>
+                <ram:ModelName>ModelName</ram:ModelName>
                 <ram:ApplicableProductCharacteristic>
                     <ram:Description>Zählpunkt</ram:Description>
                     <ram:Value>DE0001346484600000000000000100038</ram:Value>

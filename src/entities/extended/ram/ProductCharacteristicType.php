@@ -46,7 +46,7 @@ class ProductCharacteristicType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $typeCode
      * @return self
      */
-    public function setTypeCode(\horstoeko\zugferd\entities\extended\udt\CodeType $typeCode)
+    public function setTypeCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $typeCode = null)
     {
         $this->typeCode = $typeCode;
         return $this;
@@ -90,7 +90,7 @@ class ProductCharacteristicType
      * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure
      * @return self
      */
-    public function setValueMeasure(\horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure)
+    public function setValueMeasure(?\horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure = null)
     {
         $this->valueMeasure = $valueMeasure;
         return $this;
@@ -117,4 +117,7 @@ class ProductCharacteristicType
         $this->value = $value;
         return $this;
     }
+
+
 }
+

@@ -41,11 +41,9 @@ class TradeAddressType
     private $countryID = null;
 
     /**
-     * @var string[] $countrySubDivisionName
+     * @var string $countrySubDivisionName
      */
-    private $countrySubDivisionName = [
-        
-    ];
+    private $countrySubDivisionName = null;
 
     /**
      * Gets as postcodeCode
@@ -63,7 +61,7 @@ class TradeAddressType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $postcodeCode
      * @return self
      */
-    public function setPostcodeCode(\horstoeko\zugferd\entities\extended\udt\CodeType $postcodeCode)
+    public function setPostcodeCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $postcodeCode = null)
     {
         $this->postcodeCode = $postcodeCode;
         return $this;
@@ -180,43 +178,9 @@ class TradeAddressType
     }
 
     /**
-     * Adds as countrySubDivisionName
-     *
-     * @return self
-     * @param  string $countrySubDivisionName
-     */
-    public function addToCountrySubDivisionName($countrySubDivisionName)
-    {
-        $this->countrySubDivisionName[] = $countrySubDivisionName;
-        return $this;
-    }
-
-    /**
-     * isset countrySubDivisionName
-     *
-     * @param  int|string $index
-     * @return bool
-     */
-    public function issetCountrySubDivisionName($index)
-    {
-        return isset($this->countrySubDivisionName[$index]);
-    }
-
-    /**
-     * unset countrySubDivisionName
-     *
-     * @param  int|string $index
-     * @return void
-     */
-    public function unsetCountrySubDivisionName($index)
-    {
-        unset($this->countrySubDivisionName[$index]);
-    }
-
-    /**
      * Gets as countrySubDivisionName
      *
-     * @return string[]
+     * @return string
      */
     public function getCountrySubDivisionName()
     {
@@ -229,7 +193,7 @@ class TradeAddressType
      * @param  string $countrySubDivisionName
      * @return self
      */
-    public function setCountrySubDivisionName(array $countrySubDivisionName)
+    public function setCountrySubDivisionName($countrySubDivisionName)
     {
         $this->countrySubDivisionName = $countrySubDivisionName;
         return $this;

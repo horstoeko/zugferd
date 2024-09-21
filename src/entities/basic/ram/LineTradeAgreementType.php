@@ -36,7 +36,7 @@ class LineTradeAgreementType
      * @param  \horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice
      * @return self
      */
-    public function setGrossPriceProductTradePrice(\horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice)
+    public function setGrossPriceProductTradePrice(?\horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice = null)
     {
         $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
         return $this;

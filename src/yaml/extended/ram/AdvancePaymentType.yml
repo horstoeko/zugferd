@@ -37,3 +37,14 @@ horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
                 entry_name: IncludedTradeTax
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             type: array<horstoeko\zugferd\entities\extended\ram\TradeTaxType>
+        invoiceSpecifiedReferencedDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: InvoiceSpecifiedReferencedDocument
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getInvoiceSpecifiedReferencedDocument
+                setter: setInvoiceSpecifiedReferencedDocument
+            type: horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType

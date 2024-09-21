@@ -41,7 +41,7 @@ class ExchangedDocumentContextType
      * @param  \horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator
      * @return self
      */
-    public function setTestIndicator(\horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator)
+    public function setTestIndicator(?\horstoeko\zugferd\entities\extended\udt\IndicatorType $testIndicator = null)
     {
         $this->testIndicator = $testIndicator;
         return $this;
@@ -63,7 +63,7 @@ class ExchangedDocumentContextType
      * @param  \horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
-    public function setBusinessProcessSpecifiedDocumentContextParameter(\horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter)
+    public function setBusinessProcessSpecifiedDocumentContextParameter(?\horstoeko\zugferd\entities\extended\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter = null)
     {
         $this->businessProcessSpecifiedDocumentContextParameter = $businessProcessSpecifiedDocumentContextParameter;
         return $this;

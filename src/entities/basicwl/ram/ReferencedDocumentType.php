@@ -58,7 +58,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime)
+    public function setFormattedIssueDateTime(?\horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType $formattedIssueDateTime = null)
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
         return $this;

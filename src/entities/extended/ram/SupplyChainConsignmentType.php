@@ -67,7 +67,7 @@ class SupplyChainConsignmentType
      * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $specifiedLogisticsTransportMovement
      * @return self
      */
-    public function setSpecifiedLogisticsTransportMovement(array $specifiedLogisticsTransportMovement)
+    public function setSpecifiedLogisticsTransportMovement(array $specifiedLogisticsTransportMovement = null)
     {
         $this->specifiedLogisticsTransportMovement = $specifiedLogisticsTransportMovement;
         return $this;

@@ -10,9 +10,6 @@ use horstoeko\zugferd\ZugferdDocumentBuilder;
 
 class DocumentTest extends TestCase
 {
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     */
     public function testDocumentCreationMinimum(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_MINIMUM);
@@ -24,9 +21,6 @@ class DocumentTest extends TestCase
         $this->assertEquals("minimum", $doc->getProfileDefinitionParameter("name"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     */
     public function testDocumentCreationBasic(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASIC);
@@ -38,9 +32,6 @@ class DocumentTest extends TestCase
         $this->assertEquals("basic", $doc->getProfileDefinitionParameter("name"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     */
     public function testDocumentCreationBasicWl(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASICWL);
@@ -52,9 +43,6 @@ class DocumentTest extends TestCase
         $this->assertEquals("basicwl", $doc->getProfileDefinitionParameter("name"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     */
     public function testDocumentCreationEn16931(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EN16931);
@@ -66,9 +54,6 @@ class DocumentTest extends TestCase
         $this->assertEquals("en16931", $doc->getProfileDefinitionParameter("name"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     */
     public function testDocumentCreationExtended(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
@@ -80,10 +65,6 @@ class DocumentTest extends TestCase
         $this->assertEquals("extended", $doc->getProfileDefinitionParameter("name"));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::__construct
-     * @covers \horstoeko\zugferd\ZugferdDocument::initSerialzer()
-     */
     public function testDocumentInternals(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
@@ -97,11 +78,6 @@ class DocumentTest extends TestCase
         $this->assertNotNull($property->getValue($doc));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocument::getInvoiceObject
-     * @covers \horstoeko\zugferd\ZugferdDocument::getSerializer
-     * @covers \horstoeko\zugferd\ZugferdDocument::getObjectHelper
-     */
     public function testDocumentGetters(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);

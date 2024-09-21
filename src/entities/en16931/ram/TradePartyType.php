@@ -111,7 +111,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType[] $iD
      * @return self
      */
-    public function setID(array $iD)
+    public function setID(array $iD = null)
     {
         $this->iD = $iD;
         return $this;
@@ -167,7 +167,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType[] $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID)
+    public function setGlobalID(array $globalID = null)
     {
         $this->globalID = $globalID;
         return $this;
@@ -233,7 +233,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType $specifiedLegalOrganization
      * @return self
      */
-    public function setSpecifiedLegalOrganization(\horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType $specifiedLegalOrganization)
+    public function setSpecifiedLegalOrganization(?\horstoeko\zugferd\entities\en16931\ram\LegalOrganizationType $specifiedLegalOrganization = null)
     {
         $this->specifiedLegalOrganization = $specifiedLegalOrganization;
         return $this;
@@ -255,7 +255,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TradeContactType $definedTradeContact
      * @return self
      */
-    public function setDefinedTradeContact(\horstoeko\zugferd\entities\en16931\ram\TradeContactType $definedTradeContact)
+    public function setDefinedTradeContact(?\horstoeko\zugferd\entities\en16931\ram\TradeContactType $definedTradeContact = null)
     {
         $this->definedTradeContact = $definedTradeContact;
         return $this;
@@ -277,7 +277,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TradeAddressType $postalTradeAddress
      * @return self
      */
-    public function setPostalTradeAddress(\horstoeko\zugferd\entities\en16931\ram\TradeAddressType $postalTradeAddress)
+    public function setPostalTradeAddress(?\horstoeko\zugferd\entities\en16931\ram\TradeAddressType $postalTradeAddress = null)
     {
         $this->postalTradeAddress = $postalTradeAddress;
         return $this;
@@ -299,7 +299,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $uRIUniversalCommunication
      * @return self
      */
-    public function setURIUniversalCommunication(\horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $uRIUniversalCommunication)
+    public function setURIUniversalCommunication(?\horstoeko\zugferd\entities\en16931\ram\UniversalCommunicationType $uRIUniversalCommunication = null)
     {
         $this->uRIUniversalCommunication = $uRIUniversalCommunication;
         return $this;
@@ -355,7 +355,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType[] $specifiedTaxRegistration
      * @return self
      */
-    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration)
+    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration = null)
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
         return $this;

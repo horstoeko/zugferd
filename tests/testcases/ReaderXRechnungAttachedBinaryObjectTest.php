@@ -29,12 +29,6 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertEquals(ZugferdProfiles::PROFILE_XRECHNUNG_2, self::$document->getProfileId());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getInvoiceObject
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getSerializer
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getObjectHelper
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getProfileDefinitionParameter
-     */
     public function testDocumentGetters(): void
     {
         $this->assertNotNull(self::$document->getInvoiceObject());
@@ -52,9 +46,6 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         );
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
-     */
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
@@ -69,18 +60,11 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertNull($effectiveSpecifiedPeriod);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument
-     */
     public function testFirstDocumentAdditionalReferencedDocument(): void
     {
         $this->assertTrue((self::$document)->firstDocumentAdditionalReferencedDocument());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
-     */
     public function testGetDocumentAdditionalReferencedDocumentNoDirectorySet(): void
     {
         self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
@@ -93,10 +77,6 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertFalse(file_exists($binarydatafilename));
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::setBinaryDataDirectory
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
-     */
     public function testGetDocumentAdditionalReferencedDocument(): void
     {
         self::$document->setBinaryDataDirectory(dirname(__FILE__));
@@ -114,9 +94,6 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         @unlink($binarydatafilename);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument
-     */
     public function testNextDocumentAdditionalReferencedDocument(): void
     {
         $this->assertFalse((self::$document)->nextDocumentAdditionalReferencedDocument());
