@@ -30,7 +30,7 @@ use horstoeko\zugferd\ZugferdProfileResolver;
 class ZugferdDocumentReader extends ZugferdDocument
 {
     /**
-     * Undocumented variable
+     * Internal pointer for documents additional documents
      *
      * @var integer
      */
@@ -147,6 +147,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @var integer
      */
     private $documentPayeeContactPointer = 0;
+
+    /**
+     * Internal pointer for documents invoice reference documents
+     *
+     * @var integer
+     */
+    private $documentInvRefDocPointer = 0;
 
     /**
      * Internal pointer for the position
@@ -2474,6 +2481,80 @@ class ZugferdDocumentReader extends ZugferdDocument
                 "LineID" => ["getLineID.value", ""],
                 "TypeCode" => ["getTypeCode.value", ""],
                 "ReferenceTypeCode" => ["getReferenceTypeCode.value", ""],
+                "FormattedIssueDateTime" => ["getFormattedIssueDateTime.getDateTimeString.value", ""],
+            ]
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get first reference to the previous invoice
+     * Returns true if an additional referenced document is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceReferencedDocument(): bool
+    {
+        $this->documentInvRefDocPointer = 0;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        return isset($addRefDoc[$this->documentInvRefDocPointer]);
+    }
+
+    /**
+     * Get next reference to the previous invoice
+     * Returns true when another additional referenced document is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceReferencedDocument(): bool
+    {
+        $this->documentInvRefDocPointer++;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        return isset($addRefDoc[$this->documentInvRefDocPointer]);
+    }
+
+    /**
+     * Get reference to the previous invoice
+     *
+     * @param  string|null   $issuerassignedid
+     * __BT-X-331__ Reference to the previous invoice
+     * @param  string|null   $typecode
+     * __BT-X-332__ Type of previous invoice (code)
+     * @param  DateTime|null $issueddate
+     * __BT-X-333-00__ Document date
+     */
+    public function getDocumentInvoiceReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?DateTime &$issueddate = null): ZugferdDocumentReader
+    {
+        $invoiceRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        $invoiceRefDoc = $invoiceRefDoc[$this->documentInvRefDocPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getIssuerAssignedID.value", "");
+        $typecode = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getTypeCode.value", "");
+        $issueddate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get all references to the previous invoice
+     *
+     * @param  array|null $refdocs
+     * Array contains all invoice referenced documents, but without extracting attached binary objects. If you
+     * want to access attached binary objects you have to use ZugferdDocumentReader::getDocumentInvoiceReferencedDocument
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentInvoiceReferencedDocuments(?array &$invoiceRefDocs): ZugferdDocumentReader
+    {
+        $invoiceRefDocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        $invoiceRefDocs = $this->convertToArray(
+            $invoiceRefDocs,
+            [
+                "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
+                "TypeCode" => ["getTypeCode.value", ""],
                 "FormattedIssueDateTime" => ["getFormattedIssueDateTime.getDateTimeString.value", ""],
             ]
         );

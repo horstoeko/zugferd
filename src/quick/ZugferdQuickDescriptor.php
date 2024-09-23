@@ -359,7 +359,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public function doSetInvoiceReferencedDocument(string $id, ?DateTime $issueDateTime = null): ZugferdQuickDescriptor
     {
-        $this->setDocumentInvoiceReferencedDocument($id, $issueDateTime);
+        $this->setDocumentInvoiceReferencedDocument($id, null, $issueDateTime);
         return $this;
     }
 

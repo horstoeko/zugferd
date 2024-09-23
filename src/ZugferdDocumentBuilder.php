@@ -2176,19 +2176,40 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set a Reference to the previous invoice
      *
-     * __Note__: To be used if:
+     * To be used if:
      *  - a previous invoice is corrected
-     *  - reference is made to previous partial invoices from a final invoice
-     *  - Reference is made to previous invoices for advance payments from a final invoice
+     *  - reference is made from a final invoice to previous partial invoices
+     *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ Number of the previous invoice
+     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typecode         Type of previous invoice (code)
      * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
-        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
         $this->getObjectHelper()->tryCallIfMethodExists($this->headerTradeSettlement, "addToInvoiceReferencedDocument", "setInvoiceReferencedDocument", [$invoicerefdoc], $invoicerefdoc);
+        return $this;
+    }
+
+    /**
+     * Add a Reference to the previous invoice
+     *
+     * To be used if:
+     *  - a previous invoice is corrected
+     *  - reference is made from a final invoice to previous partial invoices
+     *  - reference is made from a final invoice to previous invoices for advance payments.     *
+     *
+     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typecode         Type of previous invoice (code)
+     * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToInvoiceReferencedDocument", $invoicerefdoc);
         return $this;
     }
 

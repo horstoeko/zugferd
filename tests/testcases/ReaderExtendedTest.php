@@ -772,6 +772,27 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("130", $additionalrefdocs[0]["TypeCode"]);
     }
 
+    public function testDocumentInvoiceReferencedDocuments(): void
+    {
+        self::$document->getDocumentInvoiceReferencedDocuments($invoicerefdocs);
+        $this->assertIsArray($invoicerefdocs);
+        $this->assertNotEmpty($invoicerefdocs);
+        $this->assertArrayHasKey(0, $invoicerefdocs);
+        $this->assertIsArray($invoicerefdocs[0]);
+        $this->assertArrayHasKey("IssuerAssignedID", $invoicerefdocs[0]);
+        $this->assertArrayHasKey("TypeCode", $invoicerefdocs[0]);
+        $this->assertArrayHasKey("FormattedIssueDateTime", $invoicerefdocs[0]);
+        $this->assertEquals("S-INV1", $invoicerefdocs[0]["IssuerAssignedID"]);
+        $this->assertEquals("83", $invoicerefdocs[0]["TypeCode"]);
+        $this->assertArrayHasKey(1, $invoicerefdocs);
+        $this->assertIsArray($invoicerefdocs[1]);
+        $this->assertArrayHasKey("IssuerAssignedID", $invoicerefdocs[1]);
+        $this->assertArrayHasKey("TypeCode", $invoicerefdocs[1]);
+        $this->assertArrayHasKey("FormattedIssueDateTime", $invoicerefdocs[1]);
+        $this->assertEquals("S-INV2", $invoicerefdocs[1]["IssuerAssignedID"]);
+        $this->assertEquals("84", $invoicerefdocs[1]["TypeCode"]);
+    }
+
     public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
@@ -870,6 +891,26 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("", $reftypecode);
         $this->assertNull($issueddate);
         $this->assertEquals("", $binarydatafilename);
+    }
+
+    public function testDocumentInvoiceReferencedDocumentLoop(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentInvoiceReferencedDocument());
+        $this->assertTrue(self::$document->nextDocumentInvoiceReferencedDocument());
+        $this->assertFalse(self::$document->nextDocumentInvoiceReferencedDocument());
+    }
+
+    public function testGetDocumentInvoiceReferencedDocument(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentInvoiceReferencedDocument());
+        self::$document->getDocumentInvoiceReferencedDocument($issuerassignedid, $typecode, $issueddate);
+        $this->assertEquals("S-INV1", $issuerassignedid);
+        $this->assertEquals("83", $typecode);
+        $this->assertTrue(self::$document->nextDocumentInvoiceReferencedDocument());
+        self::$document->getDocumentInvoiceReferencedDocument($issuerassignedid, $typecode, $issueddate);
+        $this->assertEquals("S-INV2", $issuerassignedid);
+        $this->assertEquals("84", $typecode);
+        $this->assertFalse(self::$document->nextDocumentInvoiceReferencedDocument());
     }
 
     public function testDocumentUltimateCustomerOrderReferencedDocumentLoop(): void
