@@ -61,9 +61,6 @@ HDR;
 HDR;
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolve
-     */
     public function testResolveEn16931()
     {
         $resolved = ZugferdProfileResolver::resolve($this->deliverEn16931Header());
@@ -95,9 +92,6 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]["schematronfilename"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileId
-     */
     public function testResolveProfileIdEn16931()
     {
         $resolved = ZugferdProfileResolver::resolveProfileId($this->deliverEn16931Header());
@@ -106,9 +100,6 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileDef
-     */
     public function testResolveProfileDefEn16931()
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
@@ -135,9 +126,6 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolve
-     */
     public function testResolveUnknownProfile()
     {
         $this->expectException(\Exception::class);
@@ -146,9 +134,6 @@ HDR;
         ZugferdProfileResolver::resolveProfileId($this->deliverUnknownProfile());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolve
-     */
     public function testResolveInvalidXml()
     {
         $this->expectException(\Exception::class);
@@ -157,9 +142,6 @@ HDR;
         ZugferdProfileResolver::resolveProfileId($this->deliverInvalidXml());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveById
-     */
     public function testResolveProfileByIdEn16931()
     {
         $resolved = ZugferdProfileResolver::resolveById(ZugferdProfiles::PROFILE_EN16931);
@@ -191,9 +173,6 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]["schematronfilename"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileDefById
-     */
     public function testResolveProfileDefByIdEn16931()
     {
         $resolved = ZugferdProfileResolver::resolveProfileDefById(ZugferdProfiles::PROFILE_EN16931);
@@ -220,9 +199,6 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdProfileResolver::resolveProfileDefById
-     */
     public function testResolveProfileDefByIdUnknown()
     {
         $this->expectException(ZugferdUnknownProfileIdException::class);

@@ -644,7 +644,7 @@ class ZugferdObjectHelper
         $this->tryCall($address, "setPostcodeCode", $this->getCodeType($postcode));
         $this->tryCall($address, "setCityName", $this->getTextType($city));
         $this->tryCall($address, "setCountryID", $this->getCountryIDType($country));
-        $this->tryCallAll($address, ["addToCountrySubDivisionName", "setCountrySubDivisionName"], $this->getTextType($subdivision));
+        $this->tryCall($address, "setCountrySubDivisionName", $this->getTextType($subdivision));
 
         return $address;
     }
@@ -1099,10 +1099,10 @@ class ZugferdObjectHelper
         $this->tryCall($summation, "setLineTotalAmount", $this->getAmountType($lineTotalAmount));
         $this->tryCall($summation, "setChargeTotalAmount", $this->getAmountType($chargeTotalAmount));
         $this->tryCall($summation, "setAllowanceTotalAmount", $this->getAmountType($allowanceTotalAmount));
-        $this->tryCallAll($summation, ["addToTaxBasisTotalAmount", "setTaxBasisTotalAmount"], $this->getAmountType($taxBasisTotalAmount));
+        $this->tryCall($summation, "setTaxBasisTotalAmount", $this->getAmountType($taxBasisTotalAmount));
         $this->tryCallAll($summation, ["addToTaxTotalAmount", "setTaxTotalAmount"], $this->getAmountType($taxTotalAmount));
         $this->tryCall($summation, "setRoundingAmount", $this->getAmountType($roundingAmount));
-        $this->tryCallAll($summation, ["addToGrandTotalAmount", "setGrandTotalAmount"], $this->getAmountType($grandTotalAmount));
+        $this->tryCall($summation, "setGrandTotalAmount", $this->getAmountType($grandTotalAmount));
         $this->tryCall($summation, "setTotalPrepaidAmount", $this->getAmountType($totalPrepaidAmount));
         $this->tryCall($summation, "setDuePayableAmount", $this->getAmountType($duePayableAmount));
 
@@ -1195,15 +1195,20 @@ class ZugferdObjectHelper
     /**
      * Get product specification
      *
-     * @param  string|null $name
-     * @param  string|null $description
-     * @param  string|null $sellerAssignedID
-     * @param  string|null $buyerAssignedID
-     * @param  string|null $globalIDType
-     * @param  string|null $globalID
+     * @param string|null $name
+     * @param string|null $description
+     * @param string|null $sellerAssignedID
+     * @param string|null $buyerAssignedID
+     * @param string|null $globalIDType
+     * @param string|null $globalID
+     * @param string|null $industryAssignedID
+     * @param string|null $modelID
+     * @param string|null $batchID
+     * @param string|null $brandName
+     * @param string|null $modelName
      * @return object|null
      */
-    public function getTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ?object
+    public function getTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null, ?string $industryAssignedID = null, ?string $modelID = null, ?string $batchID = null, ?string $brandName = null, ?string $modelName = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1216,6 +1221,11 @@ class ZugferdObjectHelper
         $this->tryCall($product, "setBuyerAssignedID", $this->getIdType($buyerAssignedID));
         $this->tryCall($product, "setName", $this->getTextType($name));
         $this->tryCall($product, "setDescription", $this->getTextType($description));
+        $this->tryCall($product, "setIndustryAssignedID", $this->getIdType($industryAssignedID));
+        $this->tryCall($product, "setModelID", $this->getIdType($modelID));
+        $this->tryCall($product, "addToBatchID", $this->getIdType($batchID));
+        $this->tryCall($product, "setBrandName", $this->getTextType($brandName));
+        $this->tryCall($product, "setModelName", $this->getTextType($modelName));
 
         return $product;
     }
@@ -1677,28 +1687,9 @@ class ZugferdObjectHelper
     }
 
     /**
-     * If $value is an array and has at least one array element the first
-     * array element is returned otherwise null is returned. If $value is not an
-     * array $value is returned
-     *
-     * @param  mixed $value
-     * @return mixed
-     */
-    public function getFirstFromArrayIfArray($value)
-    {
-        if (is_array($value)) {
-            $first = reset($value);
-            if ($first !== false) {
-                return $first;
-            }
-            return null;
-        }
-        return $value;
-    }
-
-    /**
      * Wrapper for method_exists for use in PHP8
      *
+     * @codeCoverageIgnore
      * @param  string|object $instance
      * @param  string        $method
      * @return boolean

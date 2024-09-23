@@ -125,13 +125,6 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, $document->getProfileId());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlContent
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlContent
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlContent
-     *
-     * @return void
-     */
     public function testGetXmlContent(): void
     {
         $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)
@@ -154,13 +147,6 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlAttachmentFilename
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlAttachmentFilename
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlAttachmentFilename
-     *
-     * @return void
-     */
     public function testGetXmlAttachmentFilename(): void
     {
         $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)
@@ -183,13 +169,6 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertInstanceOf(ZugferdDocumentPdfBuilder::class, $result);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract::getXmlAttachmentXmpName
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfBuilder::getXmlAttachmentXmpName
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfMerger::getXmlAttachmentXmpName
-     *
-     * @return void
-     */
     public function testGetXmlAttachmentXmpName(): void
     {
         $mockedObject = $this->getMockBuilder(ZugferdDocumentPdfBuilder::class)

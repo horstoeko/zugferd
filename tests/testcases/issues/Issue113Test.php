@@ -15,7 +15,7 @@ class Issue113Test extends TestCase
     {
         self::$document = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EN16931);
         self::$document->setDocumentSummation(100.0, 100.0);
- 
+
         $this->disableRenderXmlContent();
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:LineTotalAmount', 0);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:ChargeTotalAmount', 0);

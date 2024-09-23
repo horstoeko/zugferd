@@ -44,6 +44,28 @@ horstoeko\zugferd\entities\extended\ram\TradeProductType:
                 getter: getBuyerAssignedID
                 setter: setBuyerAssignedID
             type: horstoeko\zugferd\entities\extended\udt\IDType
+        industryAssignedID:
+            expose: true
+            access_type: public_method
+            serialized_name: IndustryAssignedID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getIndustryAssignedID
+                setter: setIndustryAssignedID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
+        modelID:
+            expose: true
+            access_type: public_method
+            serialized_name: ModelID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getModelID
+                setter: setModelID
+            type: horstoeko\zugferd\entities\extended\udt\IDType
         name:
             expose: true
             access_type: public_method
@@ -65,6 +87,43 @@ horstoeko\zugferd\entities\extended\ram\TradeProductType:
             accessor:
                 getter: getDescription
                 setter: setDescription
+            type: horstoeko\zugferd\entities\extended\udt\TextType
+        batchID:
+            expose: true
+            access_type: public_method
+            serialized_name: BatchID
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBatchID
+                setter: setBatchID
+            xml_list:
+                inline: true
+                entry_name: BatchID
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\udt\IDType>
+        brandName:
+            expose: true
+            access_type: public_method
+            serialized_name: BrandName
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getBrandName
+                setter: setBrandName
+            type: horstoeko\zugferd\entities\extended\udt\TextType
+        modelName:
+            expose: true
+            access_type: public_method
+            serialized_name: ModelName
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getModelName
+                setter: setModelName
             type: horstoeko\zugferd\entities\extended\udt\TextType
         applicableProductCharacteristic:
             expose: true

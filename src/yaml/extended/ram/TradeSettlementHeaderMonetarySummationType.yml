@@ -43,11 +43,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             accessor:
                 getter: getTaxBasisTotalAmount
                 setter: setTaxBasisTotalAmount
-            xml_list:
-                inline: true
-                entry_name: TaxBasisTotalAmount
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\extended\udt\AmountType>
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
         taxTotalAmount:
             expose: true
             access_type: public_method
@@ -84,11 +80,7 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationTy
             accessor:
                 getter: getGrandTotalAmount
                 setter: setGrandTotalAmount
-            xml_list:
-                inline: true
-                entry_name: GrandTotalAmount
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\extended\udt\AmountType>
+            type: horstoeko\zugferd\entities\extended\udt\AmountType
         totalPrepaidAmount:
             expose: true
             access_type: public_method

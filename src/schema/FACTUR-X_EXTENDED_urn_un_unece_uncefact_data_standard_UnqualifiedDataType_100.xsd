@@ -2,8 +2,7 @@
 <xs:schema xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
-    elementFormDefault="qualified"
-    version="100.D16B">
+    elementFormDefault="qualified">
   <xs:complexType name="AmountType">
     <xs:simpleContent>
       <xs:extension base="xs:decimal">
@@ -23,7 +22,7 @@
     <xs:simpleContent>
       <xs:extension base="xs:token">
         <xs:attribute name="listID" type="xs:token" use="optional"/>
-        <xs:attribute name="listVersionID" type="xs:token" use="optional"/>
+        <xs:attribute name="listVersionID" type="xs:token"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -56,7 +55,7 @@
   <xs:complexType name="IDType">
     <xs:simpleContent>
       <xs:extension base="xs:token">
-        <xs:attribute name="schemeID" type="xs:token" use="optional"/>
+        <xs:attribute name="schemeID" type="xs:token"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -68,7 +67,7 @@
   <xs:complexType name="MeasureType">
     <xs:simpleContent>
       <xs:extension base="xs:decimal">
-        <xs:attribute name="unitCode" type="xs:token" use="optional"/>
+        <xs:attribute name="unitCode" type="xs:token"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -85,7 +84,7 @@
   <xs:complexType name="QuantityType">
     <xs:simpleContent>
       <xs:extension base="xs:decimal">
-        <xs:attribute name="unitCode" type="xs:token" use="optional"/>
+        <xs:attribute name="unitCode" type="xs:token"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>

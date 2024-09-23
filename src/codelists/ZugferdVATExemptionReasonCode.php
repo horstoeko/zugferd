@@ -207,7 +207,10 @@ class ZugferdVATExemptionReasonCode
     /**
      * VATEX-EU-143-1FA
      * Exempt based on article 143, section 1 (fa) of Council Directive 2006/112/EC
-     * Context of exemption: The importation of goods by the European Community, the European Atomic Energy Community, the European Central Bank or the European Investment Bank, or by the bodies set up by the Communities to which the Protocol of 8 April 1965 on the privileges and immunities of the European Communities applies, within the limits and under the conditions of that Protocol and the agreements for its implementation or the headquarters agreements, in so far as it does not lead to distortion of  competition;
+     * Context of exemption: The importation of goods by the European Community, the European Atomic Energy Community, the European Central
+     * Bank or the European Investment Bank, or by the bodies set up by the Communities to which the Protocol of 8 April 1965 on the
+     * privileges and immunities of the European Communities applies, within the limits and under the conditions of that Protocol and the
+     * agreements for its implementation or the headquarters agreements, in so far as it does not lead to distortion of  competition;
      */
     const VATEX_EU_143_1FA = "VATEX-EU-143-1FA";
 
@@ -326,7 +329,11 @@ class ZugferdVATExemptionReasonCode
     /**
      * VATEX-EU-151-1AA
      * Exempt based on article 151, section 1 (aa) of Council Directive 2006/112/EC
-     * Context of exemption: The supply of goods or services to the European Community, the European Atomic Energy Community, the European Central Bank or the European Investment Bank, or to the bodies set up by the Communities to which the Protocol of 8 April 1965 on the privileges and immunities of the European Communities applies, within the limits and under the conditions of that Protocol and the agreements for its implementation or the headquarters agreements, in so far as it does not lead to distortion of competition.
+     * Context of exemption: The supply of goods or services to the European Community, the European Atomic Energy Community,
+     * the European Central Bank or the European Investment Bank, or to the bodies set up by the Communities to which the Protocol
+     * of 8 April 1965 on the privileges and immunities of the European Communities applies, within the limits and under the
+     * conditions of that Protocol and the agreements for its implementation or the headquarters agreements, in so far as it does
+     * not lead to distortion of competition.
      */
     const VATEX_EU_151_1AA = "VATEX-EU-151-1AA";
 

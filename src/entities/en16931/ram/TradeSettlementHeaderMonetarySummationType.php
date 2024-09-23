@@ -95,7 +95,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $chargeTotalAmount
      * @return self
      */
-    public function setChargeTotalAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $chargeTotalAmount)
+    public function setChargeTotalAmount(?\horstoeko\zugferd\entities\en16931\udt\AmountType $chargeTotalAmount = null)
     {
         $this->chargeTotalAmount = $chargeTotalAmount;
         return $this;
@@ -117,7 +117,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $allowanceTotalAmount
      * @return self
      */
-    public function setAllowanceTotalAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $allowanceTotalAmount)
+    public function setAllowanceTotalAmount(?\horstoeko\zugferd\entities\en16931\udt\AmountType $allowanceTotalAmount = null)
     {
         $this->allowanceTotalAmount = $allowanceTotalAmount;
         return $this;
@@ -195,7 +195,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType[] $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(array $taxTotalAmount)
+    public function setTaxTotalAmount(array $taxTotalAmount = null)
     {
         $this->taxTotalAmount = $taxTotalAmount;
         return $this;
@@ -217,7 +217,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $roundingAmount
      * @return self
      */
-    public function setRoundingAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $roundingAmount)
+    public function setRoundingAmount(?\horstoeko\zugferd\entities\en16931\udt\AmountType $roundingAmount = null)
     {
         $this->roundingAmount = $roundingAmount;
         return $this;
@@ -261,7 +261,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $totalPrepaidAmount
      * @return self
      */
-    public function setTotalPrepaidAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $totalPrepaidAmount)
+    public function setTotalPrepaidAmount(?\horstoeko\zugferd\entities\en16931\udt\AmountType $totalPrepaidAmount = null)
     {
         $this->totalPrepaidAmount = $totalPrepaidAmount;
         return $this;

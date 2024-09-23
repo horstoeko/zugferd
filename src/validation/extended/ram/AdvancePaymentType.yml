@@ -15,3 +15,6 @@ horstoeko\zugferd\entities\extended\ram\AdvancePaymentType:
                         - xsd_rules
             -
                 Valid: null
+        invoiceSpecifiedReferencedDocument:
+            -
+                Valid: null

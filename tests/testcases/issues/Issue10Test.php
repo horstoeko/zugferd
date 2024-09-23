@@ -17,10 +17,6 @@ class Issue10Test extends TestCase
         self::$document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_XRECHNUNG_2_2);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue  #10
-     */
     public function testTotalPrepaidAmountPayed(): void
     {
         (self::$document)->setDocumentInformation("471102", "380", DateTime::createFromFormat("Ymd", "20180305"), "EUR");
@@ -38,10 +34,6 @@ class Issue10Test extends TestCase
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount', 0, "109.0");
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue  #10
-     */
     public function testTotalPrepaidAmountUnpayed(): void
     {
         (self::$document)->setDocumentInformation("471102", "380", DateTime::createFromFormat("Ymd", "20180305"), "EUR");
@@ -59,10 +51,6 @@ class Issue10Test extends TestCase
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:DuePayableAmount', 0, "109.0");
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentBuilder::SetDocumentSummation
-     * @issue  #10
-     */
     public function testTotalPrepaidAmountIsNull(): void
     {
         (self::$document)->setDocumentInformation("471102", "380", DateTime::createFromFormat("Ymd", "20180305"), "EUR");

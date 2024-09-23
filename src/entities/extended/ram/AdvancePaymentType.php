@@ -28,6 +28,11 @@ class AdvancePaymentType
     ];
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     */
+    private $invoiceSpecifiedReferencedDocument = null;
+
+    /**
      * Gets as paidAmount
      *
      * @return \horstoeko\zugferd\entities\extended\udt\AmountType
@@ -65,7 +70,7 @@ class AdvancePaymentType
      * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime
      * @return self
      */
-    public function setFormattedReceivedDateTime(\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime)
+    public function setFormattedReceivedDateTime(?\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime = null)
     {
         $this->formattedReceivedDateTime = $formattedReceivedDateTime;
         return $this;
@@ -126,4 +131,29 @@ class AdvancePaymentType
         $this->includedTradeTax = $includedTradeTax;
         return $this;
     }
+
+    /**
+     * Gets as invoiceSpecifiedReferencedDocument
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+     */
+    public function getInvoiceSpecifiedReferencedDocument()
+    {
+        return $this->invoiceSpecifiedReferencedDocument;
+    }
+
+    /**
+     * Sets a new invoiceSpecifiedReferencedDocument
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     * @return self
+     */
+    public function setInvoiceSpecifiedReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument = null)
+    {
+        $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
+        return $this;
+    }
+
+
 }
+

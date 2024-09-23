@@ -1,5 +1,8 @@
 horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
     properties:
+        sellerOrderReferencedDocument:
+            -
+                Valid: null
         buyerOrderReferencedDocument:
             -
                 Valid: null

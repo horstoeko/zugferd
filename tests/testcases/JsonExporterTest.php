@@ -18,9 +18,6 @@ class JsonExporterTest extends TestCase
         self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xrechnung_simple_2.xml");
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentJsonExporter::toJsonString
-     */
     public function testToJsonString(): void
     {
         $exporter = new ZugferdDocumentJsonExporter(static::$document);
@@ -30,9 +27,6 @@ class JsonExporterTest extends TestCase
         $this->assertStringContainsString('{"GuidelineSpecifiedDocumentContextParameter"', $jsonString);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentJsonExporter::toPrettyJsonString
-     */
     public function testToPrettyJsonString(): void
     {
         $exporter = new ZugferdDocumentJsonExporter(static::$document);
@@ -41,9 +35,6 @@ class JsonExporterTest extends TestCase
         $this->assertStringStartsWith("{\n    \"ExchangedDocumentContext\": {\n        \"GuidelineSpecifiedDocumentContextParameter\": {", $jsonString);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentJsonExporter::toJsonObject
-     */
     public function testToJsonObject(): void
     {
         $exporter = new ZugferdDocumentJsonExporter(static::$document);

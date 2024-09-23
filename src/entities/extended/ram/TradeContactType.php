@@ -122,7 +122,7 @@ class TradeContactType
      * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
      * @return self
      */
-    public function setTelephoneUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication)
+    public function setTelephoneUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication = null)
     {
         $this->telephoneUniversalCommunication = $telephoneUniversalCommunication;
         return $this;
@@ -144,7 +144,7 @@ class TradeContactType
      * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication
      * @return self
      */
-    public function setFaxUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication)
+    public function setFaxUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication = null)
     {
         $this->faxUniversalCommunication = $faxUniversalCommunication;
         return $this;
@@ -166,7 +166,7 @@ class TradeContactType
      * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication
      * @return self
      */
-    public function setEmailURIUniversalCommunication(\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication)
+    public function setEmailURIUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication = null)
     {
         $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
         return $this;

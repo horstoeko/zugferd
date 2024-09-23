@@ -36,7 +36,7 @@ class LegalOrganizationType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $iD
      * @return self
      */
-    public function setID(\horstoeko\zugferd\entities\en16931\udt\IDType $iD)
+    public function setID(?\horstoeko\zugferd\entities\en16931\udt\IDType $iD = null)
     {
         $this->iD = $iD;
         return $this;

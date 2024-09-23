@@ -30,7 +30,7 @@ use horstoeko\zugferd\ZugferdProfileResolver;
 class ZugferdDocumentReader extends ZugferdDocument
 {
     /**
-     * Undocumented variable
+     * Internal pointer for documents additional documents
      *
      * @var integer
      */
@@ -147,6 +147,13 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @var integer
      */
     private $documentPayeeContactPointer = 0;
+
+    /**
+     * Internal pointer for documents invoice reference documents
+     *
+     * @var integer
+     */
+    private $documentInvRefDocPointer = 0;
 
     /**
      * Internal pointer for the position
@@ -382,44 +389,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentSummation(?float &$grandTotalAmount, ?float &$duePayableAmount, ?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxBasisTotalAmount, ?float &$taxTotalAmount, ?float &$roundingAmount, ?float &$totalPrepaidAmount): ZugferdDocumentReader
     {
         $invoiceCurrencyCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
+        $grandTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getGrandTotalAmount.value", 0);
+        $taxBasisTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxBasisTotalAmount.value", 0);
+        $taxTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", []);
 
-        $grandTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getGrandTotalAmount", 0);
-        if (is_array($grandTotalAmountElement)) {
-            foreach ($grandTotalAmountElement as $grandTotalAmountElementItem) {
-                $grandTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($grandTotalAmountElementItem, "getCurrencyID") ?? "";
-                if ($grandTotalAmountCurrencyCode == $invoiceCurrencyCode || $grandTotalAmountCurrencyCode == "") {
-                    $grandTotalAmount = $this->getObjectHelper()->tryCallAndReturn($grandTotalAmountElementItem, "value") ?? 0;
-                    break;
-                }
+        foreach ($taxTotalAmountElement as $taxTotalAmountElementItem) {
+            $taxTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "getCurrencyID") ?? "";
+            if ($taxTotalAmountCurrencyCode == $invoiceCurrencyCode || $taxTotalAmountCurrencyCode == "") {
+                $taxTotalAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "value") ?? 0;
+                break;
             }
-        } else {
-            $grandTotalAmount = $this->getObjectHelper()->tryCallAndReturn($grandTotalAmountElement, "value") ?? 0;
-        }
-
-        $taxBasisTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxBasisTotalAmount", 0);
-        if (is_array($taxBasisTotalAmountElement)) {
-            foreach ($taxBasisTotalAmountElement as $taxBasisTotalAmountElementItem) {
-                $taxBasisTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($taxBasisTotalAmountElementItem, "getCurrencyID") ?? "";
-                if ($taxBasisTotalAmountCurrencyCode == $invoiceCurrencyCode || $taxBasisTotalAmountCurrencyCode == "") {
-                    $taxBasisTotalAmount = $this->getObjectHelper()->tryCallAndReturn($taxBasisTotalAmountElementItem, "value") ?? 0;
-                    break;
-                }
-            }
-        } else {
-            $taxBasisTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxBasisTotalAmount.value", 0);
-        }
-
-        $taxTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", 0);
-        if (is_array($taxTotalAmountElement)) {
-            foreach ($taxTotalAmountElement as $taxTotalAmountElementItem) {
-                $taxTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "getCurrencyID") ?? "";
-                if ($taxTotalAmountCurrencyCode == $invoiceCurrencyCode || $taxTotalAmountCurrencyCode == "") {
-                    $taxTotalAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "value") ?? 0;
-                    break;
-                }
-            }
-        } else {
-            $taxTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount.value", 0);
         }
 
         $duePayableAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getDuePayableAmount.value", 0);
@@ -2510,6 +2489,80 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get first reference to the previous invoice
+     * Returns true if an invoice reference document is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function firstDocumentInvoiceReferencedDocument(): bool
+    {
+        $this->documentInvRefDocPointer = 0;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        return isset($addRefDoc[$this->documentInvRefDocPointer]);
+    }
+
+    /**
+     * Get next reference to the previous invoice
+     * Returns true when another invoice reference document is available, otherwise false
+     *
+     * @return boolean
+     */
+    public function nextDocumentInvoiceReferencedDocument(): bool
+    {
+        $this->documentInvRefDocPointer++;
+        $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        return isset($addRefDoc[$this->documentInvRefDocPointer]);
+    }
+
+    /**
+     * Get reference to the previous invoice
+     *
+     * @param  string|null   $issuerassignedid
+     * __BT-X-331__ Reference to the previous invoice
+     * @param  string|null   $typecode
+     * __BT-X-332__ Type of previous invoice (code)
+     * @param  DateTime|null $issueddate
+     * __BT-X-333-00__ Document date
+     */
+    public function getDocumentInvoiceReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?DateTime &$issueddate = null): ZugferdDocumentReader
+    {
+        $invoiceRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        $invoiceRefDoc = $invoiceRefDoc[$this->documentInvRefDocPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getIssuerAssignedID.value", "");
+        $typecode = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getTypeCode.value", "");
+        $issueddate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get all references to the previous invoice
+     *
+     * @param  array|null $invoiceRefDocs
+     * Array contains all invoice referenced documents, but without extracting attached binary objects. If you
+     * want to access attached binary objects you have to use ZugferdDocumentReader::getDocumentInvoiceReferencedDocument
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentInvoiceReferencedDocuments(?array &$invoiceRefDocs): ZugferdDocumentReader
+    {
+        $invoiceRefDocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+        $invoiceRefDocs = $this->convertToArray(
+            $invoiceRefDocs,
+            [
+                "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
+                "TypeCode" => ["getTypeCode.value", ""],
+                "FormattedIssueDateTime" => ["getFormattedIssueDateTime.getDateTimeString.value", ""],
+            ]
+        );
+
+        return $this;
+    }
+
+    /**
      * Get Details of a project reference
      *
      * @param  string|null $id
@@ -3488,6 +3541,58 @@ class ZugferdDocumentReader extends ZugferdDocument
         $buyerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getBuyerAssignedID.value", "");
         $globalIDType = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.getSchemeID", "");
         $globalID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get information about the goods and services billed (Enhanced, with Model, Brand, etc.)
+     *
+     * @param  string|null $name
+     * A name of the item (item name)
+     * @param  string|null $description
+     * A description of the item, the item description makes it possible to describe the item and its
+     * properties in more detail than is possible with the item name.
+     * @param  string|null $sellerAssignedID
+     * An identifier assigned to the item by the seller
+     * @param  string|null $buyerAssignedID
+     * An identifier assigned to the item by the buyer. The article number of the buyer is a clear,
+     * bilaterally agreed identification of the product. It can, for example, be the customer article
+     * number or the article number assigned by the manufacturer.
+     * @param  string|null $globalIDType
+     * The scheme for $globalID
+     * @param  string|null $globalID
+     * Identification of an article according to the registered scheme (Global identifier of the product,
+     * GTIN, ...)
+     * @param  string|null $industryAssignedID
+     * D assigned by the industry to the contained referenced product
+     * @param  string|null $modelID
+     * A unique model identifier for this product
+     * @param  string|null $batchID
+     * Identification of the batch (lot) of the product
+     * @param  string|null $brandName
+     * The brand name, expressed as text, for this product
+     * @param  string|null $modelName
+     * Model designation of the product
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionProductDetailsExt(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?string &$globalIDType, ?string &$globalID, ?string &$industryAssignedID, ?string &$modelID, ?string &$batchID, ?string &$brandName, ?string &$modelName): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $name = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getName.value", "");
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDescription.value", "");
+        $sellerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getSellerAssignedID.value", "");
+        $buyerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getBuyerAssignedID.value", "");
+        $globalIDType = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.getSchemeID", "");
+        $globalID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getGlobalID.value", "");
+        $industryAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getIndustryAssignedID.value", "");
+        $modelID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getModelID.value", "");
+        $batchIDs = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getBatchID", "");
+        $batchID = isset($batchIDs[0]) ? $this->getObjectHelper()->tryCallAndReturn($batchIDs[0], "value") : "";
+        $brandName = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getBrandName.value", "");
+        $modelName = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getModelName.value", "");
 
         return $this;
     }

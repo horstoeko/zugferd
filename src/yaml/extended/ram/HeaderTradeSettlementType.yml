@@ -217,7 +217,11 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType:
             accessor:
                 getter: getInvoiceReferencedDocument
                 setter: setInvoiceReferencedDocument
-            type: horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+            xml_list:
+                inline: true
+                entry_name: InvoiceReferencedDocument
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType>
         receivableSpecifiedTradeAccountingAccount:
             expose: true
             access_type: public_method

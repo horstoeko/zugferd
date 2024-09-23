@@ -36,7 +36,7 @@ class ProductClassificationType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $classCode
      * @return self
      */
-    public function setClassCode(\horstoeko\zugferd\entities\extended\udt\CodeType $classCode)
+    public function setClassCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $classCode = null)
     {
         $this->classCode = $classCode;
         return $this;

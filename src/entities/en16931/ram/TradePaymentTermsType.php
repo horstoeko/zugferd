@@ -63,7 +63,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime
      * @return self
      */
-    public function setDueDateDateTime(\horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime)
+    public function setDueDateDateTime(?\horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime = null)
     {
         $this->dueDateDateTime = $dueDateDateTime;
         return $this;
@@ -85,7 +85,7 @@ class TradePaymentTermsType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID
      * @return self
      */
-    public function setDirectDebitMandateID(\horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID)
+    public function setDirectDebitMandateID(?\horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID = null)
     {
         $this->directDebitMandateID = $directDebitMandateID;
         return $this;

@@ -49,7 +49,12 @@
             <ram:SpecifiedTradeProduct>
                 <ram:GlobalID schemeID="0088">4123456000014</ram:GlobalID>
                 <ram:SellerAssignedID>WA997</ram:SellerAssignedID>
+                <ram:IndustryAssignedID>IndustryId</ram:IndustryAssignedID>
+                <ram:ModelID>ModelId</ram:ModelID>
                 <ram:Name>Wirkarbeit HT</ram:Name>
+                <ram:BatchID>BatchId</ram:BatchID>
+                <ram:BrandName>BrandeName</ram:BrandName>
+                <ram:ModelName>ModelName</ram:ModelName>
                 <ram:ApplicableProductCharacteristic>
                     <ram:Description>Zählpunkt</ram:Description>
                     <ram:Value>DE0001346484600000000000000100038</ram:Value>
@@ -346,6 +351,20 @@
                 <ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
                 <ram:DuePayableAmount>480.22</ram:DuePayableAmount>
             </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+            <ram:InvoiceReferencedDocument>
+                <ram:IssuerAssignedID>S-INV1</ram:IssuerAssignedID>
+                <ram:TypeCode>83</ram:TypeCode>
+                <ram:FormattedIssueDateTime>
+                    <ram:DateTimeString format="102">2024-09-30</ram:DateTimeString>
+                </ram:FormattedIssueDateTime>
+            </ram:InvoiceReferencedDocument>
+            <ram:InvoiceReferencedDocument>
+                <ram:IssuerAssignedID>S-INV2</ram:IssuerAssignedID>
+                <ram:TypeCode>84</ram:TypeCode>
+                <ram:FormattedIssueDateTime>
+                    <ram:DateTimeString format="102">2024-09-30</ram:DateTimeString>
+                </ram:FormattedIssueDateTime>
+            </ram:InvoiceReferencedDocument>
         </ram:ApplicableHeaderTradeSettlement>
     </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

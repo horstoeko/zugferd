@@ -148,7 +148,7 @@ class ExchangedDocumentType
      * @param  \horstoeko\zugferd\entities\basic\ram\NoteType[] $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote)
+    public function setIncludedNote(array $includedNote = null)
     {
         $this->includedNote = $includedNote;
         return $this;

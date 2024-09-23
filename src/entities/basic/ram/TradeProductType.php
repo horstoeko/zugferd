@@ -36,7 +36,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\basic\udt\IDType $globalID
      * @return self
      */
-    public function setGlobalID(\horstoeko\zugferd\entities\basic\udt\IDType $globalID)
+    public function setGlobalID(?\horstoeko\zugferd\entities\basic\udt\IDType $globalID = null)
     {
         $this->globalID = $globalID;
         return $this;

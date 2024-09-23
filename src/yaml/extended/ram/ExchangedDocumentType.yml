@@ -65,11 +65,7 @@ horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType:
             accessor:
                 getter: getLanguageID
                 setter: setLanguageID
-            xml_list:
-                inline: true
-                entry_name: LanguageID
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\extended\udt\IDType>
+            type: horstoeko\zugferd\entities\extended\udt\IDType
         includedNote:
             expose: true
             access_type: public_method

@@ -66,7 +66,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(\horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID)
+    public function setIssuerAssignedID(?\horstoeko\zugferd\entities\en16931\udt\IDType $issuerAssignedID = null)
     {
         $this->issuerAssignedID = $issuerAssignedID;
         return $this;
@@ -88,7 +88,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
      * @return self
      */
-    public function setURIID(\horstoeko\zugferd\entities\en16931\udt\IDType $uRIID)
+    public function setURIID(?\horstoeko\zugferd\entities\en16931\udt\IDType $uRIID = null)
     {
         $this->uRIID = $uRIID;
         return $this;
@@ -110,7 +110,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
      * @return self
      */
-    public function setLineID(\horstoeko\zugferd\entities\en16931\udt\IDType $lineID)
+    public function setLineID(?\horstoeko\zugferd\entities\en16931\udt\IDType $lineID = null)
     {
         $this->lineID = $lineID;
         return $this;
@@ -176,7 +176,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject
      * @return self
      */
-    public function setAttachmentBinaryObject(\horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject)
+    public function setAttachmentBinaryObject(?\horstoeko\zugferd\entities\en16931\udt\BinaryObjectType $attachmentBinaryObject = null)
     {
         $this->attachmentBinaryObject = $attachmentBinaryObject;
         return $this;
@@ -220,7 +220,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime)
+    public function setFormattedIssueDateTime(?\horstoeko\zugferd\entities\en16931\qdt\FormattedDateTimeType $formattedIssueDateTime = null)
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
         return $this;

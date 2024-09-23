@@ -13,9 +13,6 @@ class PdfReaderInvalidTest extends TestCase
      */
     protected static $document;
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentPdfReader::readAndGuessFromFile
-     */
     public function testCanReadPdf(): void
     {
         self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/InvalidPDF.pdf");

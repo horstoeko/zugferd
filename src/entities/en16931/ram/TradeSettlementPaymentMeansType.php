@@ -100,7 +100,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
      * @return self
      */
-    public function setApplicableTradeSettlementFinancialCard(\horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard)
+    public function setApplicableTradeSettlementFinancialCard(?\horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard = null)
     {
         $this->applicableTradeSettlementFinancialCard = $applicableTradeSettlementFinancialCard;
         return $this;
@@ -122,7 +122,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\en16931\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
      * @return self
      */
-    public function setPayerPartyDebtorFinancialAccount(\horstoeko\zugferd\entities\en16931\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount)
+    public function setPayerPartyDebtorFinancialAccount(?\horstoeko\zugferd\entities\en16931\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null)
     {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
         return $this;
@@ -144,7 +144,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
      * @return self
      */
-    public function setPayeePartyCreditorFinancialAccount(\horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount)
+    public function setPayeePartyCreditorFinancialAccount(?\horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null)
     {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
         return $this;
@@ -166,7 +166,7 @@ class TradeSettlementPaymentMeansType
      * @param  \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
      * @return self
      */
-    public function setPayeeSpecifiedCreditorFinancialInstitution(\horstoeko\zugferd\entities\en16931\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution)
+    public function setPayeeSpecifiedCreditorFinancialInstitution(?\horstoeko\zugferd\entities\en16931\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution = null)
     {
         $this->payeeSpecifiedCreditorFinancialInstitution = $payeeSpecifiedCreditorFinancialInstitution;
         return $this;

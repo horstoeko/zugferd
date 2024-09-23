@@ -54,11 +54,7 @@ horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType:
             accessor:
                 getter: getName
                 setter: setName
-            xml_list:
-                inline: true
-                entry_name: Name
-                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
-            type: array<horstoeko\zugferd\entities\extended\udt\TextType>
+            type: string
         attachmentBinaryObject:
             expose: true
             access_type: public_method

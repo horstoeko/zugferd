@@ -2176,19 +2176,40 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set a Reference to the previous invoice
      *
-     * __Note__: To be used if:
+     * To be used if:
      *  - a previous invoice is corrected
-     *  - reference is made to previous partial invoices from a final invoice
-     *  - Reference is made to previous invoices for advance payments from a final invoice
+     *  - reference is made from a final invoice to previous partial invoices
+     *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ Number of the previous invoice
+     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typecode         Type of previous invoice (code)
      * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
     {
-        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setInvoiceReferencedDocument", $invoicerefdoc);
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
+        $this->getObjectHelper()->tryCallIfMethodExists($this->headerTradeSettlement, "addToInvoiceReferencedDocument", "setInvoiceReferencedDocument", [$invoicerefdoc], $invoicerefdoc);
+        return $this;
+    }
+
+    /**
+     * Add a Reference to the previous invoice
+     *
+     * To be used if:
+     *  - a previous invoice is corrected
+     *  - reference is made from a final invoice to previous partial invoices
+     *  - reference is made from a final invoice to previous invoices for advance payments.     *
+     *
+     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typecode         Type of previous invoice (code)
+     * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToInvoiceReferencedDocument", $invoicerefdoc);
         return $this;
     }
 
@@ -2326,7 +2347,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayeePartyCreditorFinancialAccount", $payeefinancialaccount);
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayeeSpecifiedCreditorFinancialInstitution", $payeefinancialInstitution);
 
-        $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
 
         return $this;
     }
@@ -2360,7 +2381,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayeePartyCreditorFinancialAccount", $payeefinancialaccount);
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayeeSpecifiedCreditorFinancialInstitution", $payeefinancialInstitution);
 
-        $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
 
         if (!is_null($paymentReference)) {
             $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
@@ -2386,7 +2407,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
 
-        $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
 
         if (!is_null($creditorReferenceID)) {
             $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
@@ -2416,7 +2437,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
         $this->getObjectHelper()->tryCall($paymentMeans, "setApplicableTradeSettlementFinancialCard", $financialCard);
 
-        $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradeSettlementPaymentMeans", "setSpecifiedTradeSettlementPaymentMeans"], $paymentMeans);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
 
         return $this;
     }
@@ -2455,7 +2476,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  float|null    $lineTotalBasisAmount       __BT-, From __ Tax rate goods amount
      * @param  float|null    $allowanceChargeBasisAmount __BT-, From __ Total amount of surcharges and deductions of the tax rate at document level
      * @param  DateTime|null $taxPointDate               __BT-, From __ Specification of a date, in accordance with the sales tax guideline, on which the sales tax for the seller and for the buyer becomes relevant for accounting, insofar as this date can be determined and differs from the invoice date
-     * Note: The tax collection date for VAT purposes is usually the date the goods were delivered or the service was completed (the base tax date). There are a few variations. For further information, please refer to Article 226 (7) of Council Directive 2006/112 / EC. This element is required if the date set for the sales tax return differs from the invoice date. Both the buyer and the seller should use the delivery date for VAT returns, if provided by the seller. This is not used in Germany. Instead, the delivery and service date must be specified.
+     * Note: The tax collection date for VAT purposes is usually the date the goods were delivered or the service was completed (the base tax date). There are a few variations. For further information, please refer to Article 226 (7) of Council Directive 2006/112 / EC. This element is required if the
+     * date set for the sales tax return differs from the invoice date. Both the buyer and the seller should use the delivery date for VAT returns, if provided by the seller. This is not used in Germany. Instead, the delivery and service date must be specified.
      * @param  string|null   $dueDateTypeCode            __BT-8, From BASIC WL__ The code for the date on which sales tax becomes relevant for the seller and the buyer.
      * The code must distinguish between the following entries from UNTDID 2005:
      *  - date of issue of the invoice document
@@ -2786,17 +2808,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Adds product details to the last created position (line) in the document
      *
-     * @param  string      $name             __BT-153, From BASIC__ A name of the item (item name)
-     * @param  string|null $description      __BT-154, From EN 16931__ A description of the item, the item description makes it possible to describe the item and its properties in more detail than is possible with the item name.
-     * @param  string|null $sellerAssignedID __BT-155, From EN 16931__ An identifier assigned to the item by the seller
-     * @param  string|null $buyerAssignedID  __BT-156, From EN 16931__ An identifier assigned to the item by the buyer. The article number of the buyer is a clear, bilaterally agreed identification of the product. It can, for example, be the customer article number or the article number assigned by the manufacturer.
-     * @param  string|null $globalIDType     __BT-157-1, From BASIC__ The scheme for $globalID
-     * @param  string|null $globalID         __BT-157, From BASIC__ Identification of an article according to the registered scheme (Global identifier of the product, GTIN, ...)
+     * @param  string      $name                 __BT-153, From BASIC__ A name of the item (item name)
+     * @param  string|null $description          __BT-154, From EN 16931__ A description of the item, the item description makes it possible to describe the item and its properties in more detail than is possible with the item name.
+     * @param  string|null $sellerAssignedID     __BT-155, From EN 16931__ An identifier assigned to the item by the seller
+     * @param  string|null $buyerAssignedID      __BT-156, From EN 16931__ An identifier assigned to the item by the buyer. The article number of the buyer is a clear, bilaterally agreed identification of the product. It can, for example, be the customer article number or the article number assigned by the manufacturer.
+     * @param  string|null $globalIDType         __BT-157-1, From BASIC__ The scheme for $globalID
+     * @param  string|null $globalID             __BT-157, From BASIC__ Identification of an article according to the registered scheme (Global identifier of the product, GTIN, ...)
+     * @param  string|null $industryAssignedID   __BT-X-309, From EXTENDED__ ID assigned by the industry to the contained referenced product
+     * @param  string|null $modelID              __BT-X-533, From EXTENDED__ A unique model identifier for this product
+     * @param  string|null $batchID              __BT-X-534. From EXTENDED__ Identification of the batch (lot) of the product
+     * @param  string|null $brandName            __BT-X-535. From EXTENDED__ The brand name, expressed as text, for this product
+     * @param  string|null $modelName            __BT-X-536. From EXTENDED__ Model designation of the product
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionProductDetails(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null): ZugferdDocumentBuilder
+    public function setDocumentPositionProductDetails(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null, ?string $industryAssignedID = null, ?string $modelID = null, ?string $batchID = null, ?string $brandName = null, ?string $modelName = null): ZugferdDocumentBuilder
     {
-        $product = $this->getObjectHelper()->getTradeProductType($name, $description, $sellerAssignedID, $buyerAssignedID, $globalIDType, $globalID);
+        $product = $this->getObjectHelper()->getTradeProductType($name, $description, $sellerAssignedID, $buyerAssignedID, $globalIDType, $globalID, $industryAssignedID, $modelID, $batchID, $brandName, $modelName);
         $this->getObjectHelper()->tryCall($this->currentPosition, "setSpecifiedTradeProduct", $product);
         return $this;
     }

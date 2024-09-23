@@ -46,7 +46,7 @@ class HeaderTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty
      * @return self
      */
-    public function setShipToTradeParty(\horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty)
+    public function setShipToTradeParty(?\horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty = null)
     {
         $this->shipToTradeParty = $shipToTradeParty;
         return $this;
@@ -68,7 +68,7 @@ class HeaderTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(\horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent)
+    public function setActualDeliverySupplyChainEvent(?\horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent = null)
     {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
         return $this;
@@ -90,7 +90,7 @@ class HeaderTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
      * @return self
      */
-    public function setDespatchAdviceReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument)
+    public function setDespatchAdviceReferencedDocument(?\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument = null)
     {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
         return $this;
@@ -112,7 +112,7 @@ class HeaderTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
      * @return self
      */
-    public function setReceivingAdviceReferencedDocument(\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument)
+    public function setReceivingAdviceReferencedDocument(?\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument = null)
     {
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
         return $this;

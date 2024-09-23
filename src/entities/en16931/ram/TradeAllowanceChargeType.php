@@ -105,7 +105,7 @@ class TradeAllowanceChargeType
      * @param  \horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount)
+    public function setBasisAmount(?\horstoeko\zugferd\entities\en16931\udt\AmountType $basisAmount = null)
     {
         $this->basisAmount = $basisAmount;
         return $this;
@@ -193,7 +193,7 @@ class TradeAllowanceChargeType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TradeTaxType $categoryTradeTax
      * @return self
      */
-    public function setCategoryTradeTax(\horstoeko\zugferd\entities\en16931\ram\TradeTaxType $categoryTradeTax)
+    public function setCategoryTradeTax(?\horstoeko\zugferd\entities\en16931\ram\TradeTaxType $categoryTradeTax = null)
     {
         $this->categoryTradeTax = $categoryTradeTax;
         return $this;

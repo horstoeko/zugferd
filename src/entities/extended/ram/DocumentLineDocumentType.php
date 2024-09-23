@@ -75,7 +75,7 @@ class DocumentLineDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $parentLineID
      * @return self
      */
-    public function setParentLineID(\horstoeko\zugferd\entities\extended\udt\IDType $parentLineID)
+    public function setParentLineID(?\horstoeko\zugferd\entities\extended\udt\IDType $parentLineID = null)
     {
         $this->parentLineID = $parentLineID;
         return $this;
@@ -119,7 +119,7 @@ class DocumentLineDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode
      * @return self
      */
-    public function setLineStatusReasonCode(\horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode)
+    public function setLineStatusReasonCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode = null)
     {
         $this->lineStatusReasonCode = $lineStatusReasonCode;
         return $this;
@@ -175,7 +175,7 @@ class DocumentLineDocumentType
      * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote)
+    public function setIncludedNote(array $includedNote = null)
     {
         $this->includedNote = $includedNote;
         return $this;

@@ -66,7 +66,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount
      * @return self
      */
-    public function setCalculatedAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount)
+    public function setCalculatedAmount(?\horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount = null)
     {
         $this->calculatedAmount = $calculatedAmount;
         return $this;
@@ -132,7 +132,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount)
+    public function setBasisAmount(?\horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount = null)
     {
         $this->basisAmount = $basisAmount;
         return $this;

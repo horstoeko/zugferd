@@ -28,9 +28,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentInformation
-     */
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
@@ -46,29 +43,18 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextGetDocumentPaymentMeans
-     */
     public function testDocumentPaymentMeansLoop(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->nextGetDocumentPaymentMeans());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
-     */
     public function testtDocumentPaymentTermsLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentGeneralPaymentInformation
-     */
     public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
@@ -76,10 +62,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEquals("F20180023BUYER", $paymentReference);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstGetDocumentPaymentMeans
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentMeans
-     */
     public function testGetDocumentPaymentMeans(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
@@ -96,12 +78,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEquals("", $payeeBic);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentPaymentTerms
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentPaymentTerm
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDiscountTermsFromPaymentTerm
-     */
     public function testtDocumentPaymentTerms(): void
     {
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
@@ -121,9 +97,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentative
-     */
     public function testDocumentSellerTaxRepresentativeGeneral(): void
     {
         self::$document->getDocumentSellerTaxRepresentative($sellertaxreprname, $sellertaxreprids, $sellertaxreprdescription);
@@ -133,9 +106,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEquals("", $sellertaxreprdescription);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeGlobalId
-     */
     public function testDocumentSellerTaxRepresentativeGlobalId(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeGlobalId($sellertaxreprglobalids);
@@ -143,9 +113,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEmpty($sellertaxreprglobalids);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeTaxRegistration
-     */
     public function testDocumentSellerTaxRepresentativeTaxRegistration(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeTaxRegistration($sellertaxreprtaxreg);
@@ -155,9 +122,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEquals("FR 05 987 654 321", $sellertaxreprtaxreg["VA"]);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeAddress
-     */
     public function testDocumentSellerTaxRepresentativeAddress(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeAddress($sellertaxreprlineone, $sellertaxreprlinetwo, $sellertaxreprlinethree, $sellertaxreprpostcode, $sellertaxreprcity, $sellertaxreprcountry, $sellertaxreprsubdivision);
@@ -171,9 +135,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEmpty($sellertaxreprsubdivision);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeLegalOrganisation
-     */
     public function testDocumentSellerTaxRepresentativeLegalOrganization(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeLegalOrganisation($sellertaxreprlegalorgid, $sellertaxreprlegalorgtype, $sellertaxreprlegalorgname);
@@ -182,11 +143,6 @@ class ReaderEn16931Bank2Test extends TestCase
         $this->assertEquals("", $sellertaxreprlegalorgname);
     }
 
-    /**
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::firstDocumentSellerTaxRepresentativeContact
-     * @covers \horstoeko\zugferd\ZugferdDocumentReader::nextDocumentSellerTaxRepresentativeContact
-     */
     public function testDocumentSellerTaxRepresentativeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());

@@ -58,7 +58,7 @@ class NoteType
      * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode
      * @return self
      */
-    public function setSubjectCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode)
+    public function setSubjectCode(?\horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode = null)
     {
         $this->subjectCode = $subjectCode;
         return $this;

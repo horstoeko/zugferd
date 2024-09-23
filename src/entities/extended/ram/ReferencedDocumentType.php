@@ -31,11 +31,9 @@ class ReferencedDocumentType
     private $typeCode = null;
 
     /**
-     * @var string[] $name
+     * @var string $name
      */
-    private $name = [
-        
-    ];
+    private $name = null;
 
     /**
      * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
@@ -68,7 +66,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(\horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID)
+    public function setIssuerAssignedID(?\horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID = null)
     {
         $this->issuerAssignedID = $issuerAssignedID;
         return $this;
@@ -90,7 +88,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
      * @return self
      */
-    public function setURIID(\horstoeko\zugferd\entities\extended\udt\IDType $uRIID)
+    public function setURIID(?\horstoeko\zugferd\entities\extended\udt\IDType $uRIID = null)
     {
         $this->uRIID = $uRIID;
         return $this;
@@ -112,7 +110,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType $lineID
      * @return self
      */
-    public function setLineID(\horstoeko\zugferd\entities\extended\udt\IDType $lineID)
+    public function setLineID(?\horstoeko\zugferd\entities\extended\udt\IDType $lineID = null)
     {
         $this->lineID = $lineID;
         return $this;
@@ -141,43 +139,9 @@ class ReferencedDocumentType
     }
 
     /**
-     * Adds as name
-     *
-     * @return self
-     * @param  string $name
-     */
-    public function addToName($name)
-    {
-        $this->name[] = $name;
-        return $this;
-    }
-
-    /**
-     * isset name
-     *
-     * @param  int|string $index
-     * @return bool
-     */
-    public function issetName($index)
-    {
-        return isset($this->name[$index]);
-    }
-
-    /**
-     * unset name
-     *
-     * @param  int|string $index
-     * @return void
-     */
-    public function unsetName($index)
-    {
-        unset($this->name[$index]);
-    }
-
-    /**
      * Gets as name
      *
-     * @return string[]
+     * @return string
      */
     public function getName()
     {
@@ -190,7 +154,7 @@ class ReferencedDocumentType
      * @param  string $name
      * @return self
      */
-    public function setName(array $name)
+    public function setName($name)
     {
         $this->name = $name;
         return $this;
@@ -212,7 +176,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
      * @return self
      */
-    public function setAttachmentBinaryObject(\horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject)
+    public function setAttachmentBinaryObject(?\horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject = null)
     {
         $this->attachmentBinaryObject = $attachmentBinaryObject;
         return $this;
@@ -256,7 +220,7 @@ class ReferencedDocumentType
      * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime)
+    public function setFormattedIssueDateTime(?\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime = null)
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
         return $this;

@@ -176,7 +176,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty
      * @return self
      */
-    public function setSalesAgentTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty)
+    public function setSalesAgentTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $salesAgentTradeParty = null)
     {
         $this->salesAgentTradeParty = $salesAgentTradeParty;
         return $this;
@@ -198,7 +198,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty
      * @return self
      */
-    public function setBuyerTaxRepresentativeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty)
+    public function setBuyerTaxRepresentativeTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerTaxRepresentativeTradeParty = null)
     {
         $this->buyerTaxRepresentativeTradeParty = $buyerTaxRepresentativeTradeParty;
         return $this;
@@ -220,7 +220,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $sellerTaxRepresentativeTradeParty
      * @return self
      */
-    public function setSellerTaxRepresentativeTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $sellerTaxRepresentativeTradeParty)
+    public function setSellerTaxRepresentativeTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $sellerTaxRepresentativeTradeParty = null)
     {
         $this->sellerTaxRepresentativeTradeParty = $sellerTaxRepresentativeTradeParty;
         return $this;
@@ -242,7 +242,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $productEndUserTradeParty
      * @return self
      */
-    public function setProductEndUserTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $productEndUserTradeParty)
+    public function setProductEndUserTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $productEndUserTradeParty = null)
     {
         $this->productEndUserTradeParty = $productEndUserTradeParty;
         return $this;
@@ -264,7 +264,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms
      * @return self
      */
-    public function setApplicableTradeDeliveryTerms(\horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms)
+    public function setApplicableTradeDeliveryTerms(?\horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms = null)
     {
         $this->applicableTradeDeliveryTerms = $applicableTradeDeliveryTerms;
         return $this;
@@ -286,7 +286,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $sellerOrderReferencedDocument
      * @return self
      */
-    public function setSellerOrderReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $sellerOrderReferencedDocument)
+    public function setSellerOrderReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $sellerOrderReferencedDocument = null)
     {
         $this->sellerOrderReferencedDocument = $sellerOrderReferencedDocument;
         return $this;
@@ -308,7 +308,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument)
+    public function setBuyerOrderReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $buyerOrderReferencedDocument = null)
     {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
         return $this;
@@ -330,7 +330,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument
      * @return self
      */
-    public function setQuotationReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument)
+    public function setQuotationReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $quotationReferencedDocument = null)
     {
         $this->quotationReferencedDocument = $quotationReferencedDocument;
         return $this;
@@ -352,7 +352,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument
      * @return self
      */
-    public function setContractReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument)
+    public function setContractReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $contractReferencedDocument = null)
     {
         $this->contractReferencedDocument = $contractReferencedDocument;
         return $this;
@@ -408,7 +408,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
-    public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
+    public function setAdditionalReferencedDocument(array $additionalReferencedDocument = null)
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
         return $this;
@@ -430,7 +430,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty
      * @return self
      */
-    public function setBuyerAgentTradeParty(\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty)
+    public function setBuyerAgentTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $buyerAgentTradeParty = null)
     {
         $this->buyerAgentTradeParty = $buyerAgentTradeParty;
         return $this;
@@ -452,7 +452,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $specifiedProcuringProject
      * @return self
      */
-    public function setSpecifiedProcuringProject(\horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $specifiedProcuringProject)
+    public function setSpecifiedProcuringProject(?\horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $specifiedProcuringProject = null)
     {
         $this->specifiedProcuringProject = $specifiedProcuringProject;
         return $this;
@@ -508,7 +508,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
      * @return self
      */
-    public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument)
+    public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument = null)
     {
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
         return $this;

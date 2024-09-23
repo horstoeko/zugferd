@@ -36,7 +36,7 @@ class ExchangedDocumentContextType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
-    public function setBusinessProcessSpecifiedDocumentContextParameter(\horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter)
+    public function setBusinessProcessSpecifiedDocumentContextParameter(?\horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter = null)
     {
         $this->businessProcessSpecifiedDocumentContextParameter = $businessProcessSpecifiedDocumentContextParameter;
         return $this;

@@ -61,7 +61,7 @@ class TradeAddressType
      * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode
      * @return self
      */
-    public function setPostcodeCode(\horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode)
+    public function setPostcodeCode(?\horstoeko\zugferd\entities\en16931\udt\CodeType $postcodeCode = null)
     {
         $this->postcodeCode = $postcodeCode;
         return $this;

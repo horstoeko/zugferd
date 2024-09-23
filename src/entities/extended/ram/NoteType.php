@@ -41,7 +41,7 @@ class NoteType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $contentCode
      * @return self
      */
-    public function setContentCode(\horstoeko\zugferd\entities\extended\udt\CodeType $contentCode)
+    public function setContentCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $contentCode = null)
     {
         $this->contentCode = $contentCode;
         return $this;
@@ -85,9 +85,12 @@ class NoteType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode
      * @return self
      */
-    public function setSubjectCode(\horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode)
+    public function setSubjectCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode = null)
     {
         $this->subjectCode = $subjectCode;
         return $this;
     }
+
+
 }
+

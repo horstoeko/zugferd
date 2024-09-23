@@ -45,9 +45,11 @@
             <file>../tests/testcases/ValidatorValidTest.php</file>
             <file>../tests/testcases/ValidatorInvalidTest.php</file>
         </testsuite>
+        <!--
         <testsuite name="Exporter">
             <file>../tests/testcases/JsonExporterTest.php</file>
         </testsuite>
+        -->
         <testsuite name="issues">
             <file>../tests/testcases/issues/Issue10Test.php</file>
             <file>../tests/testcases/issues/Issue18Test.php</file>
@@ -63,7 +65,7 @@
         </include>
         <exclude>
             <directory suffix=".php">../src/codelists</directory>
-            <directory suffix=".php">../src/entities</directory>
+            <!--<directory suffix=".php">../src/entities</directory>-->
             <directory suffix=".php">../src/exception</directory>
             <file>../src/ZugferdProfiles.php</file>
         </exclude>

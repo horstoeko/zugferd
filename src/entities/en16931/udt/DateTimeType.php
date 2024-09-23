@@ -31,9 +31,10 @@ class DateTimeType
      * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString
      * @return self
      */
-    public function setDateTimeString(\horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString)
+    public function setDateTimeString(?\horstoeko\zugferd\entities\en16931\udt\DateTimeType\DateTimeStringAType $dateTimeString = null)
     {
         $this->dateTimeString = $dateTimeString;
         return $this;
     }
 }
+

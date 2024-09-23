@@ -41,7 +41,7 @@ class CreditorFinancialAccountType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $iBANID
      * @return self
      */
-    public function setIBANID(\horstoeko\zugferd\entities\en16931\udt\IDType $iBANID)
+    public function setIBANID(?\horstoeko\zugferd\entities\en16931\udt\IDType $iBANID = null)
     {
         $this->iBANID = $iBANID;
         return $this;
@@ -85,7 +85,7 @@ class CreditorFinancialAccountType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $proprietaryID
      * @return self
      */
-    public function setProprietaryID(\horstoeko\zugferd\entities\en16931\udt\IDType $proprietaryID)
+    public function setProprietaryID(?\horstoeko\zugferd\entities\en16931\udt\IDType $proprietaryID = null)
     {
         $this->proprietaryID = $proprietaryID;
         return $this;

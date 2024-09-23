@@ -81,7 +81,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $calculatedAmount
      * @return self
      */
-    public function setCalculatedAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $calculatedAmount)
+    public function setCalculatedAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $calculatedAmount = null)
     {
         $this->calculatedAmount = $calculatedAmount;
         return $this;
@@ -147,7 +147,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
      * @return self
      */
-    public function setBasisAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount)
+    public function setBasisAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount = null)
     {
         $this->basisAmount = $basisAmount;
         return $this;
@@ -169,7 +169,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalBasisAmount
      * @return self
      */
-    public function setLineTotalBasisAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalBasisAmount)
+    public function setLineTotalBasisAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalBasisAmount = null)
     {
         $this->lineTotalBasisAmount = $lineTotalBasisAmount;
         return $this;
@@ -191,7 +191,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceChargeBasisAmount
      * @return self
      */
-    public function setAllowanceChargeBasisAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $allowanceChargeBasisAmount)
+    public function setAllowanceChargeBasisAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $allowanceChargeBasisAmount = null)
     {
         $this->allowanceChargeBasisAmount = $allowanceChargeBasisAmount;
         return $this;
@@ -235,7 +235,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $exemptionReasonCode
      * @return self
      */
-    public function setExemptionReasonCode(\horstoeko\zugferd\entities\extended\udt\CodeType $exemptionReasonCode)
+    public function setExemptionReasonCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $exemptionReasonCode = null)
     {
         $this->exemptionReasonCode = $exemptionReasonCode;
         return $this;
@@ -257,7 +257,7 @@ class TradeTaxType
      * @param  \horstoeko\zugferd\entities\extended\udt\DateType $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(\horstoeko\zugferd\entities\extended\udt\DateType $taxPointDate)
+    public function setTaxPointDate(?\horstoeko\zugferd\entities\extended\udt\DateType $taxPointDate = null)
     {
         $this->taxPointDate = $taxPointDate;
         return $this;

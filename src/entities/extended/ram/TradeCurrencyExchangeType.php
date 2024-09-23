@@ -11,17 +11,17 @@ class TradeCurrencyExchangeType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $sourceCurrencyCode
+     * @var string $sourceCurrencyCode
      */
     private $sourceCurrencyCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $targetCurrencyCode
+     * @var string $targetCurrencyCode
      */
     private $targetCurrencyCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\RateType $conversionRate
+     * @var float $conversionRate
      */
     private $conversionRate = null;
 
@@ -33,8 +33,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as sourceCurrencyCode
      *
-     * @return \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType
-
+     * @return string
      */
     public function getSourceCurrencyCode()
     {
@@ -44,7 +43,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new sourceCurrencyCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode
+     * @param  string $sourceCurrencyCode
      * @return self
      */
     public function setSourceCurrencyCode($sourceCurrencyCode)
@@ -56,7 +55,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as targetCurrencyCode
      *
-     * @return \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode
+     * @return string
      */
     public function getTargetCurrencyCode()
     {
@@ -66,7 +65,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new targetCurrencyCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\qdt\CurrencyCodeType $sourceCurrencyCode $targetCurrencyCode
+     * @param  string $targetCurrencyCode
      * @return self
      */
     public function setTargetCurrencyCode($targetCurrencyCode)
@@ -78,7 +77,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as conversionRate
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\RateType
+     * @return float
      */
     public function getConversionRate()
     {
@@ -88,7 +87,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new conversionRate
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\RateType $conversionRate
+     * @param  float $conversionRate
      * @return self
      */
     public function setConversionRate($conversionRate)
@@ -113,7 +112,7 @@ class TradeCurrencyExchangeType
      * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime
      * @return self
      */
-    public function setConversionRateDateTime(\horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime)
+    public function setConversionRateDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime = null)
     {
         $this->conversionRateDateTime = $conversionRateDateTime;
         return $this;

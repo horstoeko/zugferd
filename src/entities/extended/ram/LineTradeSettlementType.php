@@ -123,7 +123,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod
      * @return self
      */
-    public function setBillingSpecifiedPeriod(\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod)
+    public function setBillingSpecifiedPeriod(?\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $billingSpecifiedPeriod = null)
     {
         $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
         return $this;
@@ -179,7 +179,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge)
+    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge = null)
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
         return $this;
@@ -223,7 +223,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument
      * @return self
      */
-    public function setInvoiceReferencedDocument(\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument)
+    public function setInvoiceReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceReferencedDocument = null)
     {
         $this->invoiceReferencedDocument = $invoiceReferencedDocument;
         return $this;
@@ -279,7 +279,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
-    public function setAdditionalReferencedDocument(array $additionalReferencedDocument)
+    public function setAdditionalReferencedDocument(array $additionalReferencedDocument = null)
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
         return $this;
@@ -301,7 +301,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
-    public function setReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
+    public function setReceivableSpecifiedTradeAccountingAccount(?\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount = null)
     {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
         return $this;
