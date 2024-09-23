@@ -2490,7 +2490,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get first reference to the previous invoice
-     * Returns true if an additional referenced document is available, otherwise false
+     * Returns true if an invoice reference document is available, otherwise false
      *
      * @return boolean
      */
@@ -2503,7 +2503,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Get next reference to the previous invoice
-     * Returns true when another additional referenced document is available, otherwise false
+     * Returns true when another invoice reference document is available, otherwise false
      *
      * @return boolean
      */
@@ -2542,7 +2542,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get all references to the previous invoice
      *
-     * @param  array|null $refdocs
+     * @param  array|null $invoiceRefDocs
      * Array contains all invoice referenced documents, but without extracting attached binary objects. If you
      * want to access attached binary objects you have to use ZugferdDocumentReader::getDocumentInvoiceReferencedDocument
      * @return ZugferdDocumentReader
