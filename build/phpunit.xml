@@ -29,13 +29,13 @@
             <file>../tests/testcases/BuilderExtendedTest.php</file>
         </testsuite>
         <testsuite name="PDFReader">
+            <file>../tests/testcases/PdfReaderGeneralTest.php</file>
             <file>../tests/testcases/PdfReaderMinimumSimpleTest.php</file>
             <file>../tests/testcases/PdfReaderEn16931AllowanceChargeTest.php</file>
             <file>../tests/testcases/PdfReaderEn16931SimpleTest.php</file>
             <file>../tests/testcases/PdfReaderExtendedTest.php</file>
             <file>../tests/testcases/PdfReaderExtended2Test.php</file>
             <file>../tests/testcases/PdfReaderXRechnungSimpleTest.php</file>
-            <file>../tests/testcases/PdfReaderInvalidTest.php</file>
             <file>../tests/testcases/PdfReaderMultipleAttachmentsTest.php</file>
         </testsuite>
         <testsuite name="PDFBuilder">
@@ -45,11 +45,9 @@
             <file>../tests/testcases/ValidatorValidTest.php</file>
             <file>../tests/testcases/ValidatorInvalidTest.php</file>
         </testsuite>
-        <!--
         <testsuite name="Exporter">
             <file>../tests/testcases/JsonExporterTest.php</file>
         </testsuite>
-        -->
         <testsuite name="issues">
             <file>../tests/testcases/issues/Issue10Test.php</file>
             <file>../tests/testcases/issues/Issue18Test.php</file>

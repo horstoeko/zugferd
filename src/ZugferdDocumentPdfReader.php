@@ -53,13 +53,70 @@ class ZugferdDocumentPdfReader
     }
 
     /**
-     * Load a PDF content (ZUGFeRD/Factur-X)
+     * Tries to load an attachment content from PDF and return a ZugferdDocumentReader
+     * If any erros occured or no attachments were found null is returned
      *
      * @param  string $pdfContent
      * String Containing the binary pdf data
      * @return ZugferdDocumentReader|null
      */
     public static function readAndGuessFromContent(string $pdfContent): ?ZugferdDocumentReader
+    {
+        $xmlContent = static::extractXMLFromContent($pdfContent);
+
+        if (is_null($xmlContent)) {
+            return null;
+        }
+
+        try {
+            return ZugferdDocumentReader::readAndGuessFromContent($xmlContent);
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Returns a XML content from a PDF file
+     *
+     * @param string $pdfFilename
+     * Contains a full-qualified filename which must exist and must be readable
+     * @return string|null
+     */
+    public static function getXmlFromFile(string $pdfFilename) : ?string
+    {
+        if (!file_exists($pdfFilename)) {
+            throw new ZugferdFileNotFoundException($pdfFilename);
+        }
+
+        $pdfContent = file_get_contents($pdfFilename);
+
+        if ($pdfContent === false) {
+            throw new ZugferdFileNotReadableException($pdfFilename);
+        }
+
+        return static::getXmlFromContent($pdfContent);
+    }
+
+    /**
+     * Returns a XML content from a PDF binary stream (string)
+     *
+     * @param string $pdfContent
+     * String Containing the binary pdf data
+     * @return string|null
+     */
+    public static function getXmlFromContent(string $pdfContent) : ?string
+    {
+        return static::extractXMLFromContent($pdfContent);
+    }
+
+    /**
+     * Get the attachment content from XML.
+     * See the allowed filenames which are supported
+     *
+     * @param string $pdfContent
+     * @return string|null
+     */
+    private static function extractXMLFromContent(string $pdfContent): ?string
     {
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseContent($pdfContent);
@@ -87,7 +144,7 @@ class ZugferdDocumentPdfReader
                 $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
                 foreach ($embeddedFiles as $embeddedFile) {
                     if ($attachmentIndex == $embeddedFileIndex) {
-                        $returnValue = ZugferdDocumentReader::readAndGuessFromContent($embeddedFile->getContent());
+                        $returnValue = $embeddedFile->getContent();
                         break;
                     }
                     $embeddedFileIndex++;
