@@ -62,7 +62,7 @@ class ZugferdDocumentPdfReader
      */
     public static function readAndGuessFromContent(string $pdfContent): ?ZugferdDocumentReader
     {
-        $xmlContent = static::extractXMLFromContent($pdfContent);
+        $xmlContent = static::internalExtractXMLFromPdfContent($pdfContent);
 
         if (is_null($xmlContent)) {
             return null;
@@ -106,7 +106,7 @@ class ZugferdDocumentPdfReader
      */
     public static function getXmlFromContent(string $pdfContent) : ?string
     {
-        return static::extractXMLFromContent($pdfContent);
+        return static::internalExtractXMLFromPdfContent($pdfContent);
     }
 
     /**
@@ -116,7 +116,7 @@ class ZugferdDocumentPdfReader
      * @param string $pdfContent
      * @return string|null
      */
-    private static function extractXMLFromContent(string $pdfContent): ?string
+    private static function internalExtractXMLFromPdfContent(string $pdfContent): ?string
     {
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseContent($pdfContent);
