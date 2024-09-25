@@ -292,11 +292,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Sets a foreign currency (code) with the tax amount. The exchange rate
      * is calculated by tax amounts
      *
-     * @param  string $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
-     * @param  float  $foreignTaxAmount    __BT-, From __ Required from EXTENDED Tax total amount in the foreign currency
+     * @param  string      $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
+     * @param  float       $foreignTaxAmount    __BT-, From __ Required from EXTENDED Tax total amount in the foreign currency
+     * @param  float|null  $foreignTaxAmount    __BT-X-260, From EXTENDED __ Exchange Rate
      * @return ZugferdDocumentBuilder
      */
-    public function setForeignCurrency(string $foreignCurrencyCode, ?float $foreignTaxAmount): ZugferdDocumentBuilder
+    public function setForeignCurrency(string $foreignCurrencyCode, float $foreignTaxAmount, ?float $exchangeRate = null): ZugferdDocumentBuilder
     {
         $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
 
@@ -341,10 +342,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             $this->getObjectHelper()->tryCallByPath($taxTotalAmountForeign, "setCurrencyID", $foreignCurrencyCode);
         }
 
-        $exchangeRate = round($foreignTaxAmount / $invoiceTaxAmount, 5);
+        $calculatedExchangeRate = $exchangeRate;
+
+        if (is_null($calculatedExchangeRate)) {
+            $calculatedExchangeRate = round($foreignTaxAmount / $invoiceTaxAmount, 5);
+        }
 
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setTaxCurrencyCode", $this->getObjectHelper()->getIdType($foreignCurrencyCode));
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setTaxApplicableTradeCurrencyExchange", $this->getObjectHelper()->getTaxApplicableTradeCurrencyExchangeType($invoiceCurrencyCode, $foreignCurrencyCode, $exchangeRate));
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setTaxApplicableTradeCurrencyExchange", $this->getObjectHelper()->getTaxApplicableTradeCurrencyExchangeType($invoiceCurrencyCode, $foreignCurrencyCode, $calculatedExchangeRate));
+
         return $this;
     }
 
