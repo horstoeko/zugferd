@@ -70,8 +70,6 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Creates a new ZugferdDocumentBuilder with profile EN16931
      *
-     * @codeCoverageIgnore
-     *
      * @return ZugferdQuickDescriptor
      */
     public static function doCreateNew(): ZugferdQuickDescriptor

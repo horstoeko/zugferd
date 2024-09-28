@@ -73,8 +73,6 @@ class ZugferdDocument
      *
      * @param integer $profile
      * The ID of the profile of the document
-     *
-     * @codeCoverageIgnore
      */
     final protected function __construct(int $profile)
     {
@@ -98,7 +96,6 @@ class ZugferdDocument
      * Create a new instance of the internal invoice object
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
-     * @codeCoverageIgnore
      */
     protected function createInvoiceObject()
     {
@@ -150,7 +147,7 @@ class ZugferdDocument
     /**
      * Get a parameter from profile definition
      *
-     * @param string $parameterName
+     * @param  string $parameterName
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)
@@ -186,7 +183,6 @@ class ZugferdDocument
      * @internal
      *
      * Build the internal object helper
-     * @codeCoverageIgnore
      *
      * @return ZugferdDocument
      */
@@ -201,7 +197,6 @@ class ZugferdDocument
      * @internal
      *
      * Build the internal serialzer
-     * @codeCoverageIgnore
      *
      * @return ZugferdDocument
      */
@@ -273,7 +268,7 @@ class ZugferdDocument
     /**
      * Deserialize XML content to internal invoice object
      *
-     * @param string $xmlContent
+     * @param  string $xmlContent
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
      */
     public function deserialize($xmlContent)

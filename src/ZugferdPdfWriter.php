@@ -19,8 +19,6 @@ use setasign\Fpdi\Fpdi as PdfFpdi;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
- *
- * @codeCoverageIgnore
  */
 class ZugferdPdfWriter extends PdfFpdi
 {

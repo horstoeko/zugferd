@@ -114,8 +114,6 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Guess the profile type of the readden xml document
      *
-     * @codeCoverageIgnore
-     *
      * @return array
      */
     private function getProfileDefinition(): array
@@ -126,7 +124,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Get a parameter from profile definition
      *
-     * @param string $parameterName
+     * @param  string $parameterName
      * @return mixed
      */
     public function getProfileDefinitionParameter(string $parameterName)

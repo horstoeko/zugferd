@@ -57,8 +57,6 @@ class ZugferdObjectHelper
     /**
      * Constructor
      *
-     * @codeCoverageIgnore
-     *
      * @param integer $profile
      */
     public function __construct(int $profile)
@@ -1195,17 +1193,17 @@ class ZugferdObjectHelper
     /**
      * Get product specification
      *
-     * @param string|null $name
-     * @param string|null $description
-     * @param string|null $sellerAssignedID
-     * @param string|null $buyerAssignedID
-     * @param string|null $globalIDType
-     * @param string|null $globalID
-     * @param string|null $industryAssignedID
-     * @param string|null $modelID
-     * @param string|null $batchID
-     * @param string|null $brandName
-     * @param string|null $modelName
+     * @param  string|null $name
+     * @param  string|null $description
+     * @param  string|null $sellerAssignedID
+     * @param  string|null $buyerAssignedID
+     * @param  string|null $globalIDType
+     * @param  string|null $globalID
+     * @param  string|null $industryAssignedID
+     * @param  string|null $modelID
+     * @param  string|null $batchID
+     * @param  string|null $brandName
+     * @param  string|null $modelName
      * @return object|null
      */
     public function getTradeProductType(?string $name = null, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null, ?string $industryAssignedID = null, ?string $modelID = null, ?string $batchID = null, ?string $brandName = null, ?string $modelName = null): ?object
@@ -1440,11 +1438,10 @@ class ZugferdObjectHelper
     /**
      * Tries to call a method
      *
-     * @codeCoverageIgnore
-     * @param              object $instance
-     * @param              string $method
-     * @param              mixed  $value
-     * @return             ZugferdObjectHelper
+     * @param  object $instance
+     * @param  string $method
+     * @param  mixed  $value
+     * @return ZugferdObjectHelper
      */
     public function tryCall($instance, string $method, $value): ZugferdObjectHelper
     {
@@ -1466,11 +1463,10 @@ class ZugferdObjectHelper
     /**
      * Try call all methods
      *
-     * @codeCoverageIgnore
-     * @param              object   $instance
-     * @param              string[] $methods
-     * @param              mixed    $value
-     * @return             ZugferdObjectHelper
+     * @param  object   $instance
+     * @param  string[] $methods
+     * @param  mixed    $value
+     * @return ZugferdObjectHelper
      */
     public function tryCallAll($instance, array $methods, $value): ZugferdObjectHelper
     {
@@ -1493,10 +1489,9 @@ class ZugferdObjectHelper
      * Tries to call a method and return the returnvalue from call to $method
      * in object $instance
      *
-     * @codeCoverageIgnore
-     * @param              object $instance
-     * @param              string $method
-     * @return             mixed
+     * @param  object $instance
+     * @param  string $method
+     * @return mixed
      */
     public function tryCallAndReturn($instance, string $method)
     {
@@ -1515,11 +1510,10 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @codeCoverageIgnore
-     * @param              object $instance
-     * @param              string $methods
-     * @param              mixed  $value
-     * @return             void
+     * @param  object $instance
+     * @param  string $methods
+     * @param  mixed  $value
+     * @return void
      */
     public function tryCallByPath($instance, string $methods, $value)
     {
@@ -1537,10 +1531,9 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @codeCoverageIgnore
-     * @param              object $instance
-     * @param              string $methods
-     * @return             mixed
+     * @param  object $instance
+     * @param  string $methods
+     * @return mixed
      */
     public function tryCallByPathAndReturn($instance, string $methods)
     {
@@ -1558,7 +1551,6 @@ class ZugferdObjectHelper
     /**
      * Call $method if exists, otherwise $method2 is calles with $value
      *
-     * @codeCoverageIgnore
      * @param  object $instance
      * @param  string $methodToLookFor
      * @param  string $methodToCall
@@ -1591,9 +1583,8 @@ class ZugferdObjectHelper
     /**
      * Ensure that $input is an array
      *
-     * @codeCoverageIgnore
-     * @param              mixed $input
-     * @return             array
+     * @param  mixed $input
+     * @return array
      */
     public function ensureStringArray($input): array
     {
@@ -1605,8 +1596,6 @@ class ZugferdObjectHelper
 
     /**
      * Ensure array
-     *
-     * @codeCoverageIgnore
      *
      * @param  mixed $value
      * @return array
@@ -1625,9 +1614,8 @@ class ZugferdObjectHelper
     /**
      * Test if a value is null or empty
      *
-     * @codeCoverageIgnore
-     * @param              mixed $value
-     * @return             boolean
+     * @param  mixed $value
+     * @return boolean
      */
     public static function isNullOrEmpty($value)
     {
@@ -1645,9 +1633,8 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @codeCoverageIgnore
-     * @param              array $args
-     * @return             boolean
+     * @param  array $args
+     * @return boolean
      */
     public static function isAllNullOrEmpty(array $args): bool
     {
@@ -1666,9 +1653,8 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @codeCoverageIgnore
-     * @param              array $args
-     * @return             boolean
+     * @param  array $args
+     * @return boolean
      */
     public static function isOneNullOrEmpty(array $args): bool
     {
@@ -1689,7 +1675,6 @@ class ZugferdObjectHelper
     /**
      * Wrapper for method_exists for use in PHP8
      *
-     * @codeCoverageIgnore
      * @param  string|object $instance
      * @param  string        $method
      * @return boolean

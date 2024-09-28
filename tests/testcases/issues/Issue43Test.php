@@ -22,7 +22,7 @@ class Issue43Test extends TestCase
 
     /**
      * @return void
-     * @issue 43
+     * @issue  43
      */
     public function testIssue(): void
     {

@@ -10,7 +10,7 @@ class Issue104Test extends TestCase
 {
     /**
      * @return void
-     * @issue 104
+     * @issue  104
      */
     public function testInvalidException1()
     {
@@ -23,7 +23,7 @@ class Issue104Test extends TestCase
 
     /**
      * @return void
-     * @issue 104
+     * @issue  104
      */
     public function testInvalidException2()
     {

@@ -217,7 +217,7 @@ class ZugferdSettings
     /**
      * Set the filename for the XMP meta data
      *
-     * @param string $xmpMetaDataFilename
+     * @param  string $xmpMetaDataFilename
      * @return void
      */
     public static function setXmpMetaDataFilename(string $xmpMetaDataFilename): void
@@ -239,8 +239,8 @@ class ZugferdSettings
      * Get a specific map for node paths with a special number of decimal places. If not map
      * is found then the default value is returns
      *
-     * @param string $nodePath
-     * @param integer $defaultDecimalPlaces
+     * @param  string  $nodePath
+     * @param  integer $defaultDecimalPlaces
      * @return integer
      */
     public static function getSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): int
@@ -252,7 +252,7 @@ class ZugferdSettings
     /**
      * Update the map of node paths which have a special number of decimal places
      *
-     * @param array $specialDecimalPlacesMaps
+     * @param  array $specialDecimalPlacesMaps
      * @return void
      */
     public static function setSpecialDecimalPlacesMaps(array $specialDecimalPlacesMaps): void
@@ -263,8 +263,8 @@ class ZugferdSettings
     /**
      * Add a new map for a node path with a special number of decimal places
      *
-     * @param string $nodePath
-     * @param integer $defaultDecimalPlaces
+     * @param  string  $nodePath
+     * @param  integer $defaultDecimalPlaces
      * @return void
      */
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void

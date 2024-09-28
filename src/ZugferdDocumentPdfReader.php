@@ -78,7 +78,7 @@ class ZugferdDocumentPdfReader
     /**
      * Returns a XML content from a PDF file
      *
-     * @param string $pdfFilename
+     * @param  string $pdfFilename
      * Contains a full-qualified filename which must exist and must be readable
      * @return string|null
      */
@@ -100,7 +100,7 @@ class ZugferdDocumentPdfReader
     /**
      * Returns a XML content from a PDF binary stream (string)
      *
-     * @param string $pdfContent
+     * @param  string $pdfContent
      * String Containing the binary pdf data
      * @return string|null
      */
@@ -113,7 +113,7 @@ class ZugferdDocumentPdfReader
      * Get the attachment content from XML.
      * See the allowed filenames which are supported
      *
-     * @param string $pdfContent
+     * @param  string $pdfContent
      * @return string|null
      */
     private static function internalExtractXMLFromPdfContent(string $pdfContent): ?string

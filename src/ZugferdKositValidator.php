@@ -136,8 +136,7 @@ class ZugferdKositValidator
     /**
      * Constructor
      *
-     * @codeCoverageIgnore
-     * @param              ZugferdDocument|null $document
+     * @param ZugferdDocument|null $document
      */
     public function __construct(?ZugferdDocument $document = null)
     {
@@ -423,7 +422,7 @@ class ZugferdKositValidator
     /**
      * Get messages from messagebag filtered by message type
      *
-     * @param string $messageType
+     * @param  string $messageType
      * @return array
      */
     private function getMessageBagFiltered(string $messageType): array

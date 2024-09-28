@@ -34,8 +34,6 @@ class ZugferdDocumentJsonExporter
      * Constructor
      *
      * @param ZugferdDocument $document
-     *
-     * @codeCoverageIgnore
      */
     public function __construct(ZugferdDocument $document)
     {

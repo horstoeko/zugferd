@@ -15,7 +15,12 @@ use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
+use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\ZugferdProfileResolver;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the document reader for incoming XML-Documents with
@@ -226,10 +231,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Guess the profile type of a xml file
      *
-     * @codeCoverageIgnore
-     *
-     * @param  string $xmlfilename The filename to read invoice data from
+     * @param  string $xmlfilename
      * @return ZugferdDocumentReader
+     * @throws ZugferdFileNotFoundException
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
     public static function readAndGuessFromFile(string $xmlfilename): ZugferdDocumentReader
     {
@@ -243,10 +251,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Guess the profile type of the readden xml document
      *
-     * @codeCoverageIgnore
-     *
      * @param  string $xmlcontent The XML content as a string to read the invoice data from
+     * @param  string $xmlcontent
      * @return ZugferdDocumentReader
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
     public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
     {
@@ -276,10 +287,10 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read content of a zuferd/xrechnung xml from a string
      *
-     * @codeCoverageIgnore
-     *
      * @param  string $xmlcontent The XML content as a string to read the invoice data from
      * @return ZugferdDocumentReader
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
     private function readContent(string $xmlcontent): ZugferdDocumentReader
     {
@@ -300,6 +311,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $documentlanguage         Returns the language code in which the document was written
      * @param  DateTime|null $effectiveSpecifiedPeriod Returns the contractual due date of the invoice
      * @return ZugferdDocumentReader
+     * @throws ZugferdUnknownDateFormatException
      */
     public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {
@@ -2448,8 +2460,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if (
-            StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
+        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
@@ -2517,11 +2528,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get reference to the previous invoice
      *
-     * @param  string|null   $issuerassignedid
+     * @param string|null   $issuerassignedid
      * __BT-X-331__ Reference to the previous invoice
-     * @param  string|null   $typecode
+     * @param string|null   $typecode
      * __BT-X-332__ Type of previous invoice (code)
-     * @param  DateTime|null $issueddate
+     * @param DateTime|null $issueddate
      * __BT-X-333-00__ Document date
      */
     public function getDocumentInvoiceReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?DateTime &$issueddate = null): ZugferdDocumentReader
@@ -4637,7 +4648,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * __Note__: The identifier of the product is a unique, bilaterally agreed identification of the
      * product. It can, for example, be the customer article number or the article number assigned by
      * the manufacturer.
-     * @param  array $globalID
+     * @param  array  $globalID
      * Array of the global ids indexed by the identification scheme. The identification scheme results
      * from the list published by the ISO/IEC 6523 Maintenance Agency. In particular, the following scheme
      * codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
@@ -4671,8 +4682,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Function to return a value from $invoiceObject by path
      *
-     * @codeCoverageIgnore
-     *
      * @param  string $methods
      * @param  mixed  $defaultValue
      * @return mixed
@@ -4684,8 +4693,6 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Function to return a value from $from by path
-     *
-     * @codeCoverageIgnore
      *
      * @param  object|null $from
      * @param  string      $methods
@@ -4699,8 +4706,6 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Convert to array
-     *
-     * @codeCoverageIgnore
      *
      * @param  mixed $value
      * @param  array $methods
@@ -4746,8 +4751,6 @@ class ZugferdDocumentReader extends ZugferdDocument
 
     /**
      * Convert to associative array
-     *
-     * @codeCoverageIgnore
      *
      * @param  mixed  $value
      * @param  string $methodKey

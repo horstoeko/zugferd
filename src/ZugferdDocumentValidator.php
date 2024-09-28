@@ -42,8 +42,7 @@ class ZugferdDocumentValidator
     /**
      * Constructor
      *
-     * @codeCoverageIgnore
-     * @param              ZugferdDocument $document
+     * @param ZugferdDocument $document
      */
     public function __construct(ZugferdDocument $document)
     {
@@ -64,8 +63,7 @@ class ZugferdDocumentValidator
     /**
      * Initialize the internal validator object
      *
-     * @codeCoverageIgnore
-     * @return             void
+     * @return void
      */
     private function initValidator(): void
     {
@@ -91,10 +89,9 @@ class ZugferdDocumentValidator
     /**
      * Helper for find all files by pattern
      *
-     * @codeCoverageIgnore
-     * @param              string  $pattern
-     * @param              integer $flags
-     * @return             array
+     * @param  string  $pattern
+     * @param  integer $flags
+     * @return array
      */
     private function globRecursive(string $pattern, int $flags = 0): array
     {

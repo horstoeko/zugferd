@@ -47,7 +47,6 @@ class ZugferdXsdValidator
     /**
      * Constructor
      *
-     * @codeCoverageIgnore
      * @param ZugferdDocument $document
      */
     public function __construct(ZugferdDocument $document)
@@ -184,7 +183,7 @@ class ZugferdXsdValidator
     /**
      * Add message to error bag
      *
-     * @param string|Exception|Throwable|LibXMLError $error
+     * @param  string|Exception|Throwable|LibXMLError $error
      * @return void
      */
     private function addToErrorBag($error): void
