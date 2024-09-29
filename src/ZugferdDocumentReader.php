@@ -252,7 +252,6 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Guess the profile type of the readden xml document
      *
      * @param  string $xmlcontent The XML content as a string to read the invoice data from
-     * @param  string $xmlcontent
      * @return ZugferdDocumentReader
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
@@ -269,8 +268,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Set the directory where the attached binary data from
      * additional referenced documents are temporary stored
-     *
-     * @param  string $binarydatadirectory
+     * 
+     * @param string $binarydatadirectory
      * @return ZugferdDocumentReader
      */
     public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader
