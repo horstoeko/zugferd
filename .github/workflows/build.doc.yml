@@ -1,0 +1,50 @@
+name: Documentation
+
+on:
+  workflow_dispatch:
+
+env:
+  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
+  PHPDOCUMENTORFILENAME: phpDocumentor.phar
+
+jobs:
+  build:
+    permissions: write-all
+    runs-on: "ubuntu-24.04"
+
+    steps:
+      - name: Checkout Sources
+        uses: actions/checkout@v4
+
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          coverage: xdebug
+
+      - name: Prepare Directories
+        run: |
+          mkdir build/builddoc
+          mkdir build/doc
+          mkdir build/coverage
+          mkdir build/coverage-html
+          mkdir build/logs
+          mkdir build/pdepend
+          mkdir build/dist
+          mkdir build/phpdoc
+
+      - name: Documentation
+        continue-on-error: true
+        run: |
+          wget $PHPDOCUMENTORURL -O $PHPDOCUMENTORFILENAME
+          chmod +x $PHPDOCUMENTORFILENAME
+          cd build
+          php ../$PHPDOCUMENTORFILENAME
+          cd ..
+          rm -f $PHPDOCUMENTORFILENAME
+
+      - name: Deploy
+        continue-on-error: true
+        run: |
+          zip -r build/dist/doc.zip build/doc

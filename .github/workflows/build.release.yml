@@ -1,4 +1,4 @@
-name: Release (Matrix Build)
+name: Release
 
 on:
   push:
@@ -64,6 +64,7 @@ jobs:
           mkdir build/builddoc
           mkdir build/doc
           mkdir build/coverage
+          mkdir build/coverage-html
           mkdir build/logs
           mkdir build/pdepend
           mkdir build/dist
@@ -83,6 +84,7 @@ jobs:
         continue-on-error: true
         run: |
           vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml --exclude src/entities/
+          vendor/bin/phpmd src github build/phpmd.xml --exclude src/entities/
 
       - name: Run PHPCS
         continue-on-error: true
@@ -133,14 +135,12 @@ jobs:
           rm -f $PHPDOCUMENTORFILENAME
 
       - name: Deploy
+        continue-on-error: true
         run: |
-          zip -r build/dist/builddoc.zip build
           zip -r build/dist/doc.zip build/doc
-          zip -r build/dist/src.zip src
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
-        if: github.event_name != 'pull_request'
         with:
           files: "build/logs/junit.xml"
 
@@ -151,4 +151,3 @@ jobs:
           prerelease: false
           files: |
             build/dist/doc.zip
-            build/dist/builddoc.zip

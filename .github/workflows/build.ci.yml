@@ -1,4 +1,4 @@
-name: CI (Matrix Build)
+name: Continuous Integration
 
 on:
   push:
@@ -76,6 +76,7 @@ jobs:
           mkdir build/builddoc
           mkdir build/doc
           mkdir build/coverage
+          mkdir build/coverage-html
           mkdir build/logs
           mkdir build/pdepend
           mkdir build/dist
@@ -95,6 +96,7 @@ jobs:
         continue-on-error: true
         run: |
           vendor/bin/phpmd src xml build/phpmd.xml --reportfile build/logs/pmd.xml --exclude src/entities/
+          vendor/bin/phpmd src github build/phpmd.xml --exclude src/entities/
 
       - name: Run PHPCS
         continue-on-error: true
