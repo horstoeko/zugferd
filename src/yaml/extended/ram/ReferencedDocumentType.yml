@@ -54,7 +54,7 @@ horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType:
             accessor:
                 getter: getName
                 setter: setName
-            type: string
+            type: horstoeko\zugferd\entities\extended\udt\TextType
         attachmentBinaryObject:
             expose: true
             access_type: public_method

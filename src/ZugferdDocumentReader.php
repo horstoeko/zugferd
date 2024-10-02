@@ -268,7 +268,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Set the directory where the attached binary data from
      * additional referenced documents are temporary stored
-     * 
+     *
      * @param string $binarydatadirectory
      * @return ZugferdDocumentReader
      */
@@ -2451,7 +2451,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
         $typecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
         $uriid = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
-        $name = $this->convertToArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName", []), ["value"]);
+        $name = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName.value", null));
         $reftypecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
         $issueddate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
@@ -3744,7 +3744,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $reftypecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
         $uriid = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
         $lineid = $this->getInvoiceValueByPathFrom($addRefDoc, "getLineID.value", "");
-        $name = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName.value", ""));
+        $name = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName.value", null));
         $issueddate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", null)
