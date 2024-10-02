@@ -836,6 +836,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertIsArray($name);
         $this->assertNotEmpty($name);
         $this->assertArrayHasKey(0, $name);
+        $this->assertEquals("support descript", $name[0]);
         $this->assertEquals("", $reftypecode);
         $this->assertNull($issueddate);
         $this->assertEquals("", $binarydatafilename);
