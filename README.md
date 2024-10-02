@@ -1,5 +1,10 @@
 # ZUGFeRD/XRechnung/Factur-X
 
+> [!NOTE]
+> Dear Community!
+>
+> I would be delighted to hear from you where you use this library. If you would like to, please specify the company and the specific purpose. Send your messages to iusezugferd@erling.com.de. I would be happy to learn more about the type of use from you.
+
 [![Latest Stable Version](https://img.shields.io/packagist/v/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
 [![PHP version](https://img.shields.io/packagist/php-v/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
 [![License](https://img.shields.io/packagist/l/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
