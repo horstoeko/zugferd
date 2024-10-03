@@ -1371,6 +1371,7 @@ class ZugferdObjectHelper
         $this->tryCall($currencyExchange, "setSourceCurrencyCode", $this->getIdType($sourceCurrencyCode));
         $this->tryCall($currencyExchange, "setTargetCurrencyCode", $this->getIdType($targetCurrencyCode));
         $this->tryCall($currencyExchange, "setConversionRate", $this->getRateType($rate));
+        $this->tryCall($currencyExchange, "setConversionRateDateTime", $this->getDateTimeType($rateDateTime));
 
         return $currencyExchange;
     }

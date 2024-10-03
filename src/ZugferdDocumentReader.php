@@ -291,7 +291,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws RuntimeException
      */
-    private function readContent(string $xmlcontent): ZugferdDocumentReader
+    protected function readContent(string $xmlcontent): ZugferdDocumentReader
     {
         $this->deserialize($xmlcontent);
 
@@ -2639,10 +2639,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Details of the ultimate customer order
      *
-     * @param  array|null $refdocs
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateCustomerOrderReferencedDocuments(?array $refdocs): ZugferdDocumentReader
+    public function getDocumentUltimateCustomerOrderReferencedDocuments(/*?array $refdocs*/): ZugferdDocumentReader
     {
         // TODO: Implemente method getDocumentUltimateCustomerOrderReferencedDocuments
         return $this;

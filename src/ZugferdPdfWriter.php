@@ -190,7 +190,7 @@ class ZugferdPdfWriter extends PdfFpdi
      */
     protected function _putfiles(): void
     {
-        foreach ($this->files as $i => &$info) {
+        foreach ($this->files as $_ => &$info) {
             $this->putFileSpecification($info);
             $info['file_index'] = $this->n;
             $this->putFileStream($info);
@@ -299,7 +299,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $s .= '<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">' . "\n";
         $this->_newobj();
         $this->descriptionIndex = $this->n;
-        foreach ($this->metaDataDescriptions as $i => $desc) {
+        foreach ($this->metaDataDescriptions as $_ => $desc) {
             $s .= $desc . "\n";
         }
         $s .= '</rdf:RDF>' . "\n";

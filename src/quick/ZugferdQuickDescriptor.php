@@ -962,7 +962,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public function doAddApplicableTradeTax(float $basisAmount, float $percent, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
     {
-        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, round(0.01 * $percent * $basisAmount, 2), $percent, $exemptionReason, $exemptionReasonCode);
+        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, round(0.01 * $percent * $basisAmount, 2), $percent, $exemptionReason, $exemptionReasonCode, null, $allowanceChargeBasisAmount);
         return $this;
     }
 
@@ -1012,7 +1012,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public function doAddApplicableTradeTax2(float $basisAmount, float $calculatedAmount, string $categoryCode, ?string $typeCode = null, ?float $allowanceChargeBasisAmount = null, ?string $exemptionReasonCode = null, ?string $exemptionReason = null): ZugferdQuickDescriptor
     {
-        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, $calculatedAmount, round($calculatedAmount * 100.0 / $basisAmount, 2), $exemptionReason, $exemptionReasonCode);
+        $this->addDocumentTax($categoryCode, $typeCode ?? "VAT", $basisAmount, $calculatedAmount, round($calculatedAmount * 100.0 / $basisAmount, 2), $exemptionReason, $exemptionReasonCode, null, $allowanceChargeBasisAmount);
         return $this;
     }
 

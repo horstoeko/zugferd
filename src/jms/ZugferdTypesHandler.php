@@ -156,11 +156,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
-     * @param  array                   $type
-     * @param  Context                 $context
-     * @return DOMText|false
      */
-    public function serializeAmountType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
+    public function serializeAmountType(XmlSerializationVisitor $visitor, $data)
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -186,11 +183,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
-     * @param  array                   $type
-     * @param  Context                 $context
-     * @return DOMText|false
      */
-    public function serializeQuantityType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
+    public function serializeQuantityType(XmlSerializationVisitor $visitor, $data)
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -216,11 +210,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
-     * @param  array                   $type
-     * @param  Context                 $context
-     * @return DOMText|false
      */
-    public function serializePercentType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
+    public function serializePercentType(XmlSerializationVisitor $visitor, $data)
     {
         $node = $visitor->getDocument()->createTextNode(
             number_format(
@@ -241,11 +232,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param  XmlSerializationVisitor $visitor
      * @param  mixed                   $data
-     * @param  array                   $type
-     * @param  Context                 $context
-     * @return DOMElement|false
      */
-    public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data, array $type, Context $context)
+    public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
     {
         $node = $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
         return $node;

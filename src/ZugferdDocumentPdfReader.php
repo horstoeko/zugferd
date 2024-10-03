@@ -128,7 +128,7 @@ class ZugferdDocumentPdfReader
      * @return null|string
      * @throws Exception
      */
-    private static function internalExtractXMLFromPdfContent(string $pdfContent): ?string
+    protected static function internalExtractXMLFromPdfContent(string $pdfContent): ?string
     {
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseContent($pdfContent);
