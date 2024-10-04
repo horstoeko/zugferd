@@ -38,6 +38,7 @@ class ZugferdProfileResolver
         $prevUseInternalErrors = \libxml_use_internal_errors(true);
 
         try {
+            libxml_clear_errors();
             $xmldocument = new SimpleXMLElement($xmlContent);
             $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
             if (libxml_get_last_error()) {
