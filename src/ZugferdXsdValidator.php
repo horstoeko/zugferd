@@ -80,6 +80,7 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation passed otherwise false
      *
+     * @deprecated 1.0.65 Use hasNoValidationErrors instead
      * @return boolean
      */
     public function validationPased(): bool
@@ -90,11 +91,32 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation failed otherwise false
      *
+     * @deprecated 1.0.65 Use hasValidationErrors instead
      * @return boolean
      */
     public function validationFailed(): bool
     {
         return !$this->validationPased();
+    }
+
+    /**
+     * Returns true if validation passed otherwise false
+     *
+     * @return boolean
+     */
+    public function hasNoValidationErrors(): bool
+    {
+        return empty($this->errorBag);
+    }
+
+    /**
+     * Returns true if validation errors are present otherwise false
+     *
+     * @return boolean
+     */
+    public function hasValidationErrors(): bool
+    {
+        return !$this->hasNoValidationErrors();
     }
 
     /**
