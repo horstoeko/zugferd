@@ -16,7 +16,7 @@ class Issue104Test extends TestCase
     {
         $this->expectException(ZugferdUnknownXmlContentException::class);
 
-        $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . '/../../assets/invalid.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . '/../../assets/xml_invalid_1.xml');
 
         $this->assertNull($document);
     }
@@ -29,7 +29,7 @@ class Issue104Test extends TestCase
     {
         $this->expectException(ZugferdUnknownXmlContentException::class);
 
-        $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . '/../../assets/invalid2.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . '/../../assets/xml_invalid_2.xml');
 
         $this->assertNull($document);
     }

@@ -17,7 +17,7 @@ class ReaderEn16931Bank1Test extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_sepa_prenotification.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_en16931_4.xml");
     }
 
     public function testDocumentProfile(): void

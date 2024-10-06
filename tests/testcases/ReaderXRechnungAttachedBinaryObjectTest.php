@@ -16,7 +16,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xrechnung_simple_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_xrechnung_2.xml");
     }
 
     public function testDocumentProfile(): void

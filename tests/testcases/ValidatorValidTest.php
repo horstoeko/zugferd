@@ -24,7 +24,7 @@ class ValidatorValidTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_simple.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_en16931_1.xml");
         self::$validator = new ZugferdDocumentValidator(self::$document);
     }
 

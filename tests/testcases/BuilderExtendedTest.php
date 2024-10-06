@@ -1336,7 +1336,7 @@ class BuilderExtendedTest extends TestCase
 
     public function testAddDocumentAdditionalReferencedDocumentWithAttachment(): void
     {
-        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime(), dirname(__FILE__) . "/../assets/InvalidPDF.pdf");
+        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new \DateTime(), dirname(__FILE__) . "/../assets/pdf_invalid.pdf");
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 2, "A-1011");
@@ -1347,7 +1347,7 @@ class BuilderExtendedTest extends TestCase
         $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:FormattedIssueDateTime/a:DateTimeString', 2, (new \DateTime())->format("Ymd"), "format", "102");
         $this->assertXPathValueStartsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC");
         $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC", "mimeCode", "application/pdf");
-        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC", "filename", "InvalidPDF.pdf");
+        $this->assertXPathValueStartsWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:AttachmentBinaryObject', 0, "JVBERi0xLjQKJcOkw7zDtsOfC", "filename", "pdf_invalid.pdf");
     }
 
     public function testSetDocumentInvoiceReferencedDocument(): void

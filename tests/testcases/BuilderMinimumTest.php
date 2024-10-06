@@ -1290,7 +1290,7 @@ class BuilderMinimumTest extends TestCase
 
     public function testAddDocumentAdditionalReferencedDocumentWithAttachment(): void
     {
-        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new DateTime(), dirname(__FILE__) . "/../assets/InvalidPDF.pdf");
+        (self::$document)->addDocumentAdditionalReferencedDocument("A-1011", "type", "http://lieferant.de/docs/a1011.pdf", "Leistungsnachweis", "reftype", new DateTime(), dirname(__FILE__) . "/../assets/pdf_invalid.pdf");
 
         $this->disableRenderXmlContent();
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 2);

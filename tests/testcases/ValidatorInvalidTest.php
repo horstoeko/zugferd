@@ -24,7 +24,7 @@ class ValidatorInvalidTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/en16931_simple_invalid.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_en16931_5.xml");
         self::$validator = new ZugferdDocumentValidator(self::$document);
     }
 

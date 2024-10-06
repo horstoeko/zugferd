@@ -34,7 +34,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$sourcePdfFilename = dirname(__FILE__) . "/../assets/EmpyPDF.pdf";
+        self::$sourcePdfFilename = dirname(__FILE__) . "/../assets/pdf_plain.pdf";
         self::$destPdfFilename = dirname(__FILE__) . "/../assets/GeneratedPDF.pdf";
 
         self::$document = (ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931))

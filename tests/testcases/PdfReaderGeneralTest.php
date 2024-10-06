@@ -11,7 +11,7 @@ class PdfReaderGeneralTest extends TestCase
 {
     public function testCanReadPdf(): void
     {
-        $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/InvalidPDF.pdf");
+        $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_invalid.pdf");
         $this->assertNull($document);
     }
 
@@ -23,7 +23,7 @@ class PdfReaderGeneralTest extends TestCase
 
     public function testCanReadPdf2(): void
     {
-        $document = ZugferdDocumentPdfReader::getXmlFromFile(dirname(__FILE__) . "/../assets/InvalidPDF.pdf");
+        $document = ZugferdDocumentPdfReader::getXmlFromFile(dirname(__FILE__) . "/../assets/pdf_invalid.pdf");
         $this->assertNull($document);
     }
 
@@ -35,14 +35,14 @@ class PdfReaderGeneralTest extends TestCase
 
     public function testCanReadPdf3(): void
     {
-        $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/zugferd_2p1_EN16931_Einfach.pdf");
+        $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_zf_en16931_1.pdf");
         $this->assertNotNull($document);
         $this->assertInstanceOf(ZugferdDocument::class, $document);
     }
 
     public function testCanReadPdf4(): void
     {
-        $xmlString = ZugferdDocumentPdfReader::getXmlFromFile(dirname(__FILE__) . "/../assets/zugferd_2p1_EN16931_Einfach.pdf");
+        $xmlString = ZugferdDocumentPdfReader::getXmlFromFile(dirname(__FILE__) . "/../assets/pdf_zf_en16931_1.pdf");
         $this->assertNotNull($xmlString);
         $this->assertIsString($xmlString);
         $this->assertStringContainsString("<?xml version='1.0'", $xmlString);

@@ -16,7 +16,7 @@ class ReaderExtendedTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/extended_simple.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_extended_1.xml");
     }
 
     public function testDocumentProfile(): void

@@ -52,7 +52,7 @@ showValidationResult($kositValidator);
    - Validation of a document read by ZugferdDocumentReader
    ---------------------------------------------------------------------------------- */
 
-$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/en16931_simple_invalid.xml");
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml");
 
 $kositValidator = new ZugferdKositValidator($document);
 $kositValidator->setDocument($document)->disableCleanup()->validate();

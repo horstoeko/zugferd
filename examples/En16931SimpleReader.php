@@ -6,7 +6,7 @@ use horstoeko\zugferd\ZugferdDocumentReader;
 
 require dirname(__FILE__) . "/../vendor/autoload.php";
 
-$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/data/en16931_simple.xml", true);
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/data/xml_en16931_1.xml", true);
 
 $document->getDocumentInformation(
     $documentno,

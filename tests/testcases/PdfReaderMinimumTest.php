@@ -17,7 +17,7 @@ class PdfReaderMinimumTest extends TestCase
 
     public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/Facture_F20220027_MINIMUM.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_fx_minimum_1.pdf");
         $this->assertNotNull(self::$document);
     }
 
