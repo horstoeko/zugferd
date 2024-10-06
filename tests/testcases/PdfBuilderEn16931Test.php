@@ -3,16 +3,16 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
-use horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
-use Smalot\PdfParser\Parser as PdfParser;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use horstoeko\zugferd\ZugferdDocumentPdfReader;
-use setasign\Fpdi\PdfParser\PdfParserException;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
-use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\ZugferdProfiles;
+use setasign\Fpdi\PdfParser\PdfParserException;
+use Smalot\PdfParser\Parser as PdfParser;
 
 class PdfBuilderEn16931Test extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdDocumentPdfReader;
-use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\ZugferdDocumentReader;
-use \horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class PdfReaderEn16931SimpleTest extends TestCase
 {

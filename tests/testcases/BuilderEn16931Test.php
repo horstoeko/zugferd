@@ -3,10 +3,10 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
+use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
 
 class BuilderEn16931Test extends TestCase
 {

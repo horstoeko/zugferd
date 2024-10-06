@@ -3,10 +3,10 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdObjectHelper;
-use \horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\ZugferdObjectHelper;
+use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 
 class ObjectHelperExtendedTest extends TestCase
 {

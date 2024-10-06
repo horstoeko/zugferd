@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdDocumentReader;
-use \horstoeko\zugferd\ZugferdDocumentValidator;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdDocumentValidator;
 
 class ValidatorValidTest extends TestCase
 {

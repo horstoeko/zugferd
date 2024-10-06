@@ -3,10 +3,10 @@
 namespace horstoeko\zugferd\tests\testcases\issues;
 
 use DateTime;
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class Issue10Test extends TestCase
 {

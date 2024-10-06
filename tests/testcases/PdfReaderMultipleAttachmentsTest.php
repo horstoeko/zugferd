@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdDocumentPdfReader;
-use \horstoeko\zugferd\ZugferdDocumentReader;
-use \horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class PdfReaderMultipleAttachmentsTest extends TestCase
 {

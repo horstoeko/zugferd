@@ -2,8 +2,6 @@
 
 namespace horstoeko\zugferd\tests\traits;
 
-use \horstoeko\zugferd\ZugferdDocumentBuilder;
-
 trait HandlesXmlTests
 {
     /**

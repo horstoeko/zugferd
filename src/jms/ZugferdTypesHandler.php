@@ -154,8 +154,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data)
     {
@@ -181,8 +181,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data)
     {
@@ -208,8 +208,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * Serialize a percantage value
      * The valze will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
      */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data)
     {
@@ -230,8 +230,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
     {

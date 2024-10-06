@@ -269,7 +269,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Set the directory where the attached binary data from
      * additional referenced documents are temporary stored
      *
-     * @param string $binarydatadirectory
+     * @param  string $binarydatadirectory
      * @return ZugferdDocumentReader
      */
     public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader

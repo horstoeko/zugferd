@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class ReaderExtended2Test extends TestCase
 {

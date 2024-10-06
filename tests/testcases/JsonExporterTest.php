@@ -2,9 +2,9 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdDocumentJsonExporter;
-use \horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentJsonExporter;
+use horstoeko\zugferd\ZugferdDocumentReader;
 
 class JsonExporterTest extends TestCase
 {

@@ -3,9 +3,9 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
-use \horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocument;
-use \horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\ZugferdDocumentPdfReader;
 
 class PdfReaderGeneralTest extends TestCase
 {

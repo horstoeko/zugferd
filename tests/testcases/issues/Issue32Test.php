@@ -2,11 +2,11 @@
 
 namespace horstoeko\zugferd\tests\testcases\issues;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\codelists\ZugferdUnitCodes;
-use \horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use \horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung3;
 use horstoeko\zugferd\codelists\ZugferdTextSubjectCodeQualifiers;
+use horstoeko\zugferd\codelists\ZugferdUnitCodes;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung3;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 
 class Issue32Test extends TestCase
 {

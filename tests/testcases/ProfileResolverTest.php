@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdProfileResolver;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdProfileResolver;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class ProfileResolverTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use \horstoeko\zugferd\tests\TestCase;
-use \horstoeko\zugferd\ZugferdProfiles;
-use \horstoeko\zugferd\ZugferdDocumentReader;
-use \horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use \horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentReader;
+use horstoeko\zugferd\ZugferdProfiles;
 
 class ReaderEn16931Bank1Test extends TestCase
 {
