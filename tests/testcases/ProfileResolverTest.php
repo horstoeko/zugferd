@@ -243,6 +243,8 @@ HDR;
             $xmldocument = new SimpleXMLElement($this->deliverStringWhichIsNotXml());
         } catch (Throwable $e) {
             // Do nothing
+        } finally {
+            libxml_use_internal_errors($prevUseInternalErrors);
         }
 
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
