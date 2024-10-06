@@ -10,7 +10,9 @@
 namespace horstoeko\zugferd;
 
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\ZugferdProfileResolver;
 
@@ -115,6 +117,9 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      * Guess the profile type of the readden xml document
      *
      * @return array
+     * @throws ZugferdFileNotReadableException
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
      */
     private function getProfileDefinition(): array
     {
@@ -122,10 +127,12 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Get a parameter from profile definition
-     *
-     * @param  string $parameterName
+     * @param string $parameterName
      * @return mixed
+     * @throws ZugferdFileNotReadableException
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileParameterException
      */
     public function getProfileDefinitionParameter(string $parameterName)
     {
