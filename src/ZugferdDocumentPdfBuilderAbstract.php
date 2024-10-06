@@ -9,13 +9,14 @@
 
 namespace horstoeko\zugferd;
 
-use DOMDocument;
 use DOMXpath;
-use horstoeko\stringmanagement\PathUtils;
-use horstoeko\zugferd\codelists\ZugferdInvoiceType;
-use horstoeko\zugferd\ZugferdPackageVersion;
-use horstoeko\zugferd\ZugferdPdfWriter;
+use Throwable;
+use TypeError;
+use DOMDocument;
 use horstoeko\zugferd\ZugferdSettings;
+use horstoeko\zugferd\ZugferdPdfWriter;
+use horstoeko\zugferd\ZugferdPackageVersion;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
@@ -336,7 +337,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         try {
             return @is_file($pdfData);
-        } catch (\TypeError $ex) {
+        } catch (TypeError $ex) {
+            return false;
+        } catch (Throwable $ex) {
             return false;
         }
     }
