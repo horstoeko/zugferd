@@ -84,7 +84,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
             return $this->xmlDataCache;
         }
 
-        $this->xmlDataCache = $this->documentBuilder->getContentAsDomDocument()->saveXML();
+        $this->xmlDataCache = $this->documentBuilder->getContent();
 
         return $this->xmlDataCache;
     }
