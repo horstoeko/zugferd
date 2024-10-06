@@ -7,7 +7,7 @@ use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ReaderEn16931SimpleTest extends TestCase
+class ReaderEn16931Test extends TestCase
 {
     /**
      * @var ZugferdDocumentReader

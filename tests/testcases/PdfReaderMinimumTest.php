@@ -8,7 +8,7 @@ use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class PdfReaderMinimumSimpleTest extends TestCase
+class PdfReaderMinimumTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader

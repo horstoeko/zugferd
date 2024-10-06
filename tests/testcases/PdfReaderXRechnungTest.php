@@ -2,21 +2,23 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ReaderXRechnungSimpleTest extends TestCase
+class PdfReaderXRechnungTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
      */
     protected static $document;
 
-    public static function setUpBeforeClass(): void
+    public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xrechnung_simple.xml");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/zugferd_2p1_XRECHNUNG_Einfach.pdf");
+        $this->assertNotNull(self::$document);
     }
 
     public function testDocumentProfile(): void
@@ -26,23 +28,6 @@ class ReaderXRechnungSimpleTest extends TestCase
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->getProfileId());
         $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
         $this->assertEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->getProfileId());
-    }
-
-    public function testDocumentGetters(): void
-    {
-        $this->assertNotNull(self::$document->getInvoiceObject());
-        $this->assertNotNull(self::$document->getSerializer());
-        $this->assertNotNull(self::$document->getObjectHelper());
-        $this->assertEquals('en16931', self::$document->getProfileDefinitionParameter('name'));
-        $this->assertEquals('XRECHNUNG', self::$document->getProfileDefinitionParameter('altname'));
-        $this->assertEquals('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2', self::$document->getProfileDefinitionParameter('contextparameter'));
-        $this->assertEquals('xrechnung.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
-        $this->assertEquals('EN 16931', self::$document->getProfileDefinitionParameter('xmpname'));
-        $this->expectNoticeOrWarningExt(
-            function () {
-                self::$document->getProfileDefinitionParameter('unknownparameter');
-            }
-        );
     }
 
     public function testDocumentGenerals(): void
@@ -57,6 +42,7 @@ class ReaderXRechnungSimpleTest extends TestCase
         $this->assertEquals("", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotNull(self::$document->getInvoiceObject());
     }
 
     public function testDocumentNotes(): void

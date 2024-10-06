@@ -14,13 +14,13 @@
             <file>../tests/testcases/DocumentTest.php</file>
         </testsuite>
         <testsuite name="Reader">
-            <file>../tests/testcases/ReaderBasicSimpleTest.php</file>
-            <file>../tests/testcases/ReaderEn16931SimpleTest.php</file>
+            <file>../tests/testcases/ReaderBasicTest.php</file>
+            <file>../tests/testcases/ReaderEn16931Test.php</file>
             <file>../tests/testcases/ReaderEn16931AllowanceChargeTest.php</file>
             <file>../tests/testcases/ReaderEn16931Bank1Test.php</file>
             <file>../tests/testcases/ReaderExtendedTest.php</file>
             <file>../tests/testcases/ReaderExtended2Test.php</file>
-            <file>../tests/testcases/ReaderXRechnungSimpleTest.php</file>
+            <file>../tests/testcases/ReaderXRechnungTest.php</file>
             <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
         </testsuite>
         <testsuite name="Builder">
@@ -30,12 +30,12 @@
         </testsuite>
         <testsuite name="PDFReader">
             <file>../tests/testcases/PdfReaderGeneralTest.php</file>
-            <file>../tests/testcases/PdfReaderMinimumSimpleTest.php</file>
+            <file>../tests/testcases/PdfReaderMinimumTest.php</file>
+            <file>../tests/testcases/PdfReaderEn16931Test.php</file>
             <file>../tests/testcases/PdfReaderEn16931AllowanceChargeTest.php</file>
-            <file>../tests/testcases/PdfReaderEn16931SimpleTest.php</file>
             <file>../tests/testcases/PdfReaderExtendedTest.php</file>
             <file>../tests/testcases/PdfReaderExtended2Test.php</file>
-            <file>../tests/testcases/PdfReaderXRechnungSimpleTest.php</file>
+            <file>../tests/testcases/PdfReaderXRechnungTest.php</file>
             <file>../tests/testcases/PdfReaderMultipleAttachmentsTest.php</file>
         </testsuite>
         <testsuite name="PDFBuilder">
