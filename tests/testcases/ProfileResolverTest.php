@@ -2,10 +2,12 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
+use Throwable;
+use SimpleXMLElement;
 use horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\ZugferdProfileResolver;
 use horstoeko\zugferd\ZugferdProfiles;
+use horstoeko\zugferd\ZugferdProfileResolver;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 
 class ProfileResolverTest extends TestCase
 {
@@ -77,6 +79,11 @@ HDR;
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 </rsm:CrossIndustryInvoice>
 HDR;
+    }
+
+    private function deliverStringWhichIsNotXml(): string
+    {
+        return "This is not a XML";
     }
 
     public function testResolveEn16931()
@@ -223,5 +230,42 @@ HDR;
         $this->expectExceptionMessage('The profile id -1 is uknown');
 
         ZugferdProfileResolver::resolveProfileDefById(-1);
+    }
+
+    public function testResolveNotXml()
+    {
+        // Test clear LibXml Errors, when error previously occourred (See issue #133)
+
+        $prevUseInternalErrors = \libxml_use_internal_errors(true);
+
+        try {
+            libxml_clear_errors();
+            $xmldocument = new SimpleXMLElement($this->deliverStringWhichIsNotXml());
+        } catch (Throwable $e) {
+            // Do nothing
+        }
+
+        $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }
 }
