@@ -21,6 +21,7 @@
 [![CI (PHP 8.1)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml)
 [![CI (PHP 8.2)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml)
 [![CI (PHP 8.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml)
+[![CI (PHP 8.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml)
 
 
 ## Table of Contents
