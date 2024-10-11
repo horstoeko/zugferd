@@ -185,6 +185,13 @@ class ReaderExtended2Test extends TestCase
         );
     }
 
+    public function testGetDocumentSellerCommunication(): void
+    {
+        self::$document->getDocumentSellerCommunication($uriScheme, $uri);
+        $this->assertEquals("EM", $uriScheme);
+        $this->assertEquals("moi@seller.com", $uri);
+    }
+
     public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
@@ -245,6 +252,13 @@ class ReaderExtended2Test extends TestCase
                 self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
             }
         );
+    }
+
+    public function testGetDocumentBuyerCommunication(): void
+    {
+        self::$document->getDocumentBuyerCommunication($uriScheme, $uri);
+        $this->assertEquals("EM", $uriScheme);
+        $this->assertEquals("me@buyer.com", $uri);
     }
 
     public function testDocumentSellerTaxRepresentativeGeneral(): void
