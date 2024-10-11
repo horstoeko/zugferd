@@ -650,6 +650,21 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get detailed information on the seller's electronic communication information
+     *
+     * @param  string|null $uriScheme __BT-34-1, From BASIC WL__
+     * @param  string|null $uri       __BT-34, From BASIC WL__
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentSellerCommunication(?string &$uriScheme, ?string &$uri): ZugferdDocumentReader
+    {
+        $uri = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getURIUniversalCommunication.getURIID.value", "");
+        $uriScheme = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getURIUniversalCommunication.getURIID.getSchemeID", "");
+
+        return $this;
+    }
+
+    /**
      * Get detailed information about the buyer (service recipient)
      *
      * @param  string|null $name
@@ -827,6 +842,21 @@ class ZugferdDocumentReader extends ZugferdDocument
         $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
         $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
         $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the seller's electronic communication information
+     *
+     * @param  string|null $uriScheme __BT-49-1, From BASIC WL__
+     * @param  string|null $uri       __BT-49, From BASIC WL__
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerCommunication(?string &$uriScheme, ?string &$uri): ZugferdDocumentReader
+    {
+        $uri = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getURIUniversalCommunication.getURIID.value", "");
+        $uriScheme = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getURIUniversalCommunication.getURIID.getSchemeID", "");
 
         return $this;
     }
