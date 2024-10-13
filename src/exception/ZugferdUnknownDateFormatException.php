@@ -9,6 +9,8 @@
 
 namespace horstoeko\zugferd\exception;
 
+use Throwable;
+
 /**
  * Class representing an exception for unknown date formates
  *
@@ -18,42 +20,10 @@ namespace horstoeko\zugferd\exception;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdUnknownDateFormatException extends \Exception
+class ZugferdUnknownDateFormatException extends ZugferdBaseException
 {
-    /**
-     * The context of the type element
-     *
-     * @var string
-     */
-    private $dateFormat = "";
-
-    /**
-     * Constructor
-     *
-     * @param string $dateFormat
-     */
-    public function __construct(string $dateFormat)
+    public function __construct(string $dateFormatCode, ?Throwable $previous = null)
     {
-        $this->dateFormat = $dateFormat;
-
-        parent::__construct($this->buildMessage());
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
-    }
-
-    /**
-     * Build the message
-     *
-     * @return string
-     */
-    private function buildMessage(): string
-    {
-        return sprintf("The date format identifier %s is unknown or not supported", $this->dateFormat);
+        parent::__construct(sprintf("Invalid date format %s", $dateFormatCode), ZugferdExceptionCodes::UNKNOWNDATEFORMAT, $previous);
     }
 }

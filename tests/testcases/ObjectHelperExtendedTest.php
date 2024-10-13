@@ -1307,7 +1307,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertNull(self::$objectHelper->toDateTime(null, ""));
         $this->assertNull(self::$objectHelper->toDateTime(null, null));
         $this->expectException(ZugferdUnknownDateFormatException::class);
-        $this->expectExceptionMessage("The date format identifier 999 is unknown or not supported");
+        $this->expectExceptionMessage("Invalid date format 999");
         $this->assertNull(self::$objectHelper->toDateTime("20200202", "999"));
     }
 

@@ -9,7 +9,7 @@
 
 namespace horstoeko\zugferd\exception;
 
-use Exception;
+use Throwable;
 
 /**
  * Class representing an exception for non-readable a file
@@ -20,42 +20,16 @@ use Exception;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdFileNotReadableException extends Exception
+class ZugferdFileNotReadableException extends ZugferdBaseException
 {
-    /**
-     * The context of the type element
-     *
-     * @var string
-     */
-    private $filePath = "";
-
     /**
      * Constructor
      *
-     * @param string $filePath
+     * @param string         $filename
+     * @param Throwable|null $previous
      */
-    public function __construct(string $filePath)
+    public function __construct(string $filename, ?Throwable $previous = null)
     {
-        $this->filePath = $filePath;
-
-        parent::__construct($this->buildMessage());
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
-    }
-
-    /**
-     * Build the message
-     *
-     * @return string
-     */
-    private function buildMessage(): string
-    {
-        return sprintf("The filer %s is not readable", $this->filePath);
+        parent::__construct(sprintf("The file %s is not readable", $filename), ZugferdExceptionCodes::FILENOTFOUND, $previous);
     }
 }

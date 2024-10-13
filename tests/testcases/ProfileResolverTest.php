@@ -7,6 +7,7 @@ use SimpleXMLElement;
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdProfileResolver;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 
 class ProfileResolverTest extends TestCase
@@ -153,8 +154,8 @@ HDR;
 
     public function testResolveUnknownProfile()
     {
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('A context parameter was found, but the content of "unknown" is not a valid profile');
+        $this->expectException(ZugferdUnknownProfileException::class);
+        $this->expectExceptionMessage('Cannot determain the profile by unknown');
 
         ZugferdProfileResolver::resolveProfileId($this->deliverUnknownProfile());
     }

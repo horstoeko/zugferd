@@ -9,7 +9,6 @@
 
 namespace horstoeko\zugferd\exception;
 
-use Exception;
 use Throwable;
 
 /**
@@ -21,31 +20,15 @@ use Throwable;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdUnknownXmlContentException extends Exception
+class ZugferdUnknownXmlContentException extends ZugferdBaseException
 {
     /**
      * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct($this->buildMessage());
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
-    }
-
-    /**
-     * Build the message
      *
-     * @return string
+     * @param Throwable|null $previous
      */
-    private function buildMessage(): string
+    public function __construct(?Throwable $previous = null)
     {
-        return "The XML does not match the requirements for an XML in CII-Syntax";
+        parent::__construct("The XML does not match the requirements for an XML in CII-Syntax", ZugferdExceptionCodes::UNKNOWNSYNTAX, $previous);
     }
 }

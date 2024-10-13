@@ -9,7 +9,7 @@
 
 namespace horstoeko\zugferd\exception;
 
-use Exception;
+use Throwable;
 
 /**
  * Class representing an exception for unknown profile parameter
@@ -20,42 +20,16 @@ use Exception;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdUnknownProfileParameterException extends Exception
+class ZugferdUnknownProfileParameterException extends ZugferdBaseException
 {
-    /**
-     * The context of the type element
-     *
-     * @var string
-     */
-    private $profileParameter = "";
-
     /**
      * Constructor
      *
-     * @param string $profileParameter
+     * @param string         $profileParameter
+     * @param Throwable|null $previous
      */
-    public function __construct(string $profileParameter)
+    public function __construct(string $profileParameter, ?Throwable $previous = null)
     {
-        $this->profileParameter = $profileParameter;
-
-        parent::__construct($this->buildMessage());
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
-    }
-
-    /**
-     * Build the message
-     *
-     * @return string
-     */
-    private function buildMessage(): string
-    {
-        return sprintf("The profile parameter %s is uknown", $this->profileParameter);
+        parent::__construct(sprintf("The profile parameter %s is uknown", $profileParameter), ZugferdExceptionCodes::UNKNOWNPROFILEPARAMETER, $previous);
     }
 }
