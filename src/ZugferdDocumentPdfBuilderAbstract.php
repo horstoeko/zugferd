@@ -201,7 +201,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $pageCount = $this->pdfWriter->setSourceFile($pdfDataRef);
 
         for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
-            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox');
+            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', true, true);
             $this->pdfWriter->AddPage();
             $this->pdfWriter->useTemplate($pageContent, 0, 0, null, null, true);
         }
