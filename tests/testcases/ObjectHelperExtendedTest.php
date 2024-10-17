@@ -1354,7 +1354,11 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertNotNull($currencyExchangeType);
         $this->assertEquals("EUR", $currencyExchangeType->getSourceCurrencyCode());
         $this->assertEquals("USD", $currencyExchangeType->getTargetCurrencyCode());
-        $this->assertEquals(10.0, $currencyExchangeType->getConversionRate()->value());
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\RateType
+         */
+        $rate = $currencyExchangeType->getConversionRate();
+        $this->assertEquals(10.0, $rate->value());
         $this->assertEquals("20180305", $currencyExchangeType->getConversionRateDateTime()->getDateTimeString()->value());
         $this->assertEquals("102", $currencyExchangeType->getConversionRateDateTime()->getDateTimeString()->getFormat());
 

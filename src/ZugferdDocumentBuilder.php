@@ -294,7 +294,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string     $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
      * @param  float      $foreignTaxAmount    __BT-, From __ Required from EXTENDED Tax total amount in the foreign currency
-     * @param  float|null $foreignTaxAmount    __BT-X-260, From EXTENDED __ Exchange Rate
+     * @param  float|null $exchangeRate        __BT-X-260, From EXTENDED __ Exchange Rate
      * @return ZugferdDocumentBuilder
      */
     public function setForeignCurrency(string $foreignCurrencyCode, float $foreignTaxAmount, ?float $exchangeRate = null): ZugferdDocumentBuilder

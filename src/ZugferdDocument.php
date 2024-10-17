@@ -12,7 +12,6 @@ namespace horstoeko\zugferd;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\stringmanagement\PathUtils;
-use horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoiceType;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\jms\ZugferdTypesHandler;
 use horstoeko\zugferd\ZugferdObjectHelper;
@@ -58,7 +57,7 @@ class ZugferdDocument
 
     /**
      * @internal
-     * @var      CrossIndustryInvoiceType   The internal invoice object
+     * @var      \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice   The internal invoice object
      */
     private $invoiceObject = null;
 
