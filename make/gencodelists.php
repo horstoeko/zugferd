@@ -4,6 +4,7 @@ use horstoeko\stringmanagement\PathUtils;
 
 require dirname(__FILE__) . "/../vendor/autoload.php";
 
+define('DOWNLOADDEF_KEY_ENABLED', 'enabled');
 define('DOWNLOADDEF_LIB_NAME', 'libname');
 define('DOWNLOADDEF_LIB_TITLE', 'libtitle');
 define('DOWNLOADDEF_KEY_URL', 'url');
@@ -190,6 +191,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 {
     // Define some internal variables
 
+    $classGenerationEnabled = $fileToDownload[DOWNLOADDEF_KEY_ENABLED] ?? false;
     $classNamespace = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAMESPACE];
     $className = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAME];
     $classDir = PathUtils::combineAllPaths(dirname(__FILE__), "classes");
@@ -207,6 +209,17 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
     $libName = $fileToDownload[DOWNLOADDEF_LIB_NAME];
     $libTitle = $fileToDownload[DOWNLOADDEF_LIB_TITLE];
+
+    // Check enabled
+
+    if ($classGenerationEnabled !== true) {
+        outputline(sprintf("Generating class %s is disabled", $className));
+        return;
+    }
+
+    // Logging
+
+    outputline(sprintf("Generating class %s", $className));
 
     // Check destination directory
 
@@ -383,6 +396,7 @@ function createCodeClasses(array $filesToDownload): void
 
 $filesToDownload = [
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -404,6 +418,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -426,6 +441,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -448,6 +464,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -470,6 +487,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -489,6 +507,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -508,6 +527,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -527,6 +547,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -546,6 +567,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -565,6 +587,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -584,6 +607,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
+        DOWNLOADDEF_KEY_ENABLED => false,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
