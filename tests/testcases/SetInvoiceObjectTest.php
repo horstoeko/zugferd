@@ -12,7 +12,6 @@ use horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType;
 use horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType;
 use horstoeko\zugferd\entities\extended\udt\TextType;
 use horstoeko\zugferd\entities\extended\udt\IDType;
-use TypeError;
 
 class SetInvoiceObjectTest extends TestCase
 {
@@ -36,7 +35,7 @@ class SetInvoiceObjectTest extends TestCase
         }      
         catch(\Throwable $th){
 
-            $this->assertInstanceOf(TypeError::class, $th);
+            $this->assertInstanceOf(\TypeError::class, $th);
             
         }
     }
