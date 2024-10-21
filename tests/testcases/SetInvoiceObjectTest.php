@@ -12,6 +12,7 @@ use horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType;
 use horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType;
 use horstoeko\zugferd\entities\extended\udt\TextType;
 use horstoeko\zugferd\entities\extended\udt\IDType;
+use TypeError;
 
 class SetInvoiceObjectTest extends TestCase
 {
@@ -26,17 +27,49 @@ class SetInvoiceObjectTest extends TestCase
         $this->assertJsonExport($document);
     }
 
-    private function createDocumentWithFinancialCard(): \horstoeko\zugferd\ZugferdDocument
+    public function testIncorrectProfileScenario()
     {
+        try{
+
+            $document = $this->createDocumentWithBadProfile();
+
+        }      
+        catch(\Throwable $th){
+
+            $this->assertInstanceOf(TypeError::class, $th);
+            
+        }
+    }
+
+
+    private function createDocumentWithBadProfile()
+    {
+
         $financialCard = $this->createFinancialCard();
         $paymentMeans = $this->createPaymentMeans($financialCard);
         $headerTradeSettlement = $this->createHeaderTradeSettlement($paymentMeans);
         $supplyChainTransaction = $this->createSupplyChainTransaction($headerTradeSettlement);
 
-        $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EXTENDED);
+        $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_BASIC);
         $cii = $document->getInvoiceObject();
         $cii->setSupplyChainTradeTransaction($supplyChainTransaction);
         $document->setInvoiceObject($cii);
+
+    }
+
+    private function createDocumentWithFinancialCard(): \horstoeko\zugferd\ZugferdDocument
+    {
+
+$financialCard = $this->createFinancialCard();
+$paymentMeans = $this->createPaymentMeans($financialCard);
+$headerTradeSettlement = $this->createHeaderTradeSettlement($paymentMeans);
+$supplyChainTransaction = $this->createSupplyChainTransaction($headerTradeSettlement);
+
+$document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EXTENDED);
+$cii = $document->getInvoiceObject();
+$cii->setSupplyChainTradeTransaction($supplyChainTransaction);
+$document->setInvoiceObject($cii);
+
 
         return $document;
     }
