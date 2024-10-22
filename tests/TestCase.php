@@ -105,4 +105,18 @@ class TestCase extends PhpUnitTestCase
         $method->setAccessible(true);
         return $method;
     }
+
+    /**
+     * Access to private method and invoke it
+     *
+     * @param  object $object
+     * @param  string $methodName
+     * @param  array  $args
+     * @return mixed
+     */
+    public function invokePivateMethodFromObject($object, string $methodName, ...$args)
+    {
+        $method = $this->getPrivateMethodFromObject($object, $methodName);
+        return $method->invoke($object, ...$args);
+    }
 }

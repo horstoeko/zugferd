@@ -86,7 +86,7 @@ class ZugferdDocument
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
      */
-    public function getInvoiceObject()
+    protected function getInvoiceObject()
     {
         return $this->invoiceObject;
     }
@@ -108,7 +108,7 @@ class ZugferdDocument
      *
      * @return SerializerInterface
      */
-    public function getSerializer()
+    protected function getSerializer()
     {
         return $this->serializer;
     }
@@ -118,7 +118,7 @@ class ZugferdDocument
      *
      * @return \horstoeko\zugferd\ZugferdObjectHelper
      */
-    public function getObjectHelper()
+    protected function getObjectHelper()
     {
         return $this->objectHelper;
     }
