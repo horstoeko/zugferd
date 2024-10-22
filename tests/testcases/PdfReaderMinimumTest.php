@@ -43,8 +43,8 @@ class PdfReaderMinimumTest extends TestCase
         $this->assertEquals("", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
-        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', get_class($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
+        $this->assertEquals('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
     }
 
     public function testDocumentNotes(): void

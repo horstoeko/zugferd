@@ -82,12 +82,12 @@ class DocumentTest extends TestCase
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
 
-        $this->assertNotNull($this->invokePivateMethodFromObject($doc, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePivateMethodFromObject($doc, 'getInvoiceObject')));
-        $this->assertNotNull($this->invokePivateMethodFromObject($doc, 'getSerializer'));
-        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePivateMethodFromObject($doc, 'getSerializer')));
-        $this->assertNotNull($this->invokePivateMethodFromObject($doc, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePivateMethodFromObject($doc, 'getObjectHelper')));
+        $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject'));
+        $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject')));
+        $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getSerializer'));
+        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePrivateMethodFromObject($doc, 'getSerializer')));
+        $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getObjectHelper'));
+        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject($doc, 'getObjectHelper')));
     }
 
     /**

@@ -114,7 +114,7 @@ class TestCase extends PhpUnitTestCase
      * @param  array  $args
      * @return mixed
      */
-    public function invokePivateMethodFromObject($object, string $methodName, ...$args)
+    public function invokePrivateMethodFromObject($object, string $methodName, ...$args)
     {
         $method = $this->getPrivateMethodFromObject($object, $methodName);
         return $method->invoke($object, ...$args);
