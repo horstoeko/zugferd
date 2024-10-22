@@ -129,7 +129,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Get a parameter from profile definition
      *
-     * @param string $parameterName
+     * @param  string $parameterName
      * @return mixed
      * @throws ZugferdFileNotReadableException
      * @throws ZugferdUnknownXmlContentException

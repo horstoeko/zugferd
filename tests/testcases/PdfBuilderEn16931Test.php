@@ -2,7 +2,6 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use DateTime;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\tests\TestCase;

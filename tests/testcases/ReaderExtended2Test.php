@@ -29,9 +29,12 @@ class ReaderExtended2Test extends TestCase
 
     public function testDocumentGetters(): void
     {
-        $this->assertNotNull(self::$document->getInvoiceObject());
-        $this->assertNotNull(self::$document->getSerializer());
-        $this->assertNotNull(self::$document->getObjectHelper());
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject'));
+        $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getSerializer'));
+        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getObjectHelper'));
+        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePivateMethodFromObject(self::$document, 'getObjectHelper')));
         $this->assertEquals('extended', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', self::$document->getProfileDefinitionParameter('contextparameter'));

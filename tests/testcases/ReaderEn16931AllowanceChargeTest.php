@@ -29,9 +29,12 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
 
     public function testDocumentGetters(): void
     {
-        $this->assertNotNull(self::$document->getInvoiceObject());
-        $this->assertNotNull(self::$document->getSerializer());
-        $this->assertNotNull(self::$document->getObjectHelper());
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject'));
+        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getSerializer'));
+        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getObjectHelper'));
+        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePivateMethodFromObject(self::$document, 'getObjectHelper')));
         $this->assertEquals('en16931', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('EN 16931 (COMFORT)', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017', self::$document->getProfileDefinitionParameter('contextparameter'));

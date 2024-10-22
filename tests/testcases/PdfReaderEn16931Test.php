@@ -42,7 +42,8 @@ class PdfReaderEn16931Test extends TestCase
         $this->assertEquals("", $documentname);
         $this->assertEquals("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
-        $this->assertNotNull(self::$document->getInvoiceObject());
+        $this->assertNotNull($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject'));
+        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePivateMethodFromObject(self::$document, 'getInvoiceObject')));
     }
 
     public function testDocumentNotes(): void

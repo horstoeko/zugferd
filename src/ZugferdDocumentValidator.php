@@ -42,7 +42,8 @@ class ZugferdDocumentValidator
     /**
      * Constructor
      *
-     * @param ZugferdDocument $document
+     * @param              ZugferdDocument $document
+     * @codeCoverageIgnore
      */
     public function __construct(ZugferdDocument $document)
     {
@@ -57,7 +58,7 @@ class ZugferdDocumentValidator
      */
     public function validateDocument(): ConstraintViolationListInterface
     {
-        return $this->validator->validate($this->document->getInvoiceObject(), null, ['xsd_rules']);
+        return $this->validator->validate($this->getDocumentInvoiceObject(), null, ['xsd_rules']);
     }
 
     /**
@@ -102,5 +103,20 @@ class ZugferdDocumentValidator
         }
 
         return $files;
+    }
+
+    /**
+     * Returns the internal invoice object from the document
+     *
+     * @return object
+     */
+    private function getDocumentInvoiceObject()
+    {
+        $reflector = new \ReflectionClass($this->document);
+
+        $method = $reflector->getMethod('getInvoiceObject');
+        $method->setAccessible(true);
+
+        return $method->invoke($this->document);
     }
 }
