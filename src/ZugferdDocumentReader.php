@@ -314,7 +314,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {
-        $documentno = $this->getInvoiceValueByPath("getExchangedDocument.getID", "");
+        $documentno = $this->getInvoiceValueByPath("getExchangedDocument.getID.value", "");
         $documenttypecode = $this->getInvoiceValueByPath("getExchangedDocument.getTypeCode.value", "");
         $documentdate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getExchangedDocument.getIssueDateTime.getDateTimeString", ""),
