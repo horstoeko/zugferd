@@ -323,8 +323,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $invoiceCurrency = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
         $taxCurrency = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxCurrencyCode.value", "");
         $documentname = $this->getInvoiceValueByPath("getExchangedDocument.getName.value", "");
-        $documentlanguages = $this->getInvoiceValueByPath("getExchangedDocument.getLanguageID", []);
-        $documentlanguage = (isset($documentlanguages[0]) ? $this->getObjectHelper()->tryCallByPathAndReturn($documentlanguages[0], "value") : "");
+        $documentlanguage = $this->getInvoiceValueByPath("getExchangedDocument.getLanguageID.value", "");
         $effectiveSpecifiedPeriod = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString", ""),
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString.getFormat", "")
