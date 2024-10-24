@@ -39,6 +39,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $additionalCreatorTool = "";
 
     /**
+     * The relationship type to use for the XML attachment. Detault is Data
+     *
+     * @var string
+     */
+    private $attachmentRelationshipType = 'Data';
+
+    /**
      * Instance of the pdfwriter
      *
      * @var ZugferdPdfWriter
@@ -68,7 +75,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Generates the final document
      *
-     * @return self
+     * @return static
      */
     public function generateDocument()
     {
@@ -83,7 +90,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $toFilename
      * The full qualified filename to which the generated PDF (with attachment)
      * is stored
-     * @return self
+     * @return static
      */
     public function saveDocument(string $toFilename)
     {
@@ -119,7 +126,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @param  string $additionalCreatorTool
      * The name of the creator
-     * @return self
+     * @return static
      */
     public function setAdditionalCreatorTool(string $additionalCreatorTool)
     {
@@ -136,10 +143,41 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function getCreatorToolName(): string
     {
         $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
+
         if ($this->additionalCreatorTool) {
             return $this->additionalCreatorTool . ' / ' . $toolName;
         }
+
         return $toolName;
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment. Allowed
+     * types are 'Data', 'Alternative'
+     *
+     * @param  string $relationshipType
+     * @return static
+     */
+    public function setAttachmentRelationshipType(string $relationshipType)
+    {
+        if (!in_array($relationshipType, ['Data', 'Alternative'])) {
+            $relationshipType = 'Data';
+        }
+
+        $this->attachmentRelationshipType = $relationshipType;
+
+        return $this;
+    }
+
+    /**
+     * Returns the relationship type for the XML attachment. This
+     * can return 'Data', 'Alternative'
+     *
+     * @return string
+     */
+    public function getAttachmentRelationshipType(): string
+    {
+        return $this->attachmentRelationshipType;
     }
 
     /**
@@ -190,7 +228,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             $documentBuilderXmlDataRef,
             $this->getXmlAttachmentFilename(),
             'Factur-X Invoice',
-            'Data',
+            $this->getAttachmentRelationshipType(),
             'text#2Fxml'
         );
 
