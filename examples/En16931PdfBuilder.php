@@ -31,8 +31,6 @@ $document
     ->addNewPosition("1")
     ->setDocumentPositionNote("Bemerkung zu Zeile 1")
     ->setDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4", null, "0160", "4012345001235")
-    ->addDocumentPositionProductCharacteristic("Farbe", "Gelb")
-    ->addDocumentPositionProductClassification("ClassCode", "ClassName", "ListId", "ListVersionId")
     ->setDocumentPositionProductOriginTradeCountry("CN")
     ->setDocumentPositionGrossPrice(9.9000)
     ->setDocumentPositionNetPrice(9.9000)
@@ -42,8 +40,6 @@ $document
     ->addNewPosition("2")
     ->setDocumentPositionNote("Bemerkung zu Zeile 2")
     ->setDocumentPositionProductDetails("Joghurt Banane", "", "ARNR2", null, "0160", "4000050986428")
-    ->addDocumentPositionProductCharacteristic("Suesstoff", "Nein")
-    ->addDocumentPositionProductClassification("ClassCode", "ClassName", "ListId", "ListVersionId")
     ->SetDocumentPositionGrossPrice(5.5000)
     ->SetDocumentPositionNetPrice(5.5000)
     ->SetDocumentPositionQuantity(50, "H87")
@@ -59,4 +55,4 @@ if (!file_exists($existingPdf)) {
 }
 
 $documentPdfBuilder = new ZugferdDocumentPdfBuilder($document, $existingPdf);
-$documentPdfBuilder->generateDocument()->saveDocument($mergeToPdf);
+$documentPdfBuilder->setAttachmentRelationshipType('Alternative')->generateDocument()->saveDocument($mergeToPdf);
