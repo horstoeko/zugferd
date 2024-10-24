@@ -160,7 +160,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipType(string $relationshipType)
     {
-        if (!in_array($relationshipType, ['Data', 'Alternative'])) {
+        if (!in_array($relationshipType, ['Data', 'Alternative', 'Source'])) {
             $relationshipType = 'Data';
         }
 
@@ -178,6 +178,36 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function getAttachmentRelationshipType(): string
     {
         return $this->attachmentRelationshipType;
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment to "Data"
+     *
+     * @return static
+     */
+    public function setAttachmentRelationshipTypeToData()
+    {
+        return $this->setAttachmentRelationshipType('Data');
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment to "Alternative"
+     *
+     * @return static
+     */
+    public function setAttachmentRelationshipTypeToAlternative()
+    {
+        return $this->setAttachmentRelationshipType('Alternative');
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment to "Source"
+     *
+     * @return static
+     */
+    public function setAttachmentRelationshipTypeToSource()
+    {
+        return $this->setAttachmentRelationshipType('Source');
     }
 
     /**
