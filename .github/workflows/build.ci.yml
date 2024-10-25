@@ -87,6 +87,9 @@ jobs:
           for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
              php -l $afile
           done
+          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
+             php -l $afile
+          done
 
       - name: Run PHPLOC
         continue-on-error: true
