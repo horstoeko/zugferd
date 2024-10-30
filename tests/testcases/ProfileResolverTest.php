@@ -82,6 +82,86 @@ HDR;
 HDR;
     }
 
+    private function deliverOldZF20BasicProfile(): string
+    {
+        return <<<HDR
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+ xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<rsm:ExchangedDocumentContext>
+<ram:GuidelineSpecifiedDocumentContextParameter>
+<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:zugferd.de:2p0:basic</ram:ID>
+</ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+</rsm:CrossIndustryInvoice>
+HDR;
+    }
+
+    private function deliverOldZF20BasicWlProfile(): string
+    {
+        return <<<HDR
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+ xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<rsm:ExchangedDocumentContext>
+<ram:GuidelineSpecifiedDocumentContextParameter>
+<ram:ID>urn:zugferd.de:2p0:basicwl</ram:ID>
+</ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+</rsm:CrossIndustryInvoice>
+HDR;
+    }
+
+    private function deliverOldZF20MinimumProfile(): string
+    {
+        return <<<HDR
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+ xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<rsm:ExchangedDocumentContext>
+<ram:GuidelineSpecifiedDocumentContextParameter>
+<ram:ID>urn:zugferd.de:2p0:minimum</ram:ID>
+</ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+</rsm:CrossIndustryInvoice>
+HDR;
+    }
+
+    private function deliverOldZF20ExtendedProfile(): string
+    {
+        return <<<HDR
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+ xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<rsm:ExchangedDocumentContext>
+<ram:GuidelineSpecifiedDocumentContextParameter>
+<ram:ID>urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended</ram:ID>
+</ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+</rsm:CrossIndustryInvoice>
+HDR;
+    }
+
     private function deliverStringWhichIsNotXml(): string
     {
         return "This is not a XML";
@@ -150,6 +230,110 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
+    }
+
+    public function testResolveProfileDefOldZF20Basic()
+    {
+        $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicProfile());
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['schematronfilename'], $resolved["schematronfilename"]);
+    }
+
+    public function testResolveProfileDefOldZF20BasicWl()
+    {
+        $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicWlProfile());
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['schematronfilename'], $resolved["schematronfilename"]);
+    }
+
+    public function testResolveProfileDefOldZF20Minimum()
+    {
+        $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20MinimumProfile());
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['schematronfilename'], $resolved["schematronfilename"]);
+    }
+
+    public function testResolveProfileDefOldZF20Extended()
+    {
+        $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20ExtendedProfile());
+
+        $this->assertIsArray($resolved);
+        $this->assertArrayHasKey("name", $resolved);
+        $this->assertArrayHasKey("altname", $resolved);
+        $this->assertArrayHasKey("description", $resolved);
+        $this->assertArrayHasKey("contextparameter", $resolved);
+        $this->assertArrayHasKey("businessprocess", $resolved);
+        $this->assertArrayHasKey("attachmentfilename", $resolved);
+        $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xsdfilename", $resolved);
+        $this->assertArrayHasKey("schematronfilename", $resolved);
+
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['name'], $resolved["name"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['altname'], $resolved["altname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['description'], $resolved["description"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['contextparameter'], $resolved["contextparameter"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['businessprocess'], $resolved["businessprocess"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['attachmentfilename'], $resolved["attachmentfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['xsdfilename'], $resolved["xsdfilename"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['schematronfilename'], $resolved["schematronfilename"]);
     }
 
     public function testResolveUnknownProfile()
