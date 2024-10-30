@@ -63,6 +63,9 @@ class ZugferdProfileResolver
             if ($typeelement[0] == $profiledef["contextparameter"]) {
                 return [$profile, $profiledef];
             }
+            if (in_array($typeelement[0], $profiledef['alternativecontextparameters'])) {
+                return [$profile, $profiledef];
+            }
         }
 
         throw new ZugferdUnknownProfileException((string)$typeelement[0]);
