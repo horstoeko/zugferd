@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rsm:CrossIndustryInvoice xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 file:///C:/Users/joerg/Documents/FX%20Daten/Repositories/ZUGFeRD2.0/40_Musterrechungen/ZF2.0-XML/Extended/FACTUR-X.xsd">
+<rsm:CrossIndustryInvoice xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <rsm:ExchangedDocumentContext>
         <ram:TestIndicator>
             <udt:Indicator>true</udt:Indicator>
@@ -355,14 +355,14 @@
                 <ram:IssuerAssignedID>S-INV1</ram:IssuerAssignedID>
                 <ram:TypeCode>83</ram:TypeCode>
                 <ram:FormattedIssueDateTime>
-                    <ram:DateTimeString format="102">2024-09-30</ram:DateTimeString>
+                    <qdt:DateTimeString format="102">20240930</qdt:DateTimeString>
                 </ram:FormattedIssueDateTime>
             </ram:InvoiceReferencedDocument>
             <ram:InvoiceReferencedDocument>
                 <ram:IssuerAssignedID>S-INV2</ram:IssuerAssignedID>
                 <ram:TypeCode>84</ram:TypeCode>
                 <ram:FormattedIssueDateTime>
-                    <ram:DateTimeString format="102">2024-09-30</ram:DateTimeString>
+                    <qdt:DateTimeString format="102">20241031</qdt:DateTimeString>
                 </ram:FormattedIssueDateTime>
             </ram:InvoiceReferencedDocument>
         </ram:ApplicableHeaderTradeSettlement>
