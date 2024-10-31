@@ -32,7 +32,7 @@
         }
     },
     "require": {
-        "php": "^7.3|^7.4|^8",
+        "php": "^7.3|^7.4|^8.0",
         "jms/serializer": "^3",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "ext-simplexml": "*",
