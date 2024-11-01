@@ -540,8 +540,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         try {
             return @is_file($pdfData);
-        } catch (TypeError $ex) {
-            return false;
         } catch (Throwable $ex) {
             return false;
         }

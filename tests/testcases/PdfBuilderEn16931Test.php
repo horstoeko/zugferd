@@ -11,7 +11,6 @@ use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
-use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdProfiles;
 use setasign\Fpdi\PdfParser\PdfParserException;
 use setasign\Fpdi\PdfParser\StreamReader;
@@ -106,6 +105,19 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
         $this->assertFileExists(self::$destPdfFilename);
+
+        ob_start();
+        $pdfBuilder->saveDocumentInline(self::$destPdfFilename);
+        $pdfContent = ob_get_clean();
+
+        $this->assertIsString($pdfContent);
+        $this->assertNotEquals('', $pdfContent);
+
+        $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
+
+        $this->assertIsString($pdfContent);
+        $this->assertNotEquals('', $pdfContent);
+        $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
 
     public function testBuildFromSourcePdfStringWhichIsInvalid(): void
@@ -121,11 +133,26 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testBuildFromSourcePdfString(): void
     {
-        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->generateDocument();
-        $pdfBuilder->downloadString(self::$destPdfFilename);
+        $pdfContent = file_get_contents(self::$sourcePdfFilename);
 
-        $this->assertIsString(self::$destPdfFilename);
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, $pdfContent);
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $this->assertFileExists(self::$destPdfFilename);
+
+        ob_start();
+        $pdfBuilder->saveDocumentInline(self::$destPdfFilename);
+        $pdfContent = ob_get_clean();
+
+        $this->assertIsString($pdfContent);
+        $this->assertNotEquals('', $pdfContent);
+
+        $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
+
+        $this->assertIsString($pdfContent);
+        $this->assertNotEquals('', $pdfContent);
+        $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
 
     public function testPdfMetaData(): void
