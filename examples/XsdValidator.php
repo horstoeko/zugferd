@@ -39,3 +39,91 @@ $xsdValidator = new ZugferdXsdValidator($document);
 $xsdValidator->validate();
 
 showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_extended_1.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_extended_2.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_1.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_2.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_3.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_4.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_xrechnung_1.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
+
+/**
+ * Valid XML
+ */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_xrechnung_2.xml");
+
+$xsdValidator = new ZugferdXsdValidator($document);
+$xsdValidator->validate();
+
+showValidationResult($xsdValidator);
