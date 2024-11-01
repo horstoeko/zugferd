@@ -3,19 +3,19 @@
 namespace horstoeko\zugferd\tests\testcases;
 
 use InvalidArgumentException;
+use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
 use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
+use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdProfiles;
+use setasign\Fpdi\PdfParser\PdfParserException;
 use setasign\Fpdi\PdfParser\StreamReader;
 use Smalot\PdfParser\Parser as PdfParser;
-use horstoeko\zugferd\ZugferdPackageVersion;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use setasign\Fpdi\PdfParser\PdfParserException;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
-use horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
-use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
-use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 
 class PdfBuilderEn16931Test extends TestCase
 {
@@ -91,13 +91,32 @@ class PdfBuilderEn16931Test extends TestCase
      * Tests
      */
 
+    public function testBuildFromSourcePdfFileWhichDoesNotExist(): void
+    {
+        $this->expectException(ZugferdFileNotFoundException::class);
+        $this->expectExceptionMessage('The given PDF file does not exist.');
+
+        ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, '/tmp/anonexisting.pdf');
+    }
+
     public function testBuildFromSourcePdfFile(): void
     {
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->generateDocument();
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
-        $this->assertTrue(file_exists(self::$destPdfFilename));
+        $this->assertFileExists(self::$destPdfFilename);
+    }
+
+    public function testBuildFromSourcePdfStringWhichIsInvalid(): void
+    {
+        $this->expectException(PdfParserException::class);
+        $this->expectExceptionMessage('Unable to find PDF file header.');
+
+        $pdfContent = 'this_is_not_a_pdf_string';
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfString(self::$document, $pdfContent);
+        $pdfBuilder->generateDocument();
     }
 
     public function testBuildFromSourcePdfString(): void
@@ -123,54 +142,15 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.84"
         $this->assertArrayHasKey("CreationDate", $pdfDetails); //"2020-12-09T05:19:39+00:00"
         $this->assertArrayHasKey("Pages", $pdfDetails); //"1"
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
-    }
-
-    public function testFromExistingPdfFile(): void
-    {
-        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->generateDocument();
-        $pdfBuilder->downloadString(self::$destPdfFilename);
-
-        $this->assertIsString(self::$destPdfFilename);
-    }
-
-    public function testFromNotExistingPdfFile(): void
-    {
-        $this->expectException(ZugferdFileNotFoundException::class);
-
-        ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, '/tmp/anonexisting.pdf');
-    }
-
-    public function testFromPdfString(): void
-    {
-        $pdfString = file_get_contents(self::$sourcePdfFilename);
-
-        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfString(self::$document, $pdfString);
-        $pdfBuilder->generateDocument();
-        $pdfBuilder->downloadString(self::$destPdfFilename);
-
-        $this->assertIsString(self::$destPdfFilename);
-    }
-
-    public function testFromPdfStringWhichIsInvalid(): void
-    {
-        $this->expectException(PdfParserException::class);
-        $this->expectExceptionMessage('Unable to find PDF file header.');
-
-        $pdfString = 'this_is_not_a_pdf_string';
-
-        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfString(self::$document, $pdfString);
-        $pdfBuilder->generateDocument();
-        $pdfBuilder->downloadString(self::$destPdfFilename);
     }
 
     public function testSetAdditionalCreatorTool(): void
     {
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAdditionalCreatorTool('Dummy');
-
-        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
 
         $this->assertStringStartsWith('Dummy / Factur-X PHP library', $pdfBuilder->getCreatorToolName());
     }
@@ -304,6 +284,18 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertInstanceOf(StreamReader::class, $property->getValue($pdfBuilder)[0][0]);
         $this->assertEquals("txt_addattachment_1.txt", $property->getValue($pdfBuilder)[0][1]);
         $this->assertEquals("txt_addattachment_1.txt", $property->getValue($pdfBuilder)[0][2]);
+        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $property->getValue($pdfBuilder)[0][3]);
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->attachAdditionalFileByRealFile($filename, "An Attachment", "Alternative");
+
+        $property = $this->getPrivatePropertyFromClassname(ZugferdDocumentPdfBuilderAbstract::class, "additionalFilesToAttach");
+
+        $this->assertIsArray($property->getValue($pdfBuilder));
+        $this->assertIsArray($property->getValue($pdfBuilder)[0]);
+        $this->assertInstanceOf(StreamReader::class, $property->getValue($pdfBuilder)[0][0]);
+        $this->assertEquals("txt_addattachment_1.txt", $property->getValue($pdfBuilder)[0][1]);
+        $this->assertEquals("An Attachment", $property->getValue($pdfBuilder)[0][2]);
         $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $property->getValue($pdfBuilder)[0][3]);
     }
 
