@@ -57,6 +57,6 @@ if (!file_exists($existingPdf)) {
 $documentPdfBuilder = new ZugferdDocumentPdfBuilder($document, $existingPdf);
 $documentPdfBuilder
     ->setAttachmentRelationshipType('Alternative')
-    ->attachAdditionalFile(dirname(__FILE__) . '/addattchment.txt', '', 'Dummy')
+    ->attachAdditionalFileByRealFile(dirname(__FILE__) . '/addattchment.txt', '', 'Dummy')
     ->generateDocument()
     ->saveDocument($mergeToPdf);

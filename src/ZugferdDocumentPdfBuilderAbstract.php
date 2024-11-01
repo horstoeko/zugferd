@@ -21,6 +21,7 @@ use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
 use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdPdfWriter;
 use horstoeko\zugferd\ZugferdSettings;
+use InvalidArgumentException;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
@@ -232,7 +233,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Attach an additional file to PDF
+     * Attach an additional file to PDF. The file that is specified in $fullFilename
+     * must exists
      *
      * @param  string $fullFilename
      * @param  string $displayName
@@ -241,21 +243,60 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdUnknownMimetype
      */
-    public function attachAdditionalFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
+    public function attachAdditionalFileByRealFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
     {
         // Checks that the file really exists
 
         if (empty($fullFilename)) {
-            throw new ZugferdFileNotFoundException($fullFilename);
+            throw new InvalidArgumentException("You must specify a filename for the content to attach");
         }
 
         if (!file_exists($fullFilename)) {
             throw new ZugferdFileNotFoundException($fullFilename);
         }
 
+        // Load content
+
+        $content = file_get_contents($fullFilename);
+
+        // Add attachment
+
+        $this->attachAdditionalFileByContent(
+            $content,
+            $fullFilename,
+            $displayName,
+            $relationshipType,
+        );
+
+        return $this;
+    }
+
+    /**
+     * Attach an additional file to PDF by a content string
+     *
+     * @param  string $content
+     * @param  string $filename
+     * @param  string $displayName
+     * @param  string $relationshipType
+     * @return static
+     */
+    public function attachAdditionalFileByContent(string $content, string $filename, string $displayName = "", string $relationshipType = "")
+    {
+        // Check content. The content must not be empty
+
+        if (empty($content)) {
+            throw new InvalidArgumentException("You must specify a content to attach");
+        }
+
+        // Check filename. The filename must not be empty
+
+        if (empty($filename)) {
+            throw new InvalidArgumentException("You must specify a filename for the content to attach");
+        }
+
         // Mimetype for the file must exist
 
-        $mimeType = (new MimeDb())->findFirstMimeTypeByExtension(FileUtils::getFileExtension($fullFilename));
+        $mimeType = (new MimeDb())->findFirstMimeTypeByExtension(FileUtils::getFileExtension($filename));
 
         if (is_null($mimeType)) {
             throw new ZugferdUnknownMimetype();
@@ -274,14 +315,14 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         // Sanatize displayname
 
         if (empty($displayName)) {
-            $displayName = FileUtils::getFilenameWithExtension($fullFilename);
+            $displayName = FileUtils::getFilenameWithExtension($filename);
         }
 
         // Add to attachment list
 
         $this->additionalFilesToAttach[] = [
-            PdfStreamReader::createByFile($fullFilename),
-            FileUtils::getFilenameWithExtension($fullFilename),
+            PdfStreamReader::createByString($content),
+            FileUtils::getFilenameWithExtension($filename),
             $displayName,
             $relationshipType,
             str_replace('/', '#2F', $mimeType)

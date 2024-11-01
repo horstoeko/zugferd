@@ -2,19 +2,20 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
-use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
-use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use InvalidArgumentException;
 use horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
-use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdProfiles;
-use setasign\Fpdi\PdfParser\PdfParserException;
 use setasign\Fpdi\PdfParser\StreamReader;
 use Smalot\PdfParser\Parser as PdfParser;
+use horstoeko\zugferd\ZugferdPackageVersion;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use setasign\Fpdi\PdfParser\PdfParserException;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
+use horstoeko\zugferd\tests\traits\HandlesXmlTests;
+use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 
 class PdfBuilderEn16931Test extends TestCase
 {
@@ -238,7 +239,16 @@ class PdfBuilderEn16931Test extends TestCase
         $this->expectExceptionMessage(sprintf("The file %s was not found", $filename));
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile($filename);
+        $pdfBuilder->attachAdditionalFileByRealFile($filename);
+    }
+
+    public function testAttachAdditionalFileFileIsEmpty(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("You must specify a filename for the content to attach");
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->attachAdditionalFileByRealFile("");
     }
 
     public function testAttachAdditionalFileMimetypeUnknown(): void
@@ -249,7 +259,7 @@ class PdfBuilderEn16931Test extends TestCase
         $this->expectExceptionMessage("No mimetype found");
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile($filename);
+        $pdfBuilder->attachAdditionalFileByRealFile($filename);
     }
 
     public function testAttachAdditionalFileInvalidRelationShip(): void
@@ -257,7 +267,7 @@ class PdfBuilderEn16931Test extends TestCase
         $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile($filename, "", "Dummy");
+        $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Dummy");
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdDocumentPdfBuilderAbstract::class, "additionalFilesToAttach");
 
@@ -271,7 +281,7 @@ class PdfBuilderEn16931Test extends TestCase
         $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile($filename, "", "Alternative");
+        $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Alternative");
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdDocumentPdfBuilderAbstract::class, "additionalFilesToAttach");
 
@@ -285,7 +295,7 @@ class PdfBuilderEn16931Test extends TestCase
         $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile($filename, "", "Alternative");
+        $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Alternative");
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdDocumentPdfBuilderAbstract::class, "additionalFilesToAttach");
 
@@ -300,7 +310,7 @@ class PdfBuilderEn16931Test extends TestCase
     public function testAdditionalFilesAreEmbedded(): void
     {
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFile(dirname(__FILE__) . "/../assets/txt_addattachment_1.txt");
+        $pdfBuilder->attachAdditionalFileByRealFile(dirname(__FILE__) . "/../assets/txt_addattachment_1.txt");
         $pdfBuilder->generateDocument();
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
@@ -344,6 +354,108 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertEquals("txt_addattachment_1.txt", $pdfFilespecDetails["UF"]);
         $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SUPPLEMENT, $pdfFilespecDetails["AFRelationship"]);
         $this->assertEquals("txt_addattachment_1.txt", $pdfFilespecDetails["Desc"]);
+
+        $pdfFilespecDetailsEF = $pdfFilespecDetails["EF"];
+        $this->assertIsArray($pdfFilespecDetailsEF);
+        $this->assertArrayHasKey("F", $pdfFilespecDetailsEF);
+        $this->assertArrayHasKey("UF", $pdfFilespecDetailsEF);
+
+        $pdfFilespecDetailsEF_F = $pdfFilespecDetailsEF["F"];
+        $this->assertIsArray($pdfFilespecDetailsEF_F);
+        $this->assertArrayHasKey("Filter", $pdfFilespecDetailsEF_F);
+        $this->assertArrayHasKey("Subtype", $pdfFilespecDetailsEF_F);
+        $this->assertArrayHasKey("Type", $pdfFilespecDetailsEF_F);
+        $this->assertArrayHasKey("Length", $pdfFilespecDetailsEF_F);
+        $this->assertEquals("FlateDecode", $pdfFilespecDetailsEF_F["Filter"]);
+        $this->assertEquals("text/plain", $pdfFilespecDetailsEF_F["Subtype"]);
+        $this->assertEquals("EmbeddedFile", $pdfFilespecDetailsEF_F["Type"]);
+        $this->assertEquals(195, $pdfFilespecDetailsEF_F["Length"]);
+
+        $pdfFilespecDetailsEF_UF = $pdfFilespecDetailsEF["UF"];
+        $this->assertIsArray($pdfFilespecDetailsEF_UF);
+        $this->assertArrayHasKey("Filter", $pdfFilespecDetailsEF_UF);
+        $this->assertArrayHasKey("Subtype", $pdfFilespecDetailsEF_UF);
+        $this->assertArrayHasKey("Type", $pdfFilespecDetailsEF_UF);
+        $this->assertArrayHasKey("Length", $pdfFilespecDetailsEF_UF);
+        $this->assertEquals("FlateDecode", $pdfFilespecDetailsEF_UF["Filter"]);
+        $this->assertEquals("text/plain", $pdfFilespecDetailsEF_UF["Subtype"]);
+        $this->assertEquals("EmbeddedFile", $pdfFilespecDetailsEF_UF["Type"]);
+        $this->assertEquals(195, $pdfFilespecDetailsEF_UF["Length"]);
+    }
+
+    public function testAttachAdditionalFileByContentEmptyContent(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("You must specify a content to attach");
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->attachAdditionalFileByContent("", "", "", "");
+    }
+
+    public function testAttachAdditionalFileByContentEmptyFilename(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("You must specify a filename for the content to attach");
+
+        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+
+        $content = file_get_contents($filename);
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->attachAdditionalFileByContent($content, "", "", "");
+    }
+
+    public function testAttachAdditionalFileByContentAllValid(): void
+    {
+        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+
+        $content = file_get_contents($filename);
+
+        $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->attachAdditionalFileByContent($content, "file.txt", "A file attachment");
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
+
+        $this->assertIsArray($pdfFilespecs);
+        $this->assertEquals(2, count($pdfFilespecs));
+        $this->assertArrayHasKey("8_0", $pdfFilespecs);
+        $this->assertArrayHasKey("10_0", $pdfFilespecs);
+
+        $pdfFilespec = $pdfFilespecs["8_0"];
+        $pdfFilespecDetails = $pdfFilespec->getDetails();
+
+        $this->assertIsArray($pdfFilespecDetails);
+        $this->assertArrayHasKey("F", $pdfFilespecDetails);
+        $this->assertArrayHasKey("Type", $pdfFilespecDetails);
+        $this->assertArrayHasKey("UF", $pdfFilespecDetails);
+        $this->assertArrayHasKey("AFRelationship", $pdfFilespecDetails);
+        $this->assertArrayHasKey("Desc", $pdfFilespecDetails);
+        $this->assertArrayHasKey("EF", $pdfFilespecDetails);
+        $this->assertEquals("factur-x.xml", $pdfFilespecDetails["F"]);
+        $this->assertEquals("Filespec", $pdfFilespecDetails["Type"]);
+        $this->assertEquals("factur-x.xml", $pdfFilespecDetails["UF"]);
+        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfFilespecDetails["AFRelationship"]);
+        $this->assertEquals("Factur-X Invoice", $pdfFilespecDetails["Desc"]);
+
+        $pdfFilespec = $pdfFilespecs["10_0"];
+        $pdfFilespecDetails = $pdfFilespec->getDetails();
+
+        $this->assertIsArray($pdfFilespecDetails);
+        $this->assertArrayHasKey("F", $pdfFilespecDetails);
+        $this->assertArrayHasKey("Type", $pdfFilespecDetails);
+        $this->assertArrayHasKey("UF", $pdfFilespecDetails);
+        $this->assertArrayHasKey("AFRelationship", $pdfFilespecDetails);
+        $this->assertArrayHasKey("Desc", $pdfFilespecDetails);
+        $this->assertArrayHasKey("EF", $pdfFilespecDetails);
+        $this->assertEquals("file.txt", $pdfFilespecDetails["F"]);
+        $this->assertEquals("Filespec", $pdfFilespecDetails["Type"]);
+        $this->assertEquals("file.txt", $pdfFilespecDetails["UF"]);
+        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SUPPLEMENT, $pdfFilespecDetails["AFRelationship"]);
+        $this->assertEquals("A file attachment", $pdfFilespecDetails["Desc"]);
 
         $pdfFilespecDetailsEF = $pdfFilespecDetails["EF"];
         $this->assertIsArray($pdfFilespecDetailsEF);
