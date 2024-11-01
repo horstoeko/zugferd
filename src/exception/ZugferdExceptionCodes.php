@@ -27,6 +27,8 @@ class ZugferdExceptionCodes
     public const NOVALIDATTACHMENTFOUNDINPDF = -1105;
     public const UNKNOWNPROFILEPARAMETER = -1106;
     public const UNKNOWNSYNTAX = -1107;
+    public const UNKNOWNMIMETYPE = -1108;
+    public const UNSUPPORTEDMIMETYPE = -1109;
     public const FILENOTFOUND = -2000;
     public const FILENOTREADABLE = -2001;
 }

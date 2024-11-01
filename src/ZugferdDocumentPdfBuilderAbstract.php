@@ -13,10 +13,14 @@ use DOMXpath;
 use Throwable;
 use TypeError;
 use DOMDocument;
-use horstoeko\zugferd\ZugferdSettings;
-use horstoeko\zugferd\ZugferdPdfWriter;
-use horstoeko\zugferd\ZugferdPackageVersion;
+use horstoeko\mimedb\MimeDb;
+use horstoeko\stringmanagement\FileUtils;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use horstoeko\zugferd\ZugferdPackageVersion;
+use horstoeko\zugferd\ZugferdPdfWriter;
+use horstoeko\zugferd\ZugferdSettings;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
@@ -31,6 +35,16 @@ use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
  */
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
+    /**
+     * Constants for Relationship types
+     * 'Data', 'Alternative', 'Source', 'Supplement', 'Unspecified'
+     */
+    public const AF_RELATIONSHIP_DATA = "Data";
+    public const AF_RELATIONSHIP_ALTERNATIVE = "Alternative";
+    public const AF_RELATIONSHIP_SOURCE = "Source";
+    public const AF_RELATIONSHIP_SUPPLEMENT = "Supplement";
+    public const AF_RELATIONSHIP_UNSPECIFIED = "Unspecified";
+
     /**
      * Additional creator tool (e.g. the ERP software that called the PHP library)
      *
@@ -58,6 +72,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @var string
      */
     private $pdfData = "";
+
+    /**
+     * List of files which should be additionally attached to PDF
+     *
+     * @var array
+     */
+    private $additionalFilesToAttach = [];
 
     /**
      * Constructor
@@ -160,8 +181,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipType(string $relationshipType)
     {
-        if (!in_array($relationshipType, ['Data', 'Alternative', 'Source'])) {
-            $relationshipType = 'Data';
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE])) {
+            $relationshipType = static::AF_RELATIONSHIP_DATA;
         }
 
         $this->attachmentRelationshipType = $relationshipType;
@@ -187,7 +208,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToData()
     {
-        return $this->setAttachmentRelationshipType('Data');
+        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_DATA);
     }
 
     /**
@@ -197,7 +218,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToAlternative()
     {
-        return $this->setAttachmentRelationshipType('Alternative');
+        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_ALTERNATIVE);
     }
 
     /**
@@ -207,7 +228,66 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToSource()
     {
-        return $this->setAttachmentRelationshipType('Source');
+        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_SOURCE);
+    }
+
+    /**
+     * Attach an additional file to PDF
+     *
+     * @param  string $fullFilename
+     * @param  string $displayName
+     * @param  string $relationshipType
+     * @return static
+     * @throws ZugferdFileNotFoundException
+     * @throws ZugferdUnknownMimetype
+     */
+    public function attachAdditionalFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
+    {
+        // Checks that the file really exists
+
+        if (empty($fullFilename)) {
+            throw new ZugferdFileNotFoundException($fullFilename);
+        }
+
+        if (!file_exists($fullFilename)) {
+            throw new ZugferdFileNotFoundException($fullFilename);
+        }
+
+        // Mimetype for the file must exist
+
+        $mimeType = (new MimeDb())->findFirstMimeTypeByExtension(FileUtils::getFileExtension($fullFilename));
+
+        if (is_null($mimeType)) {
+            throw new ZugferdUnknownMimetype();
+        }
+
+        // Sanatize relationship type
+
+        if (empty($relationshipType)) {
+            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+        }
+
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])) {
+            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+        }
+
+        // Sanatize displayname
+
+        if (empty($displayName)) {
+            $displayName = FileUtils::getFilenameWithExtension($fullFilename);
+        }
+
+        // Add to attachment list
+
+        $this->additionalFilesToAttach[] = [
+            PdfStreamReader::createByFile($fullFilename),
+            FileUtils::getFilenameWithExtension($fullFilename),
+            $displayName,
+            $relationshipType,
+            str_replace('/', '#2F', $mimeType)
+        ];
+
+        return $this;
     }
 
     /**
@@ -242,7 +322,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $pdfDataRef = null;
 
-        if ($this->pdfDataIsFile($this->pdfData)) {
+        if ($this->isFile($this->pdfData)) {
             $pdfDataRef = $this->pdfData;
         } elseif (is_string($this->pdfData)) {
             $pdfDataRef = PdfStreamReader::createByString($this->pdfData);
@@ -261,6 +341,20 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             $this->getAttachmentRelationshipType(),
             'text#2Fxml'
         );
+
+        // Add additional attachments
+
+        foreach ($this->additionalFilesToAttach as $fileToAttach) {
+            $this->pdfWriter->attach(
+                $fileToAttach[0],
+                $fileToAttach[1],
+                $fileToAttach[2],
+                $fileToAttach[3],
+                $fileToAttach[4],
+            );
+        }
+
+        // Set flag to always show the attachment pane
 
         $this->pdfWriter->openAttachmentPane();
 
@@ -401,7 +495,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $pdfData
      * @return boolean
      */
-    private function pdfDataIsFile($pdfData): bool
+    private function isFile($pdfData): bool
     {
         try {
             return @is_file($pdfData);
