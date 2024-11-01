@@ -9,15 +9,14 @@
 
 namespace horstoeko\zugferd;
 
-use Exception;
 use DOMDocument;
+use Exception;
 use LibXMLError;
+use Throwable;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\ZugferdDocument;
 use horstoeko\zugferd\ZugferdSettings;
-use PhpParser\Node\Expr\Throw_;
-use Throwable;
 
 /**
  * Class representing the validator against XSD for documents

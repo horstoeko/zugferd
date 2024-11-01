@@ -2761,13 +2761,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Adds a new text-only position (line) to document
      *
-     * @param  string      $lineid
+     * @param      string      $lineid
      * A unique identifier for the relevant item within the invoice (item number)
-     * @param  string|null $lineStatusCode
+     * @param      string|null $lineStatusCode
      * Indicates whether the invoice item contains prices that must be taken into account when
      * calculating the invoice amount, or whether it only contains information.
      * The following code should be used: TYPE_LINE
-     * @param  string|null $lineStatusReasonCode
+     * @param      string|null $lineStatusReasonCode
      * Adds the type to specify whether the invoice line is:
      *  - detail (normal position)
      *  - Subtotal
@@ -2776,7 +2776,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - detail
      *  - grouping
      *  - information
-     * @return ZugferdDocumentBuilder
+     * @return     ZugferdDocumentBuilder
      * @deprecated 1.0.75
      */
     public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
