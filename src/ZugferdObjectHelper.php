@@ -14,6 +14,7 @@ use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
+use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;
 use horstoeko\zugferd\ZugferdProfileResolver;
 
 /**
@@ -525,7 +526,7 @@ class ZugferdObjectHelper
                         $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binarydatafilename))
                     );
                 } else {
-                    throw new \Exception(sprintf("Invalid attachment. Mimetype not supported"));
+                    throw new ZugferdUnsupportedMimetype();
                 }
             }
         }
