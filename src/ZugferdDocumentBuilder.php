@@ -2777,6 +2777,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - grouping
      *  - information
      * @return ZugferdDocumentBuilder
+     * @deprecated 1.0.75
      */
     public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
     {
