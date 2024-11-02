@@ -12,14 +12,13 @@ namespace horstoeko\zugferd;
 use DOMDocument;
 use DOMXPath;
 use Exception;
-use Throwable;
-use ZipArchive;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
-use JMS\Serializer\Exception\RuntimeException;
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
+use Throwable;
+use ZipArchive;
 
 /**
  * Class representing the validator against Schematron (Kosit) for documents
@@ -35,9 +34,9 @@ class ZugferdKositValidator
     /**
      * The invoice document reference
      *
-     * @var string
+     * @var ZugferdDocument
      */
-    private $documentContent = null;
+    private $document = null;
 
     /**
      * Internal message bag
@@ -135,71 +134,25 @@ class ZugferdKositValidator
     protected const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
 
     /**
-     * Constructo
+     * Constructor
      *
-     * @deprecated 1.0.76 Use static::fromDocument or static::fromString instead
+     * @param ZugferdDocument|null $document
      */
     public function __construct(?ZugferdDocument $document = null)
     {
+        $this->document = $document;
         $this->baseDirectory = sys_get_temp_dir();
-
-        if (!is_null($document)) {
-            $this->setDocumentContent($document->serializeAsXml());
-        }
-    }
-
-    /**
-     * Initialize from a ZugferdDocument to validate
-     *
-     * @param  ZugferdDocument $document
-     * @return static
-     */
-    public static function fromDocument(ZugferdDocument $document)
-    {
-        $instance = new static();
-        $instance->setDocumentContent($document->serializeAsXml());
-
-        return $instance;
-    }
-
-    /**
-     * Initialize from a string which contains the XML to validate
-     *
-     * @param  string $documentContent
-     * @return static
-     */
-    public static function fromString(string $documentContent)
-    {
-        $instance = new static();
-        $instance->setDocumentContent($documentContent);
-
-        return $instance;
     }
 
     /**
      * Set the ZugferdDocument instance to validate
      *
-     * @param      ZugferdDocument $document
-     * @return     ZugferdKositValidator
-     * @throws     RuntimeException
-     * @deprecated 1.0.76 Use static::fromDocument or static::fromString instead
+     * @param  ZugferdDocument $document
+     * @return ZugferdKositValidator
      */
     public function setDocument(ZugferdDocument $document): ZugferdKositValidator
     {
-        $this->setDocumentContent($document->serializeAsXml());
-
-        return $this;
-    }
-
-    /**
-     * Sets the content to validate
-     *
-     * @param  string $documentContent
-     * @return ZugferdKositValidator
-     */
-    public function setDocumentContent(string $documentContent): ZugferdKositValidator
-    {
-        $this->documentContent = $documentContent;
+        $this->document = $document;
 
         return $this;
     }
@@ -624,8 +577,8 @@ class ZugferdKositValidator
      */
     private function checkRequirements(): bool
     {
-        if (empty($this->documentContent)) {
-            $this->addToMessageBag("You must specify the content to validate");
+        if (is_null($this->document)) {
+            $this->addToMessageBag("You must specify an instance of the ZugferdDocument class");
             return false;
         }
 
@@ -730,7 +683,7 @@ class ZugferdKositValidator
      */
     private function performValidation(): bool
     {
-        if (file_put_contents($this->resolveFileToValidateFilename(), $this->documentContent) === false) {
+        if (file_put_contents($this->resolveFileToValidateFilename(), $this->document->serializeAsXml()) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
             return false;
         }

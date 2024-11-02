@@ -34,24 +34,17 @@ function showValidationResult(ZugferdKositValidator $kositValidator)
 }
 
 /* ----------------------------------------------------------------------------------
-   - Validation of a document read by ZugferdDocumentPdfReader
-   - The direct call of the constructor is deprecated
+   - Get instance of the Validator
    ---------------------------------------------------------------------------------- */
 
-$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/invoice_1.pdf");
-
-$kositValidator = new ZugferdKositValidator($document);
-$kositValidator->disableCleanup()->validate();
-
-showValidationResult($kositValidator);
+$kositValidator = new ZugferdKositValidator();
 
 /* ----------------------------------------------------------------------------------
    - Validation of a document read by ZugferdDocumentPdfReader
    ---------------------------------------------------------------------------------- */
 
 $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/invoice_1.pdf");
-
-$kositValidator = ZugferdKositValidator::fromDocument($document)->disableCleanup()->validate();
+$kositValidator->setDocument($document)->disableCleanup()->validate();
 
 showValidationResult($kositValidator);
 
@@ -61,16 +54,7 @@ showValidationResult($kositValidator);
 
 $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml");
 
-$kositValidator = ZugferdKositValidator::fromDocument($document)->disableCleanup()->validate();
-
-showValidationResult($kositValidator);
-
-/* ----------------------------------------------------------------------------------
-   - Validation of a document read by content
-   ---------------------------------------------------------------------------------- */
-
-$content = file_get_contents(dirname(__FILE__) . "/../tests/assets/xml_en16931_4.xml");
-
-$kositValidator = ZugferdKositValidator::fromString($content)->disableCleanup()->validate();
+$kositValidator = new ZugferdKositValidator($document);
+$kositValidator->setDocument($document)->disableCleanup()->validate();
 
 showValidationResult($kositValidator);
