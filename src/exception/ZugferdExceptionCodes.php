@@ -29,6 +29,7 @@ class ZugferdExceptionCodes
     public const UNKNOWNSYNTAX = -1107;
     public const UNKNOWNMIMETYPE = -1108;
     public const UNSUPPORTEDMIMETYPE = -1109;
+    public const NOPDFATTACHMENTFOUND = -1110;
     public const FILENOTFOUND = -2000;
     public const FILENOTREADABLE = -2001;
 }

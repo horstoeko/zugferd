@@ -10,9 +10,14 @@
 namespace horstoeko\zugferd;
 
 use Exception;
-use Smalot\PdfParser\Parser as PdfParser;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
+use horstoeko\zugferd\exception\ZugferdNoPdfAttachmentFoundException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
+use JMS\Serializer\Exception\RuntimeException;
+use Smalot\PdfParser\Parser as PdfParser;
 
 /**
  * Class representing the document reader for incoming PDF/A-Documents with
@@ -40,12 +45,17 @@ class ZugferdDocumentPdfReader
      * Load a PDF file (ZUGFeRD/Factur-X)
      *
      * @param  string $pdfFilename Contains a full-qualified filename which must exist and must be readable
-     * @return ZugferdDocumentReader|null
+     * @throws Exception
+     * @return ZugferdDocumentReader
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
-     * @throws Exception
+     * @throws ZugferdNoPdfAttachmentFoundException
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
-    public static function readAndGuessFromFile(string $pdfFilename): ?ZugferdDocumentReader
+    public static function readAndGuessFromFile(string $pdfFilename): ZugferdDocumentReader
     {
         if (!file_exists($pdfFilename)) {
             throw new ZugferdFileNotFoundException($pdfFilename);
@@ -62,38 +72,34 @@ class ZugferdDocumentPdfReader
 
     /**
      * Tries to load an attachment content from PDF and return a ZugferdDocumentReader
-     * If any erros occured or no attachments were found null is returned
      *
-     * @param  string $pdfContent String Containing the binary pdf data
-     * @return ZugferdDocumentReader|null
+     * @param  string $pdfContent String containing the binary pdf data
+     * @return ZugferdDocumentReader
      * @throws Exception
+     * @throws ZugferdNoPdfAttachmentFoundException
+     * @throws ZugferdUnknownXmlContentException
+     * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
-    public static function readAndGuessFromContent(string $pdfContent): ?ZugferdDocumentReader
+    public static function readAndGuessFromContent(string $pdfContent): ZugferdDocumentReader
     {
         $xmlContent = static::internalExtractXMLFromPdfContent($pdfContent);
 
-        if (is_null($xmlContent)) {
-            return null;
-        }
-
-        try {
-            return ZugferdDocumentReader::readAndGuessFromContent($xmlContent);
-        } catch (\Exception $e) {
-            return null;
-        }
+        return ZugferdDocumentReader::readAndGuessFromContent($xmlContent);
     }
 
     /**
      * Returns a XML content from a PDF file
      *
-     * @param  string $pdfFilename
-     * Contains a full-qualified filename which must exist and must be readable
-     * @return string|null
+     * @param  string $pdfFilename Contains a full-qualified filename which must exist and must be readable
+     * @return string
+     * @throws Exception
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
-     * @throws Exception
+     * @throws ZugferdNoPdfAttachmentFoundException
      */
-    public static function getXmlFromFile(string $pdfFilename): ?string
+    public static function getXmlFromFile(string $pdfFilename): string
     {
         if (!file_exists($pdfFilename)) {
             throw new ZugferdFileNotFoundException($pdfFilename);
@@ -112,10 +118,12 @@ class ZugferdDocumentPdfReader
      * Returns a XML content from a PDF binary stream (string)
      *
      * @param  string $pdfContent String Containing the binary pdf data
-     * @return string|null
+     * @param  string $pdfContent
+     * @return string
      * @throws Exception
+     * @throws ZugferdNoPdfAttachmentFoundException
      */
-    public static function getXmlFromContent(string $pdfContent): ?string
+    public static function getXmlFromContent(string $pdfContent): string
     {
         return static::internalExtractXMLFromPdfContent($pdfContent);
     }
@@ -125,10 +133,11 @@ class ZugferdDocumentPdfReader
      * See the allowed filenames which are supported
      *
      * @param  string $pdfContent
-     * @return null|string
+     * @return string
      * @throws Exception
+     * @throws ZugferdNoPdfAttachmentFoundException
      */
-    protected static function internalExtractXMLFromPdfContent(string $pdfContent): ?string
+    protected static function internalExtractXMLFromPdfContent(string $pdfContent): string
     {
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseContent($pdfContent);
@@ -137,35 +146,29 @@ class ZugferdDocumentPdfReader
         $attachmentFound = false;
         $attachmentIndex = 0;
         $embeddedFileIndex = 0;
-        $returnValue = null;
 
-        try {
-            foreach ($filespecs as $filespec) {
-                $filespecDetails = $filespec->getDetails();
-                if (in_array($filespecDetails['F'], static::ATTACHMENT_FILENAMES)) {
-                    $attachmentFound = true;
-                    break;
-                }
-                $attachmentIndex++;
+        foreach ($filespecs as $filespec) {
+            $filespecDetails = $filespec->getDetails();
+            if (in_array($filespecDetails['F'], static::ATTACHMENT_FILENAMES)) {
+                $attachmentFound = true;
+                break;
             }
-
-            if (true == $attachmentFound) {
-                /**
-                 * @var array<\Smalot\PdfParser\PDFObject>
-                 */
-                $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
-                foreach ($embeddedFiles as $embeddedFile) {
-                    if ($attachmentIndex == $embeddedFileIndex) {
-                        $returnValue = $embeddedFile->getContent();
-                        break;
-                    }
-                    $embeddedFileIndex++;
-                }
-            }
-        } catch (\Exception $e) {
-            $returnValue = null;
+            $attachmentIndex++;
         }
 
-        return $returnValue;
+        if (true == $attachmentFound) {
+            /**
+             * @var array<\Smalot\PdfParser\PDFObject>
+             */
+            $embeddedFiles = $pdfParsed->getObjectsByType('EmbeddedFile');
+            foreach ($embeddedFiles as $embeddedFile) {
+                if ($attachmentIndex == $embeddedFileIndex) {
+                    return $embeddedFile->getContent();
+                }
+                $embeddedFileIndex++;
+            }
+        }
+
+        throw new ZugferdNoPdfAttachmentFoundException();
     }
 }
