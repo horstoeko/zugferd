@@ -70,11 +70,11 @@ class BuilderEn16931Test extends TestCase
     public function testSetDocumentBusinessProcess(): void
     {
         $this->disableRenderXmlContent();
-        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 0, 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID');
 
         (self::$document)->setDocumentBusinessProcess("");
         $this->disableRenderXmlContent();
-        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 0, 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID');
 
         (self::$document)->setDocumentBusinessProcess("GENERAL INVOICE");
         $this->disableRenderXmlContent();
