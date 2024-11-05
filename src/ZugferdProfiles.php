@@ -111,7 +111,7 @@ class ZugferdProfiles
             'description' => 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements ' .
                 'of an electronic invoice.',
             'contextparameter' => 'urn:cen.eu:en16931:2017',
-            'alternativecontextparameters' => ['urn:cen.eu:en16931:2017'],
+            'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EN 16931',
