@@ -126,7 +126,7 @@ class ZugferdProfiles
                 'item level to support warehousing, etc.)',
             'contextparameter' => 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended',
             'alternativecontextparameters' => ['urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended'],
-            'businessprocess' => null,
+            'businessprocess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EXTENDED',
             'xsdfilename' => 'FACTUR-X_EXTENDED.xsd',
