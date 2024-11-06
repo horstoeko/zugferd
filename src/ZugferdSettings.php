@@ -72,9 +72,9 @@ class ZugferdSettings
     protected static $xmpMetaDataFilename = "facturx_extension_schema.xmp";
 
     /**
-     * Node paths which present a unit amount. Used for special amount formatting. See unitAmountDecimals property.
+     * Node paths which present an amount. Used for special amount formatting
      *
-     * @var array
+     * @var array<string,integer>
      */
     protected static $specialDecimalPlacesMaps = [];
 
