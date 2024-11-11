@@ -3448,7 +3448,6 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionProductCharacteristicPointer = 0;
         $this->positionProductClassificationPointer = 0;
         $this->positionReferencedProductPointer = 0;
-        $this->positionAddRefDocPointer = 0;
 
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         return isset($tradeLineItem[$this->positionPointer]);
