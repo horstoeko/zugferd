@@ -11,7 +11,6 @@ namespace horstoeko\zugferd;
 
 use DOMDocument;
 use DOMXPath;
-use Exception;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
@@ -403,7 +402,7 @@ class ZugferdKositValidator
     /**
      * Add message to error bag
      *
-     * @param  string|Exception|Throwable $error
+     * @param  string|Throwable $error
      * @return void
      */
     private function addToMessageBag($error, string $messageType = ""): void
@@ -412,8 +411,6 @@ class ZugferdKositValidator
 
         if (is_string($error)) {
             $this->messageBag[] = ["type" => $messageType, "message" => $error];
-        } elseif ($error instanceof Exception) {
-            $this->messageBag[] = ["type" => $messageType, "message" => $error->getMessage()];
         } elseif ($error instanceof Throwable) {
             $this->messageBag[] = ["type" => $messageType, "message" => $error->getMessage()];
         }
@@ -605,10 +602,12 @@ class ZugferdKositValidator
     private function downloadRequiredFiles(): bool
     {
         if (!$this->runFileDownload($this->validatorDownloadUrl, $this->resolveAppZipFilename())) {
+            $this->addToMessageBag(sprintf("Unable to download from %s containing the JAVA-Application", $this->validatorDownloadUrl));
             return false;
         }
 
         if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenatioZipFilename())) {
+            $this->addToMessageBag(sprintf("Unable to download from %s containing the validation scenarios", $this->validatorScenarioDownloadUrl));
             return false;
         }
 
@@ -626,12 +625,12 @@ class ZugferdKositValidator
         $validatorScenarioFile = $this->resolveScenatioZipFilename();
 
         if ($this->unpackRequiredFile($validatorAppFile) !== true) {
-            $this->addToMessageBag("Unable to unpack archive $validatorAppFile containing the JAVA-Application");
+            $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the JAVA-Application", $validatorAppFile));
             return false;
         }
 
         if ($this->unpackRequiredFile($validatorScenarioFile) !== true) {
-            $this->addToMessageBag("Unable to unpack archive $validatorScenarioFile containing the validation scenarios");
+            $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the validation scenarios", $validatorScenarioFile));
             return false;
         }
 
@@ -649,6 +648,7 @@ class ZugferdKositValidator
         $zip = new ZipArchive();
 
         if ($zip->open($filename) !== true) {
+            $this->addToMessageBag(sprintf("Failed to open ZIP archive %s", $filename));
             return false;
         }
 
@@ -668,6 +668,7 @@ class ZugferdKositValidator
 
         if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {
             $zip->close();
+            $this->addToMessageBag(sprintf("Failed to extract ZIP archive %s", $filename));
             return false;
         }
 
@@ -832,9 +833,6 @@ class ZugferdKositValidator
                 }
                 return false;
             }
-        } catch (Exception $e) {
-            $this->addToMessageBag($e, static::MSG_TYPE_VALIDATIONERROR);
-            return false;
         } catch (Throwable $e) {
             $this->addToMessageBag($e, static::MSG_TYPE_VALIDATIONERROR);
             return false;
@@ -858,9 +856,6 @@ class ZugferdKositValidator
                 return true;
             }
             file_put_contents($toFilePath, file_get_contents($url));
-        } catch (Exception $e) {
-            $this->addToMessageBag($e);
-            return false;
         } catch (Throwable $e) {
             $this->addToMessageBag($e);
             return false;
