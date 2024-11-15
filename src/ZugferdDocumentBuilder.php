@@ -2723,8 +2723,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add an AccountingAccount
      * Detailinformationen zur Buchungsreferenz
      *
-     * @param  string      $id       __BT-19, From BASIC WL__
-     * @param  string|null $typeCode __BT-, From __
+     * @param  string      $id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param  string|null $typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
+     * Allowed values:
+     * - 1 Financial
+     * - 2 Subsidiary
+     * - 3 Budget
+     * - 4 Cost Accounting
+     * - 5 Payable
+     * - 6 Job Cose Accounting
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentReceivableSpecifiedTradeAccountingAccount(?string $id, ?string $typeCode): ZugferdDocumentBuilder
@@ -3694,8 +3701,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add an AccountingAccount on item level
      * Detailinformationen zur Buchungsreferenz
      *
-     * @param  string      $id
-     * @param  string|null $typeCode
+     * @param  string      $id       __BT-133, From COMFORT__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param  string|null $typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
+     * Allowed values:
+     * - 1 Financial
+     * - 2 Subsidiary
+     * - 3 Budget
+     * - 4 Cost Accounting
+     * - 5 Payable
+     * - 6 Job Cose Accounting
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
