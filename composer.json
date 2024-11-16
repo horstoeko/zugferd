@@ -49,6 +49,7 @@
         "goetas-webservices/xsd2php": "^0",
         "nette/php-generator": "*",
         "pdepend/pdepend": "^2",
+        "phpdocumentor/reflection-docblock": "^5.3",
         "phploc/phploc": "^7",
         "phpmd/phpmd": "^2",
         "phpstan/phpstan": "^1.8",

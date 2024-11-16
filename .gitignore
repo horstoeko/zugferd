@@ -69,6 +69,7 @@ _backup*
 
 /vendor/
 /logs/*
+/make/*.md
 .phpunit.result.cache
 /.phpdoc/
 /build/api/
