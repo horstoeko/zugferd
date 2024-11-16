@@ -260,7 +260,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
      * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
      * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
-     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT--6 is not null $taxTotalAmount = BT--111. Total amount of the invoice sales tax, Total tax amount in the booking currency
+     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
      * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
      * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
      * @return ZugferdDocumentBuilder
@@ -357,9 +357,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a note to the docuzment
      *
-     * @param  string      $content     __BT-22, From BASIC WL__ Free text on the invoice
-     * @param  string|null $contentCode __BT-, From __ Free text at document level
-     * @param  string|null $subjectCode __BT-21, From BASIC WL__ Code to qualify the free text for the invoice
+     * @param  string      $content     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
+     * @param  string|null $contentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
+     * @param  string|null $subjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
@@ -375,7 +375,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
      * but stated by the seller on the invoice.
      *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT--10) in the XRechnung. According to the XRechnung
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
      * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
      * Cross Industry Invoice (CII).
      *
@@ -393,11 +393,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set the routing-id (needed for German XRechnung)
      * This is an alias-method for setDocumentBuyerReference
      *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT--10) in the XRechnung. According to the XRechnung
-     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
-     * Cross Industry Invoice (CII).
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
      *
-     * @param  string $routingId __BT-, From __ The routing ID
+     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
@@ -441,7 +439,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * - The Seller's ID identification scheme is a unique identifier
      *   assigned to a seller by a global registration organization
      *
-     * @param  string|null $globalID     __BT-29/BT--29-0, From BASIC WL__ The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
+     * @param  string|null $globalID     __BT-29/BT-29-0, From BASIC WL__ The seller's identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
      * @param  string|null $globalIDType __BT-29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
@@ -462,7 +460,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype __BT-31-0/BT-32-0, From __ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxregtype __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param  string|null $taxregid   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
@@ -2682,7 +2680,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a payment term
      *
      * @param  string|null   $description          __BT-20, From _BASIC WL__ A text description of the payment terms that apply to the payment amount due (including a description of possible penalties). Note: This element can contain multiple lines and multiple conditions.
-     * @param  DateTime|null $dueDate              __BT-9, From BASIC WL__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT--20.
+     * @param  DateTime|null $dueDate              __BT-9, From BASIC WL__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
      * @param  string|null   $directDebitMandateID __BT-89, From BASIC WL__ Unique identifier assigned by the payee to reference the direct debit authorization.
      *                                             __Note:__ Used to inform the buyer in advance about a SEPA direct debit. __Synonym:__ mandate reference for SEPA
      * @return ZugferdDocumentBuilder
@@ -3665,12 +3663,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *                                         Codelists: UNTDID 7161 (Complete list), UNTDID 5189 (Restricted)
      * @param  string|null $reason             __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
      *                                         __Notes__
-     *                                         - The invoice line discount reason code (BT--140) and the invoice line discount reason
-     *                                         (BT--139) must show the same allowance type.
+     *                                         - The invoice line discount reason code (BT-140) and the invoice line discount reason
+     *                                         (BT-139) must show the same allowance type.
      *                                         - Each line item discount (BG-27) must include a corresponding line discount reason
-     *                                         (BT--139) or an appropriate line discount reason code (BT--140), or both.
-     *                                         - The code for the reason for the charge at the invoice line level (BT--145) and the
-     *                                         reason for the invoice line discount (BT--144) must show the same discount type
+     *                                         (BT-139) or an appropriate line discount reason code (BT-140), or both.
+     *                                         - The code for the reason for the charge at the invoice line level (BT-145) and the
+     *                                         reason for the invoice line discount (BT-144) must show the same discount type
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionAllowanceCharge(float $actualAmount, bool $isCharge, ?float $calculationPercent = null, ?float $basisAmount = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
