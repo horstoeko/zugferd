@@ -354,7 +354,7 @@ class ZugferdKositValidator
      *
      * @return string
      */
-    public function resolveScenatioZipFilename(): string
+    private function resolveScenatioZipFilename(): string
     {
         return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
     }
