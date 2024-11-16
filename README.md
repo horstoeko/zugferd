@@ -18,7 +18,7 @@
 [![CI (PHP 8.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml)
 [![CI (PHP 8.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml)
 
-## Actual information
+## Latest information
 
 > [!NOTE]
 > See our new class [documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
