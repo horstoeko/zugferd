@@ -21,7 +21,7 @@
 ## Latest information
 
 > [!NOTE]
-> See our new class [documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
+> See our new [class documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
 
 
 ## Table of Contents
