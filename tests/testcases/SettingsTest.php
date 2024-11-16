@@ -17,6 +17,7 @@ class SettingsTest extends TestCase
         ZugferdSettings::setAmountDecimals(2);
         ZugferdSettings::setQuantityDecimals(2);
         ZugferdSettings::setPercentDecimals(2);
+        ZugferdSettings::setMeasureDecimals(2);
         ZugferdSettings::setDecimalSeparator(".");
         ZugferdSettings::setThousandsSeparator("");
         ZugferdSettings::setIccProfileFilename("sRGB_v4_ICC.icc");
@@ -57,6 +58,19 @@ class SettingsTest extends TestCase
         $this->assertEquals(3, ZugferdSettings::getPercentDecimals());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "percentDecimals");
+
+        $this->assertEquals(3, $property->getValue());
+    }
+
+    public function testMeasureDecimals(): void
+    {
+        $this->assertEquals(2, ZugferdSettings::getMeasureDecimals());
+
+        ZugferdSettings::setMeasureDecimals(3);
+
+        $this->assertEquals(3, ZugferdSettings::getMeasureDecimals());
+
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "measureDecimals");
 
         $this->assertEquals(3, $property->getValue());
     }

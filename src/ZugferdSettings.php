@@ -44,6 +44,13 @@ class ZugferdSettings
     protected static $percentDecimals = 2;
 
     /**
+     * The number of decimals for measure values
+     *
+     * @var integer
+     */
+    protected static $measureDecimals = 2;
+
+    /**
      * The decimal separator
      *
      * @var string
@@ -139,6 +146,27 @@ class ZugferdSettings
     public static function setPercentDecimals(int $percentDecimals): void
     {
         static::$percentDecimals = $percentDecimals;
+    }
+
+    /**
+     * Get the number of decimals to use for measure values
+     *
+     * @return integer
+     */
+    public static function getMeasureDecimals(): int
+    {
+        return static::$measureDecimals;
+    }
+
+    /**
+     * Set the number of decimals to use for measure values
+     *
+     * @param  integer $measureDecimals
+     * @return void
+     */
+    public static function setMeasureDecimals(int $measureDecimals): void
+    {
+        static::$measureDecimals = $measureDecimals;
     }
 
     /**

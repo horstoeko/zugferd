@@ -9,10 +9,7 @@
 
 namespace horstoeko\zugferd\jms;
 
-use DOMElement;
-use DOMText;
 use horstoeko\zugferd\ZugferdSettings;
-use JMS\Serializer\Context;
 use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\XmlSerializationVisitor;
@@ -147,6 +144,30 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
                 'type' => 'horstoeko\zugferd\entities\extended\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\basic\udt\MeasureType',
+                'method' => 'serializeMeasureType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\basicwl\udt\MeasureType',
+                'method' => 'serializeMeasureType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\en16931\udt\MeasureType',
+                'method' => 'serializeMeasureType'
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'xml',
+                'type' => 'horstoeko\zugferd\entities\extended\udt\MeasureType',
+                'method' => 'serializeMeasureType'
+            ],
         ];
     }
 
@@ -221,6 +242,33 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
                 ZugferdSettings::getThousandsSeparator()
             )
         );
+
+        return $node;
+    }
+
+    /**
+     * Serialize a meassure value
+     * The valze will be serialized (by default) with a precission of 2 digits
+     *
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     */
+    public function serializeMeasureType(XmlSerializationVisitor $visitor, $data)
+    {
+        $node = $visitor->getDocument()->createTextNode(
+            number_format(
+                $data->value(),
+                ZugferdSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), ZugferdSettings::getMeasureDecimals()),
+                ZugferdSettings::getDecimalSeparator(),
+                ZugferdSettings::getThousandsSeparator()
+            )
+        );
+
+        if ($data->getUnitCode() != null) {
+            $attr = $visitor->getDocument()->createAttribute("unitCode");
+            $attr->value = $data->getUnitCode();
+            $visitor->getCurrentNode()->appendChild($attr);
+        }
 
         return $node;
     }
