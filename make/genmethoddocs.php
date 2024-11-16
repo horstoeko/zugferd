@@ -1,6 +1,7 @@
 <?php
 
 use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\ZugferdDocument;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
@@ -10,6 +11,8 @@ use horstoeko\zugferd\ZugferdDocumentValidator;
 use horstoeko\zugferd\ZugferdKositValidator;
 use horstoeko\zugferd\ZugferdSettings;
 use horstoeko\zugferd\ZugferdXsdValidator;
+use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Printer;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlockFactory;
@@ -45,6 +48,17 @@ class ExtractClass
     public function getClassName(): string
     {
         return $this->className;
+    }
+
+    /**
+     * Returns the base name of the current classname
+     *
+     * @return string
+     */
+    public function getClassBasename(): string
+    {
+        $classParts = explode('\\', $this->className);
+        return end($classParts);
     }
 
     /**
@@ -144,7 +158,8 @@ class ExtractClass
                     'name' => $parameterName,
                     'type' => $parameterType ? $parameterType->getName() : 'mixed',
                     'isNullable' => $parameterType && $parameterType->allowsNull(),
-                    'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : 'none') : 'none',
+                    'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? true : false) : false,
+                    'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null) : null,
                     'description' => $paramDescriptions[$parameterName]['description'] ?? ''
                 ];
             }
@@ -222,6 +237,9 @@ class MarkDownGenerator
 
         $this->addLineH1($this->extractor->getClassName());
 
+        $phpPrinter = new Printer;
+        $phpClass = new ClassType($this->extractor->getClassBasename());
+
         if (!empty($metaData['class']['summary'])) {
             $this->addLine($metaData['class']['summary'] ?? "")->addEmptyLine();
         }
@@ -230,8 +248,12 @@ class MarkDownGenerator
             $this->addLine($metaData['class']['description'] ?? "")->addEmptyLine();
         }
 
+        if (!empty($metaData['methods'])) {
+            $this->addLineH2("Methods");
+        }
+
         foreach ($metaData['methods'] as $methodName => $methodData) {
-            $this->addLineH2($methodName, $methodData["methodDetails"]["hasadditional"] === false);
+            $this->addLineH3($methodName, $methodData["methodDetails"]["hasadditional"] === false);
 
             if ($methodData["methodDetails"]["static"] === true) {
                 $this->addToLastLine('<span style="color: white; background-color: blue; padding: 0.2em 0.5em; border-radius: 0.2em; font-size: .8rem">``[static]``</span>', " ");
@@ -241,9 +263,35 @@ class MarkDownGenerator
                 $this->addToLastLine('<span style="color: white; background-color: red; padding: 0.2em 0.5em; border-radius: 0.2em; font-size: .8rem">``[abstract]``</span>', " ");
             }
 
+            if ($methodData["methodDetails"]["final"] === true) {
+                $this->addToLastLine('<span style="color: white; background-color: green; padding: 0.2em 0.5em; border-radius: 0.2em; font-size: .8rem">``[final]``</span>', " ");
+            }
+
             if ($methodData["methodDetails"]["hasadditional"] === true) {
                 $this->addEmptyLine();
             }
+
+            $phpMethod = $phpClass->addMethod($methodName);
+            $phpMethod->setPublic();
+            $phpMethod->setStatic($methodData["methodDetails"]["static"] === true);
+            $phpMethod->setAbstract($methodData["methodDetails"]["abstract"] === true);
+            $phpMethod->setFinal($methodData["methodDetails"]["final"] === true);
+            $phpMethod->setReturnType($methodData["return"]["type"]);
+
+            foreach ($methodData["parameters"] as $parameter) {
+                $phpParameter = $phpMethod
+                    ->addParameter($parameter["name"])
+                    ->setType($parameter["type"])
+                    ->setNullable($parameter["isNullable"]);
+
+                if ($parameter['defaultValueavailable'] === true) {
+                    $phpParameter->setDefaultValue($parameter["defaultValue"]);
+                }
+            }
+
+            $this->addLineRaw("```php");
+            $this->addLineRaw($phpPrinter->printMethod($phpMethod));
+            $this->addLineRaw("```");
 
             if (!empty($methodData["methodDetails"]["summary"])) {
                 $this->addLine($methodData["methodDetails"]["summary"])->addEmptyLine();
@@ -251,10 +299,6 @@ class MarkDownGenerator
 
             if (!empty($methodData["methodDetails"]["description"])) {
                 $this->addLine($methodData["methodDetails"]["description"])->addEmptyLine();
-            }
-
-            if (!empty($methodData["return"]["type"])) {
-                $this->addLine('__Returns__ %s', $methodData["return"]["type"])->addEmptyLine();
             }
 
             if (!empty($methodData["parameters"])) {
@@ -307,6 +351,24 @@ class MarkDownGenerator
         }
 
         $this->lines[] = $this->sanatizeString(sprintf($string, ...$args));
+
+        return $this;
+    }
+
+    /**
+     * Add a line to internal container
+     *
+     * @param string $string
+     * @param mixed ...$args
+     * @return MarkDownGenerator
+     */
+    private function addLineRaw(string $string, ...$args): MarkDownGenerator
+    {
+        if (StringUtils::stringIsNullOrEmpty($string)) {
+            return $this;
+        }
+
+        $this->lines[] = sprintf($string, ...$args);
 
         return $this;
     }
@@ -368,7 +430,7 @@ class MarkDownGenerator
      */
     private function addLineH3(string $string, bool $newLine = true): MarkDownGenerator
     {
-        $this->addLine("# %s", $string);
+        $this->addLine("### %s", $string);
 
         if ($newLine) {
             $this->addEmptyLine();
@@ -393,6 +455,26 @@ class MarkDownGenerator
 
         $lastIndex = count($this->lines) - 1;
         $this->lines[$lastIndex] = $this->lines[$lastIndex] . $delimiter . sprintf($string, ...$args);
+
+        return $this;
+    }
+
+    /**
+     * Add a string to the latest line which was added (before)
+     *
+     * @param string $string
+     * @param string $delimiter
+     * @param mixed ...$args
+     * @return MarkDownGenerator
+     */
+    public function addToLastLineBefore(string $string, string $delimiter = "", ...$args): MarkDownGenerator
+    {
+        if (empty($this->lines)) {
+            return $this->addLine($string, ...$args);
+        }
+
+        $lastIndex = count($this->lines) - 1;
+        $this->lines[$lastIndex] = sprintf($string, ...$args) . $delimiter . $this->lines[$lastIndex];
 
         return $this;
     }
@@ -448,6 +530,7 @@ class BatchMarkDownGenerator
 }
 
 BatchMarkDownGenerator::generate([
+    ZugferdDocument::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocument.md',
     ZugferdSettings::class => dirname(__FILE__) . '/ClassOverview-ZugferdSettings.md',
     ZugferdDocumentBuilder::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentBuilder.md',
     ZugferdDocumentReader::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentReader.md',
