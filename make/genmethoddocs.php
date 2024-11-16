@@ -271,6 +271,18 @@ class MarkDownGenerator
                 $this->addEmptyLine();
             }
 
+            $this->addLineH4("Summary");
+
+            if (!empty($methodData["methodDetails"]["summary"])) {
+                $this->addLine($methodData["methodDetails"]["summary"])->addEmptyLine();
+            }
+
+            if (!empty($methodData["methodDetails"]["description"])) {
+                $this->addLine($methodData["methodDetails"]["description"])->addEmptyLine();
+            }
+
+            $this->addLineH4("Signature");
+
             $phpMethod = $phpClass->addMethod($methodName);
             $phpMethod->setPublic();
             $phpMethod->setStatic($methodData["methodDetails"]["static"] === true);
@@ -293,15 +305,8 @@ class MarkDownGenerator
             $this->addLineRaw($phpPrinter->printMethod($phpMethod));
             $this->addLineRaw("```");
 
-            if (!empty($methodData["methodDetails"]["summary"])) {
-                $this->addLine($methodData["methodDetails"]["summary"])->addEmptyLine();
-            }
-
-            if (!empty($methodData["methodDetails"]["description"])) {
-                $this->addLine($methodData["methodDetails"]["description"])->addEmptyLine();
-            }
-
             if (!empty($methodData["parameters"])) {
+                $this->addLineH4("Parameters");
                 $this->addLine("| Name | Type | Allows Null | Description");
                 $this->addLine("| :------ | :------ | :-----: | :------");
 
@@ -431,6 +436,24 @@ class MarkDownGenerator
     private function addLineH3(string $string, bool $newLine = true): MarkDownGenerator
     {
         $this->addLine("### %s", $string);
+
+        if ($newLine) {
+            $this->addEmptyLine();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add an H4-Line to internal container
+     *
+     * @param string $string
+     * @param boolean $newLine
+     * @return MarkDownGenerator
+     */
+    private function addLineH4(string $string, bool $newLine = true): MarkDownGenerator
+    {
+        $this->addLine("#### %s", $string);
 
         if ($newLine) {
             $this->addEmptyLine();
