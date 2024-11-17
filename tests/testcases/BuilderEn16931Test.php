@@ -1649,7 +1649,7 @@ class BuilderEn16931Test extends TestCase
         (self::$document)->addDocumentPositionTax("S", "VAT", 19.0, 10.0, "reason", "reasoncode");
         (self::$document)->setDocumentPositionBillingPeriod(new DateTime(), new DateTime());
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
-        (self::$document)->setDocumentPositionLineSummation(100, 10);
+        (self::$document)->setDocumentPositionLineSummation(100);
         (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
         (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new DateTime());
         (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new DateTime());
@@ -1809,7 +1809,7 @@ class BuilderEn16931Test extends TestCase
         (self::$document)->addDocumentPositionTax("S", "VAT", 7.0, 2.0, "reason2", "reasoncode2");
         (self::$document)->setDocumentPositionBillingPeriod(new DateTime(), new DateTime());
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
-        (self::$document)->setDocumentPositionLineSummation(200, 20);
+        (self::$document)->setDocumentPositionLineSummation(200);
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:LineID', 1, "2");
