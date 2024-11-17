@@ -216,20 +216,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set general payment information
-     *
-     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Identifier of the creditor
-     * @param  string|null $paymentReference    __BT-83, From BASIC WL__ Intended use for payment
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
-    {
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
-        return $this;
-    }
-
-    /**
      * Mark document as a copy from the original one
      *
      * @return ZugferdDocumentBuilder
@@ -248,43 +234,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setIsTestDocument(): ZugferdDocumentBuilder
     {
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocumentContext(), "setTestIndicator", $this->getObjectHelper()->getIndicatorType(true));
-        return $this;
-    }
-
-    /**
-     * Document money summation
-     *
-     * @param  float      $grandTotalAmount     __BT-112, From MINIMUM__ Total invoice amount including sales tax
-     * @param  float      $duePayableAmount     __BT-115, From MINIMUM__ Payment amount due
-     * @param  float|null $lineTotalAmount      __BT-106, From BASIC WL__ Sum of the net amounts of all invoice items
-     * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
-     * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
-     * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
-     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
-     * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
-     * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentSummation(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ZugferdDocumentBuilder
-    {
-        $summation = $this->getObjectHelper()->getTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
-        $taxTotalAmount = $this->getObjectHelper()->ensureArray($this->getObjectHelper()->tryCallAndReturn($summation, "getTaxTotalAmount"));
-        if (isset($taxTotalAmount[0])) {
-            $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
-            $this->getObjectHelper()->tryCall($taxTotalAmount[0], 'setCurrencyID', $invoiceCurrencyCode);
-        }
-        return $this;
-    }
-
-    /**
-     * Initilize the main document summation
-     *
-     * @return ZugferdDocumentBuilder
-     */
-    public function initDocumentSummation(): ZugferdDocumentBuilder
-    {
-        $this->setDocumentSummation(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         return $this;
     }
 
@@ -367,40 +316,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $note = $this->getObjectHelper()->getNoteType($content, $contentCode, $subjectCode);
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "addToIncludedNote", $note);
         return $this;
-    }
-
-    /**
-     * An identifier assigned by the buyer and used for internal routing.
-     *
-     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
-     * but stated by the seller on the invoice.
-     *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
-     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
-     * Cross Industry Invoice (CII).
-     *
-     * @param  string $buyerreference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentBuyerReference(?string $buyerreference): ZugferdDocumentBuilder
-    {
-        $reference = $this->getObjectHelper()->getTextType($buyerreference);
-        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
-        return $this;
-    }
-
-    /**
-     * Set the routing-id (needed for German XRechnung)
-     * This is an alias-method for setDocumentBuyerReference
-     *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
-     *
-     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
-    {
-        return $this->setDocumentBuyerReference($routingId);
     }
 
     /**
@@ -1929,6 +1844,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set general payment information
+     *
+     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Identifier of the creditor
+     * @param  string|null $paymentReference    __BT-83, From BASIC WL__ Intended use for payment
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
+    {
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+        return $this;
+    }
+
+    /**
      * Add detailed information on the payment method
      *
      * __Notes__
@@ -2294,6 +2223,77 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
+        return $this;
+    }
+
+    /**
+     * An identifier assigned by the buyer and used for internal routing.
+     *
+     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
+     * but stated by the seller on the invoice.
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
+     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
+     * Cross Industry Invoice (CII).
+     *
+     * @param  string $buyerreference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentBuyerReference(?string $buyerreference): ZugferdDocumentBuilder
+    {
+        $reference = $this->getObjectHelper()->getTextType($buyerreference);
+        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
+        return $this;
+    }
+
+    /**
+     * Set the routing-id (needed for German XRechnung)
+     * This is an alias-method for setDocumentBuyerReference
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
+     *
+     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
+    {
+        return $this->setDocumentBuyerReference($routingId);
+    }
+
+    /**
+     * Initilize the main document summation
+     *
+     * @return ZugferdDocumentBuilder
+     */
+    public function initDocumentSummation(): ZugferdDocumentBuilder
+    {
+        $this->setDocumentSummation(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        return $this;
+    }
+
+    /**
+     * Document money summation
+     *
+     * @param  float      $grandTotalAmount     __BT-112, From MINIMUM__ Total invoice amount including sales tax
+     * @param  float      $duePayableAmount     __BT-115, From MINIMUM__ Payment amount due
+     * @param  float|null $lineTotalAmount      __BT-106, From BASIC WL__ Sum of the net amounts of all invoice items
+     * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
+     * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
+     * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
+     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
+     * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
+     * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSummation(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ZugferdDocumentBuilder
+    {
+        $summation = $this->getObjectHelper()->getTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
+        $taxTotalAmount = $this->getObjectHelper()->ensureArray($this->getObjectHelper()->tryCallAndReturn($summation, "getTaxTotalAmount"));
+        if (isset($taxTotalAmount[0])) {
+            $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
+            $this->getObjectHelper()->tryCall($taxTotalAmount[0], 'setCurrencyID', $invoiceCurrencyCode);
+        }
         return $this;
     }
 
