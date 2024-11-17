@@ -1720,10 +1720,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set information on the delivery conditions
      *
-     * __Note__
-     *  - This is only available in the EXTENDED profile
-     *
-     * @param  string|null $code
+     * @param  string|null $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentDeliveryTerms(?string $code): ZugferdDocumentBuilder
@@ -1737,7 +1734,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set details of the associated order confirmation
      *
      * @param  string        $issuerassignedid __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
-     * @param  DateTime|null $issueddate       __BT-, From __ Order confirmation date
+     * @param  DateTime|null $issueddate       __BT-X-146, From EXTENDED__ Order confirmation date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1751,7 +1748,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set details of the related buyer order
      *
      * @param  string        $issuerassignedid __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  DateTime|null $issueddate       __BT-, From __ Date of order
+     * @param  DateTime|null $issueddate       __BT-X-147, From EXTENDED__ Date of order
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBuyerOrderReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1765,7 +1762,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set details of the associated contract
      *
      * @param  string        $issuerassignedid __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  DateTime|null $issueddate       __BT-, From __ Contract date
+     * @param  DateTime|null $issueddate       __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentContractReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1788,29 +1785,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *    documents
      *
-     * @param  string            $issuerassignedid
-     * The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for
-     * an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string            $typecode
-     * Type of referenced document (See codelist UNTDID 1001)
+     * @param  string            $issuerassignedid    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string            $typecode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
      *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
      *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
      *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param  string|null       $uriid
-     * The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource
-     * including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document
-     * must be used if the buyer needs additional information to support the amounts billed. External documents are not part
-     * of the invoice. Access to external documents can involve certain risks.
-     * @param  string|array|null $name
-     * A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $reftypecode
-     * The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the
-     * recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected
-     * from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null     $issueddate
-     * Document date
-     * @param  string|null       $binarydatafilename
-     * Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null       $uriid               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
+     * @param  string|array|null $name                __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null       $reftypecode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null     $issueddate          __BT-X-149, From EXTENDED__ Document date
+     * @param  string|null       $binarydatafilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
@@ -1829,7 +1813,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
      * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typecode         Type of previous invoice (code)
+     * @param  string|null   $typecode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
      * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
@@ -1849,7 +1833,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
      * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typecode         Type of previous invoice (code)
+     * @param  string|null   $typecode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
      * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
@@ -1863,8 +1847,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Details of a project reference
      *
-     * @param  string $id   __BT-11, From EN 16931__ Project Data
-     * @param  string $name __BT-, From __ Project Name
+     * @param  string $id   __BT-11, From EN 16931__ The identifier of the project to which the invoice relates
+     * @param  string $name __BT-11-0, From EN 16931__  The name of the project to which the invoice relates
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProcuringProject(string $id, string $name = "Project Reference"): ZugferdDocumentBuilder
@@ -1875,10 +1859,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Add a reference of the ultimate customer order
+     * Details of the associated end customer order
      *
-     * @param  string        $issuerassignedid
-     * @param  DateTime|null $issueddate
+     * @param  string        $issuerassignedid  __BT-X-150, From EXTENDED__ Order number of the end customer
+     * @param  DateTime|null $issueddate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1902,10 +1886,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set detailed information on the associated shipping notification
+     * Set Detailed information on the actual delivery
      *
      * @param  string        $issuerassignedid __BT-16, From BASIC WL__ Shipping notification reference
-     * @param  DateTime|null $issueddate       __BT-, From __ Shipping notification date
+     * @param  DateTime|null $issueddate       __BT-X-200, From EXTENDED__ Shipping notification date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentDespatchAdviceReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1919,7 +1903,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set detailed information on the associated goods receipt notification
      *
      * @param  string        $issuerassignedid __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
-     * @param  DateTime|null $issueddate       __BT-, From __ Goods receipt date
+     * @param  DateTime|null $issueddate       __BT-X-201, From EXTENDED__ Goods receipt date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
@@ -1930,15 +1914,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set detailed information on the associated delivery note
+     * Set detailed information on the associated delivery bill
      *
-     * __Notes__
-     *  - This is only available in the EXTENDED profile
-     *
-     * @param  string        $issuerassignedid
-     * Delivery receipt number
-     * @param  DateTime|null $issueddate
-     * Delivery receipt date
+     * @param  string        $issuerassignedid  __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  DateTime|null $issueddate        __BT-X-203, From EXTENDED__ Delivery slip date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
