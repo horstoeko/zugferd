@@ -304,11 +304,11 @@ class MarkDownGenerator
             $this->addLineH4("Summary");
 
             if (!empty($methodData["methodDetails"]["summary"])) {
-                $this->addLine($methodData["methodDetails"]["summary"])->addEmptyLine();
+                $this->addLineItalic($methodData["methodDetails"]["summary"])->addEmptyLine();
             }
 
             if (!empty($methodData["methodDetails"]["description"])) {
-                $this->addLine($methodData["methodDetails"]["description"])->addEmptyLine();
+                $this->addLineItalic($methodData["methodDetails"]["description"])->addEmptyLine();
             }
 
             $this->addLineH4("Signature");
@@ -531,6 +531,30 @@ class MarkDownGenerator
         $this->lines[$lastIndex] = sprintf($string, ...$args) . $delimiter . $this->lines[$lastIndex];
 
         return $this;
+    }
+
+    /**
+     * Add line as italic formatted
+     *
+     * @param string $string
+     * @param mixed ...$args
+     * @return MarkDownGenerator
+     */
+    public function addLineItalic(string $string, ...$args): MarkDownGenerator
+    {
+        return $this->addLine(sprintf("_%s_", $string), ...$args);
+    }
+
+    /**
+     * Add line as bold formatted
+     *
+     * @param string $string
+     * @param mixed ...$args
+     * @return MarkDownGenerator
+     */
+    public function addLineBold(string $string, ...$args): MarkDownGenerator
+    {
+        return $this->addLine(sprintf("__%s__", $string), ...$args);
     }
 
     /**
