@@ -102,14 +102,17 @@ class ExtractClass
 
         if ($classDocComment !== false) {
             $classDocBlock = $docBlockFactory->create($classDocComment);
+            $deprecatedTag = $classDocBlock->getTagsByName('deprecated');
             $result['class'] = [
                 'summary' => $classDocBlock->getSummary() ?: '',
-                'description' => (string)$classDocBlock->getDescription() ?: ''
+                'description' => (string)$classDocBlock->getDescription() ?: '',
+                'deprecated' => !empty($deprecatedTag) ? (string)$deprecatedTag[0] : ''
             ];
         } else {
             $result['class'] = [
                 'summary' => '',
-                'description' => ''
+                'description' => '',
+                'deprecated' => ''
             ];
         }
 
@@ -127,6 +130,7 @@ class ExtractClass
                 'abstract' => false,
                 'final' => false,
                 'hasadditional' => false,
+                'deprecated' => '',
             ];
 
             if ($docComment !== false) {
@@ -139,6 +143,10 @@ class ExtractClass
                 $methodDetails['abstract'] = $method->isAbstract();
                 $methodDetails['final'] = $method->isFinal();
                 $methodDetails['hasadditional'] = $method->isStatic() || $method->isAbstract() || $method->isFinal();
+                $deprecatedTag = $docBlock->getTagsByName('deprecated');
+                if (!empty($deprecatedTag)) {
+                    $methodDetails['deprecated'] = (string)$deprecatedTag[0];
+                }
 
                 // Parse @param tags
                 $paramDescriptions = [];
@@ -258,6 +266,12 @@ class MarkDownGenerator
             $this->addLine($metaData['class']['description'] ?? "")->addEmptyLine();
         }
 
+        if (!empty($metaData['class']['deprecated'])) {
+            $this->addLine("> [!CAUTION]");
+            $this->addLine("> Deprecated %s", $metaData['class']['deprecated']);
+            $this->addEmptyLine();
+        }
+
         if (!empty($metaData['methods'])) {
             $this->addLineH2("Methods");
         }
@@ -278,6 +292,12 @@ class MarkDownGenerator
             }
 
             if ($methodData["methodDetails"]["hasadditional"] === true) {
+                $this->addEmptyLine();
+            }
+
+            if (!empty($methodData["methodDetails"]["deprecated"])) {
+                $this->addLine("> [!CAUTION]");
+                $this->addLine("> Deprecated %s", $methodData["methodDetails"]["deprecated"]);
                 $this->addEmptyLine();
             }
 
