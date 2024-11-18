@@ -519,7 +519,7 @@ class MarkDownGenerator
      * @param mixed ...$args
      * @return MarkDownGenerator
      */
-    public function addToLastLine(string $string, string $delimiter = "", ...$args): MarkDownGenerator
+    private function addToLastLine(string $string, string $delimiter = "", ...$args): MarkDownGenerator
     {
         if (empty($this->lines)) {
             return $this->addLine($string, ...$args);
@@ -532,33 +532,13 @@ class MarkDownGenerator
     }
 
     /**
-     * Add a string to the latest line which was added (before)
-     *
-     * @param string $string
-     * @param string $delimiter
-     * @param mixed ...$args
-     * @return MarkDownGenerator
-     */
-    public function addToLastLineBefore(string $string, string $delimiter = "", ...$args): MarkDownGenerator
-    {
-        if (empty($this->lines)) {
-            return $this->addLine($string, ...$args);
-        }
-
-        $lastIndex = count($this->lines) - 1;
-        $this->lines[$lastIndex] = sprintf($string, ...$args) . $delimiter . $this->lines[$lastIndex];
-
-        return $this;
-    }
-
-    /**
      * Add line as italic formatted
      *
      * @param string $string
      * @param mixed ...$args
      * @return MarkDownGenerator
      */
-    public function addLineItalic(string $string, ...$args): MarkDownGenerator
+    private function addLineItalic(string $string, ...$args): MarkDownGenerator
     {
         return $this->addLine(sprintf("_%s_", $string), ...$args);
     }
@@ -570,7 +550,7 @@ class MarkDownGenerator
      * @param mixed ...$args
      * @return MarkDownGenerator
      */
-    public function addLineBold(string $string, ...$args): MarkDownGenerator
+    private function addLineBold(string $string, ...$args): MarkDownGenerator
     {
         return $this->addLine(sprintf("__%s__", $string), ...$args);
     }
@@ -582,7 +562,7 @@ class MarkDownGenerator
      * @param bool $isClass
      * @return MarkDownGenerator
      */
-    public function addExample(string $exampleFilename, bool $isClass = false): MarkDownGenerator
+    private function addExample(string $exampleFilename, bool $isClass = false): MarkDownGenerator
     {
         if (!file_exists($exampleFilename)) {
             return $this;
@@ -603,7 +583,7 @@ class MarkDownGenerator
         $exampleFileContent = str_replace(array("\r\n", "\r", "\n"), "\n", $exampleFileContent);
 
         foreach (explode("\n", $exampleFileContent) as $exampleFileContentLine) {
-            $this->addLineRawAllowEmpty($exampleFileContentLine);
+            $this->lines[]= $exampleFileContentLine;
         }
 
         $this->addEmptyLine();
