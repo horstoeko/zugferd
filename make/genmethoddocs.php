@@ -21,6 +21,16 @@ use Webmozart\Assert\InvalidArgumentException;
 
 require dirname(__FILE__) . "/../vendor/autoload.php";
 
+class CustomPhpPrinter extends Printer
+{
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->indentation = '  ';
+    }
+}
+
 class ExtractClass
 {
     /**
@@ -237,7 +247,7 @@ class MarkDownGenerator
 
         $this->addLineH1($this->extractor->getClassName());
 
-        $phpPrinter = new Printer;
+        $phpPrinter = new CustomPhpPrinter();
         $phpClass = new ClassType($this->extractor->getClassBasename());
 
         if (!empty($metaData['class']['summary'])) {
@@ -554,14 +564,14 @@ class BatchMarkDownGenerator
 }
 
 BatchMarkDownGenerator::generate([
-    ZugferdDocument::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocument.md',
-    ZugferdSettings::class => dirname(__FILE__) . '/ClassOverview-ZugferdSettings.md',
-    ZugferdDocumentBuilder::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentBuilder.md',
-    ZugferdDocumentReader::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentReader.md',
-    ZugferdDocumentPdfReader::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentPdfReader.md',
-    ZugferdDocumentPdfBuilder::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentPdfBuilder.md',
-    ZugferdDocumentPdfMerger::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentPdfMerger.md',
-    ZugferdDocumentValidator::class => dirname(__FILE__) . '/ClassOverview-ZugferdDocumentValidator.md',
-    ZugferdXsdValidator::class => dirname(__FILE__) . '/ClassOverview-ZugferdXsdValidator.md',
-    ZugferdKositValidator::class => dirname(__FILE__) . '/ClassOverview-ZugferdKositValidator.md',
+    ZugferdDocument::class => dirname(__FILE__) . '/Class-ZugferdDocument.md',
+    ZugferdSettings::class => dirname(__FILE__) . '/Class-ZugferdSettings.md',
+    ZugferdDocumentBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentBuilder.md',
+    ZugferdDocumentReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentReader.md',
+    ZugferdDocumentPdfReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfReader.md',
+    ZugferdDocumentPdfBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfBuilder.md',
+    ZugferdDocumentPdfMerger::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfMerger.md',
+    ZugferdDocumentValidator::class => dirname(__FILE__) . '/Class-ZugferdDocumentValidator.md',
+    ZugferdXsdValidator::class => dirname(__FILE__) . '/Class-ZugferdXsdValidator.md',
+    ZugferdKositValidator::class => dirname(__FILE__) . '/Class-ZugferdKositValidator.md',
 ]);
