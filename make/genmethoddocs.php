@@ -253,7 +253,7 @@ class MarkDownGenerator
     {
         $metaData = $this->extractor->getArray();
 
-        $this->addLineH1($this->extractor->getClassName());
+        $this->addLineH2("Summary");
 
         $phpPrinter = new CustomPhpPrinter();
         $phpClass = new ClassType($this->extractor->getClassBasename());
@@ -271,6 +271,8 @@ class MarkDownGenerator
             $this->addLine("> Deprecated %s", $metaData['class']['deprecated']);
             $this->addEmptyLine();
         }
+
+        $this->addExample(dirname(__FILE__) . sprintf('/md/%s.md', $this->extractor->getClassBasename()), true);
 
         if (!empty($metaData['methods'])) {
             $this->addLineH2("Methods");
@@ -355,6 +357,8 @@ class MarkDownGenerator
             } else {
                 $this->addEmptyLine();
             }
+
+            $this->addExample(dirname(__FILE__) . sprintf('/md/%s_%s.md', $this->extractor->getClassBasename(), $methodName));
         }
 
         return $this;
@@ -404,6 +408,20 @@ class MarkDownGenerator
             return $this;
         }
 
+        $this->lines[] = sprintf($string, ...$args);
+
+        return $this;
+    }
+
+    /**
+     * Add a line to internal container
+     *
+     * @param string $string
+     * @param mixed ...$args
+     * @return MarkDownGenerator
+     */
+    private function addLineRawAllowEmpty(string $string, ...$args): MarkDownGenerator
+    {
         $this->lines[] = sprintf($string, ...$args);
 
         return $this;
@@ -555,6 +573,42 @@ class MarkDownGenerator
     public function addLineBold(string $string, ...$args): MarkDownGenerator
     {
         return $this->addLine(sprintf("__%s__", $string), ...$args);
+    }
+
+    /**
+     * Import an example from a markdown file
+     *
+     * @param string $exampleFilename
+     * @param bool $isClass
+     * @return MarkDownGenerator
+     */
+    public function addExample(string $exampleFilename, bool $isClass = false): MarkDownGenerator
+    {
+        if (!file_exists($exampleFilename)) {
+            return $this;
+        }
+
+        $exampleFileContent = file_get_contents($exampleFilename);
+
+        if ($exampleFileContent === false) {
+            return $this;
+        }
+
+        if ($isClass === true) {
+            $this->addLineH2("Example");
+        } else {
+            $this->addLineH4("Example");
+        }
+
+        $exampleFileContent = str_replace(array("\r\n", "\r", "\n"), "\n", $exampleFileContent);
+
+        foreach (explode("\n", $exampleFileContent) as $exampleFileContentLine) {
+            $this->addLineRawAllowEmpty($exampleFileContentLine);
+        }
+
+        $this->addEmptyLine();
+
+        return $this;
     }
 
     /**
