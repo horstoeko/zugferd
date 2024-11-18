@@ -10,6 +10,7 @@ on:
       - "**.md"
       - ".github/**"
       - "examples/**"
+      - "make/**"
   pull_request:
     types:
       - opened

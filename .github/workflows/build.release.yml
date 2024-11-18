@@ -8,6 +8,7 @@ on:
       - "**.md"
       - ".github/**"
       - "examples/**"
+      - "make/**"
 
 env:
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip

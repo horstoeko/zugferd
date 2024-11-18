@@ -289,6 +289,7 @@ class MarkDownGenerator
             $phpMethod->setAbstract($methodData["methodDetails"]["abstract"] === true);
             $phpMethod->setFinal($methodData["methodDetails"]["final"] === true);
             $phpMethod->setReturnType($methodData["return"]["type"]);
+            $phpMethod->setBody(null);
 
             foreach ($methodData["parameters"] as $parameter) {
                 $phpParameter = $phpMethod
