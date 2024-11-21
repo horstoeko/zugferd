@@ -16,6 +16,11 @@ class ExchangedDocumentType
     private $iD = null;
 
     /**
+     * @var string $name
+     */
+    private $name = null;
+
+    /**
      * @var string $typeCode
      */
     private $typeCode = null;
@@ -51,6 +56,18 @@ class ExchangedDocumentType
     public function setID(\horstoeko\zugferd\entities\en16931\udt\IDType $iD)
     {
         $this->iD = $iD;
+        return $this;
+    }
+
+    /**
+     * Sets a new name
+     *
+     * @param  string $name
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
         return $this;
     }
 
