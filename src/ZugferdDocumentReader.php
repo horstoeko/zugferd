@@ -15,6 +15,7 @@ use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
@@ -234,6 +235,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string $xmlfilename
      * @return ZugferdDocumentReader
      * @throws ZugferdFileNotFoundException
+     * @throws ZugferdFileNotReadableException
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      * @throws ZugferdUnknownProfileParameterException
@@ -245,7 +247,13 @@ class ZugferdDocumentReader extends ZugferdDocument
             throw new ZugferdFileNotFoundException($xmlfilename);
         }
 
-        return self::readAndGuessFromContent(file_get_contents($xmlfilename));
+        $xmlContent = file_get_contents($xmlfilename);
+
+        if ($xmlContent === false) {
+            throw new ZugferdFileNotReadableException($xmlfilename);
+        }
+
+        return self::readAndGuessFromContent($xmlContent);
     }
 
     /**

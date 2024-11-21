@@ -9,19 +9,19 @@
 
 namespace horstoeko\zugferd;
 
-use DOMXpath;
-use Throwable;
-use TypeError;
 use DOMDocument;
+use DOMXpath;
+use InvalidArgumentException;
+use Throwable;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
 use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdPdfWriter;
 use horstoeko\zugferd\ZugferdSettings;
-use InvalidArgumentException;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
@@ -240,7 +240,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
+     * @throws InvalidArgumentException
      * @throws ZugferdFileNotFoundException
+     * @throws ZugferdFileNotReadableException
      * @throws ZugferdUnknownMimetype
      */
     public function attachAdditionalFileByRealFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
@@ -258,6 +260,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         // Load content
 
         $content = file_get_contents($fullFilename);
+
+        if ($content === false) {
+            throw new ZugferdFileNotReadableException($fullFilename);
+        }
 
         // Add attachment
 
@@ -279,6 +285,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
+     * @throws InvalidArgumentException
+     * @throws ZugferdUnknownMimetype
      */
     public function attachAdditionalFileByContent(string $content, string $filename, string $displayName = "", string $relationshipType = "")
     {
