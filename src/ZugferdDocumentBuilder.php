@@ -2953,14 +2953,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set information about the period relevant for the invoice item.
      * Note: Also known as the invoice line delivery period.
      *
-     * @param  DateTime|null $startdate __BT-134, From BASIC__ Start of the billing period
+     * @param  DateTime|null $startDate __BT-134, From BASIC__ Start of the billing period
      * @param  DateTime|null $endDate   __BT-135, From BASIC__ End of the billing period
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionBillingPeriod(?DateTime $startdate, ?DateTime $endDate): ZugferdDocumentBuilder
+    public function setDocumentPositionBillingPeriod(?DateTime $startDate, ?DateTime $endDate): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
-        $period = $this->getObjectHelper()->getSpecifiedPeriodType($startdate, $endDate, null, null);
+        $period = $this->getObjectHelper()->getSpecifiedPeriodType($startDate, $endDate, null, null);
         $this->getObjectHelper()->tryCall($positionsettlement, "setBillingSpecifiedPeriod", $period);
         return $this;
     }
