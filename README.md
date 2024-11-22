@@ -7,6 +7,7 @@
 [![License](https://img.shields.io/packagist/l/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
 
 [![CI](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml)
+[![Release Status](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml)
 
 <!--
 [![CI (Ant, PHP 7.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml)
