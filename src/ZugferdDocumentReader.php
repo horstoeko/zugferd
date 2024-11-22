@@ -4222,18 +4222,18 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get information about the period relevant for the invoice item.
      * Note: Also known as the invoice line delivery period.
      *
-     * @param  DateTime|null $startdate
+     * @param  DateTime|null $startDate
      * Start of the billing period
      * @param  DateTime|null $endDate
      * End of the billing period
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
+    public function getDocumentPositionBillingPeriod(?DateTime &$startDate, ?DateTime &$endDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $startdate = $this->getObjectHelper()->toDateTime(
+        $startDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getBillingSpecifiedPeriod.getStartDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getBillingSpecifiedPeriod.getStartDateTime.getDateTimeString.getFormat", null)
         );
