@@ -516,15 +516,18 @@ class ZugferdObjectHelper
             if (FileUtils::fileExists($binarydatafilename)) {
                 $mimeDb = new MimeDb();
                 $mimeTypes = $mimeDb->findAllMimeTypesByExtension(FileUtils::getFileExtension($binarydatafilename));
-                $mimeTypesSupported = array_intersect($mimeTypes, self::SUPPORTEDTMIMETYPES);
-
-                if (count($mimeTypesSupported) > 0) {
-                    $content = FileUtils::fileToBase64($binarydatafilename);
-                    $this->tryCall(
-                        $refdoctype,
-                        'setAttachmentBinaryObject',
-                        $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binarydatafilename))
-                    );
+                if (!is_null($mimeTypes)) {
+                    $mimeTypesSupported = array_intersect($mimeTypes, self::SUPPORTEDTMIMETYPES);
+                    if (count($mimeTypesSupported) > 0) {
+                        $content = FileUtils::fileToBase64($binarydatafilename);
+                        $this->tryCall(
+                            $refdoctype,
+                            'setAttachmentBinaryObject',
+                            $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binarydatafilename))
+                        );
+                    } else {
+                        throw new ZugferdUnsupportedMimetype();
+                    }
                 } else {
                     throw new ZugferdUnsupportedMimetype();
                 }
