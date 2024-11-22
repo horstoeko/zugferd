@@ -80,6 +80,7 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 * [ZUGFeRD Visualizer](https://github.com/horstoeko/zugferdvisualizer)
 * [ZUGFeRD Laravel](https://github.com/horstoeko/zugferd-laravel)
 * [ZUGFeRD UBL Bridge](https://github.com/horstoeko/zugferdublbridge)
+* [ZUGFeRD Mail](https://github.com/horstoeko/zugferdmail)
 * [Order-X](https://github.com/horstoeko/orderx)
 
 ## Dependencies
