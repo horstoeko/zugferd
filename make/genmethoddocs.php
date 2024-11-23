@@ -259,11 +259,11 @@ class MarkDownGenerator
         $phpClass = new ClassType($this->extractor->getClassBasename());
 
         if (!empty($metaData['class']['summary'])) {
-            $this->addLine($metaData['class']['summary'] ?? "")->addEmptyLine();
+            $this->addLine($this->removeSprintfPlaceholder($metaData['class']['summary'] ?? ""))->addEmptyLine();
         }
 
         if (!empty($metaData['class']['description'])) {
-            $this->addLine($metaData['class']['description'] ?? "")->addEmptyLine();
+            $this->addLine($this->removeSprintfPlaceholder($metaData['class']['description'] ?? ""))->addEmptyLine();
         }
 
         if (!empty($metaData['class']['deprecated'])) {
@@ -306,11 +306,11 @@ class MarkDownGenerator
             $this->addLineH4("Summary");
 
             if (!empty($methodData["methodDetails"]["summary"])) {
-                $this->addLineItalic($methodData["methodDetails"]["summary"])->addEmptyLine();
+                $this->addLineItalic($this->removeSprintfPlaceholder($methodData["methodDetails"]["summary"]))->addEmptyLine();
             }
 
             if (!empty($methodData["methodDetails"]["description"])) {
-                $this->addLineItalic($methodData["methodDetails"]["description"])->addEmptyLine();
+                $this->addLineItalic($this->removeSprintfPlaceholder($methodData["methodDetails"]["description"]))->addEmptyLine();
             }
 
             $this->addLineH4("Signature");
@@ -320,13 +320,13 @@ class MarkDownGenerator
             $phpMethod->setStatic($methodData["methodDetails"]["static"] === true);
             $phpMethod->setAbstract($methodData["methodDetails"]["abstract"] === true);
             $phpMethod->setFinal($methodData["methodDetails"]["final"] === true);
-            $phpMethod->setReturnType($methodData["return"]["type"]);
+            $phpMethod->setReturnType($this->fixPhpType($methodData["return"]["type"]));
             $phpMethod->setBody(null);
 
             foreach ($methodData["parameters"] as $parameter) {
                 $phpParameter = $phpMethod
                     ->addParameter($parameter["name"])
-                    ->setType($parameter["type"])
+                    ->setType($this->fixPhpType($parameter["type"]))
                     ->setNullable($parameter["isNullable"]);
 
                 if ($parameter['defaultValueavailable'] === true) {
@@ -355,6 +355,12 @@ class MarkDownGenerator
 
                 $this->addEmptyLine();
             } else {
+                $this->addEmptyLine();
+            }
+
+            if ($methodData["return"]["type"] && $methodData["return"]["type"] != "void") {
+                $this->addLineH4("Returns");
+                $this->addLineRaw(sprintf("Returns a value of type __%s__", $methodData["return"]["type"]));
                 $this->addEmptyLine();
             }
 
@@ -603,6 +609,37 @@ class MarkDownGenerator
         $string = str_replace("__BT-, From __", "", $string);
         $string = str_replace("__BT-, From", "__BT-??, From", $string);
         $string = trim($string);
+
+        return $string;
+    }
+
+    /**
+     * Remove sprintf placeholders
+     *
+     * @param string $string
+     * @return string
+     */
+    private function removeSprintfPlaceholder(string $string): string
+    {
+        $string = str_replace("%", "", $string);
+
+        return $string;
+    }
+
+    /**
+     * Fix the PHP type
+     *
+     * @param string $string
+     * @return string
+     */
+    private function fixPhpType(string $string): string
+    {
+        if (stripos($string, '[]') !== false) {
+            $string = 'array';
+        }
+        if ($string == '$this') {
+            $string = 'static';
+        }
 
         return $string;
     }
