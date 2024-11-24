@@ -171,10 +171,23 @@ class ExtractClass
             foreach ($method->getParameters() as $parameter) {
                 $parameterName = $parameter->getName();
                 $parameterType = $parameter->getType();
+                $parameterTypeString = "";
+
+                if ($parameterType instanceof ReflectionUnionType) {
+                    $types = $parameterType->getTypes();
+                    foreach ($types as $type) {
+                        $parameterTypeString .= $type->getName() . '|';
+                    }
+                    $parameterTypeString = rtrim($parameterTypeString, '|');
+                } elseif ($parameterType instanceof ReflectionNamedType) {
+                    $parameterTypeString = $parameterType->getName();
+                } else {
+                    $parameterTypeString = 'mixed';
+                }
 
                 $parameters[] = [
                     'name' => $parameterName,
-                    'type' => $parameterType ? $parameterType->getName() : 'mixed',
+                    'type' => $parameterTypeString ? $parameterTypeString : 'mixed',
                     'isNullable' => $parameterType && $parameterType->allowsNull(),
                     'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? true : false) : false,
                     'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null) : null,
@@ -589,7 +602,7 @@ class MarkDownGenerator
         $exampleFileContent = str_replace(array("\r\n", "\r", "\n"), "\n", $exampleFileContent);
 
         foreach (explode("\n", $exampleFileContent) as $exampleFileContentLine) {
-            $this->lines[]= $exampleFileContentLine;
+            $this->lines[] = $exampleFileContentLine;
         }
 
         $this->addEmptyLine();
