@@ -48,6 +48,6 @@ jobs:
           cd wiki
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
-          git add .
+          git add -A
           git commit -m "Automatische Aktualisierung des Wikis"
           git push
