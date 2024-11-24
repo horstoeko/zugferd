@@ -22,12 +22,16 @@
 ## Latest information
 
 > [!NOTE]
-> See our new [class documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
+> Added [Resources Section](#resources) section to this document
 
+> [!NOTE]
+> See our new [class documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
 
 ## Table of Contents
 
 - [ZUGFeRD/XRechnung/Factur-X](#zugferdxrechnungfactur-x)
+  - [Status](#status)
+  - [Latest information](#latest-information)
   - [Table of Contents](#table-of-contents)
   - [License](#license)
   - [Overview](#overview)
@@ -35,6 +39,7 @@
   - [Further information](#further-information)
   - [Related projects](#related-projects)
   - [Dependencies](#dependencies)
+  - [Resources](#resources)
   - [Our Wiki](#our-wiki)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -92,6 +97,11 @@ This package makes use of
 - [Xsd2Php](https://github.com/goetas-webservices/xsd2php)
 - [FPDF](https://github.com/Setasign/FPDF)
 - [FPDI](https://github.com/Setasign/FPDI).
+
+## Resources
+
+- [Latest news from Forum elektronische Rechnung Deutschland](https://www.ferd-net.de/aktuelles/meldungen/index.html)
+- [Official documentaries (Version Archive)](https://www.ferd-net.de/standards/zugferd-versionsarchiv/index.html)
 
 ## Our Wiki
 
