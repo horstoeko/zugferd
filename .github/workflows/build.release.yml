@@ -20,6 +20,7 @@ env:
   VALIDATORSCENARIOFILENAME: scenarios.xml
   PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
   PHPDOCUMENTORFILENAME: phpDocumentor.phar
+  GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
 
 jobs:
   build:
