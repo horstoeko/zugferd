@@ -154,6 +154,19 @@ jobs:
         with:
           files: "build/logs/junit.xml"
 
+      - name: Update Wiki
+        continue-on-error: true
+        run: |
+          php -f make/genmethoddocs.php
+          git clone https://$GH_PAT@github.com/horstoeko/zugferd.wiki.git wiki
+          mv make/*.md wiki
+          cd wiki
+          git config user.name "HorstOeko"
+          git config user.email "horstoeko@erling.com.de"
+          git add -A
+          git commit -m "Automatische Aktualisierung des Wikis"
+          git push
+
       - name: Make Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
