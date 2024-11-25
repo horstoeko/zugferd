@@ -2222,9 +2222,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             return $this;
         }
 
-        $paymentDiscountDays = array_filter($paymentDiscountDays, function ($_, $k) use ($paymentDiscountPercents) {
+        $paymentDiscountDays = array_filter($paymentDiscountDays, function ($k) use ($paymentDiscountPercents) {
             return isset($paymentDiscountPercents[$k]);
-        }, ARRAY_FILTER_USE_BOTH);
+        }, ARRAY_FILTER_USE_KEY);
 
         if (empty($paymentDiscountDays)) {
             return $this->addDocumentPaymentTerm(trim($description), $dueDate, $directDebitMandateID);
