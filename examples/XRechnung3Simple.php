@@ -27,7 +27,7 @@ $document
     ->addDocumentTax("S", "VAT", 275.0, 19.25, 7.0)
     ->addDocumentTax("S", "VAT", 198.0, 37.62, 19.0)
     ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87, null, 0.0)
-    ->addDocumentPaymentTerm("14 Prozent Skonto innerhalb von 28 Tagen\n#SKONTO#TAGE=28#PROZENT=14.00#\n")
+    ->addDocumentPaymentTermXRechnung("Zahlungsbedingungen", [30, 28, 14], [0, 14, 7], [529.87, 529.87, 529.87])
     ->addNewPosition("1")
     ->setDocumentPositionNote("Bemerkung zu Zeile 1")
     ->setDocumentPositionProductDetails("Trennblätter A4", "", "TB100A4")
