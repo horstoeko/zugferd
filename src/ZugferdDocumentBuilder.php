@@ -2204,6 +2204,52 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
+     *
+     * @param  string        $description                 __BT-20, From _EN 16931 XRECHNUNG__ Text to add
+     * @param  int[]         $paymentDiscountDays         __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
+     * @param  float[]       $paymentDiscountPercents     __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
+     * @param  float[]       $paymentDiscountBaeeAmounts  __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
+     * @param  DateTime|null $dueDate                     __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
+     * @param  string|null   $directDebitMandateID        __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentTermXRechnung(string $description, array $paymentDiscountDays = [], array $paymentDiscountPercents = [], array $paymentDiscountBaeeAmounts = [], ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
+    {
+        $paymentTermsDescription = [];
+
+        if ($this->getObjectHelper()->isNullOrEmpty($description)) {
+            return $this;
+        }
+
+        $paymentDiscountDays = array_filter($paymentDiscountDays, function ($_, $k) use ($paymentDiscountPercents) {
+            return isset($paymentDiscountPercents[$k]);
+        }, ARRAY_FILTER_USE_BOTH);
+
+        if (empty($paymentDiscountDays)) {
+            return $this->addDocumentPaymentTerm(trim($description), $dueDate, $directDebitMandateID);
+        }
+
+        foreach ($paymentDiscountDays as $paymentDiscountDayIndex => $paymentDiscountDay) {
+            $paymentTermsDescription[] =
+                sprintf(
+                    !isset($paymentDiscountBaeeAmounts[$paymentDiscountDayIndex])
+                        ? "#SKONTO#TAGE=%s#PROZENT=%s#"
+                        : "#SKONTO#TAGE=%s#PROZENT=%s#BASISBETRAG=%s#",
+                    number_format($paymentDiscountDay, 0, ".", ""),
+                    number_format($paymentDiscountPercents[$paymentDiscountDayIndex] ?? 0.0, 2, ".", ""),
+                    number_format($paymentDiscountBaeeAmounts[$paymentDiscountDayIndex] ?? 0.0, 2, ".", "")
+                );
+        }
+
+        return $this->addDocumentPaymentTerm(
+            trim(sprintf("%s\n%s", implode("\n", $paymentTermsDescription), $description)),
+            $dueDate,
+            $directDebitMandateID
+        );
+    }
+
+    /**
      * Add information on the booking reference
      *
      * @param  string      $id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
