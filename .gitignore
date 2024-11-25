@@ -87,3 +87,4 @@ _backup*
 /examples/filetovalidate-report.xml
 /examples/filetovalidate-report.html
 myfile_dbg.xml
+/examples/*report*.*
