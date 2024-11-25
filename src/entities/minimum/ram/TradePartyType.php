@@ -148,7 +148,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType[] $specifiedTaxRegistration
      * @return self
      */
-    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration = null)
+    public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null)
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
         return $this;

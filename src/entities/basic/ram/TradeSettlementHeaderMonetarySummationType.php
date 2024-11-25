@@ -190,7 +190,7 @@ class TradeSettlementHeaderMonetarySummationType
      * @param  \horstoeko\zugferd\entities\basic\udt\AmountType[] $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(array $taxTotalAmount = null)
+    public function setTaxTotalAmount(?array $taxTotalAmount = null)
     {
         $this->taxTotalAmount = $taxTotalAmount;
         return $this;

@@ -111,7 +111,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType[] $iD
      * @return self
      */
-    public function setID(array $iD = null)
+    public function setID(?array $iD = null)
     {
         $this->iD = $iD;
         return $this;
@@ -167,7 +167,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\udt\IDType[] $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID = null)
+    public function setGlobalID(?array $globalID = null)
     {
         $this->globalID = $globalID;
         return $this;
@@ -355,7 +355,7 @@ class TradePartyType
      * @param  \horstoeko\zugferd\entities\en16931\ram\TaxRegistrationType[] $specifiedTaxRegistration
      * @return self
      */
-    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration = null)
+    public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null)
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
         return $this;

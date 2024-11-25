@@ -243,7 +243,7 @@ class HeaderTradeSettlementType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\TradeSettlementPaymentMeansType[] $specifiedTradeSettlementPaymentMeans
      * @return self
      */
-    public function setSpecifiedTradeSettlementPaymentMeans(array $specifiedTradeSettlementPaymentMeans = null)
+    public function setSpecifiedTradeSettlementPaymentMeans(?array $specifiedTradeSettlementPaymentMeans = null)
     {
         $this->specifiedTradeSettlementPaymentMeans = $specifiedTradeSettlementPaymentMeans;
         return $this;
@@ -377,7 +377,7 @@ class HeaderTradeSettlementType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge = null)
+    public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null)
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
         return $this;
@@ -477,7 +477,7 @@ class HeaderTradeSettlementType
      * @param  \horstoeko\zugferd\entities\basicwl\ram\ReferencedDocumentType[] $invoiceReferencedDocument
      * @return self
      */
-    public function setInvoiceReferencedDocument(array $invoiceReferencedDocument = null)
+    public function setInvoiceReferencedDocument(?array $invoiceReferencedDocument = null)
     {
         $this->invoiceReferencedDocument = $invoiceReferencedDocument;
         return $this;
