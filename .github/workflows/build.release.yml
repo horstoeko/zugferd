@@ -34,7 +34,7 @@ jobs:
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"
+          php-version: "8.4"
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           coverage: xdebug
 
@@ -52,9 +52,9 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-8.3-composer-
+            ${{ runner.os }}-8.4-composer-
 
       - name: Install composer dependencies
         run: |
