@@ -17,10 +17,12 @@ use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\ZugferdProfiles;
 
 /**
- * Class representing the document descriptor for outgoing documents.
+ * Class representing the base class of all document descriptors.
+ *
  * Creating them in a simple and common way in EN16931 profile
  * This class is slightly inspired by the invoicedescriptor of the
  * __https://github.com/stephanstapel/ZUGFeRD-csharp__ project
+ * 
  * This class contains only basic functionality
  *
  * @category Zugferd

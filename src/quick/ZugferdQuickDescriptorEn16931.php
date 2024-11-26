@@ -13,7 +13,7 @@ use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
 
 /**
- * Class representing the document descriptor for outgoing documents in EN16931 profile
+ * Class representing the document descriptor for outgoing documents in EN16931 (COMFORT) profile
  *
  * @category Zugferd
  * @package  Zugferd

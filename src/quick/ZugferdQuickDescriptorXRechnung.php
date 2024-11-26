@@ -13,7 +13,7 @@ use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
 
 /**
- * Class representing the document descriptor for outgoing documents in XRECHNUNG profile
+ * Class representing the document descriptor for outgoing documents in XRECHNUNG 1.x profile
  *
  * @category Zugferd
  * @package  Zugferd
