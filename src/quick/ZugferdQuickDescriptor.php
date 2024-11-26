@@ -172,7 +172,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Set payment means to "debit transfer"
+     * Set payment means to "credit transfer"
      *
      * If $isSEPA is true code __58__ wil be useed for payment means code.
      * If $isSEPA is false code __30__ wil be useed for payment means code.
