@@ -58,6 +58,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     protected $totalPrepaidAmount = 0.0;
 
     /**
+     * Internal flag to see if the totals are alread calculated
+     *
+     * @var boolean
+     */
+    protected $totalsAreCalculated = false;
+
+    /**
      * Returns the profile of the descriptor
      *
      * @return integer
@@ -1035,6 +1042,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     protected function doCalcTotals(): ZugferdQuickDescriptor
     {
+        if ($this->totalsAreCalculated !== false) {
+            return $this;
+        }
+
         $this->writeVatBreakDown();
         $this->setDocumentSummation(
             $this->summarizeVatTableElement(self::VT_BASISAMOUNT) + $this->summarizeVatTableElement(self::VT_CALCULATEDAMOUNT),
@@ -1047,6 +1058,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
             0.0,
             $this->totalPrepaidAmount
         );
+
+        $this->totalsAreCalculated = true;
+
         return $this;
     }
 
