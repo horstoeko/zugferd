@@ -1,6 +1,12 @@
 <?php
 
 use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorEn16931;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorExtended;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung2;
+use horstoeko\zugferd\quick\ZugferdQuickDescriptorXRechnung3;
 use horstoeko\zugferd\ZugferdDocument;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
@@ -99,6 +105,7 @@ class ExtractClass
         $methods = $reflection->getMethods(ReflectionMethod::IS_PUBLIC); // Only public methods
         $docBlockFactory = DocBlockFactory::createInstance();
         $result = [];
+        $result['methods'] = [];
 
         if ($classDocComment !== false) {
             $classDocBlock = $docBlockFactory->create($classDocComment);
@@ -117,6 +124,10 @@ class ExtractClass
         }
 
         foreach ($methods as $method) {
+            if ($method->getDeclaringClass()->getName() != $this->className) {
+                continue;
+            }
+
             $docComment = $method->getDocComment();
             $parameters = [];
             $returnDetails = [
@@ -702,4 +713,10 @@ BatchMarkDownGenerator::generate([
     ZugferdDocumentValidator::class => dirname(__FILE__) . '/Class-ZugferdDocumentValidator.md',
     ZugferdXsdValidator::class => dirname(__FILE__) . '/Class-ZugferdXsdValidator.md',
     ZugferdKositValidator::class => dirname(__FILE__) . '/Class-ZugferdKositValidator.md',
+    ZugferdQuickDescriptor::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptor.md',
+    ZugferdQuickDescriptorEn16931::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorEn16931.md',
+    ZugferdQuickDescriptorExtended::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorExtended.md',
+    ZugferdQuickDescriptorXRechnung::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung.md',
+    ZugferdQuickDescriptorXRechnung2::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung2.md',
+    ZugferdQuickDescriptorXRechnung3::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung3.md',
 ]);
