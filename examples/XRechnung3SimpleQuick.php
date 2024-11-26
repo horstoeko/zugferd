@@ -7,6 +7,7 @@ require dirname(__FILE__) . "/../vendor/autoload.php";
 
 $document = (ZugferdQuickDescriptorXRechnung3::doCreateNew())
     ->doCreateInvoice("471102", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")
+    ->doSetSupplyChainEvent(new \DateTime())
     ->doSetPaymentTerms("Zahlbar sofort", new \DateTime('+3 days'))
     ->doAddNote('Rechnung gemäß Bestellung vom 01.03.2018.')
     ->doAddNote('Lieferant GmbH' . PHP_EOL . 'Lieferantenstraße 20' . PHP_EOL . '80333 München' . PHP_EOL . 'Deutschland' . PHP_EOL . 'Geschäftsführer: Hans Muster' . PHP_EOL . 'Handelsregisternummer: H A 123' . PHP_EOL . PHP_EOL, ZugferdTextSubjectCodeQualifiers::UNTDID_4451_REG)

@@ -22,7 +22,7 @@ use horstoeko\zugferd\ZugferdProfiles;
  * Creating them in a simple and common way in EN16931 profile
  * This class is slightly inspired by the invoicedescriptor of the
  * __https://github.com/stephanstapel/ZUGFeRD-csharp__ project
- * 
+ *
  * This class contains only basic functionality
  *
  * @category Zugferd
@@ -382,6 +382,18 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     public function doSetSpecifiedProcuringProject(string $id, string $name): ZugferdQuickDescriptor
     {
         $this->setDocumentProcuringProject($id, $name);
+        return $this;
+    }
+
+    /**
+     * Set detailed information on the actual delivery
+     *
+     * @param  DateTime|null $date __BT-72, From BASIC WL__ Actual delivery time
+     * @return ZugferdQuickDescriptor
+     */
+    public function doSetSupplyChainEvent(?DateTime $date): ZugferdQuickDescriptor
+    {
+        $this->setDocumentSupplyChainEvent($date);
         return $this;
     }
 
