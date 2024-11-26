@@ -214,7 +214,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      * @return self
      */
-    public function setApplicableProductCharacteristic(array $applicableProductCharacteristic = null)
+    public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null)
     {
         $this->applicableProductCharacteristic = $applicableProductCharacteristic;
         return $this;
@@ -270,7 +270,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType[] $designatedProductClassification
      * @return self
      */
-    public function setDesignatedProductClassification(array $designatedProductClassification = null)
+    public function setDesignatedProductClassification(?array $designatedProductClassification = null)
     {
         $this->designatedProductClassification = $designatedProductClassification;
         return $this;

@@ -261,7 +261,7 @@ class HeaderTradeAgreementType
      * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType[] $additionalReferencedDocument
      * @return self
      */
-    public function setAdditionalReferencedDocument(array $additionalReferencedDocument = null)
+    public function setAdditionalReferencedDocument(?array $additionalReferencedDocument = null)
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
         return $this;

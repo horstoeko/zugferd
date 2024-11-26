@@ -124,7 +124,7 @@ class ReferencedProductType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID = null)
+    public function setGlobalID(?array $globalID = null)
     {
         $this->globalID = $globalID;
         return $this;

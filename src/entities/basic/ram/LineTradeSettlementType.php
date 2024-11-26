@@ -126,7 +126,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType[] $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge = null)
+    public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null)
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
         return $this;

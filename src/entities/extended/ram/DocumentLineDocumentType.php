@@ -175,7 +175,7 @@ class DocumentLineDocumentType
      * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote = null)
+    public function setIncludedNote(?array $includedNote = null)
     {
         $this->includedNote = $includedNote;
         return $this;

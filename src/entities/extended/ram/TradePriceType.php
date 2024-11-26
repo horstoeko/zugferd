@@ -126,7 +126,7 @@ class TradePriceType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType[] $appliedTradeAllowanceCharge
      * @return self
      */
-    public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge = null)
+    public function setAppliedTradeAllowanceCharge(?array $appliedTradeAllowanceCharge = null)
     {
         $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
         return $this;

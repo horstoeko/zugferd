@@ -100,7 +100,7 @@ class HeaderTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $relatedSupplyChainConsignment
      * @return self
      */
-    public function setRelatedSupplyChainConsignment(array $relatedSupplyChainConsignment = null)
+    public function setRelatedSupplyChainConsignment(?array $relatedSupplyChainConsignment = null)
     {
         $this->relatedSupplyChainConsignment = $relatedSupplyChainConsignment;
         return $this;

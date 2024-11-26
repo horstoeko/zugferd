@@ -326,7 +326,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $batchID
      * @return self
      */
-    public function setBatchID(array $batchID = null)
+    public function setBatchID(?array $batchID = null)
     {
         $this->batchID = $batchID;
         return $this;
@@ -426,7 +426,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType[] $applicableProductCharacteristic
      * @return self
      */
-    public function setApplicableProductCharacteristic(array $applicableProductCharacteristic = null)
+    public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null)
     {
         $this->applicableProductCharacteristic = $applicableProductCharacteristic;
         return $this;
@@ -482,7 +482,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\extended\ram\ProductClassificationType[] $designatedProductClassification
      * @return self
      */
-    public function setDesignatedProductClassification(array $designatedProductClassification = null)
+    public function setDesignatedProductClassification(?array $designatedProductClassification = null)
     {
         $this->designatedProductClassification = $designatedProductClassification;
         return $this;
@@ -538,7 +538,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeProductInstanceType[] $individualTradeProductInstance
      * @return self
      */
-    public function setIndividualTradeProductInstance(array $individualTradeProductInstance = null)
+    public function setIndividualTradeProductInstance(?array $individualTradeProductInstance = null)
     {
         $this->individualTradeProductInstance = $individualTradeProductInstance;
         return $this;
@@ -616,7 +616,7 @@ class TradeProductType
      * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedProductType[] $includedReferencedProduct
      * @return self
      */
-    public function setIncludedReferencedProduct(array $includedReferencedProduct = null)
+    public function setIncludedReferencedProduct(?array $includedReferencedProduct = null)
     {
         $this->includedReferencedProduct = $includedReferencedProduct;
         return $this;
