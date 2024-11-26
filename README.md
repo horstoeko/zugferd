@@ -125,7 +125,7 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
 
 ## Usage
 
-For detailed eplanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples) of this package and the documentation attached to every release.
+For detailed explanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples) of this package and the documentation attached to every release.
 
 ### Configuration
 
