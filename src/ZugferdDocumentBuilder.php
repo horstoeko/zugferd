@@ -989,14 +989,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the different end recipient
      *
-     * @param  string      $name        __BT-X-164, From EXTENDED__ Name or company name of the different end recipient
+     * @param  string|null $name        __BT-X-164, From EXTENDED__ Name or company name of the different end recipient
      * @param  string|null $id          __BT-X-162, From EXTENDED__ Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
      * @param  string|null $description __BT-, From __ Further legal information that is relevant for the different end recipient
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentUltimateShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentUltimateShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+        $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
         return $this;
     }
@@ -1118,14 +1118,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information of the deviating consignor party
      *
-     * @param  string      $name        __BT-X-183, From EXTENDED__ The name of the party
+     * @param  string|null $name        __BT-X-183, From EXTENDED__ The name of the party
      * @param  string|null $id          __BT-X-181, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipFrom(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentShipFrom(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+        $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
         return $this;
     }
@@ -2667,15 +2667,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the different ship-to party at position level
      *
-     * @param  string      $name         __BT-X-50, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param  string|null $name         __BT-X-50, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
      * @param  string|null $id           __BT-X-48, From EXTENDED__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party (Obsolete)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentPositionShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
-        $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+        $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
         $this->getObjectHelper()->tryCall($positiondelivery, "setShipToTradeParty", $shipToTradeParty);
         return $this;
     }
@@ -2790,15 +2790,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the different end recipient on position level
      *
-     * @param  string      $name         __BT-X-69, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param  string|null $name         __BT-X-69, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
      * @param  string|null $id           __BT-X-67, From EXTENDED__ An identifier for the party Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party (Obsolete)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionUltimateShipTo(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentPositionUltimateShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
-        $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+        $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
         $this->getObjectHelper()->tryCall($positiondelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
         return $this;
     }
