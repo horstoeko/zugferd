@@ -173,7 +173,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string        $documentno               __BT-1, From MINIMUM__ The document no issued by the seller
      * @param  string        $documenttypecode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
      * @param  DateTime      $documentdate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
-     * @param  string        $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency. The code for the invoice currency
+     * @param  string        $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
      * @param  string|null   $documentname             Document Type. The documenttype (free text)
      * @param  string|null   $documentlanguage         Language indicator. The language code in which the document was written
      * @param  DateTime|null $effectiveSpecifiedPeriod The contractual due date of the invoice
@@ -1696,9 +1696,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *    as a timesheet as a PDF file). The option of linking to an external document is e.g. required when it comes
      *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
      *    from the bill
-     *  - Use ZugferdDocumentReader::firstDocumentAdditionalReferencedDocument and
-     *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
-     *    documents
      *
      * @param  string            $issuerassignedid    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
      * @param  string            $typecode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
@@ -1885,7 +1882,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $buyerIban        __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @param  string|null $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
-     * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  string|null $payeePropId      __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
      * @return ZugferdDocumentBuilder
      */
