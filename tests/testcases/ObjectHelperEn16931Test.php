@@ -652,6 +652,34 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($tradeparty);
     }
 
+    public function testGetTradePartyAllValuesWithAllowEmpty(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType
+         */
+        $tradeparty = self::$objectHelper->getTradePartyAllowEmpty("name", "id", "description");
+        $this->assertEquals("name", $tradeparty->getName());
+        $this->assertIsArray($tradeparty->getID());
+        $this->assertArrayHasKey(0, $tradeparty->getID());
+        $this->assertEquals("id", $tradeparty->getID()[0]);
+        $this->assertEquals("description", $tradeparty->getDescription());
+    }
+
+    public function testGetTradePartyNullValuesWithAllowEmpty(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType
+         */
+        $tradeparty = self::$objectHelper->getTradePartyAllowEmpty(null, null, null);
+        $this->assertNotNull($tradeparty);
+        $this->assertNull($tradeparty->getName());
+        $this->assertEquals("", $tradeparty->getName());
+        $this->assertIsArray($tradeparty->getID());
+        $this->assertArrayNotHasKey(0, $tradeparty->getID());
+        $this->assertNull($tradeparty->getDescription());
+        $this->assertEquals("", $tradeparty->getDescription());
+    }
+
     public function testGetTradeAddressAllValues(): void
     {
         /**

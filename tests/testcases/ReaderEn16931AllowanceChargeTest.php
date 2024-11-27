@@ -332,9 +332,13 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
+        $this->assertNotNull($shiptoname);
+        $this->assertIsString($shiptoname);
         $this->assertEquals("", $shiptoname);
         $this->assertIsArray($shiptoids);
         $this->assertEmpty($shiptoids);
+        $this->assertNotNull($shiptodescription);
+        $this->assertIsString($shiptodescription);
         $this->assertEquals("", $shiptodescription);
     }
 
