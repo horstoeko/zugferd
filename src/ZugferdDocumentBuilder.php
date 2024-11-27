@@ -860,14 +860,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Ship-To
      *
-     * @param  string      $name        __BT-70, From BASIC WL__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param  string|null $name        __BT-70, From BASIC WL__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
      * @param  string|null $id          __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipTo(?string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    public function setDocumentShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
-        $shipToTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+        $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setShipToTradeParty", $shipToTradeParty);
         return $this;
     }

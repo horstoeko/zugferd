@@ -598,7 +598,7 @@ class ZugferdObjectHelper
     }
 
     /**
-     * Tradeparty type^^
+     * Tradeparty type
      *
      * @param  string|null $name
      * @param  string|null $ID
@@ -611,6 +611,19 @@ class ZugferdObjectHelper
             return null;
         }
 
+        return $this->getTradePartyAllowEmpty($name, $ID, $description);
+    }
+
+    /**
+     * Tradeparty type (allow all nulls)
+     *
+     * @param  string|null $name
+     * @param  string|null $ID
+     * @param  string|null $description
+     * @return object|null
+     */
+    public function getTradePartyAllowEmpty(?string $name = null, ?string $ID = null, ?string $description = null): ?object
+    {
         $tradeParty = $this->createClassInstance('ram\TradePartyType');
 
         $this->tryCall($tradeParty, "addToID", $this->getIdType($ID));
