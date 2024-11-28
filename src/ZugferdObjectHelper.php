@@ -776,9 +776,24 @@ class ZugferdObjectHelper
 
         $deliveryterms = $this->createClassInstance('ram\TradeDeliveryTermsType');
 
-        $this->tryCall($deliveryterms, "setDeliveryTypeCode", $this->getCodeType($code));
+        $this->tryCall($deliveryterms, "setDeliveryTypeCode", $this->getTradeDeliveryTermsCodeType($code));
 
         return $deliveryterms;
+    }
+
+    /**
+     * Delivery terms code type
+     *
+     * @param  string|null $code
+     * @return object|null
+     */
+    public function getTradeDeliveryTermsCodeType(?string $code = null): ?object
+    {
+        if (self::isAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        return $this->createClassInstance('qdt\DeliveryTermsCodeType', $code);
     }
 
     /**

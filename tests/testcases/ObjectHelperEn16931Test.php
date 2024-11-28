@@ -803,6 +803,24 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($taxregtype);
     }
 
+    public function testGetTradeDeliveryTermsTypeCodeAllValues(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType
+         */
+        $devterms = self::$objectHelper->getTradeDeliveryTermsCodeType('code');
+        $this->assertNull($devterms);
+    }
+
+    public function testGetTradeDeliveryTermsTypeCodeAllNull(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType
+         */
+        $devterms = self::$objectHelper->getTradeDeliveryTermsCodeType(null);
+        $this->assertNull($devterms);
+    }
+
     public function testGetTradeDeliveryTermsTypeAllValues(): void
     {
         /**
