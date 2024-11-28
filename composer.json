@@ -19,11 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "horstoeko\\zugferd\\": "src",
-            "horstoeko\\zugferd\\rsm\\": "src/entities/rsm",
-            "horstoeko\\zugferd\\qdt\\": "src/entities/qdt",
-            "horstoeko\\zugferd\\ram\\": "src/entities/ram",
-            "horstoeko\\zugferd\\udt\\": "src/entities/udt"
+            "horstoeko\\zugferd\\": "src"
         }
     },
     "autoload-dev": {
