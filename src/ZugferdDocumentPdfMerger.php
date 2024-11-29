@@ -136,7 +136,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      * @throws ZugferdUnknownProfileException
      * @throws ZugferdUnknownProfileParameterException
      */
-    public function getProfileDefinitionParameter(string $parameterName)
+    private function getProfileDefinitionParameter(string $parameterName)
     {
         $profileDefinition = $this->getProfileDefinition();
 
