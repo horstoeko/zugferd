@@ -10,10 +10,11 @@
 namespace horstoeko\zugferd;
 
 use DateTime;
-use DOMDocument;
 use DOMXPath;
+use DOMDocument;
 
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\codelists\ZugferdReferenceCodeQualifiers;
 
 /**
  * Class representing the document builder for outgoing documents
@@ -385,6 +386,28 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
         return $this;
+    }
+
+    /**
+     * Add information about the seller's VAT Registration Number (Umsatzsteueridentnummer)
+     *
+     * @param  string|null $vatRegNo __BT-31, From MINIMUM/EN 16931__ VAT Registration Number (Umsatzsteueridentnummer)
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSellerVATRegistrationNumber(?string $vatRegNo = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentSellerTaxRegistration(ZugferdReferenceCodeQualifiers::VAT_REGI_NUMB, $vatRegNo);
+    }
+
+    /**
+     * Add information about the seller's Tax Number (Steuernummer)
+     *
+     * @param  string|null $taxNo __BT-32, From MINIMUM/EN 16931__ Tax Number (Steuernummer)
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSellerTaxNumber(?string $taxNo = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentSellerTaxRegistration(ZugferdReferenceCodeQualifiers::FISC_NUMB, $taxNo);
     }
 
     /**
