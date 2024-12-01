@@ -1697,6 +1697,20 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set details of the associated offer
+     *
+     * @param  string        $issuerassignedid __BT-X-403, From EXTENDED__ Offer number
+     * @param  DateTime|null $issueddate       __BT-X-404, From EXTENDED__ Date of offer
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentQuotationReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setQuotationReferencedDocument", $quotationrefdoc);
+        return $this;
+    }
+
+    /**
      * Set details of the associated contract
      *
      * @param  string        $issuerassignedid __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
@@ -2541,6 +2555,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
+        return $this;
+    }
+
+    /**
+     * Set details of the associated offer position
+     *
+     * @param  string        $issuerassignedid __BT-X-310, From EXTENDED__ Offer number
+     * @param  string        $lineid           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  DateTime|null $issueddate       __BT-X-312, From EXTENDED__ Date of offder
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionQuotationReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+        $this->getObjectHelper()->tryCall($positionagreement, "setQuotationReferencedDocument", $quotationrefdoc);
         return $this;
     }
 
