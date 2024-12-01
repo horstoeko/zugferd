@@ -2395,6 +2395,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get details of the associated offer
+     *
+     * @param  string|null   $issuerassignedid __BT-X-403, From EXTENDED__ Offer number
+     * @param  DateTime|null $issueddate       __BT-X-404, From EXTENDED__ Date of offer
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentQuotationReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
+        $issueddate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
      * Get details of the associated contract
      *
      * @param  string|null   $issuerassignedid
@@ -3695,6 +3713,29 @@ class ZugferdDocumentReader extends ZugferdDocument
         $issueddate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get details of the associated offer position
+     *
+     * @param  string|null   $issuerassignedid __BT-X-310, From EXTENDED__ Offer number
+     * @param  string|null   $lineid           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  DateTime|null $issueddate       __BT-X-312, From EXTENDED__ Date of offder
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionQuotationReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getLineID.value", "");
+        $issueddate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
 
         return $this;

@@ -712,6 +712,13 @@ class PdfReaderMinimumTest extends TestCase
         $this->assertNull($buyerorderrefdocdate);
     }
 
+    public function testDocumentQuotationReferencedDocument(): void
+    {
+        self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
+        $this->assertEquals("", $quotationrefdocid);
+        $this->assertNull($quotationrefdocdate);
+    }
+
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);

@@ -733,6 +733,13 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertNull($buyerorderrefdocdate);
     }
 
+    public function testDocumentQuotationReferencedDocument(): void
+    {
+        self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
+        $this->assertEquals("", $quotationrefdocid);
+        $this->assertNull($quotationrefdocdate);
+    }
+
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
@@ -1011,6 +1018,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("1", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
 
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
+
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertEquals("", $doclinecontid);
         $this->assertEquals("", $doclinecontlineid);
@@ -1116,6 +1128,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("3", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
 
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
+
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertEquals("", $doclinecontid);
         $this->assertEquals("", $doclinecontlineid);
@@ -1219,6 +1236,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertEquals("", $doclinecontid);

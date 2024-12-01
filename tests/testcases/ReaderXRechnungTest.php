@@ -755,6 +755,13 @@ class ReaderXRechnungTest extends TestCase
         $this->assertNull($buyerorderrefdocdate);
     }
 
+    public function testDocumentQuotationReferencedDocument(): void
+    {
+        self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
+        $this->assertEquals("", $quotationrefdocid);
+        $this->assertNull($quotationrefdocdate);
+    }
+
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
@@ -978,6 +985,11 @@ class ReaderXRechnungTest extends TestCase
         $this->assertEquals("", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
 
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
+
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertEquals("", $doclinecontid);
         $this->assertEquals("", $doclinecontlineid);
@@ -1080,6 +1092,11 @@ class ReaderXRechnungTest extends TestCase
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
         $this->assertNull($doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertEquals("", $doclinecontid);
+        $this->assertEquals("", $doclinecontlineid);
+        $this->assertNull($doclinecontdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertEquals("", $doclinecontid);
