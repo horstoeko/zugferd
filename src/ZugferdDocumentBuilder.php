@@ -2513,6 +2513,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set details of a sales order reference
+     *
+     * @param  string        $issuerassignedid __BT-X-537, From EXTENDED__ Document number of a sales order reference
+     * @param  string        $lineid           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
+     * @param  DateTime|null $issueddate       __BT-X-539, From EXTENDED__ Date of sales order
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionSellerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    {
+        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+        $this->getObjectHelper()->tryCall($positionagreement, "setSellerOrderReferencedDocument", $buyerorderrefdoc);
+        return $this;
+    }
+
+    /**
      * Set details of the related buyer order position
      *
      * @param  string        $issuerassignedid __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
