@@ -968,6 +968,11 @@ class ReaderXRechnungTest extends TestCase
         $this->assertEquals("0160", $prodglobalidtype);
         $this->assertEquals("4012345001235", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
@@ -1065,6 +1070,11 @@ class ReaderXRechnungTest extends TestCase
         $this->assertEquals("", $prodbuyerid);
         $this->assertEquals("0160", $prodglobalidtype);
         $this->assertEquals("4000050986428", $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);

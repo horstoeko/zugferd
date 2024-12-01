@@ -1001,6 +1001,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("0088", $prodglobalidtype);
         $this->assertEquals("598785412598745", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("1", $doclineorderlineid);
@@ -1101,6 +1106,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $prodglobalidtype);
         $this->assertEquals("", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("3", $doclineorderlineid);
@@ -1199,6 +1209,11 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $prodbuyerid);
         $this->assertEquals("", $prodglobalidtype);
         $this->assertEquals("", $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);

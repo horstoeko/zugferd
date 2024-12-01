@@ -3647,6 +3647,33 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get details of a related sales order reference
+     *
+     * @param  string|null   $issuerassignedid
+     * An identifier issued by the seller for a referenced order (order number)
+     * @param  string|null   $lineid
+     * An identifier for a position within an order placed by the seller. Note: Reference is made to the order
+     * reference at the document level.
+     * @param  DateTime|null $issueddate
+     * Date of order
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionSellerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getLineID.value", "");
+        $issueddate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
+        );
+
+        return $this;
+    }
+
+    /**
      * Get details of the related buyer order position
      *
      * @param  string|null   $issuerassignedid

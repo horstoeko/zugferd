@@ -945,6 +945,11 @@ class ReaderBasicTest extends TestCase
         $this->assertEquals("0160", $prodglobalidtype);
         $this->assertEquals("4012345001235", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);

@@ -1092,6 +1092,11 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("BrandeName", $prodbrandname);
         $this->assertEquals("ModelName", $prodmodelname);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
@@ -1190,6 +1195,11 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("0088", $prodglobalidtype);
         $this->assertEquals("4123456000021", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
@@ -1287,6 +1297,11 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("", $prodbuyerid);
         $this->assertEquals("0088", $prodglobalidtype);
         $this->assertEquals("4260331811362", $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
@@ -1414,6 +1429,11 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("0088", $prodglobalidtype);
         $this->assertEquals("2001015001325", $prodglobalid);
 
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
+
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
         $this->assertEquals("", $doclineorderlineid);
@@ -1511,6 +1531,11 @@ class ReaderExtendedTest extends TestCase
         $this->assertEquals("", $prodbuyerid);
         $this->assertEquals("0088", $prodglobalidtype);
         $this->assertEquals("4123456000038", $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertEquals("", $doclineorderid);
+        $this->assertEquals("", $doclineorderlineid);
+        $this->assertNull($doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertEquals("", $doclineorderid);
