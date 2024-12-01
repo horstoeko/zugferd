@@ -1035,9 +1035,8 @@ class ReaderBasicTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
         $this->assertEquals(198.0, $lineTotalAmount);
-        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
         $this->assertNull($supplyeventdatetime);

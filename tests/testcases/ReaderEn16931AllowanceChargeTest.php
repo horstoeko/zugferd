@@ -1129,9 +1129,8 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
         $this->assertEquals(10.0, $lineTotalAmount);
-        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         $this->assertTrue(self::$document->firstDocumentPositionNote());
         self::$document->getDocumentPositionNote($content, $contentcode, $subjectcode);
@@ -1248,9 +1247,8 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
         $this->assertEquals(27.5, $lineTotalAmount);
-        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1362,9 +1360,8 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
         $this->assertEquals(109.80, $lineTotalAmount);
-        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1476,9 +1473,8 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
         $this->assertEquals(55.40, $lineTotalAmount);
-        $this->assertEquals(0.0, $totalAllowanceChargeAmount);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());

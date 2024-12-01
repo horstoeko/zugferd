@@ -175,9 +175,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string        $documenttypecode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
      * @param  DateTime      $documentdate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      * @param  string        $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
-     * @param  string|null   $documentname             Document Type. The documenttype (free text)
-     * @param  string|null   $documentlanguage         Language indicator. The language code in which the document was written
-     * @param  DateTime|null $effectiveSpecifiedPeriod The contractual due date of the invoice
+     * @param  string|null   $documentname             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
+     * @param  string|null   $documentlanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     * @param  DateTime|null $effectiveSpecifiedPeriod __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInformation(string $documentno, string $documenttypecode, DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
@@ -217,7 +217,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Mark document as a copy from the original one
+     * Mark document as a copy from the original one __(BT-X-3-00, BT-X-3, From EXTENDED)__
      *
      * @return ZugferdDocumentBuilder
      */
@@ -783,7 +783,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a Global identifier of the deviating end user
      *
      * @param  string|null $globalID      __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
-     * @param  string|null $globalIDType  __BT-X-127-9, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalIDType  __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -926,7 +926,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add Tax registration to Ship-To Trade party
      *
      * @param  string|null $taxregtype __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-X-161-, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxregid   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
@@ -2049,11 +2049,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  float|null    $allowanceChargeBasisAmount __BT-X-263, From EXTENDED__ Total amount Additions and deductions to the tax rate at document level
      * @param  DateTime|null $taxPointDate               __BT-7-00, From EN 16931__ Date on which tax is due. This is not used in Germany. Instead, the delivery and service date must be specified.
      * @param  string|null   $dueDateTypeCode            __BT-8, From BASIC WL__ The code for the date on which the VAT becomes relevant for settlement for the seller and for the buyer
-     *
-     *                                                   The code must distinguish between the following entries from UNTDID 2005:
-     *                                                   - 5 - date of issue of the invoice document
-     *                                                   - 29 - actual delivery date
-     *                                                   - 72 - Date of payment.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
@@ -2105,7 +2100,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  DateTime|null $startdate   __BT-73, From BASIC WL__ Start of the billing period
      * @param  DateTime|null $endDate     __BT-74, From BASIC WL__ End of the billing period
-     * @param  string|null   $description __BT-, From __ Further information of the billing period (Obsolete)
+     * @param  string|null   $description __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBillingPeriod(?DateTime $startdate, ?DateTime $endDate, ?string $description): ZugferdDocumentBuilder
