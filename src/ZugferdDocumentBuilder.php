@@ -2501,12 +2501,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $globalIDType       __BT-X-15-1, From EXTENDED__ Identification of the scheme
      * @param  float|null  $unitQuantity       __BT-X-20, From EXTENDED__ Quantity of the referenced product contained
      * @param  string|null $unitCode           __BT-X-20-1, From EXTENDED__ Unit code of Quantity of the referenced product contained
+     * @param  string|null $industryAssignedID __BT-X-309, From EXTENDED__ ID of the referenced product contained assigned by the industry
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionReferencedProduct(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalID = null, ?string $globalIDType = null, ?float $unitQuantity = null, ?string $unitCode = null): ZugferdDocumentBuilder
+    public function addDocumentPositionReferencedProduct(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalID = null, ?string $globalIDType = null, ?float $unitQuantity = null, ?string $unitCode = null, ?string $industryAssignedID = null): ZugferdDocumentBuilder
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
-        $referencedProduct = $this->getObjectHelper()->getReferencedProductType($globalID, $globalIDType, $sellerAssignedID, $buyerAssignedID, $name, $description, $unitQuantity, $unitCode);
+        $referencedProduct = $this->getObjectHelper()->getReferencedProductType($globalID, $globalIDType, $sellerAssignedID, $buyerAssignedID, $industryAssignedID, $name, $description, $unitQuantity, $unitCode);
         $this->getObjectHelper()->tryCall($product, "addToIncludedReferencedProduct", $referencedProduct);
         return $this;
     }

@@ -1316,13 +1316,14 @@ class ZugferdObjectHelper
      * @param  string|null $globalIDType
      * @param  string|null $sellerAssignedID
      * @param  string|null $buyerAssignedID
+     * @param  string|null $industryAssignedID
      * @param  string|null $name
      * @param  string|null $description
      * @param  float|null  $unitQuantity
      * @param  string|null $unitCode
      * @return object|null
      */
-    public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $name, ?string $description, ?float $unitQuantity, ?string $unitCode): ?object
+    public function getReferencedProductType(?string $globalID, ?string $globalIDType, ?string $sellerAssignedID, ?string $buyerAssignedID, ?string $industryAssignedID, ?string $name, ?string $description, ?float $unitQuantity, ?string $unitCode): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1333,6 +1334,7 @@ class ZugferdObjectHelper
         $this->tryCallAll($referencedProduct, ["addToGlobalID", "setGlobalID"], $this->getIdType($globalID, $globalIDType));
         $this->tryCall($referencedProduct, "setSellerAssignedID", $this->getIdType($sellerAssignedID));
         $this->tryCall($referencedProduct, "setBuyerAssignedID", $this->getIdType($buyerAssignedID));
+        $this->tryCall($referencedProduct, "setIndustryAssignedID", $this->getIdType($industryAssignedID));
         $this->tryCall($referencedProduct, "setName", $this->getTextType($name));
         $this->tryCall($referencedProduct, "setDescription", $this->getTextType($description));
         $this->tryCall($referencedProduct, "setUnitQuantity", $this->getQuantityType($unitQuantity, $unitCode));

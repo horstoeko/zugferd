@@ -1284,11 +1284,12 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
          */
-        $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "name", "description", 10, "C62");
+        $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "industryid", "name", "description", 10, "C62");
         $this->assertEquals("globalid", $referencedProduct->getGlobalID()[0]->value());
         $this->assertEquals("globalidtype", $referencedProduct->getGlobalID()[0]->getSchemeID());
         $this->assertEquals("sellerid", $referencedProduct->getSellerAssignedID()->value());
         $this->assertEquals("buyerid", $referencedProduct->getBuyerAssignedID()->value());
+        $this->assertEquals("industryid", $referencedProduct->getIndustryAssignedID()->value());
         $this->assertEquals("name", $referencedProduct->getName());
         $this->assertEquals("description", $referencedProduct->getDescription());
         $this->assertEquals(10, $referencedProduct->getUnitQuantity()->value());
@@ -1297,7 +1298,7 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
          */
-        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null);
+        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null, null);
         $this->assertNull($referencedProduct);
     }
 

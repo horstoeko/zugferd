@@ -1253,13 +1253,13 @@ class ObjectHelperEn16931Test extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
          */
-        $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "name", "description", 10, "C62");
+        $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "industryid", "name", "description", 10, "C62");
         $this->assertNull($referencedProduct, "The referenced product is not available in EN16931 profile");
 
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
          */
-        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null);
+        $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null, null);
         $this->assertNull($referencedProduct);
     }
 
