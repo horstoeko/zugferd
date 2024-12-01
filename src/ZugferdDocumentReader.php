@@ -4694,9 +4694,11 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Included quantity
      * @param  string $unitCode
      * Unit of measurement of the included quantity
+     * @param  string $industryAssignedID
+     * ID of the referenced product contained assigned by the industry
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionReferencedProduct(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?array &$globalID, ?float &$unitQuantity, ?string &$unitCode): ZugferdDocumentReader
+    public function getDocumentPositionReferencedProduct(?string &$name, ?string &$description, ?string &$sellerAssignedID, ?string &$buyerAssignedID, ?array &$globalID, ?float &$unitQuantity, ?string &$unitCode, ?string &$industryAssignedID): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -4707,6 +4709,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $description = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getDescription.value", "");
         $sellerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getSellerAssignedID.value", "");
         $buyerAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getBuyerAssignedID.value", "");
+        $industryAssignedID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getIndustryAssignedID.value", "");
         $unitQuantity = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getUnitQuantity.value", 0);
         $unitCode = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getUnitQuantity.getUnitCode", "");
         $globalID = $this->getInvoiceValueByPathFrom($tradeLineItemReferencedProduct, "getGlobalID", []);

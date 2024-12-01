@@ -93,11 +93,12 @@ if ($document->firstDocumentPosition()) {
         if ($document->firstDocumentPositionReferencedProduct()) {
             echo " - Position Product Referenced Products\r\n";
             do {
-                $document->getDocumentPositionReferencedProduct($refprodname, $refprodesc, $refprodsellerid, $refprodbuyerid, $refprodglobalid, $refprodunitqty, $refprodunitcode);
+                $document->getDocumentPositionReferencedProduct($refprodname, $refprodesc, $refprodsellerid, $refprodbuyerid, $refprodglobalid, $refprodunitqty, $refprodunitcode, $industryAssignedID);
                 echo "   - Name:                         {$refprodname}\r\n";
                 echo "   - Description:                  {$refprodesc}\r\n";
                 echo "   - Seller iD:                    {$refprodsellerid}\r\n";
                 echo "   - Buyer iD:                     {$refprodbuyerid}\r\n";
+                echo "   - Industry iD:                  {$industryAssignedID}\r\n";
                 echo "   - Unit Quantity:                {$refprodunitqty} {$refprodunitcode}\r\n";
                 echo "   - Global iD:                    " . implode(",", $refprodglobalid) . "\r\n";
             } while ($document->nextDocumentPositionReferencedProduct());
