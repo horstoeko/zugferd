@@ -232,7 +232,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Guess the profile type of a xml file
      *
-     * @param  string $xmlfilename
+     * @param  string $xmlFilename
      * @return ZugferdDocumentReader
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
@@ -241,16 +241,16 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws RuntimeException
      */
-    public static function readAndGuessFromFile(string $xmlfilename): ZugferdDocumentReader
+    public static function readAndGuessFromFile(string $xmlFilename): ZugferdDocumentReader
     {
-        if (!file_exists($xmlfilename)) {
-            throw new ZugferdFileNotFoundException($xmlfilename);
+        if (!file_exists($xmlFilename)) {
+            throw new ZugferdFileNotFoundException($xmlFilename);
         }
 
-        $xmlContent = file_get_contents($xmlfilename);
+        $xmlContent = file_get_contents($xmlFilename);
 
         if ($xmlContent === false) {
-            throw new ZugferdFileNotReadableException($xmlfilename);
+            throw new ZugferdFileNotReadableException($xmlFilename);
         }
 
         return self::readAndGuessFromContent($xmlContent);
@@ -259,32 +259,32 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Guess the profile type of the readden xml document
      *
-     * @param  string $xmlcontent The XML content as a string to read the invoice data from
+     * @param  string $xmlContent The XML content as a string to read the invoice data from
      * @return ZugferdDocumentReader
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      * @throws ZugferdUnknownProfileParameterException
      * @throws RuntimeException
      */
-    public static function readAndGuessFromContent(string $xmlcontent): ZugferdDocumentReader
+    public static function readAndGuessFromContent(string $xmlContent): ZugferdDocumentReader
     {
-        $profileId = ZugferdProfileResolver::resolveProfileId($xmlcontent);
+        $profileId = ZugferdProfileResolver::resolveProfileId($xmlContent);
 
-        return (new static($profileId))->readContent($xmlcontent);
+        return (new static($profileId))->readContent($xmlContent);
     }
 
     /**
      * Set the directory where the attached binary data from
      * additional referenced documents are temporary stored
      *
-     * @param  string $binarydatadirectory
+     * @param  string $binaryDataDirectory
      * @return ZugferdDocumentReader
      */
-    public function setBinaryDataDirectory(string $binarydatadirectory): ZugferdDocumentReader
+    public function setBinaryDataDirectory(string $binaryDataDirectory): ZugferdDocumentReader
     {
-        if ($binarydatadirectory) {
-            if (is_dir($binarydatadirectory)) {
-                $this->binarydatadirectory = $binarydatadirectory;
+        if ($binaryDataDirectory) {
+            if (is_dir($binaryDataDirectory)) {
+                $this->binarydatadirectory = $binaryDataDirectory;
             }
         }
 
@@ -294,14 +294,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read content of a zuferd/xrechnung xml from a string
      *
-     * @param  string $xmlcontent The XML content as a string to read the invoice data from
+     * @param  string $xmlContent The XML content as a string to read the invoice data from
      * @return ZugferdDocumentReader
      * @throws ZugferdUnknownProfileParameterException
      * @throws RuntimeException
      */
-    protected function readContent(string $xmlcontent): ZugferdDocumentReader
+    protected function readContent(string $xmlContent): ZugferdDocumentReader
     {
-        $this->deserialize($xmlcontent);
+        $this->deserialize($xmlContent);
 
         return $this;
     }
@@ -309,29 +309,29 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read general information about the document
      *
-     * @param  string|null   $documentno               __BT-1, From MINIMUM__ The document no issued by the seller
-     * @param  string|null   $documenttypecode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
-     * @param  DateTime|null $documentdate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
+     * @param  string|null   $documentNo               __BT-1, From MINIMUM__ The document no issued by the seller
+     * @param  string|null   $documentTypeCode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
+     * @param  DateTime|null $documentDate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      * @param  string|null   $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
      * @param  string|null   $taxCurrency              __BT-6, From BASIC WL__ Code for the currency of the VAT entry
-     * @param  string|null   $documentname             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
-     * @param  string|null   $documentlanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     * @param  string|null   $documentName             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
+     * @param  string|null   $documentLanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      * @param  DateTime|null $effectiveSpecifiedPeriod __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      * @return ZugferdDocumentReader
      * @throws ZugferdUnknownDateFormatException
      */
-    public function getDocumentInformation(?string &$documentno, ?string &$documenttypecode, ?DateTime &$documentdate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentname, ?string &$documentlanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
+    public function getDocumentInformation(?string &$documentNo, ?string &$documentTypeCode, ?DateTime &$documentDate, ?string &$invoiceCurrency, ?string &$taxCurrency, ?string &$documentName, ?string &$documentLanguage, ?DateTime &$effectiveSpecifiedPeriod): ZugferdDocumentReader
     {
-        $documentno = $this->getInvoiceValueByPath("getExchangedDocument.getID.value", "");
-        $documenttypecode = $this->getInvoiceValueByPath("getExchangedDocument.getTypeCode.value", "");
-        $documentdate = $this->getObjectHelper()->toDateTime(
+        $documentNo = $this->getInvoiceValueByPath("getExchangedDocument.getID.value", "");
+        $documentTypeCode = $this->getInvoiceValueByPath("getExchangedDocument.getTypeCode.value", "");
+        $documentDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getExchangedDocument.getIssueDateTime.getDateTimeString", ""),
             $this->getInvoiceValueByPath("getExchangedDocument.getIssueDateTime.getDateTimeString.getFormat", "")
         );
         $invoiceCurrency = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
         $taxCurrency = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxCurrencyCode.value", "");
-        $documentname = $this->getInvoiceValueByPath("getExchangedDocument.getName.value", "");
-        $documentlanguage = $this->getInvoiceValueByPath("getExchangedDocument.getLanguageID.value", "");
+        $documentName = $this->getInvoiceValueByPath("getExchangedDocument.getName.value", "");
+        $documentLanguage = $this->getInvoiceValueByPath("getExchangedDocument.getLanguageID.value", "");
         $effectiveSpecifiedPeriod = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString", ""),
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString.getFormat", "")
@@ -356,24 +356,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Read copy indicator
      *
-     * @param  boolean|null $copyindicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
+     * @param  boolean|null $copyIndicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
      * @return ZugferdDocumentReader
      */
-    public function getIsDocumentCopy(?bool &$copyindicator): ZugferdDocumentReader
+    public function getIsDocumentCopy(?bool &$copyIndicator): ZugferdDocumentReader
     {
-        $copyindicator = $this->getInvoiceValueByPath("getExchangedDocument.getCopyIndicator.getIndicator", false);
+        $copyIndicator = $this->getInvoiceValueByPath("getExchangedDocument.getCopyIndicator.getIndicator", false);
         return $this;
     }
 
     /**
      * Read a test document indicator
      *
-     * @param  boolean|null $testdocumentindicator Returns true if this document is only for test purposes
+     * @param  boolean|null $testDocumentIndicator Returns true if this document is only for test purposes
      * @return ZugferdDocumentReader
      */
-    public function getIsTestDocument(?bool &$testdocumentindicator): ZugferdDocumentReader
+    public function getIsTestDocument(?bool &$testDocumentIndicator): ZugferdDocumentReader
     {
-        $testdocumentindicator = $this->getInvoiceValueByPath("getExchangedDocumentContext.getTestIndicator.getIndicator", false);
+        $testDocumentIndicator = $this->getInvoiceValueByPath("getExchangedDocumentContext.getTestIndicator.getIndicator", false);
         return $this;
     }
 
@@ -447,12 +447,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
      * Cross Industry Invoice (CII).
      *
-     * @param  string|null $buyerreference  __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @param  string|null $buyerReference  __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerReference(?string &$buyerreference): ZugferdDocumentReader
+    public function getDocumentBuyerReference(?string &$buyerReference): ZugferdDocumentReader
     {
-        $buyerreference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
+        $buyerReference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
         return $this;
     }
 
@@ -492,13 +492,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the seller's tax information.
      *
-     * @param  array|null $taxreg _BT-31/32, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg _BT-31/32, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentSellerTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -506,24 +506,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the address of seller trade party
      *
-     * @param  string|null $lineone     __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-37, From BASIC WL__ Usual name of the city or municipality in which the seller's address is located
      * @param  string|null $country     __BT-40, From MINIMUM__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision  __BT-39, From BASIC WL__ The sellers state
+     * @param  array|null  $subDivision  __BT-39, From BASIC WL__ The sellers state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentSellerAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -531,23 +531,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the legal organisation of seller trade party
      *
-     * @param  string|null $legalorgid   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
-     * @param  string|null $legalorgtype __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
+     * @param  string|null $legalOrgId   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
+     * @param  string|null $legalOrgType __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentSellerLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
 
     /**
-     * Seek to the first seller contact of the document.
-     * Returns true if a first seller contact is available, otherwise false
+     * Seek to the first seller contact of the document. Returns true if a first seller contact is available, otherwise false
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
      *
      * @return boolean
@@ -560,8 +559,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Seek to the next available seller contact of the document.
-     * Returns true if another seller contact is available, otherwise false
+     * Seek to the next available seller contact of the document. Returns true if another seller contact is available, otherwise false
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
      *
      * @return boolean
@@ -576,22 +574,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the seller's contact person
      *
-     * @param  string|null $contactpersonname     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno        __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonname     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentname __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-42, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-107, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentSellerContact(?string &$contactPersonname, ?string &$contactDepartmentname, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentSellerContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -647,13 +645,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the buyer's tax information.
      *
-     * @param  array|null $taxreg _BT-48, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg _BT-48, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentBuyerTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -661,24 +659,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the address of buyer trade party
      *
-     * @param  string|null $lineone     __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-52, From BASIC WL__ Usual name of the city or municipality in which the buyers address is located
      * @param  string|null $country     __BT-55, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision __BT-54, From BASIC WL__ The buyers state
+     * @param  array|null  $subDivision __BT-54, From BASIC WL__ The buyers state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentBuyerAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -686,16 +684,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the legal organisation of buyer trade party
      *
-     * @param  string|null $legalorgid   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param  string|null $legalorgtype __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
+     * @param  string|null $legalOrgType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentBuyerLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -729,22 +727,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of buyer trade party
      *
-     * @param  string|null $contactpersonname     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-57, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-115, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-57, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-115, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentBuyerContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentBuyerContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -800,13 +798,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the seller's tax agent tax information.
      *
-     * @param  array|null $taxreg __BT-63/BT-63-0, From BASIC WL__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-63/BT-63-0, From BASIC WL__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerTaxRepresentativeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentSellerTaxRepresentativeTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -814,24 +812,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the address of sellers tax agent
      *
-     * @param  string|null $lineone     __BT-64, From BASIC WL__ The main line in the sellers tax agent address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-65, From BASIC WL__ Line 2 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-164, From BASIC WL__ Line 3 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-67, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-64, From BASIC WL__ The main line in the sellers tax agent address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-65, From BASIC WL__ Line 2 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-164, From BASIC WL__ Line 3 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-67, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-66, From BASIC WL__ Usual name of the city or municipality in which the sellers tax agent address is located
      * @param  string|null $country     __BT-69, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision __BT-68, From BASIC WL__ The sellers tax agent state
+     * @param  array|null  $subDivision __BT-68, From BASIC WL__ The sellers tax agent state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerTaxRepresentativeAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentSellerTaxRepresentativeAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -839,16 +837,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the legal organisation of sellers tax agent
      *
-     * @param  string|null $legalorgid    __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
-     * @param  string|null $legalorgtype  __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
-     * @param  string|null $legalorgname  __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
+     * @param  string|null $legalOrgType  __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
+     * @param  string|null $legalOrgName  __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerTaxRepresentativeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentSellerTaxRepresentativeLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -882,22 +880,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of sellers tax agent
      *
-     * @param  string|null $contactpersonname      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno         __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo         __BT-X-122, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-123, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerTaxRepresentativeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentSellerTaxRepresentativeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentSellerTaxRepresentativeContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -938,13 +936,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the tax number of the product end user
      *
-     * @param  array|null $taxreg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentProductEndUserTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentProductEndUserTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -952,24 +950,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the address of product end user
      *
-     * @param  string|null $lineone      __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
      * @param  string|null $country      __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision  __BT-X-402, From EXTENDED__ The product end users state
+     * @param  array|null  $subDivision  __BT-X-402, From EXTENDED__ The product end users state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentProductEndUserAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentProductEndUserAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -977,16 +975,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the legal organisation of product end user
      *
-     * @param  string|null $legalorgid    __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
-     * @param  string|null $legalorgtype  __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname  __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
+     * @param  string|null $legalOrgType  __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName  __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentProductEndUserLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentProductEndUserLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1020,22 +1018,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the product end user's contact person
      *
-     * @param  string|null $contactpersonname      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentProductEndUserContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentProductEndUserContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentProductEndUserContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1076,13 +1074,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the Ship-To party
      *
-     * @param  array|null $taxreg __BT-X-161/BT-X-161-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-X-161/BT-X-161-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipToTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentShipToTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1090,24 +1088,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the postal address of the Ship-To party
      *
-     * @param  string|null $lineone     __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-77, From BASIC WL__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-80, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null $subdivision  __BT-79, From BASIC WL__ The party's state
+     * @param  array|null $subDivision  __BT-79, From BASIC WL__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipToAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentShipToAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1115,16 +1113,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Legal organisation of Ship-To trade party
      *
-     * @param  string|null $legalorgid   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgid   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipToLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentShipToLegalOrganisation(?string &$legalOrgid, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1158,22 +1156,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the contact person of the goods recipient
      *
-     * @param  string|null $contactpersonname     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-X-157, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-158, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-157, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-158, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipToContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentShipToContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID", "");
 
         return $this;
     }
@@ -1214,13 +1212,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the different end recipient party
      *
-     * @param  array|null $taxreg __BT-X-180/BT-X-180-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-X-180/BT-X-180-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateShipToTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentUltimateShipToTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1228,24 +1226,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the address of the different end recipient party
      *
-     * @param  string|null $lineone     __BT-X-173, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box. For major customer addresses, this field must be filled with "-".
-     * @param  string|null $linetwo     __BT-X-174, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-X-175, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-X-172, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-X-173, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box. For major customer addresses, this field must be filled with "-".
+     * @param  string|null $lineTwo     __BT-X-174, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-175, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-172, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-X-176, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-X-177, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null $subdivision  __BT-X-178, From EXTENDED__ The party's state
+     * @param  array|null $subDivision  __BT-X-178, From EXTENDED__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateShipToAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentUltimateShipToAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1253,16 +1251,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information about the Legal organisation of the different end recipient party
      *
-     * @param  string|null $legalorgid   __BT-X-165, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-165-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-165, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-165-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateShipToLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentUltimateShipToLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1296,22 +1294,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the contact person of the different end recipient party
      *
-     * @param  string|null $contactpersonname      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-169, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-170, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateShipToContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentUltimateShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentUltimateShipToContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1352,13 +1350,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the deviating consignor party
      *
-     * @param  array|null $taxreg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipFromTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentShipFromTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1366,24 +1364,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the deviating consignor party
      *
-     * @param  string|null $lineone      __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-195, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-196, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision  __BT-X-197, From EXTENDED__ The party's state
+     * @param  array|null  $subDivision  __BT-X-197, From EXTENDED__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipFromAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentShipFromAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getCountryID.value.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1391,16 +1389,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the deviating consignor party
      *
-     * @param  string|null $legalorgid    __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipFromLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentShipFromLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1434,22 +1432,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the deviating consignor party
      *
-     * @param  string|null $contactpersonname      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-188, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-189, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentShipFromContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentShipFromContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentShipFromContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1490,13 +1488,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the invoicer party
      *
-     * @param  array|null $taxreg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-, From __ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoicerTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentInvoicerTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1504,24 +1502,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the invoicer party
      *
-     * @param  string|null $lineone     __BT-X-216, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-X-217, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-X-218, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-X-215, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-X-216, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-217, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-218, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-215, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-X-219, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-X-220, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision __BT-X-221, From EXTENDED__ The party's state
+     * @param  array|null  $subDivision __BT-X-221, From EXTENDED__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoicerAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentInvoicerAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1529,16 +1527,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the invoicer party
      *
-     * @param  string|null $legalorgid   __BT-X-208, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-208-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-208, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-208-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoicerLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentInvoicerLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1572,22 +1570,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the invoicer party
      *
-     * @param  string|null $contactpersonname      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-212, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-213, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoicerContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentInvoicerContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentInvoicerContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1628,13 +1626,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the different invoice recipient party
      *
-     * @param  array|null $taxreg __BT-X-242/BT-X-242-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-X-242/BT-X-242-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoiceeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentInvoiceeTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1642,24 +1640,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the different invoice recipient party
      *
-     * @param  string|null $lineone      __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-238, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-239, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision  __BT-X-240, From EXTENDED__ The party's state
+     * @param  array|null  $subDivision  __BT-X-240, From EXTENDED__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoiceeAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentInvoiceeAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1667,16 +1665,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the different invoice recipient party
      *
-     * @param  string|null $legalorgid    __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoiceeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentInvoiceeLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1710,22 +1708,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the different invoice recipient party
      *
-     * @param  string|null $contactpersonname      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-231, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-232, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentInvoiceeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentInvoiceeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentInvoiceeContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1767,13 +1765,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on tax details of the payee party
      *
-     * @param  array|null $taxreg __BT-X-257/BT-X-257-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  array|null $taxReg __BT-X-257/BT-X-257-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPayeeTaxRegistration(?array &$taxreg): ZugferdDocumentReader
+    public function getDocumentPayeeTaxRegistration(?array &$taxReg): ZugferdDocumentReader
     {
-        $taxreg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedTaxRegistration", []);
-        $taxreg = $this->convertToAssociativeArray($taxreg, "getID.getSchemeID", "getID.value");
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
 
         return $this;
     }
@@ -1781,24 +1779,24 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get Detailed information on the address of the payee party
      *
-     * @param  string|null $lineone      __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  array|null  $subdivision  __BT-X-255, From EXTENDED__ The party's state
+     * @param  array|null  $subDivision  __BT-X-255, From EXTENDED__ The party's state
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPayeeAddress(?string &$lineone, ?string &$linetwo, ?string &$linethree, ?string &$postcode, ?string &$city, ?string &$country, ?array &$subdivision): ZugferdDocumentReader
+    public function getDocumentPayeeAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
     {
-        $lineone = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineOne.value", "");
-        $linetwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
-        $linethree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineThree.value", "");
-        $postcode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
         $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getCityName.value", "");
         $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getCountryID.value", "");
-        $subdivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
 
         return $this;
     }
@@ -1806,16 +1804,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information about the legal organisation of the payee party
      *
-     * @param  string|null $legalorgid   __BT-61, From BASIC WL__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-61-1, From BASIC WL__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-61, From BASIC WL__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-61-1, From BASIC WL__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPayeeLegalOrganisation(?string &$legalorgid, ?string &$legalorgtype, ?string &$legalorgname): ZugferdDocumentReader
+    public function getDocumentPayeeLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
     {
-        $legalorgid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
-        $legalorgtype = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
-        $legalorgname = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
 
         return $this;
     }
@@ -1849,22 +1847,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get contact information of the payee party
      *
-     * @param  string|null $contactpersonname      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPayeeContact(?string &$contactpersonname, ?string &$contactdepartmentname, ?string &$contactphoneno, ?string &$contactfaxno, ?string &$contactemailadd): ZugferdDocumentReader
+    public function getDocumentPayeeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
         $contact = $contacts[$this->documentPayeeContactPointer];
-        $contactpersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
-        $contactdepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
-        $contactphoneno = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
-        $contactfaxno = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
-        $contactemailadd = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
 
         return $this;
     }
@@ -1885,14 +1883,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the associated order confirmation
      *
-     * @param  string|null   $issuerassignedid __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
-     * @param  DateTime|null $issueddate       __BT-X-146, From EXTENDED__ Order confirmation date
+     * @param  string|null   $issuerAssignedId __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
+     * @param  DateTime|null $issueDate        __BT-X-146, From EXTENDED__ Order confirmation date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentSellerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentSellerOrderReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -1903,14 +1901,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the related buyer order
      *
-     * @param  string|null   $issuerassignedid __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  DateTime|null $issueddate       __BT-X-147, From EXTENDED__ Date of order
+     * @param  string|null   $issuerAssignedId __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  DateTime|null $issueDate        __BT-X-147, From EXTENDED__ Date of order
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBuyerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentBuyerOrderReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -1921,14 +1919,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the associated offer
      *
-     * @param  string|null   $issuerassignedid __BT-X-403, From EXTENDED__ Offer number
-     * @param  DateTime|null $issueddate       __BT-X-404, From EXTENDED__ Date of offer
+     * @param  string|null   $issuerAssignedId __BT-X-403, From EXTENDED__ Offer number
+     * @param  DateTime|null $issueDate        __BT-X-404, From EXTENDED__ Date of offer
      * @return ZugferdDocumentReader
      */
-    public function getDocumentQuotationReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentQuotationReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -1939,14 +1937,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the associated contract
      *
-     * @param  string|null   $issuerassignedid __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  DateTime|null $issueddate       __BT-X-26, From EXTENDED__ Contract date
+     * @param  string|null   $issuerAssignedId __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  DateTime|null $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentContractReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentContractReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -1993,43 +1991,43 @@ class ZugferdDocumentReader extends ZugferdDocument
      *    ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *    documents
      *
-     * @param  string            $issuerassignedid    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string            $typecode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string            $issuerAssignedId    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string            $typeCode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
      *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
      *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
      *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param  string|null       $uriid               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     * @param  string|null       $uriId               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
      * supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
      * @param  array|null        $name                __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $reftypecode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null     $issueddate          __BT-X-149, From EXTENDED__ Document date
-     * @param  string|null       $binarydatafilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null       $refTypeCode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null     $issueDate           __BT-X-149, From EXTENDED__ Document date
+     * @param  string|null       $binaryDataFilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentReader
      */
-    public function getDocumentAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid = null, ?array &$name = null, ?string &$reftypecode = null, ?DateTime &$issueddate = null, ?string &$binarydatafilename = null): ZugferdDocumentReader
+    public function getDocumentAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId = null, ?array &$name = null, ?string &$refTypeCode = null, ?DateTime &$issueDate = null, ?string &$binaryDataFilename = null): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentAddRefDocPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
-        $typecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
-        $uriid = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
+        $uriId = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
         $name = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName.value", null));
-        $reftypecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $refTypeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
-        $binarydatafilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
+        $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
-        if (StringUtils::stringIsNullOrEmpty($binarydatafilename) === false
+        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
-            $binarydatafilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binarydatafilename);
-            FileUtils::base64ToFile($binarydata, $binarydatafilename);
+            $binaryDataFilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binaryDataFilename);
+            FileUtils::base64ToFile($binarydata, $binaryDataFilename);
         } else {
-            $binarydatafilename = "";
+            $binaryDataFilename = "";
         }
 
         return $this;
@@ -2038,16 +2036,16 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get all additional referenced documents
      *
-     * @param  array|null $refdocs
+     * @param  array|null $refDocs
      * Array contains all additional referenced documents, but without extracting attached binary objects. If you
      * want to access attached binary objects you have to use ZugferdDocumentReader::getDocumentAdditionalReferencedDocument
      * @return ZugferdDocumentReader
      */
-    public function getDocumentAdditionalReferencedDocuments(?array &$refdocs): ZugferdDocumentReader
+    public function getDocumentAdditionalReferencedDocuments(?array &$refDocs): ZugferdDocumentReader
     {
-        $refdocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
-        $refdocs = $this->convertToArray(
-            $refdocs,
+        $refDocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+        $refDocs = $this->convertToArray(
+            $refDocs,
             [
                 "IssuerAssignedID" => ["getIssuerAssignedID.value", ""],
                 "URIID" => ["getURIID.value", ""],
@@ -2088,18 +2086,18 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get reference to the previous invoice
      *
-     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typecode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
-     * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
+     * @param  string        $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      */
-    public function getDocumentInvoiceReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?DateTime &$issueddate = null): ZugferdDocumentReader
+    public function getDocumentInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?DateTime &$issueDate = null): ZugferdDocumentReader
     {
         $invoiceRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
         $invoiceRefDoc = $invoiceRefDoc[$this->documentInvRefDocPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getIssuerAssignedID.value", "");
-        $typecode = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getTypeCode.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getIssuerAssignedID.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getTypeCode.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPathFrom($invoiceRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -2172,17 +2170,17 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the ultimate customer order
      *
-     * @param  string|null   $issuerassignedid  __BT-X-150, From EXTENDED__ Order number of the end customer
-     * @param  DateTime|null $issueddate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
+     * @param  string|null   $issuerAssignedId  __BT-X-150, From EXTENDED__ Order number of the end customer
+     * @param  DateTime|null $issueDate         __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentUltimateCustomerOrderReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -2220,14 +2218,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the associated shipping notification
      *
-     * @param  string|null   $issuerassignedid __BT-16, From BASIC WL__ Shipping notification reference
-     * @param  DateTime|null $issueddate       __BT-X-200, From EXTENDED__ Shipping notification date
+     * @param  string|null   $issuerAssignedId __BT-16, From BASIC WL__ Shipping notification reference
+     * @param  DateTime|null $issueDate        __BT-X-200, From EXTENDED__ Shipping notification date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentDespatchAdviceReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -2238,14 +2236,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the associated goods receipt notification
      *
-     * @param  string|null   $issuerassignedid __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
-     * @param  DateTime|null $issueddate       __BT-X-201, From EXTENDED__ Goods receipt date
+     * @param  string|null   $issuerAssignedId __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
+     * @param  DateTime|null $issueDate        __BT-X-201, From EXTENDED__ Goods receipt date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentReceivingAdviceReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -2256,14 +2254,14 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the associated delivery note
      *
-     * @param  string        $issuerassignedid  __BT-X-202, From EXTENDED__ Delivery slip number
-     * @param  DateTime|null $issueddate        __BT-X-203, From EXTENDED__ Delivery slip date
+     * @param  string        $issuerAssignedId  __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  DateTime|null $issueDate         __BT-X-203, From EXTENDED__ Delivery slip date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentDeliveryNoteReferencedDocument(?string &$issuerAssignedId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
-        $issuerassignedid = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
@@ -2300,7 +2298,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the payment method
      *
-     * @param string      $typecode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param string      $typeCode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * - 10: cash
      * - 20: check
      * - 30: transfer
@@ -2322,12 +2320,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPaymentMeans(?string &$typecode, ?string &$information, ?string &$cardType, ?string &$cardId, ?string &$cardHolderName, ?string &$buyerIban, ?string &$payeeIban, ?string &$payeeAccountName, ?string &$payeePropId, ?string &$payeeBic): ZugferdDocumentReader
+    public function getDocumentPaymentMeans(?string &$typeCode, ?string &$information, ?string &$cardType, ?string &$cardId, ?string &$cardHolderName, ?string &$buyerIban, ?string &$payeeIban, ?string &$payeeAccountName, ?string &$payeePropId, ?string &$payeeBic): ZugferdDocumentReader
     {
         $paymentMeans = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
         $paymentMeans = $paymentMeans[$this->documentPaymentMeansPointer];
 
-        $typecode = $this->getInvoiceValueByPathFrom($paymentMeans, "getTypeCode.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($paymentMeans, "getTypeCode.value", "");
         $information = $this->getInvoiceValueByPathFrom($paymentMeans, "getInformation.value", "");
         $cardType = $this->getInvoiceValueByPathFrom($paymentMeans, "getApplicableTradeSettlementFinancialCard.getID.getSchemeID", "");
         $cardId = $this->getInvoiceValueByPathFrom($paymentMeans, "getApplicableTradeSettlementFinancialCard.getID.value", "");
@@ -2408,13 +2406,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the billing period
      *
-     * @param  DateTime|null $startdate   __BT-73, From BASIC WL__ Start of the billing period
+     * @param  DateTime|null $startDate   __BT-73, From BASIC WL__ Start of the billing period
      * @param  DateTime|null $endDate     __BT-74, From BASIC WL__ End of the billing period
      * @return ZugferdDocumentReader
      */
-    public function getDocumentBillingPeriod(?DateTime &$startdate, ?DateTime &$endDate): ZugferdDocumentReader
+    public function getDocumentBillingPeriod(?DateTime &$startDate, ?DateTime &$endDate): ZugferdDocumentReader
     {
-        $startdate = $this->getObjectHelper()->toDateTime(
+        $startDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getBillingSpecifiedPeriod.getStartDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getBillingSpecifiedPeriod.getStartDateTime.getDateTimeString.getFormat", null)
         );
@@ -2759,17 +2757,17 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get general information of the current position
      *
-     * @param  string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
+     * @param  string      $lineId               __BT-126, From BASIC__ Identification of the invoice item
      * @param  string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
      * @param  string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionGenerals(?string &$lineid, ?string &$lineStatusCode, ?string &$lineStatusReasonCode): ZugferdDocumentReader
+    public function getDocumentPositionGenerals(?string &$lineId, ?string &$lineStatusCode, ?string &$lineStatusReasonCode): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineID.value", "");
         $lineStatusCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusCode.value", "");
         $lineStatusReasonCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getLineStatusReasonCode.value", "");
 
@@ -2939,12 +2937,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @param  string      $description           __BT-160, From EN 16931__ The name of the attribute or property of the product such as "Colour"
      * @param  string      $value                 __BT-161, From EN 16931__ The value of the attribute or property of the product such as "Red"
-     * @param  string|null $typecode              __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
+     * @param  string|null $typeCode              __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
      * @param  float|null  $valueMeasure          __BT-X-12, From EXTENDED__ Value of the product property (numerical measured variable)
      * @param  string|null $valueMeasureUnitCode  __BT-X-12-0, From EXTENDED__ Unit of measurement code
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionProductCharacteristic(?string &$description, ?string &$value, ?string &$typecode, ?float &$valueMeasure, ?string &$valueMeasureUnitCode): ZugferdDocumentReader
+    public function getDocumentPositionProductCharacteristic(?string &$description, ?string &$value, ?string &$typeCode, ?float &$valueMeasure, ?string &$valueMeasureUnitCode): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -2953,7 +2951,7 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         $description = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getDescription.value", "");
         $value = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValue.value", "");
-        $typecode = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getTypeCode.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getTypeCode.value", "");
         $valueMeasure = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValueMeasure.value", 0.0);
         $valueMeasureUnitCode = $this->getInvoiceValueByPathFrom($tradeLineItemProductCharacteristic, "getValueMeasure.getUnitCode", "");
 
@@ -3092,19 +3090,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of a related sales order reference
      *
-     * @param  string|null   $issuerassignedid __BT-X-537, From EXTENDED__ Document number of a sales order reference
-     * @param  string|null   $lineid           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
-     * @param  DateTime|null $issueddate       __BT-X-539, From EXTENDED__ Date of sales order
+     * @param  string|null   $issuerAssignedId __BT-X-537, From EXTENDED__ Document number of a sales order reference
+     * @param  string|null   $lineId           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
+     * @param  DateTime|null $issueDate        __BT-X-539, From EXTENDED__ Date of sales order
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionSellerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionSellerOrderReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getSellerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
@@ -3115,19 +3113,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the related buyer order position
      *
-     * @param  string|null   $issuerassignedid __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  string|null   $lineid           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
-     * @param  DateTime|null $issueddate       __BT-X-22, From EXTENDED__ Date of order
+     * @param  string|null   $issuerAssignedId __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  string|null   $lineId           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
+     * @param  DateTime|null $issueDate        __BT-X-22, From EXTENDED__ Date of order
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionBuyerOrderReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionBuyerOrderReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getBuyerOrderReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
@@ -3138,19 +3136,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the associated offer position
      *
-     * @param  string|null   $issuerassignedid __BT-X-310, From EXTENDED__ Offer number
-     * @param  string|null   $lineid           __BT-X-311, From EXTENDED__ Position identifier within the offer
-     * @param  DateTime|null $issueddate       __BT-X-312, From EXTENDED__ Date of offder
+     * @param  string|null   $issuerAssignedId __BT-X-310, From EXTENDED__ Offer number
+     * @param  string|null   $lineId           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  DateTime|null $issueDate        __BT-X-312, From EXTENDED__ Date of offder
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionQuotationReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionQuotationReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getQuotationReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
@@ -3161,19 +3159,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get details of the related contract position
      *
-     * @param  string|null   $issuerassignedid  __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  string|null   $lineid            __BT-X-25, From EXTENDED__ Identifier of the according contract position
-     * @param  DateTime|null $issueddate        __BT-X-26, From EXTENDED__ Contract date
+     * @param  string|null   $issuerAssignedId  __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  string|null   $lineId            __BT-X-25, From EXTENDED__ Identifier of the according contract position
+     * @param  DateTime|null $issueDate         __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionContractReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionContractReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getContractReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
@@ -3223,16 +3221,16 @@ class ZugferdDocumentReader extends ZugferdDocument
      *   ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *   documents
      *
-     * @param  string|null   $issuerassignedid    __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string|null   $typecode            __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $uriid               __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  string|null   $lineid              __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  string|null   $issuerAssignedId    __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string|null   $typeCode            __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null   $uriId               __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  string|null   $lineId              __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
      * @param  string|null   $name                __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null   $reftypecode         __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null $issueddate          __BT-X-33, From EXTENDED__ Document date
+     * @param  string|null   $refTypeCode         __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null $issueDate           __BT-X-33, From EXTENDED__ Document date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerassignedid, ?string &$typecode, ?string &$uriid, ?string &$lineid, ?string &$name, ?string &$reftypecode, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?string &$lineId, ?string &$name, ?string &$refTypeCode, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -3240,13 +3238,13 @@ class ZugferdDocumentReader extends ZugferdDocument
         $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getAdditionalReferencedDocument", []));
         $addRefDoc = $addRefDoc[$this->positionAddRefDocPointer];
 
-        $typecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
-        $reftypecode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
-        $uriid = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($addRefDoc, "getLineID.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $refTypeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
+        $uriId = $this->getInvoiceValueByPathFrom($addRefDoc, "getURIID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($addRefDoc, "getLineID.value", "");
         $name = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($addRefDoc, "getName.value", null));
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
@@ -3444,19 +3442,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the associated shipping notification (on position level)
      *
-     * @param  string|null   $issuerassignedid  __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param  string|null   $lineid            __BT-X-87, From EXTENDED__ Shipping notification position
-     * @param  DateTime|null $issueddate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
+     * @param  string|null   $issuerAssignedId  __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  string|null   $lineId            __BT-X-87, From EXTENDED__ Shipping notification position
+     * @param  DateTime|null $issueDate         __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid = null, ?DateTime &$issueddate = null): ZugferdDocumentReader
+    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerAssignedId, ?string &$lineId = null, ?DateTime &$issueDate = null): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getDespatchAdviceReferencedDocument.getFormattedIssueDateTime,getDateTimeString.getFormat", "")
         );
@@ -3467,19 +3465,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Detailed information on the associated shipping notification (on position level)
      *
-     * @param  string|null   $issuerassignedid  __BT-X-89, From EXTENDED__ Goods receipt number
-     * @param  string|null   $lineid            __BT-X-90, From EXTENDED__ Goods receipt position
-     * @param  DateTime|null $issueddate        __BT-X-91, From EXTENDED__ Date of Goods receipt
+     * @param  string|null   $issuerAssignedId  __BT-X-89, From EXTENDED__ Goods receipt number
+     * @param  string|null   $lineId            __BT-X-90, From EXTENDED__ Goods receipt position
+     * @param  DateTime|null $issueDate         __BT-X-91, From EXTENDED__ Date of Goods receipt
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionReceivingAdviceReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionReceivingAdviceReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getReceivingAdviceReferencedDocument.getFormattedIssueDateTime,getDateTimeString.getFormat", "")
         );
@@ -3490,19 +3488,19 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Detailed information on the associated delivery note on position level
      *
-     * @param  string|null   $issuerassignedid  __BT-X-92, From EXTENDED__ Delivery note number
-     * @param  string|null   $lineid            __BT-X-93, From EXTENDED__ Delivery note position
-     * @param  DateTime|null $issueddate        __BT-X-94, From EXTENDED__ Date of Delivery note
+     * @param  string|null   $issuerAssignedId  __BT-X-92, From EXTENDED__ Delivery note number
+     * @param  string|null   $lineId            __BT-X-93, From EXTENDED__ Delivery note position
+     * @param  DateTime|null $issueDate         __BT-X-94, From EXTENDED__ Date of Delivery note
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionDeliveryNoteReferencedDocument(?string &$issuerassignedid, ?string &$lineid, ?DateTime &$issueddate): ZugferdDocumentReader
+    public function getDocumentPositionDeliveryNoteReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $issuerassignedid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getLineID.value", "");
-        $issueddate = $this->getObjectHelper()->toDateTime(
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPath("getSpecifiedLineTradeDelivery.getDeliveryNoteReferencedDocument.getFormattedIssueDateTime,getDateTimeString.getFormat", "")
         );
