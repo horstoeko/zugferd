@@ -1066,7 +1066,7 @@ class ZugferdObjectHelper
         $this->tryCall($allowanceCharge, "setReasonCode", $this->getCodeType($reasonCode));
         $this->tryCall($allowanceCharge, "setReason", $this->getTextType($reason));
 
-        if (!is_null($taxCategoryCode) && !is_null($taxTypeCode) && !is_null($rateApplicablePercent)) {
+        if (!is_null($taxCategoryCode) && !is_null($taxTypeCode)) {
             $this->tryCall($allowanceCharge, "setCategoryTradeTax", $this->getTradeTaxType($taxCategoryCode, $taxTypeCode, null, null, $rateApplicablePercent));
         }
 
