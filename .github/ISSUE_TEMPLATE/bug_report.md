@@ -7,20 +7,15 @@ assignees: horstoeko
 
 ---
 
-### Before Submitting an Issue...
+### Before Submitting an Issue
 
-Thank you for taking the time to contribute to our project! Before opening a new issue, please make sure to check the following:
+Thank you for contributing to our project! :tada: Before opening a new issue, please review our [Contributing Guidelines](https://github.com/horstoeko/zugferd/blob/master/CONTRIBUTING.md).
 
-1. **Read the Documentation**
-   Please review the [documentation](https://github.com/horstoeko/zugferd/wiki) first. Many questions or issues can often be resolved there.
+To help us assist you efficiently, we require confirmation of the following:
+- [ ] I have read the [documentation](https://github.com/horstoeko/zugferd/wiki) and could not find a solution to my issue.
+- [ ] I have searched open and closed [issues](https://github.com/horstoeko/zugferd/issues) to ensure my issue has not already been reported.
 
-2. **Search Existing Issues**
-   Check if your problem or suggestion has already been reported in an open or closed issue.
-
-3. **Confirm Reproducibility**
-   If you are reporting a bug, ensure that you can provide clear steps to reproduce the issue.
-
-This helps us respond to your request more efficiently and resolve your issue faster. Thank you for your support!
+Issues that do not meet these requirements may be closed without further action. Thank you for your understanding and support! :pray:
 
 **Describe the bug**
 A clear and concise description of what the bug is.
