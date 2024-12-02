@@ -3711,10 +3711,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on item totals
      *
+     * @param  float|null $lineTotalAmount            __BT-131, From BASIC__ The total amount of the invoice item.
+     * @param  float|null $totalAllowanceChargeAmount __BT-, From __ Total amount of item surcharges and discounts
+     * @return ZugferdDocumentReader
+     * @deprecated 1.0.88
+     */
+    public function getDocumentPositionLineSummation(?float &$lineTotalAmount, ?float &$totalAllowanceChargeAmount): ZugferdDocumentReader
+    {
+        $totalAllowanceChargeAmount = 0.0;
+
+        $this->getDocumentPositionLineSummationSimple($lineTotalAmount);
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on item totals
+     *
      * @param  float $lineTotalAmount  __BT-131, From BASIC__ The total amount of the invoice item.
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionLineSummation(?float &$lineTotalAmount): ZugferdDocumentReader
+    public function getDocumentPositionLineSummationSimple(?float &$lineTotalAmount): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];

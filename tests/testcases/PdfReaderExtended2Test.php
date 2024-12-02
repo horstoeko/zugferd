@@ -1093,7 +1093,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(60.00, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1201,7 +1201,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(30.0, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1309,7 +1309,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(5.0, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);

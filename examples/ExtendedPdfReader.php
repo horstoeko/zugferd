@@ -26,7 +26,7 @@ if ($document->firstDocumentPosition()) {
         $document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
         $document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
         $document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $document->getDocumentPositionLineSummation($lineTotalAmount, $totalAllowanceChargeAmount);
+        $document->getDocumentPositionLineSummationSimple($lineTotalAmount, $totalAllowanceChargeAmount);
         $document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
 
         echo " - Line Id:                        {$lineid}\r\n";

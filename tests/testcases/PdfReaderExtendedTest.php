@@ -1091,7 +1091,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(52.00, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1198,7 +1198,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(20.50, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1333,7 +1333,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(288.75, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1440,7 +1440,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(36.75, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
@@ -1547,7 +1547,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertEquals("", $exemptionReason);
         $this->assertEquals("", $exemptionReasonCode);
 
-        self::$document->getDocumentPositionLineSummation($lineTotalAmount);
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
         $this->assertEquals(12.10, $lineTotalAmount);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
