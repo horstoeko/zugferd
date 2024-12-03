@@ -3107,6 +3107,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set information on item totals (with support for EXTENDED profile)
+     *
+     * @param  float $lineTotalAmount             __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  float $chargeTotalAmount           __BT-X-327, From EXTENDED__ Total amount of item surcharges
+     * @param  float $allowanceTotalAmount        __BT-X-328, From EXTENDED__ Total amount of item discounts
+     * @param  float $taxTotalAmount              __BT-X-329, From EXTENDED__ Total amount of item taxes
+     * @param  float $grandTotalAmount            __BT-X-330, From EXTENDED__ Total gross amount of the item
+     * @param  float $totalAllowanceChargeAmount  __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionLineSummationExt(float $lineTotalAmount, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ZugferdDocumentBuilder
+    {
+        $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
+        $summation = $this->getObjectHelper()->getTradeSettlementLineMonetarySummationType($lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxTotalAmount, $grandTotalAmount, $totalAllowanceChargeAmount);
+        $this->getObjectHelper()->tryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+        return $this;
+    }
+
+    /**
      * Add an AccountingAccount on position level
      *
      * @param  string      $id       __BT-133, From COMFORT__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
