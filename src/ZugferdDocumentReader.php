@@ -3739,6 +3739,32 @@ class ZugferdDocumentReader extends ZugferdDocument
         return $this;
     }
 
+    /**
+     * Get detailed information on item totals (with support for EXTENDED profile)
+     *
+     * @param  float $lineTotalAmount             __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  float $chargeTotalAmount           __BT-X-327, From EXTENDED__ Total amount of item surcharges
+     * @param  float $allowanceTotalAmount        __BT-X-328, From EXTENDED__ Total amount of item discounts
+     * @param  float $taxTotalAmount              __BT-X-329, From EXTENDED__ Total amount of item taxes
+     * @param  float $grandTotalAmount            __BT-X-330, From EXTENDED__ Total gross amount of the item
+     * @param  float $totalAllowanceChargeAmount  __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionLineSummationExt(?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxTotalAmount, ?float &$grandTotalAmount, ?float &$totalAllowanceChargeAmount): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $lineTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getLineTotalAmount.value", 0.0);
+        $chargeTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getChargeTotalAmount.value", 0.0);
+        $allowanceTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getAllowanceTotalAmount.value", 0.0);
+        $taxTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTaxTotalAmount.value", 0.0);
+        $grandTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getGrandTotalAmount.value", 0.0);
+        $totalAllowanceChargeAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTotalAllowanceChargeAmount.value", 0.0);
+
+        return $this;
+    }
+
     //TODO: Seeker for documents position TradeAccountingAccount
 
     /**
