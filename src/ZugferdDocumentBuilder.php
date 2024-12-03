@@ -171,22 +171,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set main information about this document
      *
-     * @param  string        $documentno               __BT-1, From MINIMUM__ The document no issued by the seller
-     * @param  string        $documenttypecode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
-     * @param  DateTime      $documentdate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
+     * @param  string        $documentNo               __BT-1, From MINIMUM__ The document no issued by the seller
+     * @param  string        $documentTypeCode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
+     * @param  DateTime      $documentDate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      * @param  string        $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
-     * @param  string|null   $documentname             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
-     * @param  string|null   $documentlanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     * @param  string|null   $documentName             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
+     * @param  string|null   $documentLanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      * @param  DateTime|null $effectiveSpecifiedPeriod __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInformation(string $documentno, string $documenttypecode, DateTime $documentdate, string $invoiceCurrency, ?string $documentname = null, ?string $documentlanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
+    public function setDocumentInformation(string $documentNo, string $documentTypeCode, DateTime $documentDate, string $invoiceCurrency, ?string $documentName = null, ?string $documentLanguage = null, ?DateTime $effectiveSpecifiedPeriod = null): ZugferdDocumentBuilder
     {
-        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setID", $this->getObjectHelper()->getIdType($documentno));
-        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setName", $this->getObjectHelper()->getTextType($documentname));
-        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setTypeCode", $this->getObjectHelper()->getDocumentCodeType($documenttypecode));
-        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setIssueDateTime", $this->getObjectHelper()->getDateTimeType($documentdate));
-        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "addToLanguageID", $this->getObjectHelper()->getIdType($documentlanguage));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setID", $this->getObjectHelper()->getIdType($documentNo));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setName", $this->getObjectHelper()->getTextType($documentName));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setTypeCode", $this->getObjectHelper()->getDocumentCodeType($documentTypeCode));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setIssueDateTime", $this->getObjectHelper()->getDateTimeType($documentDate));
+        $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "addToLanguageID", $this->getObjectHelper()->getIdType($documentLanguage));
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setEffectiveSpecifiedPeriod", $this->getObjectHelper()->getSpecifiedPeriodType(null, null, $effectiveSpecifiedPeriod, null));
 
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setInvoiceCurrencyCode", $this->getObjectHelper()->getIdType($invoiceCurrency));
@@ -376,15 +376,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
+     * @param  string|null $taxRegType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentSellerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentSellerTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
@@ -413,19 +413,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets detailed information on the business address of the seller
      *
-     * @param  string|null $lineone     __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-37, From BASIC WL__ Usual name of the city or municipality in which the seller's address is located
      * @param  string|null $country     __BT-40, From MINIMUM__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-39, From BASIC WL__ The sellers state
+     * @param  string|null $subDivision __BT-39, From BASIC WL__ The sellers state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentSellerAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($sellerTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -433,33 +433,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Organization details
      *
-     * @param  string|null $legalorgid   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
-     * @param  string|null $legalorgtype __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
+     * @param  string|null $legalOrgId   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
+     * @param  string|null $legalOrgType __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentSellerLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($sellerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($sellerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set detailed information on the seller's contact person
      *
-     * @param  string|null $contactpersonname     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno        __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-42, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-107, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentSellerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($sellerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -467,17 +467,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the seller party (EXTENDED Profile only)
      *
-     * @param  string|null $contactpersonname     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno        __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-42, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-107, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentSellerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentSellerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -549,34 +549,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * buyers. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string|null $taxregtype __BT-48-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-48, From BASIC WL__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-48-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-48, From BASIC WL__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentBuyerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentBuyerTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($buyerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($buyerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets detailed information on the business address of the buyer
      *
-     * @param  string|null $lineone     __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-52, From BASIC WL__ Usual name of the city or municipality in which the buyers address is located
      * @param  string|null $country     __BT-55, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-54, From BASIC WL__ The buyers state
+     * @param  string|null $subDivision __BT-54, From BASIC WL__ The buyers state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentBuyerAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($buyerTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -584,33 +584,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the buyer party
      *
-     * @param  string|null $legalorgid   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param  string|null $legalorgtype __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
+     * @param  string|null $legalOrgType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-45, From EN 16931__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentBuyerLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($buyerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($buyerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the buyer party
      *
-     * @param  string|null $contactpersonname     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-57, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-115, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-57, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-115, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentBuyerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($buyerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -618,17 +618,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the buyer party contact person (EXTENDED Profile only)
      *
-     * @param  string|null $contactpersonname     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-57, From EN 16931__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-115, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-57, From EN 16931__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-115, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentBuyerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentBuyerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($buyerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -680,34 +680,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to seller's tax representative party
      *
-     * @param  string|null $taxregtype __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-63, From BASIC WL__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentSellerTaxRepresentativeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentSellerTaxRepresentativeTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the seller's tax representative party
      *
-     * @param  string|null $lineone     __BT-64, From BASIC WL__ The main line in the sellers tax agent address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-65, From BASIC WL__ Line 2 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-164, From BASIC WL__ Line 3 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-67, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-64, From BASIC WL__ The main line in the sellers tax agent address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-65, From BASIC WL__ Line 2 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-164, From BASIC WL__ Line 3 of the sellers tax agent address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-67, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-66, From BASIC WL__ Usual name of the city or municipality in which the sellers tax agent address is located
      * @param  string|null $country     __BT-69, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-68, From BASIC WL__ The sellers tax agent state
+     * @param  string|null $subDivision __BT-68, From BASIC WL__ The sellers tax agent state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerTaxRepresentativeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentSellerTaxRepresentativeAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -715,33 +715,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the seller's tax representative party
      *
-     * @param  string|null $legalorgid    __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
-     * @param  string|null $legalorgtype  __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
-     * @param  string|null $legalorgname  __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
+     * @param  string|null $legalOrgType  __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
+     * @param  string|null $legalOrgName  __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerTaxRepresentativeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentSellerTaxRepresentativeLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set detailed information on the seller's tax representative party contact person
      *
-     * @param  string|null $contactpersonname      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno         __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo         __BT-X-122, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-123, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerTaxRepresentativeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentSellerTaxRepresentativeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($taxrepresentativeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -749,17 +749,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the seller's tax representative party (EXTENDED Profile only)
      *
-     * @param  string|null $contactpersonname      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactdepartmentname  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactphoneno         __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo         __BT-X-122, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-123, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentSellerTaxRepresentativeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentSellerTaxRepresentativeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -796,34 +796,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the deviating end user
      *
-     * @param  string|null $taxregtype  __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid    __BT-, From __ Tax number or sales tax identification number
+     * @param  string|null $taxRegType  __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId    __BT-, From __ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentProductEndUserTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentProductEndUserTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Product Enduser party
      *
-     * @param  string|null $lineone      __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
      * @param  string|null $country      __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BT-X-402, From EXTENDED__ The product end users state
+     * @param  string|null $subDivision  __BT-X-402, From EXTENDED__ The product end users state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentProductEndUserAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentProductEndUserAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -831,33 +831,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Product Enduser party
      *
-     * @param  string|null $legalorgid    __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
-     * @param  string|null $legalorgtype  __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalorgname  __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
+     * @param  string|null $legalOrgType  __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName  __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentProductEndUserLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentProductEndUserLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($productEndUserTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($productEndUserTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Product Enduser party
      *
-     * @param  string|null $contactpersonname      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentProductEndUserContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentProductEndUserContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($productEndUserTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -865,17 +865,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Product Enduser party (EXTENDED Profile only)
      *
-     * @param  string|null $contactpersonname      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentProductEndUserContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentProductEndUserContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -925,34 +925,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Ship-To Trade party
      *
-     * @param  string|null $taxregtype __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Ship-To party
      *
-     * @param  string|null $lineone     __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-75, From BASIC WL__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-76, From BASIC WL__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-165, From BASIC WL__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-78, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-77, From BASIC WL__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-80, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-79, From BASIC WL__ The party's state
+     * @param  string|null $subDivision __BT-79, From BASIC WL__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -960,33 +960,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Ship-To party
      *
-     * @param  string|null $legalorgid   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Ship-To party
      *
-     * @param  string|null $contactpersonname     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-X-157, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-158, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-157, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-158, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -994,17 +994,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Ship-To party
      *
-     * @param  string|null $contactpersonname     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno        __BT-X-157, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno          __BT-X-158, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd       __BT-X-159, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-155, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-156, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-157, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-158, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-159, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1054,34 +1054,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the different end recipient
      *
-     * @param  string|null $taxregtype  __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid    __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType  __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId    __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentUltimateShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the different end recipient
      *
-     * @param  string|null $lineone     __BT-X-173, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box. For major customer addresses, this field must be filled with "-".
-     * @param  string|null $linetwo     __BT-X-174, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-X-175, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-X-172, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-X-173, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box. For major customer addresses, this field must be filled with "-".
+     * @param  string|null $lineTwo     __BT-X-174, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-175, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-172, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-X-176, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-X-177, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-X-178, From EXTENDED__ The party's state
+     * @param  string|null $subDivision __BT-X-178, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentUltimateShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentUltimateShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -1089,33 +1089,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the different end recipient
      *
-     * @param  string|null $legalorgid   __BT-X-165, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-165-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-165, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-165-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-166, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentUltimateShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the different end recipient
      *
-     * @param  string|null $contactpersonname      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-169, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-170, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($UltimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -1123,17 +1123,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the different end recipient.
      *
-     * @param  string|null $contactpersonname      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-169, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-170, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1183,34 +1183,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the deviating consignor party
      *
-     * @param  string|null $taxregtype __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-, From __ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-, From __ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentShipFromTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentShipFromTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the deviating consignor party
      *
-     * @param  string|null $lineone      __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-195, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-196, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BT-X-197, From EXTENDED__ The party's state
+     * @param  string|null $subDivision  __BT-X-197, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipFromAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentShipFromAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -1218,33 +1218,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the deviating consignor party
      *
-     * @param  string|null $legalorgid    __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipFromLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentShipFromLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($shipFromTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($shipFromTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the deviating consignor party
      *
-     * @param  string|null $contactpersonname      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-188, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-189, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentShipFromContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentShipFromContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($shipFromTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -1252,17 +1252,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the deviating consignor party
      *
-     * @param  string|null $contactpersonname      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-188, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-189, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentShipFromContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentShipFromContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1312,34 +1312,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Invoicer Party
      *
-     * @param  string|null $taxregtype __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-, From __ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-, From __ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentInvoicerTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentInvoicerTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Invoicer Party
      *
-     * @param  string|null $lineone     __BT-X-216, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo     __BT-X-217, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree   __BT-X-218, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode    __BT-X-215, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne     __BT-X-216, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-217, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-218, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-215, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city        __BT-X-219, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country     __BT-X-220, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision __BT-X-221, From EXTENDED__ The party's state
+     * @param  string|null $subDivision __BT-X-221, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoicerAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentInvoicerAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -1347,33 +1347,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Invoicer Party
      *
-     * @param  string|null $legalorgid   __BT-X-208, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-X-208-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-208, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-208-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-209, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoicerLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentInvoicerLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($invoicerTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($invoicerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Invoicer Party
      *
-     * @param  string|null $contactpersonname      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-212, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-213, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoicerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentInvoicerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($invoicerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -1381,17 +1381,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Invoicer Party
      *
-     * @param  string|null $contactpersonname      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-212, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-213, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentInvoicerContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentInvoicerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1441,34 +1441,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the Invoicee Party
      *
-     * @param  string|null $taxregtype  __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid    __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType  __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId    __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentInvoiceeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentInvoiceeTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Invoicee Party
      *
-     * @param  string|null $lineone      __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-238, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-239, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BT-X-240, From EXTENDED__ The party's state
+     * @param  string|null $subDivision  __BT-X-240, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentInvoiceeAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -1476,33 +1476,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Invoicee Party
      *
-     * @param  string|null $legalorgid    __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentInvoiceeLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($invoiceeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($invoiceeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Invoicee Party
      *
-     * @param  string|null $contactpersonname      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-231, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-232, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentInvoiceeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($invoiceeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -1510,17 +1510,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Invoicee Party
      *
-     * @param  string|null $contactpersonname      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-231, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-232, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentInvoiceeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentInvoiceeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1571,34 +1571,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to payee trade party
      *
-     * @param  string|null $taxregtype __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid   __BT-X-257, From EXTENDED Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-257, From EXTENDED Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPayeeTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentPayeeTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($payeeTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($payeeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the payee trade party
      *
-     * @param  string|null $lineone      __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BT-X-255, From EXTENDED__ The party's state
+     * @param  string|null $subDivision  __BT-X-255, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPayeeAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentPayeeAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($payeeTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -1606,33 +1606,33 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the payee trade party
      *
-     * @param  string|null $legalorgid   __BT-61, From BASIC WL__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype __BT-61-1, From BASIC WL__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-61, From BASIC WL__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-61-1, From BASIC WL__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPayeeLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentPayeeLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($payeeTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($payeeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the payee trade party
      *
-     * @param  string|null $contactpersonname      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPayeeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentPayeeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($payeeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -1640,17 +1640,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the payee trade party
      *
-     * @param  string|null $contactpersonname      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactfaxno           __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactemailadd        __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo           __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress    __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPayeeContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentPayeeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($payeeTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -1671,13 +1671,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated order confirmation
      *
-     * @param  string        $issuerassignedid __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
-     * @param  DateTime|null $issueddate       __BT-X-146, From EXTENDED__ Order confirmation date
+     * @param  string        $issuerAssignedId __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
+     * @param  DateTime|null $issueDate        __BT-X-146, From EXTENDED__ Order confirmation date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentSellerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentSellerOrderReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $sellerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $sellerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSellerOrderReferencedDocument", $sellerorderrefdoc);
         return $this;
     }
@@ -1685,13 +1685,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related buyer order
      *
-     * @param  string        $issuerassignedid __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  DateTime|null $issueddate       __BT-X-147, From EXTENDED__ Date of order
+     * @param  string        $issuerAssignedId __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  DateTime|null $issueDate        __BT-X-147, From EXTENDED__ Date of order
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerOrderReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentBuyerOrderReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
         return $this;
     }
@@ -1699,13 +1699,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated offer
      *
-     * @param  string        $issuerassignedid __BT-X-403, From EXTENDED__ Offer number
-     * @param  DateTime|null $issueddate       __BT-X-404, From EXTENDED__ Date of offer
+     * @param  string        $issuerAssignedId __BT-X-403, From EXTENDED__ Offer number
+     * @param  DateTime|null $issueDate        __BT-X-404, From EXTENDED__ Date of offer
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentQuotationReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentQuotationReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setQuotationReferencedDocument", $quotationrefdoc);
         return $this;
     }
@@ -1713,13 +1713,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated contract
      *
-     * @param  string        $issuerassignedid __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  DateTime|null $issueddate       __BT-X-26, From EXTENDED__ Contract date
+     * @param  string        $issuerAssignedId __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  DateTime|null $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentContractReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentContractReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setContractReferencedDocument", $contractrefdoc);
         return $this;
     }
@@ -1734,22 +1734,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
      *    from the bill
      *
-     * @param  string            $issuerassignedid    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string            $typecode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string            $issuerAssignedId    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string            $typeCode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
      *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
      *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
      *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param  string|null       $uriid               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     * @param  string|null       $uriId               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
      * supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
      * @param  string|array|null $name                __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $reftypecode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null     $issueddate          __BT-X-149, From EXTENDED__ Document date
-     * @param  string|null       $binarydatafilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null       $refTypeCode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null     $issueDate           __BT-X-149, From EXTENDED__ Document date
+     * @param  string|null       $binaryDataFilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
     {
-        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, $uriid, null, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
+        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, null, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
         return $this;
     }
@@ -1762,14 +1762,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous partial invoices
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typecode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
-     * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
+     * @param  string        $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentInvoiceReferencedDocument(string $issuerAssignedId, ?string $typeCode = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCallIfMethodExists($this->headerTradeSettlement, "addToInvoiceReferencedDocument", "setInvoiceReferencedDocument", [$invoicerefdoc], $invoicerefdoc);
         return $this;
     }
@@ -1782,14 +1782,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous partial invoices
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerassignedid __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typecode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
-     * @param  DateTime|null $issueddate       __BT-26, From BASIC WL__ Date of the previous invoice
+     * @param  string        $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentInvoiceReferencedDocument(string $issuerassignedid, ?string $typecode = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function addDocumentInvoiceReferencedDocument(string $issuerAssignedId, ?string $typeCode = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, $typecode, null, null, $issueddate, null);
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToInvoiceReferencedDocument", $invoicerefdoc);
         return $this;
     }
@@ -1811,13 +1811,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Details of the associated end customer order
      *
-     * @param  string        $issuerassignedid  __BT-X-150, From EXTENDED__ Order number of the end customer
-     * @param  DateTime|null $issueddate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
+     * @param  string        $issuerAssignedId  __BT-X-150, From EXTENDED__ Order number of the end customer
+     * @param  DateTime|null $issueDate         __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToUltimateCustomerOrderReferencedDocument", $additionalrefdoc);
         return $this;
     }
@@ -1838,13 +1838,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Detailed information on the actual delivery
      *
-     * @param  string        $issuerassignedid __BT-16, From BASIC WL__ Shipping notification reference
-     * @param  DateTime|null $issueddate       __BT-X-200, From EXTENDED__ Shipping notification date
+     * @param  string        $issuerAssignedId __BT-16, From BASIC WL__ Shipping notification reference
+     * @param  DateTime|null $issueDate        __BT-X-200, From EXTENDED__ Shipping notification date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentDespatchAdviceReferencedDocument(?string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentDespatchAdviceReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
         return $this;
     }
@@ -1852,13 +1852,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the associated goods receipt notification
      *
-     * @param  string        $issuerassignedid __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
-     * @param  DateTime|null $issueddate       __BT-X-201, From EXTENDED__ Goods receipt date
+     * @param  string        $issuerAssignedId __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
+     * @param  DateTime|null $issueDate       __BT-X-201, From EXTENDED__ Goods receipt date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentReceivingAdviceReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentReceivingAdviceReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
         return $this;
     }
@@ -1866,13 +1866,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the associated delivery bill
      *
-     * @param  string        $issuerassignedid  __BT-X-202, From EXTENDED__ Delivery slip number
-     * @param  DateTime|null $issueddate        __BT-X-203, From EXTENDED__ Delivery slip date
+     * @param  string        $issuerAssignedId  __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  DateTime|null $issueDate        __BT-X-203, From EXTENDED__ Delivery slip date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentDeliveryNoteReferencedDocument(string $issuerassignedid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentDeliveryNoteReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, null, null, null, null, $issueddate, null);
+        $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
         return $this;
     }
@@ -1901,7 +1901,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * element must therefore not differ in the repetitions. The elements ApplicableTradeSettlementFinancialCard
      * and PayerPartyDebtorFinancialAccount must not be specified for bank transfers.
      *
-     * @param string      $typecode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param string      $typeCode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * - 10: cash
      * - 20: check
      * - 30: transfer
@@ -1923,11 +1923,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentMean(string $typecode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
+    public function addDocumentPaymentMean(string $typeCode, ?string $information = null, ?string $cardType = null, ?string $cardId = null, ?string $cardHolderName = null, ?string $buyerIban = null, ?string $payeeIban = null, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null): ZugferdDocumentBuilder
     {
         $cardId = substr($cardId ?? "", -4);
 
-        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType($typecode, $information);
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType($typeCode, $information);
         $financialCard = $this->getObjectHelper()->getTradeSettlementFinancialCardType($cardType, $cardId, $cardHolderName);
         $buyerfinancialaccount = $this->getObjectHelper()->getDebtorFinancialAccountType($buyerIban);
         $payeefinancialaccount = $this->getObjectHelper()->getCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);
@@ -2098,14 +2098,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Get detailed information on the billing period
      *
-     * @param  DateTime|null $startdate   __BT-73, From BASIC WL__ Start of the billing period
+     * @param  DateTime|null $startDate   __BT-73, From BASIC WL__ Start of the billing period
      * @param  DateTime|null $endDate     __BT-74, From BASIC WL__ End of the billing period
      * @param  string|null   $description __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBillingPeriod(?DateTime $startdate, ?DateTime $endDate, ?string $description): ZugferdDocumentBuilder
+    public function setDocumentBillingPeriod(?DateTime $startDate, ?DateTime $endDate, ?string $description): ZugferdDocumentBuilder
     {
-        $period = $this->getObjectHelper()->getSpecifiedPeriodType($startdate, $endDate, null, $description);
+        $period = $this->getObjectHelper()->getSpecifiedPeriodType($startDate, $endDate, null, $description);
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setBillingSpecifiedPeriod", $period);
         return $this;
     }
@@ -2311,12 +2311,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
      * Cross Industry Invoice (CII).
      *
-     * @param  string $buyerreference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @param  string $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentBuyerReference(?string $buyerreference): ZugferdDocumentBuilder
+    public function setDocumentBuyerReference(?string $buyerReference): ZugferdDocumentBuilder
     {
-        $reference = $this->getObjectHelper()->getTextType($buyerreference);
+        $reference = $this->getObjectHelper()->getTextType($buyerReference);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
         return $this;
     }
@@ -2455,15 +2455,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string      $description           __BT-160, From EN 16931__ The name of the attribute or property of the product such as "Colour"
      * @param  string      $value                 __BT-161, From EN 16931__ The value of the attribute or property of the product such as "Red"
-     * @param  string|null $typecode              __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
+     * @param  string|null $typeCode              __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
      * @param  float|null  $valueMeasure          __BT-X-12, From EXTENDED__ Value of the product property (numerical measured variable)
      * @param  string|null $valueMeasureUnitCode  __BT-X-12-0, From EXTENDED__ Unit of measurement code
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionProductCharacteristic(string $description, string $value, ?string $typecode = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null): ZugferdDocumentBuilder
+    public function addDocumentPositionProductCharacteristic(string $description, string $value, ?string $typeCode = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null): ZugferdDocumentBuilder
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
-        $productCharacteristic = $this->getObjectHelper()->getProductCharacteristicType($typecode, $description, $valueMeasure, $valueMeasureUnitCode, $value);
+        $productCharacteristic = $this->getObjectHelper()->getProductCharacteristicType($typeCode, $description, $valueMeasure, $valueMeasureUnitCode, $value);
         $this->getObjectHelper()->tryCall($product, "addToApplicableProductCharacteristic", $productCharacteristic);
         return $this;
     }
@@ -2473,14 +2473,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string      $classCode      __BT-158, From EN 16931__ Item classification identifier. Classification codes are used for grouping similar items that can serve different purposes, such as public procurement (according to the Common Procurement Vocabulary ([CPV]), e-commerce (UNSPSC), etc.
      * @param  string|null $className      __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality.
-     * @param  string|null $listID         __BT-158-1, From EN 16931__ The identifier for the identification scheme of the item classification identifier. The identification scheme must be selected from the entries in UNTDID 7143 [6].
-     * @param  string|null $listVersionID  __BT-158-2, From EN 16931__ The version of the identification scheme
+     * @param  string|null $listId         __BT-158-1, From EN 16931__ The identifier for the identification scheme of the item classification identifier. The identification scheme must be selected from the entries in UNTDID 7143 [6].
+     * @param  string|null $listVersionId  __BT-158-2, From EN 16931__ The version of the identification scheme
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionProductClassification(string $classCode, ?string $className = null, ?string $listID = null, ?string $listVersionID = null): ZugferdDocumentBuilder
+    public function addDocumentPositionProductClassification(string $classCode, ?string $className = null, ?string $listId = null, ?string $listVersionId = null): ZugferdDocumentBuilder
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
-        $productClassification = $this->getObjectHelper()->getProductClassificationType($classCode, $className, $listID, $listVersionID);
+        $productClassification = $this->getObjectHelper()->getProductClassificationType($classCode, $className, $listId, $listVersionId);
         $this->getObjectHelper()->tryCall($product, "addToDesignatedProductClassification", $productClassification);
         return $this;
     }
@@ -2524,14 +2524,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of a sales order reference
      *
-     * @param  string        $issuerassignedid __BT-X-537, From EXTENDED__ Document number of a sales order reference
-     * @param  string        $lineid           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
-     * @param  DateTime|null $issueddate       __BT-X-539, From EXTENDED__ Date of sales order
+     * @param  string        $issuerAssignedId __BT-X-537, From EXTENDED__ Document number of a sales order reference
+     * @param  string        $lineId           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
+     * @param  DateTime|null $issueDate        __BT-X-539, From EXTENDED__ Date of sales order
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionSellerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionSellerOrderReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "setSellerOrderReferencedDocument", $buyerorderrefdoc);
         return $this;
@@ -2540,14 +2540,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related buyer order position
      *
-     * @param  string        $issuerassignedid __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  string        $lineid           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
-     * @param  DateTime|null $issueddate       __BT-X-22, From EXTENDED__ Date of order
+     * @param  string        $issuerAssignedId __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  string        $lineId           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
+     * @param  DateTime|null $issueDate        __BT-X-22, From EXTENDED__ Date of order
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionBuyerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionBuyerOrderReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
         return $this;
@@ -2556,14 +2556,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated offer position
      *
-     * @param  string        $issuerassignedid __BT-X-310, From EXTENDED__ Offer number
-     * @param  string        $lineid           __BT-X-311, From EXTENDED__ Position identifier within the offer
-     * @param  DateTime|null $issueddate       __BT-X-312, From EXTENDED__ Date of offder
+     * @param  string        $issuerAssignedId __BT-X-310, From EXTENDED__ Offer number
+     * @param  string        $lineId           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  DateTime|null $issueDate        __BT-X-312, From EXTENDED__ Date of offder
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionQuotationReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionQuotationReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "setQuotationReferencedDocument", $quotationrefdoc);
         return $this;
@@ -2572,14 +2572,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related contract position
      *
-     * @param  string        $issuerassignedid  __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  string        $lineid            __BT-X-25, From EXTENDED__ Identifier of the according contract position
-     * @param  DateTime|null $issueddate        __BT-X-26, From EXTENDED__ Contract date
+     * @param  string        $issuerAssignedId  __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  string        $lineId            __BT-X-25, From EXTENDED__ Identifier of the according contract position
+     * @param  DateTime|null $issueDate         __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionContractReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionContractReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "setContractReferencedDocument", $contractrefdoc);
         return $this;
@@ -2597,19 +2597,19 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *   ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *   documents
      *
-     * @param  string        $issuerassignedid    __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string        $typecode            __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $uriid               __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  string|null   $lineid              __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  string        $issuerAssignedId    __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string        $typeCode            __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null   $uriId               __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  string|null   $lineId              __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
      * @param  string|null   $name                __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null   $reftypecode         __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null $issueddate          __BT-X-33, From EXTENDED__ Document date
-     * @param  string|null   $binarydatafilename  __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null   $refTypeCode         __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null $issueDate           __BT-X-33, From EXTENDED__ Document date
+     * @param  string|null   $binaryDataFilename  __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionAdditionalReferencedDocument(string $issuerassignedid, string $typecode, ?string $uriid = null, ?string $lineid = null, ?string $name = null, ?string $reftypecode = null, ?DateTime $issueddate = null, ?string $binarydatafilename = null): ZugferdDocumentBuilder
+    public function addDocumentPositionAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, ?string $lineId = null, ?string $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
     {
-        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, $uriid, $lineid, $typecode, $name, $reftypecode, $issueddate, $binarydatafilename);
+        $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, $lineId, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "addToAdditionalReferencedDocument", $contractrefdoc);
         return $this;
@@ -2618,14 +2618,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a referennce of a associated end customer order
      *
-     * @param  string        $issuerassignedid  __BT-X-43, From EXTENDED__ Order number of the end customer
-     * @param  string        $lineid            __BT-X-44, From EXTENDED__ Order item (end customer)
-     * @param  DateTime|null $issueddate        __BT-X-45, From EXTENDED__ Document date of end customer order
+     * @param  string        $issuerAssignedId  __BT-X-43, From EXTENDED__ Order number of the end customer
+     * @param  string        $lineId            __BT-X-44, From EXTENDED__ Order item (end customer)
+     * @param  DateTime|null $issueDate         __BT-X-45, From EXTENDED__ Document date of end customer order
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionUltimateCustomerOrderReferencedDocument(string $issuerassignedid, string $lineid, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function addDocumentPositionUltimateCustomerOrderReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $ultimaterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $ultimaterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $this->getObjectHelper()->tryCall($positionagreement, "addToUltimateCustomerOrderReferencedDocument", $ultimaterefdoc);
         return $this;
@@ -2763,36 +2763,36 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Ship-To Trade party at position level
      *
-     * @param  string|null $taxregtype  __BT-X-66-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid    __BT-X-66, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType  __BT-X-66-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId    __BT-X-66, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentPositionShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Ship-To party at position level
      *
-     * @param  string|null $lineone      __BG-X-59, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BG-X-60, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BG-X-61, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BG-X-58, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BG-X-59, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BG-X-60, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BG-X-61, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BG-X-58, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BG-X-62, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
      * @param  string|null $country      __BG-X-63, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BG-X-64, From EXTENDED__ The product end users state
+     * @param  string|null $subDivision  __BG-X-64, From EXTENDED__ The product end users state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentPositionShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -2800,35 +2800,35 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Ship-To party on position level
      *
-     * @param  string|null $legalorgid    __BT-X-51, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT-X-51-0, From EXTENDED__ Registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT-X-52, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT-X-51, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT-X-51-0, From EXTENDED__ Registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT-X-52, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentPositionShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Ship-To party on position level
      *
-     * @param  string|null $contactpersonname      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactfaxno           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactemailadd        __BT-X-57, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress    __BT-X-57, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentPositionShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -2836,18 +2836,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an additional contact to the Ship-To party on position level
      *
-     * @param  string|null $contactpersonname      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactfaxno           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactemailadd        __BT-X-57, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress    __BT-X-57, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentPositionShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -2886,36 +2886,36 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Ship-To Trade party on position level
      *
-     * @param  string|null $taxregtype  __BT-X-84-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxregid    __BT-X-84, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType  __BT-X-84-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId    __BT-X-84, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionUltimateShipToTaxRegistration(?string $taxregtype = null, ?string $taxregid = null): ZugferdDocumentBuilder
+    public function addDocumentPositionUltimateShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
-        $taxreg = $this->getObjectHelper()->getTaxRegistrationType($taxregtype, $taxregid);
-        $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxreg);
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+        $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
         return $this;
     }
 
     /**
      * Sets the postal address of the Ship-To party on position level
      *
-     * @param  string|null $lineone      __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $linetwo      __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $linethree    __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postcode     __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $lineOne      __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo      __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree    __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode     __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
      * @param  string|null $city         __BT_X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
      * @param  string|null $country      __BT_X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subdivision  __BT_X-82, From EXTENDED__ The party's state
+     * @param  string|null $subDivision  __BT_X-82, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionUltimateShipToAddress(?string $lineone = null, ?string $linetwo = null, ?string $linethree = null, ?string $postcode = null, ?string $city = null, ?string $country = null, ?string $subdivision = null): ZugferdDocumentBuilder
+    public function setDocumentPositionUltimateShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
-        $address = $this->getObjectHelper()->getTradeAddress($lineone, $linetwo, $linethree, $postcode, $city, $country, $subdivision);
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "setPostalTradeAddress", $address);
         return $this;
     }
@@ -2923,35 +2923,35 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Ship-To party on position level
      *
-     * @param  string|null $legalorgid    __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalorgtype  __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalorgname  __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId    __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType  __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName  __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionUltimateShipToLegalOrganisation(?string $legalorgid, ?string $legalorgtype, ?string $legalorgname): ZugferdDocumentBuilder
+    public function setDocumentPositionUltimateShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
-        $legalorg = $this->getObjectHelper()->getLegalOrganization($legalorgid, $legalorgtype, $legalorgname);
-        $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalorg);
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+        $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
         return $this;
     }
 
     /**
      * Set contact of the Ship-To party on position level
      *
-     * @param  string|null $contactpersonname      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactfaxno           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactemailadd        __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress    __BT_X-75, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function setDocumentPositionUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCallIfMethodExists($ultimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
         return $this;
     }
@@ -2959,18 +2959,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an additional contact of the Ship-To party on position level
      *
-     * @param  string|null $contactpersonname      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactdepartmentname  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactphoneno         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactfaxno           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactemailadd        __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress    __BT_X-75, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionUltimateShipToContact(?string $contactpersonname, ?string $contactdepartmentname, ?string $contactphoneno, ?string $contactfaxno, ?string $contactemailadd): ZugferdDocumentBuilder
+    public function addDocumentPositionUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
-        $contact = $this->getObjectHelper()->getTradeContact($contactpersonname, $contactdepartmentname, $contactphoneno, $contactfaxno, $contactemailadd);
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToDefinedTradeContact", $contact);
         return $this;
     }
@@ -2992,15 +2992,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated shipping notification on item level
      *
-     * @param  string        $issuerassignedid  __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param  string|null   $lineid            __BT-X-87, From EXTENDED__ Shipping notification position
-     * @param  DateTime|null $issueddate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
+     * @param  string        $issuerAssignedId  __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  string|null   $lineId            __BT-X-87, From EXTENDED__ Shipping notification position
+     * @param  DateTime|null $issueDate         __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionDespatchAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionDespatchAdviceReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
-        $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($positiondelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
         return $this;
     }
@@ -3008,15 +3008,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated goods receipt notification
      *
-     * @param  string        $issuerassignedid  __BT-X-89, From EXTENDED__ Goods receipt number
-     * @param  string|null   $lineid            __BT-X-90, From EXTENDED__ Goods receipt position
-     * @param  DateTime|null $issueddate        __BT-X-91, From EXTENDED__ Date of Goods receipt
+     * @param  string        $issuerAssignedId  __BT-X-89, From EXTENDED__ Goods receipt number
+     * @param  string|null   $lineId            __BT-X-90, From EXTENDED__ Goods receipt position
+     * @param  DateTime|null $issueDate         __BT-X-91, From EXTENDED__ Date of Goods receipt
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionReceivingAdviceReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionReceivingAdviceReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
-        $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($positiondelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
         return $this;
     }
@@ -3024,15 +3024,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated delivery bill on item level
      *
-     * @param  string        $issuerassignedid  __BT-X-92, From EXTENDED__ Delivery note number
-     * @param  string|null   $lineid            __BT-X-93, From EXTENDED__ Delivery note position
-     * @param  DateTime|null $issueddate        __BT-X-94, From EXTENDED__ Date of Delivery note
+     * @param  string        $issuerAssignedId  __BT-X-92, From EXTENDED__ Delivery note number
+     * @param  string|null   $lineId            __BT-X-93, From EXTENDED__ Delivery note position
+     * @param  DateTime|null $issueDate         __BT-X-94, From EXTENDED__ Date of Delivery note
      * @return ZugferdDocumentBuilder
      */
-    public function setDocumentPositionDeliveryNoteReferencedDocument(string $issuerassignedid, ?string $lineid = null, ?DateTime $issueddate = null): ZugferdDocumentBuilder
+    public function setDocumentPositionDeliveryNoteReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
-        $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerassignedid, null, $lineid, null, null, null, $issueddate, null);
+        $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $this->getObjectHelper()->tryCall($positiondelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
         return $this;
     }
@@ -3102,6 +3102,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $summation = $this->getObjectHelper()->getTradeSettlementLineMonetarySummationType($lineTotalAmount);
+        $this->getObjectHelper()->tryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+        return $this;
+    }
+
+    /**
+     * Set information on item totals (with support for EXTENDED profile)
+     *
+     * @param  float $lineTotalAmount             __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  float $chargeTotalAmount           __BT-X-327, From EXTENDED__ Total amount of item surcharges
+     * @param  float $allowanceTotalAmount        __BT-X-328, From EXTENDED__ Total amount of item discounts
+     * @param  float $taxTotalAmount              __BT-X-329, From EXTENDED__ Total amount of item taxes
+     * @param  float $grandTotalAmount            __BT-X-330, From EXTENDED__ Total gross amount of the item
+     * @param  float $totalAllowanceChargeAmount  __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionLineSummationExt(float $lineTotalAmount, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ZugferdDocumentBuilder
+    {
+        $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
+        $summation = $this->getObjectHelper()->getTradeSettlementLineMonetarySummationType($lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxTotalAmount, $grandTotalAmount, $totalAllowanceChargeAmount);
         $this->getObjectHelper()->tryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
         return $this;
     }
