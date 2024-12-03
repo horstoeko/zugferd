@@ -1327,8 +1327,12 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
          */
-        $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 2.0);
+        $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 6.0, 3.0, 4.0, 5.0, 2.0);
         $this->assertEquals(1.0, $summation->getLineTotalAmount()->value());
+        $this->assertEquals(6.0, $summation->getChargeTotalAmount()->value());
+        $this->assertEquals(3.0, $summation->getAllowanceTotalAmount()->value());
+        $this->assertEquals(4.0, $summation->getTaxTotalAmount()->value());
+        $this->assertEquals(5.0, $summation->getGrandTotalAmount()->value());
         $this->assertEquals(2.0, $summation->getTotalAllowanceChargeAmount()->value());
     }
 
@@ -1337,7 +1341,7 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
          */
-        $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(null, null);
+        $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType();
         $this->assertNull($summation);
     }
 

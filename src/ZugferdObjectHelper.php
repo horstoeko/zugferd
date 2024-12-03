@@ -1374,11 +1374,15 @@ class ZugferdObjectHelper
     /**
      * Get Line Summation
      *
-     * @param  float|null $lineTotalAmount
-     * @param  float|null $totalAllowanceChargeAmount
-     * @return object|null
+     * @param  null|float $lineTotalAmount
+     * @param  null|float $chargeTotalAmount
+     * @param  null|float $allowanceTotalAmount
+     * @param  null|float $taxTotalAmount
+     * @param  null|float $grandTotalAmount
+     * @param  null|float $totalAllowanceChargeAmount
+     * @return null|object
      */
-    public function getTradeSettlementLineMonetarySummationType(?float $lineTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ?object
+    public function getTradeSettlementLineMonetarySummationType(?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1387,6 +1391,10 @@ class ZugferdObjectHelper
         $tradeSettlementLineMonetarySummationType = $this->createClassInstance('ram\TradeSettlementLineMonetarySummationType');
 
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setLineTotalAmount", $this->getAmountType($lineTotalAmount));
+        $this->tryCall($tradeSettlementLineMonetarySummationType, "setChargeTotalAmount", $this->getAmountType($chargeTotalAmount));
+        $this->tryCall($tradeSettlementLineMonetarySummationType, "setAllowanceTotalAmount", $this->getAmountType($allowanceTotalAmount));
+        $this->tryCall($tradeSettlementLineMonetarySummationType, "setTaxTotalAmount", $this->getAmountType($taxTotalAmount));
+        $this->tryCall($tradeSettlementLineMonetarySummationType, "setGrandTotalAmount", $this->getAmountType($grandTotalAmount));
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setTotalAllowanceChargeAmount", $this->getAmountType($totalAllowanceChargeAmount));
 
         return $tradeSettlementLineMonetarySummationType;
