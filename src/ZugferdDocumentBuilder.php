@@ -1946,7 +1946,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _SEPA Credit Transfer_
      *
-     * @param  string $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
+     * @param  string $payeeIban             __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
@@ -1972,6 +1972,34 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Sets the document payment means to _Non-SEPA Credit Transfer_
+     *
+     * @param  string $payeeIban             __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
+     * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
+     * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
+     * @param  string|null $paymentReference __BT-83, From BASIC WL__ A text value used to link the payment to the invoice issued by the seller
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentMeanToCreditTransferNonSepa(string $payeeIban, ?string $payeeAccountName = null, ?string $payeePropId = null, ?string $payeeBic = null, ?string $paymentReference = null): ZugferdDocumentBuilder
+    {
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_30);
+        $payeefinancialaccount = $this->getObjectHelper()->getCreditorFinancialAccountType($payeeIban, $payeeAccountName, $payeePropId);
+        $payeefinancialInstitution = $this->getObjectHelper()->getCreditorFinancialInstitutionType($payeeBic);
+
+        $this->getObjectHelper()->tryCall($paymentMeans, "setPayeePartyCreditorFinancialAccount", $payeefinancialaccount);
+        $this->getObjectHelper()->tryCall($paymentMeans, "setPayeeSpecifiedCreditorFinancialInstitution", $payeefinancialInstitution);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
+
+        if (!is_null($paymentReference)) {
+            $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+        }
+
+        return $this;
+    }
+
+    /**
      * Sets the document payment means to _SEPA Direct Debit_
      *
      * @param  string $buyerIban                 __BT-91, From BASIC WL__ The account to be debited by the direct debit
@@ -1981,6 +2009,29 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentPaymentMeanToDirectDebit(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
     {
         $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_59);
+        $buyerfinancialaccount = $this->getObjectHelper()->getDebtorFinancialAccountType($buyerIban);
+
+        $this->getObjectHelper()->tryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeSettlementPaymentMeans", $paymentMeans);
+
+        if (!is_null($creditorReferenceID)) {
+            $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets the document payment means to _Non-SEPA Direct Debit_
+     *
+     * @param  string $buyerIban                 __BT-91, From BASIC WL__ The account to be debited by the direct debit
+     * @param  string|null $creditorReferenceID  __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPaymentMeanToDirectDebitNonSepa(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
+    {
+        $paymentMeans = $this->getObjectHelper()->getTradeSettlementPaymentMeansType(ZugferdPaymentMeans::UNTDID_4461_49);
         $buyerfinancialaccount = $this->getObjectHelper()->getDebtorFinancialAccountType($buyerIban);
 
         $this->getObjectHelper()->tryCall($paymentMeans, "setPayerPartyDebtorFinancialAccount", $buyerfinancialaccount);
