@@ -135,6 +135,44 @@ jobs:
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
           rm -rf build/validator
 
+      - name: Run Tests (VeraPDF)
+        continue-on-error: true
+        run: |
+          set -e
+          rm -rf $VERAPDFPATH
+          mkdir $VERAPDFPATH
+          wget $VERAPDFURL -O $VERAPDFPATH/$VERAPDFZIPFILENAME
+          unzip -j $VERAPDFPATH/$VERAPDFZIPFILENAME -d $VERAPDFPATH
+          rm -f $VERAPDFPATH/$VERAPDFZIPFILENAME
+          echo "Creating veraPDF install config"
+          echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>
+            <AutomatedInstallation langpack=\"eng\">
+                <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id=\"welcome\"/>
+                <com.izforge.izpack.panels.target.TargetPanel id=\"install_dir\">
+                    <installpath>$(pwd)/$VERAPDFPATH</installpath>
+                </com.izforge.izpack.panels.target.TargetPanel>
+                <com.izforge.izpack.panels.packs.PacksPanel id=\"sdk_pack_select\">
+                    <pack index=\"0\" name=\"veraPDF Mac and *nix Scripts\" selected=\"true\"/>
+                    <pack index=\"1\" name=\"veraPDF Validation model\" selected=\"true\"/>
+                    <pack index=\"2\" name=\"veraPDF Documentation\" selected=\"true\"/>
+                    <pack index=\"3\" name=\"veraPDF Sample Plugins\" selected=\"true\"/>
+                </com.izforge.izpack.panels.packs.PacksPanel>
+                <com.izforge.izpack.panels.install.InstallPanel id=\"install\"/>
+                <com.izforge.izpack.panels.finish.FinishPanel id=\"finish\"/>
+            </AutomatedInstallation>" > $VERAPDFPATH/install.xml
+          echo "Installing veraPDF"
+          VERAPDFINSTALLJAR=$(find $VERAPDFPATH -type f -name "*.jar" | head -n 1); [[ -z "$VERAPDFINSTALLJAR" ]] && { echo "No veraPDF installer found" >&2; exit 1; } || echo "veraPDF installer fount at $VERAPDFINSTALLJAR"
+          java -jar $VERAPDFINSTALLJAR $VERAPDFPATH/install.xml
+          echo "Creating test PDF"
+          php -f examples/En16931SimpleWithPdf.php
+          echo "Running PDF validation"
+          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text examples/fullpdf.pdf)
+          echo "Result of validation"
+          echo $VERAPDFRESULT
+          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
+          echo "Removing veraPDF"
+          rm -rf $VERAPDFPATH
+
       - name: Documentation
         continue-on-error: true
         run: |
