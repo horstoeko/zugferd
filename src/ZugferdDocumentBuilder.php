@@ -2289,12 +2289,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string        $description                 __BT-20, From _EN 16931 XRECHNUNG__ Text to add
      * @param  int[]         $paymentDiscountDays         __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
      * @param  float[]       $paymentDiscountPercents     __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
-     * @param  float[]       $paymentDiscountBaeeAmounts  __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
+     * @param  float[]       $paymentDiscountBaseAmounts  __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
      * @param  DateTime|null $dueDate                     __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
      * @param  string|null   $directDebitMandateID        __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPaymentTermXRechnung(string $description, array $paymentDiscountDays = [], array $paymentDiscountPercents = [], array $paymentDiscountBaeeAmounts = [], ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
+    public function addDocumentPaymentTermXRechnung(string $description, array $paymentDiscountDays = [], array $paymentDiscountPercents = [], array $paymentDiscountBaseAmounts = [], ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
     {
         $paymentTermsDescription = [];
 
@@ -2313,12 +2313,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         foreach ($paymentDiscountDays as $paymentDiscountDayIndex => $paymentDiscountDay) {
             $paymentTermsDescription[] =
                 sprintf(
-                    !isset($paymentDiscountBaeeAmounts[$paymentDiscountDayIndex])
+                    !isset($paymentDiscountBaseAmounts[$paymentDiscountDayIndex])
                         ? "#SKONTO#TAGE=%s#PROZENT=%s#"
                         : "#SKONTO#TAGE=%s#PROZENT=%s#BASISBETRAG=%s#",
                     number_format($paymentDiscountDay, 0, ".", ""),
                     number_format($paymentDiscountPercents[$paymentDiscountDayIndex] ?? 0.0, 2, ".", ""),
-                    number_format($paymentDiscountBaeeAmounts[$paymentDiscountDayIndex] ?? 0.0, 2, ".", "")
+                    number_format($paymentDiscountBaseAmounts[$paymentDiscountDayIndex] ?? 0.0, 2, ".", "")
                 );
         }
 
