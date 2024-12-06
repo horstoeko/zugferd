@@ -396,7 +396,7 @@ function createCodeClasses(array $filesToDownload): void
 
 $filesToDownload = [
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -418,7 +418,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -441,7 +441,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -464,7 +464,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -487,7 +487,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -507,7 +507,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -527,7 +527,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -547,7 +547,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -567,7 +567,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -587,7 +587,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
@@ -607,7 +607,7 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
     [
-        DOWNLOADDEF_KEY_ENABLED => false,
+        DOWNLOADDEF_KEY_ENABLED => true,
         DOWNLOADDEF_LIB_NAME => 'zugferd',
         DOWNLOADDEF_LIB_TITLE => 'Zugferd',
         DOWNLOADDEF_KEY_URL => [
