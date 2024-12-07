@@ -340,6 +340,20 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
+     * Set the the deterministic mode. This mode should only be used
+     * for testing purposes
+     *
+     * @param  bool $deterministicModeEnabled
+     * @return static
+     */
+    public function setDeterministicModeEnabled(bool $deterministicModeEnabled)
+    {
+        $this->pdfWriter->setDeterministicModeEnabled($deterministicModeEnabled);
+
+        return $this;
+    }
+
+    /**
      * Get the content of XML to attach
      *
      * @return string
