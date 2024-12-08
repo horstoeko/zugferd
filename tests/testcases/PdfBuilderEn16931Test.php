@@ -2,10 +2,10 @@
 
 namespace horstoeko\zugferd\tests\testcases;
 
-use InvalidArgumentException;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
@@ -251,7 +251,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileFileIsEmpty(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ZugferdInvalidArgumentException::class);
         $this->expectExceptionMessage("You must specify a filename for the content to attach");
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
@@ -404,7 +404,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileByContentEmptyContent(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ZugferdInvalidArgumentException::class);
         $this->expectExceptionMessage("You must specify a content to attach");
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
@@ -413,7 +413,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileByContentEmptyFilename(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ZugferdInvalidArgumentException::class);
         $this->expectExceptionMessage("You must specify a filename for the content to attach");
 
         $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";

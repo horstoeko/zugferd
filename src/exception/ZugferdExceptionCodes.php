@@ -32,4 +32,5 @@ class ZugferdExceptionCodes
     public const NOPDFATTACHMENTFOUND = -1110;
     public const FILENOTFOUND = -2000;
     public const FILENOTREADABLE = -2001;
+    public const INVALIDARGUMENT = -3000;
 }

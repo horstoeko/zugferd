@@ -11,7 +11,6 @@ namespace horstoeko\zugferd;
 
 use DOMDocument;
 use DOMXpath;
-use InvalidArgumentException;
 use Throwable;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
@@ -19,6 +18,7 @@ use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
 use horstoeko\zugferd\ZugferdPackageVersion;
 use horstoeko\zugferd\ZugferdPdfWriter;
 use horstoeko\zugferd\ZugferdSettings;
@@ -240,7 +240,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
-     * @throws InvalidArgumentException
+     * @throws ZugferdInvalidArgumentException
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
      * @throws ZugferdUnknownMimetype
@@ -250,7 +250,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         // Checks that the file really exists
 
         if (empty($fullFilename)) {
-            throw new InvalidArgumentException("You must specify a filename for the content to attach");
+            throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
         }
 
         if (!file_exists($fullFilename)) {
@@ -285,7 +285,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
-     * @throws InvalidArgumentException
+     * @throws ZugferdInvalidArgumentException
      * @throws ZugferdUnknownMimetype
      */
     public function attachAdditionalFileByContent(string $content, string $filename, string $displayName = "", string $relationshipType = "")
@@ -293,13 +293,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         // Check content. The content must not be empty
 
         if (empty($content)) {
-            throw new InvalidArgumentException("You must specify a content to attach");
+            throw new ZugferdInvalidArgumentException("You must specify a content to attach");
         }
 
         // Check filename. The filename must not be empty
 
         if (empty($filename)) {
-            throw new InvalidArgumentException("You must specify a filename for the content to attach");
+            throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
         }
 
         // Mimetype for the file must exist
