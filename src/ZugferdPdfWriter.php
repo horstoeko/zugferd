@@ -80,11 +80,18 @@ class ZugferdPdfWriter extends PdfFpdi
     protected $openAttachmentPane = false;
 
     /**
+     * Internal flag deterministic mode. This mode should only be used
+     * for testing purposes
+     *
+     * @var boolean
+     */
+    protected $deterministicModeEnabled = false;
+
+    /**
      * Set the PDF version.
      *
-     * @param string $version     Contains the PDF version number.
-     * @param bool   $binary_data This is true for binary data
-     *
+     * @param  string $version     Contains the PDF version number.
+     * @param  bool   $binary_data This is true for binary data
      * @return void
      */
     public function setPdfVersion($version = '1.3', $binary_data = false): void
@@ -92,12 +99,11 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->PDFVersion = sprintf('%.1F', $version);
 
         if (true == $binary_data) {
-            $this->PDFVersion .=
-                "\n" . '%' .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256)) .
-                chr(rand(128, 256));
+            if ($this->deterministicModeEnabled === true) {
+                $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
+            } else {
+                $this->PDFVersion .= "\n" . '%' . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256));
+            }
         }
     }
 
@@ -176,9 +182,26 @@ class ZugferdPdfWriter extends PdfFpdi
      * The array with metadata information applied to the pdf
      * @return void
      */
-    public function setPdfMetadataInfos(array $metaDataInfos): void
+    public function setPdfMetadataInfos(array &$metaDataInfos): void
     {
+        if ($this->deterministicModeEnabled === true) {
+            $metaDataInfos['createdDate'] = date('Y-m-d\TH:i:s', strtotime("2000-01-01 23:59:59"));
+            $metaDataInfos['modifiedDate'] = date('Y-m-d\TH:i:s', strtotime("2000-01-01 23:59:59"));
+        }
+
         $this->metaDataInfos = $metaDataInfos;
+    }
+
+    /**
+     * Set the status of the deterministic mode. This mode should only be used
+     * for testing purposes
+     *
+     * @param  bool $deterministicModeEnabled
+     * @return void
+     */
+    public function setDeterministicModeEnabled(bool $deterministicModeEnabled): void
+    {
+        $this->deterministicModeEnabled = $deterministicModeEnabled;
     }
 
     /**
@@ -251,10 +274,14 @@ class ZugferdPdfWriter extends PdfFpdi
         if (false === $fc) {
             $this->Error('Cannot open file: ' . $file_info['file']);
         }
-        if (is_string($file_info['file'])) {
-            $md = @date('YmdHis', filemtime($file_info['file']));
+        if ($this->deterministicModeEnabled === true) {
+            $md = @date('YmdHis', strtotime("2000-01-01 23:59:59"));
         } else {
-            $md = @date('YmdHis');
+            if (is_string($file_info['file'])) {
+                $md = @date('YmdHis', filemtime($file_info['file']));
+            } else {
+                $md = @date('YmdHis');
+            }
         }
         $fc = gzcompress($fc);
         $this->_put('/Length ' . strlen($fc));
@@ -427,6 +454,20 @@ class ZugferdPdfWriter extends PdfFpdi
         $modified_id = md5($this->generateMetadataString("modified"));
 
         $this->_put(sprintf('/ID [<%s><%s>]', $created_id, $modified_id));
+    }
+
+    /**
+     * Put general information
+     *
+     * @return void
+     */
+    protected function _putinfo(): void
+    {
+        if ($this->deterministicModeEnabled === true) {
+            $this->CreationDate = strtotime("2000-01-01 23:59:59");
+        }
+
+        parent::_putinfo();
     }
 
     /**
