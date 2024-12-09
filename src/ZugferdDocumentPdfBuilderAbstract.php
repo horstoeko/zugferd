@@ -9,6 +9,7 @@
 
 namespace horstoeko\zugferd;
 
+use DateTime;
 use DOMDocument;
 use DOMXpath;
 use Throwable;
@@ -501,7 +502,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             'title' => $title,
             'subject' => $subject,
             'createdDate' => $invoiceInformations['date'],
-            'modifiedDate' => date('Y-m-d\TH:i:s') . '+00:00',
+            'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
         );
 
         return $pdfMetadata;
@@ -521,7 +522,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
         $date = $dateXpath->item(0)->nodeValue;
-        $dateReformatted = date('Y-m-d\TH:i:s', strtotime($date)) . '+00:00';
+        $dateReformatted = (new DateTime())->setTimestamp(strtotime($date))->format('Y-m-d\TH:i:sP');
 
         $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
         $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
