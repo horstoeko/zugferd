@@ -1437,6 +1437,9 @@ class ZugferdObjectHelper
         if (self::isNullOrEmpty($dateTimeString) || self::isNullOrEmpty($format)) {
             return null;
         }
+
+        $dateTimeString = trim($dateTimeString);
+
         if ($format == "102") {
             return DateTime::createFromFormat("Ymd", $dateTimeString);
         } elseif ($format == "101") {
