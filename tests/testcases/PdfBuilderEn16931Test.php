@@ -168,6 +168,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.84"
         $this->assertArrayHasKey("CreationDate", $pdfDetails); //"2020-12-09T05:19:39+00:00"
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails); //"1"
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -183,6 +187,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -542,6 +549,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -557,6 +568,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString('2000-01-01', $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -586,6 +600,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -601,6 +619,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -628,6 +649,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -643,6 +668,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -671,6 +699,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -686,6 +718,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -715,6 +750,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -730,6 +769,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -780,6 +822,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -795,6 +841,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("DummyTitle", $pdfDetails["Title"]);
+        $this->assertEquals("DummySubject", $pdfDetails["Subject"]);
+        $this->assertEquals("DummyAuthor", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -835,6 +884,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -850,6 +903,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
@@ -880,6 +936,10 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Title", $pdfDetails);
+        $this->assertArrayHasKey("Subject", $pdfDetails);
+        $this->assertArrayHasKey("Author", $pdfDetails);
+        $this->assertArrayHasKey("Keywords", $pdfDetails);
         $this->assertArrayHasKey("Pages", $pdfDetails);
         $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
         $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
@@ -895,6 +955,9 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
         $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["Title"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["Subject"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["Author"]);
         $this->assertEquals("1", $pdfDetails["Pages"]);
         $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
         $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
