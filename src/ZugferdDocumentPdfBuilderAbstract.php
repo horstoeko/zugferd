@@ -587,10 +587,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
 
-        $this->pdfWriter->SetAuthor($pdfMetadataInfos['author']);
-        $this->pdfWriter->SetKeywords($pdfMetadataInfos['keywords']);
-        $this->pdfWriter->SetTitle($pdfMetadataInfos['title']);
-        $this->pdfWriter->SetSubject($pdfMetadataInfos['subject']);
+        $this->pdfWriter->SetAuthor($pdfMetadataInfos['author'], true);
+        $this->pdfWriter->SetKeywords($pdfMetadataInfos['keywords'], true);
+        $this->pdfWriter->SetTitle($pdfMetadataInfos['title'], true);
+        $this->pdfWriter->SetSubject($pdfMetadataInfos['subject'], true);
     }
 
     /**
