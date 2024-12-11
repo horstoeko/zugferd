@@ -733,4 +733,14 @@ BatchMarkDownGenerator::generate([
 ], [
     'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setDeterministicModeEnabled',
     'horstoeko\zugferd\ZugferdDocumentPdfMerger::setDeterministicModeEnabled',
+    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAuthorTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAuthorTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setKeywordTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setKeywordTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setTitleTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setTitleTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setSubjectTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setSubjectTemplate',
+    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setMetaInformationCallback',
+    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setMetaInformationCallback',
 ]);
