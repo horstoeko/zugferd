@@ -20,7 +20,7 @@ class SettingsTest extends TestCase
         ZugferdSettings::setMeasureDecimals(2);
         ZugferdSettings::setDecimalSeparator(".");
         ZugferdSettings::setThousandsSeparator("");
-        ZugferdSettings::setIccProfileFilename("sRGB_v4_ICC.icc");
+        ZugferdSettings::setIccProfileFilename("sRGB2014.icc");
     }
 
     public function testAmountDecimals(): void
@@ -103,7 +103,7 @@ class SettingsTest extends TestCase
 
     public function testIccProfileFilename(): void
     {
-        $this->assertEquals("sRGB_v4_ICC.icc", ZugferdSettings::getIccProfileFilename());
+        $this->assertEquals("sRGB2014.icc", ZugferdSettings::getIccProfileFilename());
 
         ZugferdSettings::setIccProfileFilename("sRGB_v5_ICC.icc");
 

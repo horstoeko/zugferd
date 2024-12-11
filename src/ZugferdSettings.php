@@ -69,7 +69,7 @@ class ZugferdSettings
      *
      * @var string
      */
-    protected static $iccProfileFilename = "sRGB_v4_ICC.icc";
+    protected static $iccProfileFilename = "sRGB2014.icc";
 
     /**
      * The filename of the XMP meta data
