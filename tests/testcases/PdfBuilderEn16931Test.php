@@ -571,4 +571,342 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertStringContainsString('2000-01-01', $pdfDetails["xmp:createdate"]);
         $this->assertStringContainsString('2000-01-01', $pdfDetails["xmp:modifydate"]);
     }
+
+    public function testCustomMetaInformation(): void
+    {
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+        $pdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("FacturX/ZUGFeRD Invoice 471102 dated 2018-03-05 issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+        $pdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');
+        $pdfBuilder->setSubjectTemplate('%2$s-Document, Issued by %3$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $whichArray = [];
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setMetaInformationCallback(function ($which) use (&$whichArray) {
+            $whichArray[] = $which;
+
+            $this->assertIsString($which);
+            $this->assertTrue(in_array($which, ['author', 'keywords', 'title', 'subject']));
+
+            if ($which === 'title') {
+                return "DummyTitle";
+            }
+            if ($which === 'author') {
+                return "DummyAuthor";
+            }
+            if ($which === 'subject') {
+                return "DummySubject";
+            }
+        });
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $this->assertNotEmpty($whichArray);
+        $this->assertCount(4, $whichArray);
+        $this->assertTrue(in_array('author', $whichArray));
+        $this->assertTrue(in_array('keywords', $whichArray));
+        $this->assertTrue(in_array('title', $whichArray));
+        $this->assertTrue(in_array('subject', $whichArray));
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("DummyTitle", $pdfDetails["dc:title"]);
+        $this->assertEquals("DummyAuthor", $pdfDetails["dc:creator"]);
+        $this->assertEquals("DummySubject", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setMetaInformationCallback(function ($which) use (&$whichArray) {
+            if ($which === 'title') {
+                return "";
+            }
+            if ($which === 'author') {
+                return "";
+            }
+            if ($which === 'subject') {
+                return "";
+            }
+        });
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+        $pdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');
+        $pdfBuilder->setSubjectTemplate('%2$s-Document, Issued by %3$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+
+        $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
+        $pdfBuilder->setMetaInformationCallback(null);
+        $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+        $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+        $pdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');
+        $pdfBuilder->setSubjectTemplate('%2$s-Document, Issued by %3$s');
+        $pdfBuilder->generateDocument();
+        $pdfBuilder->saveDocument(self::$destPdfFilename);
+
+        $pdfParser = new PdfParser();
+        $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
+        $pdfDetails = $pdfParsed->getDetails();
+
+        $this->assertIsArray($pdfDetails);
+        $this->assertArrayHasKey("Producer", $pdfDetails);
+        $this->assertArrayHasKey("CreationDate", $pdfDetails);
+        $this->assertArrayHasKey("Pages", $pdfDetails);
+        $this->assertArrayHasKey("fx:documenttype", $pdfDetails);
+        $this->assertArrayHasKey("fx:documentfilename", $pdfDetails);
+        $this->assertArrayHasKey("fx:version", $pdfDetails);
+        $this->assertArrayHasKey("fx:conformancelevel", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:part", $pdfDetails);
+        $this->assertArrayHasKey("pdfaid:conformance", $pdfDetails);
+        $this->assertArrayHasKey("dc:title", $pdfDetails);
+        $this->assertArrayHasKey("dc:creator", $pdfDetails);
+        $this->assertArrayHasKey("dc:description", $pdfDetails);
+        $this->assertArrayHasKey("xmp:creatortool", $pdfDetails);
+        $this->assertArrayHasKey("xmp:createdate", $pdfDetails);
+        $this->assertArrayHasKey("xmp:modifydate", $pdfDetails);
+        $this->assertStringContainsString('FPDF', $pdfDetails["Producer"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["CreationDate"]);
+        $this->assertEquals("1", $pdfDetails["Pages"]);
+        $this->assertEquals("INVOICE", $pdfDetails["fx:documenttype"]);
+        $this->assertEquals("factur-x.xml", $pdfDetails["fx:documentfilename"]);
+        $this->assertEquals("1.0", $pdfDetails["fx:version"]);
+        $this->assertEquals("EN 16931", $pdfDetails["fx:conformancelevel"]);
+        $this->assertEquals("3", $pdfDetails["pdfaid:part"]);
+        $this->assertEquals("B", $pdfDetails["pdfaid:conformance"]);
+        $this->assertEquals("Lieferant GmbH : Invoice 471102", $pdfDetails["dc:title"]);
+        $this->assertEquals("Issued by seller with name Lieferant GmbH", $pdfDetails["dc:creator"]);
+        $this->assertEquals("Invoice-Document, Issued by Lieferant GmbH", $pdfDetails["dc:description"]);
+        $this->assertStringContainsString('Factur-X PHP library', $pdfDetails["xmp:creatortool"]);
+        $this->assertStringContainsString("2018-03-05", $pdfDetails["xmp:createdate"]);
+        $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
+    }
 }

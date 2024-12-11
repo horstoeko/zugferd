@@ -15,6 +15,7 @@ use DOMXpath;
 use Throwable;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
+use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
@@ -81,6 +82,41 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @var array
      */
     private $additionalFilesToAttach = [];
+
+    /**
+     * User-defined template for the author-metainformation
+     *
+     * @var string
+     */
+    private $authorTemplate = "";
+
+    /**
+     * User-defined template for the keyword-metainformation
+     *
+     * @var string
+     */
+    private $keywordTemplate = "";
+
+    /**
+     * User-defined template for the title-metainformation
+     *
+     * @var string
+     */
+    private $titleTemplate = "";
+
+    /**
+     * User-defined template for the subject-metainformation
+     *
+     * @var string
+     */
+    private $subjectTemplate = "";
+
+    /**
+     * User-defined callback function for all metainformation
+     *
+     * @var callable|null
+     */
+    private $metaInformationCallback = null;
 
     /**
      * Constructor
@@ -355,6 +391,75 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
+     * Set the template for the author meta information
+     *
+     * @param  string $authorTemplate
+     * @return static
+     */
+    public function setAuthorTemplate(string $authorTemplate)
+    {
+        $this->authorTemplate = $authorTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the keyword meta information
+     *
+     * @param  string $keywordTemplate
+     * @return static
+     */
+    public function setKeywordTemplate(string $keywordTemplate)
+    {
+        $this->keywordTemplate = $keywordTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the title meta information
+     *
+     * @param  string $titleTemplate
+     * @return static
+     */
+    public function setTitleTemplate(string $titleTemplate)
+    {
+        $this->titleTemplate = $titleTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the subject meta information
+     *
+     * @param  string $subjectTemplate
+     * @return static
+     */
+    public function setSubjectTemplate(string $subjectTemplate)
+    {
+        $this->subjectTemplate = $subjectTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the user defined callback for generating custom meta information
+     *
+     * @param  callable|null $callback
+     * @return static
+     */
+    public function setMetaInformationCallback(?callable $callback = null)
+    {
+        if (is_callable($callback)) {
+            $this->metaInformationCallback = $callback;
+        } else {
+            $this->metaInformationCallback = null;
+        }
+
+        return $this;
+    }
+
+    /**
      * Get the content of XML to attach
      *
      * @return string
@@ -493,14 +598,17 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $invoiceInformations = $this->extractInvoiceInformations();
 
         $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
+
+        $author = $invoiceInformations['seller'];
+        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']);
         $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
         $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
 
         $pdfMetadata = array(
-            'author' => $invoiceInformations['seller'],
-            'keywords' => sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']),
-            'title' => $title,
-            'subject' => $subject,
+            'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
+            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
+            'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
+            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformations),
             'createdDate' => $invoiceInformations['date'],
             'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
         );
@@ -566,5 +674,48 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         } catch (Throwable $ex) {
             return false;
         }
+    }
+
+    /**
+     * Returns the parsed meta-field content
+     *
+     * @param  string $which
+     * @param  string $default
+     * @param  array  $invoiceInformation
+     * @return string
+     */
+    private function buildMetadataField(string $which, string $default, array $invoiceInformation): string
+    {
+        $xmlContent = $this->getXmlContent();
+
+        if (is_callable($this->metaInformationCallback)) {
+            $callbackResult = call_user_func($this->metaInformationCallback, $which, $xmlContent, $invoiceInformation, $default);
+            if (!StringUtils::stringIsNullOrEmpty($callbackResult)) {
+                return $callbackResult;
+            }
+        }
+
+        $templates = [
+            'author' => $this->authorTemplate,
+            'keywords' => $this->keywordTemplate,
+            'title' => $this->titleTemplate,
+            'subject' => $this->subjectTemplate,
+        ];
+
+        if (!isset($templates[$which])) {
+            return $default;
+        }
+
+        if (StringUtils::stringIsNullOrEmpty($templates[$which])) {
+            return $default;
+        }
+
+        return sprintf(
+            $templates[$which],
+            $invoiceInformation['invoiceId'],
+            $invoiceInformation['docTypeName'],
+            $invoiceInformation['seller'],
+            $invoiceInformation['date']
+        );
     }
 }
