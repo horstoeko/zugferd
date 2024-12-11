@@ -810,7 +810,7 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
 
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->setMetaInformationCallback(function ($which) use (&$whichArray) {
+        $pdfBuilder->setMetaInformationCallback(function ($which) {
             if ($which === 'title') {
                 return "";
             }
