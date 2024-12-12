@@ -234,7 +234,7 @@ function getMarkDown($prevTag, $currTag)
             $commitSubjectIcons .= str_starts_with($commitSubject, '[FIX] ') ? ':bug: ' : '';
             $commitSubjectIcons .= str_starts_with($commitSubject, '[FEAT] ') ? ':new: ' : '';
 
-            $commitSubjectIcons .= ($commitSubjectIcons == "" ? ':new: ' : '');
+            $commitSubjectIcons .= ($commitSubjectIcons == "" ? ':new_moon: ' : '');
 
             $markDown[] = sprintf('| %6$s | [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls), $commitSubjectIcons);
         }
