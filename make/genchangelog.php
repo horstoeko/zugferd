@@ -163,6 +163,7 @@ function mustHideCommit(?string $commitHash = "", ?string $commitAuthor = "", ?s
         stricontains($commitSubject, 'Include PHPStan to ANT buildscript') ||
         stricontains($commitSubject, 'Better code quality using phpstan') ||
         stricontains($commitSubject, 'Code cleanup') ||
+        stricontains($commitSubject, 'Added workflows/build.ant.yml') ||
         (strcasecmp("Fixes", $commitSubject) === 0) ||
         (strcasecmp("Fix", $commitSubject) === 0)
     ) {
@@ -224,7 +225,7 @@ function getMarkDown($prevTag, $currTag)
             $commitAuthor = correctAuthor($commitAuthor);
             $commitSubject = correctSubject($commitSubject, $commitIssues);
 
-            $markDown[] = sprintf("| %s | %s | %s | %s | %s", $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssues));
+            $markDown[] = sprintf('| [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssues));
         }
 
         $markDown[] = '';
