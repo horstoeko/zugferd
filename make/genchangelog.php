@@ -228,6 +228,10 @@ function getMarkDown($prevTag, $currTag)
                 return sprintf('[%1$s](https://github.com/horstoeko/zugferd/issues/%2$s)', $issue, substr($issue, 1));
             }, $commitIssues);
 
+            $commitSubject = str_replace('[ENH] ', ':new: ', $commitSubject);
+            $commitSubject = str_replace('[DEPR] ', ':stop_button: ', $commitSubject);
+            $commitSubject = str_replace('[FIX] ', ':bug: ', $commitSubject);
+
             $markDown[] = sprintf('| [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls));
         }
 
