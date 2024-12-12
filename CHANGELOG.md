@@ -27,9 +27,9 @@
 
 | Hash    | Date    | Author  | Subject  | Issue(s)
 | :------ | :------ | :------ | :------- | :-----------: 
-| [d1f0782](https://github.com/horstoeko/zugferd/commit/d1f0782) | 2024-12-09 18:04:39 CET | HorstOeko | [ENH] Added tests for deterministic mode | 
-| [9aaebf3](https://github.com/horstoeko/zugferd/commit/9aaebf3) | 2024-12-09 17:50:12 CET | HorstOeko | [ENH] Improved PDF-Tests | 
-| [3ed50a4](https://github.com/horstoeko/zugferd/commit/3ed50a4) | 2024-12-09 16:39:59 CET | HorstOeko | [ENH] Use DateTime values with correct timezone | 
+| [d1f0782](https://github.com/horstoeko/zugferd/commit/d1f0782) | 2024-12-09 18:04:39 CET | HorstOeko | :new: Added tests for deterministic mode | 
+| [9aaebf3](https://github.com/horstoeko/zugferd/commit/9aaebf3) | 2024-12-09 17:50:12 CET | HorstOeko | :new: Improved PDF-Tests | 
+| [3ed50a4](https://github.com/horstoeko/zugferd/commit/3ed50a4) | 2024-12-09 16:39:59 CET | HorstOeko | :new: Use DateTime values with correct timezone | 
 | [9f42bf5](https://github.com/horstoeko/zugferd/commit/9f42bf5) | 2024-12-09 14:49:54 CET | HorstOeko | Fix DateTime-Handling (strings with linebreaks) | [#206](https://github.com/horstoeko/zugferd/issues/206)
 | [28f312c](https://github.com/horstoeko/zugferd/commit/28f312c) | 2024-12-09 14:43:34 CET | HorstOeko | Fix DateTime-Handling (strings with linebreaks) | [#206](https://github.com/horstoeko/zugferd/issues/206)
 
@@ -41,12 +41,12 @@
 
 | Hash    | Date    | Author  | Subject  | Issue(s)
 | :------ | :------ | :------ | :------- | :-----------: 
-| [5c67f6b](https://github.com/horstoeko/zugferd/commit/5c67f6b) | 2024-12-08 13:18:54 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract | 
-| [fcf7ffc](https://github.com/horstoeko/zugferd/commit/fcf7ffc) | 2024-12-07 10:36:47 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
-| [d799b4c](https://github.com/horstoeko/zugferd/commit/d799b4c) | 2024-12-08 10:00:57 CET | HorstOeko | [ENH] Changed InvalidArgumentException to ZugferdInvalidArgumentException | 
-| [38ea3f7](https://github.com/horstoeko/zugferd/commit/38ea3f7) | 2024-12-07 10:36:47 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
-| [e5e0498](https://github.com/horstoeko/zugferd/commit/e5e0498) | 2024-12-06 14:16:47 CET | HorstOeko | [ENH] Added ZugferdSpecificationVersions to get the latest used specification versions | 
-| [2a2ff79](https://github.com/horstoeko/zugferd/commit/2a2ff79) | 2024-12-06 05:06:00 CET | HorstOeko | [FIX] Typo in variable Name | 
+| [5c67f6b](https://github.com/horstoeko/zugferd/commit/5c67f6b) | 2024-12-08 13:18:54 CET | HorstOeko | :new: Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract | 
+| [fcf7ffc](https://github.com/horstoeko/zugferd/commit/fcf7ffc) | 2024-12-07 10:36:47 CET | HorstOeko | :new: Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
+| [d799b4c](https://github.com/horstoeko/zugferd/commit/d799b4c) | 2024-12-08 10:00:57 CET | HorstOeko | :new: Changed InvalidArgumentException to ZugferdInvalidArgumentException | 
+| [38ea3f7](https://github.com/horstoeko/zugferd/commit/38ea3f7) | 2024-12-07 10:36:47 CET | HorstOeko | :new: Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
+| [e5e0498](https://github.com/horstoeko/zugferd/commit/e5e0498) | 2024-12-06 14:16:47 CET | HorstOeko | :new: Added ZugferdSpecificationVersions to get the latest used specification versions | 
+| [2a2ff79](https://github.com/horstoeko/zugferd/commit/2a2ff79) | 2024-12-06 05:06:00 CET | HorstOeko | :bug: Typo in variable Name | 
 
 :exclamation: _There are 2 internal commit(s)_
 
@@ -56,7 +56,7 @@
 
 | Hash    | Date    | Author  | Subject  | Issue(s)
 | :------ | :------ | :------ | :------- | :-----------: 
-| [d66ee79](https://github.com/horstoeko/zugferd/commit/d66ee79) | 2024-12-05 05:40:27 CET | HorstOeko | [ENH] Added new methods addDocumentPaymentMeanToCreditTransferNonSepa and addDocumentPaymentMeanToDirectDebitNonSepa to ZugferdDocumentBuilder | 
+| [d66ee79](https://github.com/horstoeko/zugferd/commit/d66ee79) | 2024-12-05 05:40:27 CET | HorstOeko | :new: Added new methods addDocumentPaymentMeanToCreditTransferNonSepa and addDocumentPaymentMeanToDirectDebitNonSepa to ZugferdDocumentBuilder | 
 | [1e5ffc9](https://github.com/horstoeko/zugferd/commit/1e5ffc9) | 2024-12-03 11:38:35 CET | HorstOeko | Merged PR | [#195](https://github.com/horstoeko/zugferd/issues/195)
 | [dc5a881](https://github.com/horstoeko/zugferd/commit/dc5a881) | 2024-12-02 17:04:33 CET | Carsten Schmitz | Fixed issue: Using addDocumentAllowanceCharge with Code SERVICE_OUTSIDE_SCOPE_OF_TAX never passes validation as the Taxtype is omitted if you pass no VAT rate | 
 
@@ -68,9 +68,9 @@
 
 | Hash    | Date    | Author  | Subject  | Issue(s)
 | :------ | :------ | :------ | :------- | :-----------: 
-| [2dfebcb](https://github.com/horstoeko/zugferd/commit/2dfebcb) | 2024-12-03 05:52:07 CET | HorstOeko | [ENH] Added ZugferdDocumentReader::getDocumentPositionLineSummationExt to satisfy the EXTENDED profile | 
-| [ea74726](https://github.com/horstoeko/zugferd/commit/ea74726) | 2024-12-03 05:45:20 CET | HorstOeko | [ENH] Added ZugferdDocumentBuilder::setDocumentPositionLineSummationExt to satisfy the EXTENDED profile | 
-| [75ae647](https://github.com/horstoeko/zugferd/commit/75ae647) | 2024-12-03 05:35:33 CET | HorstOeko | [ENH] More parameters for LineMonetarySummation to satisfy the EXTENDED profile | 
+| [2dfebcb](https://github.com/horstoeko/zugferd/commit/2dfebcb) | 2024-12-03 05:52:07 CET | HorstOeko | :new: Added ZugferdDocumentReader::getDocumentPositionLineSummationExt to satisfy the EXTENDED profile | 
+| [ea74726](https://github.com/horstoeko/zugferd/commit/ea74726) | 2024-12-03 05:45:20 CET | HorstOeko | :new: Added ZugferdDocumentBuilder::setDocumentPositionLineSummationExt to satisfy the EXTENDED profile | 
+| [75ae647](https://github.com/horstoeko/zugferd/commit/75ae647) | 2024-12-03 05:35:33 CET | HorstOeko | :new: More parameters for LineMonetarySummation to satisfy the EXTENDED profile | 
 
 ## v1.0.89
 
@@ -88,7 +88,7 @@
 
 | Hash    | Date    | Author  | Subject  | Issue(s)
 | :------ | :------ | :------ | :------- | :-----------: 
-| [015544a](https://github.com/horstoeko/zugferd/commit/015544a) | 2024-12-02 05:00:26 CET | HorstOeko | [DEPR] deprecated ZugferdDocumentReader::getDocumentPositionLineSummation, use ZugferdDocumentReader::getDocumentPositionLineSummationSimple | 
+| [015544a](https://github.com/horstoeko/zugferd/commit/015544a) | 2024-12-02 05:00:26 CET | HorstOeko | :stop_button: deprecated ZugferdDocumentReader::getDocumentPositionLineSummation, use ZugferdDocumentReader::getDocumentPositionLineSummationSimple | 
 
 ## v1.0.87
 
