@@ -208,8 +208,8 @@ function getMarkDown($prevTag, $currTag)
     if (!empty($commits)) {
         $markDown[] = sprintf('``Previous version %s``', $prevTag);
         $markDown[] = '';
-        $markDown[] = '| Hash    | Date    | Author  | Subject  | Issue(s)';
-        $markDown[] = '| :------ | :------ | :------ | :------- | :-----------: ';
+        $markDown[] = '| Type | Hash    | Date    | Author  | Subject  | Issue(s)';
+        $markDown[] = '| :--- | :------ | :------ | :------ | :------- | :-----------: ';
 
         foreach ($commits as $commit) {
             list($commitHash, $commitAuthor, $commitDate, $commitSubject) = explode("|", $commit);
@@ -228,11 +228,13 @@ function getMarkDown($prevTag, $currTag)
                 return sprintf('[%1$s](https://github.com/horstoeko/zugferd/issues/%2$s)', $issue, substr($issue, 1));
             }, $commitIssues);
 
-            $commitSubject = str_replace('[ENH] ', ':new: ', $commitSubject);
-            $commitSubject = str_replace('[DEPR] ', ':stop_button: ', $commitSubject);
-            $commitSubject = str_replace('[FIX] ', ':bug: ', $commitSubject);
+            $commitSubjectIcons = "";
+            $commitSubjectIcons .= str_starts_with($commitSubject, '[ENH] ') ? ':new: ' : '';
+            $commitSubjectIcons .= str_starts_with($commitSubject, '[DEPR] ') ? ':stop_button: ' : '';
+            $commitSubjectIcons .= str_starts_with($commitSubject, '[FIX] ') ? ':bug: ' : '';
+            $commitSubjectIcons .= str_starts_with($commitSubject, '[FEAT] ') ? ':new: ' : '';
 
-            $markDown[] = sprintf('| [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls));
+            $markDown[] = sprintf('| %6$s | [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls), $commitSubjectIcons);
         }
 
         $markDown[] = '';
