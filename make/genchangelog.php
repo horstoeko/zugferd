@@ -230,9 +230,11 @@ function getMarkDown($prevTag, $currTag)
 
             $commitSubjectIcons = "";
             $commitSubjectIcons .= str_starts_with($commitSubject, '[ENH] ') ? ':new: ' : '';
-            $commitSubjectIcons .= str_starts_with($commitSubject, '[DEPR] ') ? ':stop_button: ' : '';
+            $commitSubjectIcons .= str_starts_with($commitSubject, '[DEPR] ') ? ':closed_book: ' : '';
             $commitSubjectIcons .= str_starts_with($commitSubject, '[FIX] ') ? ':bug: ' : '';
             $commitSubjectIcons .= str_starts_with($commitSubject, '[FEAT] ') ? ':new: ' : '';
+
+            $commitSubjectIcons .= ($commitSubjectIcons == "" ? ':new: ' : '');
 
             $markDown[] = sprintf('| %6$s | [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls), $commitSubjectIcons);
         }
