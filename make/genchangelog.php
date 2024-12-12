@@ -224,8 +224,11 @@ function getMarkDown($prevTag, $currTag)
             $commitDate = $time->format('Y-m-d H:i:s T');
             $commitAuthor = correctAuthor($commitAuthor);
             $commitSubject = correctSubject($commitSubject, $commitIssues);
+            $commitIssuesWithUrls = array_map(function($issue) {
+                return sprintf('[%1$s](https://github.com/horstoeko/zugferd/issues/%2$s)', $issue, substr($issue, 1));
+            }, $commitIssues);
 
-            $markDown[] = sprintf('| [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssues));
+            $markDown[] = sprintf('| [%1$s](https://github.com/horstoeko/zugferd/commit/%1$s) | %2$s | %3$s | %4$s | %5$s', $commitHash, $commitDate, $commitAuthor, $commitSubject, implode(", ", $commitIssuesWithUrls));
         }
 
         $markDown[] = '';
