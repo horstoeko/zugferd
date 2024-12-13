@@ -202,6 +202,22 @@ jobs:
           name: Build log artifacts for ubuntu-24.04 PHP 8.4 (Release)
           path: build/logs
 
+      - name: Update ChangeLog
+        continue-on-error: true
+        run: |
+          php -f make/genchangelog.php all
+          git clone https://$GH_PAT@github.com/horstoeko/zugferd.git zfchangelog
+          mv -f make/CHANGELOG.md zfchangelog
+          cd zfchangelog
+          git config user.name "HorstOeko"
+          git config user.email "horstoeko@erling.com.de"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add ./CHANGELOG.md
+            git commit -m "[DOC] Automatic update of the CHANGELOG.md"
+            git push
+          fi
+          cd ..
+
       - name: Update Wiki
         continue-on-error: true
         run: |
@@ -211,9 +227,12 @@ jobs:
           cd wiki
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
-          git add -A
-          git commit -m "Automatische Aktualisierung des Wikis"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "[DOC] Automatic update of the wiki"
+            git push
+          fi
+          cd ..
 
       - name: Make Release
         uses: "marvinpinto/action-automatic-releases@latest"
