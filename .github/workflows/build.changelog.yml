@@ -39,12 +39,13 @@ jobs:
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
           composer install
 
-      - name: Update Wiki
+      - name: Update ChangeLog
         continue-on-error: true
         run: |
           php -f make/genchangelog.php
-          rm -f CHANGELOG.md
-          mv make/CHANGELOG.md .
+          git clone https://$GH_PAT@github.com/horstoeko/zugferd.git zf
+          mv make/CHANGELOG.md zf
+          cd zf
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
           git add ./CHANGELOG.md
