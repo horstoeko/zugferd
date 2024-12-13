@@ -44,7 +44,7 @@ jobs:
       - name: Update ChangeLog
         continue-on-error: true
         run: |
-          php -f make/genchangelog.php
+          php -f make/genchangelog.php all
           rm -f CHANGELOG.md
           mv make/CHANGELOG.md .
           git config user.name "HorstOeko"
