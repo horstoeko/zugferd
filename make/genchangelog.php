@@ -26,6 +26,11 @@ function stricontains(string $haystack, string $needle): bool
     return str_contains(strtolower($haystack), strtolower($needle));
 }
 
+function stristartswith(string $haystack, string $needle): bool
+{
+    return str_starts_with(strtolower($haystack), strtolower($needle));
+}
+
 function correctAuthor(string $author): string
 {
     if ($author == "horstoeko" || $author == "ruff" || $author == "Daniel Erling") {
@@ -65,8 +70,9 @@ function mustHideCommit(?string $commitHash = "", ?string $commitAuthor = "", ?s
     }
 
     if (
-        stricontains($commitSubject, '[DOC') ||
-        stricontains($commitSubject, '[INFR') ||
+        stricontains($commitSubject, '[DOC]') ||
+        stricontains($commitSubject, '[INFR]') ||
+        stricontains($commitSubject, '[INFR}') ||
         stricontains($commitSubject, 'Added CheckStyöe Script to composer') ||
         stricontains($commitSubject, 'Added dependabot.yml') ||
         stricontains($commitSubject, 'Added PHP8.4 Build') ||
@@ -200,7 +206,7 @@ function getMarkDown($prevTag, $currTag)
 
     echo "Getting commits from $prevTag to $currTag" . PHP_EOL;
 
-    $commitStr = shell_exec(sprintf('git log --oneline --format="%%h|%%an|%%ad|%%s" %s..%s', $prevTag, $currTag));
+    $commitStr = shell_exec(sprintf('git log --oneline --format="%%h|%%an|%%ad|%%s" "%s..%s"', $prevTag, $currTag));
 
     if (is_null($commitStr) || $commitStr === false) {
         return $markDown;
