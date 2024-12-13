@@ -223,7 +223,7 @@ jobs:
         run: |
           php -f make/genmethoddocs.php
           git clone https://$GH_PAT@github.com/horstoeko/zugferd.wiki.git wiki
-          mv make/*.md wiki
+          mv -f make/*.md wiki
           cd wiki
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
