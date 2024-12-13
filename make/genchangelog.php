@@ -288,22 +288,33 @@ function printMarkdown(array $markDown): void
     }
 }
 
+echo "----------------------------------------------------------------------" . PHP_EOL;
+echo "---- Generating CHANGELOG.md" . PHP_EOL;
+echo "----------------------------------------------------------------------" . PHP_EOL;
+
 if (!isset($argv[1]) && !isset($argv[2])) {
+    echo "No arguments found using latest and current tag" . PHP_EOL;
     $lastHash = trim(shell_exec('git rev-list --tags --skip=1 --max-count=1'));
     $prevTag = trim(shell_exec(sprintf('git describe --abbrev=0 --tags %s', $lastHash)));
     $currTag = trim(shell_exec('git describe --tags --abbrev=0'));
+    echo "Found tags..." . PHP_EOL;
+    echo " - prevTag: $prevTag" . PHP_EOL;
+    echo " - currTag: $currTag" . PHP_EOL;
     file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
 } elseif (isset($argv[1]) && $argv[1] == "all") {
+    echo "All-argument was presented. Looking for all tags" . PHP_EOL;
     $completeMarkDown = [];
     $allTags = explode("\n", trim(shell_exec('git tag --sort=-creatordate')));
     $allTags = array_filter($allTags, function ($tag) {
         return str_starts_with($tag, "v0.") === false;
     });
+    echo "Found tags..." . implode(', ', $allTags) . PHP_EOL;
     foreach ($allTags as $currTagKey => $currTag) {
         if (!isset($allTags[$currTagKey + 1])) {
             continue;
         }
         $prevTag = $allTags[$currTagKey + 1];
+        echo "Looking for tag $currTag (Previous: $prevTag)" . PHP_EOL;
         $markDown = getMarkDown($prevTag, $currTag);
         foreach ($markDown as $markDownLine) {
             $completeMarkDown[] = $markDownLine;
@@ -311,7 +322,10 @@ if (!isset($argv[1]) && !isset($argv[2])) {
     }
     file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", $completeMarkDown));
 } else {
+    echo "First and previous tag were presented" . PHP_EOL;
     $prevTag = $argv[1];
     $currTag = $argv[2];
+    echo " - prevTag: $prevTag" . PHP_EOL;
+    echo " - currTag: $currTag" . PHP_EOL;
     file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
 }
