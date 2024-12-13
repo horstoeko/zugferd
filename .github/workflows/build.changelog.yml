@@ -49,9 +49,11 @@ jobs:
         run: |
           php -f make/genchangelog.php all
           rm -f CHANGELOG.md
-          mv make/CHANGELOG.md .
+          mv -f make/CHANGELOG.md .
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
-          git add ./CHANGELOG.md
-          git commit -m "[DOC] Updated CHANGELOG.md"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git add ./CHANGELOG.md
+            git commit -m "[DOC] Updated CHANGELOG.md"
+            git push
+          fi
