@@ -1,5 +1,26 @@
 <?php
 
+if (!function_exists('str_starts_with')) {
+    function str_starts_with(string $haystack, string $needle): bool
+    {
+        return strlen($needle) === 0 || strpos($haystack, $needle) === 0;
+    }
+}
+
+if (!function_exists('str_contains')) {
+    function str_contains($haystack, $needle)
+    {
+        return (strpos($haystack, $needle) !== false);
+    }
+}
+
+if (!function_exists('str_ends_with')) {
+    function str_ends_with(string $haystack, string $needle): bool
+    {
+        return strlen($needle) === 0 || substr($haystack, -strlen($needle)) === $needle;
+    }
+}
+
 function stricontains(string $haystack, string $needle): bool
 {
     return str_contains(strtolower($haystack), strtolower($needle));
@@ -179,7 +200,7 @@ function getMarkDown($prevTag, $currTag)
 
     echo "Getting commits from $prevTag to $currTag" . PHP_EOL;
 
-    $commitStr = shell_exec(sprintf('git log %s..%s --oneline --format="%%h|%%an|%%ad|%%s"', $prevTag, $currTag));
+    $commitStr = shell_exec(sprintf('git log --oneline --format="%%h|%%an|%%ad|%%s" %s..%s', $prevTag, $currTag));
 
     if (is_null($commitStr) || $commitStr === false) {
         return $markDown;
@@ -193,7 +214,7 @@ function getMarkDown($prevTag, $currTag)
 
     $noOfHiddenCommits = 0;
 
-    $commits = array_filter($commits, function($commit) use (&$noOfHiddenCommits) {
+    $commits = array_filter($commits, function ($commit) use (&$noOfHiddenCommits) {
         list($commitHash, $commitAuthor, $commitDate, $commitSubject) = explode("|", $commit);
         $hidden = mustHideCommit($commitHash, $commitAuthor, $commitDate, $commitSubject);
         if ($hidden) {
@@ -224,7 +245,7 @@ function getMarkDown($prevTag, $currTag)
             $commitDate = $time->format('Y-m-d H:i:s T');
             $commitAuthor = correctAuthor($commitAuthor);
             $commitSubject = correctSubject($commitSubject, $commitIssues);
-            $commitIssuesWithUrls = array_map(function($issue) {
+            $commitIssuesWithUrls = array_map(function ($issue) {
                 return sprintf('[%1$s](https://github.com/horstoeko/zugferd/issues/%2$s)', $issue, substr($issue, 1));
             }, $commitIssues);
 
