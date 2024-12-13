@@ -308,19 +308,23 @@ if (!isset($argv[1]) && !isset($argv[2])) {
     $allTags = array_filter($allTags, function ($tag) {
         return str_starts_with($tag, "v0.") === false;
     });
-    echo "Found tags..." . implode(', ', $allTags) . PHP_EOL;
-    foreach ($allTags as $currTagKey => $currTag) {
-        if (!isset($allTags[$currTagKey + 1])) {
-            continue;
+    if (!empty($allTags)) {
+        echo "Found tags..." . implode(', ', $allTags) . PHP_EOL;
+        foreach ($allTags as $currTagKey => $currTag) {
+            if (!isset($allTags[$currTagKey + 1])) {
+                continue;
+            }
+            $prevTag = $allTags[$currTagKey + 1];
+            echo "Looking for tag $currTag (Previous: $prevTag)" . PHP_EOL;
+            $markDown = getMarkDown($prevTag, $currTag);
+            foreach ($markDown as $markDownLine) {
+                $completeMarkDown[] = $markDownLine;
+            }
         }
-        $prevTag = $allTags[$currTagKey + 1];
-        echo "Looking for tag $currTag (Previous: $prevTag)" . PHP_EOL;
-        $markDown = getMarkDown($prevTag, $currTag);
-        foreach ($markDown as $markDownLine) {
-            $completeMarkDown[] = $markDownLine;
-        }
+        file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", $completeMarkDown));
+    } else {
+        echo "No tags were found" . PHP_EOL;
     }
-    file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", $completeMarkDown));
 } else {
     echo "First and previous tag were presented" . PHP_EOL;
     $prevTag = $argv[1];
