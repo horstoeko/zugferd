@@ -16,6 +16,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.UPDATEWIKITOKEN }}
+          fetch-depth: 1
+          fetch-tags: true
+          ref: ${{ github.head_ref }}
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
