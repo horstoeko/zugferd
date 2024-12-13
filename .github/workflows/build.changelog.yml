@@ -50,5 +50,5 @@ jobs:
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
           git add ./CHANGELOG.md
-          git commit -m "Automatische Aktualisierung des ChangeLogs"
+          git commit -m "[DOC] Updated CHANGELOG.md"
           git push
