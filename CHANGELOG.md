@@ -1,3 +1,13 @@
+## v1.0.97
+
+``Previous version v1.0.96``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [c09ef7e](https://github.com/horstoeko/zugferd/commit/c09ef7e) | 2024-12-15 17:59:11 CET | HorstOeko | [ENH] Improved KositValidator remote validation | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v1.0.96
 
 ``Previous version v1.0.95``
