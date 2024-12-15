@@ -58,3 +58,23 @@ $kositValidator = new ZugferdKositValidator($document);
 $kositValidator->setDocument($document)->disableCleanup()->validate();
 
 showValidationResult($kositValidator);
+
+/* ----------------------------------------------------------------------------------
+   - Validation of a document read by ZugferdDocumentPdfReader (Remote, using running daemon)
+   ---------------------------------------------------------------------------------- */
+
+$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/invoice_1.pdf");
+$kositValidator->setDocument($document)->enableRemoteMode()->setRemoteModeHost("127.0.0.1")->setRemoteModePort(8081)->validate();
+
+showValidationResult($kositValidator);
+
+/* ----------------------------------------------------------------------------------
+   - Validation of a document read by ZugferdDocumentReader (Remote, using running daemon)
+   ---------------------------------------------------------------------------------- */
+
+$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml");
+
+$kositValidator = new ZugferdKositValidator($document);
+$kositValidator->setDocument($document)->enableRemoteMode()->setRemoteModeHost("127.0.0.1")->setRemoteModePort(8081)->validate();
+
+showValidationResult($kositValidator);
