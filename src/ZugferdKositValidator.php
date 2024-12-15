@@ -108,6 +108,27 @@ class ZugferdKositValidator
     private $cleanupBaseDirectoryIsDisabled = false;
 
     /**
+     * Use remote validation (JAVA application is running in daemon mode on a remote host)
+     *
+     * @var boolean
+     */
+    private $remoteModeEnabled = false;
+
+    /**
+     * The remote hostname or -ip
+     *
+     * @var string
+     */
+    private $remoteModeHost = "";
+
+    /**
+     * The remote host port
+     *
+     * @var integer
+     */
+    private $remoteModePort = 0;
+
+    /**
      * Message Type "Internal Error"
      */
     protected const MSG_TYPE_INTERNALERROR = 'internalerror';
@@ -289,6 +310,76 @@ class ZugferdKositValidator
         $this->cleanupBaseDirectoryIsDisabled = false;
 
         return $this;
+    }
+
+    /**
+     * Disable the usage of a remote host validation
+     *
+     * @return ZugferdKositValidator
+     */
+    public function disableRemoteMode(): ZugferdKositValidator
+    {
+        $this->remoteModeEnabled = false;
+
+        return $this;
+    }
+
+    /**
+     * Enable the usage of a remote host validation
+     *
+     * @return ZugferdKositValidator
+     */
+    public function enableRemoteMode(): ZugferdKositValidator
+    {
+        $this->remoteModeEnabled = true;
+
+        return $this;
+    }
+
+    /**
+     * Set the hostname or the ip of the remote host where the validation application
+     * is running in daemon mode
+     *
+     * @param string $remoteModeHost
+     * @return ZugferdKositValidator
+     */
+    public function setRemoteModeHost(string $remoteModeHost): ZugferdKositValidator
+    {
+        if (StringUtils::stringIsNullOrEmpty($remoteModeHost)) {
+            return $this;
+        }
+
+        $this->remoteModeHost = $remoteModeHost;
+
+        return $this;
+    }
+
+    /**
+     * Set the port of the remote host where the validation application
+     * is running in daemon mode
+     *
+     * @param integer $remoteModePort
+     * @return ZugferdKositValidator
+     */
+    public function setRemoteModePort(int $remoteModePort): ZugferdKositValidator
+    {
+        if ($remoteModePort <= 0) {
+            return $this;
+        }
+
+        $this->remoteModePort = $remoteModePort;
+
+        return $this;
+    }
+
+    /**
+     * Returns the full remote mode URL
+     *
+     * @return string
+     */
+    public function getRemoteModeUrl(): string
+    {
+        return sprintf("http://%s:%s", $this->remoteModeHost, $this->remoteModePort);
     }
 
     /**
@@ -574,6 +665,24 @@ class ZugferdKositValidator
      */
     private function checkRequirements(): bool
     {
+        if ($this->remoteModeEnabled === true) {
+            return $this->checkRequirementsRemote();
+        }
+
+        return $this->checkRequirementsLocal();
+    }
+
+    /**
+     * CHeck requirements for usage on a local installation
+     *
+     * @return boolean
+     */
+    private function checkRequirementsLocal(): bool
+    {
+        if ($this->remoteModeEnabled === true) {
+            return true;
+        }
+
         if (is_null($this->document)) {
             $this->addToMessageBag("You must specify an instance of the ZugferdDocument class");
             return false;
@@ -595,12 +704,67 @@ class ZugferdKositValidator
     }
 
     /**
+     * CHeck requirements for usage on a remote host which is running the application
+     * in daemon mode
+     *
+     * @return boolean
+     */
+    private function checkRequirementsRemote(): bool
+    {
+        if ($this->remoteModeEnabled !== true) {
+            return true;
+        }
+
+        if (!function_exists('curl_init') || !function_exists('curl_setopt') || !function_exists('curl_exec') || !function_exists('curl_getinfo') || !function_exists('curl_close')) {
+            $this->addToMessageBag("PHP-Curl not installed or activated");
+            return false;
+        }
+
+        if (StringUtils::stringIsNullOrEmpty($this->remoteModeHost)) {
+            $this->addToMessageBag("You must specify the hostname or it's IP where the Validator is running in daemon mode");
+            return false;
+        }
+
+        if ($this->remoteModePort <= 0) {
+            $this->addToMessageBag("You must specify the port of the host where the Validator is running in daemon mode");
+            return false;
+        }
+
+        try {
+            $httpConnection = curl_init($this->getRemoteModeUrl());
+            curl_setopt($httpConnection, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($httpConnection, CURLOPT_HEADER, true);
+            curl_setopt($httpConnection, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($httpConnection, CURLOPT_ENCODING, '');
+            curl_setopt($httpConnection, CURLOPT_AUTOREFERER, true);
+            curl_setopt($httpConnection, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($httpConnection, CURLOPT_TIMEOUT, 10);
+            curl_exec($httpConnection);
+            $retcode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
+            curl_close($httpConnection);
+            if ($retcode != 200) {
+                $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
+                return false;
+            }
+        } catch (Throwable $e) {
+            $this->addToMessageBag($e);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Download required files
      *
      * @return boolean
      */
     private function downloadRequiredFiles(): bool
     {
+        if ($this->remoteModeEnabled === true) {
+            return true;
+        }
+
         if (!$this->runFileDownload($this->validatorDownloadUrl, $this->resolveAppZipFilename())) {
             $this->addToMessageBag(sprintf("Unable to download from %s containing the JAVA-Application", $this->validatorDownloadUrl));
             return false;
@@ -621,6 +785,10 @@ class ZugferdKositValidator
      */
     private function unpackRequiredFiles(): bool
     {
+        if ($this->remoteModeEnabled === true) {
+            return true;
+        }
+
         $validatorAppFile = $this->resolveAppZipFilename();
         $validatorScenarioFile = $this->resolveScenatioZipFilename();
 
@@ -645,6 +813,10 @@ class ZugferdKositValidator
      */
     private function unpackRequiredFile(string $filename): bool
     {
+        if ($this->remoteModeEnabled === true) {
+            return true;
+        }
+
         $zip = new ZipArchive();
 
         if ($zip->open($filename) !== true) {
@@ -684,6 +856,24 @@ class ZugferdKositValidator
      */
     private function performValidation(): bool
     {
+        if ($this->remoteModeEnabled === true) {
+            return $this->performValidationRemote();
+        }
+
+        return $this->performValidationLocal();
+    }
+
+    /**
+     * Runs the validator java application locally
+     *
+     * @return boolean
+     */
+    private function performValidationLocal(): bool
+    {
+        if ($this->remoteModeEnabled === true) {
+            return true;
+        }
+
         if (file_put_contents($this->resolveFileToValidateFilename(), $this->document->serializeAsXml()) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
             return false;
@@ -701,7 +891,47 @@ class ZugferdKositValidator
         ];
 
         if (!$this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory())) {
-            $this->parseValidatorXmlReport();
+            $this->parseValidatorXmlReportByFile();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Runs the validator java application on the remote host
+     *
+     * @return boolean
+     */
+    private function performValidationRemote(): bool
+    {
+        if ($this->remoteModeEnabled !== true) {
+            return true;
+        }
+
+        try {
+            $httpConnection = curl_init($this->getRemoteModeUrl());
+            curl_setopt($httpConnection, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($httpConnection, CURLOPT_HEADER, true);
+            curl_setopt($httpConnection, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($httpConnection, CURLOPT_ENCODING, '');
+            curl_setopt($httpConnection, CURLOPT_AUTOREFERER, true);
+            curl_setopt($httpConnection, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($httpConnection, CURLOPT_TIMEOUT, 120);
+            curl_setopt($httpConnection, CURLOPT_POST, true);
+            curl_setopt($httpConnection, CURLOPT_POSTFIELDS, $this->document->serializeAsXml());
+            curl_setopt($httpConnection, CURLOPT_HTTPHEADER, ["Content-Type: application/xml"]);
+            $responseXml = curl_exec($httpConnection);
+            $retcode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
+            curl_close($httpConnection);
+            if ($retcode != 200) {
+                if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $responseXml, $matches)) {
+                    $this->parseValidatorXmlReportByContent($matches[0]);
+                }
+                return false;
+            }
+        } catch (Throwable $e) {
+            $this->addToMessageBag($e);
             return false;
         }
 
@@ -714,7 +944,7 @@ class ZugferdKositValidator
      *
      * @return void
      */
-    private function parseValidatorXmlReport(): void
+    private function parseValidatorXmlReportByFile(): void
     {
         $reportFilename =
             PathUtils::combinePathWithFile(
@@ -729,6 +959,37 @@ class ZugferdKositValidator
         $domDocument = new DOMDocument();
         $domDocument->load($reportFilename);
 
+        $this->parseValidatorXmlReportByDomDocument($domDocument);
+    }
+
+    /**
+     * Parses the XML content string containing the response from the validation app (JAVA application) and put errors
+     * to messagebag
+     *
+     * @param string $xmlContent
+     * @return void
+     */
+    private function parseValidatorXmlReportByContent(string $xmlContent): void
+    {
+        if (StringUtils::stringIsNullOrEmpty($xmlContent)) {
+            return;
+        }
+
+        $domDocument = new DOMDocument();
+        $domDocument->loadXML($xmlContent);
+
+        $this->parseValidatorXmlReportByDomDocument($domDocument);
+    }
+
+    /**
+     * Parses the XML DOMDocument containing the response from the validation app (JAVA application) and put errors
+     * to messagebag
+     *
+     * @param DOMDocument $domDocument
+     * @return void
+     */
+    private function parseValidatorXmlReportByDomDocument(DOMDocument $domDocument): void
+    {
         $domXPath = new DOMXPath($domDocument);
 
         $messageTypeMaps = [
@@ -762,6 +1023,10 @@ class ZugferdKositValidator
      */
     private function cleanupBaseDirectory(): void
     {
+        if ($this->remoteModeEnabled === true) {
+            return;
+        }
+
         if ($this->cleanupBaseDirectoryIsDisabled === true) {
             return;
         }
@@ -781,6 +1046,10 @@ class ZugferdKositValidator
      */
     private function cleanupBaseDirectoryInternal(string $directoryToRemove): void
     {
+        if ($this->remoteModeEnabled === true) {
+            return;
+        }
+
         if (!is_dir($directoryToRemove)) {
             return;
         }
