@@ -1,14 +1,11 @@
 name: Update ChangeLog
 
 on:
-  push:
-    tags:
-      - "v*"
-    paths-ignore:
-      - "**.md"
-      - ".github/**"
-      - "examples/**"
-      - "make/**"
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
   workflow_dispatch:
 
 env:
@@ -64,4 +61,6 @@ jobs:
             git add ./CHANGELOG.md
             git commit -m "[DOC] Updated CHANGELOG.md"
             git push
+          else
+            echo "No changes found. Skipping."
           fi
