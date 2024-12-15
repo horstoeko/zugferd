@@ -1,6 +1,14 @@
 name: Update ChangeLog
 
 on:
+  push:
+    tags:
+      - "v*"
+    paths-ignore:
+      - "**.md"
+      - ".github/**"
+      - "examples/**"
+      - "make/**"
   workflow_dispatch:
 
 env:
