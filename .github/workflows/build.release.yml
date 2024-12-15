@@ -202,22 +202,6 @@ jobs:
           name: Build log artifacts for ubuntu-24.04 PHP 8.4 (Release)
           path: build/logs
 
-      - name: Update ChangeLog
-        continue-on-error: true
-        run: |
-          php -f make/genchangelog.php all
-          git clone https://$GH_PAT@github.com/horstoeko/zugferd.git zfchangelog
-          mv -f make/CHANGELOG.md zfchangelog
-          cd zfchangelog
-          git config user.name "HorstOeko"
-          git config user.email "horstoeko@erling.com.de"
-          if [ -n "$(git status --porcelain)" ]; then
-            git add ./CHANGELOG.md
-            git commit -m "[DOC] Automatic update of the CHANGELOG.md"
-            git push
-          fi
-          cd ..
-
       - name: Update Wiki
         continue-on-error: true
         run: |
