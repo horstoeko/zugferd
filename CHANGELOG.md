@@ -1,3 +1,16 @@
+## v1.0.96
+
+``Previous version v1.0.95``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [c8b40a1](https://github.com/horstoeko/zugferd/commit/c8b40a1) | 2024-12-15 13:00:26 CET | HorstOeko | [ENH] ZugferdKositValidator can optionally call a running Validator in Daemon-Mode via HTTP | 
+| :new:  | [8a63f49](https://github.com/horstoeko/zugferd/commit/8a63f49) | 2024-12-15 12:54:22 CET | HorstOeko | [ENH] ZugferdKositValidator can optionally call a running Validator in Daemon-Mode via HTTP | 
+| :new_moon:  | [8c68d09](https://github.com/horstoeko/zugferd/commit/8c68d09) | 2024-12-13 14:14:30 CET | HorstOeko | Revert "Automatische Aktualisierung des ChangeLogs" | 
+| :new_moon:  | [7443f2c](https://github.com/horstoeko/zugferd/commit/7443f2c) | 2024-12-13 14:11:42 CET | HorstOeko | Automatische Aktualisierung des ChangeLogs | 
+
+:exclamation: _There are 34 internal commit(s)_
+
 ## v1.0.95
 
 ``Previous version v1.0.94``
