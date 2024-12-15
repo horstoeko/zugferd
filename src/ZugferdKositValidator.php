@@ -340,7 +340,7 @@ class ZugferdKositValidator
      * Set the hostname or the ip of the remote host where the validation application
      * is running in daemon mode
      *
-     * @param string $remoteModeHost
+     * @param  string $remoteModeHost
      * @return ZugferdKositValidator
      */
     public function setRemoteModeHost(string $remoteModeHost): ZugferdKositValidator
@@ -358,7 +358,7 @@ class ZugferdKositValidator
      * Set the port of the remote host where the validation application
      * is running in daemon mode
      *
-     * @param integer $remoteModePort
+     * @param  integer $remoteModePort
      * @return ZugferdKositValidator
      */
     public function setRemoteModePort(int $remoteModePort): ZugferdKositValidator
@@ -732,18 +732,30 @@ class ZugferdKositValidator
 
         try {
             $httpConnection = curl_init($this->getRemoteModeUrl());
+
             curl_setopt($httpConnection, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($httpConnection, CURLOPT_HEADER, true);
             curl_setopt($httpConnection, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($httpConnection, CURLOPT_ENCODING, '');
             curl_setopt($httpConnection, CURLOPT_AUTOREFERER, true);
             curl_setopt($httpConnection, CURLOPT_CONNECTTIMEOUT, 10);
-            curl_setopt($httpConnection, CURLOPT_TIMEOUT, 10);
-            curl_exec($httpConnection);
-            $retcode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
-            curl_close($httpConnection);
-            if ($retcode != 200) {
+            curl_setopt($httpConnection, CURLOPT_TIMEOUT, 120);
+
+            $response = curl_exec($httpConnection);
+
+            if ($response === false) {
                 $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
+                $this->addToMessageBag(curl_error($httpConnection));
+                return false;
+            }
+
+            $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
+
+            curl_close($httpConnection);
+
+            if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
+                $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
+                $this->addToMessageBag(curl_error($httpConnection));
                 return false;
             }
         } catch (Throwable $e) {
@@ -911,6 +923,7 @@ class ZugferdKositValidator
 
         try {
             $httpConnection = curl_init($this->getRemoteModeUrl());
+
             curl_setopt($httpConnection, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($httpConnection, CURLOPT_HEADER, true);
             curl_setopt($httpConnection, CURLOPT_FOLLOWLOCATION, true);
@@ -921,11 +934,21 @@ class ZugferdKositValidator
             curl_setopt($httpConnection, CURLOPT_POST, true);
             curl_setopt($httpConnection, CURLOPT_POSTFIELDS, $this->document->serializeAsXml());
             curl_setopt($httpConnection, CURLOPT_HTTPHEADER, ["Content-Type: application/xml"]);
-            $responseXml = curl_exec($httpConnection);
-            $retcode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
+
+            $response = curl_exec($httpConnection);
+
+            if ($response === false) {
+                $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
+                $this->addToMessageBag(curl_error($httpConnection));
+                return false;
+            }
+
+            $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
+
             curl_close($httpConnection);
-            if ($retcode != 200) {
-                if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $responseXml, $matches)) {
+
+            if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
+                if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {
                     $this->parseValidatorXmlReportByContent($matches[0]);
                 }
                 return false;
@@ -966,7 +989,7 @@ class ZugferdKositValidator
      * Parses the XML content string containing the response from the validation app (JAVA application) and put errors
      * to messagebag
      *
-     * @param string $xmlContent
+     * @param  string $xmlContent
      * @return void
      */
     private function parseValidatorXmlReportByContent(string $xmlContent): void
@@ -985,7 +1008,7 @@ class ZugferdKositValidator
      * Parses the XML DOMDocument containing the response from the validation app (JAVA application) and put errors
      * to messagebag
      *
-     * @param DOMDocument $domDocument
+     * @param  DOMDocument $domDocument
      * @return void
      */
     private function parseValidatorXmlReportByDomDocument(DOMDocument $domDocument): void
