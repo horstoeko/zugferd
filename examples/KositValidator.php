@@ -74,7 +74,14 @@ showValidationResult($kositValidator);
 
 $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml");
 
-$kositValidator = new ZugferdKositValidator($document);
 $kositValidator->setDocument($document)->enableRemoteMode()->setRemoteModeHost("127.0.0.1")->setRemoteModePort(8081)->validate();
+
+showValidationResult($kositValidator);
+
+/* ----------------------------------------------------------------------------------
+   - Validation of a document read by content string (Remote, using running daemon)
+   ---------------------------------------------------------------------------------- */
+
+$kositValidator->setDocument(file_get_contents(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml"))->enableRemoteMode()->setRemoteModeHost("127.0.0.1")->setRemoteModePort(8081)->validate();
 
 showValidationResult($kositValidator);

@@ -33,7 +33,7 @@ class ZugferdKositValidator
     /**
      * The invoice document reference
      *
-     * @var ZugferdDocument
+     * @var ZugferdDocument|string|null
      */
     private $document = null;
 
@@ -154,24 +154,50 @@ class ZugferdKositValidator
     protected const MSG_TYPE_PROCESSOUTPUT = 'processoutput';
 
     /**
+     * Create a KositValidator-Instance by a given content string
+     *
+     * @param  string $document
+     * @return ZugferdKositValidator
+     */
+    public static function fromString(string $document): ZugferdKositValidator
+    {
+        return new ZugferdKositValidator($document);
+    }
+
+    /**
+     * Create a KositValidator-Instance by a given ZugferdDocument (ZugferdDocumentReader, ZugferdDocumentBuilder)
+     *
+     * @param  ZugferdDocument $document
+     * @return ZugferdKositValidator
+     */
+    public static function fromZugferdDocument(ZugferdDocument $document): ZugferdKositValidator
+    {
+        return new ZugferdKositValidator($document);
+    }
+
+    /**
      * Constructor
      *
-     * @param ZugferdDocument|null $document
+     * @param ZugferdDocument|string|null $document
      */
-    public function __construct(?ZugferdDocument $document = null)
+    public function __construct($document = null)
     {
-        $this->document = $document;
         $this->baseDirectory = sys_get_temp_dir();
+        $this->setDocument($document);
     }
 
     /**
      * Set the ZugferdDocument instance to validate
      *
-     * @param  ZugferdDocument $document
+     * @param  ZugferdDocument|string $document
      * @return ZugferdKositValidator
      */
-    public function setDocument(ZugferdDocument $document): ZugferdKositValidator
+    public function setDocument($document): ZugferdKositValidator
     {
+        if (!is_string($document) && !($document instanceof ZugferdDocument)) {
+            return $this;
+        }
+
         $this->document = $document;
 
         return $this;
@@ -410,6 +436,20 @@ class ZugferdKositValidator
         $this->cleanupBaseDirectory();
 
         return $this;
+    }
+
+    /**
+     * Internal get the content of the document
+     *
+     * @return string
+     */
+    private function getDocumentContent(): string
+    {
+        if (is_string($this->document)) {
+            return $this->document;
+        }
+
+        return $this->document->serializeAsXml();
     }
 
     /**
@@ -886,7 +926,7 @@ class ZugferdKositValidator
             return true;
         }
 
-        if (file_put_contents($this->resolveFileToValidateFilename(), $this->document->serializeAsXml()) === false) {
+        if (file_put_contents($this->resolveFileToValidateFilename(), $this->getDocumentContent()) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
             return false;
         }
@@ -932,7 +972,7 @@ class ZugferdKositValidator
             curl_setopt($httpConnection, CURLOPT_CONNECTTIMEOUT, 10);
             curl_setopt($httpConnection, CURLOPT_TIMEOUT, 120);
             curl_setopt($httpConnection, CURLOPT_POST, true);
-            curl_setopt($httpConnection, CURLOPT_POSTFIELDS, $this->document->serializeAsXml());
+            curl_setopt($httpConnection, CURLOPT_POSTFIELDS, $this->getDocumentContent());
             curl_setopt($httpConnection, CURLOPT_HTTPHEADER, ["Content-Type: application/xml"]);
 
             $response = curl_exec($httpConnection);
