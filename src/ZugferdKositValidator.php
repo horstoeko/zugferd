@@ -705,11 +705,30 @@ class ZugferdKositValidator
      */
     private function checkRequirements(): bool
     {
+        if ($this->checkRequirementsGeneral()) {
+            return false;
+        }
+
         if ($this->remoteModeEnabled === true) {
             return $this->checkRequirementsRemote();
         }
 
         return $this->checkRequirementsLocal();
+    }
+
+    /**
+     * CHeck general requirements (common for local and remote validation)
+     *
+     * @return boolean
+     */
+    private function checkRequirementsGeneral(): bool
+    {
+        if (is_null($this->document)) {
+            $this->addToMessageBag("You must specify an instance of the ZugferdDocument class");
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -721,11 +740,6 @@ class ZugferdKositValidator
     {
         if ($this->remoteModeEnabled === true) {
             return true;
-        }
-
-        if (is_null($this->document)) {
-            $this->addToMessageBag("You must specify an instance of the ZugferdDocument class");
-            return false;
         }
 
         if (!extension_loaded('zip')) {
@@ -755,7 +769,7 @@ class ZugferdKositValidator
             return true;
         }
 
-        if (!function_exists('curl_init') || !function_exists('curl_setopt') || !function_exists('curl_exec') || !function_exists('curl_getinfo') || !function_exists('curl_close')) {
+        if (!extension_loaded('curl')) {
             $this->addToMessageBag("PHP-Curl not installed or activated");
             return false;
         }
