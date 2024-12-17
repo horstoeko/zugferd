@@ -705,7 +705,7 @@ class ZugferdKositValidator
      */
     private function checkRequirements(): bool
     {
-        if ($this->checkRequirementsGeneral()) {
+        if ($this->checkRequirementsGeneral() === false) {
             return false;
         }
 
