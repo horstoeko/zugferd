@@ -1,3 +1,15 @@
+## v1.0.98
+
+``Previous version v1.0.97``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [6e3a1da](https://github.com/horstoeko/zugferd/commit/6e3a1da) | 2024-12-17 04:57:36 CET | HorstOeko | [ENH] More improvemets to ZugferdKositValidator | 
+| :new:  | [05544c5](https://github.com/horstoeko/zugferd/commit/05544c5) | 2024-12-16 16:35:59 CET | HorstOeko | [ENH] More improvemets to ZugferdKositValidator | 
+| :new:  | [a0bc48c](https://github.com/horstoeko/zugferd/commit/a0bc48c) | 2024-12-16 06:04:39 CET | HorstOeko | [ENH] ZugferdKositValidator can now also accept a string (containing the XML to be validated) instead of an instance of ZugferdDocument | 
+
+:exclamation: _There is one internal commit_
+
 ## v1.0.97
 
 ``Previous version v1.0.96``
