@@ -900,9 +900,9 @@ class ObjectHelperEn16931Test extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType
          */
-        $fincard = self::$objectHelper->getTradeSettlementFinancialCardType("type", "id", "name");
+        $fincard = self::$objectHelper->getTradeSettlementFinancialCardType("type", "6759 6498 2643 8453", "name");
         $this->assertEquals("type", $fincard->getID()->getSchemeID());
-        $this->assertEquals("id", $fincard->getID());
+        $this->assertEquals("6759 68453", $fincard->getID());
         $this->assertEquals("name", $fincard->getCardholderName());
     }
 
