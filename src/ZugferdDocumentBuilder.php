@@ -562,6 +562,28 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add information about the buyers's VAT Registration Number (Umsatzsteueridentnummer)
+     *
+     * @param  string|null $vatRegNo __BT-48, From MINIMUM/EN 16931__ VAT Registration Number (Umsatzsteueridentnummer)
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentBuyerVATRegistrationNumber(?string $vatRegNo = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentBuyerTaxRegistration(ZugferdReferenceCodeQualifiers::VAT_REGI_NUMB, $vatRegNo);
+    }
+
+    /**
+     * Add information about the buyer's Tax Number (Steuernummer)
+     *
+     * @param  string|null $taxNo __BT-48, From MINIMUM/EN 16931__ Tax Number (Steuernummer)
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentBuyerTaxNumber(?string $taxNo = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentBuyerTaxRegistration(ZugferdReferenceCodeQualifiers::FISC_NUMB, $taxNo);
+    }
+
+    /**
      * Sets detailed information on the business address of the buyer
      *
      * @param  string|null $lineOne     __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
