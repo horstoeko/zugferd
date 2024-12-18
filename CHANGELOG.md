@@ -1,3 +1,13 @@
+## v1.0.99
+
+``Previous version v1.0.98``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [bd0894d](https://github.com/horstoeko/zugferd/commit/bd0894d) | 2024-12-17 17:03:43 CET | HorstOeko | [FIX] Make payment card number unrecognizable | 
+
+:exclamation: _There are 4 internal commit(s)_
+
 ## v1.0.98
 
 ``Previous version v1.0.97``
