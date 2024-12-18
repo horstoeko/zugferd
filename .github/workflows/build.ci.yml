@@ -86,7 +86,18 @@ jobs:
           mkdir build/dist
           mkdir build/phpdoc
 
-      - name: Run Lint
+      - name: Run Lint (PHP 8.0 and lower)
+        if: ${{ matrix.phpversion < '8.1' }}
+        run: |
+          for afile in $(find . -type f -name '*.php' -path './src*/*' -not -path "*codes*" -not -path "*codelistsenum*" -print); do
+             php -l $afile
+          done
+          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
+             php -l $afile
+          done
+
+      - name: Run Lint (PHP 8.1 and higher)
+        if: ${{ matrix.phpversion >= '8.1' }}
         run: |
           for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
              php -l $afile
