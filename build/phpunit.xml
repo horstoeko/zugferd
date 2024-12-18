@@ -64,7 +64,7 @@
         </include>
         <exclude>
             <directory suffix=".php">../src/codelists</directory>
-            <!--<directory suffix=".php">../src/entities</directory>-->
+            <directory suffix=".php">../src/codelistsenum</directory>
             <directory suffix=".php">../src/exception</directory>
             <file>../src/ZugferdProfiles.php</file>
         </exclude>
