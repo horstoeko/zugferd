@@ -63,7 +63,7 @@ class ZugferdKositValidator
      *
      * @var string
      */
-    private $validatorScenarioDownloadUrl = "https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2023-11-15/validator-configuration-xrechnung_3.0.1_2023-11-15.zip";
+    private $validatorScenarioDownloadUrl = "https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2024-10-31/validator-configuration-xrechnung_3.0.2_2024-10-31.zip";
 
     /**
      * The filename of the validation application zip archive
