@@ -6,5 +6,6 @@ parameters:
     treatPhpDocTypesAsCertain: false
     excludePaths:
         - ../src/entities/*
+        - ../src/codelistsenum/*
         - ../tests/testcases/issues/Issue32Test.php
         - ../src/quick/ZugferdQuickDescriptor.php
