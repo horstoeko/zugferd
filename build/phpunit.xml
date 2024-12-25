@@ -37,6 +37,7 @@
             <file>../tests/testcases/PdfReaderExtended2Test.php</file>
             <file>../tests/testcases/PdfReaderXRechnungTest.php</file>
             <file>../tests/testcases/PdfReaderMultipleAttachmentsTest.php</file>
+            <file>../tests/testcases/PdfReaderExtGeneralTest.php</file>
         </testsuite>
         <testsuite name="PDFBuilder">
             <file>../tests/testcases/PdfBuilderEn16931Test.php</file>

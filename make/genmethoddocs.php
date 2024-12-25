@@ -12,6 +12,7 @@ use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
+use horstoeko\zugferd\ZugferdDocumentPdfReaderExt;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdDocumentValidator;
 use horstoeko\zugferd\ZugferdKositValidator;
@@ -672,6 +673,9 @@ class MarkDownGenerator
         if (stripos($string, '[]') !== false) {
             $string = 'array';
         }
+        if (stripos($string, 'array<') === 0) {
+            $string = 'array';
+        }
         if ($string == '$this') {
             $string = 'static';
         }
@@ -719,6 +723,7 @@ BatchMarkDownGenerator::generate([
     ZugferdDocumentBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentBuilder.md',
     ZugferdDocumentReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentReader.md',
     ZugferdDocumentPdfReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfReader.md',
+    ZugferdDocumentPdfReaderExt::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfReaderExt.md',
     ZugferdDocumentPdfBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfBuilder.md',
     ZugferdDocumentPdfMerger::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfMerger.md',
     ZugferdDocumentValidator::class => dirname(__FILE__) . '/Class-ZugferdDocumentValidator.md',
