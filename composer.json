@@ -76,6 +76,7 @@
             "vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml",
             "vendor/bin/phpcpd --log-pmd build/logs/pmd-cpd.xml --exclude src/entities/ src"
         ],
-        "rector": "vendor/bin/rector --config=./build/phprectorconfig.php"
+        "rector": "vendor/bin/rector --config=./build/phprectorconfig.php",
+        "lint": "php -r 'echo PHP_VERSION_ID >= 80100 ? \"new\" : \"old\";' | xargs -I % sh -c 'if [ \"%\" = \"old\" ]; then find . \\( \\( -path \"./src*/*\" -not -path \"*codelistsenum*\" -not -path \"*codes*\" \\) -o -path \"./tests*/*\" \\) -type f -name \"*.php\" -exec php -l {} \\; ; else find . \\( \\( -path \"./src*/*\" -not -path \"*codes*\" \\) -o -path \"./tests*/*\" \\) -type f -name \"*.php\" -exec php -l {} \\; ; fi'"
     }
 }
