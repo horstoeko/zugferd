@@ -100,8 +100,7 @@ This package makes use of
 
 ## Resources
 
-- [Latest news from Forum elektronische Rechnung Deutschland](https://www.ferd-net.de/aktuelles/meldungen/index.html)
-- [Official documentaries (Version Archive)](https://www.ferd-net.de/standards/zugferd-versionsarchiv/index.html)
+- [Official documentaries (Version Archive)](https://www.ferd-net.de/ueber-uns/ressourcen-1/veroeffentlichungen)
 
 ## Our Wiki
 
