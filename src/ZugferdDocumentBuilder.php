@@ -2324,9 +2324,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         }
 
         $paymentDiscountDays = array_filter(
-            $paymentDiscountDays, function ($k) use ($paymentDiscountPercents) {
+            $paymentDiscountDays,
+            function ($k) use ($paymentDiscountPercents) {
                 return isset($paymentDiscountPercents[$k]);
-            }, ARRAY_FILTER_USE_KEY
+            },
+            ARRAY_FILTER_USE_KEY
         );
 
         if (empty($paymentDiscountDays)) {
