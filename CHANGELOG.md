@@ -119,13 +119,7 @@
 
 ## v1.0.89
 
-``Previous version v1.0.88``
-
-| Type | Hash    | Date    | Author  | Subject  | Issue(s)
-| :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [f728e97](https://github.com/horstoeko/zugferd/commit/f728e97) | 2024-12-02 17:48:08 CET | HorstOeko | [CS] Internal variables renamed to match the code style | 
-
-:exclamation: _There are 4 internal commit(s)_
+:exclamation: _There are 5 internal commit(s)_
 
 ## v1.0.88
 
