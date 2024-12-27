@@ -780,7 +780,6 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertEquals("DESPADV002", $despatchdocid);
         $this->assertNull($despatchdocdate);
-        $this->assertNotInstanceOf("DateTime", $despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
@@ -788,7 +787,6 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertEquals("RECEIV-ADV002", $recadvid);
         $this->assertNull($recadvdate);
-        $this->assertNotInstanceOf("DateTime", $recadvdate);
     }
 
     public function testDocumentDeliveryNoteReferencedDocument(): void
@@ -796,7 +794,6 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
         $this->assertEquals("", $deliverynoterefdocid);
         $this->assertNull($deliverynoterefdocdate);
-        $this->assertNotInstanceOf("DateTime", $deliverynoterefdocdate);
     }
 
     public function testDocumentBillingPeriod(): void

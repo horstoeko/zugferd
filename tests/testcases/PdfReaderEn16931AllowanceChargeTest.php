@@ -318,12 +318,10 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
         $this->assertNotNull($shiptoname);
-        $this->assertIsString($shiptoname);
         $this->assertEquals("", $shiptoname);
         $this->assertIsArray($shiptoids);
         $this->assertEmpty($shiptoids);
         $this->assertNotNull($shiptodescription);
-        $this->assertIsString($shiptodescription);
         $this->assertEquals("", $shiptodescription);
     }
 
@@ -788,7 +786,6 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertEquals("", $despatchdocid);
         $this->assertNull($despatchdocdate);
-        $this->assertNotInstanceOf("DateTime", $despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
@@ -796,7 +793,6 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertEquals("", $recadvid);
         $this->assertNull($recadvdate);
-        $this->assertNotInstanceOf("DateTime", $recadvdate);
     }
 
     public function testDocumentDeliveryNoteReferencedDocument(): void
@@ -804,16 +800,13 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
         $this->assertEquals("", $deliverynoterefdocid);
         $this->assertNull($deliverynoterefdocdate);
-        $this->assertNotInstanceOf("DateTime", $deliverynoterefdocdate);
     }
 
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
         $this->assertNull($docbillingperiodstart);
-        $this->assertNotInstanceOf("DateTime", $docbillingperiodstart);
         $this->assertNull($docbillingperiodend);
-        $this->assertNotInstanceOf("DateTime", $docbillingperiodend);
     }
 
     public function testDocumentAllowanceCharges(): void

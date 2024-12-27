@@ -9,3 +9,6 @@ parameters:
         - ../src/codelistsenum/*
         - ../tests/testcases/issues/Issue32Test.php
         - ../src/quick/ZugferdQuickDescriptor.php
+        - ../tests/traits/HandlesXmlTests.php
+    ignoreErrors:
+        - identifier: parameterByRef.unusedType

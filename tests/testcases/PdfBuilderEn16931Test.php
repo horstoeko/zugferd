@@ -114,7 +114,6 @@ class PdfBuilderEn16931Test extends TestCase
 
         $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
 
-        $this->assertIsString($pdfContent);
         $this->assertNotEquals('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
@@ -149,7 +148,6 @@ class PdfBuilderEn16931Test extends TestCase
 
         $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
 
-        $this->assertIsString($pdfContent);
         $this->assertNotEquals('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
@@ -164,7 +162,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails); //"FPDF 1.84"
         $this->assertArrayHasKey("CreationDate", $pdfDetails); //"2020-12-09T05:19:39+00:00"
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -367,7 +364,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
-        $this->assertIsArray($pdfFilespecs);
         $this->assertEquals(2, count($pdfFilespecs));
         $this->assertArrayHasKey("8_0", $pdfFilespecs);
         $this->assertArrayHasKey("10_0", $pdfFilespecs);
@@ -469,7 +465,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
-        $this->assertIsArray($pdfFilespecs);
         $this->assertEquals(2, count($pdfFilespecs));
         $this->assertArrayHasKey("8_0", $pdfFilespecs);
         $this->assertArrayHasKey("10_0", $pdfFilespecs);
@@ -545,7 +540,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -596,7 +590,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -645,7 +638,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -695,7 +687,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -746,7 +737,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -820,7 +810,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -884,7 +873,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);
@@ -936,7 +924,6 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfDetails = $pdfParsed->getDetails();
 
-        $this->assertIsArray($pdfDetails);
         $this->assertArrayHasKey("Producer", $pdfDetails);
         $this->assertArrayHasKey("CreationDate", $pdfDetails);
         $this->assertArrayHasKey("Title", $pdfDetails);

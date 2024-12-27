@@ -171,7 +171,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolve($this->deliverEn16931Header());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey(0, $resolved);
         $this->assertArrayHasKey(1, $resolved);
         $this->assertIsInt($resolved[0]);
@@ -202,7 +201,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileId($this->deliverEn16931Header());
 
-        $this->assertIsInt($resolved);
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved);
     }
 
@@ -210,7 +208,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -236,7 +233,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicProfile());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -262,7 +258,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20BasicWlProfile());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -288,7 +283,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20MinimumProfile());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -314,7 +308,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverOldZF20ExtendedProfile());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -356,7 +349,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveById(ZugferdProfiles::PROFILE_EN16931);
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey(0, $resolved);
         $this->assertArrayHasKey(1, $resolved);
         $this->assertIsInt($resolved[0]);
@@ -387,7 +379,6 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileDefById(ZugferdProfiles::PROFILE_EN16931);
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);
@@ -434,7 +425,6 @@ HDR;
 
         $resolved = ZugferdProfileResolver::resolveProfileDef($this->deliverEn16931Header());
 
-        $this->assertIsArray($resolved);
         $this->assertArrayHasKey("name", $resolved);
         $this->assertArrayHasKey("altname", $resolved);
         $this->assertArrayHasKey("description", $resolved);

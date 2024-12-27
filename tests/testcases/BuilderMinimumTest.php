@@ -2009,7 +2009,6 @@ class BuilderMinimumTest extends TestCase
     public function testToString(): void
     {
         $xmlContent = (string)self::$document;
-        $this->assertIsString($xmlContent);
         $this->assertStringStartsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rsm:CrossIndustryInvoice", $xmlContent);
     }
 

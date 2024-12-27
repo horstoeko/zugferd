@@ -3230,12 +3230,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $typeCode         __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
      * @param  string|null   $uriId            __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
      * @param  string|null   $lineId           __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  string|null   $name             __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  array|null    $name             __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param  string|null   $refTypeCode      __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTime|null $issueDate        __BT-X-33, From EXTENDED__ Document date
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?string &$lineId, ?string &$name, ?string &$refTypeCode, ?DateTime &$issueDate): ZugferdDocumentReader
+    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?string &$lineId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];

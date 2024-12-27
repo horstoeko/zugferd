@@ -33,7 +33,6 @@ class PdfReaderGeneralTest extends TestCase
     {
         $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_zf_en16931_1.pdf");
 
-        $this->assertNotNull($document);
         $this->assertInstanceOf(ZugferdDocument::class, $document);
     }
 
@@ -56,7 +55,6 @@ class PdfReaderGeneralTest extends TestCase
 
         $document = ZugferdDocumentPdfReader::readAndGuessFromContent($pdfContent);
 
-        $this->assertNotNull($document);
         $this->assertInstanceOf(ZugferdDocument::class, $document);
     }
 
@@ -82,8 +80,6 @@ class PdfReaderGeneralTest extends TestCase
     {
         $xmlString = ZugferdDocumentPdfReader::getXmlFromFile(dirname(__FILE__) . "/../assets/pdf_zf_en16931_1.pdf");
 
-        $this->assertNotNull($xmlString);
-        $this->assertIsString($xmlString);
         $this->assertStringContainsString("<?xml version='1.0'", $xmlString);
         $this->assertStringContainsString("<rsm:CrossIndustryInvoice", $xmlString);
         $this->assertStringContainsString("</rsm:CrossIndustryInvoice>", $xmlString);
@@ -108,8 +104,6 @@ class PdfReaderGeneralTest extends TestCase
 
         $xmlString = ZugferdDocumentPdfReader::getXmlFromContent($pdfContent);
 
-        $this->assertNotNull($xmlString);
-        $this->assertIsString($xmlString);
         $this->assertStringContainsString("<?xml version='1.0'", $xmlString);
         $this->assertStringContainsString("<rsm:CrossIndustryInvoice", $xmlString);
         $this->assertStringContainsString("</rsm:CrossIndustryInvoice>", $xmlString);

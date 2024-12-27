@@ -140,7 +140,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     {
         $profileDefinition = $this->getProfileDefinition();
 
-        if (is_array($profileDefinition) && isset($profileDefinition[$parameterName])) {
+        if (isset($profileDefinition[$parameterName])) {
             return $profileDefinition[$parameterName];
         }
 

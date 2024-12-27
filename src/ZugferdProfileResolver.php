@@ -57,10 +57,6 @@ class ZugferdProfileResolver
             throw new ZugferdUnknownXmlContentException();
         }
 
-        /**
-         * @var int $profile
-         * @var array $profiledef
-         */
         foreach (ZugferdProfiles::PROFILEDEF as $profile => $profiledef) {
             if ($typeelement[0] == $profiledef["contextparameter"]) {
                 return [$profile, $profiledef];

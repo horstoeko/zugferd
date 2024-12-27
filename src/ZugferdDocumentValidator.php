@@ -27,15 +27,11 @@ class ZugferdDocumentValidator
 {
     /**
      * The invoice document reference
-     *
-     * @var ZugferdDocument
      */
     private $document;
 
     /**
      * The validator instance
-     *
-     * @var \Symfony\Component\Validator\Validator\ValidatorInterface;
      */
     private $validator = null;
 

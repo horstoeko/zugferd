@@ -13,7 +13,6 @@ class DocumentTest extends TestCase
     public function testDocumentCreationMinimum(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_MINIMUM);
-        $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_MINIMUM, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
@@ -24,7 +23,6 @@ class DocumentTest extends TestCase
     public function testDocumentCreationBasic(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASIC);
-        $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
@@ -35,7 +33,6 @@ class DocumentTest extends TestCase
     public function testDocumentCreationBasicWl(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASICWL);
-        $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
@@ -46,7 +43,6 @@ class DocumentTest extends TestCase
     public function testDocumentCreationEn16931(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EN16931);
-        $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
@@ -57,7 +53,6 @@ class DocumentTest extends TestCase
     public function testDocumentCreationExtended(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
-        $this->assertNotNull($doc);
         $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
