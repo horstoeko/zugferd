@@ -1,3 +1,21 @@
+## v1.0.100
+
+``Previous version v1.0.99``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [d3498b0](https://github.com/horstoeko/zugferd/commit/d3498b0) | 2024-12-25 13:55:35 CET | HorstOeko | [ENH] Introducing new ZugferdDocumentPdfReaderExt (Extended PDF Reader) | 
+| :new:  | [84bc90d](https://github.com/horstoeko/zugferd/commit/84bc90d) | 2024-12-23 08:41:52 CET | HorstOeko | [ENH] ZugferdKositValidator uses the configuration-release from 2024-10-31 | 
+| :new:  | [e38c9ce](https://github.com/horstoeko/zugferd/commit/e38c9ce) | 2024-12-18 17:32:32 CET | HorstOeko | [ENH] Added Shortcut methods addDocumentBuyerVATRegistrationNumber and addDocumentBuyerTaxNumber | 
+| :new_moon:  | [57617a0](https://github.com/horstoeko/zugferd/commit/57617a0) | 2024-12-18 15:21:35 CET | HorstOeko | Merged PR | [#225](https://github.com/horstoeko/zugferd/issues/225)
+| :new:  | [388bb36](https://github.com/horstoeko/zugferd/commit/388bb36) | 2024-12-18 15:14:45 CET | HorstOeko | [ENH] Added Codelists as Enum (see PR ) | [#223](https://github.com/horstoeko/zugferd/issues/223)
+| :bug:  | [eef01c1](https://github.com/horstoeko/zugferd/commit/eef01c1) | 2024-12-18 14:53:30 CET | HorstOeko | [FIX] Removed Bugs from PR  - Removed feature temporary | [#223](https://github.com/horstoeko/zugferd/issues/223)
+| :bug:  | [87dc563](https://github.com/horstoeko/zugferd/commit/87dc563) | 2024-12-18 14:43:57 CET | HorstOeko | [FIX] Removed Bugs from PR | [#223](https://github.com/horstoeko/zugferd/issues/223)
+| :new_moon:  | [a614cb7](https://github.com/horstoeko/zugferd/commit/a614cb7) | 2024-12-18 14:30:42 CET | HorstOeko | Merged PR | [#223](https://github.com/horstoeko/zugferd/issues/223)
+| :new_moon:  | [5429be9](https://github.com/horstoeko/zugferd/commit/5429be9) | 2024-12-18 12:30:48 CET | Marc Krämer | adding backed enums for codelists | 
+
+:exclamation: _There are 17 internal commit(s)_
+
 ## v1.0.99
 
 ``Previous version v1.0.98``
