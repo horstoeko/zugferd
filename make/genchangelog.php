@@ -70,6 +70,7 @@ function mustHideCommit(?string $commitHash = "", ?string $commitAuthor = "", ?s
     }
 
     if (
+        stricontains($commitSubject, '[CS]') ||
         stricontains($commitSubject, '[DOC]') ||
         stricontains($commitSubject, '[INFR]') ||
         stricontains($commitSubject, '[INFR}') ||
