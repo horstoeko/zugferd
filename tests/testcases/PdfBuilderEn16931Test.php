@@ -89,7 +89,6 @@ class PdfBuilderEn16931Test extends TestCase
     /**
      * Tests
      */
-
     public function testBuildFromSourcePdfFileWhichDoesNotExist(): void
     {
         $this->expectException(ZugferdFileNotFoundException::class);
@@ -789,22 +788,24 @@ class PdfBuilderEn16931Test extends TestCase
         $whichArray = [];
 
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->setMetaInformationCallback(function ($which) use (&$whichArray) {
-            $whichArray[] = $which;
+        $pdfBuilder->setMetaInformationCallback(
+            function ($which) use (&$whichArray) {
+                $whichArray[] = $which;
 
-            $this->assertIsString($which);
-            $this->assertTrue(in_array($which, ['author', 'keywords', 'title', 'subject']));
+                $this->assertIsString($which);
+                $this->assertTrue(in_array($which, ['author', 'keywords', 'title', 'subject']));
 
-            if ($which === 'title') {
-                return "DummyTitle";
+                if ($which === 'title') {
+                    return "DummyTitle";
+                }
+                if ($which === 'author') {
+                    return "DummyAuthor";
+                }
+                if ($which === 'subject') {
+                    return "DummySubject";
+                }
             }
-            if ($which === 'author') {
-                return "DummyAuthor";
-            }
-            if ($which === 'subject') {
-                return "DummySubject";
-            }
-        });
+        );
         $pdfBuilder->generateDocument();
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
@@ -859,17 +860,19 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertStringContainsString(date("Y-m-d"), $pdfDetails["xmp:modifydate"]);
 
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->setMetaInformationCallback(function ($which) {
-            if ($which === 'title') {
-                return "";
+        $pdfBuilder->setMetaInformationCallback(
+            function ($which) {
+                if ($which === 'title') {
+                    return "";
+                }
+                if ($which === 'author') {
+                    return "";
+                }
+                if ($which === 'subject') {
+                    return "";
+                }
             }
-            if ($which === 'author') {
-                return "";
-            }
-            if ($which === 'subject') {
-                return "";
-            }
-        });
+        );
         $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
         $pdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
         $pdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');

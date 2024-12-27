@@ -688,8 +688,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the seller's Tax representative party
      *
-     * @param  string|null $globalID      __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
-     * @param  string|null $globalIDType  __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
+     * @param  string|null $globalIDType __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerTaxRepresentativeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -737,9 +737,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the seller's tax representative party
      *
-     * @param  string|null $legalOrgId    __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
-     * @param  string|null $legalOrgType  __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
-     * @param  string|null $legalOrgName  __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
+     * @param  string|null $legalOrgType __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerTaxRepresentativeLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -753,11 +753,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the seller's tax representative party contact person
      *
-     * @param  string|null $contactPersonName      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactDepartmentName  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactPhoneNo         __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-X-122, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-123, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentSellerTaxRepresentativeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -771,11 +771,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the seller's tax representative party (EXTENDED Profile only)
      *
-     * @param  string|null $contactPersonName      __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
-     * @param  string|null $contactDepartmentName  __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param  string|null $contactPhoneNo         __BT-X-122, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-123, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-124, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-120, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName __BT-X-121, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-X-122, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-123, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-124, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentSellerTaxRepresentativeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -789,9 +789,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the deviating end user (general informaton)
      *
-     * @param  string      $name         __BT-X-128, From EXTENDED__ Name/company name of the end user
-     * @param  string|null $id           __BT-X-126, From EXTENDED__ An identifier of the product end user
-     * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the product end user
+     * @param  string      $name        __BT-X-128, From EXTENDED__ Name/company name of the end user
+     * @param  string|null $id          __BT-X-126, From EXTENDED__ An identifier of the product end user
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the product end user
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUser(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -804,8 +804,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a Global identifier of the deviating end user
      *
-     * @param  string|null $globalID      __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
-     * @param  string|null $globalIDType  __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
+     * @param  string|null $globalIDType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -818,8 +818,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the deviating end user
      *
-     * @param  string|null $taxRegType  __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxRegId    __BT-, From __ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-, From __ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
@@ -833,13 +833,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the Product Enduser party
      *
-     * @param  string|null $lineOne      __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
-     * @param  string|null $country      __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BT-X-402, From EXTENDED__ The product end users state
+     * @param  string|null $lineOne     __BT-X-397, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-398, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-399, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-396, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-400, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
+     * @param  string|null $country     __BT-X-401, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BT-X-402, From EXTENDED__ The product end users state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -853,9 +854,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Product Enduser party
      *
-     * @param  string|null $legalOrgId    __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
-     * @param  string|null $legalOrgType  __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param  string|null $legalOrgName  __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
+     * @param  string|null $legalOrgType __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -869,11 +870,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the Product Enduser party
      *
-     * @param  string|null $contactPersonName      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentProductEndUserContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -887,11 +888,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Product Enduser party (EXTENDED Profile only)
      *
-     * @param  string|null $contactPersonName      __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-133, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-134, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-135, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-131, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-132, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-133, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-134, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-135, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentProductEndUserContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1049,7 +1050,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the different end recipient
      *
-     * @param  string $id          __BT-X-162, From EXTENDED__ Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param  string $id __BT-X-162, From EXTENDED__ Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToId(string $id): ZugferdDocumentBuilder
@@ -1076,8 +1077,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the different end recipient
      *
-     * @param  string|null $taxRegType  __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxRegId    __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
@@ -1127,11 +1128,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the different end recipient
      *
-     * @param  string|null $contactPersonName      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-169, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-170, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1145,11 +1146,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the different end recipient.
      *
-     * @param  string|null $contactPersonName      __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-169, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-170, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-171, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-167, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-168, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-169, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-170, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-171, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1220,13 +1221,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the deviating consignor party
      *
-     * @param  string|null $lineOne      __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BT-X-195, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param  string|null $country      __BT-X-196, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BT-X-197, From EXTENDED__ The party's state
+     * @param  string|null $lineOne     __BT-X-192, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-193, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-194, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-191, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-195, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BT-X-196, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BT-X-197, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -1240,9 +1242,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the deviating consignor party
      *
-     * @param  string|null $legalOrgId    __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalOrgType  __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalOrgName  __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-184, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-184-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-185, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -1256,11 +1258,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the deviating consignor party
      *
-     * @param  string|null $contactPersonName      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-188, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-189, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentShipFromContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1274,11 +1276,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the deviating consignor party
      *
-     * @param  string|null $contactPersonName      __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-188, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-189, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-190, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-186, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-187, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-188, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-189, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-190, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentShipFromContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1292,9 +1294,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information about the Invoicer Party
      *
-     * @param  string      $name         __BT-X-207, From EXTENDED__ The name of the party
-     * @param  string|null $id           __BT-X-205, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
-     * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party
+     * @param  string      $name        __BT-X-207, From EXTENDED__ The name of the party
+     * @param  string|null $id          __BT-X-205, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1385,11 +1387,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the Invoicer Party
      *
-     * @param  string|null $contactPersonName      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-212, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-213, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1403,11 +1405,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Invoicer Party
      *
-     * @param  string|null $contactPersonName      __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-212, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-213, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-214, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-210, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-211, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-212, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-213, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-214, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoicerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1421,9 +1423,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the different invoice recipient
      *
-     * @param  string      $name         __BT-X-226, From EXTENDED__ The name of the party
-     * @param  string|null $id           __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
-     * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party
+     * @param  string      $name        __BT-X-226, From EXTENDED__ The name of the party
+     * @param  string|null $id          __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoicee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -1436,7 +1438,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an id to the Invoicee Party
      *
-     * @param  string $id  __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string $id __BT-X-224, From EXTENDED__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeId(string $id): ZugferdDocumentBuilder
@@ -1449,8 +1451,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the Invoicee Party
      *
-     * @param  string|null $globalID      __BT-X-225, From EXTENDED__ Global identification number
-     * @param  string|null $globalIDType  __BT-X-225-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-X-225, From EXTENDED__ Global identification number
+     * @param  string|null $globalIDType __BT-X-225-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1463,8 +1465,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to the Invoicee Party
      *
-     * @param  string|null $taxRegType  __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxRegId    __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
@@ -1478,13 +1480,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the Invoicee Party
      *
-     * @param  string|null $lineOne      __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BT-X-238, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param  string|null $country      __BT-X-239, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BT-X-240, From EXTENDED__ The party's state
+     * @param  string|null $lineOne     __BT-X-235, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-236, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-237, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-234, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-238, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BT-X-239, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BT-X-240, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -1498,9 +1501,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Invoicee Party
      *
-     * @param  string|null $legalOrgId    __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalOrgType  __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalOrgName  __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-227, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-227-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-228, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -1514,11 +1517,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the Invoicee Party
      *
-     * @param  string|null $contactPersonName      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-231, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-232, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentInvoiceeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1532,11 +1535,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the Invoicee Party
      *
-     * @param  string|null $contactPersonName      __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-231, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-232, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-233, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-229, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-230, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-231, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-232, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-233, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1579,8 +1582,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the payee trade party
      *
-     * @param  string|null $globalID      __BT-60-0, From BASIC WL__ Global identification number
-     * @param  string|null $globalIDType  __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-60-0, From BASIC WL__ Global identification number
+     * @param  string|null $globalIDType __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -1608,13 +1611,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the payee trade party
      *
-     * @param  string|null $lineOne      __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param  string|null $country      __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BT-X-255, From EXTENDED__ The party's state
+     * @param  string|null $lineOne     __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BT-X-255, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayeeAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -1644,11 +1648,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the payee trade party
      *
-     * @param  string|null $contactPersonName      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPayeeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1662,11 +1666,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an (additional) contact to the payee trade party
      *
-     * @param  string|null $contactPersonName      __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-246, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo           __BT-X-247, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress    __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPayeeContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -1756,17 +1760,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
      *    from the bill
      *
-     * @param  string            $issuerAssignedId    __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string            $typeCode            __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     *  - Code 916 "reference paper" is used to reference the identification of the document on which the invoice is based
-     *  - Code 50 "Price / sales catalog response" is used to reference the tender or the lot
-     *  - Code 130 "invoice data sheet" is used to reference an identifier for an object specified by the seller.
-     * @param  string|null       $uriId               __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     * supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
-     * @param  string|array|null $name                __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $refTypeCode         __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null     $issueDate           __BT-X-149, From EXTENDED__ Document date
-     * @param  string|null       $binaryDataFilename  __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string            $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     *                                               - Code 916 "reference paper" is used to reference the identification of the
+     *                                               document on which the invoice is based - Code 50 "Price / sales catalog response"
+     *                                               is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
+     *                                               to reference an identifier for an object specified by the seller.
+     * @param  string|null       $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     *                                               supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
+     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null       $refTypeCode        __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null     $issueDate          __BT-X-149, From EXTENDED__ Document date
+     * @param  string|null       $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
@@ -1833,8 +1838,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Details of the associated end customer order
      *
-     * @param  string        $issuerAssignedId  __BT-X-150, From EXTENDED__ Order number of the end customer
-     * @param  DateTime|null $issueDate         __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
+     * @param  string        $issuerAssignedId __BT-X-150, From EXTENDED__ Order number of the end customer
+     * @param  DateTime|null $issueDate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -1875,7 +1880,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Set detailed information on the associated goods receipt notification
      *
      * @param  string        $issuerAssignedId __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
-     * @param  DateTime|null $issueDate       __BT-X-201, From EXTENDED__ Goods receipt date
+     * @param  DateTime|null $issueDate        __BT-X-201, From EXTENDED__ Goods receipt date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentReceivingAdviceReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -1888,7 +1893,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the associated delivery bill
      *
-     * @param  string        $issuerAssignedId  __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  string        $issuerAssignedId __BT-X-202, From EXTENDED__ Delivery slip number
      * @param  DateTime|null $issueDate        __BT-X-203, From EXTENDED__ Delivery slip date
      * @return ZugferdDocumentBuilder
      */
@@ -1923,17 +1928,17 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * element must therefore not differ in the repetitions. The elements ApplicableTradeSettlementFinancialCard
      * and PayerPartyDebtorFinancialAccount must not be specified for bank transfers.
      *
-     * @param string      $typeCode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
-     * - 10: cash
-     * - 20: check
-     * - 30: transfer
-     * - 42: Payment to bank account
-     * - 48: Card payment
-     * - 49: direct debit
-     * - 57: Standing order
-     * - 58: SEPA Credit Transfer
-     * - 59: SEPA Direct Debit
-     * - 97: Report
+     * @param  string      $typeCode         __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     *                                       - 10: cash
+     *                                       - 20: check
+     *                                       - 30: transfer
+     *                                       - 42: Payment to bank account
+     *                                       - 48: Card payment
+     *                                       - 49: direct debit
+     *                                       - 57: Standing order
+     *                                       - 58: SEPA Credit Transfer
+     *                                       - 59: SEPA Direct Debit
+     *                                       - 97: Report
      * @param  string|null $information      __BT-82, From EN 16931__ The expected or used means of payment expressed in text form, e.g. cash, bank transfer, direct debit, credit card, etc.
      * @param  string|null $cardType         __BT-, From __ The type of the card
      * @param  string|null $cardId           __BT-87, From EN 16931__ The primary account number (PAN) to which the card used for payment belongs. In accordance with card payment security standards, an invoice should never contain a full payment card master account number. The following specification of the PCI Security Standards Council currently applies: The first 6 and last 4 digits at most are to be displayed
@@ -1966,7 +1971,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _SEPA Credit Transfer_
      *
-     * @param  string $payeeIban             __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
+     * @param  string      $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
@@ -1994,7 +1999,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _Non-SEPA Credit Transfer_
      *
-     * @param  string $payeeIban             __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
+     * @param  string      $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  string|null $payeeBic         __BT-86, From EN 16931__ An identifier for the payment service provider with which the payment account is held
@@ -2022,8 +2027,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _SEPA Direct Debit_
      *
-     * @param  string $buyerIban                 __BT-91, From BASIC WL__ The account to be debited by the direct debit
-     * @param  string|null $creditorReferenceID  __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
+     * @param  string      $buyerIban           __BT-91, From BASIC WL__ The account to be debited by the direct debit
+     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentMeanToDirectDebit(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
@@ -2045,8 +2050,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _Non-SEPA Direct Debit_
      *
-     * @param  string $buyerIban                 __BT-91, From BASIC WL__ The account to be debited by the direct debit
-     * @param  string|null $creditorReferenceID  __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
+     * @param  string      $buyerIban           __BT-91, From BASIC WL__ The account to be debited by the direct debit
+     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Unique bank identifier of the payee or the seller assigned by the bank of the payee or the seller
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentMeanToDirectDebitNonSepa(string $buyerIban, ?string $creditorReferenceID = null): ZugferdDocumentBuilder
@@ -2068,9 +2073,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the document payment means to _Payment card_
      *
-     * @param  string $cardType              __BT-, From __ The type of the card
-     * @param  string $cardId                __BT-87, From EN 16931__ The primary account number (PAN) to which the card used for payment belongs. In accordance with card payment security standards, an invoice should never contain a full payment card master account number. The following specification of the PCI Security Standards Council currently applies: The first 6 and last 4 digits at most are to be displayed
-     * @param  string|null $cardHolderName   __BT-88, From EN 16931__ Name of the payment card holder
+     * @param  string      $cardType       __BT-, From __ The type of the card
+     * @param  string      $cardId         __BT-87, From EN 16931__ The primary account number (PAN) to which the card used for payment belongs. In accordance with card payment security standards, an invoice should never contain a full payment card master account number. The following specification of the PCI Security Standards Council currently applies: The first 6 and last 4 digits at most are to be displayed
+     * @param  string|null $cardHolderName __BT-88, From EN 16931__ Name of the payment card holder
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentMeanToPaymentCard(string $cardType, string $cardId, ?string $cardHolderName = null): ZugferdDocumentBuilder
@@ -2132,33 +2137,29 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a VAT breakdown (at document level) in a more simple way
      *
-     * @param  string        $categoryCode               __BT-118, From BASIC WL__ Coded description of a sales tax category
-     *
-     *                                                   The following entries from UNTDID 5305 are used (details in brackets):
-     *                                                   - Standard rate (sales tax is due according to the normal procedure)
-     *                                                   - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *                                                   - Tax exempt (USt./IGIC/IPSI)
-     *                                                   - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *                                                   - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *                                                   - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *                                                   - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *                                                   - Canary Islands general indirect tax (IGIC tax applies)
-     *                                                   - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     *                                                   The codes for the VAT category are as follows:
-     *                                                   - S = sales tax is due at the normal rate
-     *                                                   - Z = goods to be taxed according to the zero rate
-     *                                                   - E = tax exempt
-     *                                                   - AE = reversal of tax liability
-     *                                                   - K = VAT is not shown for intra-community deliveries
-     *                                                   - G = tax not levied due to export outside the EU
-     *                                                   - O = Outside the tax scope
-     *                                                   - L = IGIC (Canary Islands)
-     *                                                   - M = IPSI (Ceuta / Melilla)
-     * @param  string        $typeCode                   __BT-118-0, From BASIC WL__ Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param  float         $basisAmount                __BT-116, From BASIC WL__ Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param  float         $calculatedAmount           __BT-117, From BASIC WL__ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
-     * @param  float|null    $rateApplicablePercent      __BT-119, From BASIC WL__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  string     $categoryCode          __BT-118, From BASIC WL__ Coded description of a sales tax category
+     *                                           The following entries from UNTDID 5305 are used (details in
+     *                                           brackets): - Standard rate (sales tax is due according to the
+     *                                           normal procedure) - Goods to be taxed according to the zero rate
+     *                                           (sales tax is charged with a percentage of zero) - Tax exempt
+     *                                           (USt./IGIC/IPSI) - Reversal of the tax liability (the rules for
+     *                                           reversing the tax liability at USt./IGIC/IPSI apply) - VAT exempt
+     *                                           for intra-community deliveries of goods (USt./IGIC/IPSI not levied
+     *                                           due to rules on intra-community deliveries) - Free export item, tax
+     *                                           not levied (VAT / IGIC/IPSI not levied due to export outside the
+     *                                           EU) - Services outside the tax scope (sales are not subject to VAT
+     *                                           / IGIC/IPSI) - Canary Islands general indirect tax (IGIC tax
+     *                                           applies) - IPSI (tax for Ceuta / Melilla) applies. The codes for
+     *                                           the VAT category are as follows: - S = sales tax is due at the
+     *                                           normal rate - Z = goods to be taxed according to the zero rate - E
+     *                                           = tax exempt - AE = reversal of tax liability - K = VAT is not
+     *                                           shown for intra-community deliveries - G = tax not levied due to
+     *                                           export outside the EU - O = Outside the tax scope - L = IGIC
+     *                                           (Canary Islands) - M = IPSI (Ceuta / Melilla)
+     * @param  string     $typeCode              __BT-118-0, From BASIC WL__ Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param  float      $basisAmount           __BT-116, From BASIC WL__ Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
+     * @param  float      $calculatedAmount      __BT-117, From BASIC WL__ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
+     * @param  float|null $rateApplicablePercent __BT-119, From BASIC WL__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentTaxSimple(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null): ZugferdDocumentBuilder
@@ -2185,62 +2186,62 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add information about surcharges and charges applicable to the bill as a whole, Deductions,
      * such as for withheld taxes may also be specified in this group
      *
-     * @param  float       $actualAmount          __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount at document level
-     * @param  boolean     $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
-     * @param  string      $taxCategoryCode       __BT-95/BT-102, From BASIC WL__ A coded indication of which sales tax category applies to the surcharge or deduction at document level
+     * @param float       $actualAmount          __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount at document level
+     * @param boolean     $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param string      $taxCategoryCode       __BT-95/BT-102, From BASIC WL__ A coded indication of which sales tax category applies to the surcharge or deduction at document level
      *
-     *                                            The following entries from UNTDID 5305 are used (details in brackets):
-     *                                            - Standard rate (sales tax is due according to the normal procedure)
-     *                                            - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *                                            - Tax exempt (USt./IGIC/IPSI)
-     *                                            - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *                                            - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *                                            - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *                                            - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *                                            - Canary Islands general indirect tax (IGIC tax applies)
-     *                                            - IPSI (tax for Ceuta / Melilla) applies.
+     *                                           The following entries from UNTDID 5305 are used (details in brackets):
+     *                                           - Standard rate (sales tax is due according to the normal procedure)
+     *                                           - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
+     *                                           - Tax exempt (USt./IGIC/IPSI)
+     *                                           - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
+     *                                           - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
+     *                                           - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
+     *                                           - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
+     *                                           - Canary Islands general indirect tax (IGIC tax applies)
+     *                                           - IPSI (tax for Ceuta / Melilla) applies.
      *
-     *                                            The codes for the VAT category are as follows:
-     *                                            - S = sales tax is due at the normal rate
-     *                                            - Z = goods to be taxed according to the zero rate
-     *                                            - E = tax exempt
-     *                                            - AE = reversal of tax liability
-     *                                            - K = VAT is not shown for intra-community deliveries
-     *                                            - G = tax not levied due to export outside the EU
-     *                                            - O = Outside the tax scope
-     *                                            - L = IGIC (Canary Islands)
-     *                                            - M = IPSI (Ceuta/Melilla)
+     *                                           The codes for the VAT category are as follows:
+     *                                           - S = sales tax is due at the normal rate
+     *                                           - Z = goods to be taxed according to the zero rate
+     *                                           - E = tax exempt
+     *                                           - AE = reversal of tax liability
+     *                                           - K = VAT is not shown for intra-community deliveries
+     *                                           - G = tax not levied due to export outside the EU
+     *                                           - O = Outside the tax scope
+     *                                           - L = IGIC (Canary Islands)
+     *                                           - M = IPSI (Ceuta/Melilla)
      *
-     * @param  string      $taxTypeCode           __BT-95-0/BT-102-0, From BASIC WL__ Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
-     * @param  float       $rateApplicablePercent __BT-96/BT-103, From BASIC WL__ VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @param  float|null  $sequence              __BT-X-265, From EXTENDED__ Calculation order
-     * @param  float|null  $calculationPercent    __BT-94/BT-101, From BASIC WL__ Percentage surcharge or discount at document level
-     * @param  float|null  $basisAmount           __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount at document level to calculate the amount of the discount at document level
-     * @param  float|null  $basisQuantity         __BT-X-266, From EXTENDED__ Base quantity of the discount
-     * @param  string|null $basisQuantityUnitCode __BT-X-267, From EXTENDED__ Unit of the price base quantity
-     * @param  string|null $reasonCode            __BT-98/BT-105, From BASIC WL__ The reason given as a code for the surcharge or discount at document level. Note: Use entries from the UNTDID 5189 code list. The code of the reason for the surcharge or discount at document level and the reason for the surcharge or discount at document level must correspond to each other
+     * @param string      $taxTypeCode           __BT-95-0/BT-102-0, From BASIC WL__ Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
+     * @param float       $rateApplicablePercent __BT-96/BT-103, From BASIC WL__ VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param float|null  $sequence              __BT-X-265, From EXTENDED__ Calculation order
+     * @param float|null  $calculationPercent    __BT-94/BT-101, From BASIC WL__ Percentage surcharge or discount at document level
+     * @param float|null  $basisAmount           __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount at document level to calculate the amount of the discount at document level
+     * @param float|null  $basisQuantity         __BT-X-266, From EXTENDED__ Base quantity of the discount
+     * @param string|null $basisQuantityUnitCode __BT-X-267, From EXTENDED__ Unit of the price base quantity
+     * @param string|null $reasonCode            __BT-98/BT-105, From BASIC WL__ The reason given as a code for the surcharge or discount at document level. Note: Use entries from the UNTDID 5189 code list. The code of the reason for the surcharge or discount at document level and the reason for the surcharge or discount at document level must correspond to each other
      *
-     *                                            Code list: UNTDID 7161 Complete list, code list: UNTDID 5189 Restricted
-     *                                            Include PEPPOL subset:
-     *                                            - 41 - Bonus for works ahead of schedule
-     *                                            - 42 - Other bonus
-     *                                            - 60 - Manufacturer’s consumer discount
-     *                                            - 62 - Due to military status
-     *                                            - 63 - Due to work accident
-     *                                            - 64 - Special agreement
-     *                                            - 65 - Production error discount
-     *                                            - 66 - New outlet discount
-     *                                            - 67 - Sample discount
-     *                                            - 68 - End-of-range discount
-     *                                            - 70 - Incoterm discount
-     *                                            - 71 - Point of sales threshold allowance
-     *                                            - 88 - Material surcharge/deduction
-     *                                            - 95 - Discount
-     *                                            - 100 - Special rebate
-     *                                            - 102 - Fixed long term
-     *                                            - 103 - Temporary
-     *                                            - 104 - Standard
-     *                                            - 105 - Yearly turnover
+     *                                           Code list: UNTDID 7161 Complete list, code list: UNTDID 5189 Restricted
+     *                                           Include PEPPOL subset:
+     *                                           - 41 - Bonus for works ahead of schedule
+     *                                           - 42 - Other bonus
+     *                                           - 60 - Manufacturer’s consumer discount
+     *                                           - 62 - Due to military status
+     *                                           - 63 - Due to work accident
+     *                                           - 64 - Special agreement
+     *                                           - 65 - Production error discount
+     *                                           - 66 - New outlet discount
+     *                                           - 67 - Sample discount
+     *                                           - 68 - End-of-range discount
+     *                                           - 70 - Incoterm discount
+     *                                           - 71 - Point of sales threshold allowance
+     *                                           - 88 - Material surcharge/deduction
+     *                                           - 95 - Discount
+     *                                           - 100 - Special rebate
+     *                                           - 102 - Fixed long term
+     *                                           - 103 - Temporary
+     *                                           - 104 - Standard
+     *                                           - 105 - Yearly turnover
      *
      * @param  string|null $reason                __BT-97/BT-104, From BASIC WL__ The reason given in text form for the surcharge or discount at document level
      * @return ZugferdDocumentBuilder
@@ -2288,12 +2289,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add discount Terms to last added payment term
      *
-     * @param  float|null    $calculationPercent          __BT-X-286, From EXTENDED__ Percentage of the down payment
-     * @param  DateTime|null $basisDateTime               __BT-X-282, From EXTENDED__ Due date reference date
-     * @param  float|null    $basisPeriodMeasureValue     __BT-X-284, From EXTENDED__ Maturity period (basis)
-     * @param  string|null   $basisPeriodMeasureUnitCode  __BT-X-284, From EXTENDED__ Maturity period (unit)
-     * @param  float|null    $basisAmount                 __BT-X-284, From EXTENDED__ Base amount of the payment discount
-     * @param  float|null    $actualDiscountAmount        __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param  float|null    $calculationPercent         __BT-X-286, From EXTENDED__ Percentage of the down payment
+     * @param  DateTime|null $basisDateTime              __BT-X-282, From EXTENDED__ Due date reference date
+     * @param  float|null    $basisPeriodMeasureValue    __BT-X-284, From EXTENDED__ Maturity period (basis)
+     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @param  float|null    $basisAmount                __BT-X-284, From EXTENDED__ Base amount of the payment discount
+     * @param  float|null    $actualDiscountAmount       __BT-X-287, From EXTENDED__ Amount of the payment discount
      * @return ZugferdDocumentBuilder
      */
     public function addDiscountTermsToPaymentTerms(?float $calculationPercent = null, ?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
@@ -2306,12 +2307,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
      *
-     * @param  string        $description                 __BT-20, From _EN 16931 XRECHNUNG__ Text to add
-     * @param  int[]         $paymentDiscountDays         __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
-     * @param  float[]       $paymentDiscountPercents     __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
-     * @param  float[]       $paymentDiscountBaseAmounts  __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
-     * @param  DateTime|null $dueDate                     __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
-     * @param  string|null   $directDebitMandateID        __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
+     * @param  string        $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add
+     * @param  int[]         $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
+     * @param  float[]       $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
+     * @param  float[]       $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
+     * @param  DateTime|null $dueDate                    __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
+     * @param  string|null   $directDebitMandateID       __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentTermXRechnung(string $description, array $paymentDiscountDays = [], array $paymentDiscountPercents = [], array $paymentDiscountBaseAmounts = [], ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
@@ -2322,9 +2323,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             return $this;
         }
 
-        $paymentDiscountDays = array_filter($paymentDiscountDays, function ($k) use ($paymentDiscountPercents) {
-            return isset($paymentDiscountPercents[$k]);
-        }, ARRAY_FILTER_USE_KEY);
+        $paymentDiscountDays = array_filter(
+            $paymentDiscountDays, function ($k) use ($paymentDiscountPercents) {
+                return isset($paymentDiscountPercents[$k]);
+            }, ARRAY_FILTER_USE_KEY
+        );
 
         if (empty($paymentDiscountDays)) {
             return $this->addDocumentPaymentTerm(trim($description), $dueDate, $directDebitMandateID);
@@ -2352,16 +2355,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add information on the booking reference
      *
-     * @param  string      $id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
-     * @param  string|null $typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
+     * @param string      $id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param string|null $typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
      *
-     * Allowed values:
-     * - 1 Financial
-     * - 2 Subsidiary
-     * - 3 Budget
-     * - 4 Cost Accounting
-     * - 5 Payable
-     * - 6 Job Cose Accounting
+     *                              Allowed values:
+     *                              - 1 Financial
+     *                              - 2 Subsidiary
+     *                              - 3 Budget
+     *                              - 4 Cost Accounting
+     *                              - 5 Payable
+     *                              - 6 Job Cose Accounting
      *
      * @return ZugferdDocumentBuilder
      */
@@ -2446,13 +2449,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Adds a new position (line) to document
      *
-     * @param  string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
-     * @param  string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
-     * @param  string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
+     * @param string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
+     * @param string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
+     * @param string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
      *
-     * - DETAIL: detail (normal position)
-     * - GROUP: Subtotal
-     * - INFORMATION: Information only
+     *                                          - DETAIL: detail (normal position)
+     *                                          - GROUP: Subtotal
+     *                                          - INFORMATION: Information only
      *
      * @return ZugferdDocumentBuilder
      */
@@ -2467,10 +2470,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Adds a new text-only position (line) to document
      *
-     * @param  string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
-     * @param  string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
-     * @param  string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
-     * @return ZugferdDocumentBuilder
+     * @param      string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
+     * @param      string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
+     * @param      string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
+     * @return     ZugferdDocumentBuilder
      * @deprecated 1.0.75
      */
     public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
@@ -2524,11 +2527,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add extra characteristics to the formerly added product.
      * Contains information about the characteristics of the goods and services invoiced
      *
-     * @param  string      $description           __BT-160, From EN 16931__ The name of the attribute or property of the product such as "Colour"
-     * @param  string      $value                 __BT-161, From EN 16931__ The value of the attribute or property of the product such as "Red"
-     * @param  string|null $typeCode              __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
-     * @param  float|null  $valueMeasure          __BT-X-12, From EXTENDED__ Value of the product property (numerical measured variable)
-     * @param  string|null $valueMeasureUnitCode  __BT-X-12-0, From EXTENDED__ Unit of measurement code
+     * @param  string      $description          __BT-160, From EN 16931__ The name of the attribute or property of the product such as "Colour"
+     * @param  string      $value                __BT-161, From EN 16931__ The value of the attribute or property of the product such as "Red"
+     * @param  string|null $typeCode             __BT-X-11, From EXTENDED__ Type of product characteristic (code). The codes must be taken from the UNTDID 6313 codelist.
+     * @param  float|null  $valueMeasure         __BT-X-12, From EXTENDED__ Value of the product property (numerical measured variable)
+     * @param  string|null $valueMeasureUnitCode __BT-X-12-0, From EXTENDED__ Unit of measurement code
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionProductCharacteristic(string $description, string $value, ?string $typeCode = null, ?float $valueMeasure = null, ?string $valueMeasureUnitCode = null): ZugferdDocumentBuilder
@@ -2542,10 +2545,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add detailed information on product classification
      *
-     * @param  string      $classCode      __BT-158, From EN 16931__ Item classification identifier. Classification codes are used for grouping similar items that can serve different purposes, such as public procurement (according to the Common Procurement Vocabulary ([CPV]), e-commerce (UNSPSC), etc.
-     * @param  string|null $className      __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality.
-     * @param  string|null $listId         __BT-158-1, From EN 16931__ The identifier for the identification scheme of the item classification identifier. The identification scheme must be selected from the entries in UNTDID 7143 [6].
-     * @param  string|null $listVersionId  __BT-158-2, From EN 16931__ The version of the identification scheme
+     * @param  string      $classCode     __BT-158, From EN 16931__ Item classification identifier. Classification codes are used for grouping similar items that can serve different purposes, such as public procurement (according to the Common Procurement Vocabulary ([CPV]), e-commerce (UNSPSC), etc.
+     * @param  string|null $className     __BT-X-138, From EXTENDED__ Name with which an article can be classified according to type or quality.
+     * @param  string|null $listId        __BT-158-1, From EN 16931__ The identifier for the identification scheme of the item classification identifier. The identification scheme must be selected from the entries in UNTDID 7143 [6].
+     * @param  string|null $listVersionId __BT-158-2, From EN 16931__ The version of the identification scheme
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionProductClassification(string $classCode, ?string $className = null, ?string $listId = null, ?string $listVersionId = null): ZugferdDocumentBuilder
@@ -2643,9 +2646,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related contract position
      *
-     * @param  string        $issuerAssignedId  __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  string        $lineId            __BT-X-25, From EXTENDED__ Identifier of the according contract position
-     * @param  DateTime|null $issueDate         __BT-X-26, From EXTENDED__ Contract date
+     * @param  string        $issuerAssignedId __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  string        $lineId           __BT-X-25, From EXTENDED__ Identifier of the according contract position
+     * @param  DateTime|null $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionContractReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -2668,14 +2671,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *   ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *   documents
      *
-     * @param  string        $issuerAssignedId    __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string        $typeCode            __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $uriId               __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  string|null   $lineId              __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  string|null   $name                __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null   $refTypeCode         __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null $issueDate           __BT-X-33, From EXTENDED__ Document date
-     * @param  string|null   $binaryDataFilename  __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string        $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string        $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null   $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  string|null   $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  string|null   $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null   $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null $issueDate          __BT-X-33, From EXTENDED__ Document date
+     * @param  string|null   $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, ?string $lineId = null, ?string $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
@@ -2689,9 +2692,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a referennce of a associated end customer order
      *
-     * @param  string        $issuerAssignedId  __BT-X-43, From EXTENDED__ Order number of the end customer
-     * @param  string        $lineId            __BT-X-44, From EXTENDED__ Order item (end customer)
-     * @param  DateTime|null $issueDate         __BT-X-45, From EXTENDED__ Document date of end customer order
+     * @param  string        $issuerAssignedId __BT-X-43, From EXTENDED__ Order number of the end customer
+     * @param  string        $lineId           __BT-X-44, From EXTENDED__ Order item (end customer)
+     * @param  DateTime|null $issueDate        __BT-X-45, From EXTENDED__ Document date of end customer order
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionUltimateCustomerOrderReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -2803,9 +2806,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the different ship-to party at position level
      *
-     * @param  string|null $name         __BT-X-50, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
-     * @param  string|null $id           __BT-X-48, From EXTENDED__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
-     * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party (Obsolete)
+     * @param  string|null $name        __BT-X-50, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param  string|null $id          __BT-X-48, From EXTENDED__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party (Obsolete)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -2819,8 +2822,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a global id for the Ship-to Trade Party at position level
      *
-     * @param  string|null $globalID      __BT-X-49, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
-     * @param  string|null $globalIDType  __BT-X-49-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @param  string|null $globalID     __BT-X-49, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
+     * @param  string|null $globalIDType __BT-X-49-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
@@ -2834,8 +2837,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Ship-To Trade party at position level
      *
-     * @param  string|null $taxRegType  __BT-X-66-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxRegId    __BT-X-66, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-66-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-66, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
@@ -2850,13 +2853,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the Ship-To party at position level
      *
-     * @param  string|null $lineOne      __BG-X-59, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BG-X-60, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BG-X-61, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BG-X-58, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BG-X-62, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
-     * @param  string|null $country      __BG-X-63, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BG-X-64, From EXTENDED__ The product end users state
+     * @param  string|null $lineOne     __BG-X-59, From EXTENDED__ The main line in the product end users address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BG-X-60, From EXTENDED__ Line 2 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BG-X-61, From EXTENDED__ Line 3 of the product end users address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BG-X-58, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BG-X-62, From EXTENDED__ Usual name of the city or municipality in which the product end users address is located
+     * @param  string|null $country     __BG-X-63, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BG-X-64, From EXTENDED__ The product end users state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -2871,9 +2875,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Ship-To party on position level
      *
-     * @param  string|null $legalOrgId    __BT-X-51, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalOrgType  __BT-X-51-0, From EXTENDED__ Registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalOrgName  __BT-X-52, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT-X-51, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-51-0, From EXTENDED__ Registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-52, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -2888,11 +2892,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the Ship-To party on position level
      *
-     * @param  string|null $contactPersonName      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactFaxNo           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactEmailAddress    __BT-X-57, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName     __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo          __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress   __BT-X-57, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -2907,11 +2911,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an additional contact to the Ship-To party on position level
      *
-     * @param  string|null $contactPersonName      __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactFaxNo           __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactEmailAddress    __BT-X-57, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName     __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-55, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo          __BT-X-56, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress   __BT-X-57, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -2926,9 +2930,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the different end recipient on position level
      *
-     * @param  string|null $name         __BT-X-69, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
-     * @param  string|null $id           __BT-X-67, From EXTENDED__ An identifier for the party Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
-     * @param  string|null $description  __BT-, From __ Further legal information that is relevant for the party (Obsolete)
+     * @param  string|null $name        __BT-X-69, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @param  string|null $id          __BT-X-67, From EXTENDED__ An identifier for the party Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party (Obsolete)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionUltimateShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
@@ -2957,8 +2961,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add Tax registration to Ship-To Trade party on position level
      *
-     * @param  string|null $taxRegType  __BT-X-84-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param  string|null $taxRegId    __BT-X-84, From EXTENDED__ Tax number or sales tax identification number
+     * @param  string|null $taxRegType __BT-X-84-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-84, From EXTENDED__ Tax number or sales tax identification number
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionUltimateShipToTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
@@ -2973,13 +2977,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Sets the postal address of the Ship-To party on position level
      *
-     * @param  string|null $lineOne      __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  string|null $lineTwo      __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $lineThree    __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  string|null $postCode     __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  string|null $city         __BT_X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param  string|null $country      __BT_X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  string|null $subDivision  __BT_X-82, From EXTENDED__ The party's state
+     * @param  string|null $lineOne     __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT_X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BT_X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
+     *                                  subdivisions”
+     * @param  string|null $subDivision __BT_X-82, From EXTENDED__ The party's state
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionUltimateShipToAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
@@ -2994,9 +2999,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set legal organisation of the Ship-To party on position level
      *
-     * @param  string|null $legalOrgId    __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  string|null $legalOrgType  __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  string|null $legalOrgName  __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  string|null $legalOrgId   __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
@@ -3011,11 +3016,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the Ship-To party on position level
      *
-     * @param  string|null $contactPersonName      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactFaxNo           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactEmailAddress    __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo          __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress   __BT_X-75, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -3030,11 +3035,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an additional contact of the Ship-To party on position level
      *
-     * @param  string|null $contactPersonName      __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName  __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo         __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  string|null $contactFaxNo           __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  string|null $contactEmailAddress    __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  string|null $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  string|null $contactFaxNo          __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  string|null $contactEmailAddress   __BT_X-75, From EXTENDED__ Detailed information on the party's email address
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionUltimateShipToContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress): ZugferdDocumentBuilder
@@ -3063,9 +3068,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated shipping notification on item level
      *
-     * @param  string        $issuerAssignedId  __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param  string|null   $lineId            __BT-X-87, From EXTENDED__ Shipping notification position
-     * @param  DateTime|null $issueDate         __BT-X-88, From EXTENDED__ Date of Shipping notification number
+     * @param  string        $issuerAssignedId __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  string|null   $lineId           __BT-X-87, From EXTENDED__ Shipping notification position
+     * @param  DateTime|null $issueDate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionDespatchAdviceReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -3079,9 +3084,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated goods receipt notification
      *
-     * @param  string        $issuerAssignedId  __BT-X-89, From EXTENDED__ Goods receipt number
-     * @param  string|null   $lineId            __BT-X-90, From EXTENDED__ Goods receipt position
-     * @param  DateTime|null $issueDate         __BT-X-91, From EXTENDED__ Date of Goods receipt
+     * @param  string        $issuerAssignedId __BT-X-89, From EXTENDED__ Goods receipt number
+     * @param  string|null   $lineId           __BT-X-90, From EXTENDED__ Goods receipt position
+     * @param  DateTime|null $issueDate        __BT-X-91, From EXTENDED__ Date of Goods receipt
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionReceivingAdviceReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -3095,9 +3100,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated delivery bill on item level
      *
-     * @param  string        $issuerAssignedId  __BT-X-92, From EXTENDED__ Delivery note number
-     * @param  string|null   $lineId            __BT-X-93, From EXTENDED__ Delivery note position
-     * @param  DateTime|null $issueDate         __BT-X-94, From EXTENDED__ Date of Delivery note
+     * @param  string        $issuerAssignedId __BT-X-92, From EXTENDED__ Delivery note number
+     * @param  string|null   $lineId           __BT-X-93, From EXTENDED__ Delivery note position
+     * @param  DateTime|null $issueDate        __BT-X-94, From EXTENDED__ Date of Delivery note
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionDeliveryNoteReferencedDocument(string $issuerAssignedId, ?string $lineId = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
@@ -3166,7 +3171,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set information on item totals
      *
-     * @param  float $lineTotalAmount  __BT-131, From BASIC__ The total amount of the invoice item.
+     * @param  float $lineTotalAmount __BT-131, From BASIC__ The total amount of the invoice item.
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionLineSummation(float $lineTotalAmount): ZugferdDocumentBuilder
@@ -3180,12 +3185,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set information on item totals (with support for EXTENDED profile)
      *
-     * @param  float $lineTotalAmount             __BT-131, From BASIC__ The total amount of the invoice item
-     * @param  float $chargeTotalAmount           __BT-X-327, From EXTENDED__ Total amount of item surcharges
-     * @param  float $allowanceTotalAmount        __BT-X-328, From EXTENDED__ Total amount of item discounts
-     * @param  float $taxTotalAmount              __BT-X-329, From EXTENDED__ Total amount of item taxes
-     * @param  float $grandTotalAmount            __BT-X-330, From EXTENDED__ Total gross amount of the item
-     * @param  float $totalAllowanceChargeAmount  __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
+     * @param  float $lineTotalAmount            __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  float $chargeTotalAmount          __BT-X-327, From EXTENDED__ Total amount of item surcharges
+     * @param  float $allowanceTotalAmount       __BT-X-328, From EXTENDED__ Total amount of item discounts
+     * @param  float $taxTotalAmount             __BT-X-329, From EXTENDED__ Total amount of item taxes
+     * @param  float $grandTotalAmount           __BT-X-330, From EXTENDED__ Total gross amount of the item
+     * @param  float $totalAllowanceChargeAmount __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentPositionLineSummationExt(float $lineTotalAmount, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxTotalAmount = null, ?float $grandTotalAmount = null, ?float $totalAllowanceChargeAmount = null): ZugferdDocumentBuilder
@@ -3199,16 +3204,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an AccountingAccount on position level
      *
-     * @param  string      $id       __BT-133, From COMFORT__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
-     * @param  string|null $typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @param string      $id       __BT-133, From COMFORT__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param string|null $typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
      *
-     * Allowed values:
-     * - 1 Financial
-     * - 2 Subsidiary
-     * - 3 Budget
-     * - 4 Cost Accounting
-     * - 5 Payable
-     * - 6 Job Cose Accounting
+     *                              Allowed values:
+     *                              - 1 Financial
+     *                              - 2 Subsidiary
+     *                              - 3 Budget
+     *                              - 4 Cost Accounting
+     *                              - 5 Payable
+     *                              - 6 Job Cose Accounting
      *
      * @return ZugferdDocumentBuilder
      */

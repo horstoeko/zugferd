@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
@@ -27,7 +28,7 @@ return RectorConfig::configure()
         SetList::CODING_STYLE,
     ])
     ->withParallel(60 * 5, 12, 16)
-    ->withConfiguredRule(\Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector::class, [
+    ->withConfiguredRule(EncapsedStringsToSprintfRector::class, [
         'always' => true,
     ])
     ->withRules([
