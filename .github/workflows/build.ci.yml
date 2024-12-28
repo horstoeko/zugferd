@@ -203,6 +203,7 @@ jobs:
         if: github.event_name != 'pull_request'
         with:
           files: "build/logs/junit.xml"
+          comment_mode: ${{ ((github.event.workflow_run && github.event.workflow_run.event == 'pull_request') || github.event_name == 'pull_request') && 'failures' || 'always' }}
 
       - name: Publish Build Logs
         uses: actions/upload-artifact@v4
