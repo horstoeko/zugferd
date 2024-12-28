@@ -38,13 +38,14 @@ function showValidationResult(ZugferdKositValidator $kositValidator)
    ---------------------------------------------------------------------------------- */
 
 $kositValidator = new ZugferdKositValidator();
+$kositValidator->disableCleanup();
 
 /* ----------------------------------------------------------------------------------
    - Validation of a document read by ZugferdDocumentPdfReader
    ---------------------------------------------------------------------------------- */
 
 $document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/invoice_1.pdf");
-$kositValidator->setDocument($document)->disableCleanup()->validate();
+$kositValidator->setDocument($document)->validate();
 
 showValidationResult($kositValidator);
 
@@ -55,7 +56,7 @@ showValidationResult($kositValidator);
 $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../tests/assets/xml_en16931_5.xml");
 
 $kositValidator = new ZugferdKositValidator($document);
-$kositValidator->setDocument($document)->disableCleanup()->validate();
+$kositValidator->setDocument($document)->validate();
 
 showValidationResult($kositValidator);
 

@@ -11,16 +11,17 @@ namespace horstoeko\zugferd;
 
 use DOMDocument;
 use DOMXPath;
+use Throwable;
+use ZipArchive;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
-use Throwable;
-use ZipArchive;
 
 /**
- * Class representing the validator against Schematron (Kosit) for documents
+ * Class representing the validator against Schematron (Kosit) for documents.
+ * This class requires a JAVA running setup
  *
  * @category Zugferd
  * @package  Zugferd
@@ -35,7 +36,7 @@ class ZugferdKositValidator
      *
      * @var ZugferdDocument|string|null
      */
-    private $document = null;
+    private $document;
 
     /**
      * Internal message bag
@@ -98,7 +99,7 @@ class ZugferdKositValidator
      *
      * @var string
      */
-    private $fileToValidateFilename = "filetovalidate.xml";
+    private $fileToValidateFilename = "";
 
     /**
      * Internal flag which indicates that the cleanup of the base directory is disables
@@ -167,12 +168,12 @@ class ZugferdKositValidator
     /**
      * Create a KositValidator-Instance by a given ZugferdDocument (ZugferdDocumentReader, ZugferdDocumentBuilder)
      *
-     * @param  ZugferdDocument $document
+     * @param  ZugferdDocument $zugferdDocument
      * @return ZugferdKositValidator
      */
-    public static function fromZugferdDocument(ZugferdDocument $document): ZugferdKositValidator
+    public static function fromZugferdDocument(ZugferdDocument $zugferdDocument): ZugferdKositValidator
     {
-        return new ZugferdKositValidator($document);
+        return new ZugferdKositValidator($zugferdDocument);
     }
 
     /**
@@ -297,19 +298,6 @@ class ZugferdKositValidator
     public function setValidatorAppScenarioFilename(string $newValidatorAppScenarioFilename): ZugferdKositValidator
     {
         $this->validatorAppScenarioFilename = $newValidatorAppScenarioFilename;
-
-        return $this;
-    }
-
-    /**
-     * Set the filename of the file which contains the temporary xml data to validate
-     *
-     * @param  string $newFileToValidateFilename
-     * @return ZugferdKositValidator
-     */
-    public function setFileToValidateFilename(string $newFileToValidateFilename): ZugferdKositValidator
-    {
-        $this->fileToValidateFilename = $newFileToValidateFilename;
 
         return $this;
     }
@@ -511,13 +499,27 @@ class ZugferdKositValidator
     }
 
     /**
-     * Get the full filename which contains the xml to validate
+     * Reset the internal filename where data of the PDF to validate are stored
+     *
+     * @return void
+     */
+    private function resetFileToValidateFilename(): void
+    {
+        $this->fileToValidateFilename = "";
+    }
+
+    /**
+     * Get the full filename which contains the PDF to validate
      *
      * @return string
      */
     private function resolveFileToValidateFilename(): string
     {
-        return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->fileToValidateFilename);
+        if (StringUtils::stringIsNullOrEmpty($this->fileToValidateFilename)) {
+            $this->fileToValidateFilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), sprintf('filetovalidate-%s-%s.xml', uniqid(), uniqid()));
+        }
+
+        return $this->fileToValidateFilename;
     }
 
     /**
@@ -585,7 +587,7 @@ class ZugferdKositValidator
      */
     public function hasNoValidationErrors(): bool
     {
-        return empty($this->getValidationErrors());
+        return $this->getValidationErrors() === [];
     }
 
     /**
@@ -615,7 +617,7 @@ class ZugferdKositValidator
      */
     public function hasNoValidationWarnings(): bool
     {
-        return empty($this->getValidationWarnings());
+        return $this->getValidationWarnings() === [];
     }
 
     /**
@@ -645,7 +647,7 @@ class ZugferdKositValidator
      */
     public function hasNoValidationInformation(): bool
     {
-        return empty($this->getValidationInformation());
+        return $this->getValidationInformation() === [];
     }
 
     /**
@@ -675,7 +677,7 @@ class ZugferdKositValidator
      */
     public function hasNoProcessErrors(): bool
     {
-        return empty($this->getProcessErrors());
+        return $this->getProcessErrors() === [];
     }
 
     /**
@@ -747,9 +749,9 @@ class ZugferdKositValidator
             return false;
         }
 
-        $executeableFinder = new ExecutableFinder();
+        $executableFinder = new ExecutableFinder();
 
-        if (is_null($executeableFinder->find('java'))) {
+        if (is_null($executableFinder->find('java'))) {
             $this->addToMessageBag("JAVA not installed on this machine");
             return false;
         }
@@ -812,8 +814,8 @@ class ZugferdKositValidator
                 $this->addToMessageBag(curl_error($httpConnection));
                 return false;
             }
-        } catch (Throwable $e) {
-            $this->addToMessageBag($e);
+        } catch (Throwable $throwable) {
+            $this->addToMessageBag($throwable);
             return false;
         }
 
@@ -858,12 +860,12 @@ class ZugferdKositValidator
         $validatorAppFile = $this->resolveAppZipFilename();
         $validatorScenarioFile = $this->resolveScenatioZipFilename();
 
-        if ($this->unpackRequiredFile($validatorAppFile) !== true) {
+        if (!$this->unpackRequiredFile($validatorAppFile)) {
             $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the JAVA-Application", $validatorAppFile));
             return false;
         }
 
-        if ($this->unpackRequiredFile($validatorScenarioFile) !== true) {
+        if (!$this->unpackRequiredFile($validatorScenarioFile)) {
             $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the validation scenarios", $validatorScenarioFile));
             return false;
         }
@@ -883,34 +885,34 @@ class ZugferdKositValidator
             return true;
         }
 
-        $zip = new ZipArchive();
+        $zipArchive = new ZipArchive();
 
-        if ($zip->open($filename) !== true) {
+        if ($zipArchive->open($filename) !== true) {
             $this->addToMessageBag(sprintf("Failed to open ZIP archive %s", $filename));
             return false;
         }
 
         $numFilesExists = 0;
 
-        for ($i = 0; $i < $zip->numFiles; $i++) {
-            $zipStat = $zip->statIndex($i);
+        for ($i = 0; $i < $zipArchive->numFiles; $i++) {
+            $zipStat = $zipArchive->statIndex($i);
             $realfilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $zipStat['name']);
             if (file_exists($realfilename)) {
                 $numFilesExists++;
             }
         }
 
-        if ($numFilesExists == $zip->numFiles) {
+        if ($numFilesExists == $zipArchive->numFiles) {
             return true;
         }
 
-        if ($zip->extractTo($this->resolveBaseDirectory()) !== true) {
-            $zip->close();
+        if (!$zipArchive->extractTo($this->resolveBaseDirectory())) {
+            $zipArchive->close();
             $this->addToMessageBag(sprintf("Failed to extract ZIP archive %s", $filename));
             return false;
         }
 
-        $zip->close();
+        $zipArchive->close();
 
         return true;
     }
@@ -939,6 +941,8 @@ class ZugferdKositValidator
         if ($this->remoteModeEnabled === true) {
             return true;
         }
+
+        $this->resetFileToValidateFilename();
 
         if (file_put_contents($this->resolveFileToValidateFilename(), $this->getDocumentContent()) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the XML to validate");
@@ -1005,10 +1009,11 @@ class ZugferdKositValidator
                 if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {
                     $this->parseValidatorXmlReportByContent($matches[0]);
                 }
+
                 return false;
             }
-        } catch (Throwable $e) {
-            $this->addToMessageBag($e);
+        } catch (Throwable $throwable) {
+            $this->addToMessageBag($throwable);
             return false;
         }
 
@@ -1082,10 +1087,10 @@ class ZugferdKositValidator
         ];
 
         foreach ($resultAreas as $resultArea) {
-            $queryResult = $domXPath->query("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='$resultArea']/s:resource/s:name");
+            $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/s:resource/s:name", $resultArea));
             $resourceName = isset($queryResult[0]) ? $queryResult[0]->nodeValue : $resultArea;
             foreach ($messageTypeMaps as $messageType => $reportMessageType) {
-                $queryResult = $domXPath->query("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='$resultArea']/rep:message[@level='$reportMessageType']");
+                $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/rep:message[@level='%s']", $resultArea, $reportMessageType));
                 foreach ($queryResult as $queryItem) {
                     $this->addToMessageBag(sprintf("%s: %s", $resourceName, $queryItem->nodeValue), $messageType);
                 }
@@ -1134,7 +1139,7 @@ class ZugferdKositValidator
         $objects = scandir($directoryToRemove);
 
         foreach ($objects as $object) {
-            if ($object != "." && $object != "..") {
+            if ($object !== "." && $object !== "..") {
                 $fullFilename = PathUtils::combinePathWithFile($directoryToRemove, $object);
                 if (is_dir($fullFilename) && !is_link($fullFilename)) {
                     $this->cleanupBaseDirectoryInternal($fullFilename);
@@ -1171,16 +1176,19 @@ class ZugferdKositValidator
                 if ($process->getExitCode() == -1) {
                     $this->addToMessageBag("Parsing error. The commandline arguments specified are incorrect", static::MSG_TYPE_VALIDATIONERROR);
                 }
+
                 if ($process->getExitCode() == -2) {
                     $this->addToMessageBag("Configuration error. There is an error loading the configuration and/or validation targets", static::MSG_TYPE_VALIDATIONERROR);
                 }
+
                 if ($process->getExitCode() > 0) {
                     $this->addToMessageBag("Validation error. One ore more files were rejected", static::MSG_TYPE_VALIDATIONERROR);
                 }
+
                 return false;
             }
-        } catch (Throwable $e) {
-            $this->addToMessageBag($e, static::MSG_TYPE_VALIDATIONERROR);
+        } catch (Throwable $throwable) {
+            $this->addToMessageBag($throwable, static::MSG_TYPE_VALIDATIONERROR);
             return false;
         }
 
@@ -1201,9 +1209,10 @@ class ZugferdKositValidator
             if (file_exists($toFilePath) && !$forceOverwrite) {
                 return true;
             }
+
             file_put_contents($toFilePath, file_get_contents($url));
-        } catch (Throwable $e) {
-            $this->addToMessageBag($e);
+        } catch (Throwable $throwable) {
+            $this->addToMessageBag($throwable);
             return false;
         }
 
