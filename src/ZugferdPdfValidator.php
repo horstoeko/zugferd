@@ -296,7 +296,7 @@ class ZugferdPdfValidator
     {
         $newVlidatorRuleset = strtolower($newVlidatorRuleset);
 
-        if (in_array($newVlidatorRuleset, ['0', '1a', '1b', '2a', '2b', '2u', '3a', '3b', '3u', '4', '4f', '4e', 'ua1', 'ua2'])) {
+        if (in_array($newVlidatorRuleset, [static::RULESET_PDF_A_0, static::RULESET_PDF_A_1A, static::RULESET_PDF_A_1B, static::RULESET_PDF_A_2A, static::RULESET_PDF_A_2B, static::RULESET_PDF_A_2U, static::RULESET_PDF_A_3A, static::RULESET_PDF_A_3B, static::RULESET_PDF_A_3U, static::RULESET_PDF_A_4, static::RULESET_PDF_A_4E, static::RULESET_PDF_A_4F, static::RULESET_PDF_UA_1, static::RULESET_PDF_UA_2])) {
             $this->validatorRuleset = $newVlidatorRuleset;
         }
 
