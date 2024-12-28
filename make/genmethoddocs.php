@@ -16,6 +16,7 @@ use horstoeko\zugferd\ZugferdDocumentPdfReaderExt;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdDocumentValidator;
 use horstoeko\zugferd\ZugferdKositValidator;
+use horstoeko\zugferd\ZugferdPdfValidator;
 use horstoeko\zugferd\ZugferdSettings;
 use horstoeko\zugferd\ZugferdXsdValidator;
 use Nette\PhpGenerator\ClassType;
@@ -729,6 +730,7 @@ BatchMarkDownGenerator::generate([
     ZugferdDocumentValidator::class => dirname(__FILE__) . '/Class-ZugferdDocumentValidator.md',
     ZugferdXsdValidator::class => dirname(__FILE__) . '/Class-ZugferdXsdValidator.md',
     ZugferdKositValidator::class => dirname(__FILE__) . '/Class-ZugferdKositValidator.md',
+    ZugferdPdfValidator::class => dirname(__FILE__) . '/Class-ZugferdPdfValidator.md',
     ZugferdQuickDescriptor::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptor.md',
     ZugferdQuickDescriptorEn16931::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorEn16931.md',
     ZugferdQuickDescriptorExtended::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorExtended.md',
