@@ -13,7 +13,9 @@ use DateTime;
 use DOMXPath;
 use DOMDocument;
 
+use horstoeko\zugferd\codelists\ZugferdDocumentType;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
+use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;
 use horstoeko\zugferd\codelists\ZugferdReferenceCodeQualifiers;
 
 /**
@@ -1769,7 +1771,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null       $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
      *                                               supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
      * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $refTypeCode        __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  string|null       $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTime|null     $issueDate          __BT-X-149, From EXTENDED__ Document date
      * @param  string|null       $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
@@ -1779,6 +1781,60 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, null, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
         return $this;
+    }
+
+    /**
+     * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
+     * The invoice supporting documents can be used to reference a document number, which should be known to the recipient, as well as an external document (referenced by a URL).
+     * The option of linking to an external document is required, for example, when large attachments and/or sensitive information, e.g. for personal services, are involved,
+     * which must be separated from the invoice.
+     *
+     * @param  string            $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string            $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     * @param  string|array|null $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoiceSupportingDocumentWithUri(string $issuerAssignedId, string $uriId, $name = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::RELATED_DOCUMENT, $uriId, $name);
+    }
+
+    /**
+     * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
+     * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
+     *
+     * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @return ZugferdDocumentBuilder
+     * @throws ZugferdUnsupportedMimetype
+     */
+    public function addDocumentInvoiceSupportingDocumentWithFile(string $issuerAssignedId, string $binaryDataFilename, $name = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::RELATED_DOCUMENT, null, $name, null, null, $binaryDataFilename);
+    }
+
+    /**
+     * Add a tender or lot document reference
+     *
+     * @param  string $issuerAssignedId __BT-122, From EN 16931__ Tender or lot reference
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentTenderOrLotReferenceDocument(string $issuerAssignedId): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::VALIDATED_PRICED_TENDER);
+    }
+
+    /**
+     * Add details of the calculated object
+     *
+     * @param  string $issuerAssignedId __BT-122, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
+     * @param  string $refTypeCode      __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentInvoicedObjectReferenceDocument(string $issuerAssignedId, string $refTypeCode): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::INVOICING_DATA_SHEET, null, null, $refTypeCode);
     }
 
     /**
