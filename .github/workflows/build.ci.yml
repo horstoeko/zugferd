@@ -153,10 +153,10 @@ jobs:
           unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
           unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
           rm -f examples/factur-x.xml
-          php -f examples/XRechnung3SimpleQuick.php
+          php -f examples/01_ZugferdDocumentBuilder_EN16931.php
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
           rm -f examples/factur-x.xml
-          php -f examples/En16931SimpleQuick.php
+          php -f examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
           rm -rf build/validator
 
