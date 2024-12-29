@@ -1,15 +1,15 @@
 <?php
 
-use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use horstoeko\zugferd\codelists\ZugferdUnitCodes;
-use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\codelists\ZugferdCountryCodes;
-use horstoeko\zugferd\codelists\ZugferdVatTypeCodes;
 use horstoeko\zugferd\codelists\ZugferdCurrencyCodes;
-use horstoeko\zugferd\codelists\ZugferdVatCategoryCodes;
 use horstoeko\zugferd\codelists\ZugferdElectronicAddressScheme;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\codelists\ZugferdReferenceCodeQualifiers;
+use horstoeko\zugferd\codelists\ZugferdUnitCodes;
+use horstoeko\zugferd\codelists\ZugferdVatCategoryCodes;
+use horstoeko\zugferd\codelists\ZugferdVatTypeCodes;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdProfiles;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -28,6 +28,10 @@ $documentBuilder->setDocumentInformation(
     ZugferdCurrencyCodes::EURO                          // Invoice currency is EUR (Euro) (BT-5)
 );
 
+// Not mandatory, but welcome are details such as managing director, commercial register entry or similar...
+
+$documentBuilder->addDocumentNote('Lieferant GmbH' . PHP_EOL . 'Lieferantenstraße 20' . PHP_EOL . '80333 München' . PHP_EOL . 'Deutschland' . PHP_EOL . 'Geschäftsführer: Hans Muster' . PHP_EOL . 'Handelsregisternummer: H A 123' . PHP_EOL . PHP_EOL, null, 'REG');
+
 // Indication of when the period covered by the invoice begins and when it ends. Also referred to as the delivery period
 
 $documentBuilder->setDocumentBillingPeriod(DateTime::createFromFormat("Ymd", "20250101"), DateTime::createFromFormat("Ymd", "20250131"), "01.01.2025 - 31.01.2025");
@@ -38,7 +42,7 @@ $documentBuilder->setDocumentBillingPeriod(DateTime::createFromFormat("Ymd", "20
 // Second example: Specification of a local file to be included in the document as a BASE64-encoded attachment
 
 $documentBuilder->addDocumentInvoiceSupportingDocumentWithUri('REFDOC-2024/00001-1', 'http.//some.url', 'Inhaltsstoffe Joghurt');
-$documentBuilder->addDocumentInvoiceSupportingDocumentWithFile('REFDOC-2024/00001-2', __DIR__ . '/00_AdditionalDocument.csv', 'Herkunftsnachweis Trennblätter');
+$documentBuilder->addDocumentInvoiceSupportingDocumentWithFile('REFDOC-2024/00001-2', __DIR__ . '/assets/00_AdditionalDocument.csv', 'Herkunftsnachweis Trennblätter');
 
 // Add details to the tender or lot reference. In some countries, a reference to the tender that led to the contract must be provided.
 // Type code 50 is used exclusively for the specification of the tender or lot reference
