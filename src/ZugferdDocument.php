@@ -12,10 +12,13 @@ namespace horstoeko\zugferd;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\jms\ZugferdTypesHandler;
 use horstoeko\zugferd\ZugferdObjectHelper;
 use horstoeko\zugferd\ZugferdProfileResolver;
+use JMS\Serializer\Exception\InvalidArgumentException;
+use JMS\Serializer\Exception\RuntimeException;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -32,46 +35,44 @@ use JMS\Serializer\SerializerInterface;
 class ZugferdDocument
 {
     /**
-     * @internal
-     * @var      integer    Internal profile id
+     * @var integer $profileId Internal profile id
      */
     private $profileId = -1;
 
     /**
-     * @internal
-     * @var      array  Internal profile definition
+     * @var array $profileDefinition Internal profile definition
      */
     private $profileDefinition = [];
 
     /**
-     * @internal
-     * @var      SerializerBuilder  Serializer builder
+     * @var SerializerBuilder $serializerBuilder Serializer builder
      */
     private $serializerBuilder;
 
     /**
-     * @internal
-     * @var      SerializerInterface    Serializer
+     * @var SerializerInterface $serializer Serializer
      */
     private $serializer;
 
     /**
-     * @internal
-     * @var      \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice   The internal invoice object
+     * @var \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice $invoiceObject The internal invoice object
      */
     private $invoiceObject = null;
 
     /**
-     * @internal
-     * @var      ZugferdObjectHelper    Object Helper
+     * @var ZugferdObjectHelper $objectHelper Object Helper
      */
     private $objectHelper = null;
 
     /**
      * Constructor
      *
-     * @param integer $profile
-     * The ID of the profile of the document
+     * @param  integer $profile The ID of the profile of the document
+     * @return void
+     * @throws ZugferdUnknownProfileIdException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     final protected function __construct(int $profile)
     {
@@ -81,8 +82,7 @@ class ZugferdDocument
     }
 
     /**
-     * Returns the internal invoice object (created by the
-     * serializer). This is used e.g. in the validator
+     * Returns the internal invoice object (created by the serializer). This is used e.g. in the validator
      *
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
      */
@@ -148,6 +148,7 @@ class ZugferdDocument
      *
      * @param  string $parameterName
      * @return mixed
+     * @throws ZugferdUnknownProfileParameterException
      */
     public function getProfileDefinitionParameter(string $parameterName)
     {
@@ -161,14 +162,11 @@ class ZugferdDocument
     }
 
     /**
-     * @internal
-     *
      * Sets the internal profile definitions
      *
-     * @param integer $profile
-     * The internal id of the profile
-     *
+     * @param  int $profile
      * @return ZugferdDocument
+     * @throws ZugferdUnknownProfileIdException
      */
     private function initProfile(int $profile): ZugferdDocument
     {
@@ -179,8 +177,6 @@ class ZugferdDocument
     }
 
     /**
-     * @internal
-     *
      * Build the internal object helper
      *
      * @return ZugferdDocument
@@ -193,11 +189,12 @@ class ZugferdDocument
     }
 
     /**
-     * @internal
-     *
      * Build the internal serialzer
      *
      * @return ZugferdDocument
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      */
     private function initSerialzer(): ZugferdDocument
     {
@@ -267,8 +264,10 @@ class ZugferdDocument
     /**
      * Deserialize XML content to internal invoice object
      *
-     * @param  string $xmlContent
+     * @param  mixed $xmlContent
      * @return \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws RuntimeException
      */
     public function deserialize($xmlContent)
     {
@@ -281,6 +280,7 @@ class ZugferdDocument
      * Serialize internal invoice object as XML
      *
      * @return string
+     * @throws RuntimeException
      */
     public function serializeAsXml(): string
     {
@@ -291,6 +291,7 @@ class ZugferdDocument
      * Serialize internal invoice object as JSON
      *
      * @return string
+     * @throws RuntimeException
      */
     public function serializeAsJson(): string
     {
