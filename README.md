@@ -283,6 +283,7 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
 
   // Add invoice and position information
   $document
+    ->setDocumentInformation('R-2024/00001', ZugferdInvoiceType::INVOICE, DateTime::createFromFormat("Ymd", "20241231"), ZugferdCurrencyCodes::EURO)
     ->addDocumentNote('Lieferant GmbH' . PHP_EOL . 'Lieferantenstraße 20' . PHP_EOL . '80333 München' . PHP_EOL . 'Deutschland' . PHP_EOL . 'Geschäftsführer: Hans Muster' . PHP_EOL . 'Handelsregisternummer: H A 123' . PHP_EOL . PHP_EOL, null, 'REG')
     ->setDocumentBillingPeriod(DateTime::createFromFormat("Ymd", "20250101"), DateTime::createFromFormat("Ymd", "20250131"), "01.01.2025 - 31.01.2025")
     ->setDocumentSeller("Lieferant GmbH", "549910")
