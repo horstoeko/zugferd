@@ -88,3 +88,5 @@ _backup*
 /examples/filetovalidate-report.html
 myfile_dbg.xml
 /examples/*report*.*
+
+02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf
