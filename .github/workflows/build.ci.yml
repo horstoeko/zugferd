@@ -188,10 +188,17 @@ jobs:
           echo "Installing veraPDF"
           VERAPDFINSTALLJAR=$(find $VERAPDFPATH -type f -name "*.jar" | head -n 1); [[ -z "$VERAPDFINSTALLJAR" ]] && { echo "No veraPDF installer found" >&2; exit 1; } || echo "veraPDF installer fount at $VERAPDFINSTALLJAR"
           java -jar $VERAPDFINSTALLJAR $VERAPDFPATH/install.xml
-          echo "Creating test PDF"
-          php -f examples/En16931SimpleWithPdf.php
+          echo "Creating test PDF (1)"
+          php -f examples/02_ZugferdDocumentPdfBuilder_EN16931.php
           echo "Running PDF validation"
-          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text examples/fullpdf.pdf)
+          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
+          echo "Result of validation"
+          echo $VERAPDFRESULT
+          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
+          echo "Creating test PDF (2)"
+          php -f examples/02_ZugferdDocumentPdfBuilder_XRECHNUNG.php
+          echo "Running PDF validation"
+          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
           echo "Result of validation"
           echo $VERAPDFRESULT
           [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
