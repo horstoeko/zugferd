@@ -16,7 +16,7 @@ define('DOWNLOADDEF_KEY_TITLE', 'title');
 define('DOWNLOADDEF_KEY_TITLE_LIST', 'titlelist');
 define('DOWNLOADDEF_KEY_SHORTIDENTIFIERS', 'shortidentifiers');
 define('DOWNLOADDEF_KEY_ADDMETHODS', 'addmethods');
-define('DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT', true);
+define('DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT', false);
 define('DOWNLOADDEF_KEY_DATA_CODEINDEX', 'codeindex');
 define('DOWNLOADDEF_KEY_DATA_DESCINDEX', 'descindex');
 define('DOWNLOADDEF_KEY_DATA_DESCLONGINDEX', 'desclongindex');
@@ -630,6 +630,26 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_ADDMETHODS => DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT,
         DOWNLOADDEF_KEY_DATA_SORTINDEX => 1,
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => ["REC20_", "REC21_"],
+    ],
+    [
+        DOWNLOADDEF_KEY_ENABLED => true,
+        DOWNLOADDEF_LIB_NAME => 'zugferd',
+        DOWNLOADDEF_LIB_TITLE => 'Zugferd',
+        DOWNLOADDEF_KEY_URL => [
+            "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.5305_3/download/UNTDID_5305_3.json",
+        ],
+        DOWNLOADDEF_KEY_TOFILE => [
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_5305.json"),
+        ],
+        DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.5305_3",
+        DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
+        DOWNLOADDEF_KEY_CLASSNAME => "ZugferdVatCategoryCodes",
+        DOWNLOADDEF_KEY_TITLE => "list of duty or tax or fee category codes",
+        DOWNLOADDEF_KEY_TITLE_LIST => "UNTDID 5305 Duty or tax or fee category code",
+        DOWNLOADDEF_KEY_SHORTIDENTIFIERS => true,
+        DOWNLOADDEF_KEY_ADDMETHODS => DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT,
+        DOWNLOADDEF_KEY_DATA_SORTINDEX => 1,
+        DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
     ],
 ];
 
