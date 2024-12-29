@@ -21,11 +21,8 @@
 
 ## Latest information
 
-> [!NOTE]
-> Added [Resources Section](#resources) section to this document
-
-> [!NOTE]
-> See our new [class documentation wiki](https://github.com/horstoeko/zugferd/wiki/Class-and-method-overview)
+> [!TIP]
+> I would like to thank you very much for the great encouragement and the fantastic contributions on your part. I wish you all a successful new year 2025 and hope that all the work on this library shows its positive results.
 
 ## Table of Contents
 
