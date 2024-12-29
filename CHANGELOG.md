@@ -1,3 +1,18 @@
+## v1.0.101
+
+``Previous version v1.0.100``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [3095bd3](https://github.com/horstoeko/zugferd/commit/3095bd3) | 2024-12-29 19:15:59 CET | HorstOeko | [ENH] UNTDID 5153 Duty or tax or fee type name code | 
+| :new:  | [9bde1f2](https://github.com/horstoeko/zugferd/commit/9bde1f2) | 2024-12-29 19:06:57 CET | HorstOeko | [ENH] Added codelist UNTDID 5305 Duty or tax or fee category code | 
+| :new:  | [188a155](https://github.com/horstoeko/zugferd/commit/188a155) | 2024-12-29 18:36:48 CET | HorstOeko | [ENH] Added new methods to ZugferdDocumentBuilder to add an invoice supporting additional document, a tender or lot document reference or a reference of the calculated object | 
+| :new:  | [ae4a8e3](https://github.com/horstoeko/zugferd/commit/ae4a8e3) | 2024-12-29 18:34:00 CET | HorstOeko | [ENH] Added Codelist ZugferdDocumentType which holds the type codes for "AdditionalReferencedDocument" | 
+| :new:  | [d4c2b5b](https://github.com/horstoeko/zugferd/commit/d4c2b5b) | 2024-12-28 21:51:37 CET | HorstOeko | [ENH] Introducing ZugferdPdfValidator | 
+| :new:  | [8115b1f](https://github.com/horstoeko/zugferd/commit/8115b1f) | 2024-12-28 21:50:53 CET | HorstOeko | [ENH] ZugferdKositValidator -> Temp.-File handling, Codestyle | 
+
+:exclamation: _There are 18 internal commit(s)_
+
 ## v1.0.100
 
 ``Previous version v1.0.99``
