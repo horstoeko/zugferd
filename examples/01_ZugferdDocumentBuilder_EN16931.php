@@ -2,11 +2,14 @@
 
 use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\codelists\ZugferdUnitCodes;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\codelists\ZugferdCountryCodes;
+use horstoeko\zugferd\codelists\ZugferdVatTypeCodes;
 use horstoeko\zugferd\codelists\ZugferdCurrencyCodes;
+use horstoeko\zugferd\codelists\ZugferdVatCategoryCodes;
 use horstoeko\zugferd\codelists\ZugferdElectronicAddressScheme;
-use horstoeko\zugferd\codelists\ZugferdUnitCodes;
+use horstoeko\zugferd\codelists\ZugferdReferenceCodeQualifiers;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -34,20 +37,25 @@ $documentBuilder->setDocumentBillingPeriod(DateTime::createFromFormat("Ymd", "20
 // First example: Specification of an external resource including the intended primary access method, e.g. http:// or ftp://
 // Second example: Specification of a local file to be included in the document as a BASE64-encoded attachment
 
-$documentBuilder->addDocumentAdditionalReferencedDocument('REFDOC-2024/00001-1', '916', 'http.//some.url', 'Inhaltsstoffe Joghurt');
-$documentBuilder->addDocumentAdditionalReferencedDocument('REFDOC-2024/00001-2', '916', null, 'Herkunftsnachweis Trennblätter', null, null, __DIR__ . '/00_AdditionalDocument.csv');
+$documentBuilder->addDocumentInvoiceSupportingDocumentWithUri('REFDOC-2024/00001-1', 'http.//some.url', 'Inhaltsstoffe Joghurt');
+$documentBuilder->addDocumentInvoiceSupportingDocumentWithFile('REFDOC-2024/00001-2', __DIR__ . '/00_AdditionalDocument.csv', 'Herkunftsnachweis Trennblätter');
 
 // Add details to the tender or lot reference. In some countries, a reference to the tender that led to the contract must be provided.
 // Type code 50 is used exclusively for the specification of the tender or lot reference
 
-$documentBuilder->addDocumentAdditionalReferencedDocument('LOS 738625', '50');
+$documentBuilder->addDocumentTenderOrLotReferenceDocument('LOS 738625');
 
 // Add details of the invoiced object
 // Only the type code 130 is used to transmit an object identifier. Depending on the application, an object identifier
 // can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
 // Note: Additional documents of type code 130 may only be specified once.
 
-$documentBuilder->addDocumentAdditionalReferencedDocument('125', '130', null, null, 'SA'); // Sales person number
+$documentBuilder->addDocumentInvoicedObjectReferenceDocument('125', ZugferdReferenceCodeQualifiers::SALE_PERS_NUMB); // Sales person number
+
+// Adding details to the associated contract
+// The contract reference should be assigned once in the context of the specific trading relationship and for a defined period of time.
+
+$documentBuilder->setDocumentContractReferencedDocument('CON-2024/2025-001');
 
 // Adding a detail to a project reference
 // Enter the identifier of the project to which the invoice refers and the name of the project.
@@ -124,7 +132,7 @@ $documentBuilder->addNewPosition("1");
 $documentBuilder->setDocumentPositionProductDetails("Trennblätter A4", "50er Pack", "TB100A4");
 $documentBuilder->setDocumentPositionNetPrice(9.9000);
 $documentBuilder->setDocumentPositionQuantity(20, ZugferdUnitCodes::REC20_PIECE);
-$documentBuilder->addDocumentPositionTax('S', 'VAT', 19);
+$documentBuilder->addDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 19);
 $documentBuilder->setDocumentPositionLineSummation(198.0);
 
 // Add a second position
@@ -138,7 +146,7 @@ $documentBuilder->addNewPosition("2");
 $documentBuilder->setDocumentPositionProductDetails("Joghurt Banane", "B-Ware", "ARNR2");
 $documentBuilder->SetDocumentPositionNetPrice(5.5000);
 $documentBuilder->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE);
-$documentBuilder->AddDocumentPositionTax('S', 'VAT', 7);
+$documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
 $documentBuilder->SetDocumentPositionLineSummation(275.0);
 
 // Write the VAT Summation
