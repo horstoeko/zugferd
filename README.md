@@ -326,8 +326,15 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
 
 
 ```php
+  use horstoeko\zugferd\codelists\ZugferdCountryCodes;
+  use horstoeko\zugferd\codelists\ZugferdCurrencyCodes;
+  use horstoeko\zugferd\codelists\ZugferdElectronicAddressScheme;
+  use horstoeko\zugferd\codelists\ZugferdInvoiceType;
+  use horstoeko\zugferd\codelists\ZugferdReferenceCodeQualifiers;
+  use horstoeko\zugferd\codelists\ZugferdUnitCodes;
+  use horstoeko\zugferd\codelists\ZugferdVatCategoryCodes;
+  use horstoeko\zugferd\codelists\ZugferdVatTypeCodes;
   use horstoeko\zugferd\ZugferdDocumentBuilder;
-  use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
   use horstoeko\zugferd\ZugferdProfiles;
 
   // Create an empty invoice document in the EN16931 profile
