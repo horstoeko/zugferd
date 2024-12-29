@@ -159,8 +159,8 @@ $documentBuilder->SetDocumentPositionLineSummation(275.0);
 // The first VAT summation comes at least from position 1 - 19% VAT from 198.00 EUR (Net-Amount) = 37.62
 // The second VAT summation comes at least from position 2 - 7% VAT from 275.00 EUR (Net-Amount) = 19.25
 
-$documentBuilder->addDocumentTax("S", "VAT", 198.0, 37.62, 19.0);
-$documentBuilder->addDocumentTax("S", "VAT", 275.0, 19.25, 7.0);
+$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 198.0, 37.62, 19.0);
+$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 275.0, 19.25, 7.0);
 
 // Write document summation
 // 1. Grand total amount = 198.00 EUR + 37.62 EUR (VAT) + 275.00 EUR + 19.25 EUR (VAT) = 529.87
