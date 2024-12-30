@@ -58,3 +58,47 @@ function validateUsingKositValidator(ZugferdDocument $zugferdDocument): int
 
     return $kositValidator->hasNoValidationErrors() ? 1 : 2;
 }
+
+/**
+ * Outputs a line to CLI. It uses sprintf.
+ *
+ * @param string $message
+ * @param mixed ...$args
+ * @return void
+ */
+function writeLnToCli(string $message, ...$args): void
+{
+    $output = sprintf($message, ...$args);
+
+    if (trim($output) !== '' && trim($output) !== '0') {
+        echo $output . PHP_EOL;
+    }
+}
+
+/**
+ * Write an empty line to CLI
+ *
+ * @return void
+ */
+function writeNewLineToCli(): void
+{
+    echo PHP_EOL;
+}
+
+/**
+ * Implode an associative array to form key=value
+ *
+ * @param string $separator
+ * @param array $array
+ * @return string
+ */
+function implodeAssocArray(string $separator, array $array): string
+{
+    return
+        implode(
+            $separator,
+            array_map(function ($key, $value) {
+                return sprintf("%s=%s", $key, $value);
+            }, array_keys($array), $array)
+        );
+}

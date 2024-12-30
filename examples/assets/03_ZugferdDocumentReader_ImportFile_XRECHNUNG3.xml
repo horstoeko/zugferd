@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rsm:ExchangedDocumentContext>
+    <ram:BusinessProcessSpecifiedDocumentContextParameter>
+      <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+    </ram:BusinessProcessSpecifiedDocumentContextParameter>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
+      <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
+    </ram:GuidelineSpecifiedDocumentContextParameter>
+  </rsm:ExchangedDocumentContext>
+  <rsm:ExchangedDocument>
+    <ram:ID>R-2024/00001</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
+    <ram:IssueDateTime>
+      <udt:DateTimeString format="102">20241231</udt:DateTimeString>
+    </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>Lieferant GmbH
+Lieferantenstraße 20
+80333 München
+Deutschland
+Geschäftsführer: Hans Muster
+Handelsregisternummer: H A 123
+
+</ram:Content>
+      <ram:SubjectCode>REG</ram:SubjectCode>
+    </ram:IncludedNote>
+  </rsm:ExchangedDocument>
+  <rsm:SupplyChainTradeTransaction>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>TB100A4</ram:SellerAssignedID>
+        <ram:Name>Trennblätter A4</ram:Name>
+        <ram:Description>50er Pack</ram:Description>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>9.90</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">20.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>198.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>2</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>ARNR2</ram:SellerAssignedID>
+        <ram:Name>Joghurt Banane</ram:Name>
+        <ram:Description>B-Ware</ram:Description>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>5.50</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">50.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>275.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>3</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:SellerAssignedID>ARNR3</ram:SellerAssignedID>
+        <ram:Name>Joghurt Erdbeer</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>4.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">100.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>400.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:ApplicableHeaderTradeAgreement>
+      <ram:BuyerReference>34676-342323</ram:BuyerReference>
+      <ram:SellerTradeParty>
+        <ram:ID>549910</ram:ID>
+        <ram:GlobalID schemeID="0088">4000001123452</ram:GlobalID>
+        <ram:Name>Lieferant GmbH</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>H. Müller</ram:PersonName>
+          <ram:DepartmentName>Verkauf</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+49-111-2222222</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>hm@lieferant.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>80333</ram:PostcodeCode>
+          <ram:LineOne>Lieferantenstraße 20</ram:LineOne>
+          <ram:CityName>München</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">sales@lieferant.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="FC">201/113/40209</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE123456789</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+      </ram:SellerTradeParty>
+      <ram:BuyerTradeParty>
+        <ram:ID>GE2020211</ram:ID>
+        <ram:Name>Kunden AG Mitte</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>H. Meier</ram:PersonName>
+          <ram:DepartmentName>Einkauf</ram:DepartmentName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>+49-333-4444444</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>hm@kunde.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>69876</ram:PostcodeCode>
+          <ram:LineOne>Kundenstraße 15</ram:LineOne>
+          <ram:CityName>Frankfurt</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">purchase@kunde.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+      </ram:BuyerTradeParty>
+      <ram:SellerOrderReferencedDocument>
+        <ram:IssuerAssignedID>SO-2024-000993337</ram:IssuerAssignedID>
+      </ram:SellerOrderReferencedDocument>
+      <ram:BuyerOrderReferencedDocument>
+        <ram:IssuerAssignedID>PO-2024-0003324</ram:IssuerAssignedID>
+      </ram:BuyerOrderReferencedDocument>
+      <ram:ContractReferencedDocument>
+        <ram:IssuerAssignedID>CON-2024/2025-001</ram:IssuerAssignedID>
+      </ram:ContractReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>REFDOC-2024/00001-1</ram:IssuerAssignedID>
+        <ram:URIID>http.//some.url</ram:URIID>
+        <ram:TypeCode>916</ram:TypeCode>
+        <ram:Name>Inhaltsstoffe Joghurt</ram:Name>
+      </ram:AdditionalReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>REFDOC-2024/00001-2</ram:IssuerAssignedID>
+        <ram:TypeCode>916</ram:TypeCode>
+        <ram:Name>Herkunftsnachweis Trennblätter</ram:Name>
+        <ram:AttachmentBinaryObject mimeCode="text/csv" filename="00_AdditionalDocument.csv">TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3MgZXQgYWNjdXNhbSBldCBqdXN0byBkdW8gZG9sb3JlcyBldCBlYSByZWJ1bS4gU3RldCBjbGl0YSBrYXNkIGd1YmVyZ3Jlbiwgbm8gc2VhIHRha2ltYXRhIHNhbmN0dXMgZXN0IExvcmVtIGlwc3VtIGRvbG9yIHNpdCBhbWV0LiBMb3JlbSBpcHN1bSBkb2xvciBzaXQgYW1ldCwgY29uc2V0ZXR1ciBzYWRpcHNjaW5nIGVsaXRyLCBzZWQgZGlhbSBub251bXkgZWlybW9kIHRlbXBvciBpbnZpZHVudCB1dCBsYWJvcmUgZXQgZG9sb3JlIG1hZ25hIGFsaXF1eWFtIGVyYXQsIHNlZCBkaWFtIHZvbHVwdHVhLiBBdCB2ZXJvIGVvcyBldCBhY2N1c2FtIGV0IGp1c3RvIGR1byBkb2xvcmVzIGV0IGVhIHJlYnVtLiBTdGV0IGNsaXRhIGthc2QgZ3ViZXJncmVuLCBubyBzZWEgdGFraW1hdGEgc2FuY3R1cyBlc3QgTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQu</ram:AttachmentBinaryObject>
+      </ram:AdditionalReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>LOS 738625</ram:IssuerAssignedID>
+        <ram:TypeCode>50</ram:TypeCode>
+      </ram:AdditionalReferencedDocument>
+      <ram:AdditionalReferencedDocument>
+        <ram:IssuerAssignedID>125</ram:IssuerAssignedID>
+        <ram:TypeCode>130</ram:TypeCode>
+        <ram:ReferenceTypeCode>SA</ram:ReferenceTypeCode>
+      </ram:AdditionalReferencedDocument>
+      <ram:SpecifiedProcuringProject>
+        <ram:ID>PROJ-2025-001-1</ram:ID>
+        <ram:Name>Allgemeine Dienstleistungen</ram:Name>
+      </ram:SpecifiedProcuringProject>
+    </ram:ApplicableHeaderTradeAgreement>
+    <ram:ApplicableHeaderTradeDelivery>
+      <ram:ShipToTradeParty>
+        <ram:Name>Kunden AG Ost</ram:Name>
+        <ram:PostalTradeAddress>
+          <ram:PostcodeCode>04109</ram:PostcodeCode>
+          <ram:LineOne>Lieferstraße 1</ram:LineOne>
+          <ram:CityName>Leipzig</ram:CityName>
+          <ram:CountryID>DE</ram:CountryID>
+        </ram:PostalTradeAddress>
+      </ram:ShipToTradeParty>
+      <ram:ActualDeliverySupplyChainEvent>
+        <ram:OccurrenceDateTime>
+          <udt:DateTimeString format="102">20250115</udt:DateTimeString>
+        </ram:OccurrenceDateTime>
+      </ram:ActualDeliverySupplyChainEvent>
+    </ram:ApplicableHeaderTradeDelivery>
+    <ram:ApplicableHeaderTradeSettlement>
+      <ram:CreditorReferenceID>R-2024/00001</ram:CreditorReferenceID>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <ram:PayeeTradeParty>
+        <ram:Name>Kunden AG Zahlungsdienstleistung</ram:Name>
+      </ram:PayeeTradeParty>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>59</ram:TypeCode>
+        <ram:PayerPartyDebtorFinancialAccount>
+          <ram:IBANID>DE12500105170648489890</ram:IBANID>
+        </ram:PayerPartyDebtorFinancialAccount>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>37.62</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>198.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>47.25</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>675.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:BillingSpecifiedPeriod>
+        <ram:StartDateTime>
+          <udt:DateTimeString format="102">20250101</udt:DateTimeString>
+        </ram:StartDateTime>
+        <ram:EndDateTime>
+          <udt:DateTimeString format="102">20250131</udt:DateTimeString>
+        </ram:EndDateTime>
+      </ram:BillingSpecifiedPeriod>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:Description>Wird von Konto DE12500105170648489890 abgebucht</ram:Description>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20250131</udt:DateTimeString>
+        </ram:DueDateDateTime>
+        <ram:DirectDebitMandateID>MANDATE-2024/000001</ram:DirectDebitMandateID>
+      </ram:SpecifiedTradePaymentTerms>
+      <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        <ram:LineTotalAmount>873.00</ram:LineTotalAmount>
+        <ram:ChargeTotalAmount>0.00</ram:ChargeTotalAmount>
+        <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
+        <ram:TaxBasisTotalAmount>873.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">84.87</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>957.87</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>957.87</ram:DuePayableAmount>
+      </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+    </ram:ApplicableHeaderTradeSettlement>
+  </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
