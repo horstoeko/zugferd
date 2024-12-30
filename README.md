@@ -332,6 +332,7 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
   use horstoeko\zugferd\codelists\ZugferdVatCategoryCodes;
   use horstoeko\zugferd\codelists\ZugferdVatTypeCodes;
   use horstoeko\zugferd\ZugferdDocumentBuilder;
+  use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
   use horstoeko\zugferd\ZugferdProfiles;
 
   // Create an empty invoice document in the EN16931 profile
