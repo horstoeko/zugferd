@@ -134,3 +134,70 @@ $zugferdDocumentPdfBuilder = ZugferdDocumentPdfBuilder::fromPdfString($documentB
 $zugferdDocumentPdfBuilder->attachAdditionalFileByContent($attachmentContent, 'additionalDocument.csv', "Some other display Name", ZugferdDocumentPdfBuilderAbstract::AF_RELATIONSHIP_SUPPLEMENT);
 $zugferdDocumentPdfBuilder->generateDocument();
 $zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
+
+// Set values for metadata-fields
+// We can change some meta information such as the title, the subject, the author and the keywords.  This library essentially provides 4 methods for this.
+// These methods use so-called templates. These methods are:
+
+$zugferdDocumentPdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile($documentBuilder, $existingPdfFilename);
+$zugferdDocumentPdfBuilder->setAuthorTemplate('.....');
+$zugferdDocumentPdfBuilder->setTitleTemplate('.....');
+$zugferdDocumentPdfBuilder->setSubjectTemplate('.....');
+$zugferdDocumentPdfBuilder->setKeywordTemplate('.....');
+$zugferdDocumentPdfBuilder->generateDocument();
+$zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
+
+// The 4 methods just mentioned accept a free text that can accept the following placeholders:
+// - %1$s .... contains the invoice number (is extracted from the XML data)
+// - %2$s .... contains the type of XML document, such as ‘Invoice’ (is extracted from the XML data)
+// - %3$s .... contains the name of the seller (extracted from the XML data)
+// - %4$s .... contains the invoice date (extracted from the XML data)
+// The following example generates...
+// - the author:  .... Issued by seller with name Lieferant GmbH
+// - the title    .... Lieferant GmbH : Invoice R-2024/00001
+// - the subject  .... Invoice-Document, Issued by Lieferant GmbH
+// - the keywords .... R-2024/00001, Invoice, Lieferant GmbH, 2024-12-31
+
+$zugferdDocumentPdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile($documentBuilder, $existingPdfFilename);
+$zugferdDocumentPdfBuilder->setAuthorTemplate('Issued by seller with name %3$s');
+$zugferdDocumentPdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');
+$zugferdDocumentPdfBuilder->setSubjectTemplate('%2$s-Document, Issued by %3$s');
+$zugferdDocumentPdfBuilder->setKeywordTemplate('%1$s, %2$s, %3$s, %4$s');
+$zugferdDocumentPdfBuilder->generateDocument();
+$zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
+
+// If the previously mentioned options for manipulating the meta information are not sufficient,
+// you can also use a callback function. The following 4 parameters are passed to the callback
+// function in the specified order:
+// - $which               .... one of "author", "title", "subject" and "keywords"
+// - $xmlContent          .... the content of the xml as a string
+// - $invoiceInformation  .... an array with some information about the invoice
+// - $default             .... The default value for the specified field (see $which
+
+$zugferdDocumentPdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile($documentBuilder, $existingPdfFilename);
+$zugferdDocumentPdfBuilder->setMetaInformationCallback(
+    function ($which) {
+        if ($which === 'title') {
+            return "DummyTitle";
+        }
+        if ($which === 'author') {
+            return "DummyAuthor";
+        }
+        if ($which === 'subject') {
+            return "DummySubject";
+        }
+        if ($which === 'keywords') {
+            return "DummyKeywords";
+        }
+    }
+);
+$zugferdDocumentPdfBuilder->generateDocument();
+$zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
+
+// To remove the callback you can call the setMetaInformationCallback
+// method with a null value
+
+$zugferdDocumentPdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile($documentBuilder, $existingPdfFilename);
+$zugferdDocumentPdfBuilder->setMetaInformationCallback(null);
+$zugferdDocumentPdfBuilder->generateDocument();
+$zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
