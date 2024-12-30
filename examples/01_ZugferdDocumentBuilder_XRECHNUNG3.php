@@ -153,10 +153,10 @@ $documentBuilder->setDocumentPositionLineSummation(198.0);
 
 $documentBuilder->addNewPosition("2");
 $documentBuilder->setDocumentPositionProductDetails("Joghurt Banane", "B-Ware", "ARNR2");
-$documentBuilder->SetDocumentPositionNetPrice(5.5000);
-$documentBuilder->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE);
-$documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
-$documentBuilder->SetDocumentPositionLineSummation(275.0);
+$documentBuilder->setDocumentPositionNetPrice(5.5000);
+$documentBuilder->setDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE);
+$documentBuilder->addDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
+$documentBuilder->setDocumentPositionLineSummation(275.0);
 
 // Add a third position
 // - The invoiced item is named "Joghurt Erdbeer" and has an seller assigned item no. "ARNR3" (setDocumentPositionProductDetails)
@@ -167,10 +167,10 @@ $documentBuilder->SetDocumentPositionLineSummation(275.0);
 
 $documentBuilder->addNewPosition("3");
 $documentBuilder->setDocumentPositionProductDetails("Joghurt Erdbeer", "", "ARNR3");
-$documentBuilder->SetDocumentPositionNetPrice(4.0000);
-$documentBuilder->SetDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE);
-$documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
-$documentBuilder->SetDocumentPositionLineSummation(400.0);
+$documentBuilder->setDocumentPositionNetPrice(4.0000);
+$documentBuilder->setDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE);
+$documentBuilder->addDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
+$documentBuilder->setDocumentPositionLineSummation(400.0);
 
 // Write the VAT Summation
 // You have to group the VAT base amounts by VAT-Category ("S"), VAT-Type ("VAT") and VAT percent (19%, 7%)
