@@ -68,9 +68,15 @@ $documentBuilder->SetDocumentPositionNetPrice(5.5000);
 $documentBuilder->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE);
 $documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
 $documentBuilder->SetDocumentPositionLineSummation(275.0);
+$documentBuilder->addNewPosition("3");
+$documentBuilder->setDocumentPositionProductDetails("Joghurt Erdbeer", "", "ARNR3");
+$documentBuilder->SetDocumentPositionNetPrice(4.0000);
+$documentBuilder->SetDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE);
+$documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
+$documentBuilder->SetDocumentPositionLineSummation(400.0);
 $documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 198.0, 37.62, 19.0);
-$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 275.0, 19.25, 7.0);
-$documentBuilder->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87);
+$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 675.0, 47.25, 7.0);
+$documentBuilder->setDocumentSummation(957.87, 957.87, 873.00, 0.0, 0.0, 873.00, 84.87);
 
 // Next let's do the ZugferddocumentPdfBuilder it's job - let's attach the XML to the PDF. The attachment filename will be factur-x.xml
 // since whe choosed the profile EN16931 in the ZugferdDocumentBuilder (see above)

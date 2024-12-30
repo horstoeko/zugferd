@@ -153,24 +153,38 @@ $documentBuilder->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE)
 $documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
 $documentBuilder->SetDocumentPositionLineSummation(275.0);
 
+// Add a third position
+// - The invoiced item is named "Joghurt Erdbeer" and has an seller assigned item no. "ARNR3" (setDocumentPositionProductDetails)
+// - The Net unit price is 4.00 EUR (setDocumentPositionNetPrice)
+// - The Invoiced quantity is 100 pieces (setDocumentPositionQuantity)
+// - The sales tax is calculated with 7% (addDocumentPositionTax)
+// - The Line Amount is 100 * 4.00 EUR = 400.00 EUR (setDocumentPositionLineSummation)
+
+$documentBuilder->addNewPosition("3");
+$documentBuilder->setDocumentPositionProductDetails("Joghurt Erdbeer", "", "ARNR3");
+$documentBuilder->SetDocumentPositionNetPrice(4.0000);
+$documentBuilder->SetDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE);
+$documentBuilder->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7);
+$documentBuilder->SetDocumentPositionLineSummation(400.0);
+
 // Write the VAT Summation
 // You have to group the VAT base amounts by VAT-Category ("S"), VAT-Type ("VAT") and VAT percent (19%, 7%)
 // The first VAT summation comes at least from position 1 - 19% VAT from 198.00 EUR (Net-Amount) = 37.62
-// The second VAT summation comes at least from position 2 - 7% VAT from 275.00 EUR (Net-Amount) = 19.25
+// The second VAT summation comes at least from position 2 & 3 - 7% VAT from 275.00 EUR + 400.00 EUR = 675.00 EUR (Net-Amount) = 47.25
 
 $documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 198.0, 37.62, 19.0);
-$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 275.0, 19.25, 7.0);
+$documentBuilder->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 675.0, 47.25, 7.0);
 
 // Write document summation
-// 1. Grand total amount = 198.00 EUR + 37.62 EUR (VAT) + 275.00 EUR + 19.25 EUR (VAT) = 529.87
+// 1. Grand total amount = 198.00 EUR + 37.62 EUR (VAT) + 675.00 EUR + 47.25 EUR (VAT) = 957.87
 // 2. Amount to pay = We assume that there was no pre-payment and set the amount to be paid equal to the grand total amount
-// 3. Net total amount = 198.EUR (Position 1) + 275.00 EUR (Position 2) = 473.00 EUR
+// 3. Net total amount = 198.EUR (Position 1) + 675.00 EUR (Position 2 & 3) = 873.00 EUR
 // 4. Charge total amount = 0.00 EUR since we don't have any charges in the document
 // 5. Allowance total amount = 0.00 EUR since we don't have any discounts in the document
 // 6. Tax basis total amount = As a rule, this amount corresponds to 3.
-// 7. Tax total amount = 19 % from 198.00 EUR = 37.62 EUR + 7% from 275.00 EUR = 19.25 EUR is 56.87 EUR
+// 7. Tax total amount = 19 % from 198.00 EUR = 37.62 EUR + 7% from 675.00 EUR = 47.28 EUR is 84.87 EUR
 
-$documentBuilder->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87);
+$documentBuilder->setDocumentSummation(957.87, 957.87, 873.00, 0.0, 0.0, 873.00, 84.87);
 
 // Write XML file
 

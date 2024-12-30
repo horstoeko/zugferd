@@ -311,9 +311,15 @@ The `ZugferdDocumentBuilder` class is again the central entry point to generate 
     ->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE)
     ->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7)
     ->SetDocumentPositionLineSummation(275.0)
+    ->addNewPosition("3")
+    ->setDocumentPositionProductDetails("Joghurt Erdbeer", "", "ARNR3")
+    ->SetDocumentPositionNetPrice(4.0000)
+    ->SetDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE)
+    ->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7)
+    ->SetDocumentPositionLineSummation(400.0)
     ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 198.0, 37.62, 19.0)
-    ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 275.0, 19.25, 7.0)
-    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87)
+    ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 675.0, 47.25, 7.0)
+    ->setDocumentSummation(957.87, 957.87, 873.00, 0.0, 0.0, 873.00, 84.87)
     ->writeFile(dirname(__FILE__) . "/factur-x.xml");
 ```
 
@@ -371,9 +377,15 @@ Use the class ```ZugferdDocumentPdfBuilder``` if you already have an existing pr
     ->SetDocumentPositionQuantity(50, ZugferdUnitCodes::REC20_PIECE)
     ->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7)
     ->SetDocumentPositionLineSummation(275.0)
+    ->addNewPosition("3")
+    ->setDocumentPositionProductDetails("Joghurt Erdbeer", "", "ARNR3")
+    ->SetDocumentPositionNetPrice(4.0000)
+    ->SetDocumentPositionQuantity(100, ZugferdUnitCodes::REC20_PIECE)
+    ->AddDocumentPositionTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 7)
+    ->SetDocumentPositionLineSummation(400.0)
     ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 198.0, 37.62, 19.0)
-    ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 275.0, 19.25, 7.0)
-    ->setDocumentSummation(529.87, 529.87, 473.00, 0.0, 0.0, 473.00, 56.87)
+    ->addDocumentTax(ZugferdVatCategoryCodes::STAN_RATE, ZugferdVatTypeCodes::VALUE_ADDED_TAX, 675.0, 47.25, 7.0)
+    ->setDocumentSummation(957.87, 957.87, 873.00, 0.0, 0.0, 873.00, 84.87);
 
   // Save merged PDF (existing original and XML) to a file
   $pdfBuilder = new ZugferdDocumentPdfBuilder($document, "/tmp/existingprintlayout.pdf");
