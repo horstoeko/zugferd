@@ -62,11 +62,8 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param ZugferdDocumentBuilder $documentBuilder
-     * The instance of the document builder. Needed to get the XML data
-     * @param string                 $pdfData
-     * The full filename or a string containing the binary pdf data. This
-     * is the original PDF (e.g. created by a ERP system)
+     * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
+     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
      */
     public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfData)
     {
