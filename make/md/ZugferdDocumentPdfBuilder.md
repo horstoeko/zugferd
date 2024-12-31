@@ -1,4 +1,7 @@
 ```php
+
+use horstoeko\zugferd\codelists\ZugferdCurrencyCodes;
+use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
@@ -44,7 +47,9 @@ $zugferdDocumentPdfBuilder->saveDocument('/tmp/merged.pdf');
 // The method attachAdditionalFileByRealFile has 3 parameters:
 // - The file to attach which must exist and must be readable
 // - (Optional) A name to display in the attachments of the PDF
-// - (Optional) The type of the relationship of the attachment. Valid values are defined in the class ZugferdDocumentPdfBuilderAbstract. The constants are starting with AF_
+// - (Optional) The type of the relationship of the attachment. Valid values are defined in the class
+// ZugferdDocumentPdfBuilderAbstract. The constants are starting with AF_
+//
 // If you omit the last 2 parameters the following will happen:
 // - The displayname is calculated from the filename you specified
 // - The type of the relationship of the attachment will be AF_RELATIONSHIP_SUPPLEMENT (Supplement)
