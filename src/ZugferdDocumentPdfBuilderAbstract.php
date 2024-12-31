@@ -144,47 +144,43 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Saves the document generated with generateDocument to a file
+     * Saves the generated PDF document to a file
      *
-     * @param  string $toFilename
-     * The full qualified filename to which the generated PDF (with attachment)
-     * is stored
+     * @param  string $toFilename The full qualified filename to which the generated PDF (with attachment)is stored
      * @return static
      */
     public function saveDocument(string $toFilename)
     {
-        $this->pdfWriter->Output($toFilename, 'F');
+        $this->pdfWriter->Output('F', $toFilename);
 
         return $this;
     }
 
     /**
-     * Returns the PDF as an inline file
+     * Starts a HTTP download of the generated PDF document
      *
      * @param  string $toFilename
      * @return string
      */
     public function saveDocumentInline(string $toFilename): string
     {
-        return $this->pdfWriter->Output($toFilename, 'I');
+        return $this->pdfWriter->Output('I', $toFilename);
     }
 
     /**
-     * Returns the PDF as a string
+     * Returns the content of the generared PDF as a string
      *
-     * @param  string $toFilename
      * @return string
      */
-    public function downloadString(string $toFilename): string
+    public function downloadString(): string
     {
-        return $this->pdfWriter->Output($toFilename, 'S');
+        return $this->pdfWriter->Output('S');
     }
 
     /**
      * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
      *
-     * @param  string $additionalCreatorTool
-     * The name of the creator
+     * @param  string $additionalCreatorTool The name of the creator
      * @return static
      */
     public function setAdditionalCreatorTool(string $additionalCreatorTool)
@@ -212,9 +208,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
     /**
      * Set the type of relationship for the XML attachment. Allowed
-     * types are 'Data', 'Alternative'
+     * types are 'Data', 'Alternative' and 'Source'
      *
-     * @param  string $relationshipType
+     * @param  string $relationshipType Type of relationship
      * @return static
      */
     public function setAttachmentRelationshipType(string $relationshipType)

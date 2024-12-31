@@ -103,7 +103,7 @@ $zugferdDocumentPdfBuilder->saveDocument($newPdfFilename);
 // There is not only the saveDocument method of the ZugferdDocumentPdfBuilder. It is also possible to receive the merged
 // content (PDF with embedded XML) as a stream (string)
 
-$mergedPdfContent = $zugferdDocumentPdfBuilder->downloadString('dummy.pdf');
+$mergedPdfContent = $zugferdDocumentPdfBuilder->downloadString();
 
 // If you would like to brand the merged PDF with the name of you own solution you can call
 // the method setAdditionalCreatorTool. Before calling this method the creator of the PDF is identified as 'Factur-X library 1.x.x by HorstOeko'.

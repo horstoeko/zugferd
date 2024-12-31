@@ -112,7 +112,7 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsString($pdfContent);
         $this->assertNotEquals('', $pdfContent);
 
-        $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
+        $pdfContent = $pdfBuilder->downloadString();
 
         $this->assertNotEquals('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
@@ -146,7 +146,7 @@ class PdfBuilderEn16931Test extends TestCase
         $this->assertIsString($pdfContent);
         $this->assertNotEquals('', $pdfContent);
 
-        $pdfContent = $pdfBuilder->downloadString(self::$destPdfFilename);
+        $pdfContent = $pdfBuilder->downloadString();
 
         $this->assertNotEquals('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
