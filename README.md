@@ -99,12 +99,6 @@ This package makes use of
 
 - [Official documentaries (Version Archive)](https://www.ferd-net.de/ueber-uns/ressourcen-1/veroeffentlichungen)
 
-## Our Wiki
-
-We offer you a wiki that is currently under construction. This wiki lives from your questions, but also from your cooperation. If you find that something is unclear or not described at all during your work with this library, please let us know.
-
-[You can find our Wiki here...](https://github.com/horstoeko/zugferd/wiki)
-
 ## Installation
 
 There is one recommended way to install `horstoeko/zugferd` via [Composer](https://getcomposer.org/):
@@ -121,11 +115,12 @@ There is one recommended way to install `horstoeko/zugferd` via [Composer](https
 
 ## Usage
 
-For detailed explanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples) of this package and the documentation attached to every release.
+For detailed explanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples)
+of this package, the documentation attached to every release or our [wiki](https://github.com/horstoeko/zugferd/wiki).
 
 ### Configuration
 
-This library can be configured in various ways. For more information please visit our [Wiki](https://github.com/horstoeko/zugferd/wiki/Configuration).
+Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Configuration).
 
 ### Read a xml file
 
