@@ -101,17 +101,7 @@ This package makes use of
 
 ## Installation
 
-There is one recommended way to install `horstoeko/zugferd` via [Composer](https://getcomposer.org/):
-
-* adding the dependency to your ``composer.json`` file:
-
-```js
-  "require": {
-      ..
-      "horstoeko/zugferd":"^1",
-      ..
-  },
-```
+Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Installation).
 
 ## Usage
 
