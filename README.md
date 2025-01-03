@@ -273,4 +273,4 @@ Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/z
 
 ### Validation
 
-This library offers several options for checking and validating a document. Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Validation).
+Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Validation).
