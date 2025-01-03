@@ -1,3 +1,14 @@
+## v1.0.102
+
+``Previous version v1.0.101``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [c43788a](https://github.com/horstoeko/zugferd/commit/c43788a) | 2025-01-03 11:49:47 CET | HorstOeko | [FIX] Fixed dependency for symfony/finder | 
+| :bug:  | [8273bb2](https://github.com/horstoeko/zugferd/commit/8273bb2) | 2024-12-31 10:15:41 CET | HorstOeko | [FIX] Updated ZugferdDocumentPdfBuilderAbstract -> Remove useless parameter from 'downloadString', Updated DocBlocks | 
+
+:exclamation: _There are 21 internal commit(s)_
+
 ## v1.0.101
 
 ``Previous version v1.0.100``
