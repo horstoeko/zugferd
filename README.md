@@ -99,39 +99,18 @@ This package makes use of
 
 - [Official documentaries (Version Archive)](https://www.ferd-net.de/ueber-uns/ressourcen-1/veroeffentlichungen)
 
-## Installation
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Installation).
-
-## Usage
+## Guide
 
 For detailed explanation you may have a look in the [examples](https://github.com/horstoeko/zugferd/tree/master/examples)
 of this package, the documentation attached to every release or our [wiki](https://github.com/horstoeko/zugferd/wiki).
 
-### Configuration
+The following parts are documentated in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Configuration):
 
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Configuration).
-
-### Read a xml file
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Reading-XML-Documents).
-
-### Read a pdf file with attached xml file
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Reading-PDF-Documents).
-
-### Write a xml file
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Creating-XML-Documents).
-
-### Write a pdf file with attached xml file
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Creating-PDF-Documents).
-
-### Merge existing PDF and XML
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Merging-XML-and-PDF-Documents).
-
-### Validation
-
-Please visit the corresponding page in our [Wiki](https://github.com/horstoeko/zugferd/wiki/Validation).
+- [Installation](https://github.com/horstoeko/zugferd/wiki/Installation)
+- [Configuration](https://github.com/horstoeko/zugferd/wiki/Configuration)
+- [Read a xml file](https://github.com/horstoeko/zugferd/wiki/Reading-XML-Documents)
+- [Read a pdf file with attached xml file](https://github.com/horstoeko/zugferd/wiki/Reading-PDF-Documents)
+- [Write a xml file](https://github.com/horstoeko/zugferd/wiki/Creating-XML-Documents)
+- [Write a pdf file with attached xml file file](https://github.com/horstoeko/zugferd/wiki/Creating-PDF-Documents)
+- [Merge existing PDF and XML](https://github.com/horstoeko/zugferd/wiki/Merging-XML-and-PDF-Documents)
+- [Validation](https://github.com/horstoeko/zugferd/wiki/Validation)
