@@ -1,5 +1,7 @@
+<!-- omit in toc -->
 # ZUGFeRD/XRechnung/Factur-X
 
+<!-- omit in toc -->
 ## Status
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/horstoeko/zugferd.svg?style=plastic)](https://packagist.org/packages/horstoeko/zugferd)
@@ -9,44 +11,23 @@
 [![CI](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml)
 [![Release Status](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml)
 
-<!--
-[![CI (Ant, PHP 7.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php73.ant.yml)
-[![CI (Ant, PHP 7.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php74.ant.yml)
-[![CI (PHP 8.0)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php80.ant.yml)
-[![CI (PHP 8.1)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php81.ant.yml)
-[![CI (PHP 8.2)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php82.ant.yml)
-[![CI (PHP 8.3)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php83.ant.yml)
-[![CI (PHP 8.4)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.php84.ant.yml)
--->
+<!-- omit in toc -->
+## Table of Contents
+
+- [Latest information](#latest-information)
+- [License](#license)
+- [Overview](#overview)
+- [Supported profiles](#supported-profiles)
+- [Further information](#further-information)
+- [Related projects](#related-projects)
+- [Dependencies](#dependencies)
+- [Resources](#resources)
+- [Guide](#guide)
 
 ## Latest information
 
 > [!TIP]
 > I would like to thank you very much for the great encouragement and the fantastic contributions on your part. I wish you all a successful new year 2025 and hope that all the work on this library shows its positive results.
-
-## Table of Contents
-
-- [ZUGFeRD/XRechnung/Factur-X](#zugferdxrechnungfactur-x)
-  - [Status](#status)
-  - [Latest information](#latest-information)
-  - [Table of Contents](#table-of-contents)
-  - [License](#license)
-  - [Overview](#overview)
-  - [Supported profiles](#supported-profiles)
-  - [Further information](#further-information)
-  - [Related projects](#related-projects)
-  - [Dependencies](#dependencies)
-  - [Resources](#resources)
-  - [Our Wiki](#our-wiki)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Configuration](#configuration)
-    - [Reading a xml file](#reading-a-xml-file)
-    - [Reading a pdf file with xml attachment](#reading-a-pdf-file-with-xml-attachment)
-    - [Writing a xml file](#writing-a-xml-file)
-    - [Writing a pdf file with attached xml file](#writing-a-pdf-file-with-attached-xml-file)
-    - [Merge existing PDF and XML](#merge-existing-pdf-and-xml)
-    - [Validation](#validation)
 
 ## License
 
