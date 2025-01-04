@@ -48,9 +48,8 @@ $documentBuilder->addDocumentInvoiceSupportingDocumentWithFile('REFDOC-2024/0000
 
 $documentBuilder->addDocumentTenderOrLotReferenceDocument('LOS 738625');
 
-// Add details of the calculated object
-// Only the type code 130 is used to transmit an object identifier. Depending on the application, an object identifier
-// can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
+// Add details of the calculated object. Only the type code 130 is used to transmit an object identifier. Depending on the application,
+// an object identifier can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
 // Note: Additional documents of type code 130 may only be specified once.
 
 $documentBuilder->addDocumentInvoicedObjectReferenceDocument('125', ZugferdReferenceCodeQualifiers::SALE_PERS_NUMB); // Sales person number
