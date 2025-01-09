@@ -14,7 +14,7 @@ use horstoeko\zugferd\ZugferdProfiles;
 require __DIR__ . "/../vendor/autoload.php";
 require __DIR__ . "/00_ExampleHelpers.php";
 
-// First we create a new invoice in EN16931-Profile (== COMFORT-Profile)
+// First we create a new invoice in XRECHNUNG-Profile (Version 3.x)
 
 $documentBuilder = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
