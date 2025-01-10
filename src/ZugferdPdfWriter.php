@@ -102,7 +102,7 @@ class ZugferdPdfWriter extends PdfFpdi
             if ($this->deterministicModeEnabled === true) {
                 $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
             } else {
-                $this->PDFVersion .= "\n" . '%' . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256)) . chr(rand(128, 256));
+                $this->PDFVersion .= "\n" . '%' . chr(rand(128, 255)) . chr(rand(128, 255)) . chr(rand(128, 255)) . chr(rand(128, 255));
             }
         }
     }
