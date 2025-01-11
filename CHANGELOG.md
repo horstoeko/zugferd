@@ -1,3 +1,15 @@
+## v1.0.103
+
+``Previous version v1.0.102``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [9b02e3e](https://github.com/horstoeko/zugferd/commit/9b02e3e) | 2025-01-11 15:55:05 CET | HorstOeko | Merged PR | [#229](https://github.com/horstoeko/zugferd/issues/229)
+| :new_moon:  | [ce07a05](https://github.com/horstoeko/zugferd/commit/ce07a05) | 2025-01-10 17:31:05 CET | wurst-hans | Fixed incompatible PDF/A header bytes | 
+| :bug:  | [04a2814](https://github.com/horstoeko/zugferd/commit/04a2814) | 2025-01-10 06:17:05 CET | HorstOeko | [FIX] Fix getters in getDocumentShipToContact | 
+
+:exclamation: _There are 12 internal commit(s)_
+
 ## v1.0.102
 
 ``Previous version v1.0.101``
