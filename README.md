@@ -26,8 +26,8 @@
 
 ## Latest information
 
-> [!TIP]
-> I would like to thank you very much for the great encouragement and the fantastic contributions on your part. I wish you all a successful new year 2025 and hope that all the work on this library shows its positive results.
+> [!IMPORTANT]
+> I plan to discontinue support for older PHP versions prior to 8.3 in 2025. Preparations for this are already underway. Please be prepared for this change.
 
 ## License
 
