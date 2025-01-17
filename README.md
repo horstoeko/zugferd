@@ -14,7 +14,6 @@
 <!-- omit in toc -->
 ## Table of Contents
 
-- [Latest information](#latest-information)
 - [License](#license)
 - [Overview](#overview)
 - [Supported profiles](#supported-profiles)
@@ -23,11 +22,6 @@
 - [Dependencies](#dependencies)
 - [Resources](#resources)
 - [Guide](#guide)
-
-## Latest information
-
-> [!IMPORTANT]
-> I plan to discontinue support for older PHP versions prior to 8.3 in 2025. Preparations for this are already underway. Please be prepared for this change.
 
 ## License
 
