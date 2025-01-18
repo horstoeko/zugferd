@@ -1447,19 +1447,29 @@ class ZugferdObjectHelper
 
         if ($format == "102") {
             return DateTime::createFromFormat("Ymd", $dateTimeString);
-        } elseif ($format == "101") {
-            return DateTime::createFromFormat("ymd", $dateTimeString);
-        } elseif ($format == "201") {
-            return DateTime::createFromFormat("ymdHi", $dateTimeString);
-        } elseif ($format == "202") {
-            return DateTime::createFromFormat("ymdHis", $dateTimeString);
-        } elseif ($format == "203") {
-            return DateTime::createFromFormat("YmdHi", $dateTimeString);
-        } elseif ($format == "204") {
-            return DateTime::createFromFormat("YmdHis", $dateTimeString);
-        } else {
-            throw new ZugferdUnknownDateFormatException($format);
         }
+
+        if ($format == "101") {
+            return DateTime::createFromFormat("ymd", $dateTimeString);
+        }
+
+        if ($format == "201") {
+            return DateTime::createFromFormat("ymdHi", $dateTimeString);
+        }
+
+        if ($format == "202") {
+            return DateTime::createFromFormat("ymdHis", $dateTimeString);
+        }
+
+        if ($format == "203") {
+            return DateTime::createFromFormat("YmdHi", $dateTimeString);
+        }
+
+        if ($format == "204") {
+            return DateTime::createFromFormat("YmdHis", $dateTimeString);
+        }
+
+        throw new ZugferdUnknownDateFormatException($format);
     }
 
     /**
@@ -1715,7 +1725,9 @@ class ZugferdObjectHelper
         foreach ($args as $arg) {
             if ($arg instanceof DateTime) {
                 return false;
-            } elseif (!self::isNullOrEmpty($arg)) {
+            }
+
+            if (!self::isNullOrEmpty($arg)) {
                 return false;
             }
         }

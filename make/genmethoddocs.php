@@ -679,7 +679,7 @@ class MarkDownGenerator
         }
 
         if ($string === '$this') {
-            $string = 'static';
+            return 'static';
         }
 
         return $string;

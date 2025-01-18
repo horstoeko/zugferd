@@ -34,7 +34,7 @@ function stristartswith(string $haystack, string $needle): bool
 function correctAuthor(string $author): string
 {
     if ($author === "horstoeko" || $author === "ruff" || $author === "Daniel Erling") {
-        $author = "HorstOeko";
+        return "HorstOeko";
     }
 
     return $author;
