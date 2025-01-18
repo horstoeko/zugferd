@@ -282,7 +282,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         // Checks that the file really exists
 
-        if (empty($fullFilename)) {
+        if ($fullFilename === '') {
             throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
         }
 
@@ -325,13 +325,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         // Check content. The content must not be empty
 
-        if (empty($content)) {
+        if ($content === '') {
             throw new ZugferdInvalidArgumentException("You must specify a content to attach");
         }
 
         // Check filename. The filename must not be empty
 
-        if (empty($filename)) {
+        if ($filename === '') {
             throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
         }
 
@@ -345,7 +345,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         // Sanatize relationship type
 
-        if (empty($relationshipType)) {
+        if ($relationshipType === '') {
             $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
@@ -355,7 +355,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         // Sanatize displayname
 
-        if (empty($displayName)) {
+        if ($displayName === '') {
             $displayName = FileUtils::getFilenameWithExtension($filename);
         }
 
@@ -446,11 +446,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setMetaInformationCallback(?callable $callback = null)
     {
-        if (is_callable($callback)) {
-            $this->metaInformationCallback = $callback;
-        } else {
-            $this->metaInformationCallback = null;
-        }
+        $this->metaInformationCallback = is_callable($callback) ? $callback : null;
 
         return $this;
     }

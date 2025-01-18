@@ -516,25 +516,23 @@ class ZugferdObjectHelper
             $this->tryCallAll($referencedDocumentType, ['addToName', 'setName'], $this->getTextType($name));
         }
 
-        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false) {
-            if (FileUtils::fileExists($binaryDataFilename)) {
-                $mimeDb = new MimeDb();
-                $mimeTypes = $mimeDb->findAllMimeTypesByExtension(FileUtils::getFileExtension($binaryDataFilename));
-                if (!is_null($mimeTypes)) {
-                    $mimeTypesSupported = array_intersect($mimeTypes, self::SUPPORTEDTMIMETYPES);
-                    if (count($mimeTypesSupported) > 0) {
-                        $content = FileUtils::fileToBase64($binaryDataFilename);
-                        $this->tryCall(
-                            $referencedDocumentType,
-                            'setAttachmentBinaryObject',
-                            $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binaryDataFilename))
-                        );
-                    } else {
-                        throw new ZugferdUnsupportedMimetype();
-                    }
+        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false && FileUtils::fileExists($binaryDataFilename)) {
+            $mimeDb = new MimeDb();
+            $mimeTypes = $mimeDb->findAllMimeTypesByExtension(FileUtils::getFileExtension($binaryDataFilename));
+            if (!is_null($mimeTypes)) {
+                $mimeTypesSupported = array_intersect($mimeTypes, self::SUPPORTEDTMIMETYPES);
+                if ($mimeTypesSupported !== []) {
+                    $content = FileUtils::fileToBase64($binaryDataFilename);
+                    $this->tryCall(
+                        $referencedDocumentType,
+                        'setAttachmentBinaryObject',
+                        $this->getBinaryObjectType($content, $mimeTypesSupported[0], FileUtils::getFilenameWithExtension($binaryDataFilename))
+                    );
                 } else {
                     throw new ZugferdUnsupportedMimetype();
                 }
+            } else {
+                throw new ZugferdUnsupportedMimetype();
             }
         }
 
@@ -1508,7 +1506,7 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
-        if (!$method) {
+        if ($method === '') {
             return $this;
         }
         if (self::isNullOrEmpty($value)) {
@@ -1558,7 +1556,7 @@ class ZugferdObjectHelper
         if (!$instance) {
             return null;
         }
-        if (!$method) {
+        if ($method === '') {
             return null;
         }
         if ($this->methodExists($instance, $method)) {
@@ -1623,10 +1621,10 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
-        if (!$methodToLookFor) {
+        if ($methodToLookFor === '') {
             return $this;
         }
-        if (!$methodToCall) {
+        if ($methodToCall === '') {
             return $this;
         }
         if (!$this->methodExists($instance, $methodToCall)) {
@@ -1682,12 +1680,7 @@ class ZugferdObjectHelper
         if ($value === null) {
             return true;
         }
-        if (!is_object($value)) {
-            if ((string)$value === "") {
-                return true;
-            }
-        }
-        return false;
+        return !is_object($value) && (string)$value === "";
     }
 
     /**
@@ -1701,10 +1694,8 @@ class ZugferdObjectHelper
         foreach ($args as $arg) {
             if ($arg instanceof DateTime) {
                 return false;
-            } else {
-                if (!self::isNullOrEmpty($arg)) {
-                    return false;
-                }
+            } elseif (!self::isNullOrEmpty($arg)) {
+                return false;
             }
         }
         return true;
@@ -1723,10 +1714,8 @@ class ZugferdObjectHelper
                 if ($arg == null) {
                     return true;
                 }
-            } else {
-                if (self::isNullOrEmpty($arg)) {
-                    return true;
-                }
+            } elseif (self::isNullOrEmpty($arg)) {
+                return true;
             }
         }
         return false;
@@ -1744,7 +1733,7 @@ class ZugferdObjectHelper
         if ($instance == null) {
             return false;
         }
-        if (!(is_object($instance) || is_string($instance))) {
+        if (!is_object($instance) && !is_string($instance)) {
             return false;
         }
         return method_exists($instance, $method);

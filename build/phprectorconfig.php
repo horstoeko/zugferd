@@ -26,4 +26,22 @@ return RectorConfig::configure()
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
     ])
-    ->withPhp73Sets();
+    ->withPhp73Sets()
+    ->withPreparedSets(
+        codeQuality: true,
+        //
+        carbon: false,
+        codingStyle: false,
+        deadCode: false,
+        doctrineCodeQuality: false,
+        earlyReturn: false,
+        instanceOf: false,
+        naming: false,
+        phpunitCodeQuality: false,
+        privatization: false,
+        rectorPreset: false,
+        strictBooleans: false,
+        symfonyCodeQuality: false,
+        symfonyConfigs: false,
+        typeDeclarations: false,
+    );

@@ -131,11 +131,7 @@ class ZugferdPdfWriter extends PdfFpdi
             if (false === $p) {
                 $p = strrpos($file, '\\');
             }
-            if (false !== $p) {
-                $name = substr($file, $p + 1);
-            } else {
-                $name = $file;
-            }
+            $name = false !== $p ? substr($file, $p + 1) : $file;
         }
 
         if (!$isUTF8) {
@@ -276,12 +272,10 @@ class ZugferdPdfWriter extends PdfFpdi
         }
         if ($this->deterministicModeEnabled === true) {
             $md = @date('YmdHis', strtotime("2000-01-01 23:59:59"));
+        } elseif (is_string($file_info['file'])) {
+            $md = @date('YmdHis', filemtime($file_info['file']));
         } else {
-            if (is_string($file_info['file'])) {
-                $md = @date('YmdHis', filemtime($file_info['file']));
-            } else {
-                $md = @date('YmdHis');
-            }
+            $md = @date('YmdHis');
         }
         $fc = gzcompress($fc);
         $this->_put('/Length ' . strlen($fc));
@@ -351,7 +345,7 @@ class ZugferdPdfWriter extends PdfFpdi
     {
         parent::_putresources();
 
-        if (!empty($this->files)) {
+        if ($this->files !== []) {
             $this->_putfiles();
         }
 
@@ -405,11 +399,11 @@ class ZugferdPdfWriter extends PdfFpdi
     {
         parent::_putcatalog();
 
-        if (!empty($this->files)) {
+        if ($this->files !== []) {
             if (is_array($this->files)) {
                 $files_ref_str = '';
                 foreach ($this->files as $file) {
-                    if ('' != $files_ref_str) {
+                    if ('' !== $files_ref_str) {
                         $files_ref_str .= ' ';
                     }
                     $files_ref_str .= sprintf('%s 0 R', $file['file_index']);
@@ -424,7 +418,7 @@ class ZugferdPdfWriter extends PdfFpdi
             $this->_put(sprintf('/Metadata %s 0 R', $this->descriptionIndex));
         }
 
-        if (!empty($this->files)) {
+        if ($this->files !== []) {
             $this->_put('/Names <<');
             $this->_put('/EmbeddedFiles ');
             $this->_put(sprintf('%s 0 R', $this->filesIndex));
@@ -491,11 +485,11 @@ class ZugferdPdfWriter extends PdfFpdi
             $metaDataString .= $this->metaDataInfos['subject'];
         }
 
-        if ($dateType == "modified" && isset($this->metaDataInfos['modifiedDate'])) {
+        if ($dateType === "modified" && isset($this->metaDataInfos['modifiedDate'])) {
             $metaDataString .= $this->metaDataInfos['modifiedDate'];
         }
 
-        if ($dateType == "created" && isset($this->metaDataInfos['createdDate'])) {
+        if ($dateType === "created" && isset($this->metaDataInfos['createdDate'])) {
             $metaDataString .= $this->metaDataInfos['createdDate'];
         }
 

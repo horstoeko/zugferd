@@ -84,7 +84,7 @@ class ZugferdXsdValidator
      */
     public function validationPased(): bool
     {
-        return empty($this->errorBag);
+        return $this->errorBag === [];
     }
 
     /**
@@ -105,7 +105,7 @@ class ZugferdXsdValidator
      */
     public function hasNoValidationErrors(): bool
     {
-        return empty($this->errorBag);
+        return $this->errorBag === [];
     }
 
     /**

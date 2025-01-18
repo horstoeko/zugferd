@@ -84,7 +84,6 @@ class ZugferdDocumentPdfReaderExt
      */
     final protected function __construct()
     {
-        $this->attachmentContentList = [];
     }
 
     /**
@@ -252,7 +251,7 @@ class ZugferdDocumentPdfReaderExt
                 )
             );
 
-        if (empty($invoiceContent)) {
+        if ($invoiceContent === []) {
             throw new ZugferdNoPdfAttachmentFoundException();
         }
 

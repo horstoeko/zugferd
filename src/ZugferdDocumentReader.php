@@ -282,10 +282,8 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function setBinaryDataDirectory(string $binaryDataDirectory): ZugferdDocumentReader
     {
-        if ($binaryDataDirectory) {
-            if (is_dir($binaryDataDirectory)) {
-                $this->binarydatadirectory = $binaryDataDirectory;
-            }
+        if ($binaryDataDirectory !== '' && $binaryDataDirectory !== '0' && is_dir($binaryDataDirectory)) {
+            $this->binarydatadirectory = $binaryDataDirectory;
         }
 
         return $this;
@@ -3827,14 +3825,14 @@ class ZugferdDocumentReader extends ZugferdDocument
                     $itemValue = $this->getObjectHelper()->tryCallByPathAndReturn($valueItem, $method) ?? $defaultValue;
                 }
 
-                if ($isFlat === true) {
+                if ($isFlat) {
                     $result[] = $itemValue;
                 } else {
                     $resultItem[$methodKey] = $itemValue;
                 }
             }
 
-            if ($isFlat !== true) {
+            if (!$isFlat) {
                 $result[] = $resultItem;
             }
         }

@@ -510,7 +510,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     {
         $hasChargeAmountIsAllowance = $allowanceChargeAmount != 0.0;
         $allowanceChargeAmountIsAllowance = $allowanceChargeAmount < 0.0;
-        $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($allowanceChargeAmount) : 0.0;
+        $allowanceAmount = $allowanceChargeAmountIsAllowance ? abs($allowanceChargeAmount) : 0.0;
         $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($allowanceChargeAmount) : 0.0;
         $allowanceChargeAmount = abs($allowanceChargeAmount);
         $lineTotalAmount = round($unitPrice * $quantity + $chargeAmount - $allowanceAmount, 2);
@@ -641,7 +641,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         }
 
         $allowanceChargeAmountIsAllowance = $actualAmount < 0.0;
-        $allowanceAmount = $allowanceChargeAmountIsAllowance === true ? abs($actualAmount) : 0.0;
+        $allowanceAmount = $allowanceChargeAmountIsAllowance ? abs($actualAmount) : 0.0;
         $chargeAmount = $allowanceChargeAmountIsAllowance === false ? abs($actualAmount) : 0.0;
 
         $this->addDocumentAllowanceCharge(abs($actualAmount), $allowanceChargeAmountIsAllowance == false, $taxCategoryCode, $taxTypeCode, $taxPercent, null, null, null, null, null, null, $reason);

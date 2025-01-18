@@ -87,7 +87,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
         $strNew = $strArray[0];
     } else {
         foreach ($strArray as $item) {
-            if ($strNew != "") {
+            if ($strNew !== "") {
                 $strNew .= "_";
             }
             if ($shortIdentifier) {
@@ -197,10 +197,10 @@ function createCodeClassFromKositJson(array $fileToDownload): void
     $classDir = PathUtils::combineAllPaths(__DIR__, "classes");
     $classTitle = $fileToDownload[DOWNLOADDEF_KEY_TITLE];
     $classTitleList = $fileToDownload[DOWNLOADDEF_KEY_TITLE_LIST];
-    $classHomepageUrls = !is_array($fileToDownload[DOWNLOADDEF_KEY_URL_HP]) ? [$fileToDownload[DOWNLOADDEF_KEY_URL_HP]] : $fileToDownload[DOWNLOADDEF_KEY_URL_HP];
+    $classHomepageUrls = is_array($fileToDownload[DOWNLOADDEF_KEY_URL_HP]) ? $fileToDownload[DOWNLOADDEF_KEY_URL_HP] : [$fileToDownload[DOWNLOADDEF_KEY_URL_HP]];
     $classShortIdentifiers = $fileToDownload[DOWNLOADDEF_KEY_SHORTIDENTIFIERS];
     $classFilename = PathUtils::combinePathWithFile($classDir, sprintf('%s.php', $className));
-    $classConstantPrefixes = !is_array($fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]) ? [$fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]] : $fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX];
+    $classConstantPrefixes = is_array($fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]) ? $fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX] : [$fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]];
 
     $dataCodeIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_CODEINDEX] ?? 0;
     $dataDescIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_DESCINDEX] ?? 1;

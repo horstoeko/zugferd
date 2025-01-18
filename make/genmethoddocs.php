@@ -124,7 +124,7 @@ class ExtractClass
             $result['class'] = [
                 'summary' => $classDocBlock->getSummary() ?: '',
                 'description' => (string)$classDocBlock->getDescription() ?: '',
-                'deprecated' => !empty($deprecatedTag) ? (string)$deprecatedTag[0] : ''
+                'deprecated' => $deprecatedTag === [] ? '' : (string)$deprecatedTag[0]
             ];
         } else {
             $result['class'] = [
@@ -135,10 +135,8 @@ class ExtractClass
         }
 
         foreach ($methods as $method) {
-            if ($method->getDeclaringClass()->getName() != $this->className) {
-                if (!in_array(sprintf('%s::%s', $this->className, $method->getName()), $this->ignoreInheritance)) {
-                    continue;
-                }
+            if ($method->getDeclaringClass()->getName() != $this->className && !in_array(sprintf('%s::%s', $this->className, $method->getName()), $this->ignoreInheritance)) {
+                continue;
             }
 
             $docComment = $method->getDocComment();
@@ -168,7 +166,7 @@ class ExtractClass
                 $methodDetails['final'] = $method->isFinal();
                 $methodDetails['hasadditional'] = $method->isStatic() || $method->isAbstract() || $method->isFinal();
                 $deprecatedTag = $docBlock->getTagsByName('deprecated');
-                if (!empty($deprecatedTag)) {
+                if ($deprecatedTag !== []) {
                     $methodDetails['deprecated'] = (string)$deprecatedTag[0];
                 }
 
@@ -185,7 +183,7 @@ class ExtractClass
 
                 // Parse @return tag
                 $returnTag = $docBlock->getTagsByName('return');
-                if (!empty($returnTag) && $returnTag[0] instanceof Return_) {
+                if ($returnTag !== [] && $returnTag[0] instanceof Return_) {
                     $returnDetails['type'] = (string) $returnTag[0]->getType();
                     $returnDetails['description'] = (string) $returnTag[0]->getDescription();
                 }
@@ -213,7 +211,7 @@ class ExtractClass
                     'name' => $parameterName,
                     'type' => $parameterTypeString ?: 'mixed',
                     'isNullable' => $parameterType && $parameterType->allowsNull(),
-                    'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? true : false) : false,
+                    'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable()) : false,
                     'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null) : null,
                     'description' => $paramDescriptions[$parameterName]['description'] ?? ''
                 ];
@@ -564,7 +562,7 @@ class MarkDownGenerator
      */
     private function addToLastLine(string $string, string $delimiter = "", ...$args): MarkDownGenerator
     {
-        if (empty($this->lines)) {
+        if ($this->lines === []) {
             return $this->addLine($string, ...$args);
         }
 
@@ -617,7 +615,7 @@ class MarkDownGenerator
             return $this;
         }
 
-        if ($isClass === true) {
+        if ($isClass) {
             $this->addLineH2("Example");
         } else {
             $this->addLineH4("Example");
@@ -677,7 +675,7 @@ class MarkDownGenerator
         if (stripos($string, 'array<') === 0) {
             $string = 'array';
         }
-        if ($string == '$this') {
+        if ($string === '$this') {
             $string = 'static';
         }
 

@@ -2387,16 +2387,16 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             ARRAY_FILTER_USE_KEY
         );
 
-        if (empty($paymentDiscountDays)) {
+        if ($paymentDiscountDays === []) {
             return $this->addDocumentPaymentTerm(trim($description), $dueDate, $directDebitMandateID);
         }
 
         foreach ($paymentDiscountDays as $paymentDiscountDayIndex => $paymentDiscountDay) {
             $paymentTermsDescription[] =
                 sprintf(
-                    !isset($paymentDiscountBaseAmounts[$paymentDiscountDayIndex])
-                        ? "#SKONTO#TAGE=%s#PROZENT=%s#"
-                        : "#SKONTO#TAGE=%s#PROZENT=%s#BASISBETRAG=%s#",
+                    isset($paymentDiscountBaseAmounts[$paymentDiscountDayIndex])
+                        ? "#SKONTO#TAGE=%s#PROZENT=%s#BASISBETRAG=%s#"
+                        : "#SKONTO#TAGE=%s#PROZENT=%s#",
                     number_format($paymentDiscountDay, 0, ".", ""),
                     number_format($paymentDiscountPercents[$paymentDiscountDayIndex] ?? 0.0, 2, ".", ""),
                     number_format($paymentDiscountBaseAmounts[$paymentDiscountDayIndex] ?? 0.0, 2, ".", "")
