@@ -110,11 +110,11 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfContent = ob_get_clean();
 
         $this->assertIsString($pdfContent);
-        $this->assertNotEquals('', $pdfContent);
+        $this->assertNotSame('', $pdfContent);
 
         $pdfContent = $pdfBuilder->downloadString();
 
-        $this->assertNotEquals('', $pdfContent);
+        $this->assertNotSame('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
 
@@ -144,11 +144,11 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfContent = ob_get_clean();
 
         $this->assertIsString($pdfContent);
-        $this->assertNotEquals('', $pdfContent);
+        $this->assertNotSame('', $pdfContent);
 
         $pdfContent = $pdfBuilder->downloadString();
 
-        $this->assertNotEquals('', $pdfContent);
+        $this->assertNotSame('', $pdfContent);
         $this->assertStringStartsNotWith('%PDF-1.4', $pdfContent);
     }
 
@@ -214,7 +214,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipType('unknown');
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToData(): void
@@ -222,7 +222,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipType('Data');
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToAlternative(): void
@@ -230,7 +230,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipType('Alternative');
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToSource(): void
@@ -238,7 +238,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipType('Source');
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SOURCE, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SOURCE, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToDataDirect(): void
@@ -246,7 +246,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipTypeToData();
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToAlternativeDirect(): void
@@ -254,7 +254,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipTypeToAlternative();
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_ALTERNATIVE, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testSetAttachmentRelationshipTypeToSourceDirect(): void
@@ -262,7 +262,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setAttachmentRelationshipTypeToSource();
 
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SOURCE, $pdfBuilder->getAttachmentRelationshipType());
+        $this->assertSame(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_SOURCE, $pdfBuilder->getAttachmentRelationshipType());
     }
 
     public function testAttachAdditionalFileFileDoesNotExist(): void
@@ -364,7 +364,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
-        $this->assertEquals(2, count($pdfFilespecs));
+        $this->assertCount(2, $pdfFilespecs);
         $this->assertArrayHasKey("8_0", $pdfFilespecs);
         $this->assertArrayHasKey("10_0", $pdfFilespecs);
 
@@ -465,7 +465,7 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
-        $this->assertEquals(2, count($pdfFilespecs));
+        $this->assertCount(2, $pdfFilespecs);
         $this->assertArrayHasKey("8_0", $pdfFilespecs);
         $this->assertArrayHasKey("10_0", $pdfFilespecs);
 
@@ -783,7 +783,7 @@ class PdfBuilderEn16931Test extends TestCase
                 $whichArray[] = $which;
 
                 $this->assertIsString($which);
-                $this->assertTrue(in_array($which, ['author', 'keywords', 'title', 'subject']));
+                $this->assertContains($which, ['author', 'keywords', 'title', 'subject']);
 
                 if ($which === 'title') {
                     return "DummyTitle";
@@ -803,10 +803,10 @@ class PdfBuilderEn16931Test extends TestCase
 
         $this->assertNotEmpty($whichArray);
         $this->assertCount(4, $whichArray);
-        $this->assertTrue(in_array('author', $whichArray));
-        $this->assertTrue(in_array('keywords', $whichArray));
-        $this->assertTrue(in_array('title', $whichArray));
-        $this->assertTrue(in_array('subject', $whichArray));
+        $this->assertContains('author', $whichArray);
+        $this->assertContains('keywords', $whichArray);
+        $this->assertContains('title', $whichArray);
+        $this->assertContains('subject', $whichArray);
 
         $pdfParser = new PdfParser();
         $pdfParsed = $pdfParser->parseFile(self::$destPdfFilename);

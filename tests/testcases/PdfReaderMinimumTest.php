@@ -34,17 +34,17 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
-        $this->assertEquals('F20220027', $documentno);
-        $this->assertEquals(ZugferdInvoiceType::INVOICE, $documenttypecode);
+        $this->assertSame('F20220027', $documentno);
+        $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20220131'))->format('Ymd'), $documentdate->format('Ymd'));
-        $this->assertEquals("EUR", $invoiceCurrency);
-        $this->assertEquals("", $taxCurrency);
-        $this->assertEquals("", $documentname);
-        $this->assertEquals("", $documentlanguage);
+        $this->assertSame("EUR", $invoiceCurrency);
+        $this->assertSame("", $taxCurrency);
+        $this->assertSame("", $documentname);
+        $this->assertSame("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
     }
 
     public function testDocumentNotes(): void
@@ -57,8 +57,8 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
-        $this->assertEquals("", $creditorReferenceID);
-        $this->assertEquals("", $paymentReference);
+        $this->assertSame("", $creditorReferenceID);
+        $this->assertSame("", $paymentReference);
     }
 
     public function testDocumentIsCopy(): void
@@ -76,31 +76,31 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSummation(): void
     {
         self::$document->getDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
-        $this->assertEquals(110.00, $grandTotalAmount);
-        $this->assertEquals(100.00, $duePayableAmount);
-        $this->assertEquals(0.0, $lineTotalAmount);
-        $this->assertEquals(0.00, $chargeTotalAmount);
-        $this->assertEquals(0.00, $allowanceTotalAmount);
-        $this->assertEquals(100.00, $taxBasisTotalAmount);
-        $this->assertEquals(10.00, $taxTotalAmount);
-        $this->assertEquals(0.00, $roundingAmount);
-        $this->assertEquals(0.00, $totalPrepaidAmount);
+        $this->assertEqualsWithDelta(110.00, $grandTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.00, $duePayableAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $chargeTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $allowanceTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.00, $taxBasisTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.00, $taxTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $roundingAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $totalPrepaidAmount, PHP_FLOAT_EPSILON);
     }
 
     public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
-        $this->assertEquals("SERVEXEC", $buyerReference);
+        $this->assertSame("SERVEXEC", $buyerReference);
     }
 
     public function testDocumentSellerGeneral(): void
     {
         self::$document->getDocumentSeller($sellername, $sellerids, $sellerdescription);
-        $this->assertEquals("LE FOURNISSEUR", $sellername);
+        $this->assertSame("LE FOURNISSEUR", $sellername);
         $this->assertIsArray($sellerids);
         $this->assertArrayNotHasKey(0, $sellerids);
         $this->assertArrayNotHasKey(1, $sellerids);
-        $this->assertEquals("", $sellerdescription);
+        $this->assertSame("", $sellerdescription);
     }
 
     public function testDocumentSellerGlobalId(): void
@@ -125,12 +125,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSellerAddress(): void
     {
         self::$document->getDocumentSellerAddress($sellerlineone, $sellerlinetwo, $sellerlinethree, $sellerpostcode, $sellercity, $sellercountry, $sellersubdivision);
-        $this->assertEquals("", $sellerlineone);
-        $this->assertEquals("", $sellerlinetwo);
-        $this->assertEquals("", $sellerlinethree);
-        $this->assertEquals("", $sellerpostcode);
-        $this->assertEquals("", $sellercity);
-        $this->assertEquals("FR", $sellercountry);
+        $this->assertSame("", $sellerlineone);
+        $this->assertSame("", $sellerlinetwo);
+        $this->assertSame("", $sellerlinethree);
+        $this->assertSame("", $sellerpostcode);
+        $this->assertSame("", $sellercity);
+        $this->assertSame("FR", $sellercountry);
         $this->assertIsArray($sellersubdivision);
         $this->assertEmpty($sellersubdivision);
     }
@@ -138,9 +138,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSellerLegalOrganization(): void
     {
         self::$document->getDocumentSellerLegalOrganisation($sellerlegalorgid, $sellerlegalorgtype, $sellerlegalorgname);
-        $this->assertEquals("123456782", $sellerlegalorgid);
-        $this->assertEquals("0002", $sellerlegalorgtype);
-        $this->assertEquals("", $sellerlegalorgname);
+        $this->assertSame("123456782", $sellerlegalorgid);
+        $this->assertSame("0002", $sellerlegalorgtype);
+        $this->assertSame("", $sellerlegalorgname);
     }
 
     public function testDocumentSellerContact(): void
@@ -157,18 +157,18 @@ class PdfReaderMinimumTest extends TestCase
     public function testGetDocumentSellerCommunication(): void
     {
         self::$document->getDocumentSellerCommunication($uriScheme, $uri);
-        $this->assertEquals("", $uriScheme);
-        $this->assertEquals("", $uri);
+        $this->assertSame("", $uriScheme);
+        $this->assertSame("", $uri);
     }
 
     public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
-        $this->assertEquals("LE CLIENT", $buyername);
+        $this->assertSame("LE CLIENT", $buyername);
         $this->assertIsArray($buyerids);
         $this->assertArrayNotHasKey(0, $buyerids);
         $this->assertArrayNotHasKey(1, $buyerids);
-        $this->assertEquals("", $buyerdescription);
+        $this->assertSame("", $buyerdescription);
     }
 
     public function testDocumentBuyerGlobalId(): void
@@ -188,12 +188,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentBuyerAddress(): void
     {
         self::$document->getDocumentBuyerAddress($buyerlineone, $buyerlinetwo, $buyerlinethree, $buyerpostcode, $buyercity, $buyercountry, $buyersubdivision);
-        $this->assertEquals("", $buyerlineone);
-        $this->assertEquals("", $buyerlinetwo);
-        $this->assertEquals("", $buyerlinethree);
-        $this->assertEquals("", $buyerpostcode);
-        $this->assertEquals("", $buyercity);
-        $this->assertEquals("", $buyercountry);
+        $this->assertSame("", $buyerlineone);
+        $this->assertSame("", $buyerlinetwo);
+        $this->assertSame("", $buyerlinethree);
+        $this->assertSame("", $buyerpostcode);
+        $this->assertSame("", $buyercity);
+        $this->assertSame("", $buyercountry);
         $this->assertIsArray($buyersubdivision);
         $this->assertEmpty($buyersubdivision);
     }
@@ -201,9 +201,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentBuyerLegalOrganization(): void
     {
         self::$document->getDocumentBuyerLegalOrganisation($buyerlegalorgid, $buyerlegalorgtype, $buyerlegalorgname);
-        $this->assertEquals("987654321", $buyerlegalorgid);
-        $this->assertEquals("0002", $buyerlegalorgtype);
-        $this->assertEquals("", $buyerlegalorgname);
+        $this->assertSame("987654321", $buyerlegalorgid);
+        $this->assertSame("0002", $buyerlegalorgtype);
+        $this->assertSame("", $buyerlegalorgname);
     }
 
     public function testDocumentBuyerContact(): void
@@ -220,17 +220,17 @@ class PdfReaderMinimumTest extends TestCase
     public function testGetDocumentBuyerCommunication(): void
     {
         self::$document->getDocumentBuyerCommunication($uriScheme, $uri);
-        $this->assertEquals("", $uriScheme);
-        $this->assertEquals("", $uri);
+        $this->assertSame("", $uriScheme);
+        $this->assertSame("", $uri);
     }
 
     public function testDocumentSellerTaxRepresentativeGeneral(): void
     {
         self::$document->getDocumentSellerTaxRepresentative($sellertaxreprname, $sellertaxreprids, $sellertaxreprdescription);
-        $this->assertEquals("", $sellertaxreprname);
+        $this->assertSame("", $sellertaxreprname);
         $this->assertIsArray($sellertaxreprids);
         $this->assertEmpty($sellertaxreprids);
-        $this->assertEquals("", $sellertaxreprdescription);
+        $this->assertSame("", $sellertaxreprdescription);
     }
 
     public function testDocumentSellerTaxRepresentativeGlobalId(): void
@@ -250,12 +250,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSellerTaxRepresentativeAddress(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeAddress($sellertaxreprlineone, $sellertaxreprlinetwo, $sellertaxreprlinethree, $sellertaxreprpostcode, $sellertaxreprcity, $sellertaxreprcountry, $sellertaxreprsubdivision);
-        $this->assertEquals("", $sellertaxreprlineone);
-        $this->assertEquals("", $sellertaxreprlinetwo);
-        $this->assertEquals("", $sellertaxreprlinethree);
-        $this->assertEquals("", $sellertaxreprpostcode);
-        $this->assertEquals("", $sellertaxreprcity);
-        $this->assertEquals("", $sellertaxreprcountry);
+        $this->assertSame("", $sellertaxreprlineone);
+        $this->assertSame("", $sellertaxreprlinetwo);
+        $this->assertSame("", $sellertaxreprlinethree);
+        $this->assertSame("", $sellertaxreprpostcode);
+        $this->assertSame("", $sellertaxreprcity);
+        $this->assertSame("", $sellertaxreprcountry);
         $this->assertIsArray($sellertaxreprsubdivision);
         $this->assertEmpty($sellertaxreprsubdivision);
     }
@@ -263,9 +263,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSellerTaxRepresentativeLegalOrganization(): void
     {
         self::$document->getDocumentSellerTaxRepresentativeLegalOrganisation($sellertaxreprlegalorgid, $sellertaxreprlegalorgtype, $sellertaxreprlegalorgname);
-        $this->assertEquals("", $sellertaxreprlegalorgid);
-        $this->assertEquals("", $sellertaxreprlegalorgtype);
-        $this->assertEquals("", $sellertaxreprlegalorgname);
+        $this->assertSame("", $sellertaxreprlegalorgid);
+        $this->assertSame("", $sellertaxreprlegalorgtype);
+        $this->assertSame("", $sellertaxreprlegalorgname);
     }
 
     public function testDocumentSellerTaxRepresentativeContact(): void
@@ -283,11 +283,11 @@ class PdfReaderMinimumTest extends TestCase
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
         $this->assertNotNull($shiptoname);
-        $this->assertEquals("", $shiptoname);
+        $this->assertSame("", $shiptoname);
         $this->assertIsArray($shiptoids);
         $this->assertEmpty($shiptoids);
         $this->assertNotNull($shiptodescription);
-        $this->assertEquals("", $shiptodescription);
+        $this->assertSame("", $shiptodescription);
     }
 
     public function testDocumentShipToGlobalId(): void
@@ -307,12 +307,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentShipToAddress(): void
     {
         self::$document->getDocumentShipToAddress($shiptolineone, $shiptolinetwo, $shiptolinethree, $shiptopostcode, $shiptocity, $shiptocountry, $shiptosubdivision);
-        $this->assertEquals("", $shiptolineone);
-        $this->assertEquals("", $shiptolinetwo);
-        $this->assertEquals("", $shiptolinethree);
-        $this->assertEquals("", $shiptopostcode);
-        $this->assertEquals("", $shiptocity);
-        $this->assertEquals("", $shiptocountry);
+        $this->assertSame("", $shiptolineone);
+        $this->assertSame("", $shiptolinetwo);
+        $this->assertSame("", $shiptolinethree);
+        $this->assertSame("", $shiptopostcode);
+        $this->assertSame("", $shiptocity);
+        $this->assertSame("", $shiptocountry);
         $this->assertIsArray($shiptosubdivision);
         $this->assertEmpty($shiptosubdivision);
     }
@@ -320,9 +320,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentShipToLegalOrganization(): void
     {
         self::$document->getDocumentShipToLegalOrganisation($shiptolegalorgid, $shiptolegalorgtype, $shiptolegalorgname);
-        $this->assertEquals("", $shiptolegalorgid);
-        $this->assertEquals("", $shiptolegalorgtype);
-        $this->assertEquals("", $shiptolegalorgname);
+        $this->assertSame("", $shiptolegalorgid);
+        $this->assertSame("", $shiptolegalorgtype);
+        $this->assertSame("", $shiptolegalorgname);
     }
 
     public function testDocumentShipToContact(): void
@@ -339,10 +339,10 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentUltimateShipToGeneral(): void
     {
         self::$document->getDocumentUltimateShipTo($ultimateshiptoname, $ultimateshiptoids, $ultimateshiptodescription);
-        $this->assertEquals("", $ultimateshiptoname);
+        $this->assertSame("", $ultimateshiptoname);
         $this->assertIsArray($ultimateshiptoids);
         $this->assertEmpty($ultimateshiptoids);
-        $this->assertEquals("", $ultimateshiptodescription);
+        $this->assertSame("", $ultimateshiptodescription);
     }
 
     public function testDocumentUltimateShipToGlobalId(): void
@@ -362,12 +362,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentUltimateShipToAddress(): void
     {
         self::$document->getDocumentUltimateShipToAddress($ultimateshiptolineone, $ultimateshiptolinetwo, $ultimateshiptolinethree, $ultimateshiptopostcode, $ultimateshiptocity, $ultimateshiptocountry, $ultimateshiptosubdivision);
-        $this->assertEquals("", $ultimateshiptolineone);
-        $this->assertEquals("", $ultimateshiptolinetwo);
-        $this->assertEquals("", $ultimateshiptolinethree);
-        $this->assertEquals("", $ultimateshiptopostcode);
-        $this->assertEquals("", $ultimateshiptocity);
-        $this->assertEquals("", $ultimateshiptocountry);
+        $this->assertSame("", $ultimateshiptolineone);
+        $this->assertSame("", $ultimateshiptolinetwo);
+        $this->assertSame("", $ultimateshiptolinethree);
+        $this->assertSame("", $ultimateshiptopostcode);
+        $this->assertSame("", $ultimateshiptocity);
+        $this->assertSame("", $ultimateshiptocountry);
         $this->assertIsArray($ultimateshiptosubdivision);
         $this->assertEmpty($ultimateshiptosubdivision);
     }
@@ -375,9 +375,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentUltimateShipToLegalOrganization(): void
     {
         self::$document->getDocumentUltimateShipToLegalOrganisation($ultimateshiptolegalorgid, $ultimateshiptolegalorgtype, $ultimateshiptolegalorgname);
-        $this->assertEquals("", $ultimateshiptolegalorgid);
-        $this->assertEquals("", $ultimateshiptolegalorgtype);
-        $this->assertEquals("", $ultimateshiptolegalorgname);
+        $this->assertSame("", $ultimateshiptolegalorgid);
+        $this->assertSame("", $ultimateshiptolegalorgtype);
+        $this->assertSame("", $ultimateshiptolegalorgname);
     }
 
     public function testDocumentUltimateShipToContact(): void
@@ -399,10 +399,10 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentShipFromGeneral(): void
     {
         self::$document->getDocumentShipFrom($shipfromname, $shipfromids, $shipfromdescription);
-        $this->assertEquals("", $shipfromname);
+        $this->assertSame("", $shipfromname);
         $this->assertIsArray($shipfromids);
         $this->assertEmpty($shipfromids);
-        $this->assertEquals("", $shipfromdescription);
+        $this->assertSame("", $shipfromdescription);
     }
 
     public function testDocumentShipFromGlobalId(): void
@@ -422,12 +422,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentShipFromAddress(): void
     {
         self::$document->getDocumentShipFromAddress($shipfromlineone, $shipfromlinetwo, $shipfromlinethree, $shipfrompostcode, $shipfromcity, $shipfromcountry, $shipfromsubdivision);
-        $this->assertEquals("", $shipfromlineone);
-        $this->assertEquals("", $shipfromlinetwo);
-        $this->assertEquals("", $shipfromlinethree);
-        $this->assertEquals("", $shipfrompostcode);
-        $this->assertEquals("", $shipfromcity);
-        $this->assertEquals("", $shipfromcountry);
+        $this->assertSame("", $shipfromlineone);
+        $this->assertSame("", $shipfromlinetwo);
+        $this->assertSame("", $shipfromlinethree);
+        $this->assertSame("", $shipfrompostcode);
+        $this->assertSame("", $shipfromcity);
+        $this->assertSame("", $shipfromcountry);
         $this->assertIsArray($shipfromsubdivision);
         $this->assertEmpty($shipfromsubdivision);
     }
@@ -435,9 +435,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentShipFromLegalOrganization(): void
     {
         self::$document->getDocumentShipFromLegalOrganisation($shipfromlegalorgid, $shipfromlegalorgtype, $shipfromlegalorgname);
-        $this->assertEquals("", $shipfromlegalorgid);
-        $this->assertEquals("", $shipfromlegalorgtype);
-        $this->assertEquals("", $shipfromlegalorgname);
+        $this->assertSame("", $shipfromlegalorgid);
+        $this->assertSame("", $shipfromlegalorgtype);
+        $this->assertSame("", $shipfromlegalorgname);
     }
 
     public function testDocumentShipFromContact(): void
@@ -459,10 +459,10 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoicerGeneral(): void
     {
         self::$document->getDocumentInvoicer($invoicername, $invoicerids, $invoicerdescription);
-        $this->assertEquals("", $invoicername);
+        $this->assertSame("", $invoicername);
         $this->assertIsArray($invoicerids);
         $this->assertEmpty($invoicerids);
-        $this->assertEquals("", $invoicerdescription);
+        $this->assertSame("", $invoicerdescription);
     }
 
     public function testDocumentInvoicerGlobalId(): void
@@ -482,12 +482,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoicerAddress(): void
     {
         self::$document->getDocumentInvoicerAddress($invoicerlineone, $invoicerlinetwo, $invoicerlinethree, $invoicerpostcode, $invoicercity, $invoicercountry, $invoicersubdivision);
-        $this->assertEquals("", $invoicerlineone);
-        $this->assertEquals("", $invoicerlinetwo);
-        $this->assertEquals("", $invoicerlinethree);
-        $this->assertEquals("", $invoicerpostcode);
-        $this->assertEquals("", $invoicercity);
-        $this->assertEquals("", $invoicercountry);
+        $this->assertSame("", $invoicerlineone);
+        $this->assertSame("", $invoicerlinetwo);
+        $this->assertSame("", $invoicerlinethree);
+        $this->assertSame("", $invoicerpostcode);
+        $this->assertSame("", $invoicercity);
+        $this->assertSame("", $invoicercountry);
         $this->assertIsArray($invoicersubdivision);
         $this->assertEmpty($invoicersubdivision);
     }
@@ -495,9 +495,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoicerLegalOrganization(): void
     {
         self::$document->getDocumentInvoicerLegalOrganisation($invoicerlegalorgid, $invoicerlegalorgtype, $invoicerlegalorgname);
-        $this->assertEquals("", $invoicerlegalorgid);
-        $this->assertEquals("", $invoicerlegalorgtype);
-        $this->assertEquals("", $invoicerlegalorgname);
+        $this->assertSame("", $invoicerlegalorgid);
+        $this->assertSame("", $invoicerlegalorgtype);
+        $this->assertSame("", $invoicerlegalorgname);
     }
 
     public function testDocumentInvoicerContact(): void
@@ -519,10 +519,10 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoiceeGeneral(): void
     {
         self::$document->getDocumentInvoicee($invoiceename, $invoiceeids, $invoiceedescription);
-        $this->assertEquals("", $invoiceename);
+        $this->assertSame("", $invoiceename);
         $this->assertIsArray($invoiceeids);
         $this->assertEmpty($invoiceeids);
-        $this->assertEquals("", $invoiceedescription);
+        $this->assertSame("", $invoiceedescription);
     }
 
     public function testDocumentInvoiceeGlobalId(): void
@@ -542,12 +542,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoiceeAddress(): void
     {
         self::$document->getDocumentInvoiceeAddress($invoiceelineone, $invoiceelinetwo, $invoiceelinethree, $invoiceepostcode, $invoiceecity, $invoiceecountry, $invoiceesubdivision);
-        $this->assertEquals("", $invoiceelineone);
-        $this->assertEquals("", $invoiceelinetwo);
-        $this->assertEquals("", $invoiceelinethree);
-        $this->assertEquals("", $invoiceepostcode);
-        $this->assertEquals("", $invoiceecity);
-        $this->assertEquals("", $invoiceecountry);
+        $this->assertSame("", $invoiceelineone);
+        $this->assertSame("", $invoiceelinetwo);
+        $this->assertSame("", $invoiceelinethree);
+        $this->assertSame("", $invoiceepostcode);
+        $this->assertSame("", $invoiceecity);
+        $this->assertSame("", $invoiceecountry);
         $this->assertIsArray($invoiceesubdivision);
         $this->assertEmpty($invoiceesubdivision);
     }
@@ -555,9 +555,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentInvoiceeLegalOrganization(): void
     {
         self::$document->getDocumentInvoiceeLegalOrganisation($invoiceelegalorgid, $invoiceelegalorgtype, $invoiceelegalorgname);
-        $this->assertEquals("", $invoiceelegalorgid);
-        $this->assertEquals("", $invoiceelegalorgtype);
-        $this->assertEquals("", $invoiceelegalorgname);
+        $this->assertSame("", $invoiceelegalorgid);
+        $this->assertSame("", $invoiceelegalorgtype);
+        $this->assertSame("", $invoiceelegalorgname);
     }
 
     public function testDocumentInvoiceeContact(): void
@@ -579,10 +579,10 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentPayeeGeneral(): void
     {
         self::$document->getDocumentPayee($payeename, $payeeids, $payeedescription);
-        $this->assertEquals("", $payeename);
+        $this->assertSame("", $payeename);
         $this->assertIsArray($payeeids);
         $this->assertEmpty($payeeids);
-        $this->assertEquals("", $payeedescription);
+        $this->assertSame("", $payeedescription);
     }
 
     public function testDocumentPayeeGlobalId(): void
@@ -602,12 +602,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentPayeeAddress(): void
     {
         self::$document->getDocumentPayeeAddress($payeelineone, $payeelinetwo, $payeelinethree, $payeepostcode, $payeecity, $payeecountry, $payeesubdivision);
-        $this->assertEquals("", $payeelineone);
-        $this->assertEquals("", $payeelinetwo);
-        $this->assertEquals("", $payeelinethree);
-        $this->assertEquals("", $payeepostcode);
-        $this->assertEquals("", $payeecity);
-        $this->assertEquals("", $payeecountry);
+        $this->assertSame("", $payeelineone);
+        $this->assertSame("", $payeelinetwo);
+        $this->assertSame("", $payeelinethree);
+        $this->assertSame("", $payeepostcode);
+        $this->assertSame("", $payeecity);
+        $this->assertSame("", $payeecountry);
         $this->assertIsArray($payeesubdivision);
         $this->assertEmpty($payeesubdivision);
     }
@@ -615,9 +615,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentPayeeLegalOrganization(): void
     {
         self::$document->getDocumentPayeeLegalOrganisation($payeelegalorgid, $payeelegalorgtype, $payeelegalorgname);
-        $this->assertEquals("", $payeelegalorgid);
-        $this->assertEquals("", $payeelegalorgtype);
-        $this->assertEquals("", $payeelegalorgname);
+        $this->assertSame("", $payeelegalorgid);
+        $this->assertSame("", $payeelegalorgtype);
+        $this->assertSame("", $payeelegalorgname);
     }
 
     public function testDocumentPayeeContact(): void
@@ -639,11 +639,11 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentProductEndUserGeneral(): void
     {
         self::$document->getDocumentProductEndUser($producendusername, $producenduserids, $producenduserdescription);
-        $this->assertEquals("", $producendusername);
+        $this->assertSame("", $producendusername);
         $this->assertIsArray($producenduserids);
         $this->assertArrayNotHasKey(0, $producenduserids);
         $this->assertArrayNotHasKey(1, $producenduserids);
-        $this->assertEquals("", $producenduserdescription);
+        $this->assertSame("", $producenduserdescription);
     }
 
     public function testDocumentProductEndUserGlobalId(): void
@@ -667,12 +667,12 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentProductEndUserAddress(): void
     {
         self::$document->getDocumentProductEndUserAddress($producenduserlineone, $producenduserlinetwo, $producenduserlinethree, $producenduserpostcode, $producendusercity, $producendusercountry, $producendusersubdivision);
-        $this->assertEquals("", $producenduserlineone);
-        $this->assertEquals("", $producenduserlinetwo);
-        $this->assertEquals("", $producenduserlinethree);
-        $this->assertEquals("", $producenduserpostcode);
-        $this->assertEquals("", $producendusercity);
-        $this->assertEquals("", $producendusercountry);
+        $this->assertSame("", $producenduserlineone);
+        $this->assertSame("", $producenduserlinetwo);
+        $this->assertSame("", $producenduserlinethree);
+        $this->assertSame("", $producenduserpostcode);
+        $this->assertSame("", $producendusercity);
+        $this->assertSame("", $producendusercountry);
         $this->assertIsArray($producendusersubdivision);
         $this->assertEmpty($producendusersubdivision);
     }
@@ -680,9 +680,9 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentProductEndUserLegalOrganization(): void
     {
         self::$document->getDocumentProductEndUserLegalOrganisation($producenduserlegalorgid, $producenduserlegalorgtype, $producenduserlegalorgname);
-        $this->assertEquals("", $producenduserlegalorgid);
-        $this->assertEquals("", $producenduserlegalorgtype);
-        $this->assertEquals("", $producenduserlegalorgname);
+        $this->assertSame("", $producenduserlegalorgid);
+        $this->assertSame("", $producenduserlegalorgtype);
+        $this->assertSame("", $producenduserlegalorgname);
     }
 
     public function testDocumentProductEndUserContact(): void
@@ -699,28 +699,28 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSellerOrderReferencedDocument(): void
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
-        $this->assertEquals("", $sellerorderrefdocid);
+        $this->assertSame("", $sellerorderrefdocid);
         $this->assertNull($sellerorderrefdocdate);
     }
 
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
-        $this->assertEquals("PO201925478", $buyerorderrefdocid);
+        $this->assertSame("PO201925478", $buyerorderrefdocid);
         $this->assertNull($buyerorderrefdocdate);
     }
 
     public function testDocumentQuotationReferencedDocument(): void
     {
         self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
-        $this->assertEquals("", $quotationrefdocid);
+        $this->assertSame("", $quotationrefdocid);
         $this->assertNull($quotationrefdocdate);
     }
 
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
-        $this->assertEquals("", $contractrefdocid);
+        $this->assertSame("", $contractrefdocid);
         $this->assertNull($contractrefdocdate);
     }
 
@@ -734,8 +734,8 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
-        $this->assertEquals("", $projectid);
-        $this->assertEquals("", $projectname);
+        $this->assertSame("", $projectid);
+        $this->assertSame("", $projectname);
     }
 
     public function testDocumentSupplyChainEvent(): void
@@ -747,21 +747,21 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
-        $this->assertEquals("", $despatchdocid);
+        $this->assertSame("", $despatchdocid);
         $this->assertNull($despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
-        $this->assertEquals("", $recadvid);
+        $this->assertSame("", $recadvid);
         $this->assertNull($recadvdate);
     }
 
     public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
-        $this->assertEquals("", $deliverynoterefdocid);
+        $this->assertSame("", $deliverynoterefdocid);
         $this->assertNull($deliverynoterefdocdate);
     }
 
@@ -790,7 +790,7 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentDeliveryTerms(): void
     {
         self::$document->getDocumentDeliveryTerms($devtermcode);
-        $this->assertEquals("", $devtermcode);
+        $this->assertSame("", $devtermcode);
     }
 
     public function testDocumentAdditionalReferencedDocumentLoop(): void

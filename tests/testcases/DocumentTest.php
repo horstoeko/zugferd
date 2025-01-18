@@ -13,7 +13,7 @@ class DocumentTest extends TestCase
     public function testDocumentCreationMinimum(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_MINIMUM);
-        $this->assertEquals(ZugferdProfiles::PROFILE_MINIMUM, $doc->getProfileId());
+        $this->assertSame(ZugferdProfiles::PROFILE_MINIMUM, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
         $this->assertEquals("urn:factur-x.eu:1p0:minimum", $doc->getProfileDefinitionParameter("contextparameter"));
@@ -23,7 +23,7 @@ class DocumentTest extends TestCase
     public function testDocumentCreationBasic(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASIC);
-        $this->assertEquals(ZugferdProfiles::PROFILE_BASIC, $doc->getProfileId());
+        $this->assertSame(ZugferdProfiles::PROFILE_BASIC, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
         $this->assertEquals("urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic", $doc->getProfileDefinitionParameter("contextparameter"));
@@ -33,7 +33,7 @@ class DocumentTest extends TestCase
     public function testDocumentCreationBasicWl(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_BASICWL);
-        $this->assertEquals(ZugferdProfiles::PROFILE_BASICWL, $doc->getProfileId());
+        $this->assertSame(ZugferdProfiles::PROFILE_BASICWL, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
         $this->assertEquals("urn:factur-x.eu:1p0:basicwl", $doc->getProfileDefinitionParameter("contextparameter"));
@@ -43,7 +43,7 @@ class DocumentTest extends TestCase
     public function testDocumentCreationEn16931(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EN16931);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $doc->getProfileId());
+        $this->assertSame(ZugferdProfiles::PROFILE_EN16931, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
         $this->assertEquals("urn:cen.eu:en16931:2017", $doc->getProfileDefinitionParameter("contextparameter"));
@@ -53,7 +53,7 @@ class DocumentTest extends TestCase
     public function testDocumentCreationExtended(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
-        $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, $doc->getProfileId());
+        $this->assertSame(ZugferdProfiles::PROFILE_EXTENDED, $doc->getProfileId());
         $this->assertArrayHasKey("contextparameter", $doc->getProfileDefinition());
         $this->assertArrayHasKey("name", $doc->getProfileDefinition());
         $this->assertEquals("urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended", $doc->getProfileDefinitionParameter("contextparameter"));
@@ -78,11 +78,11 @@ class DocumentTest extends TestCase
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
 
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject($doc, 'getInvoiceObject'));
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getSerializer'));
-        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject($doc, 'getSerializer')));
+        $this->assertInstanceOf(\JMS\Serializer\Serializer::class, $this->invokePrivateMethodFromObject($doc, 'getSerializer'));
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject($doc, 'getObjectHelper')));
+        $this->assertInstanceOf('horstoeko\zugferd\ZugferdObjectHelper', $this->invokePrivateMethodFromObject($doc, 'getObjectHelper'));
     }
 
     /**

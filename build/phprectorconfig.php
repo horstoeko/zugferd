@@ -33,12 +33,12 @@ return RectorConfig::configure()
         strictBooleans: true,
         instanceOf: true,
         earlyReturn: true,
+        phpunitCodeQuality: true,
         //
         carbon: false,
         deadCode: false,
         doctrineCodeQuality: false,
         naming: false,
-        phpunitCodeQuality: false,
         privatization: false,
         rectorPreset: false,
         symfonyCodeQuality: false,

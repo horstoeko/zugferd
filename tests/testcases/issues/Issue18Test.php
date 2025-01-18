@@ -23,7 +23,7 @@ class Issue18Test extends TestCase
     public function testBusinessProcessSpecifiedDocumentContextParameter(): void
     {
         $invoiceObject = $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject');
-        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertEquals('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0', $invoiceObject->getExchangedDocumentContext()->getGuidelineSpecifiedDocumentContextParameter()->getId());
         $this->assertEquals('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $invoiceObject->getExchangedDocumentContext()->getBusinessProcessSpecifiedDocumentContextParameter()->getId());
     }

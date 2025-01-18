@@ -185,7 +185,7 @@ HDR;
         $this->assertArrayHasKey("xsdfilename", $resolved[1]);
         $this->assertArrayHasKey("schematronfilename", $resolved[1]);
 
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved[0]);
+        $this->assertSame(ZugferdProfiles::PROFILE_EN16931, $resolved[0]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['name'], $resolved[1]["name"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['altname'], $resolved[1]["altname"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['description'], $resolved[1]["description"]);
@@ -201,7 +201,7 @@ HDR;
     {
         $resolved = ZugferdProfileResolver::resolveProfileId($this->deliverEn16931Header());
 
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved);
+        $this->assertSame(ZugferdProfiles::PROFILE_EN16931, $resolved);
     }
 
     public function testResolveProfileDefEn16931()
@@ -363,7 +363,7 @@ HDR;
         $this->assertArrayHasKey("xsdfilename", $resolved[1]);
         $this->assertArrayHasKey("schematronfilename", $resolved[1]);
 
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, $resolved[0]);
+        $this->assertSame(ZugferdProfiles::PROFILE_EN16931, $resolved[0]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['name'], $resolved[1]["name"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['altname'], $resolved[1]["altname"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['description'], $resolved[1]["description"]);

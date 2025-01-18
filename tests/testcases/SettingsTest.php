@@ -25,11 +25,11 @@ class SettingsTest extends TestCase
 
     public function testAmountDecimals(): void
     {
-        $this->assertEquals(2, ZugferdSettings::getAmountDecimals());
+        $this->assertSame(2, ZugferdSettings::getAmountDecimals());
 
         ZugferdSettings::setAmountDecimals(3);
 
-        $this->assertEquals(3, ZugferdSettings::getAmountDecimals());
+        $this->assertSame(3, ZugferdSettings::getAmountDecimals());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "amountDecimals");
 
@@ -38,11 +38,11 @@ class SettingsTest extends TestCase
 
     public function testQuantityDecimals(): void
     {
-        $this->assertEquals(2, ZugferdSettings::getQuantityDecimals());
+        $this->assertSame(2, ZugferdSettings::getQuantityDecimals());
 
         ZugferdSettings::setQuantityDecimals(3);
 
-        $this->assertEquals(3, ZugferdSettings::getQuantityDecimals());
+        $this->assertSame(3, ZugferdSettings::getQuantityDecimals());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "quantityDecimals");
 
@@ -51,11 +51,11 @@ class SettingsTest extends TestCase
 
     public function testPercentDecimals(): void
     {
-        $this->assertEquals(2, ZugferdSettings::getPercentDecimals());
+        $this->assertSame(2, ZugferdSettings::getPercentDecimals());
 
         ZugferdSettings::setPercentDecimals(3);
 
-        $this->assertEquals(3, ZugferdSettings::getPercentDecimals());
+        $this->assertSame(3, ZugferdSettings::getPercentDecimals());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "percentDecimals");
 
@@ -64,11 +64,11 @@ class SettingsTest extends TestCase
 
     public function testMeasureDecimals(): void
     {
-        $this->assertEquals(2, ZugferdSettings::getMeasureDecimals());
+        $this->assertSame(2, ZugferdSettings::getMeasureDecimals());
 
         ZugferdSettings::setMeasureDecimals(3);
 
-        $this->assertEquals(3, ZugferdSettings::getMeasureDecimals());
+        $this->assertSame(3, ZugferdSettings::getMeasureDecimals());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "measureDecimals");
 
@@ -77,11 +77,11 @@ class SettingsTest extends TestCase
 
     public function testDecimalSeparator(): void
     {
-        $this->assertEquals(".", ZugferdSettings::getDecimalSeparator());
+        $this->assertSame(".", ZugferdSettings::getDecimalSeparator());
 
         ZugferdSettings::setDecimalSeparator(",");
 
-        $this->assertEquals(",", ZugferdSettings::getDecimalSeparator());
+        $this->assertSame(",", ZugferdSettings::getDecimalSeparator());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "decimalSeparator");
 
@@ -90,11 +90,11 @@ class SettingsTest extends TestCase
 
     public function testThousandsSeparator(): void
     {
-        $this->assertEquals("", ZugferdSettings::getThousandsSeparator());
+        $this->assertSame("", ZugferdSettings::getThousandsSeparator());
 
         ZugferdSettings::setThousandsSeparator(",");
 
-        $this->assertEquals(",", ZugferdSettings::getThousandsSeparator());
+        $this->assertSame(",", ZugferdSettings::getThousandsSeparator());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "thousandsSeparator");
 
@@ -103,11 +103,11 @@ class SettingsTest extends TestCase
 
     public function testIccProfileFilename(): void
     {
-        $this->assertEquals("sRGB2014.icc", ZugferdSettings::getIccProfileFilename());
+        $this->assertSame("sRGB2014.icc", ZugferdSettings::getIccProfileFilename());
 
         ZugferdSettings::setIccProfileFilename("sRGB_v5_ICC.icc");
 
-        $this->assertEquals("sRGB_v5_ICC.icc", ZugferdSettings::getIccProfileFilename());
+        $this->assertSame("sRGB_v5_ICC.icc", ZugferdSettings::getIccProfileFilename());
 
         $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "iccProfileFilename");
     }
@@ -163,7 +163,7 @@ class SettingsTest extends TestCase
             "sRGB_v5_ICC.icc"
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             $expected,
             $actual
         );
@@ -171,13 +171,13 @@ class SettingsTest extends TestCase
 
     public function testSpecialDecimalPlacesMaps(): void
     {
-        $this->assertEquals(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
-        $this->assertEquals(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
 
         ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 5);
 
-        $this->assertEquals(5, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
-        $this->assertEquals(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(5, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(2, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
 
         ZugferdSettings::setSpecialDecimalPlacesMaps(
             [
@@ -186,7 +186,7 @@ class SettingsTest extends TestCase
             ]
         );
 
-        $this->assertEquals(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
-        $this->assertEquals(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
+        $this->assertSame(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
     }
 }

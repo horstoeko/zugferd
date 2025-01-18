@@ -321,7 +321,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100.0);
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
@@ -331,7 +331,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100.0, "EUR");
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("EUR", $amounttype->getCurrencyID());
     }
 
@@ -350,7 +350,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100, "");
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
@@ -369,7 +369,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\PercentType
          */
         $percenttype = self::$objectHelper->getPercentType(100.0);
-        $this->assertEquals(100.0, $percenttype->value());
+        $this->assertEqualsWithDelta(100.0, $percenttype->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetPercentTypeAllNull(): void
@@ -387,7 +387,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\QuantityType
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0);
-        $this->assertEquals(100.0, $quantitytype->value());
+        $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetQuantityTypeWithValueAndUnitCode(): void
@@ -396,7 +396,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\QuantityType
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0, "C62");
-        $this->assertEquals(100.0, $quantitytype->value());
+        $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $quantitytype->getUnitCode());
     }
 
@@ -1034,8 +1034,8 @@ class ObjectHelperEn16931Test extends TestCase
         $tax = self::$objectHelper->getTradeTaxType("category", "type", 100, 19, 19, "reason", "reasoncode", 100, 10, new \DateTime(), "duedatecode");
         $this->assertEquals("category", $tax->getCategoryCode());
         $this->assertEquals("type", $tax->getTypeCode());
-        $this->assertEquals(100.0, $tax->getBasisAmount()->value());
-        $this->assertEquals(19.0, $tax->getCalculatedAmount()->value());
+        $this->assertEqualsWithDelta(100.0, $tax->getBasisAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(19.0, $tax->getCalculatedAmount()->value(), PHP_FLOAT_EPSILON);
         //$this->assertEquals(19.0, $tax->getRateApplicablePercent()->value());
         $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
         $this->assertEquals("reason", $tax->getExemptionReason());
@@ -1069,13 +1069,13 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $calculationpercent = $allowancecharge->getCalculationPercent();
 
-        $this->assertEquals(10.0, $allowancecharge->getActualAmount()->value());
+        $this->assertEqualsWithDelta(10.0, $allowancecharge->getActualAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
-        $this->assertEquals(19.0, $rateapplicablepercent->value());
+        $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);
         $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getSequenceNumeric"));
-        $this->assertEquals(2.0, $calculationpercent->value());
+        $this->assertEqualsWithDelta(2.0, $calculationpercent->value(), PHP_FLOAT_EPSILON);
         $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
         $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
         $this->assertEquals("reason", $allowancecharge->getReason());
@@ -1117,17 +1117,17 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementHeaderMonetarySummationType
          */
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationType(119, 100, 100, 1, 2, 99, 99 * 0.19, 0.0, 10);
-        $this->assertEquals(119.0, $summation->getGrandTotalAmount()->value());
-        $this->assertEquals(100.0, $summation->getDuePayableAmount()->value());
-        $this->assertEquals(100.0, $summation->getLineTotalAmount()->value());
-        $this->assertEquals(1.0, $summation->getChargeTotalAmount()->value());
-        $this->assertEquals(2.0, $summation->getAllowanceTotalAmount()->value());
-        $this->assertEquals(99.0, $summation->getTaxBasisTotalAmount()->value());
+        $this->assertEqualsWithDelta(119.0, $summation->getGrandTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $summation->getDuePayableAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(1.0, $summation->getChargeTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $summation->getAllowanceTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(99.0, $summation->getTaxBasisTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertIsArray($summation->getTaxTotalAmount());
         $this->assertArrayHasKey(0, $summation->getTaxTotalAmount());
         $this->assertEquals(99.0 * 0.19, $summation->getTaxTotalAmount()[0]->value());
-        $this->assertEquals(0.0, $summation->getRoundingAmount()->value());
-        $this->assertEquals(10.0, $summation->getTotalPrepaidAmount()->value());
+        $this->assertEqualsWithDelta(0.0, $summation->getRoundingAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $summation->getTotalPrepaidAmount()->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull(): void
@@ -1308,8 +1308,8 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType
          */
         $price = self::$objectHelper->getTradePriceType(1.0, 2.0, "C62");
-        $this->assertEquals(1.0, $price->getChargeAmount()->value());
-        $this->assertEquals(2.0, $price->getBasisQuantity()->value());
+        $this->assertEqualsWithDelta(1.0, $price->getChargeAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $price->getBasisQuantity()->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $price->getBasisQuantity()->getUnitCode());
     }
 
@@ -1328,7 +1328,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementLineMonetarySummationType
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 6.0, 3.0, 4.0, 5.0, 2.0);
-        $this->assertEquals(1.0, $summation->getLineTotalAmount()->value());
+        $this->assertEqualsWithDelta(1.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertFalse(self::$objectHelper->methodExists($summation, "getChargeTotalAmount"));
         $this->assertFalse(self::$objectHelper->methodExists($summation, "getAllowanceTotalAmount"));
         $this->assertFalse(self::$objectHelper->methodExists($summation, "getTaxTotalAmount"));

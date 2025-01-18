@@ -31,6 +31,6 @@ class ValidatorValidTest extends TestCase
     public function testValidateDocument(): void
     {
         $validationResult = self::$validator->validateDocument();
-        $this->assertEquals(0, count($validationResult));
+        $this->assertCount(0, $validationResult);
     }
 }

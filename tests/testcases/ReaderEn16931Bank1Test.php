@@ -31,11 +31,11 @@ class ReaderEn16931Bank1Test extends TestCase
     public function testDocumentGetters(): void
     {
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
-        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertInstanceOf(\JMS\Serializer\Serializer::class, $this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper')));
+        $this->assertInstanceOf('horstoeko\zugferd\ZugferdObjectHelper', $this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
         $this->assertEquals('en16931', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('EN 16931 (COMFORT)', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017', self::$document->getProfileDefinitionParameter('contextparameter'));
@@ -51,14 +51,14 @@ class ReaderEn16931Bank1Test extends TestCase
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
-        $this->assertEquals('471102', $documentno);
-        $this->assertEquals(ZugferdInvoiceType::INVOICE, $documenttypecode);
+        $this->assertSame('471102', $documentno);
+        $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180305'))->format('Ymd'), $documentdate->format('Ymd'));
-        $this->assertEquals("EUR", $invoiceCurrency);
-        $this->assertEquals("", $taxCurrency);
-        $this->assertEquals("", $documentname);
-        $this->assertEquals("", $documentlanguage);
+        $this->assertSame("EUR", $invoiceCurrency);
+        $this->assertSame("", $taxCurrency);
+        $this->assertSame("", $documentname);
+        $this->assertSame("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
     }
 
@@ -77,24 +77,24 @@ class ReaderEn16931Bank1Test extends TestCase
     public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
-        $this->assertEquals("DE98ZZZ09999999999", $creditorReferenceID);
-        $this->assertEquals("", $paymentReference);
+        $this->assertSame("DE98ZZZ09999999999", $creditorReferenceID);
+        $this->assertSame("", $paymentReference);
     }
 
     public function testGetDocumentPaymentMeans(): void
     {
         $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         self::$document->getDocumentPaymentMeans($typeCode, $information, $cardType, $cardId, $cardHolderName, $buyerIban, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
-        $this->assertEquals(ZugferdPaymentMeans::UNTDID_4461_59, $typeCode);
-        $this->assertEquals("", $information);
-        $this->assertEquals("", $cardType);
-        $this->assertEquals("", $cardId);
-        $this->assertEquals("", $cardHolderName);
-        $this->assertEquals("DE21860000000086001055", $buyerIban);
-        $this->assertEquals("", $payeeIban);
-        $this->assertEquals("", $payeeAccountName);
-        $this->assertEquals("", $payeePropId);
-        $this->assertEquals("", $payeeBic);
+        $this->assertSame(ZugferdPaymentMeans::UNTDID_4461_59, $typeCode);
+        $this->assertSame("", $information);
+        $this->assertSame("", $cardType);
+        $this->assertSame("", $cardId);
+        $this->assertSame("", $cardHolderName);
+        $this->assertSame("DE21860000000086001055", $buyerIban);
+        $this->assertSame("", $payeeIban);
+        $this->assertSame("", $payeeAccountName);
+        $this->assertSame("", $payeePropId);
+        $this->assertSame("", $payeeBic);
     }
 
     public function testtDocumentPaymentTerms(): void
@@ -103,13 +103,13 @@ class ReaderEn16931Bank1Test extends TestCase
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
 
-        $this->assertEquals("Der Betrag in Höhe von EUR 529,87 wird am 20.03.2018 von Ihrem Konto per SEPA-Lastschrift eingezogen.", $termdescription);
+        $this->assertSame("Der Betrag in Höhe von EUR 529,87 wird am 20.03.2018 von Ihrem Konto per SEPA-Lastschrift eingezogen.", $termdescription);
         $this->assertNull($termduedate);
-        $this->assertEquals("REF A-123", $termmandate);
+        $this->assertSame("REF A-123", $termmandate);
         $this->assertEquals(0, $dispercent);
         $this->assertNull($discbasedatetime);
         $this->assertEquals(0, $discmeasureval);
-        $this->assertEquals("", $discmeasureunit);
+        $this->assertSame("", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
         $this->assertEquals(0, $discamount);
 

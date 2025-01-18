@@ -321,7 +321,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100.0);
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
@@ -331,7 +331,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100.0, "EUR");
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("EUR", $amounttype->getCurrencyID());
     }
 
@@ -350,7 +350,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\AmountType
          */
         $amounttype = self::$objectHelper->getAmountType(100, "");
-        $this->assertEquals(100.0, $amounttype->value());
+        $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("", $amounttype->getCurrencyID());
     }
 
@@ -369,7 +369,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\PercentType
          */
         $percenttype = self::$objectHelper->getPercentType(100.0);
-        $this->assertEquals(100.0, $percenttype->value());
+        $this->assertEqualsWithDelta(100.0, $percenttype->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetPercentTypeAllNull(): void
@@ -387,7 +387,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0);
-        $this->assertEquals(100.0, $quantitytype->value());
+        $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetQuantityTypeWithValueAndUnitCode(): void
@@ -396,7 +396,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0, "C62");
-        $this->assertEquals(100.0, $quantitytype->value());
+        $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $quantitytype->getUnitCode());
     }
 
@@ -424,7 +424,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
          */
         $measuretype = self::$objectHelper->getMeasureType(100.0);
-        $this->assertEquals(100.0, $measuretype->value());
+        $this->assertEqualsWithDelta(100.0, $measuretype->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetMeasureTypeWithValueAndUnitCode(): void
@@ -433,7 +433,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
          */
         $measuretype = self::$objectHelper->getMeasureType(100.0, "DAY");
-        $this->assertEquals(100.0, $measuretype->value());
+        $this->assertEqualsWithDelta(100.0, $measuretype->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("DAY", $measuretype->getUnitCode());
     }
 
@@ -1054,9 +1054,9 @@ class ObjectHelperExtendedTest extends TestCase
 
         $this->assertEquals("category", $tax->getCategoryCode());
         $this->assertEquals("type", $tax->getTypeCode());
-        $this->assertEquals(100.0, $tax->getBasisAmount()->value());
-        $this->assertEquals(19.0, $tax->getCalculatedAmount()->value());
-        $this->assertEquals(19.0, $rateapplicablepercent->value());
+        $this->assertEqualsWithDelta(100.0, $tax->getBasisAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(19.0, $tax->getCalculatedAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
         $this->assertEquals("reason", $tax->getExemptionReason());
         $this->assertEquals(100, $tax->getLineTotalBasisAmount()->value());
@@ -1094,14 +1094,14 @@ class ObjectHelperExtendedTest extends TestCase
          */
         $sequenceNumeric = $allowancecharge->getCalculationPercent();
 
-        $this->assertEquals(10.0, $allowancecharge->getActualAmount()->value());
+        $this->assertEqualsWithDelta(10.0, $allowancecharge->getActualAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
-        $this->assertEquals(19.0, $rateapplicablepercent->value());
+        $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals(2, $sequenceNumeric->value());
-        $this->assertEquals(2.0, $calculationpercent->value());
-        $this->assertEquals(1.0, $allowancecharge->getBasisQuantity()->value());
+        $this->assertEqualsWithDelta(2.0, $calculationpercent->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(1.0, $allowancecharge->getBasisQuantity()->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $allowancecharge->getBasisQuantity()->getUnitCode());
         $this->assertEquals("reason", $allowancecharge->getReason());
         $this->assertEquals("reasoncode", $allowancecharge->getReasonCode());
@@ -1123,7 +1123,7 @@ class ObjectHelperExtendedTest extends TestCase
          */
         $logcharge = self::$objectHelper->getLogisticsServiceChargeType("description", 10.0, ["taxtype"], ["taxcategpry"], [19]);
         $this->assertEquals("description", $logcharge->getDescription());
-        $this->assertEquals(10.0, $logcharge->getAppliedAmount()->value());
+        $this->assertEqualsWithDelta(10.0, $logcharge->getAppliedAmount()->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetLogisticsServiceChargeTypeAllNull(): void
@@ -1141,17 +1141,17 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
          */
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationType(119, 100, 100, 1, 2, 99, 99 * 0.19, 0.0, 10);
-        $this->assertEquals(119.0, $summation->getGrandTotalAmount()->value());
-        $this->assertEquals(100.0, $summation->getDuePayableAmount()->value());
-        $this->assertEquals(100.0, $summation->getLineTotalAmount()->value());
-        $this->assertEquals(1.0, $summation->getChargeTotalAmount()->value());
-        $this->assertEquals(2.0, $summation->getAllowanceTotalAmount()->value());
-        $this->assertEquals(99.0, $summation->getTaxBasisTotalAmount()->value());
+        $this->assertEqualsWithDelta(119.0, $summation->getGrandTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $summation->getDuePayableAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(1.0, $summation->getChargeTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $summation->getAllowanceTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(99.0, $summation->getTaxBasisTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertIsArray($summation->getTaxTotalAmount());
         $this->assertArrayHasKey(0, $summation->getTaxTotalAmount());
         $this->assertEquals(99.0 * 0.19, $summation->getTaxTotalAmount()[0]->value());
-        $this->assertEquals(0.0, $summation->getRoundingAmount()->value());
-        $this->assertEquals(10.0, $summation->getTotalPrepaidAmount()->value());
+        $this->assertEqualsWithDelta(0.0, $summation->getRoundingAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $summation->getTotalPrepaidAmount()->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull(): void
@@ -1256,7 +1256,7 @@ class ObjectHelperExtendedTest extends TestCase
         $productCharacteristic = self::$objectHelper->getProductCharacteristicType("typecode", "description", 10.2, "valuemeasureunit", "value");
         $this->assertEquals("description", $productCharacteristic->getDescription());
         $this->assertEquals("value", $productCharacteristic->getValue());
-        $this->assertEquals(10.2, $productCharacteristic->getValueMeasure()->value());
+        $this->assertEqualsWithDelta(10.2, $productCharacteristic->getValueMeasure()->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("valuemeasureunit", $productCharacteristic->getValueMeasure()->getUnitCode());
         $this->assertEquals("typecode", $productCharacteristic->getTypeCode()->value());
     }
@@ -1308,8 +1308,8 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType
          */
         $price = self::$objectHelper->getTradePriceType(1.0, 2.0, "C62");
-        $this->assertEquals(1.0, $price->getChargeAmount()->value());
-        $this->assertEquals(2.0, $price->getBasisQuantity()->value());
+        $this->assertEqualsWithDelta(1.0, $price->getChargeAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $price->getBasisQuantity()->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $price->getBasisQuantity()->getUnitCode());
     }
 
@@ -1328,12 +1328,12 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 6.0, 3.0, 4.0, 5.0, 2.0);
-        $this->assertEquals(1.0, $summation->getLineTotalAmount()->value());
-        $this->assertEquals(6.0, $summation->getChargeTotalAmount()->value());
-        $this->assertEquals(3.0, $summation->getAllowanceTotalAmount()->value());
-        $this->assertEquals(4.0, $summation->getTaxTotalAmount()->value());
-        $this->assertEquals(5.0, $summation->getGrandTotalAmount()->value());
-        $this->assertEquals(2.0, $summation->getTotalAllowanceChargeAmount()->value());
+        $this->assertEqualsWithDelta(1.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(6.0, $summation->getChargeTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(3.0, $summation->getAllowanceTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(4.0, $summation->getTaxTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(5.0, $summation->getGrandTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(2.0, $summation->getTotalAllowanceChargeAmount()->value(), PHP_FLOAT_EPSILON);
     }
 
     public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void
@@ -1409,7 +1409,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\RateType
          */
         $rate = $currencyExchangeType->getConversionRate();
-        $this->assertEquals(10.0, $rate->value());
+        $this->assertEqualsWithDelta(10.0, $rate->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("20180305", $currencyExchangeType->getConversionRateDateTime()->getDateTimeString()->value());
         $this->assertEquals("102", $currencyExchangeType->getConversionRateDateTime()->getDateTimeString()->getFormat());
 

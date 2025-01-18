@@ -28,11 +28,11 @@ class BuilderEn16931Test extends TestCase
     public function testDocumentGetters(): void
     {
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
-        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertInstanceOf(\JMS\Serializer\Serializer::class, $this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper')));
+        $this->assertInstanceOf('horstoeko\zugferd\ZugferdObjectHelper', $this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
         $this->assertEquals('en16931', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('EN 16931 (COMFORT)', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017', self::$document->getProfileDefinitionParameter('contextparameter'));
@@ -2104,7 +2104,7 @@ class BuilderEn16931Test extends TestCase
     public function testWriteFile(): void
     {
         (self::$document)->writeFile(getcwd() . "/myfile.xml");
-        $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
+        $this->assertFileExists(getcwd() . "/myfile.xml");
         @unlink(getcwd() . "/myfile.xml");
     }
 

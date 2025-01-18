@@ -32,16 +32,16 @@ class PdfReaderMultipleAttachmentsTest extends TestCase
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
-        $this->assertEquals('181301674', $documentno);
-        $this->assertEquals("204", $documenttypecode);
+        $this->assertSame('181301674', $documentno);
+        $this->assertSame("204", $documenttypecode);
         $this->assertNotNull($documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180425'))->format('Ymd'), $documentdate->format('Ymd'));
-        $this->assertEquals("EUR", $invoiceCurrency);
-        $this->assertEquals("", $taxCurrency);
-        $this->assertEquals("", $documentname);
-        $this->assertEquals("", $documentlanguage);
+        $this->assertSame("EUR", $invoiceCurrency);
+        $this->assertSame("", $taxCurrency);
+        $this->assertSame("", $documentname);
+        $this->assertSame("", $documentlanguage);
         $this->assertNull($effectiveSpecifiedPeriod);
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
     }
 }

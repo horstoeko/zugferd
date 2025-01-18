@@ -28,11 +28,11 @@ class BuilderExtendedTest extends TestCase
     public function testDocumentGetters(): void
     {
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
-        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertInstanceOf(\JMS\Serializer\Serializer::class, $this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper')));
+        $this->assertInstanceOf('horstoeko\zugferd\ZugferdObjectHelper', $this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
         $this->assertEquals('extended', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('EXTENDED', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', self::$document->getProfileDefinitionParameter('contextparameter'));
@@ -2027,7 +2027,7 @@ class BuilderExtendedTest extends TestCase
     public function testWriteFile(): void
     {
         (self::$document)->writeFile(getcwd() . "/myfile.xml");
-        $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
+        $this->assertFileExists(getcwd() . "/myfile.xml");
         @unlink(getcwd() . "/myfile.xml");
     }
 

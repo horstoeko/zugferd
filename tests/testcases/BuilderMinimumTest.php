@@ -29,11 +29,11 @@ class BuilderMinimumTest extends TestCase
     public function testDocumentGetters(): void
     {
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
-        $this->assertEquals('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
+        $this->assertInstanceOf('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
-        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertInstanceOf(\JMS\Serializer\Serializer::class, $this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
-        $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper')));
+        $this->assertInstanceOf('horstoeko\zugferd\ZugferdObjectHelper', $this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
         $this->assertEquals('minimum', self::$document->getProfileDefinitionParameter('name'));
         $this->assertEquals('MINIMUM', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:factur-x.eu:1p0:minimum', self::$document->getProfileDefinitionParameter('contextparameter'));
@@ -2002,7 +2002,7 @@ class BuilderMinimumTest extends TestCase
     public function testWriteFile(): void
     {
         (self::$document)->writeFile(getcwd() . "/myfile.xml");
-        $this->assertTrue(file_exists(getcwd() . "/myfile.xml"));
+        $this->assertFileExists(getcwd() . "/myfile.xml");
         @unlink(getcwd() . "/myfile.xml");
     }
 

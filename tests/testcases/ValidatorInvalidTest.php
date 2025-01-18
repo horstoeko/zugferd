@@ -31,7 +31,7 @@ class ValidatorInvalidTest extends TestCase
     public function testValidateDocument(): void
     {
         $validationResult = self::$validator->validateDocument();
-        $this->assertEquals(1, count($validationResult));
+        $this->assertCount(1, $validationResult);
         $this->assertArrayHasKey(0, $validationResult);
         $this->assertEquals("This value should not be null.", $validationResult[0]->getMessage());
         $this->assertEquals("supplyChainTradeTransaction.applicableHeaderTradeAgreement.sellerTradeParty", $validationResult[0]->getPropertyPath());
