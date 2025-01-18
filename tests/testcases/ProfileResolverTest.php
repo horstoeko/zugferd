@@ -417,7 +417,7 @@ HDR;
         try {
             libxml_clear_errors();
             $xmldocument = new SimpleXMLElement($this->deliverStringWhichIsNotXml());
-        } catch (Throwable $e) {
+        } catch (Throwable $throwable) {
             // Do nothing
         } finally {
             libxml_use_internal_errors($prevUseInternalErrors);

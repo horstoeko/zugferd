@@ -29,9 +29,9 @@ return RectorConfig::configure()
     ->withPhp73Sets()
     ->withPreparedSets(
         codeQuality: true,
+        codingStyle: true,
         //
         carbon: false,
-        codingStyle: false,
         deadCode: false,
         doctrineCodeQuality: false,
         earlyReturn: false,

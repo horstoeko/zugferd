@@ -788,9 +788,11 @@ class PdfBuilderEn16931Test extends TestCase
                 if ($which === 'title') {
                     return "DummyTitle";
                 }
+
                 if ($which === 'author') {
                     return "DummyAuthor";
                 }
+
                 if ($which === 'subject') {
                     return "DummySubject";
                 }
@@ -854,9 +856,11 @@ class PdfBuilderEn16931Test extends TestCase
                 if ($which === 'title') {
                     return "";
                 }
+
                 if ($which === 'author') {
                     return "";
                 }
+
                 if ($which === 'subject') {
                     return "";
                 }

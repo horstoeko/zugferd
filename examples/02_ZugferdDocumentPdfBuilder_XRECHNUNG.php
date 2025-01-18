@@ -186,12 +186,15 @@ $zugferdDocumentPdfBuilder->setMetaInformationCallback(
         if ($which === 'title') {
             return "DummyTitle";
         }
+        
         if ($which === 'author') {
             return "DummyAuthor";
         }
+        
         if ($which === 'subject') {
             return "DummySubject";
         }
+        
         if ($which === 'keywords') {
             return "DummyKeywords";
         }

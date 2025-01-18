@@ -34,14 +34,23 @@ use horstoeko\zugferd\ZugferdProfiles;
 class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 {
     private const VT_TAXCATEGORY = 0;
+
     private const VT_TAXTYPE = 1;
+
     private const VT_TAXPERCENT = 2;
+
     private const VT_LINETOTALBASISAMOUNT = 3;
+
     private const VT_ALLOWANCEAMOUNT = 4;
+
     private const VT_CHARGEAMOUNT = 5;
+
     private const VT_ALLOWANCECHARGEAMOUNT = 6;
+
     private const VT_BASISAMOUNT = 7;
+
     private const VT_CALCULATEDAMOUNT = 8;
+
     private const VT_LOGSERVICECHARGE = 9;
 
     /**
@@ -352,6 +361,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         if ($buyerReference != null) {
             $this->setDocumentBuyerReference($buyerReference);
         }
+
         return $this;
     }
 

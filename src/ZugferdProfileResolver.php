@@ -46,7 +46,7 @@ class ZugferdProfileResolver
             if (libxml_get_last_error()) {
                 throw new ZugferdUnknownXmlContentException();
             }
-        } catch (Throwable $e) {
+        } catch (Throwable $throwable) {
             throw new ZugferdUnknownXmlContentException();
         } finally {
             libxml_clear_errors();
@@ -61,6 +61,7 @@ class ZugferdProfileResolver
             if ($typeelement[0] == $profiledef["contextparameter"]) {
                 return [$profile, $profiledef];
             }
+
             if (in_array($typeelement[0], $profiledef['alternativecontextparameters'])) {
                 return [$profile, $profiledef];
             }

@@ -43,9 +43,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * 'Data', 'Alternative', 'Source', 'Supplement', 'Unspecified'
      */
     public const AF_RELATIONSHIP_DATA = "Data";
+
     public const AF_RELATIONSHIP_ALTERNATIVE = "Alternative";
+
     public const AF_RELATIONSHIP_SOURCE = "Source";
+
     public const AF_RELATIONSHIP_SUPPLEMENT = "Supplement";
+
     public const AF_RELATIONSHIP_UNSPECIFIED = "Unspecified";
 
     /**
@@ -566,6 +570,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $descNodes->title->children('rdf', true)->Alt->li = $pdfMetadataInfos['title'];
         $descNodes->creator->children('rdf', true)->Seq->li = $pdfMetadataInfos['author'];
         $descNodes->description->children('rdf', true)->Alt->li = $pdfMetadataInfos['subject'];
+
         $this->pdfWriter->addMetadataDescriptionNode($descDc->asXML());
 
         $descAdobe = $descriptionNodes[4];
@@ -668,7 +673,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         try {
             return @is_file($pdfData);
-        } catch (Throwable $ex) {
+        } catch (Throwable $throwable) {
             return false;
         }
     }

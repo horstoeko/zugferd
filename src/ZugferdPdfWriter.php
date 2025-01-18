@@ -131,6 +131,7 @@ class ZugferdPdfWriter extends PdfFpdi
             if (false === $p) {
                 $p = strrpos($file, '\\');
             }
+
             $name = false !== $p ? substr($file, $p + 1) : $file;
         }
 
@@ -235,9 +236,11 @@ class ZugferdPdfWriter extends PdfFpdi
         if ($file_info['relationship']) {
             $this->_put('/AFRelationship /' . $file_info['relationship']);
         }
+
         if ($file_info['desc']) {
             $this->_put('/Desc ' . $this->_textstring($file_info['desc']));
         }
+
         $this->_put('/EF <<');
         $this->_put('/F ' . ($this->n + 1) . ' 0 R');
         $this->_put('/UF ' . ($this->n + 1) . ' 0 R');
@@ -259,6 +262,7 @@ class ZugferdPdfWriter extends PdfFpdi
         if ($file_info['subtype']) {
             $this->_put('/Subtype /' . $file_info['subtype']);
         }
+
         $this->_put('/Type /EmbeddedFile');
         if (is_string($file_info['file']) && @is_file($file_info['file'])) {
             $fc = file_get_contents($file_info['file']);
@@ -267,9 +271,11 @@ class ZugferdPdfWriter extends PdfFpdi
             \fseek($stream, 0);
             $fc = stream_get_contents($stream);
         }
+
         if (false === $fc) {
             $this->Error('Cannot open file: ' . $file_info['file']);
         }
+
         if ($this->deterministicModeEnabled === true) {
             $md = @date('YmdHis', strtotime("2000-01-01 23:59:59"));
         } elseif (is_string($file_info['file'])) {
@@ -277,9 +283,10 @@ class ZugferdPdfWriter extends PdfFpdi
         } else {
             $md = @date('YmdHis');
         }
+
         $fc = gzcompress($fc);
         $this->_put('/Length ' . strlen($fc));
-        $this->_put("/Params <</ModDate (D:$md)>>");
+        $this->_put(sprintf('/Params <</ModDate (D:%s)>>', $md));
         $this->_put('>>');
         $this->_putstream($fc);
         $this->_put('endobj');
@@ -303,6 +310,7 @@ class ZugferdPdfWriter extends PdfFpdi
         foreach ($files as $info) {
             $s .= sprintf('%s %s 0 R ', $this->_textstring($info['name']), $info['file_index']);
         }
+
         $this->_put(sprintf('/Names [%s]', $s));
         $this->_put('>>');
         $this->_put('endobj');
@@ -323,6 +331,7 @@ class ZugferdPdfWriter extends PdfFpdi
         foreach ($this->metaDataDescriptions as $_ => $desc) {
             $s .= $desc . "\n";
         }
+
         $s .= '</rdf:RDF>' . "\n";
         $s .= '</x:xmpmeta>' . "\n";
         $s .= '<?xpacket end="w"?>';
@@ -406,8 +415,10 @@ class ZugferdPdfWriter extends PdfFpdi
                     if ('' !== $files_ref_str) {
                         $files_ref_str .= ' ';
                     }
+
                     $files_ref_str .= sprintf('%s 0 R', $file['file_index']);
                 }
+
                 $this->_put(sprintf('/AF [%s]', $files_ref_str));
             } else {
                 $this->_put(sprintf('/AF %s 0 R', $this->filesIndex));

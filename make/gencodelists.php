@@ -82,6 +82,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
     $str = str_replace("\t", "", $str);
     $str = strtoupper($str);
     $str = preg_replace("/[^A-Za-z0-9\s]/", "", $str);
+
     $strArray = explode(" ", $str);
     if (count($strArray) == 1) {
         $strNew = $strArray[0];
@@ -90,6 +91,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
             if ($strNew !== "") {
                 $strNew .= "_";
             }
+
             if ($shortIdentifier) {
                 $strNew .= substr($item, 0, 4);
             } else {
@@ -97,6 +99,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
             }
         }
     }
+
     $strNew = preg_replace('/__+/', '_', $strNew);
     $strNew = preg_replace('~\d~', '', $strNew, 5);
     $strNew = rtrim(ltrim($strNew, "_"), "_");

@@ -200,6 +200,7 @@ class ExtractClass
                     foreach ($types as $type) {
                         $parameterTypeString .= $type->getName() . '|';
                     }
+
                     $parameterTypeString = rtrim($parameterTypeString, '|');
                 } elseif ($parameterType instanceof ReflectionNamedType) {
                     $parameterTypeString = $parameterType->getName();
@@ -672,9 +673,11 @@ class MarkDownGenerator
         if (stripos($string, '[]') !== false) {
             $string = 'array';
         }
+
         if (stripos($string, 'array<') === 0) {
             $string = 'array';
         }
+
         if ($string === '$this') {
             $string = 'static';
         }
@@ -736,38 +739,38 @@ BatchMarkDownGenerator::generate([
     ZugferdQuickDescriptorXRechnung2::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung2.md',
     ZugferdQuickDescriptorXRechnung3::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung3.md',
 ], [
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::generateDocument',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::generateDocument',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::saveDocument',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::saveDocument',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::saveDocumentInline',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::saveDocumentInline',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::downloadString',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::downloadString',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAdditionalCreatorTool',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAdditionalCreatorTool',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAttachmentRelationshipType',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAttachmentRelationshipType',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAttachmentRelationshipTypeToData',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAttachmentRelationshipTypeToData',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAttachmentRelationshipTypeToAlternative',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAttachmentRelationshipTypeToAlternative',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAttachmentRelationshipTypeToSource',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAttachmentRelationshipTypeToSource',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::attachAdditionalFileByRealFile',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::attachAdditionalFileByRealFile',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::attachAdditionalFileByContent',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::attachAdditionalFileByContent',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setDeterministicModeEnabled',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setDeterministicModeEnabled',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setAuthorTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setAuthorTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setKeywordTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setKeywordTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setTitleTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setTitleTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setSubjectTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setSubjectTemplate',
-    'horstoeko\zugferd\ZugferdDocumentPdfBuilder::setMetaInformationCallback',
-    'horstoeko\zugferd\ZugferdDocumentPdfMerger::setMetaInformationCallback',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::generateDocument',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::generateDocument',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::saveDocument',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::saveDocument',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::saveDocumentInline',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::saveDocumentInline',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::downloadString',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::downloadString',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAdditionalCreatorTool',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAdditionalCreatorTool',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAttachmentRelationshipType',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAttachmentRelationshipType',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAttachmentRelationshipTypeToData',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAttachmentRelationshipTypeToData',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAttachmentRelationshipTypeToAlternative',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAttachmentRelationshipTypeToAlternative',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAttachmentRelationshipTypeToSource',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAttachmentRelationshipTypeToSource',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::attachAdditionalFileByRealFile',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::attachAdditionalFileByRealFile',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::attachAdditionalFileByContent',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::attachAdditionalFileByContent',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setDeterministicModeEnabled',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setDeterministicModeEnabled',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setAuthorTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setAuthorTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setKeywordTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setKeywordTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setTitleTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setTitleTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setSubjectTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setSubjectTemplate',
+    \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::setMetaInformationCallback',
+    \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::setMetaInformationCallback',
 ]);

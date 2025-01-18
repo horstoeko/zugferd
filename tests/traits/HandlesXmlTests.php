@@ -51,6 +51,7 @@ trait HandlesXmlTests
         if ($this->renderingOfXmlDisabled === false) {
             $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
         }
+
         return $this->latestXml;
     }
 

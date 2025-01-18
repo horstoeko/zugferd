@@ -271,6 +271,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             if ($this->getObjectHelper()->tryCallAndReturn($taxTotalAmount, "getCurrencyID") == $invoiceCurrencyCode) {
                 $taxTotalAmountInvoice = $taxTotalAmount;
             }
+
             if ($this->getObjectHelper()->tryCallAndReturn($taxTotalAmount, "getCurrencyID") == $foreignCurrencyCode) {
                 $taxTotalAmountForeign = $taxTotalAmount;
             }
@@ -2501,6 +2502,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
             $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
             $this->getObjectHelper()->tryCall($taxTotalAmount[0], 'setCurrencyID', $invoiceCurrencyCode);
         }
+
         return $this;
     }
 

@@ -593,6 +593,7 @@ class ZugferdObjectHelper
             $crossIndustryInvoice->getExchangedDocumentContext()->setBusinessProcessSpecifiedDocumentContextParameter($this->createClassInstance('ram\DocumentContextParameterType'));
             $crossIndustryInvoice->getExchangedDocumentContext()->getBusinessProcessSpecifiedDocumentContextParameter()->setID($this->getIdType($this->profiledef['businessprocess']));
         }
+
         $crossIndustryInvoice->getSupplyChainTradeTransaction()->setApplicableHeaderTradeAgreement($this->createClassInstance('ram\HeaderTradeAgreementType'));
         $crossIndustryInvoice->getSupplyChainTradeTransaction()->setApplicableHeaderTradeDelivery($this->createClassInstance('ram\HeaderTradeDeliveryType'));
         $crossIndustryInvoice->getSupplyChainTradeTransaction()->setApplicableHeaderTradeSettlement($this->createClassInstance('ram\HeaderTradeSettlementType'));
@@ -1227,6 +1228,7 @@ class ZugferdObjectHelper
             $this->tryCall($supplyChainTradeLineItemType, "setSpecifiedLineTradeAgreement", $lineTradeAgreementType);
             $this->tryCall($supplyChainTradeLineItemType, "setSpecifiedLineTradeDelivery", $lineTradeDeliveryType);
         }
+
         $this->tryCall($supplyChainTradeLineItemType, "setSpecifiedLineTradeSettlement", $lineTradeSettlementType);
 
         return $supplyChainTradeLineItemType;
@@ -1506,15 +1508,19 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
+
         if ($method === '') {
             return $this;
         }
+
         if (self::isNullOrEmpty($value)) {
             return $this;
         }
+
         if ($this->methodExists($instance, $method)) {
             $instance->$method($value);
         }
+
         return $this;
     }
 
@@ -1531,15 +1537,18 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
+
         if (self::isNullOrEmpty($value)) {
             return $this;
         }
+
         foreach ($methods as $method) {
             if ($this->methodExists($instance, $method)) {
                 $instance->$method($value);
                 return $this;
             }
         }
+
         return $this;
     }
 
@@ -1556,12 +1565,15 @@ class ZugferdObjectHelper
         if (!$instance) {
             return null;
         }
+
         if ($method === '') {
             return null;
         }
+
         if ($this->methodExists($instance, $method)) {
             return $instance->$method();
         }
+
         return null;
     }
 
@@ -1621,20 +1633,25 @@ class ZugferdObjectHelper
         if (!$instance) {
             return $this;
         }
+
         if ($methodToLookFor === '') {
             return $this;
         }
+
         if ($methodToCall === '') {
             return $this;
         }
+
         if (!$this->methodExists($instance, $methodToCall)) {
             return $this;
         }
+
         if ($this->methodExists($instance, $methodToLookFor)) {
             $instance->$methodToCall($value);
         } else {
             $instance->$methodToCall($value2);
         }
+
         return $this;
     }
 
@@ -1649,6 +1666,7 @@ class ZugferdObjectHelper
         if (is_array($input)) {
             return $input;
         }
+
         return [(string)$input];
     }
 
@@ -1664,8 +1682,10 @@ class ZugferdObjectHelper
             if (!is_null($value)) {
                 return [$value];
             }
+
             return [];
         }
+
         return $value;
     }
 
@@ -1680,6 +1700,7 @@ class ZugferdObjectHelper
         if ($value === null) {
             return true;
         }
+
         return !is_object($value) && (string)$value === "";
     }
 
@@ -1698,6 +1719,7 @@ class ZugferdObjectHelper
                 return false;
             }
         }
+
         return true;
     }
 
@@ -1718,6 +1740,7 @@ class ZugferdObjectHelper
                 return true;
             }
         }
+
         return false;
     }
 
@@ -1733,9 +1756,11 @@ class ZugferdObjectHelper
         if ($instance == null) {
             return false;
         }
+
         if (!is_object($instance) && !is_string($instance)) {
             return false;
         }
+
         return method_exists($instance, $method);
     }
 }

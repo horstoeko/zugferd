@@ -552,7 +552,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentSellerContact(): bool
     {
         $this->documentSellerContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentSellerContactPointer]);
     }
 
@@ -565,7 +567,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentSellerContact(): bool
     {
         $this->documentSellerContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentSellerContactPointer]);
     }
 
@@ -705,7 +709,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentBuyerContact(): bool
     {
         $this->documentBuyerContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentBuyerContactPointer]);
     }
 
@@ -718,7 +724,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentBuyerContact(): bool
     {
         $this->documentBuyerContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentBuyerContactPointer]);
     }
 
@@ -858,7 +866,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentSellerTaxRepresentativeContact(): bool
     {
         $this->documentSellerTaxRepresentativeContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentSellerTaxRepresentativeContactPointer]);
     }
 
@@ -871,7 +881,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentSellerTaxRepresentativeContact(): bool
     {
         $this->documentSellerTaxRepresentativeContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentSellerTaxRepresentativeContactPointer]);
     }
 
@@ -997,7 +1009,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentProductEndUserContactContact(): bool
     {
         $this->documentProductEndUserContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentProductEndUserContactPointer]);
     }
 
@@ -1010,7 +1024,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentProductEndUserContactContact(): bool
     {
         $this->documentProductEndUserContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentProductEndUserContactPointer]);
     }
 
@@ -1135,7 +1151,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentShipToContact(): bool
     {
         $this->documentShipToContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentShipToContactPointer]);
     }
 
@@ -1148,7 +1166,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentShipToContact(): bool
     {
         $this->documentShipToContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentShipToContactPointer]);
     }
 
@@ -1273,7 +1293,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentUltimateShipToContact(): bool
     {
         $this->documentUltimateShipToContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentUltimateShipToContactPointer]);
     }
 
@@ -1286,7 +1308,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentUltimateShipToContact(): bool
     {
         $this->documentUltimateShipToContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentUltimateShipToContactPointer]);
     }
 
@@ -1412,7 +1436,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentShipFromContact(): bool
     {
         $this->documentShipFromContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentShipFromContactPointer]);
     }
 
@@ -1425,7 +1451,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentShipFromContact(): bool
     {
         $this->documentShipFromContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentShipFromContactPointer]);
     }
 
@@ -1550,7 +1578,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentInvoicerContact(): bool
     {
         $this->documentInvoicerContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentInvoicerContactPointer]);
     }
 
@@ -1563,7 +1593,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentInvoicerContact(): bool
     {
         $this->documentInvoicerContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentInvoicerContactPointer]);
     }
 
@@ -1689,7 +1721,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentInvoiceeContact(): bool
     {
         $this->documentInvoiceeContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentInvoiceeContactPointer]);
     }
 
@@ -1702,7 +1736,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentInvoiceeContact(): bool
     {
         $this->documentInvoiceeContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentInvoiceeContactPointer]);
     }
 
@@ -1829,7 +1865,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentPayeeContact(): bool
     {
         $this->documentPayeeContactPointer = 0;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentPayeeContactPointer]);
     }
 
@@ -1842,7 +1880,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentPayeeContact(): bool
     {
         $this->documentPayeeContactPointer++;
+
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+
         return isset($contacts[$this->documentPayeeContactPointer]);
     }
 
@@ -1963,7 +2003,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentAdditionalReferencedDocument(): bool
     {
         $this->documentAddRefDocPointer = 0;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentAddRefDocPointer]);
     }
 
@@ -1976,7 +2018,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentAdditionalReferencedDocument(): bool
     {
         $this->documentAddRefDocPointer++;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentAddRefDocPointer]);
     }
 
@@ -2070,7 +2114,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentInvoiceReferencedDocument(): bool
     {
         $this->documentInvRefDocPointer = 0;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentInvRefDocPointer]);
     }
 
@@ -2082,7 +2128,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentInvoiceReferencedDocument(): bool
     {
         $this->documentInvRefDocPointer++;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentInvRefDocPointer]);
     }
 
@@ -2154,7 +2202,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentUltimateCustomerOrderReferencedDocument(): bool
     {
         $this->documentUltimateCustomerOrderReferencedDocumentPointer = 0;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer]);
     }
 
@@ -2166,7 +2216,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentUltimateCustomerOrderReferencedDocument(): bool
     {
         $this->documentUltimateCustomerOrderReferencedDocumentPointer++;
+
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+
         return isset($addRefDoc[$this->documentUltimateCustomerOrderReferencedDocumentPointer]);
     }
 
@@ -2281,7 +2333,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstGetDocumentPaymentMeans(): bool
     {
         $this->documentPaymentMeansPointer = 0;
+
         $paymentMeans = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
+
         return isset($paymentMeans[$this->documentPaymentMeansPointer]);
     }
 
@@ -2294,7 +2348,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextGetDocumentPaymentMeans(): bool
     {
         $this->documentPaymentMeansPointer++;
+
         $paymentMeans = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementPaymentMeans", []));
+
         return isset($paymentMeans[$this->documentPaymentMeansPointer]);
     }
 
@@ -2351,7 +2407,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentTax(): bool
     {
         $this->documentTaxPointer = 0;
+
         $taxes = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
+
         return isset($taxes[$this->documentTaxPointer]);
     }
 
@@ -2364,7 +2422,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentTax(): bool
     {
         $this->documentTaxPointer++;
+
         $taxes = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getApplicableTradeTax", []));
+
         return isset($taxes[$this->documentTaxPointer]);
     }
 
@@ -2479,7 +2539,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentAllowanceCharge(): bool
     {
         $this->documentAllowanceChargePointer = 0;
+
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
+
         return isset($allowanceCharge[$this->documentAllowanceChargePointer]);
     }
 
@@ -2492,7 +2554,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentAllowanceCharge(): bool
     {
         $this->documentAllowanceChargePointer++;
+
         $allowanceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeAllowanceCharge", []);
+
         return isset($allowanceCharge[$this->documentAllowanceChargePointer]);
     }
 
@@ -2544,6 +2608,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentLogisticsServiceCharge(): bool
     {
         $this->documentLogisticServiceChargePointer = 0;
+
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
         return isset($serviceCharge[$this->documentLogisticServiceChargePointer]);
@@ -2558,6 +2623,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentLogisticsServiceCharge(): bool
     {
         $this->documentLogisticServiceChargePointer++;
+
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
 
         return isset($serviceCharge[$this->documentLogisticServiceChargePointer]);
@@ -2639,7 +2705,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentPaymentTerms(): bool
     {
         $this->documentPaymentTermsPointer = 0;
+
         $paymentTerms = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
+
         return isset($paymentTerms[$this->documentPaymentTermsPointer]);
     }
 
@@ -2652,7 +2720,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentPaymentTerms(): bool
     {
         $this->documentPaymentTermsPointer++;
+
         $paymentTerms = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
+
         return isset($paymentTerms[$this->documentPaymentTermsPointer]);
     }
 
@@ -2825,6 +2895,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $tradeLineItemNote = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getAssociatedDocumentLineDocument.getIncludedNote", []));
         $tradeLineItemNote = $tradeLineItemNote[$this->positionNotePointer];
 
@@ -2949,6 +3020,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $tradeLineItemProductCharacteristic = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getApplicableProductCharacteristic", []));
         $tradeLineItemProductCharacteristic = $tradeLineItemProductCharacteristic[$this->positionProductCharacteristicPointer];
 
@@ -3010,6 +3082,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $tradeLineItemProductClassification = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getDesignatedProductClassification", []));
         $tradeLineItemProductClassification = $tradeLineItemProductClassification[$this->positionProductClassificationPointer];
 
@@ -3074,6 +3147,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $tradeLineItemReferencedProduct = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getIncludedReferencedProduct", []));
         $tradeLineItemReferencedProduct = $tradeLineItemReferencedProduct[$this->positionReferencedProductPointer];
 
@@ -3193,6 +3267,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionAddRefDocPointer = 0;
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getAdditionalReferencedDocument", []));
         return isset($addRefDoc[$this->positionAddRefDocPointer]);
     }
@@ -3206,9 +3281,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentPositionAdditionalReferencedDocument(): bool
     {
         $this->positionAddRefDocPointer++;
+
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getAdditionalReferencedDocument", []));
+
         return isset($addRefDoc[$this->positionAddRefDocPointer]);
     }
 
@@ -3288,6 +3366,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionGrossPriceAllowanceChargePointer = 0;
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $allowanceCharge = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice.getAppliedTradeAllowanceCharge", []));
         return isset($allowanceCharge[$this->positionGrossPriceAllowanceChargePointer]);
     }
@@ -3301,9 +3380,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
     {
         $this->positionGrossPriceAllowanceChargePointer++;
+
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
         $allowanceCharge = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getGrossPriceProductTradePrice.getAppliedTradeAllowanceCharge", []));
+
         return isset($allowanceCharge[$this->positionGrossPriceAllowanceChargePointer]);
     }
 
