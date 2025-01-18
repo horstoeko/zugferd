@@ -122,8 +122,8 @@ class ExtractClass
             $classDocBlock = $docBlockFactory->create($classDocComment);
             $deprecatedTag = $classDocBlock->getTagsByName('deprecated');
             $result['class'] = [
-                'summary' => $classDocBlock->getSummary() ?: '',
-                'description' => (string)$classDocBlock->getDescription() ?: '',
+                'summary' => in_array($classDocBlock->getSummary(), ['', '0'], true) ? '' : $classDocBlock->getSummary(),
+                'description' => (string)$classDocBlock->getDescription() !== '' && (string)$classDocBlock->getDescription() !== '0' ? (string)$classDocBlock->getDescription() : '',
                 'deprecated' => $deprecatedTag === [] ? '' : (string)$deprecatedTag[0]
             ];
         } else {
@@ -159,8 +159,8 @@ class ExtractClass
                 $docBlock = $docBlockFactory->create($docComment);
 
                 // Extract summary and description
-                $methodDetails['summary'] = $docBlock->getSummary() ?: 'No summary available.';
-                $methodDetails['description'] = (string)$docBlock->getDescription() ?: '';
+                $methodDetails['summary'] = in_array($docBlock->getSummary(), ['', '0'], true) ? 'No summary available.' : $docBlock->getSummary();
+                $methodDetails['description'] = (string)$docBlock->getDescription() !== '' && (string)$docBlock->getDescription() !== '0' ? (string)$docBlock->getDescription() : '';
                 $methodDetails['static'] = $method->isStatic();
                 $methodDetails['abstract'] = $method->isAbstract();
                 $methodDetails['final'] = $method->isFinal();

@@ -30,6 +30,7 @@ return RectorConfig::configure()
     ->withPreparedSets(
         codeQuality: true,
         codingStyle: true,
+        strictBooleans: true,
         //
         carbon: false,
         deadCode: false,
@@ -40,7 +41,6 @@ return RectorConfig::configure()
         phpunitCodeQuality: false,
         privatization: false,
         rectorPreset: false,
-        strictBooleans: false,
         symfonyCodeQuality: false,
         symfonyConfigs: false,
         typeDeclarations: false,

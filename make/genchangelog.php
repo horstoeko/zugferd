@@ -65,7 +65,7 @@ function correctSubject(string $commitSubject, ?array &$issues): string
 
 function mustHideCommit(?string $commitHash = "", ?string $commitAuthor = "", ?string $commitDate = "", ?string $commitSubject = ""): bool
 {
-    if (!$commitSubject) {
+    if ($commitSubject === null || $commitSubject === '' || $commitSubject === '0') {
         return true;
     }
 

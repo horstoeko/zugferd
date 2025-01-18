@@ -141,7 +141,7 @@ class ZugferdPdfWriter extends PdfFpdi
 
         if ('' == $mimetype) {
             $mimetype = mime_content_type($file);
-            if (!$mimetype) {
+            if ($mimetype === '' || $mimetype === '0' || $mimetype === false) {
                 $mimetype = 'application/octet-stream';
             }
         }
