@@ -34,12 +34,12 @@ return RectorConfig::configure()
         instanceOf: true,
         earlyReturn: true,
         phpunitCodeQuality: true,
+        privatization: true,
         //
         carbon: false,
         deadCode: false,
         doctrineCodeQuality: false,
         naming: false,
-        privatization: false,
         rectorPreset: false,
         symfonyCodeQuality: false,
         symfonyConfigs: false,

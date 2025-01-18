@@ -850,7 +850,7 @@ class ZugferdPdfValidator
 
         $this->resetFileToValidateFilename();
 
-        if (file_put_contents($this->resolveFileToValidateFilename(), $this->getPdfContent()) === false) {
+        if (file_put_contents($this->resolveFileToValidateFilename(), $this->pdfContent) === false) {
             $this->addToMessageBag("Cannot create temporary file which contains the PDF to validate");
             return false;
         }
