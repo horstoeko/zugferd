@@ -234,7 +234,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data)
     {
-        $node = $visitor->getDocument()->createTextNode(
+        return $visitor->getDocument()->createTextNode(
             number_format(
                 $data->value(),
                 ZugferdSettings::getSpecialDecimalPlacesMap($visitor->getCurrentNode()->getNodePath(), ZugferdSettings::getPercentDecimals()),
@@ -242,8 +242,6 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
                 ZugferdSettings::getThousandsSeparator()
             )
         );
-
-        return $node;
     }
 
     /**
@@ -283,7 +281,6 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
     {
-        $node = $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
-        return $node;
+        return $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
     }
 }

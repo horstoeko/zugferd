@@ -57,12 +57,12 @@ class ZugferdDocument
     /**
      * @var \horstoeko\zugferd\entities\basic\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\basicwl\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice|\horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice $invoiceObject The internal invoice object
      */
-    private $invoiceObject = null;
+    private $invoiceObject;
 
     /**
      * @var ZugferdObjectHelper $objectHelper Object Helper
      */
-    private $objectHelper = null;
+    private $objectHelper;
 
     /**
      * Constructor

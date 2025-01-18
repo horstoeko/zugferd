@@ -109,7 +109,7 @@ class SettingsTest extends TestCase
 
         $this->assertSame("sRGB_v5_ICC.icc", ZugferdSettings::getIccProfileFilename());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "iccProfileFilename");
+        $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "iccProfileFilename");
     }
 
     public function testGetRootDirectory(): void

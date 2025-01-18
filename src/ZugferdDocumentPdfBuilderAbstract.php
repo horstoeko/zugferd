@@ -71,7 +71,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @var ZugferdPdfWriter
      */
-    private $pdfWriter = null;
+    private $pdfWriter;
 
     /**
      * Contains the data of the original PDF document
@@ -120,7 +120,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @var callable|null
      */
-    private $metaInformationCallback = null;
+    private $metaInformationCallback;
 
     /**
      * Constructor
@@ -606,7 +606,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
         $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
 
-        $pdfMetadata = [
+        return [
             'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
             'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
             'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
@@ -614,8 +614,6 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             'createdDate' => $invoiceInformations['date'],
             'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
         ];
-
-        return $pdfMetadata;
     }
 
     /**
@@ -652,14 +650,12 @@ abstract class ZugferdDocumentPdfBuilderAbstract
                 break;
         }
 
-        $invoiceInformation = [
+        return [
             'invoiceId' => $invoiceId,
             'docTypeName' => $docTypeName,
             'seller' => $sellerName,
             'date' => $dateReformatted,
         ];
-
-        return $invoiceInformation;
     }
 
     /**

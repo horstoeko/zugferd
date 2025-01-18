@@ -35,9 +35,9 @@ return RectorConfig::configure()
         earlyReturn: true,
         phpunitCodeQuality: true,
         privatization: true,
+        deadCode: true,
         //
         carbon: false,
-        deadCode: false,
         doctrineCodeQuality: false,
         naming: false,
         rectorPreset: false,

@@ -212,7 +212,7 @@ class ExtractClass
                     'name' => $parameterName,
                     'type' => $parameterTypeString ?: 'mixed',
                     'isNullable' => $parameterType && $parameterType->allowsNull(),
-                    'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable()) : false,
+                    'defaultValueavailable' => $parameter->isOptional() && $parameter->isDefaultValueAvailable(),
                     'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null) : null,
                     'description' => $paramDescriptions[$parameterName]['description'] ?? ''
                 ];
@@ -261,7 +261,7 @@ class MarkDownGenerator
      *
      * @var ExtractClass
      */
-    protected $extractor = null;
+    protected $extractor;
 
     /**
      * The lines for the MD
@@ -456,20 +456,6 @@ class MarkDownGenerator
     }
 
     /**
-     * Add a line to internal container
-     *
-     * @param string $string
-     * @param mixed ...$args
-     * @return MarkDownGenerator
-     */
-    private function addLineRawAllowEmpty(string $string, ...$args): MarkDownGenerator
-    {
-        $this->lines[] = sprintf($string, ...$args);
-
-        return $this;
-    }
-
-    /**
      * Add an empty line to internal container
      *
      * @return MarkDownGenerator
@@ -477,24 +463,6 @@ class MarkDownGenerator
     private function addEmptyLine(): MarkDownGenerator
     {
         $this->lines[] = "";
-
-        return $this;
-    }
-
-    /**
-     * Add an H1-Line to internal container
-     *
-     * @param string $string
-     * @param boolean $newLine
-     * @return MarkDownGenerator
-     */
-    private function addLineH1(string $string, bool $newLine = true): MarkDownGenerator
-    {
-        $this->addLine("# %s", $string);
-
-        if ($newLine) {
-            $this->addEmptyLine();
-        }
 
         return $this;
     }
@@ -586,18 +554,6 @@ class MarkDownGenerator
     }
 
     /**
-     * Add line as bold formatted
-     *
-     * @param string $string
-     * @param mixed ...$args
-     * @return MarkDownGenerator
-     */
-    private function addLineBold(string $string, ...$args): MarkDownGenerator
-    {
-        return $this->addLine(sprintf("__%s__", $string), ...$args);
-    }
-
-    /**
      * Import an example from a markdown file
      *
      * @param string $exampleFilename
@@ -644,9 +600,8 @@ class MarkDownGenerator
         $string = str_replace("\n", "<br/>", $string);
         $string = str_replace("__BT-, From __", "", $string);
         $string = str_replace("__BT-, From", "__BT-??, From", $string);
-        $string = trim($string);
 
-        return $string;
+        return trim($string);
     }
 
     /**
@@ -657,9 +612,7 @@ class MarkDownGenerator
      */
     private function removeSprintfPlaceholder(string $string): string
     {
-        $string = str_replace("%", "", $string);
-
-        return $string;
+        return str_replace("%", "", $string);
     }
 
     /**

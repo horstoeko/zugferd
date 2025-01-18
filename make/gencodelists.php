@@ -45,8 +45,7 @@ function handleUmlauts(string $str): string
     $str = str_replace("ö", "oe", $str);
     $str = str_replace("ä", "ae", $str);
     $str = str_replace("ü", "ue", $str);
-    $str = str_replace("Å", "A", $str);
-    return $str;
+    return str_replace("Å", "A", $str);
 }
 
 /**
@@ -62,8 +61,7 @@ function strComment(string $str): string
     $str = str_replace("\r", "", $str);
     $str = str_replace("\t", "", $str);
     $str = preg_replace('/\s+/', ' ', $str);
-    $str = wordwrap($str);
-    return $str;
+    return wordwrap($str);
 }
 
 /**
@@ -102,8 +100,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
 
     $strNew = preg_replace('/__+/', '_', $strNew);
     $strNew = preg_replace('~\d~', '', $strNew, 5);
-    $strNew = rtrim(ltrim($strNew, "_"), "_");
-    return $strNew;
+    return rtrim(ltrim($strNew, "_"), "_");
 }
 
 /**
@@ -119,8 +116,7 @@ function strDesc(string $str): string
     $str = str_replace("\n", " ", $str);
     $str = str_replace("\r", " ", $str);
     $str = str_replace("\t", " ", $str);
-    $str = preg_replace('/\s+/', ' ', $str);
-    return $str;
+    return preg_replace('/\s+/', ' ', $str);
 }
 
 /**

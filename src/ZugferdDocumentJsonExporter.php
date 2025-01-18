@@ -28,7 +28,7 @@ class ZugferdDocumentJsonExporter
      *
      * @var ZugferdDocument
      */
-    private $document = null;
+    private $document;
 
     /**
      * Constructor
@@ -57,9 +57,7 @@ class ZugferdDocumentJsonExporter
      */
     public function toJsonObject(): ?\stdClass
     {
-        $jsonObject = json_decode($this->toJsonString());
-
-        return $jsonObject;
+        return json_decode($this->toJsonString());
     }
 
     /**

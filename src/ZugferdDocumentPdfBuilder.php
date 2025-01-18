@@ -30,7 +30,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      *
      * @var ZugferdDocumentBuilder
      */
-    private $documentBuilder = null;
+    private $documentBuilder;
 
     /**
      * Cached XML data

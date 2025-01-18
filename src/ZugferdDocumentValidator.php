@@ -33,7 +33,7 @@ class ZugferdDocumentValidator
     /**
      * The validator instance
      */
-    private $validator = null;
+    private $validator;
 
     /**
      * Constructor

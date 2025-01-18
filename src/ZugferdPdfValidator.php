@@ -363,16 +363,6 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Internal get the content of the PDF
-     *
-     * @return string
-     */
-    private function getPdfContent(): string
-    {
-        return $this->pdfContent;
-    }
-
-    /**
      * Internal get (and create) the directory for downloads and file creation
      *
      * @return string

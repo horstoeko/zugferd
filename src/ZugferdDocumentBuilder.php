@@ -34,42 +34,42 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @var object
      */
-    protected $headerTradeAgreement = null;
+    protected $headerTradeAgreement;
 
     /**
      * HeaderTradeDelivery
      *
      * @var object
      */
-    protected $headerTradeDelivery = null;
+    protected $headerTradeDelivery;
 
     /**
      * HeaderTradeSettlement
      *
      * @var object
      */
-    protected $headerTradeSettlement = null;
+    protected $headerTradeSettlement;
 
     /**
      * SupplyChainTradeTransactionType
      *
      * @var object
      */
-    protected $headerSupplyChainTradeTransaction = null;
+    protected $headerSupplyChainTradeTransaction;
 
     /**
      * Last added payment terms
      *
      * @var object
      */
-    protected $currentPaymentTerms = null;
+    protected $currentPaymentTerms;
 
     /**
      * Last added position (line) to the docuemnt
      *
      * @var object
      */
-    protected $currentPosition = null;
+    protected $currentPosition;
 
     /**
      * Receive the content as XML string
@@ -153,9 +153,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function getContentAsDomXPath(): DOMXpath
     {
-        $domXPath = new DOMXPath($this->getContentAsDomDocument());
-
-        return $domXPath;
+        return new DOMXPath($this->getContentAsDomDocument());
     }
 
     /**

@@ -551,9 +551,7 @@ class ZugferdObjectHelper
             return null;
         }
 
-        $countryIDType = $this->createClassInstance('qdt\CountryIDType', $id);
-
-        return $countryIDType;
+        return $this->createClassInstance('qdt\CountryIDType', $id);
     }
 
     /**
