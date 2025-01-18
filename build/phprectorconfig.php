@@ -26,18 +26,4 @@ return RectorConfig::configure()
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
     ])
-    ->withPhp73Sets()
-    ->withSets([
-        SetList::DEAD_CODE,
-        SetList::CODE_QUALITY,
-        SetList::CODING_STYLE,
-    ])
-    ->withConfiguredRule(EncapsedStringsToSprintfRector::class, [
-        'always' => true,
-    ])
-    ->withRules([
-        RenamePropertyToMatchTypeRector::class,
-        RenameParamToMatchTypeRector::class,
-        RenameVariableToMatchNewTypeRector::class,
-    ])
-    ->withTypeCoverageLevel(0);
+    ->withPhp73Sets();

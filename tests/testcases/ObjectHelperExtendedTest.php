@@ -603,7 +603,7 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
          */
-        $refdoctype = self::$objectHelper->getReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), dirname(__FILE__) . "/../assets/xml_en16931_2.xml");
+        $refdoctype = self::$objectHelper->getReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), __DIR__ . "/../assets/xml_en16931_2.xml");
         $this->assertEquals("issuerid", $refdoctype->getIssuerAssignedID()->value());
         $this->assertEquals("uriid", $refdoctype->getURIID()->value());
         $this->assertEquals("lineid", $refdoctype->getLineID()->value());

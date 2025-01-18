@@ -17,7 +17,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
 
     public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_zf_en16931_3.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(__DIR__ . "/../assets/pdf_zf_en16931_3.pdf");
         $this->assertNotNull(self::$document);
     }
 

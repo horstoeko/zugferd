@@ -115,7 +115,7 @@ class SettingsTest extends TestCase
     public function testGetRootDirectory(): void
     {
         $this->assertEquals(
-            realpath(dirname(__FILE__) . "/../../"),
+            realpath(__DIR__ . "/../../"),
             realpath(ZugferdSettings::getRootDirectory())
         );
     }
@@ -123,7 +123,7 @@ class SettingsTest extends TestCase
     public function testGetSourceDirectory(): void
     {
         $this->assertEquals(
-            realpath(dirname(__FILE__) . "/../../src/"),
+            realpath(__DIR__ . "/../../src/"),
             realpath(ZugferdSettings::getSourceDirectory())
         );
     }
@@ -131,7 +131,7 @@ class SettingsTest extends TestCase
     public function testGetAssetDirectory(): void
     {
         $this->assertEquals(
-            realpath(dirname(__FILE__) . "/../../src/assets/"),
+            realpath(__DIR__ . "/../../src/assets/"),
             realpath(ZugferdSettings::getAssetDirectory())
         );
     }
@@ -139,7 +139,7 @@ class SettingsTest extends TestCase
     public function testGetYamlDirectory(): void
     {
         $this->assertEquals(
-            realpath(dirname(__FILE__) . "/../../src/yaml/"),
+            realpath(__DIR__ . "/../../src/yaml/"),
             realpath(ZugferdSettings::getYamlDirectory())
         );
     }
@@ -147,7 +147,7 @@ class SettingsTest extends TestCase
     public function testGetValidationDirectory(): void
     {
         $this->assertEquals(
-            realpath(dirname(__FILE__) . "/../../src/validation/"),
+            realpath(__DIR__ . "/../../src/validation/"),
             realpath(ZugferdSettings::getValidationDirectory())
         );
     }
@@ -155,7 +155,7 @@ class SettingsTest extends TestCase
     public function testGetFullIccProfileFilename(): void
     {
         $expected = PathUtils::combinePathWithFile(
-            realpath(dirname(__FILE__) . "/../../src/assets/"),
+            realpath(__DIR__ . "/../../src/assets/"),
             "sRGB_v5_ICC.icc"
         );
         $actual = PathUtils::combinePathWithFile(

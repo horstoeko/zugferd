@@ -9,7 +9,7 @@ class Issue206Test extends TestCase
 {
     public function testDateTimeString(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . '/../../assets/xml_issue_206.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_206.xml');
         $document->getDocumentInformation(
             $documentNo,
             $documentTypeCode,

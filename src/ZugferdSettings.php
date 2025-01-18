@@ -320,7 +320,7 @@ class ZugferdSettings
      */
     public static function getRootDirectory(): string
     {
-        return PathUtils::combineAllPaths(dirname(__FILE__), "..");
+        return PathUtils::combineAllPaths(__DIR__, "..");
     }
 
     /**

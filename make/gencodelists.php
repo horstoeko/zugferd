@@ -2,7 +2,7 @@
 
 use horstoeko\stringmanagement\PathUtils;
 
-require dirname(__FILE__) . "/../vendor/autoload.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 define('DOWNLOADDEF_KEY_ENABLED', 'enabled');
 define('DOWNLOADDEF_LIB_NAME', 'libname');
@@ -194,7 +194,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
     $classGenerationEnabled = $fileToDownload[DOWNLOADDEF_KEY_ENABLED] ?? false;
     $classNamespace = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAMESPACE];
     $className = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAME];
-    $classDir = PathUtils::combineAllPaths(dirname(__FILE__), "classes");
+    $classDir = PathUtils::combineAllPaths(__DIR__, "classes");
     $classTitle = $fileToDownload[DOWNLOADDEF_KEY_TITLE];
     $classTitleList = $fileToDownload[DOWNLOADDEF_KEY_TITLE_LIST];
     $classHomepageUrls = !is_array($fileToDownload[DOWNLOADDEF_KEY_URL_HP]) ? [$fileToDownload[DOWNLOADDEF_KEY_URL_HP]] : $fileToDownload[DOWNLOADDEF_KEY_URL_HP];
@@ -404,8 +404,8 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.5189_3/download/UNTDID_5189_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_7161.json"),
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_5189.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_7161.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_5189.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.7161",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -425,7 +425,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:country-codes_8/download/Country_Codes_8.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "ISO_COUNTRY_CODES.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "ISO_COUNTRY_CODES.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:country-codes",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -448,7 +448,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:currency-codes_3/download/Currency_Codes_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "ISO_CURRENCY_CODES.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "ISO_CURRENCY_CODES.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:currency-codes",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -471,7 +471,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.5305_3/download/UNTDID_5305_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_5305.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_5305.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.5305",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -494,7 +494,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.1001_4/download/UNTDID_1001_4.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_1001.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_1001.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.1001",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -514,7 +514,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.7143_4/download/UNTDID_7143_4.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_7143.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_7143.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.7143",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -534,7 +534,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:xrechnung:codeliste:untdid.4461_3/download/UNTDID_4461_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_4461.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_4461.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:xrechnung:codeliste:untdid.4461",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -554,7 +554,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.1153_3/download/UNTDID_1153_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_1153.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_1153.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.1153",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -574,7 +574,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.4451_4/download/UNTDID_4451_4.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_4451.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_4451.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.4451",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -594,7 +594,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:icd_5/download/ICD_5.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "ICD_5.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "ICD_5.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:icd",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
@@ -615,8 +615,8 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:rec21_3/download/UN_ECE_Recommendation_N_21_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNECE_REC_20.json"),
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNECE_REC_21.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNECE_REC_20.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNECE_REC_21.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => [
             "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:rec20",
@@ -639,7 +639,7 @@ $filesToDownload = [
             "https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.5305_3/download/UNTDID_5305_3.json",
         ],
         DOWNLOADDEF_KEY_TOFILE => [
-            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(dirname(__FILE__), "download"), "UNTDID_5305.json"),
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_5305.json"),
         ],
         DOWNLOADDEF_KEY_URL_HP => "https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.5305_3",
         DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",

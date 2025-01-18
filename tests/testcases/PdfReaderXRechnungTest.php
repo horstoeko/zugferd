@@ -17,7 +17,7 @@ class PdfReaderXRechnungTest extends TestCase
 
     public function testCanReadPdf(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/pdf_zf_xrechnung_1.pdf");
+        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(__DIR__ . "/../assets/pdf_zf_xrechnung_1.pdf");
         $this->assertNotNull(self::$document);
     }
 

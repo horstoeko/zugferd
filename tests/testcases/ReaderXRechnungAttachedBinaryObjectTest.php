@@ -16,7 +16,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(dirname(__FILE__) . "/../assets/xml_xrechnung_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . "/../assets/xml_xrechnung_2.xml");
     }
 
     public function testDocumentProfile(): void
@@ -34,7 +34,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertEquals('horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject')));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getSerializer'));
-        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
+        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject(self::$document, 'getSerializer')));
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper'));
         $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject(self::$document, 'getObjectHelper')));
         $this->assertEquals('en16931', self::$document->getProfileDefinitionParameter('name'));
@@ -82,7 +82,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
 
     public function testGetDocumentAdditionalReferencedDocument(): void
     {
-        self::$document->setBinaryDataDirectory(dirname(__FILE__));
+        self::$document->setBinaryDataDirectory(__DIR__);
         self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
         $this->assertEquals("01_15_Anhang_01.pdf", $issuerassignedid);
         $this->assertEquals("916", $typecode);
@@ -90,7 +90,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertArrayNotHasKey(1, $name);
         $this->assertEquals("Aufschlüsselung der einzelnen Leistungspositionen", $name[0]);
         $this->assertNotEquals("", $binarydatafilename);
-        $this->assertEquals(dirname(__FILE__) . DIRECTORY_SEPARATOR . "01_15_Anhang_01.pdf", $binarydatafilename);
+        $this->assertEquals(__DIR__ . DIRECTORY_SEPARATOR . "01_15_Anhang_01.pdf", $binarydatafilename);
         $this->assertTrue(file_exists($binarydatafilename));
         $this->assertEquals(150128, filesize($binarydatafilename));
         $this->assertEquals("%PDF", substr(file_get_contents($binarydatafilename), 0, 4));

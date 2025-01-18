@@ -36,8 +36,8 @@ class PdfBuilderEn16931Test extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$sourcePdfFilename = dirname(__FILE__) . "/../assets/pdf_plain.pdf";
-        self::$destPdfFilename = dirname(__FILE__) . "/../assets/GeneratedPDF.pdf";
+        self::$sourcePdfFilename = __DIR__ . "/../assets/pdf_plain.pdf";
+        self::$destPdfFilename = __DIR__ . "/../assets/GeneratedPDF.pdf";
 
         self::$document = (ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931))
             ->setDocumentInformation("471102", "380", \DateTime::createFromFormat("Ymd", "20180305"), "EUR")
@@ -267,7 +267,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileFileDoesNotExist(): void
     {
-        $filename = dirname(__FILE__) . '/unknown.txt';
+        $filename = __DIR__ . '/unknown.txt';
 
         $this->expectException(ZugferdFileNotFoundException::class);
         $this->expectExceptionMessage(sprintf("The file %s was not found", $filename));
@@ -287,7 +287,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileMimetypeUnknown(): void
     {
-        $filename = dirname(__FILE__) . "/../assets/dummy_attachment_1.dummy";
+        $filename = __DIR__ . "/../assets/dummy_attachment_1.dummy";
 
         $this->expectException(ZugferdUnknownMimetype::class);
         $this->expectExceptionMessage("No mimetype found");
@@ -298,7 +298,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileInvalidRelationShip(): void
     {
-        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+        $filename = __DIR__ . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Dummy");
@@ -312,7 +312,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileValidRelationShip(): void
     {
-        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+        $filename = __DIR__ . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Alternative");
@@ -326,7 +326,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileFinalResult(): void
     {
-        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+        $filename = __DIR__ . "/../assets/txt_addattachment_1.txt";
 
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->attachAdditionalFileByRealFile($filename, "", "Alternative");
@@ -356,7 +356,7 @@ class PdfBuilderEn16931Test extends TestCase
     public function testAdditionalFilesAreEmbedded(): void
     {
         $pdfBuilder = ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, self::$sourcePdfFilename);
-        $pdfBuilder->attachAdditionalFileByRealFile(dirname(__FILE__) . "/../assets/txt_addattachment_1.txt");
+        $pdfBuilder->attachAdditionalFileByRealFile(__DIR__ . "/../assets/txt_addattachment_1.txt");
         $pdfBuilder->generateDocument();
         $pdfBuilder->saveDocument(self::$destPdfFilename);
 
@@ -442,7 +442,7 @@ class PdfBuilderEn16931Test extends TestCase
         $this->expectException(ZugferdInvalidArgumentException::class);
         $this->expectExceptionMessage("You must specify a filename for the content to attach");
 
-        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+        $filename = __DIR__ . "/../assets/txt_addattachment_1.txt";
 
         $content = file_get_contents($filename);
 
@@ -452,7 +452,7 @@ class PdfBuilderEn16931Test extends TestCase
 
     public function testAttachAdditionalFileByContentAllValid(): void
     {
-        $filename = dirname(__FILE__) . "/../assets/txt_addattachment_1.txt";
+        $filename = __DIR__ . "/../assets/txt_addattachment_1.txt";
 
         $content = file_get_contents($filename);
 

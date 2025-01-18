@@ -27,7 +27,7 @@ use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\Exception\PcreException;
 use Webmozart\Assert\InvalidArgumentException;
 
-require dirname(__FILE__) . "/../vendor/autoload.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 class CustomPhpPrinter extends Printer
 {
@@ -211,7 +211,7 @@ class ExtractClass
 
                 $parameters[] = [
                     'name' => $parameterName,
-                    'type' => $parameterTypeString ? $parameterTypeString : 'mixed',
+                    'type' => $parameterTypeString ?: 'mixed',
                     'isNullable' => $parameterType && $parameterType->allowsNull(),
                     'defaultValueavailable' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? true : false) : false,
                     'defaultValue' => $parameter->isOptional() ? ($parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null) : null,
@@ -309,7 +309,7 @@ class MarkDownGenerator
             $this->addEmptyLine();
         }
 
-        $this->addExample(dirname(__FILE__) . sprintf('/md/%s.md', $this->extractor->getClassBasename()), true);
+        $this->addExample(__DIR__ . sprintf('/md/%s.md', $this->extractor->getClassBasename()), true);
 
         if (!empty($metaData['methods'])) {
             $this->addLineH2("Methods");
@@ -401,7 +401,7 @@ class MarkDownGenerator
                 $this->addEmptyLine();
             }
 
-            $this->addExample(dirname(__FILE__) . sprintf('/md/%s_%s.md', $this->extractor->getClassBasename(), $methodName));
+            $this->addExample(__DIR__ . sprintf('/md/%s_%s.md', $this->extractor->getClassBasename(), $methodName));
         }
 
         return $this;
@@ -623,7 +623,7 @@ class MarkDownGenerator
             $this->addLineH4("Example");
         }
 
-        $exampleFileContent = str_replace(array("\r\n", "\r", "\n"), "\n", $exampleFileContent);
+        $exampleFileContent = str_replace(["\r\n", "\r", "\n"], "\n", $exampleFileContent);
 
         foreach (explode("\n", $exampleFileContent) as $exampleFileContentLine) {
             $this->lines[] = $exampleFileContentLine;
@@ -719,24 +719,24 @@ class BatchMarkDownGenerator
 }
 
 BatchMarkDownGenerator::generate([
-    ZugferdDocument::class => dirname(__FILE__) . '/Class-ZugferdDocument.md',
-    ZugferdSettings::class => dirname(__FILE__) . '/Class-ZugferdSettings.md',
-    ZugferdDocumentBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentBuilder.md',
-    ZugferdDocumentReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentReader.md',
-    ZugferdDocumentPdfReader::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfReader.md',
-    ZugferdDocumentPdfReaderExt::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfReaderExt.md',
-    ZugferdDocumentPdfBuilder::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfBuilder.md',
-    ZugferdDocumentPdfMerger::class => dirname(__FILE__) . '/Class-ZugferdDocumentPdfMerger.md',
-    ZugferdDocumentValidator::class => dirname(__FILE__) . '/Class-ZugferdDocumentValidator.md',
-    ZugferdXsdValidator::class => dirname(__FILE__) . '/Class-ZugferdXsdValidator.md',
-    ZugferdKositValidator::class => dirname(__FILE__) . '/Class-ZugferdKositValidator.md',
-    ZugferdPdfValidator::class => dirname(__FILE__) . '/Class-ZugferdPdfValidator.md',
-    ZugferdQuickDescriptor::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptor.md',
-    ZugferdQuickDescriptorEn16931::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorEn16931.md',
-    ZugferdQuickDescriptorExtended::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorExtended.md',
-    ZugferdQuickDescriptorXRechnung::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung.md',
-    ZugferdQuickDescriptorXRechnung2::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung2.md',
-    ZugferdQuickDescriptorXRechnung3::class => dirname(__FILE__) . '/Class-ZugferdQuickDescriptorXRechnung3.md',
+    ZugferdDocument::class => __DIR__ . '/Class-ZugferdDocument.md',
+    ZugferdSettings::class => __DIR__ . '/Class-ZugferdSettings.md',
+    ZugferdDocumentBuilder::class => __DIR__ . '/Class-ZugferdDocumentBuilder.md',
+    ZugferdDocumentReader::class => __DIR__ . '/Class-ZugferdDocumentReader.md',
+    ZugferdDocumentPdfReader::class => __DIR__ . '/Class-ZugferdDocumentPdfReader.md',
+    ZugferdDocumentPdfReaderExt::class => __DIR__ . '/Class-ZugferdDocumentPdfReaderExt.md',
+    ZugferdDocumentPdfBuilder::class => __DIR__ . '/Class-ZugferdDocumentPdfBuilder.md',
+    ZugferdDocumentPdfMerger::class => __DIR__ . '/Class-ZugferdDocumentPdfMerger.md',
+    ZugferdDocumentValidator::class => __DIR__ . '/Class-ZugferdDocumentValidator.md',
+    ZugferdXsdValidator::class => __DIR__ . '/Class-ZugferdXsdValidator.md',
+    ZugferdKositValidator::class => __DIR__ . '/Class-ZugferdKositValidator.md',
+    ZugferdPdfValidator::class => __DIR__ . '/Class-ZugferdPdfValidator.md',
+    ZugferdQuickDescriptor::class => __DIR__ . '/Class-ZugferdQuickDescriptor.md',
+    ZugferdQuickDescriptorEn16931::class => __DIR__ . '/Class-ZugferdQuickDescriptorEn16931.md',
+    ZugferdQuickDescriptorExtended::class => __DIR__ . '/Class-ZugferdQuickDescriptorExtended.md',
+    ZugferdQuickDescriptorXRechnung::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung.md',
+    ZugferdQuickDescriptorXRechnung2::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung2.md',
+    ZugferdQuickDescriptorXRechnung3::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung3.md',
 ], [
     'horstoeko\zugferd\ZugferdDocumentPdfBuilder::generateDocument',
     'horstoeko\zugferd\ZugferdDocumentPdfMerger::generateDocument',

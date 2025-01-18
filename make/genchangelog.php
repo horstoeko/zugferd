@@ -10,7 +10,7 @@ if (!function_exists('str_starts_with')) {
 if (!function_exists('str_contains')) {
     function str_contains($haystack, $needle)
     {
-        return (strpos($haystack, $needle) !== false);
+        return (strpos($haystack, (string) $needle) !== false);
     }
 }
 
@@ -222,7 +222,7 @@ function getMarkDown($prevTag, $currTag)
     $noOfHiddenCommits = 0;
 
     $commits = array_filter($commits, function ($commit) use (&$noOfHiddenCommits) {
-        list($commitHash, $commitAuthor, $commitDate, $commitSubject) = explode("|", $commit);
+        [$commitHash, $commitAuthor, $commitDate, $commitSubject] = explode("|", $commit);
         $hidden = mustHideCommit($commitHash, $commitAuthor, $commitDate, $commitSubject);
         if ($hidden) {
             $noOfHiddenCommits++;
@@ -240,7 +240,7 @@ function getMarkDown($prevTag, $currTag)
         $markDown[] = '| :--- | :------ | :------ | :------ | :------- | :-----------: ';
 
         foreach ($commits as $commit) {
-            list($commitHash, $commitAuthor, $commitDate, $commitSubject) = explode("|", $commit);
+            [$commitHash, $commitAuthor, $commitDate, $commitSubject] = explode("|", $commit);
 
             if (mustHideCommit($commitHash, $commitAuthor, $commitDate, $commitSubject)) {
                 $noOfHiddenCommits++;
@@ -301,7 +301,7 @@ if (!isset($argv[1]) && !isset($argv[2])) {
     echo "Found tags..." . PHP_EOL;
     echo " - prevTag: $prevTag" . PHP_EOL;
     echo " - currTag: $currTag" . PHP_EOL;
-    file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
+    file_put_contents(__DIR__ . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
 } elseif (isset($argv[1]) && $argv[1] == "all") {
     echo "All-argument was presented. Looking for all tags" . PHP_EOL;
     $completeMarkDown = [];
@@ -322,7 +322,7 @@ if (!isset($argv[1]) && !isset($argv[2])) {
                 $completeMarkDown[] = $markDownLine;
             }
         }
-        file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", $completeMarkDown));
+        file_put_contents(__DIR__ . '/CHANGELOG.md', implode("\n", $completeMarkDown));
     } else {
         echo "No tags were found" . PHP_EOL;
     }
@@ -332,5 +332,5 @@ if (!isset($argv[1]) && !isset($argv[2])) {
     $currTag = $argv[2];
     echo " - prevTag: $prevTag" . PHP_EOL;
     echo " - currTag: $currTag" . PHP_EOL;
-    file_put_contents(dirname(__FILE__) . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
+    file_put_contents(__DIR__ . '/CHANGELOG.md', implode("\n", getMarkDown($prevTag, $currTag)));
 }

@@ -80,7 +80,7 @@ class DocumentTest extends TestCase
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject'));
         $this->assertEquals('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', get_class($this->invokePrivateMethodFromObject($doc, 'getInvoiceObject')));
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getSerializer'));
-        $this->assertEquals('JMS\Serializer\Serializer', get_class($this->invokePrivateMethodFromObject($doc, 'getSerializer')));
+        $this->assertEquals(\JMS\Serializer\Serializer::class, get_class($this->invokePrivateMethodFromObject($doc, 'getSerializer')));
         $this->assertNotNull($this->invokePrivateMethodFromObject($doc, 'getObjectHelper'));
         $this->assertEquals('horstoeko\zugferd\ZugferdObjectHelper', get_class($this->invokePrivateMethodFromObject($doc, 'getObjectHelper')));
     }

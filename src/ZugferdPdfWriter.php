@@ -27,7 +27,7 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @var array
      */
-    protected $files = array();
+    protected $files = [];
 
     /**
      * Contains meta data
@@ -102,7 +102,7 @@ class ZugferdPdfWriter extends PdfFpdi
             if ($this->deterministicModeEnabled === true) {
                 $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
             } else {
-                $this->PDFVersion .= "\n" . '%' . chr(rand(128, 255)) . chr(rand(128, 255)) . chr(rand(128, 255)) . chr(rand(128, 255));
+                $this->PDFVersion .= "\n" . '%' . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255));
             }
         }
     }
@@ -150,7 +150,7 @@ class ZugferdPdfWriter extends PdfFpdi
         }
 
         $mimetype = str_replace('/', '#2F', $mimetype);
-        $this->files[] = array('file' => $file, 'name' => $name, 'desc' => $desc, 'relationship' => $relationship, 'subtype' => $mimetype);
+        $this->files[] = ['file' => $file, 'name' => $name, 'desc' => $desc, 'relationship' => $relationship, 'subtype' => $mimetype];
     }
 
     /**
