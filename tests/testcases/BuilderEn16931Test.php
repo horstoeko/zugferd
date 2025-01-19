@@ -1653,6 +1653,41 @@ class BuilderEn16931Test extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:ApplicableTradePaymentDiscountTerms/ram:ActualDiscountAmount', 0);
     }
 
+    public function testAddDocumentPaymentTermXRechnung(): void
+    {
+        (self::$document)->addDocumentPaymentTermXRechnung("", [14], [2], [100], new DateTime(), "mandate");
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "Payment");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 0, "mandate");
+
+        (self::$document)->addDocumentPaymentTermXRechnung("Payment", [], [], [], new DateTime(), "mandate");
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "Payment");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 0, "mandate");
+
+        (self::$document)->addDocumentPaymentTermXRechnung("Payment", [14], [2], [100], new DateTime(), "mandate");
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "#SKONTO#TAGE=14#PROZENT=2.00#BASISBETRAG=100.00#\nPayment");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 0, "mandate");
+
+        (self::$document)->addDocumentPaymentTermXRechnung("Payment", [14], [2], [], new DateTime(), "mandate");
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description', 0, "#SKONTO#TAGE=14#PROZENT=2.00#\nPayment");
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DueDateDateTime/udt:DateTimeString', 0, (new DateTime())->format("Ymd"), "format", "102");
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID', 0, "mandate");
+    }
+
     public function testAddDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
         (self::$document)->addDocumentReceivableSpecifiedTradeAccountingAccount("accountid", "typecode");
