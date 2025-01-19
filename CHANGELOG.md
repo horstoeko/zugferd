@@ -1,3 +1,14 @@
+## v1.0.104
+
+``Previous version v1.0.103``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [9c37fbe](https://github.com/horstoeko/zugferd/commit/9c37fbe) | 2025-01-19 10:23:02 CET | HorstOeko | [ENH] Added tests for ZugferdDocumentBuilder::addDocumentPaymentTermXRechnung | 
+| :new:  | [7989261](https://github.com/horstoeko/zugferd/commit/7989261) | 2025-01-13 05:46:45 CET | HorstOeko | [ENH] ZugferdDocumentPdfReader uses internally the ZugferdDocumentPdfReaderExt | 
+
+:exclamation: _There are 12 internal commit(s)_
+
 ## v1.0.103
 
 ``Previous version v1.0.102``
