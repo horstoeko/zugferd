@@ -15,6 +15,7 @@ define('DOWNLOADDEF_KEY_CLASSNAMESPACE', 'classnamespace');
 define('DOWNLOADDEF_KEY_TITLE', 'title');
 define('DOWNLOADDEF_KEY_TITLE_LIST', 'titlelist');
 define('DOWNLOADDEF_KEY_SHORTIDENTIFIERS', 'shortidentifiers');
+define('DOWNLOADDEF_KEY_SHORTIDENTIFIERS_LENGTH', 'shortidentifierslength');
 define('DOWNLOADDEF_KEY_ADDMETHODS', 'addmethods');
 define('DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT', false);
 define('DOWNLOADDEF_KEY_DATA_CODEINDEX', 'codeindex');
@@ -69,9 +70,10 @@ function strComment(string $str): string
  *
  * @param  string  $str
  * @param  boolean $shortIdentifier
+ * @param  integer $partLength
  * @return string
  */
-function strIdentifier(string $str, bool $shortIdentifier): string
+function strIdentifier(string $str, bool $shortIdentifier, int $partLength = 4): string
 {
     $strNew = "";
     $str = handleUmlauts($str);
@@ -91,7 +93,7 @@ function strIdentifier(string $str, bool $shortIdentifier): string
             }
 
             if ($shortIdentifier) {
-                $strNew .= substr($item, 0, 4);
+                $strNew .= substr($item, 0, $partLength);
             } else {
                 $strNew .= $item;
             }
@@ -153,16 +155,13 @@ function downloadList(array $fileToDownload): void
             continue;
         }
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $downloadFromUrl);
-        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0");
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        $output = curl_exec($ch);
-        curl_close($ch);
+        $downloadedContent = file_get_contents($downloadFromUrl);
 
-        if (file_put_contents($saveToFile, $output) === false) {
+        if ($downloadedContent=== false) {
+            throw new \Exception('Failed to download the file.');
+        }
+
+        if (file_put_contents($saveToFile, $downloadedContent) === false) {
             throw new \Exception('Failed saved the downloaded file.');
         }
     }
@@ -198,6 +197,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
     $classTitleList = $fileToDownload[DOWNLOADDEF_KEY_TITLE_LIST];
     $classHomepageUrls = is_array($fileToDownload[DOWNLOADDEF_KEY_URL_HP]) ? $fileToDownload[DOWNLOADDEF_KEY_URL_HP] : [$fileToDownload[DOWNLOADDEF_KEY_URL_HP]];
     $classShortIdentifiers = $fileToDownload[DOWNLOADDEF_KEY_SHORTIDENTIFIERS];
+    $classShortIdentifiersLength = $fileToDownload[DOWNLOADDEF_KEY_SHORTIDENTIFIERS_LENGTH] ?? 4;
     $classFilename = PathUtils::combinePathWithFile($classDir, sprintf('%s.php', $className));
     $classConstantPrefixes = is_array($fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]) ? $fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX] : [$fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]];
 
@@ -266,7 +266,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
         foreach ($downloadedContentObjectData as $line) {
             $phpClass
-                ->addConstant(sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers)), $line[$dataCodeIndex])
+                ->addConstant(sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength)), $line[$dataCodeIndex])
                 ->addComment("\n" . (strComment($line[$dataDescIndex] ?? "")) . " (" . (strComment($line[$dataCodeIndex] ?? "")) . ")")
                 ->addComment("\n" . strComment($line[$dataDescLongIndex] ?? ($line[$dataDescIndex] ?? "")));
         }
@@ -300,7 +300,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
             );
 
             foreach ($downloadedContentObjectData as $line) {
-                $phpClassMethod->addBody(sprintf("    static::%s%s,", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers)));
+                $phpClassMethod->addBody(sprintf("    static::%s%s,", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength)));
             }
         }
 
@@ -331,7 +331,227 @@ function createCodeClassFromKositJson(array $fileToDownload): void
             );
 
             foreach ($downloadedContentObjectData as $line) {
-                $phpClassMethod->addBody(sprintf("    static::%s%s => '%s',", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers), strDesc($line[$dataDescIndex])));
+                $phpClassMethod->addBody(sprintf("    static::%s%s => '%s',", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength), strDesc($line[$dataDescIndex])));
+            }
+        }
+
+        $phpClassMethod->addBody('];');
+
+        // Add method which returns an boolean true when code exists otherwise false
+
+        $phpClassMethod = $phpClass->addMethod('checkCodeExists');
+        $phpClassMethod->setFinal();
+        $phpClassMethod->setStatic();
+        $phpClassMethod->setReturnType('bool');
+        $phpClassMethod->addComment("Returns true if a code exists in the list, otherwise false\n");
+        $phpClassMethod->addComment("@param string \$code");
+        $phpClassMethod->addComment("@return boolean");
+        $phpClassMethod->addComment("@codeCoverageIgnore");
+        $phpClassMethod->addParameter('code')->setType("string");
+        $phpClassMethod->addBody('return isset(static::getAllCodes()[$code]);');
+
+        // Add method which returns the description of a code
+
+        $phpClassMethod = $phpClass->addMethod('getCodeDescription');
+        $phpClassMethod->setFinal();
+        $phpClassMethod->setStatic();
+        $phpClassMethod->setReturnType('string');
+        $phpClassMethod->addComment("Returns the description of a code. If code is not found an empty string is returned\n");
+        $phpClassMethod->addComment("@param string \$code");
+        $phpClassMethod->addComment("@return string");
+        $phpClassMethod->addComment("@codeCoverageIgnore");
+        $phpClassMethod->addParameter('code')->setType("string");
+        $phpClassMethod->addBody('if (static::checkCodeExists($code) === true) {');
+        $phpClassMethod->addBody('    return static::getAllCodeDescriptions()[$code];');
+        $phpClassMethod->addBody('}');
+        $phpClassMethod->addBody('');
+        $phpClassMethod->addBody('return "";');
+    }
+
+    // Save generated class to file
+
+    outputLine(sprintf("Saving class to directory\n  %s", $classFilename));
+
+    file_put_contents($classFilename, $phpPrinter->printFile($phpFile));
+}
+
+
+/**
+ * Create a code class
+ *
+ * @return void
+ */
+function createCodeClassFromCsv(array $fileToDownload): void
+{
+    // Define some internal variables
+
+    $classGenerationEnabled = $fileToDownload[DOWNLOADDEF_KEY_ENABLED] ?? false;
+    $classNamespace = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAMESPACE];
+    $className = $fileToDownload[DOWNLOADDEF_KEY_CLASSNAME];
+    $classDir = PathUtils::combineAllPaths(__DIR__, "classes");
+    $classTitle = $fileToDownload[DOWNLOADDEF_KEY_TITLE];
+    $classTitleList = $fileToDownload[DOWNLOADDEF_KEY_TITLE_LIST];
+    $classHomepageUrls = is_array($fileToDownload[DOWNLOADDEF_KEY_URL_HP]) ? $fileToDownload[DOWNLOADDEF_KEY_URL_HP] : [$fileToDownload[DOWNLOADDEF_KEY_URL_HP]];
+    $classShortIdentifiers = $fileToDownload[DOWNLOADDEF_KEY_SHORTIDENTIFIERS];
+    $classShortIdentifiersLength = $fileToDownload[DOWNLOADDEF_KEY_SHORTIDENTIFIERS_LENGTH] ?? 4;
+    $classFilename = PathUtils::combinePathWithFile($classDir, sprintf('%s.php', $className));
+    $classConstantPrefixes = is_array($fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]) ? $fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX] : [$fileToDownload[DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX]];
+
+    $dataCodeIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_CODEINDEX] ?? 0;
+    $dataDescIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_DESCINDEX] ?? 1;
+    $dataDescLongIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_DESCLONGINDEX] ?? 2;
+    $dataSortIndex = $fileToDownload[DOWNLOADDEF_KEY_DATA_SORTINDEX] ?? ($fileToDownload[DOWNLOADDEF_KEY_DATA_CODEINDEX] ?? 0);
+
+    $libName = $fileToDownload[DOWNLOADDEF_LIB_NAME];
+    $libTitle = $fileToDownload[DOWNLOADDEF_LIB_TITLE];
+
+    // Check enabled
+
+    if ($classGenerationEnabled !== true) {
+        outputline(sprintf("Generating class %s is disabled", $className));
+        return;
+    }
+
+    // Logging
+
+    outputline(sprintf("Generating class %s", $className));
+
+    // Check destination directory
+
+    if (!is_file($classDir)) {
+        @mkdir($classDir);
+    }
+
+    // Remove existing class file
+
+    if (file_exists($classFilename)) {
+        @unlink($classFilename);
+    }
+
+    // Create PHP Printer
+
+    $phpPrinter = new Nette\PhpGenerator\Printer;
+
+    // Create PHP File
+
+    $phpFile = new Nette\PhpGenerator\PhpFile;
+    $phpFile->addComment(sprintf("This file is a part of horstoeko/%s.\n\nFor the full copyright and license information, please view the LICENSE\nfile that was distributed with this source code.", $libName));
+
+    // Create PHP Class
+
+    $phpClass = $phpFile->addNamespace($classNamespace)->addClass($className);
+    $phpClass->addComment(sprintf("Class representing %s\nName of list: %s\n\n@category %s\n@package  %s\n@author   D. Erling <horstoeko@erling.com.de>\n@license  https://opensource.org/licenses/MIT MIT\n@link     https://github.com/horstoeko/zugferd", $classTitle, $classTitleList, $libTitle, $libTitle));
+    foreach ($classHomepageUrls as $classHomepageUrl) {
+        $phpClass->addComment(sprintf("@see      %s", $classHomepageUrl));
+    }
+
+    // Fill PHP Class
+
+    foreach ($fileToDownload[DOWNLOADDEF_KEY_TOFILE] as $idx => $dummy) {
+        $downloadedContentObjectData = [];
+
+        if (($handle = fopen($fileToDownload[DOWNLOADDEF_KEY_TOFILE][$idx], "r")) !== false) {
+            while (($row = fgetcsv($handle, null, "|")) !== false) {
+                $downloadedContentObjectData[] = $row;
+            }
+            fclose($handle);
+        } else {
+            echo "Die Datei konnte nicht geöffnet werden.";
+        }
+
+        $constantPrefix = $classConstantPrefixes[$idx] ?? "";
+
+        usort(
+            $downloadedContentObjectData,
+            function ($a, $b) use ($dataSortIndex) {
+                return strcasecmp($a[$dataSortIndex], $b[$dataSortIndex]);
+            }
+        );
+
+        foreach ($downloadedContentObjectData as $line) {
+            $phpClass
+                ->addConstant(sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength)), $line[$dataCodeIndex])
+                ->addComment("\n" . (strComment($line[$dataDescIndex] ?? "")) . " (" . (strComment($line[$dataCodeIndex] ?? "")) . ")")
+                ->addComment("\n" . strComment($line[$dataDescLongIndex] ?? ($line[$dataDescIndex] ?? "")));
+        }
+    }
+
+    // Should methods be added
+
+    if ($fileToDownload[DOWNLOADDEF_KEY_ADDMETHODS] === true) {
+        // Add method which returns a list of all codes to generated class
+
+        $phpClassMethod = $phpClass->addMethod('getAllCodes');
+        $phpClassMethod->setFinal();
+        $phpClassMethod->setStatic();
+        $phpClassMethod->setReturnType('array');
+        $phpClassMethod->addComment("Returns an array of all available codes\n");
+        $phpClassMethod->addComment("@return array");
+        $phpClassMethod->addComment("@codeCoverageIgnore");
+        $phpClassMethod->addBody('return [');
+
+        foreach ($fileToDownload[DOWNLOADDEF_KEY_TOFILE] as $idx => $dummy) {
+            $downloadedContentObjectData = [];
+
+            if (($handle = fopen($fileToDownload[DOWNLOADDEF_KEY_TOFILE][$idx], "r")) !== false) {
+                while (($row = fgetcsv($handle, null, "|")) !== false) {
+                    $downloadedContentObjectData[] = $row;
+                }
+                fclose($handle);
+            } else {
+                echo "Die Datei konnte nicht geöffnet werden.";
+            }
+
+            $constantPrefix = $classConstantPrefixes[$idx] ?? "";
+
+            usort(
+                $downloadedContentObjectData,
+                function ($a, $b) use ($dataSortIndex) {
+                    return strcasecmp($a[$dataSortIndex], $b[$dataSortIndex]);
+                }
+            );
+
+            foreach ($downloadedContentObjectData as $line) {
+                $phpClassMethod->addBody(sprintf("    static::%s%s,", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength)));
+            }
+        }
+
+        $phpClassMethod->addBody('];');
+
+        // Add method which returns an associate array for code => description
+
+        $phpClassMethod = $phpClass->addMethod('getAllCodeDescriptions');
+        $phpClassMethod->setFinal();
+        $phpClassMethod->setStatic();
+        $phpClassMethod->setReturnType('array');
+        $phpClassMethod->addComment("Returns an array of code descriptions indexed by code\n");
+        $phpClassMethod->addComment("@return array");
+        $phpClassMethod->addComment("@codeCoverageIgnore");
+        $phpClassMethod->addBody('return [');
+
+        foreach ($fileToDownload[DOWNLOADDEF_KEY_TOFILE] as $idx => $dummy) {
+            $downloadedContentObjectData = [];
+
+            if (($handle = fopen($fileToDownload[DOWNLOADDEF_KEY_TOFILE][$idx], "r")) !== false) {
+                while (($row = fgetcsv($handle, null, "|")) !== false) {
+                    $downloadedContentObjectData[] = $row;
+                }
+                fclose($handle);
+            } else {
+                echo "Die Datei konnte nicht geöffnet werden.";
+            }
+
+            $constantPrefix = $classConstantPrefixes[$idx] ?? "";
+
+            usort(
+                $downloadedContentObjectData,
+                function ($a, $b) use ($dataSortIndex) {
+                    return strcasecmp($a[$dataSortIndex], $b[$dataSortIndex]);
+                }
+            );
+
+            foreach ($downloadedContentObjectData as $line) {
+                $phpClassMethod->addBody(sprintf("    static::%s%s => '%s',", $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength), strDesc($line[$dataDescIndex])));
             }
         }
 
@@ -384,7 +604,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 function createCodeClasses(array $filesToDownload): void
 {
     foreach ($filesToDownload as $fileToDownload) {
-        $classCreatorFunc = $filesToDownload[DOWNLOADDEF_KEY_CLASSCREATORFUNC] ?? DOWNLOADDEF_KEY_CLASSCREATORFUNC_DEFAULT;
+        $classCreatorFunc = $fileToDownload[DOWNLOADDEF_KEY_CLASSCREATORFUNC] ?? DOWNLOADDEF_KEY_CLASSCREATORFUNC_DEFAULT;
         $classCreatorFunc($fileToDownload);
     }
 }
@@ -649,6 +869,28 @@ $filesToDownload = [
         DOWNLOADDEF_KEY_ADDMETHODS => DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT,
         DOWNLOADDEF_KEY_DATA_SORTINDEX => 1,
         DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
+    ],
+    [
+        DOWNLOADDEF_KEY_ENABLED => true,
+        DOWNLOADDEF_LIB_NAME => 'zugferd',
+        DOWNLOADDEF_LIB_TITLE => 'Zugferd',
+        DOWNLOADDEF_KEY_URL => [
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_1229.csv"),
+        ],
+        DOWNLOADDEF_KEY_TOFILE => [
+            PathUtils::combinePathWithFile(PathUtils::combineAllPaths(__DIR__, "download"), "UNTDID_1229.csv"),
+        ],
+        DOWNLOADDEF_KEY_URL_HP => "https://service.unece.org/trade/untdid/d05a/tred/tred1229.htm",
+        DOWNLOADDEF_KEY_CLASSNAMESPACE => "horstoeko\zugferd\codelists",
+        DOWNLOADDEF_KEY_CLASSNAME => "ZugferdLineStatusCodes",
+        DOWNLOADDEF_KEY_TITLE => "list of codes specifying an action request/notification",
+        DOWNLOADDEF_KEY_TITLE_LIST => "UNTDID 1229 Action request/notification description code",
+        DOWNLOADDEF_KEY_SHORTIDENTIFIERS => true,
+        DOWNLOADDEF_KEY_SHORTIDENTIFIERS_LENGTH => 6,
+        DOWNLOADDEF_KEY_ADDMETHODS => DOWNLOADDEF_KEY_ADDMETHODS_DEFAULT,
+        DOWNLOADDEF_KEY_DATA_SORTINDEX => 0,
+        DOWNLOADDEF_KEY_CLASSCONSTANT_PREFIX => [],
+        DOWNLOADDEF_KEY_CLASSCREATORFUNC => 'createCodeClassFromCsv',
     ],
 ];
 
