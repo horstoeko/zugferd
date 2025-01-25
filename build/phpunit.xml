@@ -42,6 +42,9 @@
         <testsuite name="PDFBuilder">
             <file>../tests/testcases/PdfBuilderEn16931Test.php</file>
         </testsuite>
+        <testsuite name="PDFMerger">
+            <file>../tests/testcases/PdfMergerTest.php</file>
+        </testsuite>
         <testsuite name="Validator">
             <file>../tests/testcases/ValidatorValidTest.php</file>
             <file>../tests/testcases/ValidatorInvalidTest.php</file>
