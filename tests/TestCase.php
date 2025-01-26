@@ -10,6 +10,37 @@ use \PHPUnit\Framework\TestCase as PhpUnitTestCase;
 class TestCase extends PhpUnitTestCase
 {
     /**
+     * Registered files
+     *
+     * @var array<string>
+     */
+    private $registeredFiles = [];
+
+    /**
+     * @inheritDoc
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->registeredFiles = [];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function tearDown(): void
+    {
+        foreach ($this->registeredFiles as $registeredFile) {
+            if (file_exists($registeredFile)) {
+                @unlink($registeredFile);
+            }
+        }
+
+        parent::tearDown();
+    }
+
+    /**
      * Expect notice on php version smaller than 8
      * Expect warning on php version greater or equal than 8
      *
@@ -118,5 +149,16 @@ class TestCase extends PhpUnitTestCase
     {
         $method = $this->getPrivateMethodFromObject($object, $methodName);
         return $method->invoke($object, ...$args);
+    }
+
+    /**
+     * Register a file for teardown
+     *
+     * @param string $filename
+     * @return void
+     */
+    protected function registerFileForTeardown(string $filename): void
+    {
+        $this->registeredFiles[] = $filename;
     }
 }
