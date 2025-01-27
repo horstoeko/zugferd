@@ -15,22 +15,15 @@ class ValidatorValidTest extends TestCase
      */
     protected static $document;
 
-    /**
-     * The validator instance
-     *
-     * @var ZugferdDocumentValidator
-     */
-    protected static $validator;
-
     public static function setUpBeforeClass(): void
     {
         self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . "/../assets/xml_en16931_1.xml");
-        self::$validator = new ZugferdDocumentValidator(self::$document);
     }
 
     public function testValidateDocument(): void
     {
-        $validationResult = self::$validator->validateDocument();
+        $validator = new ZugferdDocumentValidator(self::$document);
+        $validationResult = $validator->validateDocument();
         $this->assertCount(0, $validationResult);
     }
 }
