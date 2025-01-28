@@ -9,12 +9,13 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
-use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
-use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
-use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
+use Throwable;
 use horstoeko\zugferd\ZugferdProfileResolver;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
+use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
+use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 
 /**
  * Class representing the facillity adding existing XML data (file or data-string)
@@ -108,7 +109,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     {
         try {
             return is_file($this->xmlDataOrFilename);
-        } catch (\TypeError $typeError) {
+        } catch (Throwable $throwable) {
             return false;
         }
     }
