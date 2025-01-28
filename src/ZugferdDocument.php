@@ -245,6 +245,10 @@ class ZugferdDocument
             )
         );
 
+        if (ZugferdSettings::hasSerializerCacheDirectory()) {
+            $this->serializerBuilder->setCacheDir(ZugferdSettings::getSerializerCacheDirectory());
+        }
+
         $this->serializerBuilder->addDefaultListeners();
         $this->serializerBuilder->addDefaultHandlers();
 

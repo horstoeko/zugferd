@@ -10,6 +10,7 @@
 namespace horstoeko\zugferd;
 
 use horstoeko\stringmanagement\PathUtils;
+use horstoeko\stringmanagement\StringUtils;
 
 /**
  * Class representing the general settings
@@ -84,6 +85,13 @@ class ZugferdSettings
      * @var array<string,integer>
      */
     protected static $specialDecimalPlacesMaps = [];
+
+    /**
+     * The configured cache directory for the serializer
+     *
+     * @var string
+     */
+    protected static $serializerCacheDirectory = "";
 
     /**
      * Get the number of decimals to use for amount values
@@ -311,6 +319,37 @@ class ZugferdSettings
     {
         ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
         ZugferdSettings::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', $amountDecimals);
+    }
+
+    /**
+     * Set the cache directory for the internal serializer
+     *
+     * @param  string $serializerCacheDirectoty
+     * @return void
+     */
+    public static function setSerializerCacheDirectory(string $serializerCacheDirectoty): void
+    {
+        static::$serializerCacheDirectory = $serializerCacheDirectoty;
+    }
+
+    /**
+     * Returns the cache directory for the internal serializer. This might be empty
+     *
+     * @return string
+     */
+    public static function getSerializerCacheDirectory(): string
+    {
+        return static::$serializerCacheDirectory;
+    }
+
+    /**
+     * Returns true if a cache directory for the internal serializer is configured, otherwise false
+     *
+     * @return boolean
+     */
+    public static function hasSerializerCacheDirectory(): bool
+    {
+        return StringUtils::stringIsNullOrEmpty(static::$serializerCacheDirectory) === false;
     }
 
     /**

@@ -189,4 +189,20 @@ class SettingsTest extends TestCase
         $this->assertSame(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', 2));
         $this->assertSame(6, ZugferdSettings::getSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', 2));
     }
+
+    public function testSerializerCacheDirectory(): void
+    {
+        $this->assertSame('', ZugferdSettings::getSerializerCacheDirectory());
+        $this->assertFalse(ZugferdSettings::hasSerializerCacheDirectory());
+
+        ZugferdSettings::setSerializerCacheDirectory(sys_get_temp_dir());
+
+        $this->assertSame(sys_get_temp_dir(), ZugferdSettings::getSerializerCacheDirectory());
+        $this->assertTrue(ZugferdSettings::hasSerializerCacheDirectory());
+
+        ZugferdSettings::setSerializerCacheDirectory('');
+
+        $this->assertSame('', ZugferdSettings::getSerializerCacheDirectory());
+        $this->assertFalse(ZugferdSettings::hasSerializerCacheDirectory());
+    }
 }
