@@ -665,10 +665,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $pdfData
      * @return boolean
      */
-    private function isFile($pdfData): bool
+    protected function isFile($pdfData): bool
     {
         try {
-            return @is_file($pdfData);
+            return is_file($pdfData);
         } catch (Throwable $throwable) {
             return false;
         }
