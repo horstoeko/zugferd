@@ -667,11 +667,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     protected function isFile($pdfData): bool
     {
-        try {
-            return is_file($pdfData) && !is_link($pdfData) && is_readable($pdfData);
-        } catch (Throwable $throwable) {
-            return false;
-        }
+        return is_file($pdfData);
     }
 
     /**
