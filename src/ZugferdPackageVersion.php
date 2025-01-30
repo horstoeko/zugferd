@@ -10,6 +10,7 @@
 namespace horstoeko\zugferd;
 
 use Composer\InstalledVersions as ComposerInstalledVersions;
+use OutOfBoundsException;
 
 /**
  * Class representing some tools for getting the package version
@@ -23,8 +24,27 @@ use Composer\InstalledVersions as ComposerInstalledVersions;
  */
 class ZugferdPackageVersion
 {
+    /**
+     * Get the installed version of this library
+     *
+     * @return string
+     */
     public static function getInstalledVersion(): string
     {
-        return ComposerInstalledVersions::getVersion('horstoeko/zugferd');
+        try {
+            return ComposerInstalledVersions::getVersion('horstoeko/zugferd') ?? static::getDefaultVersion();
+        } catch (OutOfBoundsException $outOfBoundsException) {
+            return static::getDefaultVersion();
+        }
+    }
+
+    /**
+     * Return the default version used for this package, when no installation was found
+     *
+     * @return string
+     */
+    private static function getDefaultVersion(): string
+    {
+        return "1.0.x";
     }
 }
