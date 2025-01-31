@@ -22,7 +22,7 @@ use OutOfBoundsException;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
  */
-class ZugferdPackageVersion
+final class ZugferdPackageVersion
 {
     /**
      * Get the installed version of this library
