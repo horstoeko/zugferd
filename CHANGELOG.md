@@ -1,3 +1,22 @@
+## v1.0.105
+
+``Previous version v1.0.104``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [b715d90](https://github.com/horstoeko/zugferd/commit/b715d90) | 2025-01-30 14:47:36 CET | HorstOeko | Merged PR | [#251](https://github.com/horstoeko/zugferd/issues/251)
+| :new_moon:  | [95489fd](https://github.com/horstoeko/zugferd/commit/95489fd) | 2025-01-30 14:20:18 CET | HorstOeko | Getting package version fail-safe | [#250](https://github.com/horstoeko/zugferd/issues/250)
+| :new_moon:  | [1fdb8df](https://github.com/horstoeko/zugferd/commit/1fdb8df) | 2025-01-28 11:41:55 CET | HorstOeko | Merged PR | [#247](https://github.com/horstoeko/zugferd/issues/247)
+| :new:  | [563f9da](https://github.com/horstoeko/zugferd/commit/563f9da) | 2025-01-28 11:26:46 CET | HorstOeko | [ENH]  Add Support for Setting SerializerBuilder Cache Directory | [#245](https://github.com/horstoeko/zugferd/issues/245)
+| :new_moon:  | [d758093](https://github.com/horstoeko/zugferd/commit/d758093) | 2025-01-28 10:17:24 CET | HorstOeko | Merged PR | [#246](https://github.com/horstoeko/zugferd/issues/246)
+| :new:  | [69a94f2](https://github.com/horstoeko/zugferd/commit/69a94f2) | 2025-01-28 09:33:06 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
+| :new:  | [4efdc37](https://github.com/horstoeko/zugferd/commit/4efdc37) | 2025-01-28 09:27:42 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
+| :new:  | [d3fcfc4](https://github.com/horstoeko/zugferd/commit/d3fcfc4) | 2025-01-28 08:45:12 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
+| :new_moon:  | [45524d7](https://github.com/horstoeko/zugferd/commit/45524d7) | 2025-01-28 05:17:19 CET | HorstOeko | Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
+| :new_moon:  | [dfc2b17](https://github.com/horstoeko/zugferd/commit/dfc2b17) | 2025-01-22 16:54:08 CET | HorstOeko | Added Codelist UNTDID 1229 (ZugferdLineStatusCodes) | 
+
+:exclamation: _There are 8 internal commit(s)_
+
 ## v1.0.104
 
 ``Previous version v1.0.103``
