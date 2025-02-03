@@ -108,7 +108,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     protected function xmlDataIsFile(): bool
     {
         try {
-            return is_file($this->xmlDataOrFilename);
+            return @is_file($this->xmlDataOrFilename);
         } catch (Throwable $throwable) {
             return false;
         }
