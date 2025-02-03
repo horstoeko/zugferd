@@ -1,3 +1,14 @@
+## v1.0.106
+
+``Previous version v1.0.105``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [e575f67](https://github.com/horstoeko/zugferd/commit/e575f67) | 2025-02-03 14:26:12 CET | HorstOeko | Merged PR | [#254](https://github.com/horstoeko/zugferd/issues/254)
+| :bug:  | [2283f2e](https://github.com/horstoeko/zugferd/commit/2283f2e) | 2025-02-03 13:58:02 CET | HorstOeko | [FIX]  Fixed issues regarding the use of is_file | [#253](https://github.com/horstoeko/zugferd/issues/253)
+
+:exclamation: _There is one internal commit_
+
 ## v1.0.105
 
 ``Previous version v1.0.104``
