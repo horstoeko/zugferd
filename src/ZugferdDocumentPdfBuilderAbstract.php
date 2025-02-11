@@ -579,7 +579,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descXmp = $descriptionNodes[5];
         $xmpNodes = $descXmp->children('xmp', true);
-        $xmpNodes->{'CreatorTool'} = $this->getCreatorToolName();
+        $creatorTool = $this->getCreatorToolName();
+        $xmpNodes->{'CreatorTool'} = $creatorTool;
         $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
         $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
         $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
@@ -588,6 +589,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $this->pdfWriter->SetKeywords($pdfMetadataInfos['keywords'], true);
         $this->pdfWriter->SetTitle($pdfMetadataInfos['title'], true);
         $this->pdfWriter->SetSubject($pdfMetadataInfos['subject'], true);
+        $this->pdfWriter->SetCreator($creatorTool, true);
     }
 
     /**
