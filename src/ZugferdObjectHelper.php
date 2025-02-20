@@ -1467,6 +1467,10 @@ class ZugferdObjectHelper
             return DateTime::createFromFormat("YmdHis", $dateTimeString);
         }
 
+        if ($format == "610") {
+            return DateTime::createFromFormat("Ym", $dateTimeString)->modify('first day of')->modify('midnight');
+        }
+
         throw new ZugferdUnknownDateFormatException($format);
     }
 
