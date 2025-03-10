@@ -1,3 +1,18 @@
+## v1.0.107
+
+``Previous version v1.0.106``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [cd3c84c](https://github.com/horstoeko/zugferd/commit/cd3c84c) | 2025-03-10 16:28:18 CET | HorstOeko | Added missing methods for BT-128 to ZugferdDocumentReader | [#268](https://github.com/horstoeko/zugferd/issues/268)
+| :new_moon:  | [9a66046](https://github.com/horstoeko/zugferd/commit/9a66046) | 2025-03-10 16:09:49 CET | HorstOeko | Added missing methods for BT-128 to ZugferdDocumentReader | [#268](https://github.com/horstoeko/zugferd/issues/268)
+| :new_moon:  | [1777430](https://github.com/horstoeko/zugferd/commit/1777430) | 2025-02-20 13:00:29 CET | HorstOeko | Merged PR | [#260](https://github.com/horstoeko/zugferd/issues/260)
+| :new:  | [278a744](https://github.com/horstoeko/zugferd/commit/278a744) | 2025-02-20 12:50:38 CET | HorstOeko | [ENH]  Added support for Date-Format 610 | [#259](https://github.com/horstoeko/zugferd/issues/259)
+| :new_moon:  | [df2cf8a](https://github.com/horstoeko/zugferd/commit/df2cf8a) | 2025-02-11 19:14:34 CET | HorstOeko | Merged PR | [#256](https://github.com/horstoeko/zugferd/issues/256)
+| :new_moon:  | [2a21fc5](https://github.com/horstoeko/zugferd/commit/2a21fc5) | 2025-02-11 16:36:44 CET | wurst-hans | Add creator tool name to meta data | 
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v1.0.106
 
 ``Previous version v1.0.105``
