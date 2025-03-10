@@ -204,6 +204,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $positionAddRefDocPointer = 0;
 
     /**
+     * Internal pointer for the position's additional referenced document (Object reference)
+     *
+     * @var integer
+     */
+    private $positionAddRefObjDocPointer = 0;
+
+    /**
      * Internal pointer for the positions product characteristics
      *
      * @var integer
@@ -2794,6 +2801,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionTaxPointer = 0;
         $this->positionAllowanceChargePointer = 0;
         $this->positionAddRefDocPointer = 0;
+        $this->positionAddRefObjDocPointer = 0;
         $this->positionProductCharacteristicPointer = 0;
         $this->positionProductClassificationPointer = 0;
         $this->positionReferencedProductPointer = 0;
@@ -2818,6 +2826,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $this->positionTaxPointer = 0;
         $this->positionAllowanceChargePointer = 0;
         $this->positionAddRefDocPointer = 0;
+        $this->positionAddRefObjDocPointer = 0;
         $this->positionProductCharacteristicPointer = 0;
         $this->positionProductClassificationPointer = 0;
         $this->positionReferencedProductPointer = 0;
@@ -3329,6 +3338,67 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
+
+        return $this;
+    }
+
+
+    /**
+     * Seek to the first documents position additional referenced document (Object detection at the level of the accounting position).
+     * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        $this->positionAddRefObjDocPointer = 0;
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
+    }
+
+    /**
+     * Seek to the next documents position additional referenced document (Object detection at the level of the accounting position).
+     * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        $this->positionAddRefObjDocPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
+    }
+
+    /**
+     * Details of an additional Document reference (Object detection at the level of the accounting position) (on position level)
+     *
+     * @param  string|null   $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string|null   $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null   $refTypeCode      __BT-128-1, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionAdditionalReferencedObjDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$refTypeCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+        $addRefDoc = $addRefDoc[$this->positionAddRefObjDocPointer];
+
+        $typeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $refTypeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
 
         return $this;
     }
