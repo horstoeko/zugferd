@@ -114,6 +114,7 @@
 				</ram:AdditionalReferencedDocument>
 				<ram:ReceivableSpecifiedTradeAccountingAccount>
 					<ram:ID>567</ram:ID>
+                    <ram:TypeCode>1</ram:TypeCode>
 				</ram:ReceivableSpecifiedTradeAccountingAccount>
 			</ram:SpecifiedLineTradeSettlement>
 		</ram:IncludedSupplyChainTradeLineItem>
@@ -196,6 +197,7 @@
 				</ram:AdditionalReferencedDocument>
 				<ram:ReceivableSpecifiedTradeAccountingAccount>
 					<ram:ID>567</ram:ID>
+                    <ram:TypeCode>2</ram:TypeCode>
 				</ram:ReceivableSpecifiedTradeAccountingAccount>
 			</ram:SpecifiedLineTradeSettlement>
 		</ram:IncludedSupplyChainTradeLineItem>
@@ -278,6 +280,7 @@
 				</ram:AdditionalReferencedDocument>
 				<ram:ReceivableSpecifiedTradeAccountingAccount>
 					<ram:ID>740</ram:ID>
+                    <ram:TypeCode>3</ram:TypeCode>
 				</ram:ReceivableSpecifiedTradeAccountingAccount>
 			</ram:SpecifiedLineTradeSettlement>
 		</ram:IncludedSupplyChainTradeLineItem>
@@ -1322,6 +1325,14 @@
 				<ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
 				<ram:DuePayableAmount>1028.31</ram:DuePayableAmount>
 			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+            <ram:ReceivableSpecifiedTradeAccountingAccount>
+                <ram:ID>567</ram:ID>
+                <ram:TypeCode>1</ram:TypeCode>
+            </ram:ReceivableSpecifiedTradeAccountingAccount>
+            <ram:ReceivableSpecifiedTradeAccountingAccount>
+                <ram:ID>740</ram:ID>
+                <ram:TypeCode>2</ram:TypeCode>
+            </ram:ReceivableSpecifiedTradeAccountingAccount>
 		</ram:ApplicableHeaderTradeSettlement>
 	</rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

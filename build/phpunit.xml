@@ -61,6 +61,7 @@
             <file>../tests/testcases/issues/Issue113Test.php</file>
             <file>../tests/testcases/issues/Issue206Test.php</file>
             <file>../tests/testcases/issues/Issue268Test.php</file>
+            <file>../tests/testcases/issues/Issue270Test.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

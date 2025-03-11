@@ -162,6 +162,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $documentInvRefDocPointer = 0;
 
     /**
+     * Internal pointer for documents trade accounting accounts
+     *
+     * @var integer
+     */
+    private $documentTradeAccountingAccountPointer = 0;
+
+    /**
      * Internal pointer for the position
      *
      * @var integer
@@ -2787,6 +2794,54 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Seek to the first trade accounting account of the document. Returns true if a first account is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
+     *
+     * @return boolean
+     */
+    public function firstDocumentTradeAccountingAccount(): bool
+    {
+        $this->documentTradeAccountingAccountPointer = 0;
+
+        $acccounts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getReceivableSpecifiedTradeAccountingAccount", []));
+
+        return isset($acccounts[$this->documentTradeAccountingAccountPointer]);
+    }
+
+    /**
+     * Seek to the next trade accounting account of the document. Returns true if another account is available, otherwise false
+     * You may use this together with ZugferdDocumentReader::getDocumentSellerContact
+     *
+     * @return boolean
+     */
+    public function nextDocumentTradeAccountingAccount(): bool
+    {
+        $this->documentTradeAccountingAccountPointer++;
+
+        $acccounts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getReceivableSpecifiedTradeAccountingAccount", []));
+
+        return isset($acccounts[$this->documentTradeAccountingAccountPointer]);
+    }
+
+    /**
+     * Get information on the booking reference (on document level)
+     *
+     * @param  null|string &$id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param  null|string &$typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentReceivableSpecifiedTradeAccountingAccount(?string &$id, ?string &$typeCode): ZugferdDocumentReader
+    {
+        $acccounts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getReceivableSpecifiedTradeAccountingAccount", []));
+        $acccounts = $acccounts[$this->documentTradeAccountingAccountPointer];
+
+        $id = $this->getInvoiceValueByPathFrom($acccounts, "getId.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($acccounts, "getTypeCode.value", "");
+
+        return $this;
+    }
+
+    /**
      * Seek to the first document position. Returns true if the first position is available, otherwise false
      * You may use it together with getDocumentPositionGenerals
      *
@@ -3920,7 +3975,23 @@ class ZugferdDocumentReader extends ZugferdDocument
         return $this;
     }
 
-    //TODO: Seeker for documents position TradeAccountingAccount
+    /**
+     * Get information on the booking reference (on position level)
+     *
+     * @param null|string &$id       __BT-133, From EN 16931__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param null|string &$typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionReceivableSpecifiedTradeAccountingAccount(?string &$id, ?string &$typeCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $id = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getReceivableSpecifiedTradeAccountingAccount.getId.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getReceivableSpecifiedTradeAccountingAccount.getTypeCode.value", "");
+
+        return $this;
+    }
 
     /**
      * Function to return a value from $invoiceObject by path
