@@ -753,7 +753,7 @@ class KositValidatorTest extends TestCase
     /**
      * Clear message bag assertions
      *
-     * @param ZugferdKositValidator $kositValidator
+     * @param  ZugferdKositValidator $kositValidator
      * @return void
      */
     private function assertClearMessageBag(ZugferdKositValidator $kositValidator): void
@@ -765,7 +765,7 @@ class KositValidatorTest extends TestCase
     /**
      * Invoke cleanup directories
      *
-     * @param ZugferdKositValidator $kositValidator
+     * @param  ZugferdKositValidator $kositValidator
      * @return void
      */
     private function invokeCleanup(ZugferdKositValidator $kositValidator): void

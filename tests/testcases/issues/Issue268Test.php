@@ -7,10 +7,6 @@ use horstoeko\zugferd\ZugferdDocumentReader;
 
 class Issue268Test extends TestCase
 {
-    /**
-     * EN16931
-     */
-
     public function testBTX27(): void
     {
         $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
@@ -32,10 +28,6 @@ class Issue268Test extends TestCase
 
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedObjDocument());
     }
-
-    /**
-     * EXTENDED
-     */
 
     public function testBTX27Extended(): void
     {

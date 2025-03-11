@@ -154,7 +154,7 @@ class TestCase extends PhpUnitTestCase
     /**
      * Register a file for teardown
      *
-     * @param string $filename
+     * @param  string $filename
      * @return void
      */
     protected function registerFileForTeardown(string $filename): void
