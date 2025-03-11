@@ -2428,7 +2428,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentReceivableSpecifiedTradeAccountingAccount(?string $id, ?string $typeCode): ZugferdDocumentBuilder
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToReceivableSpecifiedTradeAccountingAccount", $account);
+        $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
         return $this;
     }
 
