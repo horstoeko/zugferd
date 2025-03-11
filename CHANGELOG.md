@@ -1,3 +1,16 @@
+## v1.0.109
+
+``Previous version v1.0.108``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [af678af](https://github.com/horstoeko/zugferd/commit/af678af) | 2025-03-11 12:36:08 CET | HorstOeko | [FIX]  Fixed naming of TradeAccountingAccount-Methods in ZugferdDocumentReader | [#270](https://github.com/horstoeko/zugferd/issues/270)
+| :new_moon:  | [0009a03](https://github.com/horstoeko/zugferd/commit/0009a03) | 2025-03-11 12:29:34 CET | HorstOeko | Merged PR | [#271](https://github.com/horstoeko/zugferd/issues/271)
+| :new:  | [66b73d0](https://github.com/horstoeko/zugferd/commit/66b73d0) | 2025-03-11 12:13:43 CET | HorstOeko | [ENH]  Added methods to read ReceivableSpecifiedTradeAccountingAccounts on document- and position-level | [#270](https://github.com/horstoeko/zugferd/issues/270)
+| :bug:  | [498f1a3](https://github.com/horstoeko/zugferd/commit/498f1a3) | 2025-03-11 10:47:18 CET | HorstOeko | [FIX] TradeAccountingAccount in ZugferdDocumentBuilder | 
+
+:exclamation: _There are 5 internal commit(s)_
+
 ## v1.0.108
 
 ``Previous version v1.0.107``
