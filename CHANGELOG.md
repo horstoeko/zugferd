@@ -1,3 +1,13 @@
+## v1.0.108
+
+``Previous version v1.0.107``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [a9866c6](https://github.com/horstoeko/zugferd/commit/a9866c6) | 2025-03-11 01:44:23 CET | HorstOeko | [ENH] Added method for BT-128 to ZugferdDocumentBuilder | 
+
+:exclamation: _There is one internal commit_
+
 ## v1.0.107
 
 ``Previous version v1.0.106``
