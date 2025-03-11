@@ -9,7 +9,7 @@ class Issue270Test extends TestCase
 {
     public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268.xml');
 
         $this->assertTrue($document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
 
@@ -23,7 +23,7 @@ class Issue270Test extends TestCase
 
     public function testDocumentPositionReceivableSpecifiedTradeAccountingAccount(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268.xml');
 
         $this->assertTrue($document->firstDocumentPosition());
 
@@ -49,7 +49,7 @@ class Issue270Test extends TestCase
 
     public function testDocumentReceivableSpecifiedTradeAccountingAccountExtended(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268_extended.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
 
         $this->assertTrue($document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
 
@@ -70,7 +70,7 @@ class Issue270Test extends TestCase
 
     public function testDocumentPositionReceivableSpecifiedTradeAccountingAccountExtended(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268_extended.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
 
         $this->assertTrue($document->firstDocumentPosition());
 

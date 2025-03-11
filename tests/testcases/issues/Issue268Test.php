@@ -9,14 +9,14 @@ class Issue268Test extends TestCase
 {
     public function testBTX27(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268.xml');
 
         $this->assertFalse($document->firstDocumentPositionAdditionalReferencedDocument());
     }
 
     public function testBT128(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268.xml');
 
         $this->assertTrue($document->firstDocumentPositionAdditionalReferencedObjDocument());
 
@@ -31,7 +31,7 @@ class Issue268Test extends TestCase
 
     public function testBTX27Extended(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268_extended.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
 
         $this->assertTrue($document->firstDocumentPositionAdditionalReferencedDocument());
 
@@ -46,7 +46,7 @@ class Issue268Test extends TestCase
 
     public function testBT128Extended(): void
     {
-        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268_extended.xml');
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
 
         $this->assertTrue($document->firstDocumentPositionAdditionalReferencedObjDocument());
 
