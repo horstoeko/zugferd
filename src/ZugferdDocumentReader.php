@@ -3383,9 +3383,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Details of an additional Document reference (Object detection at the level of the accounting position) (on position level)
      *
-     * @param  string|null   $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string|null   $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $refTypeCode      __BT-128-1, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  string|null $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string|null $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionAdditionalReferencedObjDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$refTypeCode): ZugferdDocumentReader
