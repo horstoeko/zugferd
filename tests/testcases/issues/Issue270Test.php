@@ -11,14 +11,14 @@ class Issue270Test extends TestCase
     {
         $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268.xml');
 
-        $this->assertTrue($document->firstDocumentTradeAccountingAccount());
+        $this->assertTrue($document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
         $this->assertSame("567", $accountId);
         $this->assertSame("", $accountType);
 
-        $this->assertFalse($document->nextDocumentTradeAccountingAccount());
+        $this->assertFalse($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
 
     public function testDocumentPositionReceivableSpecifiedTradeAccountingAccount(): void
@@ -51,21 +51,21 @@ class Issue270Test extends TestCase
     {
         $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/xml_issue_268_extended.xml');
 
-        $this->assertTrue($document->firstDocumentTradeAccountingAccount());
+        $this->assertTrue($document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
         $this->assertSame("567", $accountId);
         $this->assertSame("1", $accountType);
 
-        $this->assertTrue($document->nextDocumentTradeAccountingAccount());
+        $this->assertTrue($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
         $this->assertSame("740", $accountId);
         $this->assertSame("2", $accountType);
 
-        $this->assertFalse($document->nextDocumentTradeAccountingAccount());
+        $this->assertFalse($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
 
     public function testDocumentPositionReceivableSpecifiedTradeAccountingAccountExtended(): void

@@ -1056,8 +1056,8 @@ class ReaderExtendedTest extends TestCase
 
     public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
-        $this->assertFalse(self::$document->firstDocumentTradeAccountingAccount());
-        $this->assertFalse(self::$document->nextDocumentTradeAccountingAccount());
+        $this->assertFalse(self::$document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
+        $this->assertFalse(self::$document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
 
     public function testDocumentPositionLoop(): void

@@ -2799,7 +2799,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @return boolean
      */
-    public function firstDocumentTradeAccountingAccount(): bool
+    public function firstDocumentReceivableSpecifiedTradeAccountingAccount(): bool
     {
         $this->documentTradeAccountingAccountPointer = 0;
 
@@ -2814,7 +2814,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * @return boolean
      */
-    public function nextDocumentTradeAccountingAccount(): bool
+    public function nextDocumentReceivableSpecifiedTradeAccountingAccount(): bool
     {
         $this->documentTradeAccountingAccountPointer++;
 
