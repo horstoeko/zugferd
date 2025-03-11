@@ -985,6 +985,12 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
+    public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
+    {
+        $this->assertFalse(self::$document->firstDocumentTradeAccountingAccount());
+        $this->assertFalse(self::$document->nextDocumentTradeAccountingAccount());
+    }
+
     public function testDocumentPositionLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());

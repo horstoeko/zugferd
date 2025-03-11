@@ -1773,6 +1773,7 @@ class BuilderEn16931Test extends TestCase
         (self::$document)->setDocumentPositionBillingPeriod(new DateTime(), new DateTime());
         (self::$document)->addDocumentPositionAllowanceCharge(10.0, true, 19.0, 10.0, "reasoncode", "reason");
         (self::$document)->setDocumentPositionLineSummation(100);
+        (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid2", "acctypecode2");
         (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
         (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new DateTime());
         (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new DateTime());

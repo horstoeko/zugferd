@@ -980,6 +980,18 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
 
+    public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentTradeAccountingAccount());
+
+        self::$document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
+
+        $this->assertSame("BUYER ACCOUNT REF", $accountId);
+        $this->assertSame("", $accountType);
+
+        $this->assertFalse(self::$document->nextDocumentTradeAccountingAccount());
+    }
+
     public function testDocumentPositionLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentPosition());
