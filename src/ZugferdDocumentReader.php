@@ -3978,8 +3978,8 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get information on the booking reference (on position level)
      *
-     * @param null|string &$id       __BT-133, From EN 16931__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
-     * @param null|string &$typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @param  null|string &$id       __BT-133, From EN 16931__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param  null|string &$typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionReceivableSpecifiedTradeAccountingAccount(?string &$id, ?string &$typeCode): ZugferdDocumentReader
