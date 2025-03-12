@@ -29,6 +29,20 @@ class Issue268Test extends TestCase
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedObjDocument());
     }
 
+    public function testBTX331(): void
+    {
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268.xml');
+
+        $this->assertTrue($document->firstDocumentPositionAdditionalReferencedObjDocument());
+
+        $document->getDocumentPositionInvoiceReferencedDocument($issuerAssignedId, $lineid, $typeCode, $issueDate);
+
+        $this->assertSame("", $issuerAssignedId);
+        $this->assertSame("", $lineid);
+        $this->assertSame("", $typeCode);
+        $this->assertNull($issueDate);
+    }
+
     public function testBTX27Extended(): void
     {
         $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
@@ -65,5 +79,19 @@ class Issue268Test extends TestCase
         $this->assertSame("ABZ (2)", $refTypeCode);
 
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedObjDocument());
+    }
+
+    public function testBTX331Extended(): void
+    {
+        $document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../../assets/issues/xml_issue_268_extended.xml');
+
+        $this->assertTrue($document->firstDocumentPositionAdditionalReferencedObjDocument());
+
+        $document->getDocumentPositionInvoiceReferencedDocument($issuerAssignedId, $lineid, $typeCode, $issueDate);
+
+        $this->assertSame("INV-1", $issuerAssignedId);
+        $this->assertSame("1", $lineid);
+        $this->assertSame("71", $typeCode);
+        $this->assertNotNull($issueDate);
     }
 }

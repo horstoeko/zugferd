@@ -3248,6 +3248,28 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add a Reference to the previous invoice (on position level)
+     *
+     * To be used if:
+     *  - a previous invoice is corrected
+     *  - reference is made from a final invoice to previous partial invoices
+     *  - reference is made from a final invoice to previous invoices for advance payments.     *
+     *
+     * @param  string        $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
+     * @param  string        $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
+     * @param  string|null   $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionInvoiceReferencedDocument(string $issuerAssignedId, string $lineid, ?string $typeCode = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
+    {
+        $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
+        $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineid, $typeCode, null, null, $issueDate, null);
+        $this->getObjectHelper()->tryCall($positionsettlement, "setInvoiceReferencedDocument", $invoicerefdoc);
+        return $this;
+    }
+
+    /**
      * Add an additional Document reference on a position (Object detection)
      *
      * @param  string      $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.

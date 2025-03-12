@@ -3436,6 +3436,31 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get a Reference to the previous invoice (on position level)
+     *
+     * @param  string|null   $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
+     * @param  string|null   $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$lineid, ?string &$typeCode, ?DateTime &$issueDate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getLineID.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getTypeCode.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
      * Details of an additional Document reference (Object detection at the level of the accounting position) (on position level)
      *
      * @param  string|null $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
