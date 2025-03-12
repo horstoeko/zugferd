@@ -2413,19 +2413,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add information on the booking reference
      *
      * @param string      $id       __BT-19, From BASIC WL__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
-     * @param string|null $typeCode __BT-X-290, From EXTENDED__ Type of the posting reference
-     *
-     *                              Allowed values:
-     *                              - 1 Financial
-     *                              - 2 Subsidiary
-     *                              - 3 Budget
-     *                              - 4 Cost Accounting
-     *                              - 5 Payable
-     *                              - 6 Job Cose Accounting
-     *
+     * @param string|null $typeCode __BT-X-290, From EXTENDED__ Type of the posting reference. Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentReceivableSpecifiedTradeAccountingAccount(?string $id, ?string $typeCode): ZugferdDocumentBuilder
+    public function addDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode = null): ZugferdDocumentBuilder
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
@@ -3275,20 +3266,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an AccountingAccount on position level
      *
-     * @param string      $id       __BT-133, From COMFORT__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
-     * @param string|null $typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
-     *
-     *                              Allowed values:
-     *                              - 1 Financial
-     *                              - 2 Subsidiary
-     *                              - 3 Budget
-     *                              - 4 Cost Accounting
-     *                              - 5 Payable
-     *                              - 6 Job Cose Accounting
-     *
+     * @param string      $id       __BT-133, From EN 16931__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param string|null $typeCode __BT-X-99, From EXTENDED__ Type of the posting reference. Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentPositionReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode): ZugferdDocumentBuilder
+    public function addDocumentPositionReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode = null): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
