@@ -49,7 +49,7 @@ class Issue268Test extends TestCase
 
         $this->assertTrue($document->firstDocumentPositionAdditionalReferencedDocument());
 
-        $document->getDocumentPositionAdditionalReferencedDocument($issuerAssignedId, $typeCode, $uriId, $lineId, $name, $refTypeCode, $issueDate);
+        $document->getDocumentPositionAdditionalReferencedDocument($issuerAssignedId, $typeCode, $uriId, $lineId, $name, $refTypeCode, $issueDate, $binaryDataFilename);
 
         $this->assertSame("WAT PL 120", $issuerAssignedId);
         $this->assertSame("130", $typeCode);

@@ -2090,7 +2090,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  string|null   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentReader
      */
-    public function getDocumentAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId = null, ?array &$name = null, ?string &$refTypeCode = null, ?DateTime &$issueDate = null, ?string &$binaryDataFilename = null): ZugferdDocumentReader
+    public function getDocumentAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate, ?string &$binaryDataFilename): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentAddRefDocPointer];
@@ -2104,6 +2104,7 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
+
         $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
 
@@ -2181,7 +2182,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
      * @param DateTime|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      */
-    public function getDocumentInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?DateTime &$issueDate = null): ZugferdDocumentReader
+    public function getDocumentInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $invoiceRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceReferencedDocument", []);
         $invoiceRefDoc = $invoiceRefDoc[$this->documentInvRefDocPointer];
@@ -2679,7 +2680,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  array|null  $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return ZugferdDocumentReader
      */
-    public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes = null, ?array &$taxCategoryCodes = null, ?array &$rateApplicablePercents = null): ZugferdDocumentReader
+    public function getDocumentLogisticsServiceCharge(?string &$description, ?float &$appliedAmount, ?array &$taxTypeCodes, ?array &$taxCategoryCodes, ?array &$rateApplicablePercents): ZugferdDocumentReader
     {
         $serviceCharge = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedLogisticsServiceCharge", []);
         $serviceCharge = $serviceCharge[$this->documentLogisticServiceChargePointer];
@@ -3410,16 +3411,17 @@ class ZugferdDocumentReader extends ZugferdDocument
      *   ZugferdDocumentReader::nextDocumentAdditionalReferencedDocument to seek between multiple additional referenced
      *   documents
      *
-     * @param  string|null   $issuerAssignedId __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string|null   $typeCode         __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $uriId            __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  string|null   $lineId           __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  array|null    $name             __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null   $refTypeCode      __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTime|null $issueDate        __BT-X-33, From EXTENDED__ Document date
+     * @param  string|null   $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string|null   $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null   $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  string|null   $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  array|null    $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null   $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTime|null $issueDate          __BT-X-33, From EXTENDED__ Document date
+     * @param  string|null   $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?string &$lineId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate): ZugferdDocumentReader
+    public function getDocumentPositionAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?string &$lineId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate, ?string &$binaryDataFilename): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
@@ -3437,6 +3439,19 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
+
+        $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
+        $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
+
+        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
+            && StringUtils::stringIsNullOrEmpty($binarydata) === false
+            && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
+        ) {
+            $binaryDataFilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binaryDataFilename);
+            FileUtils::base64ToFile($binarydata, $binaryDataFilename);
+        } else {
+            $binaryDataFilename = "";
+        }
 
         return $this;
     }
@@ -3640,7 +3655,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  DateTime|null $issueDate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return ZugferdDocumentReader
      */
-    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerAssignedId, ?string &$lineId = null, ?DateTime &$issueDate = null): ZugferdDocumentReader
+    public function getDocumentPositionDespatchAdviceReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
     {
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
