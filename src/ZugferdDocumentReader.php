@@ -348,6 +348,7 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString", ""),
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString.getFormat", "")
         );
+
         return $this;
     }
 
@@ -362,6 +363,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     {
         $creditorReferenceID = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getCreditorReferenceID.value", "");
         $paymentReference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPaymentReference.value", "") ?? "";
+
         return $this;
     }
 
@@ -374,6 +376,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getIsDocumentCopy(?bool &$copyIndicator): ZugferdDocumentReader
     {
         $copyIndicator = $this->getInvoiceValueByPath("getExchangedDocument.getCopyIndicator.getIndicator", false);
+
         return $this;
     }
 
@@ -386,6 +389,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getIsTestDocument(?bool &$testDocumentIndicator): ZugferdDocumentReader
     {
         $testDocumentIndicator = $this->getInvoiceValueByPath("getExchangedDocumentContext.getTestIndicator.getIndicator", false);
+
         return $this;
     }
 
@@ -465,6 +469,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentBuyerReference(?string &$buyerReference): ZugferdDocumentReader
     {
         $buyerReference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
+
         return $this;
     }
 
@@ -600,7 +605,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentSellerContact(?string &$contactPersonname, ?string &$contactDepartmentname, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentSellerContactPointer];
+
         $contactPersonname = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentname = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -757,7 +764,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentBuyerContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentBuyerContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -914,7 +923,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentSellerTaxRepresentativeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentSellerTaxRepresentativeContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1057,7 +1068,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentProductEndUserContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getProductEndUserTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentProductEndUserContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1199,7 +1212,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentShipToContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1341,7 +1356,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentUltimateShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentUltimateShipToContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1484,7 +1501,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentShipFromContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.getShipFromTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentShipFromContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1626,7 +1645,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentInvoicerContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoicerTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentInvoicerContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1769,7 +1790,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentInvoiceeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceeTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentInvoiceeContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -1913,7 +1936,9 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function getDocumentPayeeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
     {
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getPayeeTradeParty.getDefinedTradeContact", []));
+
         $contact = $contacts[$this->documentPayeeContactPointer];
+
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
         $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
@@ -2081,6 +2106,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         );
         $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
+
         if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
@@ -3229,6 +3255,22 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Sets the detailed information on the product origin
+     *
+     * @param  string|null $country __BT-159, From EN 16931__ The code indicating the country the goods came from. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionProductOriginTradeCountry(?string &$country): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $country = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedTradeProduct.getOriginTradeCountry.getID.value", "");
+
+        return $this;
+    }
+
+    /**
      * Get details of a related sales order reference
      *
      * @param  string|null   $issuerAssignedId __BT-X-537, From EXTENDED__ Document number of a sales order reference
@@ -3329,10 +3371,12 @@ class ZugferdDocumentReader extends ZugferdDocument
     public function firstDocumentPositionAdditionalReferencedDocument(): bool
     {
         $this->positionAddRefDocPointer = 0;
+
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
         $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getAdditionalReferencedDocument", []));
+
         return isset($addRefDoc[$this->positionAddRefDocPointer]);
     }
 
@@ -3393,92 +3437,6 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", null),
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", null)
         );
-
-        return $this;
-    }
-
-
-    /**
-     * Seek to the first documents position additional referenced document (Object detection at the level of the accounting position).
-     * Returns true if the first position is available, otherwise false
-     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
-     *
-     * @return boolean
-     */
-    public function firstDocumentPositionAdditionalReferencedObjDocument(): bool
-    {
-        $this->positionAddRefObjDocPointer = 0;
-        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
-        $tradeLineItem = $tradeLineItem[$this->positionPointer];
-
-        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
-
-        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
-    }
-
-    /**
-     * Seek to the next documents position additional referenced document (Object detection at the level of the accounting position).
-     * Returns true if the first position is available, otherwise false
-     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
-     *
-     * @return boolean
-     */
-    public function nextDocumentPositionAdditionalReferencedObjDocument(): bool
-    {
-        $this->positionAddRefObjDocPointer++;
-
-        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
-        $tradeLineItem = $tradeLineItem[$this->positionPointer];
-
-        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
-
-        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
-    }
-
-    /**
-     * Get a Reference to the previous invoice (on position level)
-     *
-     * @param  string|null   $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
-     * @param  string|null   $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
-     * @param  DateTime|null $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
-     * @return ZugferdDocumentReader
-     */
-    public function getDocumentPositionInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$lineid, ?string &$typeCode, ?DateTime &$issueDate): ZugferdDocumentReader
-    {
-        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
-        $tradeLineItem = $tradeLineItem[$this->positionPointer];
-
-        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getIssuerAssignedID.value", "");
-        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getLineID.value", "");
-        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getTypeCode.value", "");
-        $issueDate = $this->getObjectHelper()->toDateTime(
-            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
-            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
-        );
-
-        return $this;
-    }
-
-    /**
-     * Details of an additional Document reference (Object detection at the level of the accounting position) (on position level)
-     *
-     * @param  string|null $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string|null $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @return ZugferdDocumentReader
-     */
-    public function getDocumentPositionAdditionalReferencedObjDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$refTypeCode): ZugferdDocumentReader
-    {
-        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
-        $tradeLineItem = $tradeLineItem[$this->positionPointer];
-
-        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
-        $addRefDoc = $addRefDoc[$this->positionAddRefObjDocPointer];
-
-        $typeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
-        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
-        $refTypeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
 
         return $this;
     }
@@ -3996,6 +3954,91 @@ class ZugferdDocumentReader extends ZugferdDocument
         $taxTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTaxTotalAmount.value", 0.0);
         $grandTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getGrandTotalAmount.value", 0.0);
         $totalAllowanceChargeAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTotalAllowanceChargeAmount.value", 0.0);
+
+        return $this;
+    }
+
+    /**
+     * Get a Reference to the previous invoice (on position level)
+     *
+     * @param  string|null   $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
+     * @param  string|null   $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
+     * @param  string|null   $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
+     * @param  DateTime|null $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionInvoiceReferencedDocument(?string &$issuerAssignedId, ?string &$lineid, ?string &$typeCode, ?DateTime &$issueDate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getIssuerAssignedID.value", "");
+        $lineid = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getLineID.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getTypeCode.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getInvoiceReferencedDocument.getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first documents position additional referenced document (Object detection at the level of the accounting position).
+     * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        $this->positionAddRefObjDocPointer = 0;
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
+    }
+
+    /**
+     * Seek to the next documents position additional referenced document (Object detection at the level of the accounting position).
+     * Returns true if the first position is available, otherwise false
+     * You may use it together with getDocumentPositionAdditionalReferencedObjDocument
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        $this->positionAddRefObjDocPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionAddRefObjDocPointer]);
+    }
+
+    /**
+     * Get additional Document reference on a position (Object detection)
+     *
+     * @param  string|null $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string|null $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionAdditionalReferencedObjDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$refTypeCode): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getAdditionalReferencedDocument", []));
+        $addRefDoc = $addRefDoc[$this->positionAddRefObjDocPointer];
+
+        $typeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getTypeCode.value", "");
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $refTypeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getReferenceTypeCode.value", "");
 
         return $this;
     }

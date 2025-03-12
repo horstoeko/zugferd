@@ -165,6 +165,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function writeFile(string $xmlfilename): ZugferdDocument
     {
         file_put_contents($xmlfilename, $this->getContent());
+
         return $this;
     }
 
@@ -210,6 +211,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         }
 
         $busProcessCtxParameter = $this->getObjectHelper()->createClassInstance('ram\DocumentContextParameterType');
+
         $this->getObjectHelper()->tryCall($busProcessCtxParameter, 'setID', $this->getObjectHelper()->getIdType($id));
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocumentContext(), 'setBusinessProcessSpecifiedDocumentContextParameter', $busProcessCtxParameter);
 
@@ -224,6 +226,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setIsDocumentCopy(): ZugferdDocumentBuilder
     {
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "setCopyIndicator", $this->getObjectHelper()->getIndicatorType(true));
+
         return $this;
     }
 
@@ -235,6 +238,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setIsTestDocument(): ZugferdDocumentBuilder
     {
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocumentContext(), "setTestIndicator", $this->getObjectHelper()->getIndicatorType(true));
+
         return $this;
     }
 
@@ -316,7 +320,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentNote(string $content, ?string $contentCode = null, ?string $subjectCode = null): ZugferdDocumentBuilder
     {
         $note = $this->getObjectHelper()->getNoteType($content, $contentCode, $subjectCode);
+
         $this->getObjectHelper()->tryCall($this->getInvoiceObject()->getExchangedDocument(), "addToIncludedNote", $note);
+
         return $this;
     }
 
@@ -331,7 +337,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentSeller(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSellerTradeParty", $sellerTradeParty);
+
         return $this;
     }
 
@@ -344,7 +352,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentSellerId(string $id): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -363,7 +373,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentSellerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -385,7 +397,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -427,7 +441,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -443,7 +459,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -461,7 +479,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($sellerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -479,7 +499,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -494,7 +516,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $sellerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTradeParty");
         $communication = $this->getObjectHelper()->getUniversalCommunicationType(null, $uri, $uriScheme);
+
         $this->getObjectHelper()->tryCall($sellerTradeParty, "setURIUniversalCommunication", $communication);
+
         return $this;
     }
 
@@ -509,7 +533,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentBuyer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerTradeParty", $buyerTradeParty);
+
         return $this;
     }
 
@@ -522,7 +548,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentBuyerId(string $id): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -536,7 +564,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentBuyerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -558,7 +588,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -600,7 +632,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -616,7 +650,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -634,7 +670,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($buyerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -652,7 +690,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -667,7 +707,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getBuyerTradeParty");
         $communication = $this->getObjectHelper()->getUniversalCommunicationType(null, $uri, $uriScheme);
+
         $this->getObjectHelper()->tryCall($buyerTradeParty, "setURIUniversalCommunication", $communication);
+
         return $this;
     }
 
@@ -682,7 +724,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentSellerTaxRepresentativeTradeParty(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $sellerTaxRepresentativeTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSellerTaxRepresentativeTradeParty", $sellerTaxRepresentativeTradeParty);
+
         return $this;
     }
 
@@ -696,7 +740,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentSellerTaxRepresentativeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
+
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -711,7 +757,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -731,7 +779,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -747,7 +797,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -765,7 +817,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($taxrepresentativeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -783,7 +837,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $taxrepresentativeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSellerTaxRepresentativeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($taxrepresentativeTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -798,7 +854,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentProductEndUser(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setProductEndUserTradeParty", $productEndUserTradeParty);
+
         return $this;
     }
 
@@ -812,7 +870,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentProductEndUserGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
+
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -827,7 +887,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -848,7 +910,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -864,7 +928,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -882,7 +948,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($productEndUserTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -900,7 +968,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $productEndUserTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getProductEndUserTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($productEndUserTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -915,7 +985,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setShipToTradeParty", $shipToTradeParty);
+
         return $this;
     }
 
@@ -928,7 +1000,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentShipTolId(string $id): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -942,7 +1016,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -957,7 +1033,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -977,7 +1055,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -993,7 +1073,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1011,7 +1093,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1029,7 +1113,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1044,7 +1130,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentUltimateShipTo(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+
         return $this;
     }
 
@@ -1057,7 +1145,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentUltimateShipToId(string $id): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -1071,7 +1161,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentUltimateShipToGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -1086,7 +1178,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -1106,7 +1200,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -1122,7 +1218,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1140,7 +1238,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($UltimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1158,7 +1258,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $UltimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getUltimateShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($UltimateShipToTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1173,7 +1275,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentShipFrom(?string $name = null, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setShipFromTradeParty", $shipToTradeParty);
+
         return $this;
     }
 
@@ -1186,7 +1290,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentShipFromId(string $id): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -1200,7 +1306,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentShipFromGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -1215,7 +1323,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -1236,7 +1346,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -1252,7 +1364,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1270,7 +1384,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($shipFromTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1288,7 +1404,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $shipFromTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeDelivery, "getShipFromTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($shipFromTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1303,7 +1421,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentInvoicer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setInvoicerTradeParty", $invoicerTradeParty);
+
         return $this;
     }
 
@@ -1316,7 +1436,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoicerId(string $id): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -1330,7 +1452,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoicerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -1345,7 +1469,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -1365,7 +1491,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -1381,7 +1509,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1399,7 +1529,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($invoicerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1417,7 +1549,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoicerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoicerTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($invoicerTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1432,7 +1566,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentInvoicee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setInvoiceeTradeParty", $invoiceeTradeParty);
+
         return $this;
     }
 
@@ -1445,7 +1581,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoiceeId(string $id): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -1459,7 +1597,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoiceeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -1474,7 +1614,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -1495,7 +1637,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -1511,7 +1655,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1529,7 +1675,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($invoiceeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1547,7 +1695,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $invoiceeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getInvoiceeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($invoiceeTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1563,7 +1713,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentPayee(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPayeeTradeParty", $payeeTradeParty);
+
         return $this;
     }
 
@@ -1576,7 +1728,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentPayeeId(string $id): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
         return $this;
     }
 
@@ -1590,7 +1744,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentPayeeGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -1605,7 +1761,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -1626,7 +1784,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -1642,7 +1802,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -1660,7 +1822,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($payeeTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -1678,7 +1842,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $payeeTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayeeTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($payeeTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -1691,7 +1857,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentDeliveryTerms(?string $code): ZugferdDocumentBuilder
     {
         $deliveryterms = $this->getObjectHelper()->getTradeDeliveryTermsType($code);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setApplicableTradeDeliveryTerms", $deliveryterms);
+
         return $this;
     }
 
@@ -1705,7 +1873,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentSellerOrderReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $sellerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSellerOrderReferencedDocument", $sellerorderrefdoc);
+
         return $this;
     }
 
@@ -1719,7 +1889,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentBuyerOrderReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
+
         return $this;
     }
 
@@ -1733,7 +1905,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentQuotationReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setQuotationReferencedDocument", $quotationrefdoc);
+
         return $this;
     }
 
@@ -1747,7 +1921,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentContractReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setContractReferencedDocument", $contractrefdoc);
+
         return $this;
     }
 
@@ -1778,7 +1954,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, null, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
+
         return $this;
     }
 
@@ -1852,7 +2030,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentInvoiceReferencedDocument(string $issuerAssignedId, ?string $typeCode = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCallIfMethodExists($this->headerTradeSettlement, "addToInvoiceReferencedDocument", "setInvoiceReferencedDocument", [$invoicerefdoc], $invoicerefdoc);
+
         return $this;
     }
 
@@ -1872,7 +2052,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoiceReferencedDocument(string $issuerAssignedId, ?string $typeCode = null, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToInvoiceReferencedDocument", $invoicerefdoc);
+
         return $this;
     }
 
@@ -1886,7 +2068,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentProcuringProject(string $id, string $name = "Project Reference"): ZugferdDocumentBuilder
     {
         $procuringproject = $this->getObjectHelper()->getProcuringProjectType($id, $name);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSpecifiedProcuringProject", $procuringproject);
+
         return $this;
     }
 
@@ -1900,7 +2084,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentUltimateCustomerOrderReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToUltimateCustomerOrderReferencedDocument", $additionalrefdoc);
+
         return $this;
     }
 
@@ -1913,7 +2099,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentSupplyChainEvent(?DateTime $date): ZugferdDocumentBuilder
     {
         $supplyChainevent = $this->getObjectHelper()->getSupplyChainEventType($date);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setActualDeliverySupplyChainEvent", $supplyChainevent);
+
         return $this;
     }
 
@@ -1927,7 +2115,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentDespatchAdviceReferencedDocument(?string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
+
         return $this;
     }
 
@@ -1941,7 +2131,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentReceivingAdviceReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
+
         return $this;
     }
 
@@ -1955,7 +2147,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentDeliveryNoteReferencedDocument(string $issuerAssignedId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
         $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($this->headerTradeDelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
+
         return $this;
     }
 
@@ -1970,6 +2164,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+
         return $this;
     }
 
@@ -2185,7 +2380,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
     {
         $tax = $this->getObjectHelper()->getTradeTaxType($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToApplicableTradeTax", $tax);
+
         return $this;
     }
 
@@ -2233,7 +2430,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentBillingPeriod(?DateTime $startDate, ?DateTime $endDate, ?string $description): ZugferdDocumentBuilder
     {
         $period = $this->getObjectHelper()->getSpecifiedPeriodType($startDate, $endDate, null, $description);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setBillingSpecifiedPeriod", $period);
+
         return $this;
     }
 
@@ -2304,7 +2503,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentAllowanceCharge(float $actualAmount, bool $isCharge, string $taxCategoryCode, string $taxTypeCode, ?float $rateApplicablePercent, ?float $sequence = null, ?float $calculationPercent = null, ?float $basisAmount = null, ?float $basisQuantity = null, ?string $basisQuantityUnitCode = null, ?string $reasonCode = null, ?string $reason = null): ZugferdDocumentBuilder
     {
         $allowanceCharge = $this->getObjectHelper()->getTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
+
         return $this;
     }
 
@@ -2321,7 +2522,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentLogisticsServiceCharge(string $description, float $appliedAmount, ?array $taxTypeCodes = null, ?array $taxCategoryCodes = null, ?array $rateApplicablePercents = null): ZugferdDocumentBuilder
     {
         $logcharge = $this->getObjectHelper()->getLogisticsServiceChargeType($description, $appliedAmount, $taxTypeCodes, $taxCategoryCodes, $rateApplicablePercents);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "addToSpecifiedLogisticsServiceCharge", $logcharge);
+
         return $this;
     }
 
@@ -2336,8 +2539,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentPaymentTerm(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
     {
         $paymentTerms = $this->getObjectHelper()->getTradePaymentTermsType($description, $dueDate, $directDebitMandateID);
+
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToSpecifiedTradePaymentTerms", "setSpecifiedTradePaymentTerms"], $paymentTerms);
+
         $this->currentPaymentTerms = $paymentTerms;
+
         return $this;
     }
 
@@ -2355,7 +2561,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDiscountTermsToPaymentTerms(?float $calculationPercent = null, ?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
     {
         $discountTerms = $this->getObjectHelper()->getTradePaymentDiscountTermsType($basisDateTime, $basisPeriodMeasureValue, $basisPeriodMeasureUnitCode, $basisAmount, $calculationPercent, $actualDiscountAmount);
+
         $this->getObjectHelper()->tryCall($this->currentPaymentTerms, "setApplicableTradePaymentDiscountTerms", $discountTerms);
+
         return $this;
     }
 
@@ -2419,7 +2627,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentReceivableSpecifiedTradeAccountingAccount(string $id, ?string $typeCode = null): ZugferdDocumentBuilder
     {
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
+
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
+
         return $this;
     }
 
@@ -2439,7 +2649,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentBuyerReference(?string $buyerReference): ZugferdDocumentBuilder
     {
         $reference = $this->getObjectHelper()->getTextType($buyerReference);
+
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
+
         return $this;
     }
 
@@ -2465,6 +2677,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function initDocumentSummation(): ZugferdDocumentBuilder
     {
         $this->setDocumentSummation(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
         return $this;
     }
 
@@ -2485,8 +2698,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentSummation(float $grandTotalAmount, float $duePayableAmount, ?float $lineTotalAmount = null, ?float $chargeTotalAmount = null, ?float $allowanceTotalAmount = null, ?float $taxBasisTotalAmount = null, ?float $taxTotalAmount = null, ?float $roundingAmount = null, ?float $totalPrepaidAmount = null): ZugferdDocumentBuilder
     {
         $summation = $this->getObjectHelper()->getTradeSettlementHeaderMonetarySummationType($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
+
         $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setSpecifiedTradeSettlementHeaderMonetarySummation", $summation);
+
         $taxTotalAmount = $this->getObjectHelper()->ensureArray($this->getObjectHelper()->tryCallAndReturn($summation, "getTaxTotalAmount"));
+
         if (isset($taxTotalAmount[0])) {
             $invoiceCurrencyCode = $this->getObjectHelper()->tryCallByPathAndReturn($this->headerTradeSettlement, "getInvoiceCurrencyCode.value");
             $this->getObjectHelper()->tryCall($taxTotalAmount[0], 'setCurrencyID', $invoiceCurrencyCode);
@@ -2511,8 +2727,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addNewPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
     {
         $position = $this->getObjectHelper()->getSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode);
+
         $this->getObjectHelper()->tryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
+
         $this->currentPosition = $position;
+
         return $this;
     }
 
@@ -2528,8 +2747,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
     {
         $position = $this->getObjectHelper()->getSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode, true);
+
         $this->getObjectHelper()->tryCall($this->headerSupplyChainTradeTransaction, "addToIncludedSupplyChainTradeLineItem", $position);
+
         $this->currentPosition = $position;
+
         return $this;
     }
 
@@ -2545,7 +2767,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $linedoc = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getAssociatedDocumentLineDocument");
         $note = $this->getObjectHelper()->getNoteType($content, $contentCode, $subjectCode);
+
         $this->getObjectHelper()->tryCallAll($linedoc, ["addToIncludedNote", "setIncludedNote"], $note);
+
         return $this;
     }
 
@@ -2568,7 +2792,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentPositionProductDetails(string $name, ?string $description = null, ?string $sellerAssignedID = null, ?string $buyerAssignedID = null, ?string $globalIDType = null, ?string $globalID = null, ?string $industryAssignedID = null, ?string $modelID = null, ?string $batchID = null, ?string $brandName = null, ?string $modelName = null): ZugferdDocumentBuilder
     {
         $product = $this->getObjectHelper()->getTradeProductType($name, $description, $sellerAssignedID, $buyerAssignedID, $globalIDType, $globalID, $industryAssignedID, $modelID, $batchID, $brandName, $modelName);
+
         $this->getObjectHelper()->tryCall($this->currentPosition, "setSpecifiedTradeProduct", $product);
+
         return $this;
     }
 
@@ -2587,7 +2813,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
         $productCharacteristic = $this->getObjectHelper()->getProductCharacteristicType($typeCode, $description, $valueMeasure, $valueMeasureUnitCode, $value);
+
         $this->getObjectHelper()->tryCall($product, "addToApplicableProductCharacteristic", $productCharacteristic);
+
         return $this;
     }
 
@@ -2604,21 +2832,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
         $productClassification = $this->getObjectHelper()->getProductClassificationType($classCode, $className, $listId, $listVersionId);
-        $this->getObjectHelper()->tryCall($product, "addToDesignatedProductClassification", $productClassification);
-        return $this;
-    }
 
-    /**
-     * Sets the detailed information on the product origin
-     *
-     * @param  string $country __BT-159, From EN 16931__ The code indicating the country the goods came from. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”.
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentPositionProductOriginTradeCountry(string $country): ZugferdDocumentBuilder
-    {
-        $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
-        $productTradeCounty = $this->getObjectHelper()->getTradeCountryType($country);
-        $this->getObjectHelper()->tryCall($product, "setOriginTradeCountry", $productTradeCounty);
+        $this->getObjectHelper()->tryCall($product, "addToDesignatedProductClassification", $productClassification);
+
         return $this;
     }
 
@@ -2640,7 +2856,25 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
         $referencedProduct = $this->getObjectHelper()->getReferencedProductType($globalID, $globalIDType, $sellerAssignedID, $buyerAssignedID, $industryAssignedID, $name, $description, $unitQuantity, $unitCode);
+
         $this->getObjectHelper()->tryCall($product, "addToIncludedReferencedProduct", $referencedProduct);
+
+        return $this;
+    }
+
+    /**
+     * Sets the detailed information on the product origin
+     *
+     * @param  string $country __BT-159, From EN 16931__ The code indicating the country the goods came from. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”.
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPositionProductOriginTradeCountry(string $country): ZugferdDocumentBuilder
+    {
+        $product = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedTradeProduct");
+        $productTradeCounty = $this->getObjectHelper()->getTradeCountryType($country);
+
+        $this->getObjectHelper()->tryCall($product, "setOriginTradeCountry", $productTradeCounty);
+
         return $this;
     }
 
@@ -2656,7 +2890,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setSellerOrderReferencedDocument", $buyerorderrefdoc);
+
         return $this;
     }
 
@@ -2672,7 +2908,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setBuyerOrderReferencedDocument", $buyerorderrefdoc);
+
         return $this;
     }
 
@@ -2688,7 +2926,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $quotationrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setQuotationReferencedDocument", $quotationrefdoc);
+
         return $this;
     }
 
@@ -2704,7 +2944,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $contractrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setContractReferencedDocument", $contractrefdoc);
+
         return $this;
     }
 
@@ -2731,7 +2973,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $addrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, $lineId, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "addToAdditionalReferencedDocument", $addrefdoc);
+
         return $this;
     }
 
@@ -2747,7 +2991,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $ultimaterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "addToUltimateCustomerOrderReferencedDocument", $ultimaterefdoc);
+
         return $this;
     }
 
@@ -2763,7 +3009,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $grossPrice = $this->getObjectHelper()->getTradePriceType($amount, $basisQuantity, $basisQuantityUnitCode);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setGrossPriceProductTradePrice", $grossPrice);
+
         return $this;
     }
 
@@ -2789,7 +3037,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $grossPrice = $this->getObjectHelper()->tryCallAndReturn($positionagreement, "getGrossPriceProductTradePrice");
         $allowanceCharge = $this->getObjectHelper()->getTradeAllowanceChargeType($actualAmount, $isCharge, $taxTypeCode, $taxCategoryCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
+
         $this->getObjectHelper()->tryCallAll($grossPrice, ["addToAppliedTradeAllowanceCharge", "setAppliedTradeAllowanceCharge"], $allowanceCharge);
+
         return $this;
     }
 
@@ -2805,7 +3055,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $netPrice = $this->getObjectHelper()->getTradePriceType($amount, $basisQuantity, $basisQuantityUnitCode);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
+
         $this->getObjectHelper()->tryCall($positionagreement, "setNetPriceProductTradePrice", $netPrice);
+
         return $this;
     }
 
@@ -2825,7 +3077,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
         $netPrice = $this->getObjectHelper()->tryCallAndReturn($positionagreement, "getNetPriceProductTradePrice");
         $tax = $this->getObjectHelper()->getTradeTaxType($categoryCode, $typeCode, null, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, null, null, null, null);
+
         $this->getObjectHelper()->tryCall($netPrice, "setIncludedTradeTax", $tax);
+
         return $this;
     }
 
@@ -2843,9 +3097,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function setDocumentPositionQuantity(float $billedQuantity, string $billedQuantityUnitCode, ?float $chargeFreeQuantity = null, ?string $chargeFreeQuantityUnitCpde = null, ?float $packageQuantity = null, ?string $packageQuantityUnitCode = null): ZugferdDocumentBuilder
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setBilledQuantity", $this->getObjectHelper()->getQuantityType($billedQuantity, $billedQuantityUnitCode));
         $this->getObjectHelper()->tryCall($positiondelivery, "setChargeFreeQuantity", $this->getObjectHelper()->getQuantityType($chargeFreeQuantity, $chargeFreeQuantityUnitCpde));
         $this->getObjectHelper()->tryCall($positiondelivery, "setPackageQuantity", $this->getObjectHelper()->getQuantityType($packageQuantity, $packageQuantityUnitCode));
+
         return $this;
     }
 
@@ -2861,7 +3117,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setShipToTradeParty", $shipToTradeParty);
+
         return $this;
     }
 
@@ -2876,7 +3134,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -2892,7 +3152,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -2914,7 +3176,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -2931,7 +3195,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -2950,7 +3216,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($shipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -2969,7 +3237,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($shipToTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -2985,7 +3255,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $shipToTradeParty = $this->getObjectHelper()->getTradePartyAllowEmpty($name, $id, $description);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setUltimateShipToTradeParty", $shipToTradeParty);
+
         return $this;
     }
 
@@ -3000,7 +3272,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
+
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
         return $this;
     }
 
@@ -3016,7 +3290,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
         return $this;
     }
 
@@ -3038,7 +3314,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "setPostalTradeAddress", $address);
+
         return $this;
     }
 
@@ -3055,7 +3333,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
         return $this;
     }
 
@@ -3074,7 +3354,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCallIfMethodExists($ultimateShipToTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
         return $this;
     }
 
@@ -3093,7 +3375,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $ultimateShipToTradeParty = $this->getObjectHelper()->tryCallAndReturn($positiondelivery, "getUltimateShipToTradeParty");
         $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress);
+
         $this->getObjectHelper()->tryCall($ultimateShipToTradeParty, "addToDefinedTradeContact", $contact);
+
         return $this;
     }
 
@@ -3107,7 +3391,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $supplyChainevent = $this->getObjectHelper()->getSupplyChainEventType($date);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setActualDeliverySupplyChainEvent", $supplyChainevent);
+
         return $this;
     }
 
@@ -3123,7 +3409,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $despatchddvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setDespatchAdviceReferencedDocument", $despatchddvicerefdoc);
+
         return $this;
     }
 
@@ -3139,7 +3427,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $receivingadvicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setReceivingAdviceReferencedDocument", $receivingadvicerefdoc);
+
         return $this;
     }
 
@@ -3155,7 +3445,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positiondelivery = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeDelivery");
         $deliverynoterefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($positiondelivery, "setDeliveryNoteReferencedDocument", $deliverynoterefdoc);
+
         return $this;
     }
 
@@ -3175,7 +3467,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $tax = $this->getObjectHelper()->getTradeTaxType($categoryCode, $typeCode, null, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, null, null, null, null);
+
         $this->getObjectHelper()->tryCallAll($positionsettlement, ["addToApplicableTradeTax", "setApplicableTradeTax"], $tax);
+
         return $this;
     }
 
@@ -3191,7 +3485,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $period = $this->getObjectHelper()->getSpecifiedPeriodType($startDate, $endDate, null, null);
+
         $this->getObjectHelper()->tryCall($positionsettlement, "setBillingSpecifiedPeriod", $period);
+
         return $this;
     }
 
@@ -3210,7 +3506,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $allowanceCharge = $this->getObjectHelper()->getTradeAllowanceChargeType($actualAmount, $isCharge, null, null, null, null, $calculationPercent, $basisAmount, null, null, $reasonCode, $reason);
+
         $this->getObjectHelper()->tryCall($positionsettlement, "addToSpecifiedTradeAllowanceCharge", $allowanceCharge);
+
         return $this;
     }
 
@@ -3224,7 +3522,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $summation = $this->getObjectHelper()->getTradeSettlementLineMonetarySummationType($lineTotalAmount);
+
         $this->getObjectHelper()->tryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+
         return $this;
     }
 
@@ -3243,7 +3543,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $summation = $this->getObjectHelper()->getTradeSettlementLineMonetarySummationType($lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxTotalAmount, $grandTotalAmount, $totalAllowanceChargeAmount);
+
         $this->getObjectHelper()->tryCall($positionsettlement, "setSpecifiedTradeSettlementLineMonetarySummation", $summation);
+
         return $this;
     }
 
@@ -3265,7 +3567,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $invoicerefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineid, $typeCode, null, null, $issueDate, null);
+
         $this->getObjectHelper()->tryCall($positionsettlement, "setInvoiceReferencedDocument", $invoicerefdoc);
+
         return $this;
     }
 
@@ -3281,7 +3585,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $addrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, $refTypeCode, null, null);
+
         $this->getObjectHelper()->tryCallAll($positionsettlement, ["addToAdditionalReferencedDocument", "setAdditionalReferencedDocument"], $addrefdoc);
+
         return $this;
     }
 
@@ -3296,7 +3602,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $account = $this->getObjectHelper()->getTradeAccountingAccountType($id, $typeCode);
+
         $this->getObjectHelper()->tryCallAll($positionsettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
+
         return $this;
     }
 }
