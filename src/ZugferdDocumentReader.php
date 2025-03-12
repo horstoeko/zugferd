@@ -368,6 +368,40 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get the identifier assigned by the buyer and used for internal routing.
+     *
+     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
+     * but stated by the seller on the invoice.
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
+     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
+     * Cross Industry Invoice (CII).
+     *
+     * @param  string|null $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerReference(?string &$buyerReference): ZugferdDocumentReader
+    {
+        $buyerReference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Set the routing-id (needed for German XRechnung)
+     * This is an alias-method for setDocumentBuyerReference
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
+     *
+     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentRoutingId(string $routingId): ZugferdDocumentReader
+    {
+        return $this->getDocumentBuyerReference($routingId);
+    }
+
+    /**
      * Read copy indicator
      *
      * @param  boolean|null $copyIndicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
@@ -394,45 +428,6 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Read Document money summation
-     *
-     * @param  float|null $grandTotalAmount     __BT-112, From MINIMUM__ Total invoice amount including sales tax
-     * @param  float|null $duePayableAmount     __BT-115, From MINIMUM__ Payment amount due
-     * @param  float|null $lineTotalAmount      __BT-106, From BASIC WL__ Sum of the net amounts of all invoice items
-     * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
-     * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
-     * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
-     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
-     * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
-     * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
-     * @return ZugferdDocumentReader
-     */
-    public function getDocumentSummation(?float &$grandTotalAmount, ?float &$duePayableAmount, ?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxBasisTotalAmount, ?float &$taxTotalAmount, ?float &$roundingAmount, ?float &$totalPrepaidAmount): ZugferdDocumentReader
-    {
-        $invoiceCurrencyCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
-        $grandTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getGrandTotalAmount.value", 0);
-        $taxBasisTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxBasisTotalAmount.value", 0);
-        $taxTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", []);
-
-        foreach ($taxTotalAmountElement as $taxTotalAmountElementItem) {
-            $taxTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "getCurrencyID") ?? "";
-            if ($taxTotalAmountCurrencyCode == $invoiceCurrencyCode || $taxTotalAmountCurrencyCode == "") {
-                $taxTotalAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "value") ?? 0;
-                break;
-            }
-        }
-
-        $duePayableAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getDuePayableAmount.value", 0);
-        $lineTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getLineTotalAmount.value", 0);
-        $chargeTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getChargeTotalAmount.value", 0);
-        $allowanceTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getAllowanceTotalAmount.value", 0);
-        $roundingAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getRoundingAmount.value", 0);
-        $totalPrepaidAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTotalPrepaidAmount.value", 0);
-
-        return $this;
-    }
-
-    /**
      * Retrieve document notes
      *
      * @param  array|null $notes __BT-22, From BASIC WL__, __BT-X-5, From EXTENDED__, __BT-21, From BASIC WL__ Returns an array with all document notes. Each array element contains an assiociative array containing the following keys: _contentcode_, _subjectcode_ and _content_
@@ -449,26 +444,6 @@ class ZugferdDocumentReader extends ZugferdDocument
                 "content" => ["getContent.value", ""],
             ]
         );
-
-        return $this;
-    }
-
-    /**
-     * Get the identifier assigned by the buyer and used for internal routing.
-     *
-     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
-     * but stated by the seller on the invoice.
-     *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
-     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
-     * Cross Industry Invoice (CII).
-     *
-     * @param  string|null $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
-     * @return ZugferdDocumentReader
-     */
-    public function getDocumentBuyerReference(?string &$buyerReference): ZugferdDocumentReader
-    {
-        $buyerReference = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerReference.value", "");
 
         return $this;
     }
@@ -2864,6 +2839,45 @@ class ZugferdDocumentReader extends ZugferdDocument
 
         $id = $this->getInvoiceValueByPathFrom($acccounts, "getId.value", "");
         $typeCode = $this->getInvoiceValueByPathFrom($acccounts, "getTypeCode.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Read Document money summation
+     *
+     * @param  float|null $grandTotalAmount     __BT-112, From MINIMUM__ Total invoice amount including sales tax
+     * @param  float|null $duePayableAmount     __BT-115, From MINIMUM__ Payment amount due
+     * @param  float|null $lineTotalAmount      __BT-106, From BASIC WL__ Sum of the net amounts of all invoice items
+     * @param  float|null $chargeTotalAmount    __BT-108, From BASIC WL__ Sum of the surcharges at document level
+     * @param  float|null $allowanceTotalAmount __BT-107, From BASIC WL__ Sum of the discounts at document level
+     * @param  float|null $taxBasisTotalAmount  __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
+     * @param  float|null $taxTotalAmount       __BT-110/111, From MINIMUM/BASIC WL__ if BT-6 is not null $taxTotalAmount = BT-111. Total amount of the invoice sales tax, Total tax amount in the booking currency
+     * @param  float|null $roundingAmount       __BT-114, From EN 16931__ Rounding amount
+     * @param  float|null $totalPrepaidAmount   __BT-113, From BASIC WL__ Prepayment amount
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentSummation(?float &$grandTotalAmount, ?float &$duePayableAmount, ?float &$lineTotalAmount, ?float &$chargeTotalAmount, ?float &$allowanceTotalAmount, ?float &$taxBasisTotalAmount, ?float &$taxTotalAmount, ?float &$roundingAmount, ?float &$totalPrepaidAmount): ZugferdDocumentReader
+    {
+        $invoiceCurrencyCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value", "");
+        $grandTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getGrandTotalAmount.value", 0);
+        $taxBasisTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxBasisTotalAmount.value", 0);
+        $taxTotalAmountElement = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", []);
+
+        foreach ($taxTotalAmountElement as $taxTotalAmountElementItem) {
+            $taxTotalAmountCurrencyCode = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "getCurrencyID") ?? "";
+            if ($taxTotalAmountCurrencyCode == $invoiceCurrencyCode || $taxTotalAmountCurrencyCode == "") {
+                $taxTotalAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElementItem, "value") ?? 0;
+                break;
+            }
+        }
+
+        $duePayableAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getDuePayableAmount.value", 0);
+        $lineTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getLineTotalAmount.value", 0);
+        $chargeTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getChargeTotalAmount.value", 0);
+        $allowanceTotalAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getAllowanceTotalAmount.value", 0);
+        $roundingAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getRoundingAmount.value", 0);
+        $totalPrepaidAmount = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTotalPrepaidAmount.value", 0);
 
         return $this;
     }

@@ -196,6 +196,57 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Set general payment information
+     *
+     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Identifier of the creditor
+     * @param  string|null $paymentReference    __BT-83, From BASIC WL__ Intended use for payment
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
+    {
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+
+        return $this;
+    }
+
+    /**
+     * An identifier assigned by the buyer and used for internal routing.
+     *
+     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
+     * but stated by the seller on the invoice.
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
+     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
+     * Cross Industry Invoice (CII).
+     *
+     * @param  string $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentBuyerReference(?string $buyerReference): ZugferdDocumentBuilder
+    {
+        $reference = $this->getObjectHelper()->getTextType($buyerReference);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
+
+        return $this;
+    }
+
+    /**
+     * Set the routing-id (needed for German XRechnung)
+     * This is an alias-method for setDocumentBuyerReference
+     *
+     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
+     *
+     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
+    {
+        return $this->setDocumentBuyerReference($routingId);
+    }
+
+    /**
      * Set grouping of business process information
      *
      * @param string $id __BT-23, From MINIMUM__ Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to process the invoice in an appropriate manner.
@@ -2154,21 +2205,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
-     * Set general payment information
-     *
-     * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Identifier of the creditor
-     * @param  string|null $paymentReference    __BT-83, From BASIC WL__ Intended use for payment
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentGeneralPaymentInformation(?string $creditorReferenceID = null, ?string $paymentReference = null): ZugferdDocumentBuilder
-    {
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setCreditorReferenceID", $this->getObjectHelper()->getIdType($creditorReferenceID));
-        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
-
-        return $this;
-    }
-
-    /**
      * Add detailed information on the payment method
      *
      * __Notes__
@@ -2631,42 +2667,6 @@ class ZugferdDocumentBuilder extends ZugferdDocument
         $this->getObjectHelper()->tryCallAll($this->headerTradeSettlement, ["addToReceivableSpecifiedTradeAccountingAccount", "setReceivableSpecifiedTradeAccountingAccount"], $account);
 
         return $this;
-    }
-
-    /**
-     * An identifier assigned by the buyer and used for internal routing.
-     *
-     * __Note__: The reference is specified by the buyer (e.g. contact details, department, office ID, project code),
-     * but stated by the seller on the invoice.
-     *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung. According to the XRechnung
-     * standard, two syntaxes are permitted for displaying electronic invoices: Universal Business Language (UBL) and UN/CEFACT
-     * Cross Industry Invoice (CII).
-     *
-     * @param  string $buyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentBuyerReference(?string $buyerReference): ZugferdDocumentBuilder
-    {
-        $reference = $this->getObjectHelper()->getTextType($buyerReference);
-
-        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setBuyerReference", $reference);
-
-        return $this;
-    }
-
-    /**
-     * Set the routing-id (needed for German XRechnung)
-     * This is an alias-method for setDocumentBuyerReference
-     *
-     * __Note__: The route ID must be specified in the Buyer Reference (BT-10) in the XRechnung.
-     *
-     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
-     * @return ZugferdDocumentBuilder
-     */
-    public function setDocumentRoutingId(string $routingId): ZugferdDocumentBuilder
-    {
-        return $this->setDocumentBuyerReference($routingId);
     }
 
     /**
