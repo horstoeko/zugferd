@@ -1,3 +1,15 @@
+## v1.0.110
+
+``Previous version v1.0.109``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [7323d94](https://github.com/horstoeko/zugferd/commit/7323d94) | 2025-03-13 02:48:45 CET | HorstOeko | [ENH] Added ZugferdDocumentBuilder::addDocumentPositionAdditionalReferencedObjDocument, deprecated ZugferdDocumentBuilder::addDocumentPositionAdditionalReferencedDocumentObj | 
+| :new:  | [c895d6b](https://github.com/horstoeko/zugferd/commit/c895d6b) | 2025-03-12 11:04:02 CET | HorstOeko | [ENH] Added getDocumentPositionAdditionalReferencedDocument to ZugferdDocumentReader (BT-X-31) | 
+| :new:  | [72008f1](https://github.com/horstoeko/zugferd/commit/72008f1) | 2025-03-12 09:05:07 CET | HorstOeko | [ENH] Added method for BG-X-48 to ZugferdDocumentBuilder and ZugferdDocumentReader | 
+
+:exclamation: _There are 7 internal commit(s)_
+
 ## v1.0.109
 
 ``Previous version v1.0.108``
