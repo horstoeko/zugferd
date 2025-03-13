@@ -17,7 +17,6 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :bug:  | [af678af](https://github.com/horstoeko/zugferd/commit/af678af) | 2025-03-11 12:36:08 CET | HorstOeko | [FIX]  Fixed naming of TradeAccountingAccount-Methods in ZugferdDocumentReader | [#270](https://github.com/horstoeko/zugferd/issues/270)
-| :new_moon:  | [0009a03](https://github.com/horstoeko/zugferd/commit/0009a03) | 2025-03-11 12:29:34 CET | HorstOeko | Merged PR | [#271](https://github.com/horstoeko/zugferd/issues/271)
 | :new:  | [66b73d0](https://github.com/horstoeko/zugferd/commit/66b73d0) | 2025-03-11 12:13:43 CET | HorstOeko | [ENH]  Added methods to read ReceivableSpecifiedTradeAccountingAccounts on document- and position-level | [#270](https://github.com/horstoeko/zugferd/issues/270)
 | :bug:  | [498f1a3](https://github.com/horstoeko/zugferd/commit/498f1a3) | 2025-03-11 10:47:18 CET | HorstOeko | [FIX] TradeAccountingAccount in ZugferdDocumentBuilder | 
 
@@ -39,11 +38,8 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [cd3c84c](https://github.com/horstoeko/zugferd/commit/cd3c84c) | 2025-03-10 16:28:18 CET | HorstOeko | Added missing methods for BT-128 to ZugferdDocumentReader | [#268](https://github.com/horstoeko/zugferd/issues/268)
 | :new_moon:  | [9a66046](https://github.com/horstoeko/zugferd/commit/9a66046) | 2025-03-10 16:09:49 CET | HorstOeko | Added missing methods for BT-128 to ZugferdDocumentReader | [#268](https://github.com/horstoeko/zugferd/issues/268)
-| :new_moon:  | [1777430](https://github.com/horstoeko/zugferd/commit/1777430) | 2025-02-20 13:00:29 CET | HorstOeko | Merged PR | [#260](https://github.com/horstoeko/zugferd/issues/260)
 | :new:  | [278a744](https://github.com/horstoeko/zugferd/commit/278a744) | 2025-02-20 12:50:38 CET | HorstOeko | [ENH]  Added support for Date-Format 610 | [#259](https://github.com/horstoeko/zugferd/issues/259)
-| :new_moon:  | [df2cf8a](https://github.com/horstoeko/zugferd/commit/df2cf8a) | 2025-02-11 19:14:34 CET | HorstOeko | Merged PR | [#256](https://github.com/horstoeko/zugferd/issues/256)
 | :new_moon:  | [2a21fc5](https://github.com/horstoeko/zugferd/commit/2a21fc5) | 2025-02-11 16:36:44 CET | wurst-hans | Add creator tool name to meta data | 
 
 :exclamation: _There are 2 internal commit(s)_
@@ -54,7 +50,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [e575f67](https://github.com/horstoeko/zugferd/commit/e575f67) | 2025-02-03 14:26:12 CET | HorstOeko | Merged PR | [#254](https://github.com/horstoeko/zugferd/issues/254)
 | :bug:  | [2283f2e](https://github.com/horstoeko/zugferd/commit/2283f2e) | 2025-02-03 13:58:02 CET | HorstOeko | [FIX]  Fixed issues regarding the use of is_file | [#253](https://github.com/horstoeko/zugferd/issues/253)
 
 :exclamation: _There is one internal commit_
@@ -65,11 +60,8 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [b715d90](https://github.com/horstoeko/zugferd/commit/b715d90) | 2025-01-30 14:47:36 CET | HorstOeko | Merged PR | [#251](https://github.com/horstoeko/zugferd/issues/251)
 | :new_moon:  | [95489fd](https://github.com/horstoeko/zugferd/commit/95489fd) | 2025-01-30 14:20:18 CET | HorstOeko | Getting package version fail-safe | [#250](https://github.com/horstoeko/zugferd/issues/250)
-| :new_moon:  | [1fdb8df](https://github.com/horstoeko/zugferd/commit/1fdb8df) | 2025-01-28 11:41:55 CET | HorstOeko | Merged PR | [#247](https://github.com/horstoeko/zugferd/issues/247)
 | :new:  | [563f9da](https://github.com/horstoeko/zugferd/commit/563f9da) | 2025-01-28 11:26:46 CET | HorstOeko | [ENH]  Add Support for Setting SerializerBuilder Cache Directory | [#245](https://github.com/horstoeko/zugferd/issues/245)
-| :new_moon:  | [d758093](https://github.com/horstoeko/zugferd/commit/d758093) | 2025-01-28 10:17:24 CET | HorstOeko | Merged PR | [#246](https://github.com/horstoeko/zugferd/issues/246)
 | :new:  | [69a94f2](https://github.com/horstoeko/zugferd/commit/69a94f2) | 2025-01-28 09:33:06 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
 | :new:  | [4efdc37](https://github.com/horstoeko/zugferd/commit/4efdc37) | 2025-01-28 09:27:42 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
 | :new:  | [d3fcfc4](https://github.com/horstoeko/zugferd/commit/d3fcfc4) | 2025-01-28 08:45:12 CET | HorstOeko | [ENH]  Make isFile() and xmlDataIsFile() methods overridable | [#244](https://github.com/horstoeko/zugferd/issues/244)
@@ -95,7 +87,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [9b02e3e](https://github.com/horstoeko/zugferd/commit/9b02e3e) | 2025-01-11 15:55:05 CET | HorstOeko | Merged PR | [#229](https://github.com/horstoeko/zugferd/issues/229)
 | :new_moon:  | [ce07a05](https://github.com/horstoeko/zugferd/commit/ce07a05) | 2025-01-10 17:31:05 CET | wurst-hans | Fixed incompatible PDF/A header bytes | 
 | :bug:  | [04a2814](https://github.com/horstoeko/zugferd/commit/04a2814) | 2025-01-10 06:17:05 CET | HorstOeko | [FIX] Fix getters in getDocumentShipToContact | 
 
@@ -136,14 +127,12 @@
 | :new:  | [d3498b0](https://github.com/horstoeko/zugferd/commit/d3498b0) | 2024-12-25 13:55:35 CET | HorstOeko | [ENH] Introducing new ZugferdDocumentPdfReaderExt (Extended PDF Reader) | 
 | :new:  | [84bc90d](https://github.com/horstoeko/zugferd/commit/84bc90d) | 2024-12-23 08:41:52 CET | HorstOeko | [ENH] ZugferdKositValidator uses the configuration-release from 2024-10-31 | 
 | :new:  | [e38c9ce](https://github.com/horstoeko/zugferd/commit/e38c9ce) | 2024-12-18 17:32:32 CET | HorstOeko | [ENH] Added Shortcut methods addDocumentBuyerVATRegistrationNumber and addDocumentBuyerTaxNumber | 
-| :new_moon:  | [57617a0](https://github.com/horstoeko/zugferd/commit/57617a0) | 2024-12-18 15:21:35 CET | HorstOeko | Merged PR | [#225](https://github.com/horstoeko/zugferd/issues/225)
 | :new:  | [388bb36](https://github.com/horstoeko/zugferd/commit/388bb36) | 2024-12-18 15:14:45 CET | HorstOeko | [ENH] Added Codelists as Enum (see PR ) | [#223](https://github.com/horstoeko/zugferd/issues/223)
 | :bug:  | [eef01c1](https://github.com/horstoeko/zugferd/commit/eef01c1) | 2024-12-18 14:53:30 CET | HorstOeko | [FIX] Removed Bugs from PR  - Removed feature temporary | [#223](https://github.com/horstoeko/zugferd/issues/223)
 | :bug:  | [87dc563](https://github.com/horstoeko/zugferd/commit/87dc563) | 2024-12-18 14:43:57 CET | HorstOeko | [FIX] Removed Bugs from PR | [#223](https://github.com/horstoeko/zugferd/issues/223)
-| :new_moon:  | [a614cb7](https://github.com/horstoeko/zugferd/commit/a614cb7) | 2024-12-18 14:30:42 CET | HorstOeko | Merged PR | [#223](https://github.com/horstoeko/zugferd/issues/223)
 | :new_moon:  | [5429be9](https://github.com/horstoeko/zugferd/commit/5429be9) | 2024-12-18 12:30:48 CET | Marc Krämer | adding backed enums for codelists | 
 
-:exclamation: _There are 17 internal commit(s)_
+:exclamation: _There are 16 internal commit(s)_
 
 ## v1.0.99
 
@@ -183,7 +172,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new:  | [c8b40a1](https://github.com/horstoeko/zugferd/commit/c8b40a1) | 2024-12-15 13:00:26 CET | HorstOeko | [ENH] ZugferdKositValidator can optionally call a running Validator in Daemon-Mode via HTTP | 
 | :new:  | [8a63f49](https://github.com/horstoeko/zugferd/commit/8a63f49) | 2024-12-15 12:54:22 CET | HorstOeko | [ENH] ZugferdKositValidator can optionally call a running Validator in Daemon-Mode via HTTP | 
 | :new_moon:  | [8c68d09](https://github.com/horstoeko/zugferd/commit/8c68d09) | 2024-12-13 14:14:30 CET | HorstOeko | Revert "Automatische Aktualisierung des ChangeLogs" | 
 | :new_moon:  | [7443f2c](https://github.com/horstoeko/zugferd/commit/7443f2c) | 2024-12-13 14:11:42 CET | HorstOeko | Automatische Aktualisierung des ChangeLogs | 
@@ -196,7 +184,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [6c83831](https://github.com/horstoeko/zugferd/commit/6c83831) | 2024-12-11 17:27:29 CET | HorstOeko | Significantly increased PDF file size | [#211](https://github.com/horstoeko/zugferd/issues/211)
 | :new_moon:  | [e2ee3d1](https://github.com/horstoeko/zugferd/commit/e2ee3d1) | 2024-12-11 17:15:15 CET | HorstOeko | Significantly increased PDF file size -> Changed to smaller ICC profile | [#211](https://github.com/horstoeko/zugferd/issues/211)
 
 :exclamation: _There is one internal commit_
@@ -207,7 +194,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [ce4b854](https://github.com/horstoeko/zugferd/commit/ce4b854) | 2024-12-11 12:20:56 CET | HorstOeko | Customizable PDF Metadata -> Added Templates and Callback Function | [#208](https://github.com/horstoeko/zugferd/issues/208)
 | :new_moon:  | [3735ae8](https://github.com/horstoeko/zugferd/commit/3735ae8) | 2024-12-11 06:01:52 CET | HorstOeko | Customizable PDF Metadata -> Additionally using FPDF-BuiltIn-Metadata methods (Fix UTF8) | [#208](https://github.com/horstoeko/zugferd/issues/208)
 | :new_moon:  | [17edaa7](https://github.com/horstoeko/zugferd/commit/17edaa7) | 2024-12-11 05:52:04 CET | HorstOeko | Customizable PDF Metadata -> Additionally using FPDF-BuiltIn-Metadata methods | [#208](https://github.com/horstoeko/zugferd/issues/208)
 | :new_moon:  | [7a9ade1](https://github.com/horstoeko/zugferd/commit/7a9ade1) | 2024-12-11 05:29:46 CET | HorstOeko | Customizable PDF Metadata -> Removed unused variable in PdfBuilderEn16931Test::testCustomMetaInformation | [#208](https://github.com/horstoeko/zugferd/issues/208)
@@ -222,7 +208,6 @@
 | :new:  | [d1f0782](https://github.com/horstoeko/zugferd/commit/d1f0782) | 2024-12-09 18:04:39 CET | HorstOeko | [ENH] Added tests for deterministic mode | 
 | :new:  | [9aaebf3](https://github.com/horstoeko/zugferd/commit/9aaebf3) | 2024-12-09 17:50:12 CET | HorstOeko | [ENH] Improved PDF-Tests | 
 | :new:  | [3ed50a4](https://github.com/horstoeko/zugferd/commit/3ed50a4) | 2024-12-09 16:39:59 CET | HorstOeko | [ENH] Use DateTime values with correct timezone | 
-| :new_moon:  | [9f42bf5](https://github.com/horstoeko/zugferd/commit/9f42bf5) | 2024-12-09 14:49:54 CET | HorstOeko | Fix DateTime-Handling (strings with linebreaks) | [#206](https://github.com/horstoeko/zugferd/issues/206)
 | :new_moon:  | [28f312c](https://github.com/horstoeko/zugferd/commit/28f312c) | 2024-12-09 14:43:34 CET | HorstOeko | Fix DateTime-Handling (strings with linebreaks) | [#206](https://github.com/horstoeko/zugferd/issues/206)
 
 :exclamation: _There are 2 internal commit(s)_
@@ -233,14 +218,13 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new:  | [5c67f6b](https://github.com/horstoeko/zugferd/commit/5c67f6b) | 2024-12-08 13:18:54 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract | 
 | :new:  | [fcf7ffc](https://github.com/horstoeko/zugferd/commit/fcf7ffc) | 2024-12-07 10:36:47 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
 | :new:  | [d799b4c](https://github.com/horstoeko/zugferd/commit/d799b4c) | 2024-12-08 10:00:57 CET | HorstOeko | [ENH] Changed InvalidArgumentException to ZugferdInvalidArgumentException | 
 | :new:  | [38ea3f7](https://github.com/horstoeko/zugferd/commit/38ea3f7) | 2024-12-07 10:36:47 CET | HorstOeko | [ENH] Add deterministic Mode to ZugferdDocumentPdfBuilderAbstract (and derived classes). This mode should only used for testing purposes | 
 | :new:  | [e5e0498](https://github.com/horstoeko/zugferd/commit/e5e0498) | 2024-12-06 14:16:47 CET | HorstOeko | [ENH] Added ZugferdSpecificationVersions to get the latest used specification versions | 
 | :bug:  | [2a2ff79](https://github.com/horstoeko/zugferd/commit/2a2ff79) | 2024-12-06 05:06:00 CET | HorstOeko | [FIX] Typo in variable Name | 
 
-:exclamation: _There are 2 internal commit(s)_
+:exclamation: _There is one internal commit_
 
 ## v1.0.91
 
@@ -249,10 +233,9 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new:  | [d66ee79](https://github.com/horstoeko/zugferd/commit/d66ee79) | 2024-12-05 05:40:27 CET | HorstOeko | [ENH] Added new methods addDocumentPaymentMeanToCreditTransferNonSepa and addDocumentPaymentMeanToDirectDebitNonSepa to ZugferdDocumentBuilder | 
-| :new_moon:  | [1e5ffc9](https://github.com/horstoeko/zugferd/commit/1e5ffc9) | 2024-12-03 11:38:35 CET | HorstOeko | Merged PR | [#195](https://github.com/horstoeko/zugferd/issues/195)
 | :new_moon:  | [dc5a881](https://github.com/horstoeko/zugferd/commit/dc5a881) | 2024-12-02 17:04:33 CET | Carsten Schmitz | Fixed issue: Using addDocumentAllowanceCharge with Code SERVICE_OUTSIDE_SCOPE_OF_TAX never passes validation as the Taxtype is omitted if you pass no VAT rate | 
 
-:exclamation: _There are 6 internal commit(s)_
+:exclamation: _There are 5 internal commit(s)_
 
 ## v1.0.90
 
@@ -299,7 +282,6 @@
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [02d0e4c](https://github.com/horstoeko/zugferd/commit/02d0e4c) | 2024-11-29 05:36:43 CET | HorstOeko | Added addDocumentSellerVATRegistrationNumber and addDocumentSellerTaxNumber to ZugferdDocumentBuilder | 
 | :new_moon:  | [9d6d67a](https://github.com/horstoeko/zugferd/commit/9d6d67a) | 2024-11-29 05:02:54 CET | HorstOeko | Fix method visibillity in ZugferdDocumentPdfMerger | 
-| :new_moon:  | [574abeb](https://github.com/horstoeko/zugferd/commit/574abeb) | 2024-11-28 13:43:22 CET | HorstOeko | Fix composer autoload psr-4 mapping | 
 | :new_moon:  | [f7e2293](https://github.com/horstoeko/zugferd/commit/f7e2293) | 2024-11-28 09:58:36 CET | Fabian Boensch | Fix composer autoload psr-4 mapping | 
 | :new_moon:  | [c2f6b17](https://github.com/horstoeko/zugferd/commit/c2f6b17) | 2024-11-28 05:22:40 CET | HorstOeko | Use DeliveryTermsCodeType in getTradeDeliveryTermsType | 
 
@@ -311,7 +293,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [b79c5c7](https://github.com/horstoeko/zugferd/commit/b79c5c7) | 2024-11-27 18:00:44 CET | HorstOeko | Merged PR | [#191](https://github.com/horstoeko/zugferd/issues/191)
 | :new_moon:  | [0ef5615](https://github.com/horstoeko/zugferd/commit/0ef5615) | 2024-11-27 17:38:17 CET | HorstOeko | Allow adding empty ShipTo nodes to the document without enforcing a TradeParty name | [#189](https://github.com/horstoeko/zugferd/issues/189)
 | :new_moon:  | [380709c](https://github.com/horstoeko/zugferd/commit/380709c) | 2024-11-27 17:01:45 CET | HorstOeko | Allow adding empty ShipTo nodes to the document without enforcing a TradeParty name | [#189](https://github.com/horstoeko/zugferd/issues/189)
 | :new_moon:  | [90f7072](https://github.com/horstoeko/zugferd/commit/90f7072) | 2024-11-27 16:07:52 CET | HorstOeko | Updated DocBlocks in ZugferdQuickDescriptor | 
@@ -324,7 +305,6 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [fe84c3a](https://github.com/horstoeko/zugferd/commit/fe84c3a) | 2024-11-26 18:26:40 CET | HorstOeko | Added ZugferdQuickDescriptor::doSetSupplyChainEvent | 
-| :new_moon:  | [41ce2be](https://github.com/horstoeko/zugferd/commit/41ce2be) | 2024-11-26 17:04:59 CET | HorstOeko | Merged PR | [#187](https://github.com/horstoeko/zugferd/issues/187)
 
 :exclamation: _There are 4 internal commit(s)_
 
@@ -334,7 +314,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [def6f29](https://github.com/horstoeko/zugferd/commit/def6f29) | 2024-11-26 11:16:21 CET | HorstOeko | Merged PR | [#186](https://github.com/horstoeko/zugferd/issues/186)
 | :new_moon:  | [3a7aeec](https://github.com/horstoeko/zugferd/commit/3a7aeec) | 2024-11-26 11:10:41 CET | HorstOeko | Fixed duplicated VAT Breakdown in QuickDescriptor | [#185](https://github.com/horstoeko/zugferd/issues/185)
 
 :exclamation: _There is one internal commit_
@@ -345,7 +324,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [5b581b6](https://github.com/horstoeko/zugferd/commit/5b581b6) | 2024-11-26 05:07:32 CET | HorstOeko | Merged PR | [#183](https://github.com/horstoeko/zugferd/issues/183)
 | :new_moon:  | [ed98443](https://github.com/horstoeko/zugferd/commit/ed98443) | 2024-11-25 20:16:38 CET | GM | Removed implicitly nullable parameter declarations | 
 
 :exclamation: _There are 3 internal commit(s)_
@@ -356,7 +334,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [98a89ec](https://github.com/horstoeko/zugferd/commit/98a89ec) | 2024-11-25 17:34:03 CET | HorstOeko | Merged PR | [#182](https://github.com/horstoeko/zugferd/issues/182)
 | :new_moon:  | [a8ae46f](https://github.com/horstoeko/zugferd/commit/a8ae46f) | 2024-11-25 17:23:59 CET | HorstOeko | Add method for adding payment terms in special XRechnung-Syntax | [#181](https://github.com/horstoeko/zugferd/issues/181)
 | :new_moon:  | [31fc364](https://github.com/horstoeko/zugferd/commit/31fc364) | 2024-11-25 05:28:47 CET | HorstOeko | Updated example for XRechnung 3 | 
 | :new_moon:  | [0976dd4](https://github.com/horstoeko/zugferd/commit/0976dd4) | 2024-11-22 15:16:53 CET | HorstOeko | Fixed Inconsistent Naming in Parameters | [#177](https://github.com/horstoeko/zugferd/issues/177)
@@ -382,7 +359,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [6e5901e](https://github.com/horstoeko/zugferd/commit/6e5901e) | 2024-11-16 07:41:07 CET | HorstOeko | Merged PR | [#170](https://github.com/horstoeko/zugferd/issues/170)
 | :new_moon:  | [0b101f8](https://github.com/horstoeko/zugferd/commit/0b101f8) | 2024-11-16 07:34:43 CET | HorstOeko | Handle Decimals of the measure type | [#169](https://github.com/horstoeko/zugferd/issues/169)
 | :new_moon:  | [cf43e13](https://github.com/horstoeko/zugferd/commit/cf43e13) | 2024-11-14 16:12:56 CET | HorstOeko | Fix Exception in ZugferdDocumentPdfMerger | 
 | :new_moon:  | [7d8f01d](https://github.com/horstoeko/zugferd/commit/7d8f01d) | 2024-11-12 16:58:21 CET | HorstOeko | Better message handling in ZugferdKositValidator | 
@@ -405,7 +381,6 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [f615cf4](https://github.com/horstoeko/zugferd/commit/f615cf4) | 2024-11-05 16:34:37 CET | HorstOeko | Removed duplicate context parameter | [#164](https://github.com/horstoeko/zugferd/issues/164)
-| :new_moon:  | [da21b65](https://github.com/horstoeko/zugferd/commit/da21b65) | 2024-11-05 05:05:57 CET | HorstOeko | Pre-assignment of 'BusinessProcessSpecifiedDocumentContextParameter' for profile EXTENDED | [#159](https://github.com/horstoeko/zugferd/issues/159)
 | :new_moon:  | [d209690](https://github.com/horstoeko/zugferd/commit/d209690) | 2024-11-04 16:30:49 CET | HorstOeko | Pre-assignment of 'BusinessProcessSpecifiedDocumentContextParameter' with 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0' in extended profile | [#159](https://github.com/horstoeko/zugferd/issues/159)
 | :new_moon:  | [1646873](https://github.com/horstoeko/zugferd/commit/1646873) | 2024-11-04 05:42:51 CET | HorstOeko | Pre-assignment of 'BusinessProcessSpecifiedDocumentContextParameter' with 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0' in all profiles | [#159](https://github.com/horstoeko/zugferd/issues/159)
 
@@ -438,7 +413,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [b1ab332](https://github.com/horstoeko/zugferd/commit/b1ab332) | 2024-11-01 10:17:24 CET | HorstOeko | An option has been created to attach additional attachments to a PDF | 
 | :new_moon:  | [7a54537](https://github.com/horstoeko/zugferd/commit/7a54537) | 2024-11-01 09:52:25 CET | HorstOeko | Possibility to add additional documents (attachments) to a PDF in the classes ``ZugferdDocumentPdfBuilder`` and ``ZugferdDocumentPdfMerger``. (See Issue ) | [#153](https://github.com/horstoeko/zugferd/issues/153)
 | :new_moon:  | [0d97519](https://github.com/horstoeko/zugferd/commit/0d97519) | 2024-11-01 09:14:42 CET | HorstOeko | Possibility to add additional documents (attachments) to a PDF in the classes ``ZugferdDocumentPdfBuilder`` and ``ZugferdDocumentPdfMerger``. (See Issue ) | [#153](https://github.com/horstoeko/zugferd/issues/153)
 | :new_moon:  | [e03f663](https://github.com/horstoeko/zugferd/commit/e03f663) | 2024-10-31 15:53:18 CET | HorstOeko | Fix sample file | [#155](https://github.com/horstoeko/zugferd/issues/155)
@@ -451,7 +425,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [b6aa5cb](https://github.com/horstoeko/zugferd/commit/b6aa5cb) | 2024-10-30 18:48:35 CET | HorstOeko | Merged PR | [#152](https://github.com/horstoeko/zugferd/issues/152)
 | :new_moon:  | [0a1420f](https://github.com/horstoeko/zugferd/commit/0a1420f) | 2024-10-30 16:27:17 CET | HorstOeko | Added support for alternative context parameters | 
 
 :exclamation: _There are 4 internal commit(s)_
@@ -462,10 +435,7 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [4895eac](https://github.com/horstoeko/zugferd/commit/4895eac) | 2024-10-24 18:50:47 CEST | HorstOeko | Merged PR | [#149](https://github.com/horstoeko/zugferd/issues/149)
 | :new_moon:  | [9f550dc](https://github.com/horstoeko/zugferd/commit/9f550dc) | 2024-10-24 16:07:15 CEST | HorstOeko | Allow "Source" for XML attachment relationship, added quick accessor to switch to "Data", "Alternative" or "Source" relation ship | [#147](https://github.com/horstoeko/zugferd/issues/147)
-
-:exclamation: _There is one internal commit_
 
 ## v1.0.71
 
@@ -473,7 +443,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [8180c5a](https://github.com/horstoeko/zugferd/commit/8180c5a) | 2024-10-24 16:17:20 CEST | HorstOeko | Merged PR | [#148](https://github.com/horstoeko/zugferd/issues/148)
 | :new_moon:  | [0da33d0](https://github.com/horstoeko/zugferd/commit/0da33d0) | 2024-10-24 16:07:15 CEST | HorstOeko | Added "setAttachmentRelationshipType" to ZugferdDocumentPdfBuilderAbstract for setting up an alternative relationship type for the XML attachment. Allowed values are 'Data' and 'Alternative' | [#147](https://github.com/horstoeko/zugferd/issues/147)
 
 ## v1.0.70
@@ -492,7 +461,6 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [31877c6](https://github.com/horstoeko/zugferd/commit/31877c6) | 2024-10-22 05:33:57 CEST | HorstOeko | Fixed typo in TestCase method | 
-| :new_moon:  | [c025d0c](https://github.com/horstoeko/zugferd/commit/c025d0c) | 2024-10-22 04:55:38 CEST | HorstOeko | Merged PR | [#146](https://github.com/horstoeko/zugferd/issues/146)
 | :new_moon:  | [629c879](https://github.com/horstoeko/zugferd/commit/629c879) | 2024-10-22 04:50:46 CEST | HorstOeko | Sealed class ZugferdDocument | 
 | :new_moon:  | [509f503](https://github.com/horstoeko/zugferd/commit/509f503) | 2024-10-19 09:27:59 CEST | HorstOeko | Update Codelist "ZugferdReferenceCodeQualifiers" (UNTDID 1153) | 
 | :new_moon:  | [6c9ce73](https://github.com/horstoeko/zugferd/commit/6c9ce73) | 2024-10-19 09:22:44 CEST | HorstOeko | Update Codelist "ZugferdReferenceCodeQualifiers" (UNTDID 1153) | 
@@ -505,7 +473,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [01e7fcc](https://github.com/horstoeko/zugferd/commit/01e7fcc) | 2024-10-16 05:50:28 CEST | HorstOeko | Merged PR | [#140](https://github.com/horstoeko/zugferd/issues/140)
 | :new_moon:  | [c61b141](https://github.com/horstoeko/zugferd/commit/c61b141) | 2024-10-16 05:44:12 CEST | HorstOeko | Fixed ZugferdDocumentPdfBuilder brakes Hyperlink | [#139](https://github.com/horstoeko/zugferd/issues/139)
 
 :exclamation: _There are 2 internal commit(s)_
@@ -526,7 +493,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [2a009cd](https://github.com/horstoeko/zugferd/commit/2a009cd) | 2024-10-11 11:37:47 CEST | HorstOeko | Merged PR | [#137](https://github.com/horstoeko/zugferd/issues/137)
 | :new_moon:  | [765fb73](https://github.com/horstoeko/zugferd/commit/765fb73) | 2024-10-11 11:23:09 CEST | HorstOeko | Added "getDocumentSellerCommunication" and "getDocumentBuyerCommunication" to ZugferdDocumentReader | [#136](https://github.com/horstoeko/zugferd/issues/136)
 | :new_moon:  | [1140e93](https://github.com/horstoeko/zugferd/commit/1140e93) | 2024-10-06 12:05:26 CEST | HorstOeko | Fix ProfileResolverTest | 
 
@@ -552,10 +518,9 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [9fbb454](https://github.com/horstoeko/zugferd/commit/9fbb454) | 2024-10-04 20:49:47 CEST | HorstOeko | Merged PR | [#134](https://github.com/horstoeko/zugferd/issues/134)
 | :new_moon:  | [ef1bb65](https://github.com/horstoeko/zugferd/commit/ef1bb65) | 2024-10-04 16:47:55 CEST | Daniel Marschall | Update ZugferdProfileResolver.php | 
 
-:exclamation: _There are 4 internal commit(s)_
+:exclamation: _There are 3 internal commit(s)_
 
 ## v1.0.63
 
@@ -563,7 +528,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [c1b4d7f](https://github.com/horstoeko/zugferd/commit/c1b4d7f) | 2024-10-02 17:38:51 CEST | HorstOeko | Merged PR | [#131](https://github.com/horstoeko/zugferd/issues/131)
 | :new_moon:  | [dddad3d](https://github.com/horstoeko/zugferd/commit/dddad3d) | 2024-10-02 17:18:59 CEST | HorstOeko | Fix name parameter in additional referenced documents -> Improved tests | [#130](https://github.com/horstoeko/zugferd/issues/130)
 | :new_moon:  | [73c0eb3](https://github.com/horstoeko/zugferd/commit/73c0eb3) | 2024-10-02 17:01:37 CEST | HorstOeko | Fix name parameter in additional referenced documents | [#130](https://github.com/horstoeko/zugferd/issues/130)
 
@@ -578,10 +542,8 @@
 | :new_moon:  | [552600e](https://github.com/horstoeko/zugferd/commit/552600e) | 2024-09-26 05:16:45 CEST | HorstOeko | Improved tests for LogisticsServiceCharge | 
 | :new_moon:  | [f46e964](https://github.com/horstoeko/zugferd/commit/f46e964) | 2024-09-25 05:32:32 CEST | HorstOeko | Added exchangeRate parameter to ZugferdDocumentBuilder::setForeignCurrency | 
 | :new_moon:  | [f2766ed](https://github.com/horstoeko/zugferd/commit/f2766ed) | 2024-09-24 17:13:44 CEST | HorstOeko | Added tests for foreign currency | 
-| :new_moon:  | [d52dfea](https://github.com/horstoeko/zugferd/commit/d52dfea) | 2024-09-24 16:13:45 CEST | HorstOeko | ZugferdDocumentPdfReader now contains additional methods for extracting the XML content | [#120](https://github.com/horstoeko/zugferd/issues/120)
 | :new_moon:  | [c44f617](https://github.com/horstoeko/zugferd/commit/c44f617) | 2024-09-24 16:07:22 CEST | HorstOeko | ZugferdDocumentPdfReader now contains additional methods for extracting the XML content -> better method names | [#120](https://github.com/horstoeko/zugferd/issues/120)
 | :new_moon:  | [10fc7d3](https://github.com/horstoeko/zugferd/commit/10fc7d3) | 2024-09-24 05:21:35 CEST | HorstOeko | ZugferdDocumentPdfReader now contains additional methods for extracting the XML content | [#120](https://github.com/horstoeko/zugferd/issues/120)
-| :new_moon:  | [1422fc1](https://github.com/horstoeko/zugferd/commit/1422fc1) | 2024-09-23 16:38:42 CEST | HorstOeko | Implemented changes from ZUGFeRD 2.3 | [#119](https://github.com/horstoeko/zugferd/issues/119)
 | :new_moon:  | [42cbe91](https://github.com/horstoeko/zugferd/commit/42cbe91) | 2024-09-23 06:16:24 CEST | HorstOeko | Update to ZUGFeRD 2.3 (PHPCS, PHPStan) | [#119](https://github.com/horstoeko/zugferd/issues/119)
 | :new_moon:  | [10520c3](https://github.com/horstoeko/zugferd/commit/10520c3) | 2024-09-23 05:23:56 CEST | HorstOeko | Update to ZUGFeRD 2.3 (Support for InvoiceReferencedDocument) | [#119](https://github.com/horstoeko/zugferd/issues/119)
 | :new_moon:  | [d7fe3bd](https://github.com/horstoeko/zugferd/commit/d7fe3bd) | 2024-09-21 13:45:10 CEST | HorstOeko | Update to ZUGFeRD 2.3 | [#119](https://github.com/horstoeko/zugferd/issues/119)
@@ -594,12 +556,10 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [e3c0d2b](https://github.com/horstoeko/zugferd/commit/e3c0d2b) | 2024-09-12 16:13:26 CEST | HorstOeko | Merged PR | [#114](https://github.com/horstoeko/zugferd/issues/114)
 | :new_moon:  | [178a51b](https://github.com/horstoeko/zugferd/commit/178a51b) | 2024-09-12 16:04:09 CEST | HorstOeko | Fix provided (Tests) | [#113](https://github.com/horstoeko/zugferd/issues/113)
 | :new_moon:  | [a160f93](https://github.com/horstoeko/zugferd/commit/a160f93) | 2024-09-12 16:03:45 CEST | HorstOeko | Fix provided | [#113](https://github.com/horstoeko/zugferd/issues/113)
-| :new_moon:  | [aa40db6](https://github.com/horstoeko/zugferd/commit/aa40db6) | 2024-09-10 06:09:17 CEST | HorstOeko | Merged PR | [#112](https://github.com/horstoeko/zugferd/issues/112)
 
-:exclamation: _There are 5 internal commit(s)_
+:exclamation: _There are 4 internal commit(s)_
 
 ## v1.0.60
 
@@ -607,9 +567,7 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [10c2296](https://github.com/horstoeko/zugferd/commit/10c2296) | 2024-09-06 12:26:03 CEST | HorstOeko | Merged PR | [#110](https://github.com/horstoeko/zugferd/issues/110)
 | :new_moon:  | [be7780f](https://github.com/horstoeko/zugferd/commit/be7780f) | 2024-09-06 12:21:15 CEST | HorstOeko | Added missing call to libxml_clear_errors in ZugferdProfileResolver | [#108](https://github.com/horstoeko/zugferd/issues/108)
-| :new_moon:  | [dbafaab](https://github.com/horstoeko/zugferd/commit/dbafaab) | 2024-09-06 12:17:31 CEST | HorstOeko | Merged PR | [#109](https://github.com/horstoeko/zugferd/issues/109)
 | :new_moon:  | [1355220](https://github.com/horstoeko/zugferd/commit/1355220) | 2024-09-06 12:13:26 CEST | HorstOeko | Added readAndGuessFromContent to ZugferdDocumentPdfReader | [#107](https://github.com/horstoeko/zugferd/issues/107)
 
 :exclamation: _There is one internal commit_
@@ -620,7 +578,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [d967bfe](https://github.com/horstoeko/zugferd/commit/d967bfe) | 2024-09-04 05:04:52 CEST | HorstOeko | Merged PR | [#106](https://github.com/horstoeko/zugferd/issues/106)
 | :new_moon:  | [c05d6d4](https://github.com/horstoeko/zugferd/commit/c05d6d4) | 2024-09-03 17:08:19 CEST | HorstOeko | Use LibXML Internal errors in ProfileResolver | [#104](https://github.com/horstoeko/zugferd/issues/104)
 
 :exclamation: _There are 7 internal commit(s)_
@@ -631,10 +588,9 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [e5ebbec](https://github.com/horstoeko/zugferd/commit/e5ebbec) | 2024-09-02 17:21:11 CEST | HorstOeko | Merged PR | [#105](https://github.com/horstoeko/zugferd/issues/105)
 | :new_moon:  | [702b12e](https://github.com/horstoeko/zugferd/commit/702b12e) | 2024-09-02 17:11:36 CEST | HorstOeko | ProfileResolver should raise ZugferdUnknownXmlContentException when XML content is not valid | [#104](https://github.com/horstoeko/zugferd/issues/104)
 
-:exclamation: _There are 17 internal commit(s)_
+:exclamation: _There are 16 internal commit(s)_
 
 ## v1.0.57
 
@@ -642,7 +598,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [272e9ba](https://github.com/horstoeko/zugferd/commit/272e9ba) | 2024-07-10 05:39:20 CEST | HorstOeko | Merged PR | [#100](https://github.com/horstoeko/zugferd/issues/100)
 | :new_moon:  | [7401eca](https://github.com/horstoeko/zugferd/commit/7401eca) | 2024-07-09 22:07:13 CEST | Daniel Marschall | Fix ZugferdPdfWriter not outputting metadata if there are no files | 
 
 :exclamation: _There are 2 internal commit(s)_
@@ -653,7 +608,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [ae34e64](https://github.com/horstoeko/zugferd/commit/ae34e64) | 2024-06-15 07:49:47 CEST | HorstOeko | Merged PR | [#97](https://github.com/horstoeko/zugferd/issues/97)
 | :new_moon:  | [34b7698](https://github.com/horstoeko/zugferd/commit/34b7698) | 2024-06-15 07:36:21 CEST | HorstOeko | Add multiple IDs for several trade parties () | [#96](https://github.com/horstoeko/zugferd/issues/96)
 
 ## v1.0.55
@@ -662,17 +616,12 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [3dd9617](https://github.com/horstoeko/zugferd/commit/3dd9617) | 2024-06-14 22:32:06 CEST | HorstOeko | Merged PR | [#95](https://github.com/horstoeko/zugferd/issues/95)
 | :new_moon:  | [deba063](https://github.com/horstoeko/zugferd/commit/deba063) | 2024-06-14 22:18:41 CEST | HorstOeko | Added methods "addDocumentSellerId" and "addDocumentBuyerId" for addings additional ids (not global ids) for seller and buyer () | [#90](https://github.com/horstoeko/zugferd/issues/90)
-| :new_moon:  | [127f1de](https://github.com/horstoeko/zugferd/commit/127f1de) | 2024-06-14 21:30:51 CEST | HorstOeko | Merged PR | [#94](https://github.com/horstoeko/zugferd/issues/94)
 | :new_moon:  | [e2938a4](https://github.com/horstoeko/zugferd/commit/e2938a4) | 2024-06-14 20:31:12 CEST | HorstOeko | Multiple Deprecation Warnings in 1.0.54 () | [#89](https://github.com/horstoeko/zugferd/issues/89)
-| :new_moon:  | [fe43910](https://github.com/horstoeko/zugferd/commit/fe43910) | 2024-06-14 18:14:07 CEST | HorstOeko | Merged PR | [#93](https://github.com/horstoeko/zugferd/issues/93)
 | :new_moon:  | [c9875bb](https://github.com/horstoeko/zugferd/commit/c9875bb) | 2024-06-14 18:11:00 CEST | HorstOeko | Revert "Update ZugferdDocumentBuilder.php" | 
-| :new_moon:  | [d1f475b](https://github.com/horstoeko/zugferd/commit/d1f475b) | 2024-06-14 18:04:50 CEST | HorstOeko | Merged PR | [#91](https://github.com/horstoeko/zugferd/issues/91)
 | :new_moon:  | [00cc2fb](https://github.com/horstoeko/zugferd/commit/00cc2fb) | 2024-06-14 17:01:18 CEST | OLLIVAULT | Update ZugferdDocumentBuilder.php | 
 | :new_moon:  | [116fc5f](https://github.com/horstoeko/zugferd/commit/116fc5f) | 2024-06-12 05:27:52 CEST | HorstOeko | Added example for how to handle AdditionalReferencedDocument | 
 | :new_moon:  | [15da379](https://github.com/horstoeko/zugferd/commit/15da379) | 2024-06-11 15:52:16 CEST | HorstOeko | Added example for BASIC Profile | 
-| :new_moon:  | [a853ac9](https://github.com/horstoeko/zugferd/commit/a853ac9) | 2024-06-11 09:27:47 CEST | HorstOeko | Merged PR | [#86](https://github.com/horstoeko/zugferd/issues/86)
 | :new_moon:  | [56af827](https://github.com/horstoeko/zugferd/commit/56af827) | 2024-06-10 16:42:16 CEST | OLLIVAULT | Update ZugferdDocumentBuilder.php | 
 
 ## v1.0.54
@@ -681,7 +630,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [91547c8](https://github.com/horstoeko/zugferd/commit/91547c8) | 2024-06-07 09:47:18 CEST | HorstOeko | Merged PR | [#85](https://github.com/horstoeko/zugferd/issues/85)
 | :new_moon:  | [fa2691d](https://github.com/horstoeko/zugferd/commit/fa2691d) | 2024-06-06 19:13:44 CEST | OLLIVAULT | Update ZugferdDocumentBuilder.php | 
 
 ## v1.0.53
@@ -690,16 +638,11 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [939e93a](https://github.com/horstoeko/zugferd/commit/939e93a) | 2024-06-05 18:49:22 CEST | HorstOeko | Merged PR | [#84](https://github.com/horstoeko/zugferd/issues/84)
-| :new_moon:  | [c8ea81d](https://github.com/horstoeko/zugferd/commit/c8ea81d) | 2024-06-05 18:45:24 CEST | HorstOeko | Merged PR | [#83](https://github.com/horstoeko/zugferd/issues/83)
-| :new_moon:  | [cb724a0](https://github.com/horstoeko/zugferd/commit/cb724a0) | 2024-06-05 18:44:32 CEST | HorstOeko | Merged PR | [#82](https://github.com/horstoeko/zugferd/issues/82)
-| :new_moon:  | [a5d69dc](https://github.com/horstoeko/zugferd/commit/a5d69dc) | 2024-06-05 18:43:46 CEST | HorstOeko | Merged PR | [#81](https://github.com/horstoeko/zugferd/issues/81)
 | :new_moon:  | [66e1f9c](https://github.com/horstoeko/zugferd/commit/66e1f9c) | 2024-06-05 17:00:35 CEST | OLLIVAULT | Create ZugferdElectronicAddressScheme.php | 
 | :new_moon:  | [67af479](https://github.com/horstoeko/zugferd/commit/67af479) | 2024-06-05 16:42:18 CEST | OLLIVAULT | Create ZugferdVATExemptionReasonCode.php | 
 | :new_moon:  | [c30973f](https://github.com/horstoeko/zugferd/commit/c30973f) | 2024-06-05 16:07:05 CEST | OLLIVAULT | Update ZugferdInvoiceType.php | 
 | :new_moon:  | [296022d](https://github.com/horstoeko/zugferd/commit/296022d) | 2024-06-05 16:02:33 CEST | OLLIVAULT | Update ZugferdInvoiceType.php | 
 | :new_moon:  | [2069cf8](https://github.com/horstoeko/zugferd/commit/2069cf8) | 2024-06-05 15:46:53 CEST | OLLIVAULT | Update ZugferdSchemeIdentifiers.php | 
-| :new_moon:  | [6b24e46](https://github.com/horstoeko/zugferd/commit/6b24e46) | 2024-06-05 15:36:34 CEST | HorstOeko | Merged PR | [#80](https://github.com/horstoeko/zugferd/issues/80)
 | :new_moon:  | [15fbe68](https://github.com/horstoeko/zugferd/commit/15fbe68) | 2024-06-05 15:09:28 CEST | OLLIVAULT | Detailed Input Value References in DocumentBuilder | 
 | :new_moon:  | [99af9f9](https://github.com/horstoeko/zugferd/commit/99af9f9) | 2024-06-05 15:03:53 CEST | OLLIVAULT | Detailed Input Value References in DocumentBuilder | 
 
@@ -718,12 +661,8 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [9e036d4](https://github.com/horstoeko/zugferd/commit/9e036d4) | 2024-05-31 19:20:07 CEST | HorstOeko | Fix ZugferdDocumentPdfBuilder -> static::fromPdfFile | 
-| :new_moon:  | [4b4342b](https://github.com/horstoeko/zugferd/commit/4b4342b) | 2024-05-31 18:36:34 CEST | HorstOeko | Merged PR | [#77](https://github.com/horstoeko/zugferd/issues/77)
-| :new_moon:  | [a285998](https://github.com/horstoeko/zugferd/commit/a285998) | 2024-05-31 18:32:08 CEST | HorstOeko | Merged PR | [#74](https://github.com/horstoeko/zugferd/issues/74)
 | :new_moon:  | [8f7e8f1](https://github.com/horstoeko/zugferd/commit/8f7e8f1) | 2024-05-31 16:55:28 CEST | OLLIVAULT | Detailed Input Value References in DocumentBuilder (Up to EN 16931, Work in Progress) | 
 | :new_moon:  | [ac76dba](https://github.com/horstoeko/zugferd/commit/ac76dba) | 2024-05-30 14:31:22 CEST | OLLIVAULT | Detailed Input Value References in DocumentBuilder | 
-
-:exclamation: _There is one internal commit_
 
 ## v1.0.50
 
@@ -731,10 +670,7 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [bc4f918](https://github.com/horstoeko/zugferd/commit/bc4f918) | 2024-05-30 16:58:49 CEST | HorstOeko | Merged PR | [#76](https://github.com/horstoeko/zugferd/issues/76)
-| :new_moon:  | [cb23bc1](https://github.com/horstoeko/zugferd/commit/cb23bc1) | 2024-05-30 16:07:02 CEST | HorstOeko | Merged PR | [#75](https://github.com/horstoeko/zugferd/issues/75)
 | :new_moon:  | [04a4d79](https://github.com/horstoeko/zugferd/commit/04a4d79) | 2024-05-30 15:47:58 CEST | Daniel Marschall | Fixed problem with ZugferdSettings special decimal places. Fixes | [#73](https://github.com/horstoeko/zugferd/issues/73)
-| :new_moon:  | [f0c6840](https://github.com/horstoeko/zugferd/commit/f0c6840) | 2024-05-29 19:37:14 CEST | HorstOeko | Merged PR | [#71](https://github.com/horstoeko/zugferd/issues/71)
 | :new_moon:  | [3aa3fc8](https://github.com/horstoeko/zugferd/commit/3aa3fc8) | 2024-05-29 19:24:15 CEST | Daniel Marschall | Fix typo | 
 
 :exclamation: _There are 2 internal commit(s)_
@@ -745,20 +681,14 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [32233f8](https://github.com/horstoeko/zugferd/commit/32233f8) | 2024-05-29 17:12:06 CEST | HorstOeko | Merged PR | [#70](https://github.com/horstoeko/zugferd/issues/70)
 | :new_moon:  | [c018035](https://github.com/horstoeko/zugferd/commit/c018035) | 2024-05-29 17:03:11 CEST | HorstOeko | Fix for "Cannot access private property" | 
-| :new_moon:  | [6e05993](https://github.com/horstoeko/zugferd/commit/6e05993) | 2024-05-29 16:44:09 CEST | HorstOeko | Merged PR | [#69](https://github.com/horstoeko/zugferd/issues/69)
 | :new_moon:  | [41f69cd](https://github.com/horstoeko/zugferd/commit/41f69cd) | 2024-05-29 15:57:22 CEST | Daniel Marschall | Remove unnecessary comment | 
 | :new_moon:  | [ffa5204](https://github.com/horstoeko/zugferd/commit/ffa5204) | 2024-05-29 15:56:06 CEST | Daniel Marschall | Fix CI | 
 | :new_moon:  | [538397b](https://github.com/horstoeko/zugferd/commit/538397b) | 2024-05-29 15:16:57 CEST | Daniel Marschall | Fixed problem with Country ID at profile minimum (Fixes ) | [#66](https://github.com/horstoeko/zugferd/issues/66)
-| :new_moon:  | [0f4b2d5](https://github.com/horstoeko/zugferd/commit/0f4b2d5) | 2024-05-29 13:10:09 CEST | HorstOeko | Merged PR | [#64](https://github.com/horstoeko/zugferd/issues/64)
 | :new_moon:  | [a0f8b04](https://github.com/horstoeko/zugferd/commit/a0f8b04) | 2024-05-29 05:12:17 CEST | HorstOeko | Added method setUnitAmountDecimals to ZugferdSettings | 
-| :new_moon:  | [d21a4c5](https://github.com/horstoeko/zugferd/commit/d21a4c5) | 2024-05-28 18:01:29 CEST | HorstOeko | Merged PR | [#63](https://github.com/horstoeko/zugferd/issues/63)
 | :new_moon:  | [d5b192a](https://github.com/horstoeko/zugferd/commit/d5b192a) | 2024-05-28 17:59:58 CEST | HorstOeko | Define decimal places for node paths | 
 | :new_moon:  | [3efed44](https://github.com/horstoeko/zugferd/commit/3efed44) | 2024-05-28 16:29:18 CEST | Fabian Blechschmidt | Fix typo taxCategpryCodes -> taxCategoryCodes | 
-| :new_moon:  | [0ae838a](https://github.com/horstoeko/zugferd/commit/0ae838a) | 2024-05-27 07:45:16 CEST | HorstOeko | Merged PR | [#61](https://github.com/horstoeko/zugferd/issues/61)
 | :new_moon:  | [d292f8a](https://github.com/horstoeko/zugferd/commit/d292f8a) | 2024-05-26 10:16:55 CEST | Daniel Marschall | ZugferdDocumentPdfReader aceepts ZUGFeRD 1.0 filenames on unix systems | 
-| :new_moon:  | [a42cdc6](https://github.com/horstoeko/zugferd/commit/a42cdc6) | 2024-05-24 15:46:49 CEST | HorstOeko | Add static factory for existing files | 
 | :new_moon:  | [4d9485a](https://github.com/horstoeko/zugferd/commit/4d9485a) | 2024-05-24 12:41:22 CEST | Fabian Blechschmidt | Add second static factory | 
 | :new_moon:  | [07adeac](https://github.com/horstoeko/zugferd/commit/07adeac) | 2024-05-24 10:28:18 CEST | Fabian Blechschmidt | Add static factory for existing files | 
 
@@ -779,7 +709,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [b778941](https://github.com/horstoeko/zugferd/commit/b778941) | 2024-05-21 16:57:41 CEST | HorstOeko | Merged PR | [#50](https://github.com/horstoeko/zugferd/issues/50)
 | :new_moon:  | [c9eb2f2](https://github.com/horstoeko/zugferd/commit/c9eb2f2) | 2024-05-21 16:19:59 CEST | Daniel Marschall | Typo | 
 | :new_moon:  | [a60c731](https://github.com/horstoeko/zugferd/commit/a60c731) | 2024-05-21 16:18:43 CEST | Daniel Marschall | Introduced ZugferdDocumentPdfBuilderAbstract::getCreatorToolName() | 
 | :new_moon:  | [a40ce4f](https://github.com/horstoeko/zugferd/commit/a40ce4f) | 2024-05-21 11:48:40 CEST | Daniel Marschall | Added setAdditionalCreatorTool() to the PDF builder | 
@@ -796,15 +725,7 @@
 | :new_moon:  | [5daa391](https://github.com/horstoeko/zugferd/commit/5daa391) | 2024-05-16 11:41:32 CEST | HorstOeko | Fix filename of ExtendedPdfReader,php example | 
 | :new_moon:  | [e87f749](https://github.com/horstoeko/zugferd/commit/e87f749) | 2024-05-16 05:41:43 CEST | HorstOeko | Example with the different possibilities to work with discounts/surcharges added | 
 
-:exclamation: _There is one internal commit_
-
 ## v1.0.43
-
-``Previous version v1.0.42``
-
-| Type | Hash    | Date    | Author  | Subject  | Issue(s)
-| :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [1ddaf73](https://github.com/horstoeko/zugferd/commit/1ddaf73) | 2024-05-13 15:32:59 CEST | HorstOeko | Merged PR | [#46](https://github.com/horstoeko/zugferd/issues/46)
 
 :exclamation: _There is one internal commit_
 
@@ -815,11 +736,8 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [2c1f188](https://github.com/horstoeko/zugferd/commit/2c1f188) | 2024-05-11 11:26:10 CEST | HorstOeko | Added Seeker and Getter to ZugferdDocumentReader for Product Characteristics, Product Classifications and Referenced Products (at position level) | 
-| :new_moon:  | [63d794b](https://github.com/horstoeko/zugferd/commit/63d794b) | 2024-05-07 17:12:04 CEST | HorstOeko | Merged PR | [#44](https://github.com/horstoeko/zugferd/issues/44)
 | :new_moon:  | [5ed8d50](https://github.com/horstoeko/zugferd/commit/5ed8d50) | 2024-05-07 17:02:07 CEST | HorstOeko | Added Test for Issue | [#43](https://github.com/horstoeko/zugferd/issues/43)
-| :new_moon:  | [00d4c79](https://github.com/horstoeko/zugferd/commit/00d4c79) | 2024-05-07 05:53:36 CEST | HorstOeko | Merged PR | [#42](https://github.com/horstoeko/zugferd/issues/42)
 | :new_moon:  | [bfa1560](https://github.com/horstoeko/zugferd/commit/bfa1560) | 2024-05-07 05:50:06 CEST | HorstOeko | ZugferdKositValidator -> Made message bag type constants private | 
-| :new_moon:  | [429a990](https://github.com/horstoeko/zugferd/commit/429a990) | 2024-05-06 12:04:09 CEST | HorstOeko | Merged PR | [#41](https://github.com/horstoeko/zugferd/issues/41)
 | :new_moon:  | [e077217](https://github.com/horstoeko/zugferd/commit/e077217) | 2024-05-06 11:18:29 CEST | Markus Gärtner | Wrong Tax | 
 
 :exclamation: _There is one internal commit_
@@ -840,7 +758,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [f18db8b](https://github.com/horstoeko/zugferd/commit/f18db8b) | 2024-04-13 08:54:35 CEST | HorstOeko | Merged PR | [#39](https://github.com/horstoeko/zugferd/issues/39)
 | :new_moon:  | [ac81ad1](https://github.com/horstoeko/zugferd/commit/ac81ad1) | 2024-04-13 08:45:07 CEST | HorstOeko | KositValidator -> Better message handling, New method to retrieve the output of the JAVA-Validator-Output (getProcessOutput) | 
 
 ## v1.0.39
@@ -849,11 +766,8 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [da94b22](https://github.com/horstoeko/zugferd/commit/da94b22) | 2024-04-12 13:24:58 CEST | HorstOeko | Merged PR | [#38](https://github.com/horstoeko/zugferd/issues/38)
 | :new_moon:  | [30c593c](https://github.com/horstoeko/zugferd/commit/30c593c) | 2024-04-12 12:58:48 CEST | HorstOeko | KositValidator -> Cache downloaded versions | 
-| :new_moon:  | [504a43b](https://github.com/horstoeko/zugferd/commit/504a43b) | 2024-04-12 11:19:08 CEST | HorstOeko | Merged PR | [#37](https://github.com/horstoeko/zugferd/issues/37)
 | :new_moon:  | [e802b0a](https://github.com/horstoeko/zugferd/commit/e802b0a) | 2024-04-12 11:11:54 CEST | HorstOeko | KositValidator -> Fix download filename | 
-| :new_moon:  | [2e8fc63](https://github.com/horstoeko/zugferd/commit/2e8fc63) | 2024-04-12 09:37:38 CEST | HorstOeko | Merged PR | [#36](https://github.com/horstoeko/zugferd/issues/36)
 | :new_moon:  | [fc27ef7](https://github.com/horstoeko/zugferd/commit/fc27ef7) | 2024-04-12 08:48:43 CEST | HorstOeko | KostValidator -> Improvements, Better message handling, Updated usage example | 
 | :new_moon:  | [dd4e4cc](https://github.com/horstoeko/zugferd/commit/dd4e4cc) | 2024-04-10 05:19:37 CEST | HorstOeko | KositValidator Optimizations | 
 | :new_moon:  | [d8f3dfe](https://github.com/horstoeko/zugferd/commit/d8f3dfe) | 2024-04-09 05:44:07 CEST | HorstOeko | Made more options configurable in KositValidator | 
@@ -877,7 +791,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [05f58ad](https://github.com/horstoeko/zugferd/commit/05f58ad) | 2024-03-24 12:31:03 CET | HorstOeko | Merged PR | [#33](https://github.com/horstoeko/zugferd/issues/33)
 | :new_moon:  | [6e1d4d0](https://github.com/horstoeko/zugferd/commit/6e1d4d0) | 2024-03-24 12:26:00 CET | HorstOeko | Added Fix and a Test for Issue 32 | 
 | :new_moon:  | [eb570a0](https://github.com/horstoeko/zugferd/commit/eb570a0) | 2024-03-24 11:17:34 CET | HorstOeko | Added Scripts for generating Codelists | 
 | :new_moon:  | [f05021f](https://github.com/horstoeko/zugferd/commit/f05021f) | 2024-03-12 05:20:50 CET | HorstOeko | Fix some PHPStan issues | 
@@ -919,8 +832,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [0b08db6](https://github.com/horstoeko/zugferd/commit/0b08db6) | 2024-01-23 16:44:16 CET | HorstOeko | Merged PR | [#28](https://github.com/horstoeko/zugferd/issues/28)
-| :new_moon:  | [3de47f4](https://github.com/horstoeko/zugferd/commit/3de47f4) | 2024-01-23 16:40:45 CET | HorstOeko | Merged PR | [#29](https://github.com/horstoeko/zugferd/issues/29)
 | :new_moon:  | [9663fa5](https://github.com/horstoeko/zugferd/commit/9663fa5) | 2024-01-23 10:18:35 CET | Dominik Kohler | Fixed php requirement (caret constraint) | 
 | :new_moon:  | [abd8f69](https://github.com/horstoeko/zugferd/commit/abd8f69) | 2024-01-23 09:53:12 CET | Dominik Kohler | Run tests also for newer PHP releases | 
 
@@ -932,7 +843,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [f678186](https://github.com/horstoeko/zugferd/commit/f678186) | 2024-01-22 11:35:33 CET | HorstOeko | Merged PR | [#27](https://github.com/horstoeko/zugferd/issues/27)
 | :new_moon:  | [aa6db69](https://github.com/horstoeko/zugferd/commit/aa6db69) | 2024-01-22 10:47:46 CET | Daniel Khalil | Add inline file output | 
 | :new_moon:  | [6dfbc96](https://github.com/horstoeko/zugferd/commit/6dfbc96) | 2023-12-17 13:50:08 CET | HorstOeko | Renamed file | 
 | :new_moon:  | [19deb90](https://github.com/horstoeko/zugferd/commit/19deb90) | 2023-10-18 06:15:01 CEST | HorstOeko | Fix type in variable name in ZugferdDocumentPdfBuilder | 
@@ -970,9 +880,8 @@
 | :new_moon:  | [b5e8565](https://github.com/horstoeko/zugferd/commit/b5e8565) | 2023-09-30 15:42:02 CEST | HorstOeko | Added __toString-Tests for all Builder-Tests | 
 | :new_moon:  | [73b0ace](https://github.com/horstoeko/zugferd/commit/73b0ace) | 2023-09-30 15:17:12 CEST | HorstOeko | Added magic method __toString to ZugferdDocumentBuilder to receive the XML content | 
 | :new_moon:  | [85a4a19](https://github.com/horstoeko/zugferd/commit/85a4a19) | 2023-09-30 07:00:26 CEST | HorstOeko | More clarity in the ZugferdDocumentPdfMerger example | 
-| :new_moon:  | [dbc5ff8](https://github.com/horstoeko/zugferd/commit/dbc5ff8) | 2023-09-24 09:26:15 CEST | HorstOeko | Merged PR | [#24](https://github.com/horstoeko/zugferd/issues/24)
 
-:exclamation: _There are 35 internal commit(s)_
+:exclamation: _There are 33 internal commit(s)_
 
 ## v1.0.29
 
@@ -996,7 +905,6 @@
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
 | :new_moon:  | [be78b1b](https://github.com/horstoeko/zugferd/commit/be78b1b) | 2023-09-12 16:54:01 CEST | HorstOeko | Added methods for buyers and sellers electronic communication information in QuickDescriptors | 
-| :new_moon:  | [48a4103](https://github.com/horstoeko/zugferd/commit/48a4103) | 2023-09-12 16:33:28 CEST | HorstOeko | Merged PR | [#23](https://github.com/horstoeko/zugferd/issues/23)
 | :new_moon:  | [55135c2](https://github.com/horstoeko/zugferd/commit/55135c2) | 2023-09-12 16:25:59 CEST | HorstOeko | Better Schematron-Checks-Cleanup | 
 
 :exclamation: _There is one internal commit_
@@ -1007,7 +915,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [e23117b](https://github.com/horstoeko/zugferd/commit/e23117b) | 2023-09-12 07:22:10 CEST | HorstOeko | Merged PR | [#22](https://github.com/horstoeko/zugferd/issues/22)
 | :new_moon:  | [ef6c00f](https://github.com/horstoeko/zugferd/commit/ef6c00f) | 2023-09-12 07:15:56 CEST | HorstOeko | Failonerror="false" for Schematron Checks | 
 | :new_moon:  | [295ada2](https://github.com/horstoeko/zugferd/commit/295ada2) | 2023-09-12 07:08:52 CEST | HorstOeko | Added QuickDescriptor for XRechnung 3 | 
 | :new_moon:  | [dc8e42a](https://github.com/horstoeko/zugferd/commit/dc8e42a) | 2023-09-12 06:49:49 CEST | HorstOeko | Updated to Validation Tool 1.5.0, New validation config | 
@@ -1020,9 +927,7 @@
 | :new_moon:  | [86026ac](https://github.com/horstoeko/zugferd/commit/86026ac) | 2023-09-11 17:40:24 CEST | HorstOeko | Use the latest Kosit-Validation tool | 
 | :new_moon:  | [aa68cc2](https://github.com/horstoeko/zugferd/commit/aa68cc2) | 2023-09-08 15:26:09 CEST | HorstOeko | Set DocumentFileName in XMP-Metadata by profile definition | 
 | :new_moon:  | [9b4474e](https://github.com/horstoeko/zugferd/commit/9b4474e) | 2023-09-07 07:07:12 CEST | HorstOeko | Add support for UniversalCommunication (Seller and Buyer) | 
-| :new_moon:  | [d08a0a1](https://github.com/horstoeko/zugferd/commit/d08a0a1) | 2023-09-06 15:35:34 CEST | HorstOeko | Merged PR | [#20](https://github.com/horstoeko/zugferd/issues/20)
 | :new_moon:  | [c7f6e7f](https://github.com/horstoeko/zugferd/commit/c7f6e7f) | 2023-09-06 15:30:11 CEST | HorstOeko | Define businessprocess in profiles | 
-| :new_moon:  | [2ddb02b](https://github.com/horstoeko/zugferd/commit/2ddb02b) | 2023-09-06 14:23:14 CEST | HorstOeko | Merged PR | [#19](https://github.com/horstoeko/zugferd/issues/19)
 | :new_moon:  | [ed2106c](https://github.com/horstoeko/zugferd/commit/ed2106c) | 2023-09-06 13:30:49 CEST | HorstOeko | Added Profile "PROFILE_XRECHNUNG_3" | [#18](https://github.com/horstoeko/zugferd/issues/18)
 | :new_moon:  | [d89d4a4](https://github.com/horstoeko/zugferd/commit/d89d4a4) | 2023-09-06 13:22:57 CEST | HorstOeko | Added Profile "PROFILE_XRECHNUNG_2_3" | [#18](https://github.com/horstoeko/zugferd/issues/18)
 
@@ -1068,14 +973,10 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [346a3c9](https://github.com/horstoeko/zugferd/commit/346a3c9) | 2023-08-16 16:55:37 CEST | HorstOeko | Merged PR | [#17](https://github.com/horstoeko/zugferd/issues/17)
 | :new_moon:  | [a0eaa90](https://github.com/horstoeko/zugferd/commit/a0eaa90) | 2023-08-16 16:37:49 CEST | HorstOeko | Added Example for ZugferdDocumentPdfMerger (En16931PdfMerger) | [#14](https://github.com/horstoeko/zugferd/issues/14)
 | :new_moon:  | [75e7ff6](https://github.com/horstoeko/zugferd/commit/75e7ff6) | 2023-08-16 16:29:29 CEST | HorstOeko | Final ZugferdDocumentPdfMerger | [#14](https://github.com/horstoeko/zugferd/issues/14)
 | :new_moon:  | [cec9e77](https://github.com/horstoeko/zugferd/commit/cec9e77) | 2023-08-16 16:24:25 CEST | HorstOeko | Introducing the ZugferdDocumentPdfMerger | [#14](https://github.com/horstoeko/zugferd/issues/14)
-| :new_moon:  | [5ee0f3c](https://github.com/horstoeko/zugferd/commit/5ee0f3c) | 2023-08-16 14:06:41 CEST | HorstOeko | Merged PR | [#16](https://github.com/horstoeko/zugferd/issues/16)
 | :new_moon:  | [2d27efa](https://github.com/horstoeko/zugferd/commit/2d27efa) | 2023-08-16 12:23:41 CEST | David Bomba | Add string output as option | 
-
-:exclamation: _There is one internal commit_
 
 ## v1.0.20
 
@@ -1083,7 +984,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [725c130](https://github.com/horstoeko/zugferd/commit/725c130) | 2023-07-04 17:21:32 CEST | HorstOeko | Merged PR | [#13](https://github.com/horstoeko/zugferd/issues/13)
 | :new_moon:  | [4a5446e](https://github.com/horstoeko/zugferd/commit/4a5446e) | 2023-07-04 17:10:47 CEST | HorstOeko | Added method setDocumentRoutingId to ZugferdDocumentBuilder | [#12](https://github.com/horstoeko/zugferd/issues/12)
 | :new_moon:  | [ff48359](https://github.com/horstoeko/zugferd/commit/ff48359) | 2023-07-04 16:59:06 CEST | HorstOeko | Added \minimum\udt\AmountType to ZugferdTypesHandler | [#11](https://github.com/horstoeko/zugferd/issues/11)
 | :new_moon:  | [e87cdd8](https://github.com/horstoeko/zugferd/commit/e87cdd8) | 2023-07-03 16:47:16 CEST | HorstOeko | Removed useless code from Issue10Test | 
@@ -1108,7 +1008,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [24b636b](https://github.com/horstoeko/zugferd/commit/24b636b) | 2023-04-17 11:58:12 CEST | HorstOeko | Merged PR | [#8](https://github.com/horstoeko/zugferd/issues/8)
 | :new_moon:  | [569b4f5](https://github.com/horstoeko/zugferd/commit/569b4f5) | 2023-04-17 10:54:05 CEST | UP | Version bump of smalot/pdfparser to allow php >=8.0 | 
 | :new_moon:  | [bce6df1](https://github.com/horstoeko/zugferd/commit/bce6df1) | 2023-02-17 20:09:24 CET | HorstOeko | Fix namespace for ReaderXRechnungSimpleTest | 
 
@@ -1180,8 +1079,6 @@
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
-| :new_moon:  | [19af7d0](https://github.com/horstoeko/zugferd/commit/19af7d0) | 2022-10-21 11:39:54 CEST | HorstOeko | Merged PR | [#6](https://github.com/horstoeko/zugferd/issues/6)
-| :new_moon:  | [6e5f3aa](https://github.com/horstoeko/zugferd/commit/6e5f3aa) | 2022-10-21 11:39:12 CEST | HorstOeko | Merged PR | [#7](https://github.com/horstoeko/zugferd/issues/7)
 | :new_moon:  | [efeb516](https://github.com/horstoeko/zugferd/commit/efeb516) | 2022-09-26 10:36:04 CEST | Brice Flaceliere | Fix context parameter for wasic-wl profile | 
 
 :exclamation: _There is one internal commit_
@@ -1241,7 +1138,7 @@
 | :new_moon:  | [6ccdfe5](https://github.com/horstoeko/zugferd/commit/6ccdfe5) | 2022-03-04 12:53:14 CET | HorstOeko | genclasses Script for WIndows | 
 | :new_moon:  | [23be2d3](https://github.com/horstoeko/zugferd/commit/23be2d3) | 2022-03-04 12:06:30 CET | HorstOeko | Fixed Directory Separator in Test | 
 
-:exclamation: _There are 15 internal commit(s)_
+:exclamation: _There are 14 internal commit(s)_
 
 ## v1.0.7
 
