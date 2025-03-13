@@ -3576,8 +3576,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string      $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
      * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return ZugferdDocumentBuilder
+     * @deprecated v1.0.110 Please use addDocumentPositionAdditionalReferencedObjDocument instead
      */
     public function addDocumentPositionAdditionalReferencedDocumentObj(string $issuerAssignedId, string $typeCode, ?string $refTypeCode = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentPositionAdditionalReferencedObjDocument($issuerAssignedId, $typeCode, $refTypeCode);
+    }
+
+    /**
+     * Add an additional Document reference on a position (Object detection).
+     *
+     * @param  string      $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string      $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionAdditionalReferencedObjDocument(string $issuerAssignedId, string $typeCode, ?string $refTypeCode = null): ZugferdDocumentBuilder
     {
         $positionsettlement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeSettlement");
         $addrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, null, $typeCode, null, $refTypeCode, null, null);

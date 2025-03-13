@@ -1864,8 +1864,8 @@ class BuilderExtendedTest extends TestCase
         (self::$document)->addDocumentPositionReceivableSpecifiedTradeAccountingAccount("accid", "acctypecode");
         (self::$document)->addDocumentPositionAdditionalReferencedDocument("1", "2", "3", "4", "name", "reftypecode", new \DateTime());
         (self::$document)->addDocumentPositionUltimateCustomerOrderReferencedDocument("ORDER-0001", "1.1", new \DateTime());
-        (self::$document)->addDocumentPositionAdditionalReferencedDocumentObj("ZZZZZZZZZ", "916", "130");
-        (self::$document)->addDocumentPositionAdditionalReferencedDocumentObj("ABCDEF123", "50", "130");
+        (self::$document)->addDocumentPositionAdditionalReferencedObjDocument("ZZZZZZZZZ", "916", "130");
+        (self::$document)->addDocumentPositionAdditionalReferencedObjDocument("ABCDEF123", "50", "130");
         (self::$document)->addDocumentPositionInvoiceReferencedDocument("INV1", "1", "71", new \DateTime());
 
         $this->disableRenderXmlContent();
