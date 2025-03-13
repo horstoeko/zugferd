@@ -78,7 +78,7 @@ function getMarkDown($prevTag, $currTag)
 
     echo sprintf('Getting commits from %s to %s', $prevTag, $currTag) . PHP_EOL;
 
-    $commitStr = shell_exec(sprintf('git log --oneline --format="%%h|%%an|%%ad|%%s" "%s..%s"', $prevTag, $currTag));
+    $commitStr = shell_exec(sprintf('git log --no-merges --oneline --format="%%h|%%an|%%ad|%%s" "%s..%s"', $prevTag, $currTag));
 
     if (is_null($commitStr) || $commitStr === false) {
         return $markDown;
