@@ -250,7 +250,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set grouping of business process information.
      *
-     * @param string $id __BT-23, From MINIMUM__ Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to process the invoice in an appropriate manner.
+     * @param  string $id __BT-23, From MINIMUM__ Identifies the context of a business process where the transaction is taking place, thus allowing the buyer to process the invoice in an appropriate manner.
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBusinessProcess(string $id): ZugferdDocumentBuilder
@@ -3572,10 +3572,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add an additional Document reference on a position (Object detection).
      *
-     * @param  string      $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string      $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @return ZugferdDocumentBuilder
+     * @param      string      $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param      string      $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param      string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return     ZugferdDocumentBuilder
      * @deprecated v1.0.110 Please use addDocumentPositionAdditionalReferencedObjDocument instead
      */
     public function addDocumentPositionAdditionalReferencedDocumentObj(string $issuerAssignedId, string $typeCode, ?string $refTypeCode = null): ZugferdDocumentBuilder
