@@ -54,13 +54,13 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertSame('123456789', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
-        $this->assertNotNull($documentdate);
+        $this->assertInstanceOf(\DateTime::class, $documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180605'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
         $this->assertSame("", $documentlanguage);
-        $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotInstanceOf(\DateTime::class, $effectiveSpecifiedPeriod);
     }
 
     public function testFirstDocumentAdditionalReferencedDocument(): void

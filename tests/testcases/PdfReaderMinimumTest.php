@@ -36,13 +36,13 @@ class PdfReaderMinimumTest extends TestCase
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertSame('F20220027', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
-        $this->assertNotNull($documentdate);
+        $this->assertInstanceOf(\DateTime::class, $documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20220131'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
         $this->assertSame("", $documentlanguage);
-        $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotInstanceOf(\DateTime::class, $effectiveSpecifiedPeriod);
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertInstanceOf('horstoeko\zugferd\entities\minimum\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
     }
@@ -700,28 +700,28 @@ class PdfReaderMinimumTest extends TestCase
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
         $this->assertSame("", $sellerorderrefdocid);
-        $this->assertNull($sellerorderrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $sellerorderrefdocdate);
     }
 
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
         $this->assertSame("PO201925478", $buyerorderrefdocid);
-        $this->assertNull($buyerorderrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $buyerorderrefdocdate);
     }
 
     public function testDocumentQuotationReferencedDocument(): void
     {
         self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
         $this->assertSame("", $quotationrefdocid);
-        $this->assertNull($quotationrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $quotationrefdocdate);
     }
 
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
         $this->assertSame("", $contractrefdocid);
-        $this->assertNull($contractrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $contractrefdocdate);
     }
 
     public function testDocumentAdditionalReferencedDocuments(): void
@@ -741,35 +741,35 @@ class PdfReaderMinimumTest extends TestCase
     public function testDocumentSupplyChainEvent(): void
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
-        $this->assertNull($supplychainevent);
+        $this->assertNotInstanceOf(\DateTime::class, $supplychainevent);
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertSame("", $despatchdocid);
-        $this->assertNull($despatchdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertSame("", $recadvid);
-        $this->assertNull($recadvdate);
+        $this->assertNotInstanceOf(\DateTime::class, $recadvdate);
     }
 
     public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
         $this->assertSame("", $deliverynoterefdocid);
-        $this->assertNull($deliverynoterefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $deliverynoterefdocdate);
     }
 
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
-        $this->assertNull($docbillingperiodstart);
-        $this->assertNull($docbillingperiodend);
+        $this->assertNotInstanceOf(\DateTime::class, $docbillingperiodstart);
+        $this->assertNotInstanceOf(\DateTime::class, $docbillingperiodend);
     }
 
     public function testDocumentAllowanceCharges(): void

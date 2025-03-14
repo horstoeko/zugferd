@@ -24,6 +24,6 @@ class ValidatorValidTest extends TestCase
     {
         $validator = new ZugferdDocumentValidator(self::$document);
         $validationResult = $validator->validateDocument();
-        $this->assertCount(0, $validationResult);
+        $this->assertEmpty($validationResult);
     }
 }

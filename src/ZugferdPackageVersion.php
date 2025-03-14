@@ -32,9 +32,9 @@ final class ZugferdPackageVersion
     public static function getInstalledVersion(): string
     {
         try {
-            return ComposerInstalledVersions::getVersion('horstoeko/zugferd') ?? static::getDefaultVersion();
+            return ComposerInstalledVersions::getVersion('horstoeko/zugferd') ?? self::getDefaultVersion();
         } catch (OutOfBoundsException $outOfBoundsException) {
-            return static::getDefaultVersion();
+            return self::getDefaultVersion();
         }
     }
 
