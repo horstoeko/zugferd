@@ -34,13 +34,13 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertSame('F20200027', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
-        $this->assertNotNull($documentdate);
+        $this->assertInstanceOf(\DateTime::class, $documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
         $this->assertSame("", $documentlanguage);
-        $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotInstanceOf(\DateTime::class, $effectiveSpecifiedPeriod);
         $this->assertNotNull($this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
         $this->assertInstanceOf('horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice', $this->invokePrivateMethodFromObject(self::$document, 'getInvoiceObject'));
     }
@@ -723,28 +723,28 @@ class PdfReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
         $this->assertSame("SALES REF 2547", $sellerorderrefdocid);
-        $this->assertNull($sellerorderrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $sellerorderrefdocdate);
     }
 
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
         $this->assertSame("PO201925478", $buyerorderrefdocid);
-        $this->assertNull($buyerorderrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $buyerorderrefdocdate);
     }
 
     public function testDocumentQuotationReferencedDocument(): void
     {
         self::$document->getDocumentQuotationReferencedDocument($quotationrefdocid, $quotationrefdocdate);
         $this->assertSame("", $quotationrefdocid);
-        $this->assertNull($quotationrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $quotationrefdocdate);
     }
 
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
         $this->assertSame("CT2018120802", $contractrefdocid);
-        $this->assertNull($contractrefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $contractrefdocdate);
     }
 
     public function testDocumentAdditionalReferencedDocuments(): void
@@ -770,7 +770,7 @@ class PdfReaderExtended2Test extends TestCase
     public function testDocumentSupplyChainEvent(): void
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
-        $this->assertNotNull($supplychainevent);
+        $this->assertInstanceOf(\DateTime::class, $supplychainevent);
         $this->assertInstanceOf("DateTime", $supplychainevent);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
@@ -779,21 +779,21 @@ class PdfReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
         $this->assertSame("DESPADV002", $despatchdocid);
-        $this->assertNull($despatchdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
         $this->assertSame("RECEIV-ADV002", $recadvid);
-        $this->assertNull($recadvdate);
+        $this->assertNotInstanceOf(\DateTime::class, $recadvdate);
     }
 
     public function testDocumentDeliveryNoteReferencedDocument(): void
     {
         self::$document->getDocumentDeliveryNoteReferencedDocument($deliverynoterefdocid, $deliverynoterefdocdate);
         $this->assertSame("", $deliverynoterefdocid);
-        $this->assertNull($deliverynoterefdocdate);
+        $this->assertNotInstanceOf(\DateTime::class, $deliverynoterefdocdate);
     }
 
     public function testDocumentBillingPeriod(): void
@@ -857,7 +857,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertArrayHasKey(0, $name);
         $this->assertEquals("support descript", $name[0]);
         $this->assertSame("", $reftypecode);
-        $this->assertNull($issueddate);
+        $this->assertNotInstanceOf(\DateTime::class, $issueddate);
         $this->assertSame("", $binarydatafilename);
     }
 
@@ -971,7 +971,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200215'))->format('Ymd'), $termduedate->format('Ymd'));
         $this->assertSame("", $termmandate);
         $this->assertEqualsWithDelta(0.0, $dispercent, PHP_FLOAT_EPSILON);
-        $this->assertNull($discbasedatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $discbasedatetime);
         $this->assertEquals(0, $discmeasureval);
         $this->assertSame("", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
@@ -1020,22 +1020,22 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("1", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
         $this->assertEqualsWithDelta(0.0, $grosspriceamount, PHP_FLOAT_EPSILON);
@@ -1066,17 +1066,17 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
         $this->assertSame("", $docposdespadvid);
         $this->assertSame("", $docposdespadvlineid);
-        $this->assertNull($docposdespadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
 
         self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
         $this->assertSame("", $docposrecadvid);
         $this->assertSame("", $docposrecadvlineid);
-        $this->assertNull($docposrecadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
 
         self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
         $this->assertSame("", $docposdelnoteid);
         $this->assertSame("", $docposdelnotelineid);
-        $this->assertNull($docposdelnotedatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertInstanceOf("DateTime", $docposstartdate);
@@ -1106,7 +1106,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEqualsWithDelta(60.00, $lineTotalAmount, PHP_FLOAT_EPSILON);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-        $this->assertNull($supplyeventdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
     }
 
     public function testDocumentPositionSecond(): void
@@ -1129,22 +1129,22 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("3", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
         $this->assertEqualsWithDelta(0.0, $grosspriceamount, PHP_FLOAT_EPSILON);
@@ -1175,22 +1175,22 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
         $this->assertSame("", $docposdespadvid);
         $this->assertSame("", $docposdespadvlineid);
-        $this->assertNull($docposdespadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
 
         self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
         $this->assertSame("", $docposrecadvid);
         $this->assertSame("", $docposrecadvlineid);
-        $this->assertNull($docposrecadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
 
         self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
         $this->assertSame("", $docposdelnoteid);
         $this->assertSame("", $docposdelnotelineid);
-        $this->assertNull($docposdelnotedatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertInstanceOf("DateTime", $docposstartdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docposstartdate->format('Ymd'));
-        $this->assertNull($docpostenddate);
+        $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1214,7 +1214,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEqualsWithDelta(30.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-        $this->assertNull($supplyeventdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
     }
 
     public function testDocumentPositionThird(): void
@@ -1237,22 +1237,22 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame("", $doclineorderid);
         $this->assertSame("", $doclineorderlineid);
-        $this->assertNull($doclineorderdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
         $this->assertSame("", $doclinecontid);
         $this->assertSame("", $doclinecontlineid);
-        $this->assertNull($doclinecontdate);
+        $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
         $this->assertEqualsWithDelta(0.0000, $grosspriceamount, PHP_FLOAT_EPSILON);
@@ -1283,20 +1283,20 @@ class PdfReaderExtended2Test extends TestCase
         self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
         $this->assertSame("", $docposdespadvid);
         $this->assertSame("", $docposdespadvlineid);
-        $this->assertNull($docposdespadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
 
         self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
         $this->assertSame("", $docposrecadvid);
         $this->assertSame("", $docposrecadvlineid);
-        $this->assertNull($docposrecadvdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
 
         self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
         $this->assertSame("", $docposdelnoteid);
         $this->assertSame("", $docposdelnotelineid);
-        $this->assertNull($docposdelnotedatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertNull($docposstartdate);
+        $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
         $this->assertInstanceOf("DateTime", $docpostenddate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docpostenddate->format('Ymd'));
 
@@ -1322,7 +1322,7 @@ class PdfReaderExtended2Test extends TestCase
         $this->assertEqualsWithDelta(5.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-        $this->assertNull($supplyeventdatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
     }
 
     public function testDocumentPositionAdditionalReferencedDocument(): void

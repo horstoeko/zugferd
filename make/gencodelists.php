@@ -454,6 +454,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
             while (($row = fgetcsv($handle, null, "|")) !== false) {
                 $downloadedContentObjectData[] = $row;
             }
+            
             fclose($handle);
         } else {
             echo "Die Datei konnte nicht geöffnet werden.";
@@ -497,6 +498,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
                 while (($row = fgetcsv($handle, null, "|")) !== false) {
                     $downloadedContentObjectData[] = $row;
                 }
+                
                 fclose($handle);
             } else {
                 echo "Die Datei konnte nicht geöffnet werden.";
@@ -536,6 +538,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
                 while (($row = fgetcsv($handle, null, "|")) !== false) {
                     $downloadedContentObjectData[] = $row;
                 }
+                
                 fclose($handle);
             } else {
                 echo "Die Datei konnte nicht geöffnet werden.";

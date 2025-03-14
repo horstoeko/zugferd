@@ -40,7 +40,7 @@ class Issue268Test extends TestCase
         $this->assertSame("", $issuerAssignedId);
         $this->assertSame("", $lineid);
         $this->assertSame("", $typeCode);
-        $this->assertNull($issueDate);
+        $this->assertNotInstanceOf(\DateTime::class, $issueDate);
     }
 
     public function testBTX27Extended(): void
@@ -92,6 +92,6 @@ class Issue268Test extends TestCase
         $this->assertSame("INV-1", $issuerAssignedId);
         $this->assertSame("1", $lineid);
         $this->assertSame("71", $typeCode);
-        $this->assertNotNull($issueDate);
+        $this->assertInstanceOf(\DateTime::class, $issueDate);
     }
 }

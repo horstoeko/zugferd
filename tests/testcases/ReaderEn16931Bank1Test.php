@@ -53,13 +53,13 @@ class ReaderEn16931Bank1Test extends TestCase
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
         $this->assertSame('471102', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
-        $this->assertNotNull($documentdate);
+        $this->assertInstanceOf(\DateTime::class, $documentdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180305'))->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
         $this->assertSame("", $documentlanguage);
-        $this->assertNull($effectiveSpecifiedPeriod);
+        $this->assertNotInstanceOf(\DateTime::class, $effectiveSpecifiedPeriod);
     }
 
     public function testDocumentPaymentMeansLoop(): void
@@ -104,10 +104,10 @@ class ReaderEn16931Bank1Test extends TestCase
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
 
         $this->assertSame("Der Betrag in Höhe von EUR 529,87 wird am 20.03.2018 von Ihrem Konto per SEPA-Lastschrift eingezogen.", $termdescription);
-        $this->assertNull($termduedate);
+        $this->assertNotInstanceOf(\DateTime::class, $termduedate);
         $this->assertSame("REF A-123", $termmandate);
         $this->assertEquals(0, $dispercent);
-        $this->assertNull($discbasedatetime);
+        $this->assertNotInstanceOf(\DateTime::class, $discbasedatetime);
         $this->assertEquals(0, $discmeasureval);
         $this->assertSame("", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);

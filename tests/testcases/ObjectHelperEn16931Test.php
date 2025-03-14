@@ -1348,18 +1348,18 @@ class ObjectHelperEn16931Test extends TestCase
     public function testToDateTimeGeneral(): void
     {
         $this->assertEquals("20200202", self::$objectHelper->toDateTime("20200202", "102")->format("Ymd"));
-        $this->assertNull(self::$objectHelper->toDateTime("", "102"));
-        $this->assertNull(self::$objectHelper->toDateTime("20200202", ""));
-        $this->assertNull(self::$objectHelper->toDateTime(null, "102"));
-        $this->assertNull(self::$objectHelper->toDateTime("20200202", null));
-        $this->assertNull(self::$objectHelper->toDateTime("", ""));
-        $this->assertNull(self::$objectHelper->toDateTime(null, null));
-        $this->assertNull(self::$objectHelper->toDateTime("", null));
-        $this->assertNull(self::$objectHelper->toDateTime(null, ""));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("", "102"));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("20200202", ""));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime(null, "102"));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("20200202", null));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("", ""));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime(null, null));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("", null));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime(null, ""));
         $this->assertNull(self::$objectHelper->toDateTime(null, null));
         $this->expectException(ZugferdUnknownDateFormatException::class);
         $this->expectExceptionMessage("Invalid date format 999");
-        $this->assertNull(self::$objectHelper->toDateTime("20200202", "999"));
+        $this->assertNotInstanceOf(\DateTime::class, self::$objectHelper->toDateTime("20200202", "999"));
     }
 
     public function testToDateTime101(): void

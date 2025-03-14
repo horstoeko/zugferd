@@ -28,7 +28,7 @@ trait RunsOnlyWithJavaEnvironmentTrait
         try {
             $executableFinder = new ExecutableFinder();
             $this->javaAvailable = !is_null($executableFinder->find('java'));
-        } catch (Throwable $e) {
+        } catch (Throwable $throwable) {
             $this->javaAvailable = false;
         }
 
