@@ -2,9 +2,8 @@ horstoeko\zugferd\entities\en16931\rsm\CrossIndustryInvoice:
     xml_root_name: rsm:CrossIndustryInvoice
     xml_root_namespace: 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100'
     xml_namespaces:
-        a: urn:un:unece:uncefact:data:standard:QualifiedDataType:100
         rsm: urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100
-        qdt: urn:un:unece:uncefact:data:standard:QualifiedDataType:10
+        qdt: urn:un:unece:uncefact:data:standard:QualifiedDataType:100
         ram: urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100
         xs: http://www.w3.org/2001/XMLSchema
         udt: urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100
