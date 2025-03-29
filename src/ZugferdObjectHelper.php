@@ -951,12 +951,13 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentTermsType
      *
-     * @param  string|null   $description
-     * @param  DateTime|null $dueDate
-     * @param  string|null   $directDebitMandateID
-     * @return object|null
+     * @param  null|string   $description
+     * @param  null|DateTime $dueDate
+     * @param  null|string   $directDebitMandateID
+     * @param  null|float    $partialPaymentAmount
+     * @return null|object
      */
-    public function getTradePaymentTermsType(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null): ?object
+    public function getTradePaymentTermsType(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null, ?float $partialPaymentAmount = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -967,6 +968,7 @@ class ZugferdObjectHelper
         $this->tryCall($tradePaymentTermsType, "setDescription", $this->getTextType($description));
         $this->tryCall($tradePaymentTermsType, "setDueDateDateTime", $this->getDateTimeType($dueDate));
         $this->tryCall($tradePaymentTermsType, "setDirectDebitMandateID", $this->getIdType($directDebitMandateID));
+        $this->tryCall($tradePaymentTermsType, "setPartialPaymentAmount", $this->getAmountType($partialPaymentAmount));
 
         return $tradePaymentTermsType;
     }
