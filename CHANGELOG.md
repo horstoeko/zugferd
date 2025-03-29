@@ -1,3 +1,17 @@
+## v1.0.111
+
+``Previous version v1.0.110``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [4375885](https://github.com/horstoeko/zugferd/commit/4375885) | 2025-03-29 09:48:51 CET | HorstOeko | Add support for ApplicableTradePaymentPenaltyTerms (BG-X-43) | [#279](https://github.com/horstoeko/zugferd/issues/279)
+| :new_moon:  | [d184fdf](https://github.com/horstoeko/zugferd/commit/d184fdf) | 2025-03-29 08:11:14 CET | HorstOeko | Added support for PartialPaymentAmount (BT-X-275) on PaymentTerms (EXTENDED-Profile only) | [#277](https://github.com/horstoeko/zugferd/issues/277)
+| :new_moon:  | [37f26aa](https://github.com/horstoeko/zugferd/commit/37f26aa) | 2025-03-27 15:13:45 CET | HorstOeko | Fix namespaces (Removed unused old namespaces) | [#274](https://github.com/horstoeko/zugferd/issues/274)
+| :new:  | [ea00365](https://github.com/horstoeko/zugferd/commit/ea00365) | 2025-03-15 08:56:09 CET | HorstOeko | [ENH] Update build and cs config | 
+| :new:  | [0c72f1a](https://github.com/horstoeko/zugferd/commit/0c72f1a) | 2025-03-14 21:46:13 CET | HorstOeko | [ENH] Update build and cs config | 
+
+:exclamation: _There are 5 internal commit(s)_
+
 ## v1.0.110
 
 ``Previous version v1.0.109``
