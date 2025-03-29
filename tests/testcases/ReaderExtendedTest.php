@@ -1049,13 +1049,13 @@ class ReaderExtendedTest extends TestCase
         $this->assertNotInstanceOf(\DateTime::class, $discbasedatetime);
         $this->assertEquals(10, $discmeasureval);
         $this->assertSame("DAY", $discmeasureunit);
-        $this->assertEquals(480.22, $discbaseamount);
-        $this->assertEquals(9.60, $discamount);
+        $this->assertEqualsWithDelta(480.22, $discbaseamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(9.60, $discamount, PHP_FLOAT_EPSILON);
         $this->assertNotInstanceOf(\DateTime::class, $penaltybasedatetime);
         $this->assertEquals(30, $penaltymeasureval);
         $this->assertSame("DAY", $penaltymeasureunit);
-        $this->assertEquals(480.22, $penaltybaseamount);
-        $this->assertEquals(24.01, $penaltyamount);
+        $this->assertEqualsWithDelta(480.22, $penaltybaseamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(24.01, $penaltyamount, PHP_FLOAT_EPSILON);
 
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
