@@ -413,6 +413,26 @@ class ZugferdSettings
     }
 
     /**
+     * Get the directory where all the stylesheets (XSLT) files are located
+     *
+     * @return string
+     */
+    public static function getSchematronDirectory(): string
+    {
+        return PathUtils::combineAllPaths(static::getSchemaDirectory(), "schematron");
+    }
+
+    /**
+     * Get the directory where all the stylesheets (XSLT) files are located
+     *
+     * @return string
+     */
+    public static function getXsltDirectory(): string
+    {
+        return PathUtils::combineAllPaths(static::getSchemaDirectory(), "xslt");
+    }
+
+    /**
      * Get the full filename of the ICC profile to use
      *
      * @return string
