@@ -149,7 +149,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
         self::PROFILE_XRECHNUNG_2 => [
             'name' => 'en16931',
@@ -164,7 +164,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
         self::PROFILE_XRECHNUNG_2_1 => [
             'name' => 'en16931',
@@ -179,7 +179,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
         self::PROFILE_XRECHNUNG_2_2 => [
             'name' => 'en16931',
@@ -194,7 +194,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
         self::PROFILE_MINIMUM => [
             'name' => 'minimum',
@@ -223,7 +223,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
         self::PROFILE_XRECHNUNG_3 => [
             'name' => 'en16931',
@@ -238,7 +238,7 @@ class ZugferdProfiles
             'xmpname' => 'EN 16931',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
-            'xsltfilename' => null
+            'xsltfilename' => "FACTUR-X_EN16931.xslt"
         ],
     ];
 }
