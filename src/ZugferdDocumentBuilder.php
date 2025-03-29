@@ -2603,6 +2603,26 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Add penalty Terms to last added payment term
+     *
+     * @param  float|null    $calculationPercent         __BT-X-280, From EXTENDED__ Percentage of the payment surcharge
+     * @param  DateTime|null $basisDateTime              __BT-X-276, From EXTENDED__ Due date reference date
+     * @param  float|null    $basisPeriodMeasureValue    __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-277, From EXTENDED__ Maturity period (unit)
+     * @param  float|null    $basisAmount                __BT-X-279, From EXTENDED__ Basic amount of the payment surcharge
+     * @param  float|null    $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
+     * @return ZugferdDocumentBuilder
+     */
+    public function addPenaltyTermsToPaymentTerms(?float $calculationPercent = null, ?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualPenaltyAmount = null): ZugferdDocumentBuilder
+    {
+        $penaltyTerms = $this->getObjectHelper()->getTradePaymentPenaltyTermsType($basisDateTime, $basisPeriodMeasureValue, $basisPeriodMeasureUnitCode, $basisAmount, $calculationPercent, $actualPenaltyAmount);
+
+        $this->getObjectHelper()->tryCall($this->currentPaymentTerms, "setApplicableTradePaymentPenaltyTerms", $penaltyTerms);
+
+        return $this;
+    }
+
+    /**
      * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
      *
      * @param  string        $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add

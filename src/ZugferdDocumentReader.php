@@ -2784,6 +2784,35 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get detailed information on payment penalties.
+     *
+     * @param  float|null    $calculationPercent         __BT-X-280, From EXTENDED__ Percentage of the payment surcharge
+     * @param  DateTime|null $basisDateTime              __BT-X-276, From EXTENDED__ Due date reference date
+     * @param  float|null    $basisPeriodMeasureValue    __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-277, From EXTENDED__ Maturity period (unit)
+     * @param  float|null    $basisAmount                __BT-X-279, From EXTENDED__ Basic amount of the payment surcharge
+     * @param  float|null    $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
+     * @return ZugferdDocumentReader
+     */
+    public function getPenaltyTermsFromPaymentTerm(?float &$calculationPercent, ?DateTime &$basisDateTime, ?float &$basisPeriodMeasureValue, ?string &$basisPeriodMeasureUnitCode, ?float &$basisAmount, ?float &$actualPenaltyAmount): ZugferdDocumentReader
+    {
+        $paymentTerms = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradePaymentTerms", []));
+        $paymentTerms = $paymentTerms[$this->documentPaymentTermsPointer];
+
+        $calculationPercent = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getCalculationPercent.value", 0.0);
+        $basisDateTime = $this->getObjectHelper()->toDateTime(
+            $this->getObjectHelper()->tryCallByPathAndReturn($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getBasisDateTime.getDateTimeString.value"),
+            $this->getObjectHelper()->tryCallByPathAndReturn($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getBasisDateTime.getDateTimeString.getFormat")
+        );
+        $basisPeriodMeasureValue = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getBasisPeriodMeasure.value", 0.0);
+        $basisPeriodMeasureUnitCode = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getBasisPeriodMeasure.getUnitCode", "");
+        $basisAmount = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getBasisAmount.value", 0.0);
+        $actualPenaltyAmount = $this->getInvoiceValueByPathFrom($paymentTerms, "getApplicableTradePaymentPenaltyTerms.getActualPenaltyAmount.value", 0.0);
+
+        return $this;
+    }
+
+    /**
      * Seek to the first trade accounting account of the document. Returns true if a first account is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *

@@ -962,6 +962,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
+        self::$document->getPenaltyTermsFromPaymentTerm($penaltypercent, $penaltybasedatetime, $penaltymeasureval, $penaltymeasureunit, $penaltybaseamount, $penaltyamount);
 
         $this->assertSame("Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum", $termdescription);
         $this->assertNotInstanceOf(\DateTime::class, $termduedate);
@@ -972,6 +973,11 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertSame("DAY", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
         $this->assertEquals(0, $discamount);
+        $this->assertNotInstanceOf(\DateTime::class, $penaltybasedatetime);
+        $this->assertEquals(0, $penaltymeasureval);
+        $this->assertSame("", $penaltymeasureunit);
+        $this->assertEquals(0, $penaltybaseamount);
+        $this->assertEquals(0, $penaltyamount);
 
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }
