@@ -1040,6 +1040,36 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertNull($discountterms);
     }
 
+    public function testGetTradePaymentPenaltyTermsTypeAllValues(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         */
+        $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
+
+        /**
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         */
+        $calculationpercent = $penaltyterms->getCalculationPercent();
+
+        $this->assertEquals((new \DateTime())->format("Ymd"), $penaltyterms->getBasisDateTime()->getDateTimeString());
+        $this->assertEquals("102", $penaltyterms->getBasisDateTime()->getDateTimeString()->getFormat());
+        $this->assertEquals(2, $penaltyterms->getBasisPeriodMeasure()->value());
+        $this->assertEquals("DAY", $penaltyterms->getBasisPeriodMeasure()->getUnitCode());
+        $this->assertEquals(1, $penaltyterms->getBasisAmount()->value());
+        $this->assertEquals(1, $calculationpercent->value());
+        $this->assertEquals(1, $penaltyterms->getActualPenaltyAmount()->value());
+    }
+
+    public function testGetTradePaymentPenaltyTermsTypeAllNull(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         */
+        $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(null, null, null, null, null, null);
+        $this->assertNull($penaltyterms);
+    }
+
     public function testGetTradeTaxTypeAllValues(): void
     {
         /**

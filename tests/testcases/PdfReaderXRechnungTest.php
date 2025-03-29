@@ -914,6 +914,7 @@ class PdfReaderXRechnungTest extends TestCase
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
+        self::$document->getPenaltyTermsFromPaymentTerm($penaltypercent, $penaltybasedatetime, $penaltymeasureval, $penaltymeasureunit, $penaltybaseamount, $penaltyamount);
 
         $this->assertSame("Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018", $termdescription);
         $this->assertNotInstanceOf(\DateTime::class, $termduedate);
@@ -924,6 +925,11 @@ class PdfReaderXRechnungTest extends TestCase
         $this->assertSame("", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
         $this->assertEquals(0, $discamount);
+        $this->assertNotInstanceOf(\DateTime::class, $penaltybasedatetime);
+        $this->assertEquals(0, $penaltymeasureval);
+        $this->assertSame("", $penaltymeasureunit);
+        $this->assertEquals(0, $penaltybaseamount);
+        $this->assertEquals(0, $penaltyamount);
 
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }

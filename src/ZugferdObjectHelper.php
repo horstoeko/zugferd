@@ -1002,6 +1002,34 @@ class ZugferdObjectHelper
     }
 
     /**
+     * Get instance of TradePaymentPenaltyTermsType
+     *
+     * @param  DateTime|null $basisDateTime
+     * @param  float|null    $basisPeriodMeasureValue
+     * @param  string|null   $basisPeriodMeasureUnitCode
+     * @param  float|null    $basisAmount
+     * @param  float|null    $calculationPercent
+     * @param  float|null    $actualPenaltyAmount
+     * @return object|null
+     */
+    public function getTradePaymentPenaltyTermsType(?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualPenaltyAmount = null): ?object
+    {
+        if (self::isAllNullOrEmpty(func_get_args())) {
+            return null;
+        }
+
+        $tradePaymentDiscountTermsType = $this->createClassInstance('ram\TradePaymentPenaltyTermsType');
+
+        $this->tryCall($tradePaymentDiscountTermsType, "setBasisDateTime", $this->getDateTimeType($basisDateTime));
+        $this->tryCall($tradePaymentDiscountTermsType, "setBasisPeriodMeasure", $this->getMeasureType($basisPeriodMeasureValue, $basisPeriodMeasureUnitCode));
+        $this->tryCall($tradePaymentDiscountTermsType, "setBasisAmount", $this->getAmountType($basisAmount));
+        $this->tryCall($tradePaymentDiscountTermsType, "setCalculationPercent", $this->getPercentType($calculationPercent));
+        $this->tryCall($tradePaymentDiscountTermsType, "setActualPenaltyAmount", $this->getAmountType($actualPenaltyAmount));
+
+        return $tradePaymentDiscountTermsType;
+    }
+
+    /**
      * Get instance of TradeTaxType
      * Sales tax breakdown, Umsatzsteueraufschlüsselung
      *

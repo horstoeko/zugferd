@@ -1026,6 +1026,24 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertNull($discountterms);
     }
 
+    public function testGetTradePaymentPenaltyTermsTypeAllValues(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         */
+        $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
+        $this->assertNull($penaltyterms);
+    }
+
+    public function testGetTradePaymentPenaltyTermsTypeAllNull(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         */
+        $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(null, null, null, null, null, null);
+        $this->assertNull($penaltyterms);
+    }
+
     public function testGetTradeTaxTypeAllValues(): void
     {
         /**

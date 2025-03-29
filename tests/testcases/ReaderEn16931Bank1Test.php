@@ -102,6 +102,7 @@ class ReaderEn16931Bank1Test extends TestCase
         $this->assertTrue(self::$document->firstDocumentPaymentTerms());
         self::$document->getDocumentPaymentTerm($termdescription, $termduedate, $termmandate);
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
+        self::$document->getPenaltyTermsFromPaymentTerm($penaltypercent, $penaltybasedatetime, $penaltymeasureval, $penaltymeasureunit, $penaltybaseamount, $penaltyamount);
 
         $this->assertSame("Der Betrag in Höhe von EUR 529,87 wird am 20.03.2018 von Ihrem Konto per SEPA-Lastschrift eingezogen.", $termdescription);
         $this->assertNotInstanceOf(\DateTime::class, $termduedate);
@@ -112,6 +113,11 @@ class ReaderEn16931Bank1Test extends TestCase
         $this->assertSame("", $discmeasureunit);
         $this->assertEquals(0, $discbaseamount);
         $this->assertEquals(0, $discamount);
+        $this->assertNotInstanceOf(\DateTime::class, $penaltybasedatetime);
+        $this->assertEquals(0, $penaltymeasureval);
+        $this->assertSame("", $penaltymeasureunit);
+        $this->assertEquals(0, $penaltybaseamount);
+        $this->assertEquals(0, $penaltyamount);
 
         $this->assertFalse(self::$document->nextDocumentPaymentTerms());
     }

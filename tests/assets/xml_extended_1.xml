@@ -338,8 +338,16 @@
                 <ram:Description>Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum</ram:Description>
                 <ram:ApplicableTradePaymentDiscountTerms>
                     <ram:BasisPeriodMeasure unitCode="DAY">10</ram:BasisPeriodMeasure>
+                    <ram:BasisAmount>480.22</ram:BasisAmount>
                     <ram:CalculationPercent>2.00</ram:CalculationPercent>
+                    <ram:ActualDiscountAmount>9.60</ram:ActualDiscountAmount>
                 </ram:ApplicableTradePaymentDiscountTerms>
+                <ram:ApplicableTradePaymentPenaltyTerms>
+                    <ram:BasisPeriodMeasure unitCode="DAY">30</ram:BasisPeriodMeasure>
+                    <ram:BasisAmount>480.22</ram:BasisAmount>
+                    <ram:CalculationPercent>5.00</ram:CalculationPercent>
+                    <ram:ActualPenaltyAmount>24.01</ram:ActualPenaltyAmount>
+                </ram:ApplicableTradePaymentPenaltyTerms>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>410.10</ram:LineTotalAmount>
