@@ -80,6 +80,7 @@ _backup*
 /build/pdepend/
 /build/phpdox/
 /build/phpdoc/
+/build/releasenotes.txt
 /*.phar
 /composer.lock
 /examples/fullpdf.pdf

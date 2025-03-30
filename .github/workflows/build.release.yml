@@ -210,11 +210,15 @@ jobs:
           name: Build log artifacts for ubuntu-24.04 PHP 8.3 (Release)
           path: build/logs
 
+      - name: Generate Release Notes
+        id: changelog
+        run: |
+          prev_tag=$(git tag -l --sort=-v:refname | sed -n '2p')
+          curr_tag=$(git tag -l --sort=-v:refname | sed -n '1p')
+          git log --no-merges --pretty=format:"- %s (%an)" $prev_tag..$curr_tag | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' | sed -E 's/^- (#.*)/- [ENH] \1/' > build/releasenotes.txt
+
       - name: Make Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: ncipollo/release-action@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            build/dist/doc.zip
-            build/dist/builddoc.zip
+          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip"
+          bodyFile: "build/releasenotes.txt"
