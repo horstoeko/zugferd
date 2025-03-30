@@ -215,6 +215,12 @@ jobs:
         run: |
           prev_tag=$(git tag -l --sort=-v:refname | sed -n '2p')
           curr_tag=$(git tag -l --sort=-v:refname | sed -n '1p')
+          if [ -z "$prev_tag" ]; then
+            prev_tag=$(git rev-list --max-parents=0 HEAD)
+          fi
+          if [ -z "$curr_tag" ]; then
+            curr_tag=$(git rev-parse HEAD)
+          fi
           git log --no-merges --pretty=format:"- %s (%an)" $prev_tag..$curr_tag | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' | sed -E 's/^- (#.*)/- [ENH] \1/' > build/releasenotes.txt
 
       - name: Make Release
