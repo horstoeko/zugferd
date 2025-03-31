@@ -33,6 +33,8 @@ jobs:
     steps:
       - name: Checkout Sources
         uses: actions/checkout@v4
+        with:
+          fetch-tags: true
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -221,7 +223,12 @@ jobs:
           if [ -z "$curr_tag" ]; then
             curr_tag=$(git rev-parse HEAD)
           fi
+          echo "Previous Tag .... $prev_tag"
+          echo "Current Tag ..... $curr_tag"
           git log --no-merges --pretty=format:"- %s (%an)" $prev_tag..$curr_tag | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' | sed -E 's/^- (#.*)/- [ENH] \1/' > build/releasenotes.txt
+          ls -l build/
+          ls -l build/releasenotes.txt
+          cat build/releasenotes.txt
 
       - name: Make Release
         uses: ncipollo/release-action@v1
