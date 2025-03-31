@@ -1,3 +1,14 @@
+## v1.0.112
+
+``Previous version v1.0.111``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [07f9f0e](https://github.com/horstoeko/zugferd/commit/07f9f0e) | 2025-03-29 12:29:37 CET | HorstOeko | [ENH] Updated ZugferdProfiles | 
+| :new:  | [109731d](https://github.com/horstoeko/zugferd/commit/109731d) | 2025-03-29 12:24:55 CET | HorstOeko | [ENH] Added XSLT files to scheme-directory | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v1.0.111
 
 ``Previous version v1.0.110``
