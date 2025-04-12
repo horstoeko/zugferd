@@ -34,14 +34,14 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      *
      * @var string
      */
-    protected $fromContent;
+    protected $convertFromContent = "";
 
     /**
      * The new profile ID
      *
      * @var int
      */
-    protected $newProfileId;
+    protected $convertToProfileId = -1;
 
     /**
      * Path to the profile id
@@ -74,9 +74,9 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws ZugferdUnknownXmlContentException
      */
-    public static function fromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
+    public static function comvertFromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
     {
-        static::fromFile($fromFilename, $newProfileId)->convertToFile($toFile);
+        static::convertFromFile($fromFilename, $newProfileId)->convertToFile($toFile);
     }
 
     /**
@@ -94,9 +94,9 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws ZugferdUnknownXmlContentException
      */
-    public static function fromFileToString(string $fromFilename, int $newProfileId): string
+    public static function convertFromFileToString(string $fromFilename, int $newProfileId): string
     {
-        return static::fromFile($fromFilename, $newProfileId)->convertToString();
+        return static::convertFromFile($fromFilename, $newProfileId)->convertToString();
     }
 
     /**
@@ -113,9 +113,9 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws ZugferdUnknownXmlContentException
      */
-    public static function fromContentToFile(string $fromContent, string $toFile, int $newProfileId): void
+    public static function convertFromContentToFile(string $fromContent, string $toFile, int $newProfileId): void
     {
-        static::fromContent($fromContent, $newProfileId)->convertToFile($toFile);
+        static::convertFromContent($fromContent, $newProfileId)->convertToFile($toFile);
     }
 
     /**
@@ -131,9 +131,9 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws ZugferdUnknownXmlContentException
      */
-    public static function fromContentToString(string $fromContent, int $newProfileId): string
+    public static function convertFromContentToString(string $fromContent, int $newProfileId): string
     {
-        return static::fromContent($fromContent, $newProfileId)->convertToString();
+        return static::convertFromContent($fromContent, $newProfileId)->convertToString();
     }
 
     /**
@@ -147,7 +147,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      */
-    protected static function fromFile(string $fromFilename, int $newProfileId): ZugferdDocumentProfileConverter
+    protected static function convertFromFile(string $fromFilename, int $newProfileId): ZugferdDocumentProfileConverter
     {
         if (!file_exists($fromFilename)) {
             throw new ZugferdFileNotFoundException($fromFilename);
@@ -159,7 +159,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
             throw new ZugferdFileNotReadableException($fromFilename);
         }
 
-        return static::fromContent($fromContent, $newProfileId);
+        return static::convertFromContent($fromContent, $newProfileId);
     }
 
     /**
@@ -171,13 +171,13 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      */
-    protected static function fromContent(string $fromContent, int $newProfileId): ZugferdDocumentProfileConverter
+    protected static function convertFromContent(string $fromContent, int $newProfileId): ZugferdDocumentProfileConverter
     {
         $fromProfileId = ZugferdProfileResolver::resolveProfileId($fromContent);
 
         $profileConverter = new static($fromProfileId);
-        $profileConverter->setFromContent($fromContent);
-        $profileConverter->setNewProfileId($newProfileId);
+        $profileConverter->setConvertFromContent($fromContent);
+        $profileConverter->setConvertToProfileId($newProfileId);
 
         return $profileConverter;
     }
@@ -185,12 +185,12 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Set the destination (the new) profile id
      *
-     * @param  int $newProfileId
+     * @param  int $toProfileId
      * @return ZugferdDocumentProfileConverter
      */
-    protected function setNewProfileId(int $newProfileId): ZugferdDocumentProfileConverter
+    protected function setConvertToProfileId(int $toProfileId): ZugferdDocumentProfileConverter
     {
-        $this->newProfileId = $newProfileId;
+        $this->convertToProfileId = $toProfileId;
 
         return $this;
     }
@@ -201,9 +201,9 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @param  string $fromContent
      * @return ZugferdDocumentProfileConverter
      */
-    protected function setFromContent(string $fromContent): ZugferdDocumentProfileConverter
+    protected function setConvertFromContent(string $fromContent): ZugferdDocumentProfileConverter
     {
-        $this->fromContent = $fromContent;
+        $this->convertFromContent = $fromContent;
 
         return $this;
     }
@@ -220,7 +220,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     protected function convertToFile(string $toFile): ZugferdDocumentProfileConverter
     {
-        file_put_contents($toFile, $this->convert()->convertToString());
+        file_put_contents($toFile, $this->performConversion()->convertToString());
 
         return $this;
     }
@@ -236,7 +236,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     protected function convertToString(): string
     {
-        return $this->convert()->serializeAsXml();
+        return $this->performConversion()->serializeAsXml();
     }
 
     /**
@@ -248,12 +248,12 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileIdException
      * @throws ZugferdUnknownProfileParameterException
      */
-    protected function convert(): ZugferdDocumentProfileConverter
+    protected function performConversion(): ZugferdDocumentProfileConverter
     {
-        $this->initProfile($this->newProfileId);
+        $this->initProfile($this->convertToProfileId);
         $this->initObjectHelper();
         $this->initSerialzer();
-        $this->deserialize($this->fromContent);
+        $this->deserialize($this->convertFromContent);
         $this->updateProfileInInvoiceObject();
 
         return $this;
@@ -267,7 +267,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     protected function updateProfileInInvoiceObject()
     {
-        $profileDef = ZugferdProfileResolver::resolveProfileDefById($this->newProfileId);
+        $profileDef = ZugferdProfileResolver::resolveProfileDefById($this->convertToProfileId);
 
         $this->getObjectHelper()->tryCallByPath(
             $this->getInvoiceObject(),
