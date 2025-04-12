@@ -16,7 +16,7 @@ class ProfileConverterTest extends TestCase
     {
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
-        $converterResult = ZugferdDocumentProfileConverter::comvertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
+        $converterResult = ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
         $this->registerFileForTeardown($tofile);
 
@@ -94,7 +94,7 @@ class ProfileConverterTest extends TestCase
     {
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
-        $converterResult = ZugferdDocumentProfileConverter::comvertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_EN16931);
+        $converterResult = ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_EN16931);
 
         $this->registerFileForTeardown($tofile);
 
@@ -175,7 +175,7 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/not_existing_file.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
 
-        ZugferdDocumentProfileConverter::comvertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
+        ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
     }
 
     public function testComvertFromFileToFileExtendedToEn16931(): void

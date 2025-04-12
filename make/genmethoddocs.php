@@ -13,6 +13,7 @@ use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentPdfReaderExt;
+use horstoeko\zugferd\ZugferdDocumentProfileConverter;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdDocumentValidator;
 use horstoeko\zugferd\ZugferdKositValidator;
@@ -691,6 +692,7 @@ BatchMarkDownGenerator::generate([
     ZugferdQuickDescriptorXRechnung::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung.md',
     ZugferdQuickDescriptorXRechnung2::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung2.md',
     ZugferdQuickDescriptorXRechnung3::class => __DIR__ . '/Class-ZugferdQuickDescriptorXRechnung3.md',
+    ZugferdDocumentProfileConverter::class => __DIR__ . '/Class-ZugferdDocumentProfileConverter.md',
 ], [
     \horstoeko\zugferd\ZugferdDocumentPdfBuilder::class . '::generateDocument',
     \horstoeko\zugferd\ZugferdDocumentPdfMerger::class . '::generateDocument',

@@ -74,7 +74,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws ZugferdUnknownXmlContentException
      */
-    public static function comvertFromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
+    public static function convertFromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
     {
         static::convertFromFile($fromFilename, $newProfileId)->convertToFile($toFile);
     }
