@@ -28,6 +28,9 @@
             <file>../tests/testcases/BuilderEn16931Test.php</file>
             <file>../tests/testcases/BuilderExtendedTest.php</file>
         </testsuite>
+        <testsuite name="ProfileConverter">
+            <file>../tests/testcases/ProfileConverterTest.php</file>
+        </testsuite>
         <testsuite name="PDFReader">
             <file>../tests/testcases/PdfReaderGeneralTest.php</file>
             <file>../tests/testcases/PdfReaderMinimumTest.php</file>

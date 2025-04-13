@@ -168,7 +168,7 @@ class ZugferdDocument
      * @return ZugferdDocument
      * @throws ZugferdUnknownProfileIdException
      */
-    private function initProfile(int $profile): ZugferdDocument
+    protected function initProfile(int $profile): ZugferdDocument
     {
         $this->profileId = $profile;
         $this->profileDefinition = ZugferdProfileResolver::resolveProfileDefById($profile);
@@ -181,7 +181,7 @@ class ZugferdDocument
      *
      * @return ZugferdDocument
      */
-    private function initObjectHelper(): ZugferdDocument
+    protected function initObjectHelper(): ZugferdDocument
     {
         $this->objectHelper = new ZugferdObjectHelper($this->profileId);
 
@@ -196,7 +196,7 @@ class ZugferdDocument
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    private function initSerialzer(): ZugferdDocument
+    protected function initSerialzer(): ZugferdDocument
     {
         $this->serializerBuilder = SerializerBuilder::create();
 
