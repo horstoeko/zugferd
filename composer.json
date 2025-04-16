@@ -65,8 +65,8 @@
         "phpcbf2": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr2.xml -q ./src ./tests",
         "phpcbf12": "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests",
         "phpcbfsq": "./vendor/bin/phpcbf --standard=./build/phpcsrules_squiz.xml -q ./src ./tests",
-        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --xdebug",
-        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle --xdebug",
+        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
+        "phpstan_cs": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle",
         "makedoc": "phing -f ./build.xml projectdoc",
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",

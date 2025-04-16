@@ -57,7 +57,8 @@ class KositValidatorTest extends TestCase
         $this->assertEmpty($kositValidator->getValidationInformation());
         $this->assertTrue($kositValidator->hasNoValidationInformation());
         $this->assertFalse($kositValidator->hasValidationInformation());
-        $this->assertSame('SomeError', $kositValidator->getProcessErrors()[0]);
+        $this->assertArrayHasKey(0, $kositValidator->getProcessErrors());
+        $this->assertSame('SomeError', $kositValidator->getProcessErrors()[0] ?? "");
 
         $this->getPrivateMethodFromObject($kositValidator, 'addToMessageBag')->invokeArgs($kositValidator, ['SomeError', 'validationerror']);
 

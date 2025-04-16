@@ -16,11 +16,11 @@ class ProfileConverterTest extends TestCase
     {
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
-        $converterResult = ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
+
+        ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
         $this->registerFileForTeardown($tofile);
 
-        $this->assertNull($converterResult);
         $this->assertFileExists($tofile);
 
         $tofileContent = file_get_contents($tofile);
@@ -55,11 +55,11 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
         $fromfileContent = file_get_contents($fromfile);
-        $converterResult = ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
+
+        ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
         $this->registerFileForTeardown($tofile);
 
-        $this->assertNull($converterResult);
         $this->assertFileExists($tofile);
 
         $tofileContent = file_get_contents($tofile);
@@ -78,6 +78,7 @@ class ProfileConverterTest extends TestCase
     {
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $fromfileContent = file_get_contents($fromfile);
+
         $converterResult = ZugferdDocumentProfileConverter::convertFromContentToString($fromfileContent, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
         $this->assertIsString($converterResult);
@@ -94,11 +95,11 @@ class ProfileConverterTest extends TestCase
     {
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
-        $converterResult = ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_EN16931);
+
+        ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_EN16931);
 
         $this->registerFileForTeardown($tofile);
 
-        $this->assertNull($converterResult);
         $this->assertFileExists($tofile);
 
         $tofileContent = file_get_contents($tofile);
@@ -133,11 +134,11 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $tofile = __DIR__ . "/../assets/converterresult.xml";
         $fromfileContent = file_get_contents($fromfile);
-        $converterResult = ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_EN16931);
+
+        ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_EN16931);
 
         $this->registerFileForTeardown($tofile);
 
-        $this->assertNull($converterResult);
         $this->assertFileExists($tofile);
 
         $tofileContent = file_get_contents($tofile);
