@@ -199,4 +199,3 @@ class TradePaymentTermsType
         return $this;
     }
 }
-

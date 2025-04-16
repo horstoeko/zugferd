@@ -90,7 +90,4 @@ class TradePriceType
         $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
         return $this;
     }
-
-
 }
-

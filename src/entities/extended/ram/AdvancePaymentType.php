@@ -153,7 +153,4 @@ class AdvancePaymentType
         $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
         return $this;
     }
-
-
 }
-
