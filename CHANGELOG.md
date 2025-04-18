@@ -1,3 +1,15 @@
+## v1.0.113
+
+``Previous version v1.0.112``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [c249d9a](https://github.com/horstoeko/zugferd/commit/c249d9a) | 2025-04-18 13:11:43 CEST | HorstOeko | [ENH] Updated KOSiT Validator Scenario URL | 
+| :new_moon:  | [0dbee49](https://github.com/horstoeko/zugferd/commit/0dbee49) | 2025-04-12 08:08:55 CEST | HorstOeko | First Prototype of ZugferdDocumentProfileConverter -> Added tests | [#263](https://github.com/horstoeko/zugferd/issues/263)
+| :new_moon:  | [47c1f22](https://github.com/horstoeko/zugferd/commit/47c1f22) | 2025-04-11 20:29:20 CEST | HorstOeko | First Prototype of ZugferdDocumentProfileConverter | [#263](https://github.com/horstoeko/zugferd/issues/263)
+
+:exclamation: _There are 19 internal commit(s)_
+
 ## v1.0.112
 
 ``Previous version v1.0.111``
