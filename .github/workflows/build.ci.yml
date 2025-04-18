@@ -149,7 +149,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.VALIDATORPATH }}
-          key: validator-${{ env.VALIDATORJARFILENAME }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ env.VALIDATORZIPFILENAME }}-${{ env.VALIDATORSCENARIOZIPFILENAME }}
 
       - name: Download Tests (Schematron)
         if: steps.cache-validator.outputs.cache-hit != 'true'
