@@ -144,15 +144,26 @@ jobs:
         env:
           XDEBUG_MODE: coverage
 
-      - name: Run Tests (Schematron)
+      - name: Cache Tests (Schematron)
+        id: cache-validator
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.VALIDATORPATH }}
+          key: validator-${{ env.VALIDATORJARFILENAME }}
+
+      - name: Download Tests (Schematron)
+        if: steps.cache-validator.outputs.cache-hit != 'true'
         run: |
-          set -e
           rm -rf $VALIDATORPATH
-          mkdir $VALIDATORPATH
+          mkdir -p $VALIDATORPATH
           wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
           wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
           unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
           unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
+
+      - name: Run Tests (Schematron)
+        run: |
+          set -e
           rm -f examples/factur-x.xml
           php -f examples/01_ZugferdDocumentBuilder_EN16931.php
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
