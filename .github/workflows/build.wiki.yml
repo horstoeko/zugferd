@@ -35,14 +35,14 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             ${{ runner.os }}-8.4-composer-
 
       - name: Install composer dependencies
         run: |
           composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer install
+          composer update --no-interaction --prefer-dist
 
       - name: Update Wiki
         continue-on-error: true
