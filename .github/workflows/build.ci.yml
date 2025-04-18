@@ -125,7 +125,7 @@ jobs:
       - name: Run PHPCS
         continue-on-error: true
         run: |
-          vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/phpcsrules.xml --extensions=php --ignore=autoload.php src tests
+          vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/phpcsrules_psr12.xml --extensions=php --colors --ignore=autoload.php,./src/entities src tests
 
       - name: Run PHPSTAN
         continue-on-error: true
