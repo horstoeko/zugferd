@@ -14,6 +14,7 @@ class TestCase extends PhpUnitTestCase
      *
      * @var array<string>
      */
+
     private $registeredFiles = [];
 
     /**
@@ -64,7 +65,7 @@ class TestCase extends PhpUnitTestCase
     public function expectNoticeOrWarningExt(\Closure $run): void
     {
         set_error_handler(
-            static function (int $errno, string $errstr): never {
+            static function (int $errno, string $errstr): void {
                 throw new \Exception($errstr, $errno);
             },
             E_ALL
