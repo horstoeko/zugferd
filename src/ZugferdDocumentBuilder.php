@@ -2906,10 +2906,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      */
     public function setDocumentPositionSellerOrderReferencedDocument(string $issuerAssignedId, string $lineId, ?DateTime $issueDate = null): ZugferdDocumentBuilder
     {
-        $buyerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
+        $sellerorderrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, null, $lineId, null, null, null, $issueDate, null);
         $positionagreement = $this->getObjectHelper()->tryCallAndReturn($this->currentPosition, "getSpecifiedLineTradeAgreement");
 
-        $this->getObjectHelper()->tryCall($positionagreement, "setSellerOrderReferencedDocument", $buyerorderrefdoc);
+        $this->getObjectHelper()->tryCall($positionagreement, "setSellerOrderReferencedDocument", $sellerorderrefdoc);
 
         return $this;
     }
