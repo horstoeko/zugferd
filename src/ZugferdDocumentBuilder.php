@@ -12,7 +12,6 @@ namespace horstoeko\zugferd;
 use DateTime;
 use DOMXPath;
 use DOMDocument;
-
 use horstoeko\zugferd\codelists\ZugferdDocumentType;
 use horstoeko\zugferd\codelists\ZugferdPaymentMeans;
 use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;

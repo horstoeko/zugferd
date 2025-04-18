@@ -45,7 +45,7 @@ class ZugferdObjectHelper
     /**
      * A list of supported mimetypes by binaryattachments
      */
-    const SUPPORTEDTMIMETYPES = [
+    public const SUPPORTEDTMIMETYPES = [
         "application/pdf",
         "image/png",
         "image/jpeg",

@@ -23,885 +23,885 @@ class ZugferdChargeCodes
     /**
      * Advertising
      */
-    const ADVERTISING = "AA";
+    public const ADVERTISING = "AA";
 
     /**
      * Telecommunication
      */
-    const TELECOMMUNICATION = "AAA";
+    public const TELECOMMUNICATION = "AAA";
 
     /**
      * Technical modification
      */
-    const TECHNICAL_MODIFICATION = "AAC";
+    public const TECHNICAL_MODIFICATION = "AAC";
 
     /**
      * Job-order production
      */
-    const JOBORDER_PRODUCTION = "AAD";
+    public const JOBORDER_PRODUCTION = "AAD";
 
     /**
      * Outlays
      */
-    const OUTLAYS = "AAE";
+    public const OUTLAYS = "AAE";
 
     /**
      * Off-premises
      */
-    const OFFPREMISES = "AAF";
+    public const OFFPREMISES = "AAF";
 
     /**
      * Additional processing
      */
-    const ADDITIONAL_PROCESSING = "AAH";
+    public const ADDITIONAL_PROCESSING = "AAH";
 
     /**
      * Attesting
      */
-    const ATTESTING = "AAI";
+    public const ATTESTING = "AAI";
 
     /**
      * Acceptance
      */
-    const ACCEPTANCE = "AAS";
+    public const ACCEPTANCE = "AAS";
 
     /**
      * Rush delivery
      */
-    const RUSH_DELIVERY = "AAT";
+    public const RUSH_DELIVERY = "AAT";
 
     /**
      * Special construction
      */
-    const SPECIAL_CONSTRUCTION = "AAV";
+    public const SPECIAL_CONSTRUCTION = "AAV";
 
     /**
      * Airport facilities
      */
-    const AIRPORT_FACILITIES = "AAY";
+    public const AIRPORT_FACILITIES = "AAY";
 
     /**
      * Concession
      */
-    const CONCESSION = "AAZ";
+    public const CONCESSION = "AAZ";
 
     /**
      * Compulsory storage
      */
-    const COMPULSORY_STORAGE = "ABA";
+    public const COMPULSORY_STORAGE = "ABA";
 
     /**
      * Fuel removal
      */
-    const FUEL_REMOVAL = "ABB";
+    public const FUEL_REMOVAL = "ABB";
 
     /**
      * Into plane
      */
-    const INTO_PLANE = "ABC";
+    public const INTO_PLANE = "ABC";
 
     /**
      * Overtime
      */
-    const OVERTIME = "ABD";
+    public const OVERTIME = "ABD";
 
     /**
      * Tooling
      */
-    const TOOLING = "ABF";
+    public const TOOLING = "ABF";
 
     /**
      * Miscellaneous
      */
-    const MISCELLANEOUS = "ABK";
+    public const MISCELLANEOUS = "ABK";
 
     /**
      * Additional packaging
      */
-    const ADDITIONAL_PACKAGING = "ABL";
+    public const ADDITIONAL_PACKAGING = "ABL";
 
     /**
      * Dunnage
      */
-    const DUNNAGE = "ABN";
+    public const DUNNAGE = "ABN";
 
     /**
      * Containerisation
      */
-    const CONTAINERISATION = "ABR";
+    public const CONTAINERISATION = "ABR";
 
     /**
      * Carton packing
      */
-    const CARTON_PACKING = "ABS";
+    public const CARTON_PACKING = "ABS";
 
     /**
      * Hessian wrapped
      */
-    const HESSIAN_WRAPPED = "ABT";
+    public const HESSIAN_WRAPPED = "ABT";
 
     /**
      * Polyethylene wrap packing
      */
-    const POLYETHYLENE_WRAP_PACKING = "ABU";
+    public const POLYETHYLENE_WRAP_PACKING = "ABU";
 
     /**
      * Miscellaneous treatment
      */
-    const MISCELLANEOUS_TREATMENT = "ACF";
+    public const MISCELLANEOUS_TREATMENT = "ACF";
 
     /**
      * Enamelling treatment
      */
-    const ENAMELLING_TREATMENT = "ACG";
+    public const ENAMELLING_TREATMENT = "ACG";
 
     /**
      * Heat treatment
      */
-    const HEAT_TREATMENT = "ACH";
+    public const HEAT_TREATMENT = "ACH";
 
     /**
      * Plating treatment
      */
-    const PLATING_TREATMENT = "ACI";
+    public const PLATING_TREATMENT = "ACI";
 
     /**
      * Painting
      */
-    const PAINTING = "ACJ";
+    public const PAINTING = "ACJ";
 
     /**
      * Polishing
      */
-    const POLISHING = "ACK";
+    public const POLISHING = "ACK";
 
     /**
      * Priming
      */
-    const PRIMING = "ACL";
+    public const PRIMING = "ACL";
 
     /**
      * Preservation treatment
      */
-    const PRESERVATION_TREATMENT = "ACM";
+    public const PRESERVATION_TREATMENT = "ACM";
 
     /**
      * Fitting
      */
-    const FITTING = "ACS";
+    public const FITTING = "ACS";
 
     /**
      * Consolidation
      */
-    const CONSOLIDATION = "ADC";
+    public const CONSOLIDATION = "ADC";
 
     /**
      * Bill of lading
      */
-    const BILL_OF_LADING = "ADE";
+    public const BILL_OF_LADING = "ADE";
 
     /**
      * Airbag
      */
-    const AIRBAG = "ADJ";
+    public const AIRBAG = "ADJ";
 
     /**
      * Transfer
      */
-    const TRANSFER = "ADK";
+    public const TRANSFER = "ADK";
 
     /**
      * Slipsheet
      */
-    const SLIPSHEET = "ADL";
+    public const SLIPSHEET = "ADL";
 
     /**
      * Binding
      */
-    const BINDING = "ADM";
+    public const BINDING = "ADM";
 
     /**
      * Repair or replacement of broken returnable package
      */
-    const REPAIR_OR_REPLACEMENT_OF_BROKEN_RETURNABLE_PACKAGE = "ADN";
+    public const REPAIR_OR_REPLACEMENT_OF_BROKEN_RETURNABLE_PACKAGE = "ADN";
 
     /**
      * Efficient logistics
      */
-    const EFFICIENT_LOGISTICS = "ADO";
+    public const EFFICIENT_LOGISTICS = "ADO";
 
     /**
      * Merchandising
      */
-    const MERCHANDISING = "ADP";
+    public const MERCHANDISING = "ADP";
 
     /**
      * Product mix
      */
-    const PRODUCT_MIX = "ADQ";
+    public const PRODUCT_MIX = "ADQ";
 
     /**
      * Other services
      */
-    const OTHER_SERVICES = "ADR";
+    public const OTHER_SERVICES = "ADR";
 
     /**
      * Pick-up
      */
-    const PICKUP = "ADT";
+    public const PICKUP = "ADT";
 
     /**
      * Chronic illness
      */
-    const CHRONIC_ILLNESS = "ADW";
+    public const CHRONIC_ILLNESS = "ADW";
 
     /**
      * New product introduction
      */
-    const NEW_PRODUCT_INTRODUCTION = "ADY";
+    public const NEW_PRODUCT_INTRODUCTION = "ADY";
 
     /**
      * Direct delivery
      */
-    const DIRECT_DELIVERY = "ADZ";
+    public const DIRECT_DELIVERY = "ADZ";
 
     /**
      * Diversion
      */
-    const DIVERSION = "AEA";
+    public const DIVERSION = "AEA";
 
     /**
      * Disconnect
      */
-    const DISCONNECT = "AEB";
+    public const DISCONNECT = "AEB";
 
     /**
      * Distribution
      */
-    const DISTRIBUTION = "AEC";
+    public const DISTRIBUTION = "AEC";
 
     /**
      * Handling of hazardous cargo
      */
-    const HANDLING_OF_HAZARDOUS_CARGO = "AED";
+    public const HANDLING_OF_HAZARDOUS_CARGO = "AED";
 
     /**
      * Rents and leases
      */
-    const RENTS_AND_LEASES = "AEF";
+    public const RENTS_AND_LEASES = "AEF";
 
     /**
      * Location differential
      */
-    const LOCATION_DIFFERENTIAL = "AEH";
+    public const LOCATION_DIFFERENTIAL = "AEH";
 
     /**
      * Aircraft refueling
      */
-    const AIRCRAFT_REFUELING = "AEI";
+    public const AIRCRAFT_REFUELING = "AEI";
 
     /**
      * Fuel shipped into storage
      */
-    const FUEL_SHIPPED_INTO_STORAGE = "AEJ";
+    public const FUEL_SHIPPED_INTO_STORAGE = "AEJ";
 
     /**
      * Cash on delivery
      */
-    const CASH_ON_DELIVERY = "AEK";
+    public const CASH_ON_DELIVERY = "AEK";
 
     /**
      * Small order processing service
      */
-    const SMALL_ORDER_PROCESSING_SERVICE = "AEL";
+    public const SMALL_ORDER_PROCESSING_SERVICE = "AEL";
 
     /**
      * Clerical or administrative services
      */
-    const CLERICAL_OR_ADMINISTRATIVE_SERVICES = "AEM";
+    public const CLERICAL_OR_ADMINISTRATIVE_SERVICES = "AEM";
 
     /**
      * Guarantee
      */
-    const GUARANTEE = "AEN";
+    public const GUARANTEE = "AEN";
 
     /**
      * Collection and recycling
      */
-    const COLLECTION_AND_RECYCLING = "AEO";
+    public const COLLECTION_AND_RECYCLING = "AEO";
 
     /**
      * Copyright fee collection
      */
-    const COPYRIGHT_FEE_COLLECTION = "AEP";
+    public const COPYRIGHT_FEE_COLLECTION = "AEP";
 
     /**
      * Veterinary inspection service
      */
-    const VETERINARY_INSPECTION_SERVICE = "AES";
+    public const VETERINARY_INSPECTION_SERVICE = "AES";
 
     /**
      * Pensioner service
      */
-    const PENSIONER_SERVICE = "AET";
+    public const PENSIONER_SERVICE = "AET";
 
     /**
      * Medicine free pass holder
      */
-    const MEDICINE_FREE_PASS_HOLDER = "AEU";
+    public const MEDICINE_FREE_PASS_HOLDER = "AEU";
 
     /**
      * Environmental protection service
      */
-    const ENVIRONMENTAL_PROTECTION_SERVICE = "AEV";
+    public const ENVIRONMENTAL_PROTECTION_SERVICE = "AEV";
 
     /**
      * Environmental clean-up service
      */
-    const ENVIRONMENTAL_CLEANUP_SERVICE = "AEW";
+    public const ENVIRONMENTAL_CLEANUP_SERVICE = "AEW";
 
     /**
      * National cheque processing service outside account area
      */
-    const NATIONAL_CHEQUE_PROCESSING_SERVICE_OUTSIDE_ACCOUNT_AREA = "AEX";
+    public const NATIONAL_CHEQUE_PROCESSING_SERVICE_OUTSIDE_ACCOUNT_AREA = "AEX";
 
     /**
      * National payment service outside account area
      */
-    const NATIONAL_PAYMENT_SERVICE_OUTSIDE_ACCOUNT_AREA = "AEY";
+    public const NATIONAL_PAYMENT_SERVICE_OUTSIDE_ACCOUNT_AREA = "AEY";
 
     /**
      * National payment service within account area
      */
-    const NATIONAL_PAYMENT_SERVICE_WITHIN_ACCOUNT_AREA = "AEZ";
+    public const NATIONAL_PAYMENT_SERVICE_WITHIN_ACCOUNT_AREA = "AEZ";
 
     /**
      * Adjustments
      */
-    const ADJUSTMENTS = "AJ";
+    public const ADJUSTMENTS = "AJ";
 
     /**
      * Authentication
      */
-    const AUTHENTICATION = "AU";
+    public const AUTHENTICATION = "AU";
 
     /**
      * Cataloguing
      */
-    const CATALOGUING = "CA";
+    public const CATALOGUING = "CA";
 
     /**
      * Cartage
      */
-    const CARTAGE = "CAB";
+    public const CARTAGE = "CAB";
 
     /**
      * Certification
      */
-    const CERTIFICATION = "CAD";
+    public const CERTIFICATION = "CAD";
 
     /**
      * Certificate of conformance
      */
-    const CERTIFICATE_OF_CONFORMANCE = "CAE";
+    public const CERTIFICATE_OF_CONFORMANCE = "CAE";
 
     /**
      * Certificate of origin
      */
-    const CERTIFICATE_OF_ORIGIN = "CAF";
+    public const CERTIFICATE_OF_ORIGIN = "CAF";
 
     /**
      * Cutting
      */
-    const CUTTING = "CAI";
+    public const CUTTING = "CAI";
 
     /**
      * Consular service
      */
-    const CONSULAR_SERVICE = "CAJ";
+    public const CONSULAR_SERVICE = "CAJ";
 
     /**
      * Customer collection
      */
-    const CUSTOMER_COLLECTION = "CAK";
+    public const CUSTOMER_COLLECTION = "CAK";
 
     /**
      * Payroll payment service
      */
-    const PAYROLL_PAYMENT_SERVICE = "CAL";
+    public const PAYROLL_PAYMENT_SERVICE = "CAL";
 
     /**
      * Cash transportation
      */
-    const CASH_TRANSPORTATION = "CAM";
+    public const CASH_TRANSPORTATION = "CAM";
 
     /**
      * Home banking service
      */
-    const HOME_BANKING_SERVICE = "CAN";
+    public const HOME_BANKING_SERVICE = "CAN";
 
     /**
      * Bilateral agreement service
      */
-    const BILATERAL_AGREEMENT_SERVICE = "CAO";
+    public const BILATERAL_AGREEMENT_SERVICE = "CAO";
 
     /**
      * Insurance brokerage service
      */
-    const INSURANCE_BROKERAGE_SERVICE = "CAP";
+    public const INSURANCE_BROKERAGE_SERVICE = "CAP";
 
     /**
      * Cheque generation
      */
-    const CHEQUE_GENERATION = "CAQ";
+    public const CHEQUE_GENERATION = "CAQ";
 
     /**
      * Preferential merchandising location
      */
-    const PREFERENTIAL_MERCHANDISING_LOCATION = "CAR";
+    public const PREFERENTIAL_MERCHANDISING_LOCATION = "CAR";
 
     /**
      * Crane
      */
-    const CRANE = "CAS";
+    public const CRANE = "CAS";
 
     /**
      * Special colour service
      */
-    const SPECIAL_COLOUR_SERVICE = "CAT";
+    public const SPECIAL_COLOUR_SERVICE = "CAT";
 
     /**
      * Sorting
      */
-    const SORTING = "CAU";
+    public const SORTING = "CAU";
 
     /**
      * Battery collection and recycling
      */
-    const BATTERY_COLLECTION_AND_RECYCLING = "CAV";
+    public const BATTERY_COLLECTION_AND_RECYCLING = "CAV";
 
     /**
      * Product take back fee
      */
-    const PRODUCT_TAKE_BACK_FEE = "CAW";
+    public const PRODUCT_TAKE_BACK_FEE = "CAW";
 
     /**
      * Quality control released
      */
-    const QUALITY_CONTROL_RELEASED = "CAX";
+    public const QUALITY_CONTROL_RELEASED = "CAX";
 
     /**
      * Quality control held
      */
-    const QUALITY_CONTROL_HELD = "CAY";
+    public const QUALITY_CONTROL_HELD = "CAY";
 
     /**
      * Quality control embargo
      */
-    const QUALITY_CONTROL_EMBARGO = "CAZ";
+    public const QUALITY_CONTROL_EMBARGO = "CAZ";
 
     /**
      * Car loading
      */
-    const CAR_LOADING = "CD";
+    public const CAR_LOADING = "CD";
 
     /**
      * Cleaning
      */
-    const CLEANING = "CG";
+    public const CLEANING = "CG";
 
     /**
      * Cigarette stamping
      */
-    const CIGARETTE_STAMPING = "CS";
+    public const CIGARETTE_STAMPING = "CS";
 
     /**
      * Count and recount
      */
-    const COUNT_AND_RECOUNT = "CT";
+    public const COUNT_AND_RECOUNT = "CT";
 
     /**
      * Layout/design
      */
-    const LAYOUT_DESIGN = "DAB";
+    public const LAYOUT_DESIGN = "DAB";
 
     /**
      * Assortment allowance
      */
-    const ASSORTMENT_ALLOWANCE = "DAC";
+    public const ASSORTMENT_ALLOWANCE = "DAC";
 
     /**
      * Driver assigned unloading
      */
-    const DRIVER_ASSIGNED_UNLOADING = "DAD";
+    public const DRIVER_ASSIGNED_UNLOADING = "DAD";
 
     /**
      * Debtor bound
      */
-    const DEBTOR_BOUND = "DAF";
+    public const DEBTOR_BOUND = "DAF";
 
     /**
      * Dealer allowance
      */
-    const DEALER_ALLOWANCE = "DAG";
+    public const DEALER_ALLOWANCE = "DAG";
 
     /**
      * Allowance transferable to the consumer
      */
-    const ALLOWANCE_TRANSFERABLE_TO_THE_CONSUMER = "DAH";
+    public const ALLOWANCE_TRANSFERABLE_TO_THE_CONSUMER = "DAH";
 
     /**
      * Growth of business
      */
-    const GROWTH_OF_BUSINESS = "DAI";
+    public const GROWTH_OF_BUSINESS = "DAI";
 
     /**
      * Introduction allowance
      */
-    const INTRODUCTION_ALLOWANCE = "DAJ";
+    public const INTRODUCTION_ALLOWANCE = "DAJ";
 
     /**
      * Multi-buy promotion
      */
-    const MULTIBUY_PROMOTION = "DAK";
+    public const MULTIBUY_PROMOTION = "DAK";
 
     /**
      * Partnership
      */
-    const PARTNERSHIP = "DAL";
+    public const PARTNERSHIP = "DAL";
 
     /**
      * Return handling
      */
-    const RETURN_HANDLING = "DAM";
+    public const RETURN_HANDLING = "DAM";
 
     /**
      * Minimum order not fulfilled charge
      */
-    const MINIMUM_ORDER_NOT_FULFILLED_CHARGE = "DAN";
+    public const MINIMUM_ORDER_NOT_FULFILLED_CHARGE = "DAN";
 
     /**
      * Point of sales threshold allowance
      */
-    const POINT_OF_SALES_THRESHOLD_ALLOWANCE = "DAO";
+    public const POINT_OF_SALES_THRESHOLD_ALLOWANCE = "DAO";
 
     /**
      * Wholesaling discount
      */
-    const WHOLESALING_DISCOUNT = "DAP";
+    public const WHOLESALING_DISCOUNT = "DAP";
 
     /**
      * Documentary credits transfer commission
      */
-    const DOCUMENTARY_CREDITS_TRANSFER_COMMISSION = "DAQ";
+    public const DOCUMENTARY_CREDITS_TRANSFER_COMMISSION = "DAQ";
 
     /**
      * Delivery
      */
-    const DELIVERY = "DL";
+    public const DELIVERY = "DL";
 
     /**
      * Engraving
      */
-    const ENGRAVING = "EG";
+    public const ENGRAVING = "EG";
 
     /**
      * Expediting
      */
-    const EXPEDITING = "EP";
+    public const EXPEDITING = "EP";
 
     /**
      * Exchange rate guarantee
      */
-    const EXCHANGE_RATE_GUARANTEE = "ER";
+    public const EXCHANGE_RATE_GUARANTEE = "ER";
 
     /**
      * Fabrication
      */
-    const FABRICATION = "FAA";
+    public const FABRICATION = "FAA";
 
     /**
      * Freight equalization
      */
-    const FREIGHT_EQUALIZATION = "FAB";
+    public const FREIGHT_EQUALIZATION = "FAB";
 
     /**
      * Freight extraordinary handling
      */
-    const FREIGHT_EXTRAORDINARY_HANDLING = "FAC";
+    public const FREIGHT_EXTRAORDINARY_HANDLING = "FAC";
 
     /**
      * Freight service
      */
-    const FREIGHT_SERVICE = "FC";
+    public const FREIGHT_SERVICE = "FC";
 
     /**
      * Filling/handling
      */
-    const FILLING_HANDLING = "FH";
+    public const FILLING_HANDLING = "FH";
 
     /**
      * Financing
      */
-    const FINANCING = "FI";
+    public const FINANCING = "FI";
 
     /**
      * Grinding
      */
-    const GRINDING = "GAA";
+    public const GRINDING = "GAA";
 
     /**
      * Hose
      */
-    const HOSE = "HAA";
+    public const HOSE = "HAA";
 
     /**
      * Handling
      */
-    const HANDLING = "HD";
+    public const HANDLING = "HD";
 
     /**
      * Hoisting and hauling
      */
-    const HOISTING_AND_HAULING = "HH";
+    public const HOISTING_AND_HAULING = "HH";
 
     /**
      * Installation
      */
-    const INSTALLATION = "IAA";
+    public const INSTALLATION = "IAA";
 
     /**
      * Installation and warranty
      */
-    const INSTALLATION_AND_WARRANTY = "IAB";
+    public const INSTALLATION_AND_WARRANTY = "IAB";
 
     /**
      * Inside delivery
      */
-    const INSIDE_DELIVERY = "ID";
+    public const INSIDE_DELIVERY = "ID";
 
     /**
      * Inspection
      */
-    const INSPECTION = "IF";
+    public const INSPECTION = "IF";
 
     /**
      * Installation and training
      */
-    const INSTALLATION_AND_TRAINING = "IR";
+    public const INSTALLATION_AND_TRAINING = "IR";
 
     /**
      * Invoicing
      */
-    const INVOICING = "IS";
+    public const INVOICING = "IS";
 
     /**
      * Koshering
      */
-    const KOSHERING = "KO";
+    public const KOSHERING = "KO";
 
     /**
      * Carrier count
      */
-    const CARRIER_COUNT = "L1";
+    public const CARRIER_COUNT = "L1";
 
     /**
      * Labelling
      */
-    const LABELLING = "LA";
+    public const LABELLING = "LA";
 
     /**
      * Labour
      */
-    const LABOUR = "LAA";
+    public const LABOUR = "LAA";
 
     /**
      * Repair and return
      */
-    const REPAIR_AND_RETURN = "LAB";
+    public const REPAIR_AND_RETURN = "LAB";
 
     /**
      * Legalisation
      */
-    const LEGALISATION = "LF";
+    public const LEGALISATION = "LF";
 
     /**
      * Mounting
      */
-    const MOUNTING = "MAE";
+    public const MOUNTING = "MAE";
 
     /**
      * Mail invoice
      */
-    const MAIL_INVOICE = "MI";
+    public const MAIL_INVOICE = "MI";
 
     /**
      * Mail invoice to each location
      */
-    const MAIL_INVOICE_TO_EACH_LOCATION = "ML";
+    public const MAIL_INVOICE_TO_EACH_LOCATION = "ML";
 
     /**
      * Non-returnable containers
      */
-    const NONRETURNABLE_CONTAINERS = "NAA";
+    public const NONRETURNABLE_CONTAINERS = "NAA";
 
     /**
      * Outside cable connectors
      */
-    const OUTSIDE_CABLE_CONNECTORS = "OA";
+    public const OUTSIDE_CABLE_CONNECTORS = "OA";
 
     /**
      * Invoice with shipment
      */
-    const INVOICE_WITH_SHIPMENT = "PA";
+    public const INVOICE_WITH_SHIPMENT = "PA";
 
     /**
      * Phosphatizing (steel treatment)
      */
-    const PHOSPHATIZING_STEEL_TREATMENT = "PAA";
+    public const PHOSPHATIZING_STEEL_TREATMENT = "PAA";
 
     /**
      * Packing
      */
-    const PACKING = "PC";
+    public const PACKING = "PC";
 
     /**
      * Palletizing
      */
-    const PALLETIZING = "PL";
+    public const PALLETIZING = "PL";
 
     /**
      * Repacking
      */
-    const REPACKING = "RAB";
+    public const REPACKING = "RAB";
 
     /**
      * Repair
      */
-    const REPAIR = "RAC";
+    public const REPAIR = "RAC";
 
     /**
      * Returnable container
      */
-    const RETURNABLE_CONTAINER = "RAD";
+    public const RETURNABLE_CONTAINER = "RAD";
 
     /**
      * Restocking
      */
-    const RESTOCKING = "RAF";
+    public const RESTOCKING = "RAF";
 
     /**
      * Re-delivery
      */
-    const REDELIVERY = "RE";
+    public const REDELIVERY = "RE";
 
     /**
      * Refurbishing
      */
-    const REFURBISHING = "RF";
+    public const REFURBISHING = "RF";
 
     /**
      * Rail wagon hire
      */
-    const RAIL_WAGON_HIRE = "RH";
+    public const RAIL_WAGON_HIRE = "RH";
 
     /**
      * Loading
      */
-    const LOADING = "RV";
+    public const LOADING = "RV";
 
     /**
      * Salvaging
      */
-    const SALVAGING = "SA";
+    public const SALVAGING = "SA";
 
     /**
      * Shipping and handling
      */
-    const SHIPPING_AND_HANDLING = "SAA";
+    public const SHIPPING_AND_HANDLING = "SAA";
 
     /**
      * Special packaging
      */
-    const SPECIAL_PACKAGING = "SAD";
+    public const SPECIAL_PACKAGING = "SAD";
 
     /**
      * Stamping
      */
-    const STAMPING = "SAE";
+    public const STAMPING = "SAE";
 
     /**
      * Consignee unload
      */
-    const CONSIGNEE_UNLOAD = "SAI";
+    public const CONSIGNEE_UNLOAD = "SAI";
 
     /**
      * Shrink-wrap
      */
-    const SHRINKWRAP = "SG";
+    public const SHRINKWRAP = "SG";
 
     /**
      * Special handling
      */
-    const SPECIAL_HANDLING = "SH";
+    public const SPECIAL_HANDLING = "SH";
 
     /**
      * Special finish
      */
-    const SPECIAL_FINISH = "SM";
+    public const SPECIAL_FINISH = "SM";
 
     /**
      * Set-up
      */
-    const SETUP = "SU";
+    public const SETUP = "SU";
 
     /**
      * Tank renting
      */
-    const TANK_RENTING = "TAB";
+    public const TANK_RENTING = "TAB";
 
     /**
      * Testing
      */
-    const TESTING = "TAC";
+    public const TESTING = "TAC";
 
     /**
      * Transportation - third party billing
      */
-    const TRANSPORTATION__THIRD_PARTY_BILLING = "TT";
+    public const TRANSPORTATION__THIRD_PARTY_BILLING = "TT";
 
     /**
      * Transportation by vendor
      */
-    const TRANSPORTATION_BY_VENDOR = "TV";
+    public const TRANSPORTATION_BY_VENDOR = "TV";
 
     /**
      * Drop yard
      */
-    const DROP_YARD = "V1";
+    public const DROP_YARD = "V1";
 
     /**
      * Drop dock
      */
-    const DROP_DOCK = "V2";
+    public const DROP_DOCK = "V2";
 
     /**
      * Warehousing
      */
-    const WAREHOUSING = "WH";
+    public const WAREHOUSING = "WH";
 
     /**
      * Combine all same day shipment
      */
-    const COMBINE_ALL_SAME_DAY_SHIPMENT = "XAA";
+    public const COMBINE_ALL_SAME_DAY_SHIPMENT = "XAA";
 
     /**
      * Split pick-up
      */
-    const SPLIT_PICKUP = "YY";
+    public const SPLIT_PICKUP = "YY";
 
     /**
      * Mutually defined
      */
-    const MUTUALLY_DEFINED = "ZZZ";
+    public const MUTUALLY_DEFINED = "ZZZ";
 }

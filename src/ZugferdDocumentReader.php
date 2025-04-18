@@ -2072,7 +2072,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
 
-        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
+        if (
+            StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
@@ -3473,7 +3474,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
         $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
 
-        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
+        if (
+            StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
             && StringUtils::stringIsNullOrEmpty($binarydata) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {

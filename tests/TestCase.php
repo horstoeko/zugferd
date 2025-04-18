@@ -5,7 +5,7 @@ namespace horstoeko\zugferd\tests;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
-use \PHPUnit\Framework\TestCase as PhpUnitTestCase;
+use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 
 class TestCase extends PhpUnitTestCase
 {

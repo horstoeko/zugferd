@@ -23,62 +23,62 @@ class ZugferdProfiles
     /**
      * Internal constant that identifies the BASIC profile
      */
-    const PROFILE_BASIC = 0;
+    public const PROFILE_BASIC = 0;
 
     /**
      * Internal constant that identifies the BASIC WL profile
      */
-    const PROFILE_BASICWL = 1;
+    public const PROFILE_BASICWL = 1;
 
     /**
      * Internal constant that identifies the EN16931 profile
      */
-    const PROFILE_EN16931 = 2;
+    public const PROFILE_EN16931 = 2;
 
     /**
      * Internal constant that identifies the EXTENDED profile
      */
-    const PROFILE_EXTENDED = 3;
+    public const PROFILE_EXTENDED = 3;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile (germany only)
      */
-    const PROFILE_XRECHNUNG = 4;
+    public const PROFILE_XRECHNUNG = 4;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile version 2.0 (germany only)
      */
-    const PROFILE_XRECHNUNG_2 = 5;
+    public const PROFILE_XRECHNUNG_2 = 5;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile version 2.1 (germany only)
      */
-    const PROFILE_XRECHNUNG_2_1 = 6;
+    public const PROFILE_XRECHNUNG_2_1 = 6;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile version 2.2 (germany only)
      */
-    const PROFILE_XRECHNUNG_2_2 = 7;
+    public const PROFILE_XRECHNUNG_2_2 = 7;
 
     /**
      * Internal constant that identifies the MINIMUM profile
      */
-    const PROFILE_MINIMUM = 8;
+    public const PROFILE_MINIMUM = 8;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile version 2.3 (germany only)
      */
-    const PROFILE_XRECHNUNG_2_3 = 9;
+    public const PROFILE_XRECHNUNG_2_3 = 9;
 
     /**
      * Internal constant that identifies the XRECHNUNG profile version 2.3 (germany only)
      */
-    const PROFILE_XRECHNUNG_3 = 10;
+    public const PROFILE_XRECHNUNG_3 = 10;
 
     /**
      * The definitions of the several profiles
      */
-    const PROFILEDEF = [
+    public const PROFILEDEF = [
         self::PROFILE_BASIC => [
             'name' => 'basic',
             'altname' => 'BASIC',

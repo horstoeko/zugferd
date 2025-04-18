@@ -780,10 +780,11 @@ class ZugferdPdfValidator
 
         $installerScriptFilename = PathUtils::combinePathWithFile($this->resolveBaseDirectory(), 'install.xml');
 
-        if (file_put_contents(
-            $installerScriptFilename,
-            sprintf(
-                '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        if (
+            file_put_contents(
+                $installerScriptFilename,
+                sprintf(
+                    '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <AutomatedInstallation langpack="eng">
                 <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
                 <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
@@ -798,9 +799,9 @@ class ZugferdPdfValidator
                 <com.izforge.izpack.panels.install.InstallPanel id="install"/>
                 <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
             </AutomatedInstallation>',
-                $this->resolveBaseDirectory()
-            )
-        ) === false
+                    $this->resolveBaseDirectory()
+                )
+            ) === false
         ) {
             $this->addToMessageBag("Failed to create install script");
             return false;
