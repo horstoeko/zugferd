@@ -42,6 +42,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
+            ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
             ${{ runner.os }}-8.4-composer-
 
       - name: Install composer dependencies

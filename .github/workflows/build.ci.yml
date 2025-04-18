@@ -68,6 +68,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
+            ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
             ${{ runner.os }}-${{ matrix.phpversion }}-composer-
 
       - name: Install composer dependencies
