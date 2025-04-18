@@ -144,14 +144,19 @@ jobs:
         env:
           XDEBUG_MODE: coverage
 
-      - name: Cache Tests (Schematron)
+      - name: Cache Key (Schematron)
+        id: hash-validator
+        run: |
+          echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
+
+      - name: Cache Application (Schematron)
         id: cache-validator
         uses: actions/cache@v4
         with:
           path: ${{ env.VALIDATORPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ env.VALIDATORZIPFILENAME }}-${{ env.VALIDATORSCENARIOZIPFILENAME }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
 
-      - name: Download Tests (Schematron)
+      - name: Download Application (Schematron)
         if: steps.cache-validator.outputs.cache-hit != 'true'
         run: |
           rm -rf $VALIDATORPATH
@@ -170,7 +175,6 @@ jobs:
           rm -f examples/factur-x.xml
           php -f examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
           java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
-          rm -rf build/validator
 
       - name: Run Tests (VeraPDF)
         continue-on-error: true
