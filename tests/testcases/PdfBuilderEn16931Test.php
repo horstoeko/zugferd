@@ -92,7 +92,7 @@ class PdfBuilderEn16931Test extends TestCase
     public function testBuildFromSourcePdfFileWhichDoesNotExist(): void
     {
         $this->expectException(ZugferdFileNotFoundException::class);
-        $this->expectExceptionMessage('The given PDF file does not exist.');
+        $this->expectExceptionMessage('The file /tmp/anonexisting.pdf was not found');
 
         ZugferdDocumentPdfBuilder::fromPdfFile(self::$document, '/tmp/anonexisting.pdf');
     }

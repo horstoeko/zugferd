@@ -45,7 +45,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): self
     {
         if (!is_file($pdfFileName)) {
-            throw new ZugferdFileNotFoundException("The given PDF file does not exist.");
+            throw new ZugferdFileNotFoundException($pdfFileName);
         }
 
         return new self($documentBuilder, $pdfFileName);
