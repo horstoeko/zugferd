@@ -477,6 +477,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     abstract protected function getXmlAttachmentXmpName(): string;
 
     /**
+     * Get the XMP version for the XML to attach
+     *
+     * @return string
+     */
+    abstract protected function getXmlAttachmentXmpVersion(): string;
+
+    /**
      * Internal function which sets up the PDF
      *
      * @return void
@@ -559,6 +566,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $descFx = $descriptionNodes[0];
         $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->getXmlAttachmentXmpName());
+        $descFx->children('fx', true)->{'Version'} = strtoupper($this->getXmlAttachmentXmpVersion());
         $descFx->children('fx', true)->{'DocumentFileName'} = $this->getXmlAttachmentFilename();
         $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
 

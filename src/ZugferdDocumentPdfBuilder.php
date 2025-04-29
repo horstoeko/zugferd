@@ -101,4 +101,12 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     {
         return $this->documentBuilder->getProfileDefinitionParameter("xmpname");
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getXmlAttachmentXmpVersion(): string
+    {
+        return $this->documentBuilder->getProfileDefinitionParameter("xmpversion");
+    }
 }

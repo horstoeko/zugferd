@@ -38,6 +38,7 @@ class BuilderEn16931Test extends TestCase
         $this->assertEquals('urn:cen.eu:en16931:2017', self::$document->getProfileDefinitionParameter('contextparameter'));
         $this->assertEquals('factur-x.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
         $this->assertEquals('EN 16931', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->assertEquals('1.0', self::$document->getProfileDefinitionParameter('xmpversion'));
         $this->expectNoticeOrWarningExt(
             function () {
                 self::$document->getProfileDefinitionParameter('unknownparameter');
