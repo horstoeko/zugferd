@@ -40,7 +40,7 @@ class ReaderXRechnungTest extends TestCase
         $this->assertEquals('XRECHNUNG', self::$document->getProfileDefinitionParameter('altname'));
         $this->assertEquals('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2', self::$document->getProfileDefinitionParameter('contextparameter'));
         $this->assertEquals('xrechnung.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
-        $this->assertEquals('EN 16931', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->assertEquals('XRECHNUNG', self::$document->getProfileDefinitionParameter('xmpname'));
         $this->expectNoticeOrWarningExt(
             function () {
                 self::$document->getProfileDefinitionParameter('unknownparameter');

@@ -146,7 +146,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -161,7 +161,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -176,7 +176,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -191,7 +191,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -220,7 +220,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -235,7 +235,7 @@ class ZugferdProfiles
             'alternativecontextparameters' => [],
             'businessprocess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
             'attachmentfilename' => 'xrechnung.xml',
-            'xmpname' => 'EN 16931',
+            'xmpname' => 'XRECHNUNG',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
