@@ -39,6 +39,7 @@ class BuilderMinimumTest extends TestCase
         $this->assertEquals('urn:factur-x.eu:1p0:minimum', self::$document->getProfileDefinitionParameter('contextparameter'));
         $this->assertEquals('factur-x.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
         $this->assertEquals('MINIMUM', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->assertEquals('1.0', self::$document->getProfileDefinitionParameter('xmpversion'));
         $this->expectNoticeOrWarningExt(
             function () {
                 self::$document->getProfileDefinitionParameter('unknownparameter');

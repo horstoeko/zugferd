@@ -100,6 +100,14 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
+     * @inheritDoc
+     */
+    protected function getXmlAttachmentXmpVersion(): string
+    {
+        return $this->getProfileDefinitionParameter("xmpversion");
+    }
+
+    /**
      * Returns true if the submitted $xmlDataOrFilename is a valid file.
      * Otherwise it will return false
      *

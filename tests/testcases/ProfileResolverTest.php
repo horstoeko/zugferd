@@ -182,6 +182,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved[1]);
         $this->assertArrayHasKey("attachmentfilename", $resolved[1]);
         $this->assertArrayHasKey("xmpname", $resolved[1]);
+        $this->assertArrayHasKey("xmpversion", $resolved[1]);
         $this->assertArrayHasKey("xsdfilename", $resolved[1]);
         $this->assertArrayHasKey("schematronfilename", $resolved[1]);
 
@@ -193,6 +194,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved[1]["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved[1]["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved[1]["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpversion'], $resolved[1]["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved[1]["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]["schematronfilename"]);
     }
@@ -215,6 +217,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -225,6 +228,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -240,6 +244,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -250,6 +255,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASIC]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -265,6 +271,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -275,6 +282,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_BASICWL]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -290,6 +298,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -300,6 +309,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_MINIMUM]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -315,6 +325,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -325,6 +336,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EXTENDED]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -360,6 +372,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved[1]);
         $this->assertArrayHasKey("attachmentfilename", $resolved[1]);
         $this->assertArrayHasKey("xmpname", $resolved[1]);
+        $this->assertArrayHasKey("xmpversion", $resolved[1]);
         $this->assertArrayHasKey("xsdfilename", $resolved[1]);
         $this->assertArrayHasKey("schematronfilename", $resolved[1]);
 
@@ -371,6 +384,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved[1]["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved[1]["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved[1]["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpversion'], $resolved[1]["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved[1]["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved[1]["schematronfilename"]);
     }
@@ -386,6 +400,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -396,6 +411,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }
@@ -432,6 +448,7 @@ HDR;
         $this->assertArrayHasKey("businessprocess", $resolved);
         $this->assertArrayHasKey("attachmentfilename", $resolved);
         $this->assertArrayHasKey("xmpname", $resolved);
+        $this->assertArrayHasKey("xmpversion", $resolved);
         $this->assertArrayHasKey("xsdfilename", $resolved);
         $this->assertArrayHasKey("schematronfilename", $resolved);
 
@@ -442,6 +459,7 @@ HDR;
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['businessprocess'], $resolved["businessprocess"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['attachmentfilename'], $resolved["attachmentfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpname'], $resolved["xmpname"]);
+        $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xmpversion'], $resolved["xmpversion"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['xsdfilename'], $resolved["xsdfilename"]);
         $this->assertEquals(ZugferdProfiles::PROFILEDEF[ZugferdProfiles::PROFILE_EN16931]['schematronfilename'], $resolved["schematronfilename"]);
     }

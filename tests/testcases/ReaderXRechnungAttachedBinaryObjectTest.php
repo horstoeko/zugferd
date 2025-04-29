@@ -42,6 +42,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertEquals('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0', self::$document->getProfileDefinitionParameter('contextparameter'));
         $this->assertEquals('xrechnung.xml', self::$document->getProfileDefinitionParameter('attachmentfilename'));
         $this->assertEquals('XRECHNUNG', self::$document->getProfileDefinitionParameter('xmpname'));
+        $this->assertEquals('2.0', self::$document->getProfileDefinitionParameter('xmpversion'));
         $this->expectNoticeOrWarningExt(
             function () {
                 self::$document->getProfileDefinitionParameter('unknownparameter');
