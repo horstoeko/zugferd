@@ -151,7 +151,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
-            'xmpversion' => '1.0',
+            'xmpversion' => '1.2',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
