@@ -88,6 +88,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC',
+            'xmpversion' => '2p0',
             'xsdfilename' => 'FACTUR-X_BASIC.xsd',
             'schematronfilename' => 'FACTUR-X_BASIC.sch',
             'xsltfilename' => 'FACTUR-X_BASIC.xslt'
@@ -103,6 +104,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'BASIC WL',
+            'xmpversion' => '2p0',
             'xsdfilename' => 'FACTUR-X_BASIC-WL.xsd',
             'schematronfilename' => 'FACTUR-X_BASIC-WL.sch',
             'xsltfilename' => 'FACTUR-X_BASIC-WL.xslt'
@@ -117,6 +119,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EN 16931',
+            'xmpversion' => '1p0',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => 'FACTUR-X_EN16931.xslt'
@@ -132,6 +135,7 @@ class ZugferdProfiles
             'businessprocess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'EXTENDED',
+            'xmpversion' => '2p0',
             'xsdfilename' => 'FACTUR-X_EXTENDED.xsd',
             'schematronfilename' => 'FACTUR-X_EXTENDED.sch',
             'xsltfilename' => 'FACTUR-X_EXTENDED.xslt'
@@ -147,6 +151,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '1.2',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -162,6 +167,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '2.0',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -177,6 +183,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '2.1',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -192,6 +199,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '2.2',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -206,6 +214,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'factur-x.xml',
             'xmpname' => 'MINIMUM',
+            'xmpversion' => '2p0',
             'xsdfilename' => 'FACTUR-X_MINIMUM.xsd',
             'schematronfilename' => 'FACTUR-X_MINIMUM.sch',
             'xsltfilename' => 'FACTUR-X_MINIMUM.xslt'
@@ -221,6 +230,7 @@ class ZugferdProfiles
             'businessprocess' => null,
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '2.3',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
@@ -236,6 +246,7 @@ class ZugferdProfiles
             'businessprocess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
             'attachmentfilename' => 'xrechnung.xml',
             'xmpname' => 'XRECHNUNG',
+            'xmpversion' => '3.0',
             'xsdfilename' => 'FACTUR-X_EN16931.xsd',
             'schematronfilename' => 'FACTUR-X_EN16931.sch',
             'xsltfilename' => "FACTUR-X_EN16931.xslt"
