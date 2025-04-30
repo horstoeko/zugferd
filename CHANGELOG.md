@@ -1,3 +1,16 @@
+## v1.0.114
+
+``Previous version v1.0.113``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :bug:  | [e7869f7](https://github.com/horstoeko/zugferd/commit/e7869f7) | 2025-04-29 17:50:06 CEST | HorstOeko | [FIX]  Fix xmpversion for Profile XRechnung 1.2 | [#288](https://github.com/horstoeko/zugferd/issues/288)
+| :bug:  | [58b98f8](https://github.com/horstoeko/zugferd/commit/58b98f8) | 2025-04-29 17:42:47 CEST | HorstOeko | [FIX]  Fix xmpversion for Profile XRechnung 1.2 | [#288](https://github.com/horstoeko/zugferd/issues/288)
+| :new:  | [1599ee8](https://github.com/horstoeko/zugferd/commit/1599ee8) | 2025-04-29 14:58:54 CEST | HorstOeko | [ENH]  XMP Version should reflect the version of the XRechnung | [#288](https://github.com/horstoeko/zugferd/issues/288)
+| :new_moon:  | [f8d3daf](https://github.com/horstoeko/zugferd/commit/f8d3daf) | 2025-04-29 09:21:40 CEST | HorstOeko | Changed PDF Conformancelevel for Profile XRechnung to "XRECHNUNG" | [#286](https://github.com/horstoeko/zugferd/issues/286)
+
+:exclamation: _There are 4 internal commit(s)_
+
 ## v1.0.113
 
 ``Previous version v1.0.112``
