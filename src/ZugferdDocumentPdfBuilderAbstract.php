@@ -123,6 +123,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $metaInformationCallback;
 
     /**
+     * Internal flag which indicate, that attachment pane should be opened
+     *
+     * @var boolean
+     */
+    private $attachmentPaneVisibility = true;
+
+    /**
      * Constructor
      *
      * @param string $pdfData
@@ -456,6 +463,54 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
+     * Sets the flag that indicates, that the attachment pane should be visible on start (True)
+     * or hidden (False)
+     *
+     * @param boolean $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @return static
+     */
+    public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
+    {
+        $this->attachmentPaneVisibility = $attachmentPaneVisibility;
+
+        return $this;
+    }
+
+    /**
+     * Returns true if the attachment pane is visible, otherwise false
+     *
+     * @return boolean
+     */
+    public function getAttachmentPaneIsVisible(): bool
+    {
+        return $this->attachmentPaneVisibility;
+    }
+
+    /**
+     * Show attachment pane on startup
+     *
+     * @return static
+     */
+    public function showAttachmentPane()
+    {
+        $this->setAttachmentPaneVisibility(true);
+
+        return $this;
+    }
+
+    /**
+     * Hide attachment pane on startup
+     *
+     * @return static
+     */
+    public function hideAttachmentPane()
+    {
+        $this->setAttachmentPaneVisibility(false);
+
+        return $this;
+    }
+
+    /**
      * Get the content of XML to attach
      *
      * @return string
@@ -528,7 +583,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         // Set flag to always show the attachment pane
 
-        $this->pdfWriter->openAttachmentPane();
+        if ($this->getAttachmentPaneIsVisible() === true) {
+            $this->pdfWriter->openAttachmentPane();
+        }
 
         // Copy pages from the original PDF
 
