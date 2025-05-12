@@ -2582,9 +2582,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  float|null    $calculationPercent         __BT-X-286, From EXTENDED__ Percentage of the down payment
      * @param  DateTime|null $basisDateTime              __BT-X-282, From EXTENDED__ Due date reference date
-     * @param  float|null    $basisPeriodMeasureValue    __BT-X-284, From EXTENDED__ Maturity period (basis)
+     * @param  float|null    $basisPeriodMeasureValue    __BT-X-283, From EXTENDED__ Maturity period (basis)
      * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-284, From EXTENDED__ Maturity period (unit)
-     * @param  float|null    $basisAmount                __BT-X-284, From EXTENDED__ Base amount of the payment discount
+     * @param  float|null    $basisAmount                __BT-X-285, From EXTENDED__ Base amount of the payment discount
      * @param  float|null    $actualDiscountAmount       __BT-X-287, From EXTENDED__ Amount of the payment discount
      * @return ZugferdDocumentBuilder
      */
@@ -2603,7 +2603,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  float|null    $calculationPercent         __BT-X-280, From EXTENDED__ Percentage of the payment surcharge
      * @param  DateTime|null $basisDateTime              __BT-X-276, From EXTENDED__ Due date reference date
      * @param  float|null    $basisPeriodMeasureValue    __BT-X-277, From EXTENDED__ Maturity period (basis)
-     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-277, From EXTENDED__ Maturity period (unit)
+     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-278, From EXTENDED__ Maturity period (unit)
      * @param  float|null    $basisAmount                __BT-X-279, From EXTENDED__ Basic amount of the payment surcharge
      * @param  float|null    $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
      * @return ZugferdDocumentBuilder
