@@ -1,3 +1,15 @@
+## v1.0.115
+
+``Previous version v1.0.114``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [ece2069](https://github.com/horstoeko/zugferd/commit/ece2069) | 2025-06-06 10:02:29 CEST | HorstOeko | ZugferdDocumentReader::getDocumentDeliveryTerms uses the wrong path | [#299](https://github.com/horstoeko/zugferd/issues/299)
+| :new:  | [a362777](https://github.com/horstoeko/zugferd/commit/a362777) | 2025-05-08 05:24:00 CEST | HorstOeko | [ENH]  Add option to not open the attachment pane -> Added Getter | [#294](https://github.com/horstoeko/zugferd/issues/294)
+| :new_moon:  | [516ec9c](https://github.com/horstoeko/zugferd/commit/516ec9c) | 2025-05-07 15:50:30 CEST | HorstOeko | Add option to not open the attachment pane | [#294](https://github.com/horstoeko/zugferd/issues/294)
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v1.0.114
 
 ``Previous version v1.0.113``
