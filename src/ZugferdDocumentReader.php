@@ -1920,7 +1920,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      */
     public function getDocumentDeliveryTerms(?string &$code): ZugferdDocumentReader
     {
-        $code = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getApplicableTradeDeliveryTerms.setDeliveryTypeCode.value", "");
+        $code = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getApplicableTradeDeliveryTerms.getDeliveryTypeCode.value", "");
 
         return $this;
     }
