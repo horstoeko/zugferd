@@ -232,7 +232,7 @@ class KositValidatorTest extends TestCase
 
         $kositValidator->setValidatorDownloadUrl("dummy");
 
-        $this->assertSame("https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2024-10-31/validator-configuration-xrechnung_3.0.2_2024-10-31.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorScenarioDownloadUrl')->getValue($kositValidator));
+        $this->assertSame("https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2025-03-21.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorScenarioDownloadUrl')->getValue($kositValidator));
     }
 
     public function testSetValidatorAppZipFilename(): void
@@ -550,7 +550,7 @@ class KositValidatorTest extends TestCase
 
         $this->assertInitialValues($kositValidator);
 
-        $kositValidator->setValidatorScenarioDownloadUrl('https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2024-10-31/validator-configuration-xrechnung_3.0.2_2024-10-31-unknown.zip');
+        $kositValidator->setValidatorScenarioDownloadUrl('https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2024-10-31-unknown.zip');
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
         $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
@@ -720,7 +720,7 @@ class KositValidatorTest extends TestCase
         $this->assertNotSame("", $this->getPrivatePropertyFromObject($kositValidator, 'baseDirectory')->getValue($kositValidator));
         $this->assertSame(sys_get_temp_dir(), $this->getPrivatePropertyFromObject($kositValidator, 'baseDirectory')->getValue($kositValidator));
         $this->assertSame("https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorDownloadUrl')->getValue($kositValidator));
-        $this->assertSame("https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2024-10-31/validator-configuration-xrechnung_3.0.2_2024-10-31.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorScenarioDownloadUrl')->getValue($kositValidator));
+        $this->assertSame("https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2025-03-21.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorScenarioDownloadUrl')->getValue($kositValidator));
         $this->assertSame("validator.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorAppZipFilename')->getValue($kositValidator));
         $this->assertSame("validator-configuration.zip", $this->getPrivatePropertyFromObject($kositValidator, 'validatorScenarioZipFilename')->getValue($kositValidator));
         $this->assertSame("validationtool-1.5.0-standalone.jar", $this->getPrivatePropertyFromObject($kositValidator, 'validatorAppJarFilename')->getValue($kositValidator));
@@ -732,10 +732,10 @@ class KositValidatorTest extends TestCase
         $this->assertSame(0, $this->getPrivatePropertyFromObject($kositValidator, 'remoteModePort')->getValue($kositValidator));
 
         $this->assertStringStartsWith(sys_get_temp_dir(), $this->getPrivateMethodFromObject($kositValidator, 'resolveBaseDirectory')->invokeArgs($kositValidator, []));
-        $this->assertStringEndsWith('/validator.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []));
-        $this->assertStringEndsWith('/validator-configuration.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []));
-        $this->assertStringEndsWith('/validationtool-1.5.0-standalone.jar', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppJarFilename')->invokeArgs($kositValidator, []));
-        $this->assertStringEndsWith('/scenarios.xml', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppScenarioFilename')->invokeArgs($kositValidator, []));
+        $this->assertStringEndsWith('validator.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []));
+        $this->assertStringEndsWith('validator-configuration.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []));
+        $this->assertStringEndsWith('validationtool-1.5.0-standalone.jar', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppJarFilename')->invokeArgs($kositValidator, []));
+        $this->assertStringEndsWith('scenarios.xml', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppScenarioFilename')->invokeArgs($kositValidator, []));
         $this->assertStringStartsWith(sys_get_temp_dir(), $this->getPrivateMethodFromObject($kositValidator, 'resolveFileToValidateFilename')->invokeArgs($kositValidator, []));
         $this->assertStringEndsWith('.xml', $this->getPrivateMethodFromObject($kositValidator, 'resolveFileToValidateFilename')->invokeArgs($kositValidator, []));
     }
