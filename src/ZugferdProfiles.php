@@ -71,7 +71,7 @@ class ZugferdProfiles
     public const PROFILE_XRECHNUNG_2_3 = 9;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 2.3 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 3.0 (germany only)
      */
     public const PROFILE_XRECHNUNG_3 = 10;
 
