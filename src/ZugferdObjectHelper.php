@@ -443,7 +443,7 @@ class ZugferdObjectHelper
      * @param  DateTimeInterface|null $startDate
      * @param  DateTimeInterface|null $endDate
      * @param  DateTimeInterface|null $completeDate
-     * @param  string|null   $description
+     * @param  string|null            $description
      * @return object|null
      */
     public function getSpecifiedPeriodType(?DateTimeInterface $startDate = null, ?DateTimeInterface $endDate = null, ?DateTimeInterface $completeDate = null, ?string $description = null): ?object
@@ -488,14 +488,14 @@ class ZugferdObjectHelper
     /**
      * Get a reference document object
      *
-     * @param  string|null       $issuerAssignedId
-     * @param  string|null       $uriId
-     * @param  string|null       $lineId
-     * @param  string|null       $typeCode
-     * @param  string|array|null $name
-     * @param  string|null       $refTypeCode
-     * @param  DateTimeInterface|null     $issueDate
-     * @param  string|null       $binaryDataFilename
+     * @param  string|null            $issuerAssignedId
+     * @param  string|null            $uriId
+     * @param  string|null            $lineId
+     * @param  string|null            $typeCode
+     * @param  string|array|null      $name
+     * @param  string|null            $refTypeCode
+     * @param  DateTimeInterface|null $issueDate
+     * @param  string|null            $binaryDataFilename
      * @return object|null
      */
     public function getReferencedDocumentType(?string $issuerAssignedId = null, ?string $uriId = null, ?string $lineId = null, ?string $typeCode = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ?object
@@ -952,10 +952,10 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentTermsType
      *
-     * @param  null|string   $description
+     * @param  null|string            $description
      * @param  null|DateTimeInterface $dueDate
-     * @param  null|string   $directDebitMandateID
-     * @param  null|float    $partialPaymentAmount
+     * @param  null|string            $directDebitMandateID
+     * @param  null|float             $partialPaymentAmount
      * @return null|object
      */
     public function getTradePaymentTermsType(?string $description = null, ?DateTimeInterface $dueDate = null, ?string $directDebitMandateID = null, ?float $partialPaymentAmount = null): ?object
@@ -978,11 +978,11 @@ class ZugferdObjectHelper
      * Get instance of TradePaymentDiscountTermsType
      *
      * @param  DateTimeInterface|null $basisDateTime
-     * @param  float|null    $basisPeriodMeasureValue
-     * @param  string|null   $basisPeriodMeasureUnitCode
-     * @param  float|null    $basisAmount
-     * @param  float|null    $calculationPercent
-     * @param  float|null    $actualDiscountAmount
+     * @param  float|null             $basisPeriodMeasureValue
+     * @param  string|null            $basisPeriodMeasureUnitCode
+     * @param  float|null             $basisAmount
+     * @param  float|null             $calculationPercent
+     * @param  float|null             $actualDiscountAmount
      * @return object|null
      */
     public function getTradePaymentDiscountTermsType(?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
@@ -1006,11 +1006,11 @@ class ZugferdObjectHelper
      * Get instance of TradePaymentPenaltyTermsType
      *
      * @param  DateTimeInterface|null $basisDateTime
-     * @param  float|null    $basisPeriodMeasureValue
-     * @param  string|null   $basisPeriodMeasureUnitCode
-     * @param  float|null    $basisAmount
-     * @param  float|null    $calculationPercent
-     * @param  float|null    $actualPenaltyAmount
+     * @param  float|null             $basisPeriodMeasureValue
+     * @param  string|null            $basisPeriodMeasureUnitCode
+     * @param  float|null             $basisAmount
+     * @param  float|null             $calculationPercent
+     * @param  float|null             $actualPenaltyAmount
      * @return object|null
      */
     public function getTradePaymentPenaltyTermsType(?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualPenaltyAmount = null): ?object
@@ -1034,17 +1034,17 @@ class ZugferdObjectHelper
      * Get instance of TradeTaxType
      * Sales tax breakdown, Umsatzsteueraufschlüsselung
      *
-     * @param  string|null   $categoryCode
-     * @param  string|null   $typeCode
-     * @param  float|null    $basisAmount
-     * @param  float|null    $calculatedAmount
-     * @param  float|null    $rateApplicablePercent
-     * @param  string|null   $exemptionReason
-     * @param  string|null   $exemptionReasonCode
-     * @param  float|null    $lineTotalBasisAmount
-     * @param  float|null    $allowanceChargeBasisAmount
+     * @param  string|null            $categoryCode
+     * @param  string|null            $typeCode
+     * @param  float|null             $basisAmount
+     * @param  float|null             $calculatedAmount
+     * @param  float|null             $rateApplicablePercent
+     * @param  string|null            $exemptionReason
+     * @param  string|null            $exemptionReasonCode
+     * @param  float|null             $lineTotalBasisAmount
+     * @param  float|null             $allowanceChargeBasisAmount
      * @param  DateTimeInterface|null $taxPointDate
-     * @param  string|null   $dueDateTypeCode
+     * @param  string|null            $dueDateTypeCode
      * @return object|null
      */
     public function getTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTimeInterface $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
@@ -1437,9 +1437,9 @@ class ZugferdObjectHelper
     /**
      * Undocumented function
      *
-     * @param  string|null   $sourceCurrencyCode
-     * @param  string|null   $targetCurrencyCode
-     * @param  float|null    $rate
+     * @param  string|null            $sourceCurrencyCode
+     * @param  string|null            $targetCurrencyCode
+     * @param  float|null             $rate
      * @param  DateTimeInterface|null $rateDateTime
      * @return object|null
      */

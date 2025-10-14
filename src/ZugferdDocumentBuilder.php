@@ -171,12 +171,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set main information about this document.
      *
-     * @param  string        $documentNo               __BT-1, From MINIMUM__ The document no issued by the seller
-     * @param  string        $documentTypeCode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
+     * @param  string                 $documentNo               __BT-1, From MINIMUM__ The document no issued by the seller
+     * @param  string                 $documentTypeCode         __BT-3, From MINIMUM__ The type of the document, See \horstoeko\codelists\ZugferdInvoiceType for details
      * @param  DateTimeInterface      $documentDate             __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
-     * @param  string        $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
-     * @param  string|null   $documentName             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
-     * @param  string|null   $documentLanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
+     * @param  string                 $invoiceCurrency          __BT-5, From MINIMUM__ Code for the invoice currency
+     * @param  string|null            $documentName             __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
+     * @param  string|null            $documentLanguage         __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      * @param  DateTimeInterface|null $effectiveSpecifiedPeriod __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      * @return ZugferdDocumentBuilder
      */
@@ -1910,7 +1910,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated order confirmation.
      *
-     * @param  string        $issuerAssignedId __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
+     * @param  string                 $issuerAssignedId __BT-14, From EN 16931__ An identifier issued by the seller for a referenced sales order (Order confirmation number)
      * @param  DateTimeInterface|null $issueDate        __BT-X-146, From EXTENDED__ Order confirmation date
      * @return ZugferdDocumentBuilder
      */
@@ -1926,7 +1926,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related buyer order.
      *
-     * @param  string        $issuerAssignedId __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  string                 $issuerAssignedId __BT-13, From MINIMUM__ An identifier issued by the buyer for a referenced order (order number)
      * @param  DateTimeInterface|null $issueDate        __BT-X-147, From EXTENDED__ Date of order
      * @return ZugferdDocumentBuilder
      */
@@ -1942,7 +1942,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated offer
      *
-     * @param  string        $issuerAssignedId __BT-X-403, From EXTENDED__ Offer number
+     * @param  string                 $issuerAssignedId __BT-X-403, From EXTENDED__ Offer number
      * @param  DateTimeInterface|null $issueDate        __BT-X-404, From EXTENDED__ Date of offer
      * @return ZugferdDocumentBuilder
      */
@@ -1958,7 +1958,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated contract
      *
-     * @param  string        $issuerAssignedId __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  string                 $issuerAssignedId __BT-12, From BASIC WL__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
      * @param  DateTimeInterface|null $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
@@ -1981,18 +1981,18 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *    to large attachments and / or sensitive information, e.g. for personal services, which must be separated
      *    from the bill
      *
-     * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string            $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
-     *                                               - Code 916 "reference paper" is used to reference the identification of the
-     *                                               document on which the invoice is based - Code 50 "Price / sales catalog response"
-     *                                               is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
-     *                                               to reference an identifier for an object specified by the seller.
-     * @param  string|null       $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     *                                               supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
-     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null       $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
-     * @param  DateTimeInterface|null     $issueDate          __BT-X-149, From EXTENDED__ Document date
-     * @param  string|null       $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string                 $issuerAssignedId   __BT-122, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string                 $typeCode           __BT-122-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     *                                                    - Code 916 "reference paper" is used to reference the identification of the
+     *                                                    document on which the invoice is based - Code 50 "Price / sales catalog response"
+     *                                                    is used to reference the tender or the lot - Code 130 "invoice data sheet" is used
+     *                                                    to reference an identifier for an object specified by the seller.
+     * @param  string|null            $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
+     *                                                    supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
+     * @param  string|array|null      $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null            $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  DateTimeInterface|null $issueDate          __BT-X-149, From EXTENDED__ Document date
+     * @param  string|null            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
@@ -2066,8 +2066,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous partial invoices
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
+     * @param  string                 $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null            $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
      * @param  DateTimeInterface|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
@@ -2088,8 +2088,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous partial invoices
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
-     * @param  string|null   $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
+     * @param  string                 $issuerAssignedId __BT-25, From BASIC WL__ The identification of an invoice previously sent by the seller
+     * @param  string|null            $typeCode         __BT-X-555, From EXTENDED__ Type of previous invoice (code)
      * @param  DateTimeInterface|null $issueDate        __BT-26, From BASIC WL__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
@@ -2121,7 +2121,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Details of the associated end customer order
      *
-     * @param  string        $issuerAssignedId __BT-X-150, From EXTENDED__ Order number of the end customer
+     * @param  string                 $issuerAssignedId __BT-X-150, From EXTENDED__ Order number of the end customer
      * @param  DateTimeInterface|null $issueDate        __BT-X-151, From EXTENDED__ Date of the order issued by the end customer
      * @return ZugferdDocumentBuilder
      */
@@ -2152,7 +2152,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set Detailed information on the actual delivery
      *
-     * @param  string        $issuerAssignedId __BT-16, From BASIC WL__ Shipping notification reference
+     * @param  string                 $issuerAssignedId __BT-16, From BASIC WL__ Shipping notification reference
      * @param  DateTimeInterface|null $issueDate        __BT-X-200, From EXTENDED__ Shipping notification date
      * @return ZugferdDocumentBuilder
      */
@@ -2168,7 +2168,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the associated goods receipt notification
      *
-     * @param  string        $issuerAssignedId __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
+     * @param  string                 $issuerAssignedId __BT-15, From EN 16931__ An identifier for a referenced goods receipt notification (Goods receipt number)
      * @param  DateTimeInterface|null $issueDate        __BT-X-201, From EXTENDED__ Goods receipt date
      * @return ZugferdDocumentBuilder
      */
@@ -2184,7 +2184,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the associated delivery bill
      *
-     * @param  string        $issuerAssignedId __BT-X-202, From EXTENDED__ Delivery slip number
+     * @param  string                 $issuerAssignedId __BT-X-202, From EXTENDED__ Delivery slip number
      * @param  DateTimeInterface|null $issueDate        __BT-X-203, From EXTENDED__ Delivery slip date
      * @return ZugferdDocumentBuilder
      */
@@ -2371,39 +2371,35 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a VAT breakdown (at document level)
      *
-     * @param  string        $categoryCode               __BT-118, From BASIC WL__ Coded description of a sales tax category
-     *
-     *                                                   The following entries from UNTDID 5305 are used (details in brackets):
-     *                                                   - Standard rate (sales tax is due according to the normal procedure)
-     *                                                   - Goods to be taxed according to the zero rate (sales tax is charged with a percentage of zero)
-     *                                                   - Tax exempt (USt./IGIC/IPSI)
-     *                                                   - Reversal of the tax liability (the rules for reversing the tax liability at USt./IGIC/IPSI apply)
-     *                                                   - VAT exempt for intra-community deliveries of goods (USt./IGIC/IPSI not levied due to rules on intra-community deliveries)
-     *                                                   - Free export item, tax not levied (VAT / IGIC/IPSI not levied due to export outside the EU)
-     *                                                   - Services outside the tax scope (sales are not subject to VAT / IGIC/IPSI)
-     *                                                   - Canary Islands general indirect tax (IGIC tax applies)
-     *                                                   - IPSI (tax for Ceuta / Melilla) applies.
-     *
-     *                                                   The codes for the VAT category are as follows:
-     *                                                   - S = sales tax is due at the normal rate
-     *                                                   - Z = goods to be taxed according to the zero rate
-     *                                                   - E = tax exempt
-     *                                                   - AE = reversal of tax liability
-     *                                                   - K = VAT is not shown for intra-community deliveries
-     *                                                   - G = tax not levied due to export outside the EU
-     *                                                   - O = Outside the tax scope
-     *                                                   - L = IGIC (Canary Islands)
-     *                                                   - M = IPSI (Ceuta / Melilla)
-     * @param  string        $typeCode                   __BT-118-0, From BASIC WL__ Coded description of a sales tax category. Note: Fixed value = "VAT"
-     * @param  float         $basisAmount                __BT-116, From BASIC WL__ Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
-     * @param  float         $calculatedAmount           __BT-117, From BASIC WL__ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
-     * @param  float|null    $rateApplicablePercent      __BT-119, From BASIC WL__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @param  string|null   $exemptionReason            __BT-120, From BASIC WL__ Reason for tax exemption (free text)
-     * @param  string|null   $exemptionReasonCode        __BT-121, From BASIC WL__ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
-     * @param  float|null    $lineTotalBasisAmount       __BT-X-262, From EXTENDED__ An amount used as the basis for calculating sales tax, duty or customs duty
-     * @param  float|null    $allowanceChargeBasisAmount __BT-X-263, From EXTENDED__ Total amount Additions and deductions to the tax rate at document level
+     * @param  string                 $categoryCode               __BT-118, From BASIC WL__ Coded description of a sales tax category
+     *                                                            The following entries from UNTDID 5305 are used (details in
+     *                                                            brackets): - Standard rate (sales tax is due according to the
+     *                                                            normal procedure) - Goods to be taxed according to the zero rate
+     *                                                            (sales tax is charged with a percentage of zero) - Tax exempt
+     *                                                            (USt./IGIC/IPSI) - Reversal of the tax liability (the rules for
+     *                                                            reversing the tax liability at USt./IGIC/IPSI apply) - VAT exempt
+     *                                                            for intra-community deliveries of goods (USt./IGIC/IPSI not levied
+     *                                                            due to rules on intra-community deliveries) - Free export item, tax
+     *                                                            not levied (VAT / IGIC/IPSI not levied due to export outside the
+     *                                                            EU) - Services outside the tax scope (sales are not subject to VAT
+     *                                                            / IGIC/IPSI) - Canary Islands general indirect tax (IGIC tax
+     *                                                            applies) - IPSI (tax for Ceuta / Melilla) applies. The codes for
+     *                                                            the VAT category are as follows: - S = sales tax is due at the
+     *                                                            normal rate - Z = goods to be taxed according to the zero rate - E
+     *                                                            = tax exempt - AE = reversal of tax liability - K = VAT is not
+     *                                                            shown for intra-community deliveries - G = tax not levied due to
+     *                                                            export outside the EU - O = Outside the tax scope - L = IGIC
+     *                                                            (Canary Islands) - M = IPSI (Ceuta / Melilla)
+     * @param  string                 $typeCode                   __BT-118-0, From BASIC WL__ Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param  float                  $basisAmount                __BT-116, From BASIC WL__ Tax base amount, Each sales tax breakdown must show a category-specific tax base amount.
+     * @param  float                  $calculatedAmount           __BT-117, From BASIC WL__ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
+     * @param  float|null             $rateApplicablePercent      __BT-119, From BASIC WL__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  string|null            $exemptionReason            __BT-120, From BASIC WL__ Reason for tax exemption (free text)
+     * @param  string|null            $exemptionReasonCode        __BT-121, From BASIC WL__ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
+     * @param  float|null             $lineTotalBasisAmount       __BT-X-262, From EXTENDED__ An amount used as the basis for calculating sales tax, duty or customs duty
+     * @param  float|null             $allowanceChargeBasisAmount __BT-X-263, From EXTENDED__ Total amount Additions and deductions to the tax rate at document level
      * @param  DateTimeInterface|null $taxPointDate               __BT-7-00, From EN 16931__ Date on which tax is due. This is not used in Germany. Instead, the delivery and service date must be specified.
-     * @param  string|null   $dueDateTypeCode            __BT-8, From BASIC WL__ The code for the date on which the VAT becomes relevant for settlement for the seller and for the buyer
+     * @param  string|null            $dueDateTypeCode            __BT-8, From BASIC WL__ The code for the date on which the VAT becomes relevant for settlement for the seller and for the buyer
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentTax(string $categoryCode, string $typeCode, float $basisAmount, float $calculatedAmount, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTimeInterface $taxPointDate = null, ?string $dueDateTypeCode = null): ZugferdDocumentBuilder
@@ -2453,7 +2449,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  DateTimeInterface|null $startDate   __BT-73, From BASIC WL__ Start of the billing period
      * @param  DateTimeInterface|null $endDate     __BT-74, From BASIC WL__ End of the billing period
-     * @param  string|null   $description __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @param  string|null            $description __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return ZugferdDocumentBuilder
      */
     public function setDocumentBillingPeriod(?DateTimeInterface $startDate, ?DateTimeInterface $endDate, ?string $description): ZugferdDocumentBuilder
@@ -2560,10 +2556,10 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a payment term
      *
-     * @param  string|null   $description          __BT-20, From _BASIC WL__ A text description of the payment terms that apply to the payment amount due (including a description of possible penalties). Note: This element can contain multiple lines and multiple conditions.
+     * @param  string|null            $description          __BT-20, From _BASIC WL__ A text description of the payment terms that apply to the payment amount due (including a description of possible penalties). Note: This element can contain multiple lines and multiple conditions.
      * @param  DateTimeInterface|null $dueDate              __BT-9, From BASIC WL__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
-     * @param  string|null   $directDebitMandateID __BT-89, From BASIC WL__ Unique identifier assigned by the payee to reference the direct debit authorization.
-     * @param  float|null    $partialPaymentAmount __BT-X-275, From EXTENDED__ Amount of the partial payment
+     * @param  string|null            $directDebitMandateID __BT-89, From BASIC WL__ Unique identifier assigned by the payee to reference the direct debit authorization.
+     * @param  float|null             $partialPaymentAmount __BT-X-275, From EXTENDED__ Amount of the partial payment
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentTerm(?string $description = null, ?DateTimeInterface $dueDate = null, ?string $directDebitMandateID = null, ?float $partialPaymentAmount = null): ZugferdDocumentBuilder
@@ -2580,12 +2576,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add discount Terms to last added payment term
      *
-     * @param  float|null    $calculationPercent         __BT-X-286, From EXTENDED__ Percentage of the down payment
+     * @param  float|null             $calculationPercent         __BT-X-286, From EXTENDED__ Percentage of the down payment
      * @param  DateTimeInterface|null $basisDateTime              __BT-X-282, From EXTENDED__ Due date reference date
-     * @param  float|null    $basisPeriodMeasureValue    __BT-X-283, From EXTENDED__ Maturity period (basis)
-     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-284, From EXTENDED__ Maturity period (unit)
-     * @param  float|null    $basisAmount                __BT-X-285, From EXTENDED__ Base amount of the payment discount
-     * @param  float|null    $actualDiscountAmount       __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param  float|null             $basisPeriodMeasureValue    __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param  string|null            $basisPeriodMeasureUnitCode __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @param  float|null             $basisAmount                __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param  float|null             $actualDiscountAmount       __BT-X-287, From EXTENDED__ Amount of the payment discount
      * @return ZugferdDocumentBuilder
      */
     public function addDiscountTermsToPaymentTerms(?float $calculationPercent = null, ?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualDiscountAmount = null): ZugferdDocumentBuilder
@@ -2600,12 +2596,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add penalty Terms to last added payment term
      *
-     * @param  float|null    $calculationPercent         __BT-X-280, From EXTENDED__ Percentage of the payment surcharge
+     * @param  float|null             $calculationPercent         __BT-X-280, From EXTENDED__ Percentage of the payment surcharge
      * @param  DateTimeInterface|null $basisDateTime              __BT-X-276, From EXTENDED__ Due date reference date
-     * @param  float|null    $basisPeriodMeasureValue    __BT-X-277, From EXTENDED__ Maturity period (basis)
-     * @param  string|null   $basisPeriodMeasureUnitCode __BT-X-278, From EXTENDED__ Maturity period (unit)
-     * @param  float|null    $basisAmount                __BT-X-279, From EXTENDED__ Basic amount of the payment surcharge
-     * @param  float|null    $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
+     * @param  float|null             $basisPeriodMeasureValue    __BT-X-277, From EXTENDED__ Maturity period (basis)
+     * @param  string|null            $basisPeriodMeasureUnitCode __BT-X-278, From EXTENDED__ Maturity period (unit)
+     * @param  float|null             $basisAmount                __BT-X-279, From EXTENDED__ Basic amount of the payment surcharge
+     * @param  float|null             $actualPenaltyAmount        __BT-X-281, From EXTENDED__ Amount of the payment surcharge
      * @return ZugferdDocumentBuilder
      */
     public function addPenaltyTermsToPaymentTerms(?float $calculationPercent = null, ?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $actualPenaltyAmount = null): ZugferdDocumentBuilder
@@ -2620,12 +2616,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
      *
-     * @param  string        $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add
-     * @param  int[]         $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
-     * @param  float[]       $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
-     * @param  float[]       $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
+     * @param  string                 $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add
+     * @param  int[]                  $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
+     * @param  float[]                $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
+     * @param  float[]                $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
      * @param  DateTimeInterface|null $dueDate                    __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
-     * @param  string|null   $directDebitMandateID       __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
+     * @param  string|null            $directDebitMandateID       __BT-89, From EN 16931 XRECHNUNG__ Unique identifier assigned by the payee to reference the direct debit authorization.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPaymentTermXRechnung(string $description, array $paymentDiscountDays = [], array $paymentDiscountPercents = [], array $paymentDiscountBaseAmounts = [], ?DateTimeInterface $dueDate = null, ?string $directDebitMandateID = null): ZugferdDocumentBuilder
@@ -2895,8 +2891,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of a sales order reference.
      *
-     * @param  string        $issuerAssignedId __BT-X-537, From EXTENDED__ Document number of a sales order reference
-     * @param  string        $lineId           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
+     * @param  string                 $issuerAssignedId __BT-X-537, From EXTENDED__ Document number of a sales order reference
+     * @param  string                 $lineId           __BT-X-538, From EXTENDED__ An identifier for a position within a sales order.
      * @param  DateTimeInterface|null $issueDate        __BT-X-539, From EXTENDED__ Date of sales order
      * @return ZugferdDocumentBuilder
      */
@@ -2913,8 +2909,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related buyer order position.
      *
-     * @param  string        $issuerAssignedId __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
-     * @param  string        $lineId           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
+     * @param  string                 $issuerAssignedId __BT-X-21, From EXTENDED__ An identifier issued by the buyer for a referenced order (order number)
+     * @param  string                 $lineId           __BT-132, From EN 16931__ An identifier for a position within an order placed by the buyer. Note: Reference is made to the order reference at the document level.
      * @param  DateTimeInterface|null $issueDate        __BT-X-22, From EXTENDED__ Date of order
      * @return ZugferdDocumentBuilder
      */
@@ -2931,8 +2927,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the associated offer position.
      *
-     * @param  string        $issuerAssignedId __BT-X-310, From EXTENDED__ Offer number
-     * @param  string        $lineId           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  string                 $issuerAssignedId __BT-X-310, From EXTENDED__ Offer number
+     * @param  string                 $lineId           __BT-X-311, From EXTENDED__ Position identifier within the offer
      * @param  DateTimeInterface|null $issueDate        __BT-X-312, From EXTENDED__ Date of offder
      * @return ZugferdDocumentBuilder
      */
@@ -2949,8 +2945,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set details of the related contract position.
      *
-     * @param  string        $issuerAssignedId __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
-     * @param  string        $lineId           __BT-X-25, From EXTENDED__ Identifier of the according contract position
+     * @param  string                 $issuerAssignedId __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  string                 $lineId           __BT-X-25, From EXTENDED__ Identifier of the according contract position
      * @param  DateTimeInterface|null $issueDate        __BT-X-26, From EXTENDED__ Contract date
      * @return ZugferdDocumentBuilder
      */
@@ -2973,14 +2969,14 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * to large attachments and / or sensitive information, e.g. for personal services, which must be separated
      * from the bill
      *
-     * @param  string        $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
-     * @param  string        $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
-     * @param  string|null   $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
-     * @param  string|null   $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
-     * @param  string|null   $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
-     * @param  string|null   $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  string                 $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based.
+     * @param  string                 $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  string|null            $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  string|null            $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  string|null            $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|null            $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTimeInterface|null $issueDate          __BT-X-33, From EXTENDED__ Document date
-     * @param  string|null   $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, ?string $lineId = null, ?string $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
@@ -2996,8 +2992,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add a referennce of a associated end customer order.
      *
-     * @param  string        $issuerAssignedId __BT-X-43, From EXTENDED__ Order number of the end customer
-     * @param  string        $lineId           __BT-X-44, From EXTENDED__ Order item (end customer)
+     * @param  string                 $issuerAssignedId __BT-X-43, From EXTENDED__ Order number of the end customer
+     * @param  string                 $lineId           __BT-X-44, From EXTENDED__ Order item (end customer)
      * @param  DateTimeInterface|null $issueDate        __BT-X-45, From EXTENDED__ Document date of end customer order
      * @return ZugferdDocumentBuilder
      */
@@ -3412,8 +3408,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated shipping notification on position level.
      *
-     * @param  string        $issuerAssignedId __BT-X-86, From EXTENDED__ Shipping notification number
-     * @param  string|null   $lineId           __BT-X-87, From EXTENDED__ Shipping notification position
+     * @param  string                 $issuerAssignedId __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  string|null            $lineId           __BT-X-87, From EXTENDED__ Shipping notification position
      * @param  DateTimeInterface|null $issueDate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
      * @return ZugferdDocumentBuilder
      */
@@ -3430,8 +3426,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated goods receipt notification.
      *
-     * @param  string        $issuerAssignedId __BT-X-89, From EXTENDED__ Goods receipt number
-     * @param  string|null   $lineId           __BT-X-90, From EXTENDED__ Goods receipt position
+     * @param  string                 $issuerAssignedId __BT-X-89, From EXTENDED__ Goods receipt number
+     * @param  string|null            $lineId           __BT-X-90, From EXTENDED__ Goods receipt position
      * @param  DateTimeInterface|null $issueDate        __BT-X-91, From EXTENDED__ Date of Goods receipt
      * @return ZugferdDocumentBuilder
      */
@@ -3448,8 +3444,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Detailed information on the associated delivery bill on position level.
      *
-     * @param  string        $issuerAssignedId __BT-X-92, From EXTENDED__ Delivery note number
-     * @param  string|null   $lineId           __BT-X-93, From EXTENDED__ Delivery note position
+     * @param  string                 $issuerAssignedId __BT-X-92, From EXTENDED__ Delivery note number
+     * @param  string|null            $lineId           __BT-X-93, From EXTENDED__ Delivery note position
      * @param  DateTimeInterface|null $issueDate        __BT-X-94, From EXTENDED__ Date of Delivery note
      * @return ZugferdDocumentBuilder
      */
@@ -3567,9 +3563,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *  - reference is made from a final invoice to previous partial invoices
      *  - reference is made from a final invoice to previous invoices for advance payments.     *
      *
-     * @param  string        $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
-     * @param  string        $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
-     * @param  string|null   $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
+     * @param  string                 $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
+     * @param  string                 $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
+     * @param  string|null            $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
      * @param  DateTimeInterface|null $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
      * @return ZugferdDocumentBuilder
      */
