@@ -1,3 +1,16 @@
+## v1.0.116
+
+``Previous version v1.0.115``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [e22a463](https://github.com/horstoeko/zugferd/commit/e22a463) | 2025-10-14 11:50:00 CEST | Kevin Papst | code styles via phpcbf | 
+| :new_moon:  | [b8666dd](https://github.com/horstoeko/zugferd/commit/b8666dd) | 2025-10-14 11:38:59 CEST | Kevin Papst | support DateTimeInterface where possible | 
+| :new_moon:  | [2f79f42](https://github.com/horstoeko/zugferd/commit/2f79f42) | 2025-09-25 12:44:06 CEST | Daniel Marschall | Fixed typo in ZugferdProfiles.php | 
+| :new_moon:  | [cad307e](https://github.com/horstoeko/zugferd/commit/cad307e) | 2025-09-06 13:27:38 CEST | HorstOeko | [ENH]Fixed Tests | 
+
+:exclamation: _There are 4 internal commit(s)_
+
 ## v1.0.115
 
 ``Previous version v1.0.114``
