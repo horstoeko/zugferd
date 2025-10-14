@@ -10,6 +10,7 @@
 namespace horstoeko\zugferd;
 
 use DateTime;
+use DateTimeInterface;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
@@ -203,10 +204,10 @@ class ZugferdObjectHelper
     /**
      * Get formatted issue date
      *
-     * @param  DateTime|null $dateTime
+     * @param  DateTimeInterface|null $dateTime
      * @return object|null
      */
-    public function getFormattedDateTimeType(?DateTime $dateTime = null): ?object
+    public function getFormattedDateTimeType(?DateTimeInterface $dateTime = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -225,10 +226,10 @@ class ZugferdObjectHelper
     /**
      * Get formatted issue date
      *
-     * @param  DateTime|null $dateTime
+     * @param  DateTimeInterface|null $dateTime
      * @return object|null
      */
-    public function getDateTimeType(?DateTime $dateTime = null): ?object
+    public function getDateTimeType(?DateTimeInterface $dateTime = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -247,10 +248,10 @@ class ZugferdObjectHelper
     /**
      * Get date
      *
-     * @param  DateTime|null $dateTime
+     * @param  DateTimeInterface|null $dateTime
      * @return object|null
      */
-    public function getDateType(?DateTime $dateTime = null): ?object
+    public function getDateType(?DateTimeInterface $dateTime = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -439,13 +440,13 @@ class ZugferdObjectHelper
     /**
      * Get Specified Period type
      *
-     * @param  DateTime|null $startDate
-     * @param  DateTime|null $endDate
-     * @param  DateTime|null $completeDate
+     * @param  DateTimeInterface|null $startDate
+     * @param  DateTimeInterface|null $endDate
+     * @param  DateTimeInterface|null $completeDate
      * @param  string|null   $description
      * @return object|null
      */
-    public function getSpecifiedPeriodType(?DateTime $startDate = null, ?DateTime $endDate = null, ?DateTime $completeDate = null, ?string $description = null): ?object
+    public function getSpecifiedPeriodType(?DateTimeInterface $startDate = null, ?DateTimeInterface $endDate = null, ?DateTimeInterface $completeDate = null, ?string $description = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -493,11 +494,11 @@ class ZugferdObjectHelper
      * @param  string|null       $typeCode
      * @param  string|array|null $name
      * @param  string|null       $refTypeCode
-     * @param  DateTime|null     $issueDate
+     * @param  DateTimeInterface|null     $issueDate
      * @param  string|null       $binaryDataFilename
      * @return object|null
      */
-    public function getReferencedDocumentType(?string $issuerAssignedId = null, ?string $uriId = null, ?string $lineId = null, ?string $typeCode = null, $name = null, ?string $refTypeCode = null, ?DateTime $issueDate = null, ?string $binaryDataFilename = null): ?object
+    public function getReferencedDocumentType(?string $issuerAssignedId = null, ?string $uriId = null, ?string $lineId = null, ?string $typeCode = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -823,10 +824,10 @@ class ZugferdObjectHelper
     /**
      * Undocumented function
      *
-     * @param  DateTime|null $date
+     * @param  DateTimeInterface|null $date
      * @return object|null
      */
-    public function getSupplyChainEventType(?DateTime $date = null): ?object
+    public function getSupplyChainEventType(?DateTimeInterface $date = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -952,12 +953,12 @@ class ZugferdObjectHelper
      * Get instance of TradePaymentTermsType
      *
      * @param  null|string   $description
-     * @param  null|DateTime $dueDate
+     * @param  null|DateTimeInterface $dueDate
      * @param  null|string   $directDebitMandateID
      * @param  null|float    $partialPaymentAmount
      * @return null|object
      */
-    public function getTradePaymentTermsType(?string $description = null, ?DateTime $dueDate = null, ?string $directDebitMandateID = null, ?float $partialPaymentAmount = null): ?object
+    public function getTradePaymentTermsType(?string $description = null, ?DateTimeInterface $dueDate = null, ?string $directDebitMandateID = null, ?float $partialPaymentAmount = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -976,7 +977,7 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentDiscountTermsType
      *
-     * @param  DateTime|null $basisDateTime
+     * @param  DateTimeInterface|null $basisDateTime
      * @param  float|null    $basisPeriodMeasureValue
      * @param  string|null   $basisPeriodMeasureUnitCode
      * @param  float|null    $basisAmount
@@ -984,7 +985,7 @@ class ZugferdObjectHelper
      * @param  float|null    $actualDiscountAmount
      * @return object|null
      */
-    public function getTradePaymentDiscountTermsType(?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
+    public function getTradePaymentDiscountTermsType(?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualDiscountAmount = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1004,7 +1005,7 @@ class ZugferdObjectHelper
     /**
      * Get instance of TradePaymentPenaltyTermsType
      *
-     * @param  DateTime|null $basisDateTime
+     * @param  DateTimeInterface|null $basisDateTime
      * @param  float|null    $basisPeriodMeasureValue
      * @param  string|null   $basisPeriodMeasureUnitCode
      * @param  float|null    $basisAmount
@@ -1012,7 +1013,7 @@ class ZugferdObjectHelper
      * @param  float|null    $actualPenaltyAmount
      * @return object|null
      */
-    public function getTradePaymentPenaltyTermsType(?DateTime $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualPenaltyAmount = null): ?object
+    public function getTradePaymentPenaltyTermsType(?DateTimeInterface $basisDateTime = null, ?float $basisPeriodMeasureValue = null, ?string $basisPeriodMeasureUnitCode = null, ?float $basisAmount = null, ?float $calculationPercent = null, ?float $actualPenaltyAmount = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1042,11 +1043,11 @@ class ZugferdObjectHelper
      * @param  string|null   $exemptionReasonCode
      * @param  float|null    $lineTotalBasisAmount
      * @param  float|null    $allowanceChargeBasisAmount
-     * @param  DateTime|null $taxPointDate
+     * @param  DateTimeInterface|null $taxPointDate
      * @param  string|null   $dueDateTypeCode
      * @return object|null
      */
-    public function getTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTime $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
+    public function getTradeTaxType(?string $categoryCode = null, ?string $typeCode = null, ?float $basisAmount = null, ?float $calculatedAmount = null, ?float $rateApplicablePercent = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null, ?float $lineTotalBasisAmount = null, ?float $allowanceChargeBasisAmount = null, ?DateTimeInterface $taxPointDate = null, ?string $dueDateTypeCode = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -1439,10 +1440,10 @@ class ZugferdObjectHelper
      * @param  string|null   $sourceCurrencyCode
      * @param  string|null   $targetCurrencyCode
      * @param  float|null    $rate
-     * @param  DateTime|null $rateDateTime
+     * @param  DateTimeInterface|null $rateDateTime
      * @return object|null
      */
-    public function getTaxApplicableTradeCurrencyExchangeType(?string $sourceCurrencyCode = null, ?string $targetCurrencyCode = null, ?float $rate = null, ?DateTime $rateDateTime = null): ?object
+    public function getTaxApplicableTradeCurrencyExchangeType(?string $sourceCurrencyCode = null, ?string $targetCurrencyCode = null, ?float $rate = null, ?DateTimeInterface $rateDateTime = null): ?object
     {
         if (self::isOneNullOrEmpty(func_get_args())) {
             return null;
