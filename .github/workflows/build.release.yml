@@ -238,7 +238,7 @@ jobs:
           files: "build/logs/junit.xml"
 
       - name: Publish Build Logs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Build log artifacts for ubuntu-24.04 PHP 8.3 (Release)
           path: build/logs
