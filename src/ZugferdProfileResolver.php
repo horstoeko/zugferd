@@ -42,6 +42,8 @@ class ZugferdProfileResolver
         try {
             libxml_clear_errors();
             $xmldocument = new SimpleXMLElement($xmlContent);
+            $xmldocument->registerXPathNamespace("rsm", "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100");
+            $xmldocument->registerXPathNamespace("ram", "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100");
             $typeelement = $xmldocument->xpath('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID');
             if (libxml_get_last_error()) {
                 throw new ZugferdUnknownXmlContentException();
