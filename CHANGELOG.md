@@ -1,3 +1,13 @@
+## v1.0.117
+
+``Previous version v1.0.116``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [1fcd469](https://github.com/horstoeko/zugferd/commit/1fcd469) | 2025-11-17 14:35:05 CET | Niklas Reitz | Allow XML documents with non-default namespace prefixes Issue | [#331](https://github.com/horstoeko/zugferd/issues/331)
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v1.0.116
 
 ``Previous version v1.0.115``
