@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout Sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.UPDATEWIKITOKEN }}
           fetch-depth: 0
