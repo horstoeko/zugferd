@@ -55,7 +55,7 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.json') }}
@@ -132,7 +132,7 @@ jobs:
 
       - name: Cache Application (Schematron)
         id: cache-validator
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.VALIDATORPATH }}
           key: ${{ runner.os }}-8.3-validator-${{ steps.hash-validator.outputs.hash }}
@@ -164,7 +164,7 @@ jobs:
 
       - name: Cache Application (VeraPDF)
         id: cache-verapdf
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.VERAPDFPATH }}
           key: ${{ runner.os }}-8.3-verapdf-${{ steps.hash-verapdf.outputs.hash }}
@@ -238,7 +238,7 @@ jobs:
           files: "build/logs/junit.xml"
 
       - name: Publish Build Logs
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Build log artifacts for ubuntu-24.04 PHP 8.3 (Release)
           path: build/logs
