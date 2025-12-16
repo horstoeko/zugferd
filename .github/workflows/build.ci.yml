@@ -63,7 +63,7 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
@@ -151,7 +151,7 @@ jobs:
 
       - name: Cache Application (Schematron)
         id: cache-validator
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.VALIDATORPATH }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
@@ -183,7 +183,7 @@ jobs:
 
       - name: Cache Application (VeraPDF)
         id: cache-verapdf
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.VERAPDFPATH }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
@@ -243,7 +243,7 @@ jobs:
           comment_mode: ${{ ((github.event.workflow_run && github.event.workflow_run.event == 'pull_request') || github.event_name == 'pull_request') && 'failures' || 'always' }}
 
       - name: Publish Build Logs
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
           path: build/logs
