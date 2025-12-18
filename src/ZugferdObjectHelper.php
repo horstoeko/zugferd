@@ -857,7 +857,7 @@ class ZugferdObjectHelper
         // At the moment PCI Security Standards Council has defined that the first 6 digits and
         // last 4 digits are the maximum number of digits to be shown.
 
-        $id = substr($id, 0, 6) . substr($id, -4);
+        $id = strlen($id) > 4 ? substr($id, 0, 6) . substr($id, -4) : $id;
 
         $tradeSettlementFinancialCardType = $this->createClassInstance('ram\TradeSettlementFinancialCardType');
 
