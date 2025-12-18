@@ -908,6 +908,17 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("name", $fincard->getCardholderName());
     }
 
+    public function testGetTradeSettlementFinancialCardType4DigitValue(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType
+         */
+        $fincard = self::$objectHelper->getTradeSettlementFinancialCardType("type", "8453", "name");
+        $this->assertEquals("type", $fincard->getID()->getSchemeID());
+        $this->assertEquals("8453", $fincard->getID());
+        $this->assertEquals("name", $fincard->getCardholderName());
+    }
+
     public function testGetTradeSettlementFinancialCardTypeAllNull(): void
     {
         /**
