@@ -11,6 +11,9 @@
 [![Continuous Integration](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml/badge.svg?branch=master)](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml)
 [![Release Status](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml)
 
+<!-- omit in toc -->
+## Searching for contributors
+
 > [!IMPORTANT]
 > ## Zukunft / Nachfolger-Projekt
 > Dieses Projekt hat lange gute Dienste geleistet, aber die Codebasis ist inzwischen in die Jahre gekommen – es ist Zeit für eine grundlegende Modernisierung.
