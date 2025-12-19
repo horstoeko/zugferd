@@ -11,6 +11,32 @@
 [![Continuous Integration](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml/badge.svg?branch=master)](https://github.com/horstoeko/zugferd/actions/workflows/build.ci.yml)
 [![Release Status](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/zugferd/actions/workflows/build.release.yml)
 
+> [!IMPORTANT]
+> ## Zukunft / Nachfolger-Projekt
+> Dieses Projekt hat lange gute Dienste geleistet, aber die Codebasis ist inzwischen in die Jahre gekommen – es ist Zeit für eine grundlegende Modernisierung.
+>
+> **Keine Sorge:** `horstoeko/zugferd` wird weiterhin betreut. Ich werde bestmöglich Bugfixes liefern und Pull Requests prüfen, sodass bestehende Anwender sich weiterhin darauf verlassen können.
+>
+> Parallel entsteht eine neue, modernere Codebasis. Sie wird einen **Legacy-Support** erhalten, damit die Migration für bestehende Nutzer so reibungslos wie möglich abläuft.
+>
+> Ich suche einfach **helfende Hände**, die mich wegen **Zeitmangels** bei der Weiterentwicklung und Pflege unterstützen können – ganz egal ob Code, Tests, Doku, Reviews, Beispiele, Issue-Triage oder einfach Feedback.
+>
+> **Kontakt (gern auch unverbindlich):** horstoeko-invoicesuite@erling.com.de
+> Schreib kurz, wobei du unterstützen möchtest und wie viel Zeit du grob hast.
+
+> [!IMPORTANT]
+> ## Future / Successor project
+> This project has served well for a long time, but the codebase is getting old and it’s time for a major modernization.
+>
+> **No worries:** `horstoeko/zugferd` will continue to be maintained. I will keep providing best-effort bugfixes and reviewing PRs so existing users can continue to rely on it.
+>
+> In parallel, a new, modern codebase is being built. It will include **legacy support** to make migration as smooth as possible for current users.
+>
+> I’m simply looking for **helping hands** because my time is limited — whether it’s code, tests, docs, reviews, examples, issue triage, or just feedback.
+>
+> **Contact (also just for an informal chat):** horstoeko-invoicesuite@erling.com.de
+> Please share what you’d like to help with and roughly how much time you have.
+
 <!-- omit in toc -->
 ## Table of Contents
 
