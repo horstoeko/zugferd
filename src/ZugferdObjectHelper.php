@@ -11,6 +11,7 @@ namespace horstoeko\zugferd;
 
 use DateTime;
 use DateTimeInterface;
+use finfo;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
@@ -496,9 +497,10 @@ class ZugferdObjectHelper
      * @param  string|null            $refTypeCode
      * @param  DateTimeInterface|null $issueDate
      * @param  string|null            $binaryDataFilename
+     * @param  string|null            $base64EncodedData
      * @return object|null
      */
-    public function getReferencedDocumentType(?string $issuerAssignedId = null, ?string $uriId = null, ?string $lineId = null, ?string $typeCode = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ?object
+    public function getReferencedDocumentType(?string $issuerAssignedId = null, ?string $uriId = null, ?string $lineId = null, ?string $typeCode = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null, ?string $base64EncodedData = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -517,7 +519,43 @@ class ZugferdObjectHelper
             $this->tryCallAll($referencedDocumentType, ['addToName', 'setName'], $this->getTextType($name));
         }
 
-        if (StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false && FileUtils::fileExists($binaryDataFilename)) {
+        $loadedFromBase64 = false;
+
+        if (
+            StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false &&
+            StringUtils::stringIsNullOrEmpty($base64EncodedData) === false &&
+            base64_encode($base64EncodedData) !== false
+        ) {
+            $finfo = new finfo();
+            $mimetype = $finfo->buffer(base64_decode($base64EncodedData), FILEINFO_MIME_TYPE);
+            if ($mimetype !== false) {
+                if (in_array($mimetype, self::SUPPORTEDTMIMETYPES)) {
+                    $fileExtension = (new MimeDb())->findFirstFileExtensionByMimeType($mimetype);
+                    if (!is_null($fileExtension)) {
+                        $this->tryCall(
+                            $referencedDocumentType,
+                            'setAttachmentBinaryObject',
+                            $this->getBinaryObjectType(
+                                $base64EncodedData,
+                                $mimetype,
+                                FileUtils::getFilenameWithExtension(FileUtils::changeFileExtension(FileUtils::getFilenameWithExtension($binaryDataFilename), $fileExtension))));
+                        $loadedFromBase64 = true;
+                    } else {
+                        throw new ZugferdUnsupportedMimetype();
+                    }
+                } else {
+                    throw new ZugferdUnsupportedMimetype();
+                }
+            } else {
+                throw new ZugferdUnsupportedMimetype();
+            }
+        }
+
+        if (
+            $loadedFromBase64 === false &&
+            StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false &&
+            FileUtils::fileExists($binaryDataFilename)
+        ) {
             $mimeDb = new MimeDb();
             $mimeTypes = $mimeDb->findAllMimeTypesByExtension(FileUtils::getFileExtension($binaryDataFilename));
             if (!is_null($mimeTypes)) {

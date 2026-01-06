@@ -1993,11 +1993,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string|null            $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTimeInterface|null $issueDate          __BT-X-149, From EXTENDED__ Document date
      * @param  string|null            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null            $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
      * @return ZugferdDocumentBuilder
      */
-    public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null): ZugferdDocumentBuilder
+    public function addDocumentAdditionalReferencedDocument(string $issuerAssignedId, string $typeCode, ?string $uriId = null, $name = null, ?string $refTypeCode = null, ?DateTimeInterface $issueDate = null, ?string $binaryDataFilename = null, ?string $base64EncodedData = null): ZugferdDocumentBuilder
     {
-        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, null, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename);
+        $additionalrefdoc = $this->getObjectHelper()->getReferencedDocumentType($issuerAssignedId, $uriId, null, $typeCode, $name, $refTypeCode, $issueDate, $binaryDataFilename, $base64EncodedData);
 
         $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "addToAdditionalReferencedDocument", $additionalrefdoc);
 
@@ -2056,6 +2057,22 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     public function addDocumentInvoicedObjectReferenceDocument(string $issuerAssignedId, string $refTypeCode): ZugferdDocumentBuilder
     {
         return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::INVOICING_DATA_SHEET, null, null, $refTypeCode);
+    }
+
+    /**
+     * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
+     * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
+     *
+     * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string            $attachmentFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string            $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
+     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @return ZugferdDocumentBuilder
+     * @throws ZugferdUnsupportedMimetype
+     */
+    public function addDocumentInvoiceSupportingDocumentWithBase64Data(string $issuerAssignedId, string $attachmentFilename, string $base64EncodedData, $name = null): ZugferdDocumentBuilder
+    {
+        return $this->addDocumentAdditionalReferencedDocument($issuerAssignedId, ZugferdDocumentType::RELATED_DOCUMENT, null, $name, null, null, $attachmentFilename, $base64EncodedData);
     }
 
     /**
