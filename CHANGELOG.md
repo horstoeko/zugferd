@@ -1,3 +1,14 @@
+## v1.0.119
+
+``Previous version v1.0.118``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [9a9aa45](https://github.com/horstoeko/zugferd/commit/9a9aa45) | 2026-01-07 10:16:07 CET | HorstOeko | Fixed "PDF/A3 invalide when original PDF contains link" | [#342](https://github.com/horstoeko/zugferd/issues/342)
+| :new_moon:  | [689dcef](https://github.com/horstoeko/zugferd/commit/689dcef) | 2025-12-18 17:16:11 CET | Bernhard Kraemer | Fix handling of short IDs in ZugferdObjectHelper | 
+
+:exclamation: _There are 4 internal commit(s)_
+
 ## v1.0.118
 
 :exclamation: _There are 3 internal commit(s)_
