@@ -476,6 +476,70 @@ class ZugferdPdfWriter extends PdfFpdi
     }
 
     /**
+     * Override for PDF-A/3 conformant links.
+     *
+     * This fixes the following issues:
+     * - Fix 1: Annotation dictionaries need /F and should be printable => /F 4
+     * - Fix 2: Ensure our PDF/A-compliant /F stays effective and avoid duplicate /F keys
+     *
+     * @param  int  $n
+     * @return void
+     */
+    protected function _putlinks($n)
+    {
+        foreach ($this->PageLinks[$n] as $pl) {
+            $this->_newobj();
+            $rect = sprintf('%.2F %.2F %.2F %.2F', $pl[0], $pl[1], $pl[0] + $pl[2], $pl[1] - $pl[3]);
+            $this->_put('<</Type /Annot /Subtype /Link /Rect ['.$rect.'] /F 4', false); // Fix 1
+
+            if (is_string($pl[4])) {
+                if (isset($pl['importedLink'])) {
+                    $this->_put('/A <</S /URI /URI ('.$this->_escape($pl[4]).')>>');
+                    $values = $pl['importedLink']['pdfObject']->value;
+
+                    foreach ($values as $name => $entry) {
+                        if ('F' === $name) { // Fix 2
+                            continue;
+                        }
+                        $this->_put('/'.$name.' ', false);
+                        $this->writePdfType($entry);
+                    }
+
+                    if (isset($pl['quadPoints'])) {
+                        $s = '/QuadPoints[';
+                        foreach ($pl['quadPoints'] as $value) {
+                            $s .= sprintf('%.2F ', $value);
+                        }
+                        $s .= ']';
+                        $this->_put($s);
+                    }
+                } else {
+                    $this->_put('/A <</S /URI /URI '.$this->_textstring($pl[4]).'>>');
+                    $this->_put('/Border [0 0 0]', false);
+                }
+                $this->_put('>>');
+            } else {
+                $this->_put('/Border [0 0 0] ', false);
+                $l = $this->links[$pl[4]];
+
+                if (isset($this->PageInfo[$l[0]]['size'])) {
+                    $h = $this->PageInfo[$l[0]]['size'][1];
+                } else {
+                    $h = ('P' === $this->DefOrientation)
+                        ? $this->DefPageSize[1] * $this->k
+                        : $this->DefPageSize[0] * $this->k;
+                }
+                $this->_put(sprintf(
+                    '/Dest [%d 0 R /XYZ 0 %.2F null]>>',
+                    $this->PageInfo[$l[0]]['n'],
+                    $h - $l[1] * $this->k
+                ));
+            }
+            $this->_put('endobj');
+        }
+    }
+
+    /**
      * Generate metadata string.
      *
      * @param string|null $dateType
