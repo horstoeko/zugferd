@@ -2050,7 +2050,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Add details of the calculated object
      *
-     * @param  string $issuerAssignedId __BT-122, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
+     * @param  string $issuerAssignedId __BT-18, From EN 16931__ Depending on the application, this can be a subscription number, a telephone number, a meter reading, a vehicle, a person, etc.
      * @param  string $refTypeCode      __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return ZugferdDocumentBuilder
      */
