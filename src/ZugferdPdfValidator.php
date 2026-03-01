@@ -956,11 +956,10 @@ class ZugferdPdfValidator
      */
     private function cleanupBaseDirectory(): void
     {
-        if ($this->cleanupBaseDirectoryIsDisabled === true) {
-            return;
-        }
-
-        if (!is_dir($this->resolveBaseDirectory())) {
+        if (
+            $this->cleanupBaseDirectoryIsDisabled === true
+            || !is_dir($this->resolveBaseDirectory())
+        ) {
             return;
         }
 

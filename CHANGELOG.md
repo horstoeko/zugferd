@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Updated Symfony dependencies from 5.4/6.0 to 6.4 LTS (finder, process, validator, yaml), enabled by the PHP 8.1 minimum.
 
 ### Changed
+- performance improvement: grouped logical xor as such
 
 ### Fixed
 

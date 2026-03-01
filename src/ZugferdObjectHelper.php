@@ -1512,35 +1512,16 @@ class ZugferdObjectHelper
 
         $dateTimeString = trim($dateTimeString);
 
-        if ($format == "102") {
-            return DateTime::createFromFormat("Ymd", $dateTimeString);
-        }
-
-        if ($format == "101") {
-            return DateTime::createFromFormat("ymd", $dateTimeString);
-        }
-
-        if ($format == "201") {
-            return DateTime::createFromFormat("ymdHi", $dateTimeString);
-        }
-
-        if ($format == "202") {
-            return DateTime::createFromFormat("ymdHis", $dateTimeString);
-        }
-
-        if ($format == "203") {
-            return DateTime::createFromFormat("YmdHi", $dateTimeString);
-        }
-
-        if ($format == "204") {
-            return DateTime::createFromFormat("YmdHis", $dateTimeString);
-        }
-
-        if ($format == "610") {
-            return DateTime::createFromFormat("Ym", $dateTimeString)->modify('first day of')->modify('midnight');
-        }
-
-        throw new ZugferdUnknownDateFormatException($format);
+        return match ($format) {
+            "102" => DateTime::createFromFormat("Ymd", $dateTimeString),
+            "101" => DateTime::createFromFormat("ymd", $dateTimeString),
+            "201" => DateTime::createFromFormat("ymdHi", $dateTimeString),
+            "202" => DateTime::createFromFormat("ymdHis", $dateTimeString),
+            "203" => DateTime::createFromFormat("YmdHi", $dateTimeString),
+            "204" => DateTime::createFromFormat("YmdHis", $dateTimeString),
+            "610" => DateTime::createFromFormat("Ym", $dateTimeString)->modify('first day of')->modify('midnight'),
+            default => throw new ZugferdUnknownDateFormatException($format),
+        };
     }
 
     /**
@@ -1794,11 +1775,10 @@ class ZugferdObjectHelper
     public static function isAllNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
-            if ($arg instanceof DateTimeInterface) {
-                return false;
-            }
-
-            if (!self::isNullOrEmpty($arg)) {
+            if (
+                $arg instanceof DateTimeInterface
+                || !self::isNullOrEmpty($arg)
+            ) {
                 return false;
             }
         }
@@ -1836,11 +1816,10 @@ class ZugferdObjectHelper
      */
     public function methodExists($instance, $method): bool
     {
-        if ($instance == null) {
-            return false;
-        }
-
-        if (!is_object($instance) && !is_string($instance)) {
+        if (
+            $instance == null
+            || (!is_object($instance) && !is_string($instance))
+        ) {
             return false;
         }
 

@@ -356,11 +356,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         // Sanatize relationship type
 
-        if ($relationshipType === '') {
-            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
-        }
-
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])) {
+        if (
+            $relationshipType === ''
+            || !in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])
+        ) {
             $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
@@ -384,7 +383,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Set the the deterministic mode. This mode should only be used
+     * Set the deterministic mode. This mode should only be used
      * for testing purposes
      *
      * @param  bool $deterministicModeEnabled

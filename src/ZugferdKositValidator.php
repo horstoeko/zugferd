@@ -1114,15 +1114,11 @@ class ZugferdKositValidator
      */
     private function cleanupBaseDirectory(): void
     {
-        if ($this->remoteModeEnabled === true) {
-            return;
-        }
-
-        if ($this->cleanupBaseDirectoryIsDisabled === true) {
-            return;
-        }
-
-        if (!is_dir($this->resolveBaseDirectory())) {
+        if (
+            $this->remoteModeEnabled === true
+            || $this->cleanupBaseDirectoryIsDisabled === true
+            || !is_dir($this->resolveBaseDirectory())
+        ) {
             return;
         }
 
