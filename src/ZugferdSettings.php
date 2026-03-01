@@ -24,14 +24,6 @@ use horstoeko\stringmanagement\StringUtils;
 class ZugferdSettings
 {
     /**
-     * Whether ReflectionMethod/ReflectionProperty::setAccessible() is needed.
-     * Required for PHP < 8.1, no-op since 8.1, deprecated since 8.5.
-     *
-     * @var bool
-     */
-    const REFLECTION_NEEDS_ACCESSIBLE = PHP_VERSION_ID < 80100;
-
-    /**
      * The number of decimals for amount values
      *
      * @var integer

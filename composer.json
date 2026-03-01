@@ -34,7 +34,7 @@
         }
     },
     "require": {
-        "php": ">=7.3 <9.0",
+        "php": ">=8.1 <9.0",
         "ext-simplexml": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "horstoeko/mimedb": "^1",

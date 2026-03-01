@@ -16,19 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Implemented BuyerTaxRepresentativeParty (BG-X-54) for the EXTENDED profile, based on the work by [NicedriverMX](https://github.com/NicedriverMX/zugferd). The original fork only provided 7 Builder methods; we completed the implementation by adding 8 corresponding Reader methods, a contact pointer, correcting the third parameter from `$role` to `$description` (consistent with `getTradeParty()` signature), and adding 10 round-trip tests. The feature was found by comparing all 63 GitHub forks for changes ahead of upstream master.
   - Builder: `setDocumentBuyerTaxRepresentativeTradeParty()`, `addDocumentBuyerTaxRepresentativeGlobalId()`, `addDocumentBuyerTaxRepresentativeTaxRegistration()`, `setDocumentBuyerTaxRepresentativeAddress()`, `setDocumentBuyerTaxRepresentativeLegalOrganisation()`, `setDocumentBuyerTaxRepresentativeContact()`, `addDocumentBuyerTaxRepresentativeContact()`
   - Reader: `getDocumentBuyerTaxRepresentative()`, `getDocumentBuyerTaxRepresentativeGlobalId()`, `getDocumentBuyerTaxRepresentativeTaxRegistration()`, `getDocumentBuyerTaxRepresentativeAddress()`, `getDocumentBuyerTaxRepresentativeLegalOrganisation()`, `firstDocumentBuyerTaxRepresentativeContact()`, `nextDocumentBuyerTaxRepresentativeContact()`, `getDocumentBuyerTaxRepresentativeContact()`
-- Added `ZugferdSettings::REFLECTION_NEEDS_ACCESSIBLE` constant (and corresponding `TestCase::REFLECTION_NEEDS_ACCESSIBLE`) to centralize the PHP version check for `ReflectionMethod::setAccessible()` calls, replacing scattered `PHP_VERSION_ID < 80100` checks.
 - Tightened dependency version constraints in `composer.json` to exclude known vulnerable versions:
   - `setasign/fpdi`: `^2` → `^2.6.3` (CVE-2025-54869, DoS via memory exhaustion)
   - `symfony/process`: `^5|^6|^7|^8` → `^5.4.46|^6.4.14|^7.1.7|^8` (CVE-2024-51736, command execution hijack on Windows)
   - `symfony/validator`: `^5|^6|^7|^8` → `^5.4.43|^6.4.11|^7.1.4|^8` (CVE-2024-50343, regex validation bypass)
-- Added upper PHP version bound `<9.0` to `composer.json` (`"php": ">=7.3 <9.0"`).
+- Raised minimum PHP version to `>=8.1 <9.0` (previously `>=7.3`) to support enums and modern language features.
+- Updated Symfony dependencies from 5.4/6.0 to 6.4 LTS (finder, process, validator, yaml), enabled by the PHP 8.1 minimum.
+
+### Changed
 
 ### Fixed
 
 - Fixed 4 occurrences of comma instead of dot in getter path strings in `ZugferdDocumentReader`, which caused date format retrieval to silently fail for `getDocumentPositionSupplyChainEvent()`, `getDocumentPositionDespatchAdviceReferencedDocument()`, `getDocumentPositionReceivingAdviceReferencedDocument()`, and `getDocumentPositionDeliveryNoteReferencedDocument()`.
 - Fixed `getDocumentPositionDespatchAdviceReferencedDocument()`, `getDocumentPositionReceivingAdviceReferencedDocument()`, and `getDocumentPositionDeliveryNoteReferencedDocument()` using `getInvoiceValueByPath()` (document-level) instead of `getInvoiceValueByPathFrom($tradeLineItem, ...)` (position-level) for date fields, which caused dates to always return as null.
 - Fixed `isAllNullOrEmpty()` and `isOneNullOrEmpty()` in `ZugferdObjectHelper` checking `instanceof DateTime` instead of `instanceof DateTimeInterface`, which caused incorrect early-return behavior for `DateTimeImmutable` arguments.
-- Fixed PHP 8.5 deprecation of `ReflectionMethod::setAccessible()` in `ZugferdDocumentValidator`, `TestCase`, and `DocumentTest` by removing the no-op calls (accessible since PHP 8.1).
 - Fixed fragile PDF test assertions in `PdfBuilderEn16931Test` that compared exact FlateDecode compressed byte lengths, which differ across PHP/zlib versions.
 
 ### Tests
