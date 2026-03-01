@@ -194,7 +194,7 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\udt\IndicatorType
          */
         $indicatortype = self::$objectHelper->getIndicatorType(true);
-        $this->assertTrue($indicatortype->getIndicator());
+        self::assertTrue($indicatortype->getIndicator());
     }
 
     public function testGetIndicatorTypeWithFalseValue(): void
@@ -228,7 +228,7 @@ class ObjectHelperEn16931Test extends TestCase
         $notetype = self::$objectHelper->getNoteType("content", "contentcode", "subjectcode");
         $this->assertEquals("content", $notetype->getContent());
         $this->assertEquals("subjectcode", $notetype->getSubjectCode()->value());
-        $this->assertFalse(self::$objectHelper->methodExists($notetype, "getContentCode"));
+        self::assertFalse(self::$objectHelper->methodExists($notetype, "getContentCode"));
     }
 
     public function testGetNoteTypeAllNullValue(): void
@@ -532,8 +532,8 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\en16931\ram\SpecifiedPeriodType
          */
         $periodtype = self::$objectHelper->getSpecifiedPeriodType(new \DateTime(), new \DateTime(), new \DateTime(), "Description");
-        $this->assertFalse(self::$objectHelper->methodExists($periodtype, "getDescription"));
-        $this->assertFalse(self::$objectHelper->methodExists($periodtype, "getCompleteDateTime"));
+        self::assertFalse(self::$objectHelper->methodExists($periodtype, "getDescription"));
+        self::assertFalse(self::$objectHelper->methodExists($periodtype, "getCompleteDateTime"));
         $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getStartDateTime()->getDateTimeString());
         $this->assertEquals("102", $periodtype->getStartDateTime()->getDateTimeString()->getFormat());
         $this->assertEquals((new \DateTime())->format("Ymd"), $periodtype->getEndDateTime()->getDateTimeString());
@@ -733,7 +733,7 @@ class ObjectHelperEn16931Test extends TestCase
         $this->assertEquals("personname", $tradecontact->getPersonName());
         $this->assertEquals("departmentname", $tradecontact->getDepartmentName());
         $this->assertEquals("phone", $tradecontact->getTelephoneUniversalCommunication()->getCompleteNumber());
-        $this->assertFalse(self::$objectHelper->methodExists($tradecontact, "getFaxUniversalCommunication"));
+        self::assertFalse(self::$objectHelper->methodExists($tradecontact, "getFaxUniversalCommunication"));
         $this->assertEquals("mail", $tradecontact->getEmailURIUniversalCommunication()->getURIID());
     }
 
@@ -1068,8 +1068,8 @@ class ObjectHelperEn16931Test extends TestCase
         //$this->assertEquals(19.0, $tax->getRateApplicablePercent()->value());
         $this->assertEquals("reasoncode", $tax->getExemptionReasonCode());
         $this->assertEquals("reason", $tax->getExemptionReason());
-        $this->assertFalse(self::$objectHelper->methodExists($tax, "getLineTotalBasisAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($tax, "getAllowanceChargeBasisAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($tax, "getLineTotalBasisAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($tax, "getAllowanceChargeBasisAmount"));
     }
 
     public function testGetTradeTaxTypeAllNull(): void
@@ -1099,14 +1099,14 @@ class ObjectHelperEn16931Test extends TestCase
         $calculationpercent = $allowancecharge->getCalculationPercent();
 
         $this->assertEqualsWithDelta(10.0, $allowancecharge->getActualAmount()->value(), PHP_FLOAT_EPSILON);
-        $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
+        self::assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
         $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);
-        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getSequenceNumeric"));
+        self::assertFalse(self::$objectHelper->methodExists($allowancecharge, "getSequenceNumeric"));
         $this->assertEqualsWithDelta(2.0, $calculationpercent->value(), PHP_FLOAT_EPSILON);
-        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
-        $this->assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
+        self::assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
+        self::assertFalse(self::$objectHelper->methodExists($allowancecharge, "getBasisQuantity"));
         $this->assertEquals("reason", $allowancecharge->getReason());
         $this->assertEquals("reasoncode", $allowancecharge->getReasonCode());
     }
@@ -1126,9 +1126,9 @@ class ObjectHelperEn16931Test extends TestCase
          * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
          */
         $logcharge = self::$objectHelper->getLogisticsServiceChargeType("description", 10.0, ["taxtype"], ["taxcategpry"], [19]);
-        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getDescription"));
-        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedTradeTax"));
+        self::assertFalse(self::$objectHelper->methodExists($logcharge, "getDescription"));
+        self::assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($logcharge, "getAppliedTradeTax"));
     }
 
     public function testGetLogisticsServiceChargeTypeAllNull(): void
@@ -1181,7 +1181,7 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $accaccount = self::$objectHelper->getTradeAccountingAccountType("accid", "acctype");
         $this->assertEquals("accid", $accaccount->getID());
-        $this->assertFalse(self::$objectHelper->methodExists($accaccount, "getTypeCode"));
+        self::assertFalse(self::$objectHelper->methodExists($accaccount, "getTypeCode"));
     }
 
     public function testGetTradeAccountingAccountTypeAllNull(): void
@@ -1358,11 +1358,11 @@ class ObjectHelperEn16931Test extends TestCase
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 6.0, 3.0, 4.0, 5.0, 2.0);
         $this->assertEqualsWithDelta(1.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
-        $this->assertFalse(self::$objectHelper->methodExists($summation, "getChargeTotalAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($summation, "getAllowanceTotalAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($summation, "getTaxTotalAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($summation, "getGrandTotalAmount"));
-        $this->assertFalse(self::$objectHelper->methodExists($summation, "getTotalAllowanceChargeAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($summation, "getChargeTotalAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($summation, "getAllowanceTotalAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($summation, "getTaxTotalAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($summation, "getGrandTotalAmount"));
+        self::assertFalse(self::$objectHelper->methodExists($summation, "getTotalAllowanceChargeAmount"));
     }
 
     public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void

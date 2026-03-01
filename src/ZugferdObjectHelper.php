@@ -859,7 +859,7 @@ class ZugferdObjectHelper
     }
 
     /**
-     * Undocumented function
+     * Creates an instance of SupplyChainEventType with the given occurrence date
      *
      * @param  DateTimeInterface|null $date
      * @return object|null
@@ -947,7 +947,7 @@ class ZugferdObjectHelper
     }
 
     /**
-     * Undocumented function
+     * Creates an instance of CreditorFinancialInstitutionType with the given BIC
      *
      * @param  string|null $bic
      * @return object|null
@@ -1472,7 +1472,7 @@ class ZugferdObjectHelper
     }
 
     /**
-     * Undocumented function
+     * Creates an instance of TradeCurrencyExchangeType for tax applicable currency exchange
      *
      * @param  string|null            $sourceCurrencyCode
      * @param  string|null            $targetCurrencyCode

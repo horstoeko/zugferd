@@ -107,21 +107,21 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testDocumentUltimateCustomerOrderReferencedDocumentIteration(): void
     {
-        $this->assertTrue(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
+        self::assertTrue(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
 
         self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerAssignedId, $issueDate);
         $this->assertEquals("UCORD-001", $issuerAssignedId);
         $this->assertInstanceOf(DateTime::class, $issueDate);
         $this->assertEquals("20241201", $issueDate->format("Ymd"));
 
-        $this->assertTrue(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
+        self::assertTrue(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
 
         self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerAssignedId, $issueDate);
         $this->assertEquals("UCORD-002", $issuerAssignedId);
         $this->assertInstanceOf(DateTime::class, $issueDate);
         $this->assertEquals("20241215", $issueDate->format("Ymd"));
 
-        $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
+        self::assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
     }
 
     // =========================================================================
@@ -130,7 +130,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition1ShipTo(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPosition());
+        self::assertTrue(self::$document->firstDocumentPosition());
 
         self::$document->getDocumentPositionShipTo($name, $id, $description);
         $this->assertEquals("ShipTo Pos1", $name);
@@ -176,7 +176,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition1ShipToContactIteration(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPositionShipToContact());
+        self::assertTrue(self::$document->firstDocumentPositionShipToContact());
 
         self::$document->getDocumentPositionShipToContact($personName, $departmentName, $phoneNo, $faxNo, $emailAddress);
         $this->assertEquals("John Shipping", $personName);
@@ -185,7 +185,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
         $this->assertEquals("+49-111-5678", $faxNo);
         $this->assertEquals("john@shipping.de", $emailAddress);
 
-        $this->assertTrue(self::$document->nextDocumentPositionShipToContact());
+        self::assertTrue(self::$document->nextDocumentPositionShipToContact());
 
         self::$document->getDocumentPositionShipToContact($personName, $departmentName, $phoneNo, $faxNo, $emailAddress);
         $this->assertEquals("Jane Shipping", $personName);
@@ -194,7 +194,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
         $this->assertEquals("+49-111-5432", $faxNo);
         $this->assertEquals("jane@shipping.de", $emailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentPositionShipToContact());
+        self::assertFalse(self::$document->nextDocumentPositionShipToContact());
     }
 
     public function testPosition1UltimateShipTo(): void
@@ -243,7 +243,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition1UltimateShipToContact(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToContact());
+        self::assertTrue(self::$document->firstDocumentPositionUltimateShipToContact());
 
         self::$document->getDocumentPositionUltimateShipToContact($personName, $departmentName, $phoneNo, $faxNo, $emailAddress);
         $this->assertEquals("Max Ultimate", $personName);
@@ -252,7 +252,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
         $this->assertEquals("+49-222-2222", $faxNo);
         $this->assertEquals("max@ultimate.de", $emailAddress);
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToContact());
+        self::assertFalse(self::$document->nextDocumentPositionUltimateShipToContact());
     }
 
     public function testPosition1SupplyChainEvent(): void
@@ -291,7 +291,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition1UltimateCustomerOrderReferencedDocumentIteration(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument());
+        self::assertTrue(self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument());
 
         self::$document->getDocumentPositionUltimateCustomerOrderReferencedDocument($issuerAssignedId, $lineId, $issueDate);
         $this->assertEquals("UCORD-POS1-A", $issuerAssignedId);
@@ -299,7 +299,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
         $this->assertInstanceOf(DateTime::class, $issueDate);
         $this->assertEquals("20241101", $issueDate->format("Ymd"));
 
-        $this->assertTrue(self::$document->nextDocumentPositionUltimateCustomerOrderReferencedDocument());
+        self::assertTrue(self::$document->nextDocumentPositionUltimateCustomerOrderReferencedDocument());
 
         self::$document->getDocumentPositionUltimateCustomerOrderReferencedDocument($issuerAssignedId, $lineId, $issueDate);
         $this->assertEquals("UCORD-POS1-B", $issuerAssignedId);
@@ -307,7 +307,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
         $this->assertInstanceOf(DateTime::class, $issueDate);
         $this->assertEquals("20241115", $issueDate->format("Ymd"));
 
-        $this->assertFalse(self::$document->nextDocumentPositionUltimateCustomerOrderReferencedDocument());
+        self::assertFalse(self::$document->nextDocumentPositionUltimateCustomerOrderReferencedDocument());
     }
 
     // =========================================================================
@@ -316,7 +316,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition2HasNoShipTo(): void
     {
-        $this->assertTrue(self::$document->nextDocumentPosition());
+        self::assertTrue(self::$document->nextDocumentPosition());
 
         self::$document->getDocumentPositionShipTo($name, $id, $description);
         $this->assertEquals("", $name);
@@ -340,7 +340,7 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition2HasNoShipToContact(): void
     {
-        $this->assertFalse(self::$document->firstDocumentPositionShipToContact());
+        self::assertFalse(self::$document->firstDocumentPositionShipToContact());
     }
 
     public function testPosition2HasNoUltimateShipTo(): void
@@ -352,16 +352,16 @@ class ReaderExtendedPositionDeliveryTest extends TestCase
 
     public function testPosition2HasNoUltimateShipToContact(): void
     {
-        $this->assertFalse(self::$document->firstDocumentPositionUltimateShipToContact());
+        self::assertFalse(self::$document->firstDocumentPositionUltimateShipToContact());
     }
 
     public function testPosition2HasNoUltimateCustomerOrderReferencedDocument(): void
     {
-        $this->assertFalse(self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument());
+        self::assertFalse(self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument());
     }
 
     public function testPosition2NoMorePositions(): void
     {
-        $this->assertFalse(self::$document->nextDocumentPosition());
+        self::assertFalse(self::$document->nextDocumentPosition());
     }
 }

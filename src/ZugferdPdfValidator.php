@@ -292,12 +292,12 @@ class ZugferdPdfValidator
      * @param  string $newValidatorRuleset
      * @return ZugferdPdfValidator
      */
-    public function setValidatorRuleset(string $newVlidatorRuleset): ZugferdPdfValidator
+    public function setValidatorRuleset(string $newValidatorRuleset): ZugferdPdfValidator
     {
-        $newVlidatorRuleset = strtolower($newVlidatorRuleset);
+        $newValidatorRuleset = strtolower($newValidatorRuleset);
 
-        if (in_array($newVlidatorRuleset, [static::RULESET_PDF_A_0, static::RULESET_PDF_A_1A, static::RULESET_PDF_A_1B, static::RULESET_PDF_A_2A, static::RULESET_PDF_A_2B, static::RULESET_PDF_A_2U, static::RULESET_PDF_A_3A, static::RULESET_PDF_A_3B, static::RULESET_PDF_A_3U, static::RULESET_PDF_A_4, static::RULESET_PDF_A_4E, static::RULESET_PDF_A_4F, static::RULESET_PDF_UA_1, static::RULESET_PDF_UA_2])) {
-            $this->validatorRuleset = $newVlidatorRuleset;
+        if (in_array($newValidatorRuleset, [static::RULESET_PDF_A_0, static::RULESET_PDF_A_1A, static::RULESET_PDF_A_1B, static::RULESET_PDF_A_2A, static::RULESET_PDF_A_2B, static::RULESET_PDF_A_2U, static::RULESET_PDF_A_3A, static::RULESET_PDF_A_3B, static::RULESET_PDF_A_3U, static::RULESET_PDF_A_4, static::RULESET_PDF_A_4E, static::RULESET_PDF_A_4F, static::RULESET_PDF_UA_1, static::RULESET_PDF_UA_2])) {
+            $this->validatorRuleset = $newValidatorRuleset;
         }
 
         return $this;

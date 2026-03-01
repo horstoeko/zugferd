@@ -75,14 +75,25 @@ class ZugferdXsdValidator
     }
 
     /**
-     * Returns true if validation passed otherwise false
+     * Returns true if validation passed, otherwise false
      *
      * @deprecated 1.0.65 Use hasNoValidationErrors instead
      * @return     bool
      */
-    public function validationPased(): bool
+    public function validationPassed(): bool
     {
         return $this->errorBag === [];
+    }
+
+    /**
+     * Returns true if validation passed, otherwise false
+     *
+     * @deprecated 1.0.65 Use hasNoValidationErrors instead. Note: This method was also misspelled and has been replaced by validationPassed()
+     * @return     bool
+     */
+    public function validationPased(): bool
+    {
+        return $this->validationPassed();
     }
 
     /**

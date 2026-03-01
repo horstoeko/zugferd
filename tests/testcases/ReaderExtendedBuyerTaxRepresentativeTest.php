@@ -106,7 +106,7 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
 
     public function testFirstDocumentBuyerTaxRepresentativeContact(): void
     {
-        $this->assertTrue(self::$document->firstDocumentBuyerTaxRepresentativeContact());
+        self::assertTrue(self::$document->firstDocumentBuyerTaxRepresentativeContact());
     }
 
     public function testGetDocumentBuyerTaxRepresentativeContactFirst(): void
@@ -124,7 +124,7 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
     public function testNextDocumentBuyerTaxRepresentativeContact(): void
     {
         self::$document->firstDocumentBuyerTaxRepresentativeContact();
-        $this->assertTrue(self::$document->nextDocumentBuyerTaxRepresentativeContact());
+        self::assertTrue(self::$document->nextDocumentBuyerTaxRepresentativeContact());
     }
 
     public function testGetDocumentBuyerTaxRepresentativeContactSecond(): void
@@ -144,6 +144,6 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
     {
         self::$document->firstDocumentBuyerTaxRepresentativeContact();
         self::$document->nextDocumentBuyerTaxRepresentativeContact();
-        $this->assertFalse(self::$document->nextDocumentBuyerTaxRepresentativeContact());
+        self::assertFalse(self::$document->nextDocumentBuyerTaxRepresentativeContact());
     }
 }

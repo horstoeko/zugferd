@@ -662,21 +662,21 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     private function preparePdfMetadata(): array
     {
-        $invoiceInformations = $this->extractInvoiceInformations();
+        $invoiceInformation = $this->extractInvoiceInformation();
 
-        $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
+        $dateString = date('Y-m-d', strtotime($invoiceInformation['date']));
 
-        $author = $invoiceInformations['seller'];
-        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']);
-        $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
-        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
+        $author = $invoiceInformation['seller'];
+        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformation['docTypeName']);
+        $title = sprintf('%s : %s %s', $invoiceInformation['seller'], $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId']);
+        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId'], $dateString, $invoiceInformation['seller']);
 
         return [
-            'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
-            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
-            'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
-            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformations),
-            'createdDate' => $invoiceInformations['date'],
+            'author' => $this->buildMetadataField('author', $author, $invoiceInformation),
+            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformation),
+            'title' => $this->buildMetadataField('title', $title, $invoiceInformation),
+            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformation),
+            'createdDate' => $invoiceInformation['date'],
             'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
         ];
     }
@@ -686,7 +686,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @return array
      */
-    protected function extractInvoiceInformations(): array
+    protected function extractInvoiceInformation(): array
     {
         $domDocument = new DOMDocument();
         $domDocument->loadXML($this->getXmlContent());
@@ -706,14 +706,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
         $docTypeCode = $docTypeXpath->item(0)->nodeValue;
 
-        switch ($docTypeCode) {
-            case ZugferdInvoiceType::CREDITNOTE:
-                $docTypeName = 'Credit Note';
-                break;
-            default:
-                $docTypeName = 'Invoice';
-                break;
-        }
+        $docTypeName = match ($docTypeCode) {
+            ZugferdInvoiceType::CREDITNOTE => 'Credit Note',
+            default => 'Invoice',
+        };
 
         return [
             'invoiceId' => $invoiceId,

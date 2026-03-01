@@ -42,7 +42,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $documentAddRefDocPointer = 0;
 
     /**
-     * Undocumented variable
+     * Internal pointer for ultimate customer order referenced documents
      *
      * @var int
      */
@@ -379,6 +379,51 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
+     * Get the business process specified in the document context.
+     *
+     * @param  string|null $businessProcess __BT-23, From BASIC WL__ Identifies the business process context in which the transaction appears
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBusinessProcess(?string &$businessProcess): ZugferdDocumentReader
+    {
+        $businessProcess = $this->getInvoiceValueByPath("getExchangedDocumentContext.getBusinessProcessSpecifiedDocumentContextParameter.getID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get information about the foreign currency used in the document.
+     * This is the counterpart to ZugferdDocumentBuilder::setForeignCurrency.
+     *
+     * @param  string|null $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
+     * @param  float|null  $foreignTaxAmount    __BT-X-260, From EXTENDED__ Tax total amount in the foreign currency
+     * @param  float|null  $exchangeRate        __BT-X-260, From EXTENDED__ Exchange rate from invoice currency to foreign currency
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentForeignCurrency(?string &$foreignCurrencyCode, ?float &$foreignTaxAmount, ?float &$exchangeRate): ZugferdDocumentReader
+    {
+        $foreignCurrencyCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxCurrencyCode.value", "");
+        $foreignTaxAmount = 0.0;
+        $exchangeRate = 0.0;
+
+        if ($foreignCurrencyCode !== "") {
+            $taxTotalAmountElements = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", []);
+
+            foreach ($taxTotalAmountElements as $taxTotalAmountElement) {
+                $currencyId = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElement, "getCurrencyID") ?? "";
+                if ($currencyId === $foreignCurrencyCode) {
+                    $foreignTaxAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElement, "value") ?? 0.0;
+                    break;
+                }
+            }
+
+            $exchangeRate = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxApplicableTradeCurrencyExchange.getConversionRate.value", 0.0);
+        }
+
+        return $this;
+    }
+
+    /**
      * Read general payment information.
      *
      * @param  string|null $creditorReferenceID __BT-90, From BASIC WL__ Identifier of the creditor
@@ -411,10 +456,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * This is an alias-method for getDocumentBuyerReference.
      *
-     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @param  string|null $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentReader
      */
-    public function getDocumentRoutingId(string $routingId): ZugferdDocumentReader
+    public function getDocumentRoutingId(?string &$routingId): ZugferdDocumentReader
     {
         return $this->getDocumentBuyerReference($routingId);
     }

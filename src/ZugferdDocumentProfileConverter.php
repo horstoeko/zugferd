@@ -252,7 +252,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     {
         $this->initProfile($this->convertToProfileId);
         $this->initObjectHelper();
-        $this->initSerialzer();
+        $this->initSerializer();
         $this->deserialize($this->convertFromContent);
         $this->updateProfileInInvoiceObject();
 

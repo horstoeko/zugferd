@@ -48,8 +48,6 @@ class ZugferdPdfWriter extends PdfFpdi
      *
      * @var int
      */
-    protected $fileSpecDictionnaryIndex = 0;
-
     /**
      * Internal index
      *
@@ -228,7 +226,6 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function putFileSpecification(array $file_info): void
     {
         $this->_newobj();
-        $this->fileSpecDictionnaryIndex = $this->n;
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
@@ -377,7 +374,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/Type /OutputIntent');
         $this->_put('/S /GTS_PDFA1');
-        $this->_put('/OuputCondition (sRGB)');
+        $this->_put('/OutputCondition (sRGB)');
         $this->_put('/OutputConditionIdentifier (Custom)');
         $this->_put('/DestOutputProfile ' . ($this->n + 1) . ' 0 R');
         $this->_put('/Info (sRGB V4 ICC)');

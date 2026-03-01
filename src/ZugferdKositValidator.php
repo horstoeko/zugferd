@@ -473,7 +473,7 @@ class ZugferdKositValidator
      *
      * @return string
      */
-    private function resolveScenatioZipFilename(): string
+    private function resolveScenarioZipFilename(): string
     {
         return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
     }
@@ -808,11 +808,7 @@ class ZugferdKositValidator
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
             $responseError = curl_error($httpConnection);
 
-            if (PHP_VERSION_ID >= 80000) {
-                unset($httpConnection);
-            } else {
-                curl_close($httpConnection);
-            }
+            unset($httpConnection);
 
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
                 $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
@@ -843,7 +839,7 @@ class ZugferdKositValidator
             return false;
         }
 
-        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenatioZipFilename())) {
+        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenarioZipFilename())) {
             $this->addToMessageBag(sprintf("Unable to download from %s containing the validation scenarios", $this->validatorScenarioDownloadUrl));
             return false;
         }
@@ -863,7 +859,7 @@ class ZugferdKositValidator
         }
 
         $validatorAppFile = $this->resolveAppZipFilename();
-        $validatorScenarioFile = $this->resolveScenatioZipFilename();
+        $validatorScenarioFile = $this->resolveScenarioZipFilename();
 
         if (!$this->unpackRequiredFile($validatorAppFile)) {
             $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the JAVA-Application", $validatorAppFile));
@@ -1008,11 +1004,7 @@ class ZugferdKositValidator
 
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
 
-            if (PHP_VERSION_ID >= 80000) {
-                unset($httpConnection);
-            } else {
-                curl_close($httpConnection);
-            }
+            unset($httpConnection);
 
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
                 if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {

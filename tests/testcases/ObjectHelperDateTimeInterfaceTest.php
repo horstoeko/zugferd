@@ -30,52 +30,52 @@ class ObjectHelperDateTimeInterfaceTest extends TestCase
 
     public function testIsAllNullOrEmptyWithNull(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([null]));
+        self::assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([null]));
     }
 
     public function testIsAllNullOrEmptyWithEmptyString(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([""]));
+        self::assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([""]));
     }
 
     public function testIsAllNullOrEmptyWithMultipleNulls(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([null, null, ""]));
+        self::assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([null, null, ""]));
     }
 
     public function testIsAllNullOrEmptyWithDateTime(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([new DateTime()]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([new DateTime()]));
     }
 
     public function testIsAllNullOrEmptyWithDateTimeImmutable(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([new DateTimeImmutable()]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([new DateTimeImmutable()]));
     }
 
     public function testIsAllNullOrEmptyWithMixedNullAndDateTime(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([null, new DateTime()]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([null, new DateTime()]));
     }
 
     public function testIsAllNullOrEmptyWithMixedNullAndDateTimeImmutable(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([null, new DateTimeImmutable()]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([null, new DateTimeImmutable()]));
     }
 
     public function testIsAllNullOrEmptyWithNonEmptyString(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty(["abc"]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty(["abc"]));
     }
 
     public function testIsAllNullOrEmptyWithZero(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([0]));
+        self::assertFalse(ZugferdObjectHelper::isAllNullOrEmpty([0]));
     }
 
     public function testIsAllNullOrEmptyWithEmptyArray(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([]));
+        self::assertTrue(ZugferdObjectHelper::isAllNullOrEmpty([]));
     }
 
     // =========================================================================
@@ -84,37 +84,37 @@ class ObjectHelperDateTimeInterfaceTest extends TestCase
 
     public function testIsOneNullOrEmptyWithAllValues(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isOneNullOrEmpty(["abc", "def"]));
+        self::assertFalse(ZugferdObjectHelper::isOneNullOrEmpty(["abc", "def"]));
     }
 
     public function testIsOneNullOrEmptyWithOneNull(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isOneNullOrEmpty(["abc", null]));
+        self::assertTrue(ZugferdObjectHelper::isOneNullOrEmpty(["abc", null]));
     }
 
     public function testIsOneNullOrEmptyWithOneEmpty(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isOneNullOrEmpty(["abc", ""]));
+        self::assertTrue(ZugferdObjectHelper::isOneNullOrEmpty(["abc", ""]));
     }
 
     public function testIsOneNullOrEmptyWithDateTime(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isOneNullOrEmpty([new DateTime(), "abc"]));
+        self::assertFalse(ZugferdObjectHelper::isOneNullOrEmpty([new DateTime(), "abc"]));
     }
 
     public function testIsOneNullOrEmptyWithDateTimeImmutable(): void
     {
-        $this->assertFalse(ZugferdObjectHelper::isOneNullOrEmpty([new DateTimeImmutable(), "abc"]));
+        self::assertFalse(ZugferdObjectHelper::isOneNullOrEmpty([new DateTimeImmutable(), "abc"]));
     }
 
     public function testIsOneNullOrEmptyWithDateTimeAndNull(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isOneNullOrEmpty([new DateTime(), null]));
+        self::assertTrue(ZugferdObjectHelper::isOneNullOrEmpty([new DateTime(), null]));
     }
 
     public function testIsOneNullOrEmptyWithDateTimeImmutableAndNull(): void
     {
-        $this->assertTrue(ZugferdObjectHelper::isOneNullOrEmpty([new DateTimeImmutable(), null]));
+        self::assertTrue(ZugferdObjectHelper::isOneNullOrEmpty([new DateTimeImmutable(), null]));
     }
 
     // =========================================================================

@@ -38,7 +38,7 @@ trait HandlesXmlTests
      */
     public function testDummy()
     {
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     /**

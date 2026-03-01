@@ -71,7 +71,7 @@ class ZugferdDocument
     {
         $this->initProfile($profile);
         $this->initObjectHelper();
-        $this->initSerialzer();
+        $this->initSerializer();
     }
 
     /**
@@ -189,7 +189,7 @@ class ZugferdDocument
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    protected function initSerialzer(): ZugferdDocument
+    protected function initSerializer(): ZugferdDocument
     {
         $serializerBuilder = SerializerBuilder::create();
 
