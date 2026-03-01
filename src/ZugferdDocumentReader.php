@@ -4063,11 +4063,11 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the contact person of the different end recipient at position level.
      *
-     * @param  string|null $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  string|null $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  string|null $contactPhoneNo        __BT_X-73, From EXTENDED__ A telephone number for the contact point
-     * @param  string|null $contactFaxNo          __BT_X-74, From EXTENDED__ A fax number of the contact point
-     * @param  string|null $contactEmailAddress   __BT_X-75, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactPersonName     __BT-X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-73, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-74, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-75, From EXTENDED__ An e-mail address of the contact point
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionUltimateShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
