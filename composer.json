@@ -11,6 +11,12 @@
             "name": "Daniel Erling",
             "email": "daniel@erling.com.de",
             "role": "lead"
+        },
+        {
+            "name": "Thomas Georg Wunner",
+            "email": "info@wunner-software.de",
+            "homepage": "https://www.wunner-software.de/",
+            "role": "developer"
         }
     ],
     "config": {
@@ -28,7 +34,7 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.3 <9.0",
         "ext-simplexml": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "horstoeko/mimedb": "^1",

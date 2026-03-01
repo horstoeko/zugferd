@@ -96,7 +96,9 @@ class DocumentTest extends TestCase
     {
         $reflector = new ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
-        $property->setAccessible(true);
+        if (self::REFLECTION_NEEDS_ACCESSIBLE) {
+            $property->setAccessible(true);
+        }
         return $property;
     }
 }

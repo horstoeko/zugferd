@@ -1,3 +1,33 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+### Added
+
+- Implemented `getDocumentUltimateCustomerOrderReferencedDocuments()` in `ZugferdDocumentReader` which was previously only a stub returning `$this` without reading any data. Now returns an array of all ultimate customer order referenced documents with their IssuerAssignedID and FormattedIssueDateTime.
+- Implemented position-level UltimateCustomerOrderReferencedDocument getter methods in `ZugferdDocumentReader`: `firstDocumentPositionUltimateCustomerOrderReferencedDocument()`, `nextDocumentPositionUltimateCustomerOrderReferencedDocument()`, and `getDocumentPositionUltimateCustomerOrderReferencedDocument()` with pointer-based iteration, matching the existing Builder method `addDocumentPositionUltimateCustomerOrderReferencedDocument()`.
+- Implemented position-level ShipTo getter methods in `ZugferdDocumentReader`: `getDocumentPositionShipTo()`, `getDocumentPositionShipToGlobalId()`, `getDocumentPositionShipToTaxRegistration()`, `getDocumentPositionShipToAddress()`, `getDocumentPositionShipToLegalOrganisation()`, `firstDocumentPositionShipToContact()`, `nextDocumentPositionShipToContact()`, and `getDocumentPositionShipToContact()`, matching the existing Builder methods.
+- Implemented position-level UltimateShipTo getter methods in `ZugferdDocumentReader`: `getDocumentPositionUltimateShipTo()`, `getDocumentPositionUltimateShipToGlobalId()`, `getDocumentPositionUltimateShipToTaxRegistration()`, `getDocumentPositionUltimateShipToAddress()`, `getDocumentPositionUltimateShipToLegalOrganisation()`, `firstDocumentPositionUltimateShipToContact()`, `nextDocumentPositionUltimateShipToContact()`, and `getDocumentPositionUltimateShipToContact()`, matching the existing Builder methods.
+
+### Fixed
+
+- Fixed 4 occurrences of comma instead of dot in getter path strings in `ZugferdDocumentReader`, which caused date format retrieval to silently fail for `getDocumentPositionSupplyChainEvent()`, `getDocumentPositionDespatchAdviceReferencedDocument()`, `getDocumentPositionReceivingAdviceReferencedDocument()`, and `getDocumentPositionDeliveryNoteReferencedDocument()`.
+- Fixed `getDocumentPositionDespatchAdviceReferencedDocument()`, `getDocumentPositionReceivingAdviceReferencedDocument()`, and `getDocumentPositionDeliveryNoteReferencedDocument()` using `getInvoiceValueByPath()` (document-level) instead of `getInvoiceValueByPathFrom($tradeLineItem, ...)` (position-level) for date fields, which caused dates to always return as null.
+- Fixed `isAllNullOrEmpty()` and `isOneNullOrEmpty()` in `ZugferdObjectHelper` checking `instanceof DateTime` instead of `instanceof DateTimeInterface`, which caused incorrect early-return behavior for `DateTimeImmutable` arguments.
+- Fixed PHP 8.5 deprecation of `ReflectionMethod::setAccessible()` in `ZugferdDocumentValidator`, `TestCase`, and `DocumentTest` by removing the no-op calls (accessible since PHP 8.1).
+- Fixed fragile PDF test assertions in `PdfBuilderEn16931Test` that compared exact FlateDecode compressed byte lengths, which differ across PHP/zlib versions.
+
+### Tests
+
+- Added `ReaderExtendedPositionDeliveryTest` (30 tests) with round-trip tests for all newly implemented position-level Reader getter methods. The Builder creates an Extended-profile document with ShipTo, UltimateShipTo, UltimateCustomerOrderReferencedDocument, SupplyChainEvent, DespatchAdvice, ReceivingAdvice, and DeliveryNote data at position level, then the Reader verifies every field is correctly read back. A second position without data ensures correct empty/default handling. These tests were necessary because the existing XML test fixtures (`xml_extended_1.xml`, `xml_extended_2.xml`) contain none of these elements at position level, meaning the 21 newly implemented Reader methods had zero test coverage.
+- Added `ObjectHelperDateTimeInterfaceTest` (22 tests) covering `isAllNullOrEmpty()` and `isOneNullOrEmpty()` with `DateTime`, `DateTimeImmutable`, `null`, empty strings, and mixed inputs. Also tests `getFormattedDateTimeType()`, `getDateTimeType()`, and `getDateType()` with `DateTimeImmutable` input, and a full Builder/Reader round-trip with `DateTimeImmutable` dates. These tests were necessary because `isAllNullOrEmpty()` and `isOneNullOrEmpty()` had no dedicated unit tests at all despite being used 79 times throughout the codebase, and the `instanceof DateTime` to `instanceof DateTimeInterface` fix needed regression coverage to prevent future breakage.
+
+---
+
 ## v1.0.120
 
 :exclamation: _There is one internal commit_

@@ -110,7 +110,9 @@ class ZugferdDocumentValidator
         $reflector = new \ReflectionClass($this->document);
 
         $method = $reflector->getMethod('getInvoiceObject');
-        $method->setAccessible(true);
+        if (ZugferdSettings::REFLECTION_NEEDS_ACCESSIBLE) {
+            $method->setAccessible(true);
+        }
 
         return $method->invoke($this->document);
     }

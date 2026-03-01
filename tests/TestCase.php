@@ -10,6 +10,14 @@ use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 class TestCase extends PhpUnitTestCase
 {
     /**
+     * Whether ReflectionMethod/ReflectionProperty::setAccessible() is needed.
+     * Required for PHP < 8.1, no-op since 8.1, deprecated since 8.5.
+     *
+     * @var bool
+     */
+    const REFLECTION_NEEDS_ACCESSIBLE = PHP_VERSION_ID < 80100;
+
+    /**
      * Registered files
      *
      * @var array<string>
@@ -89,7 +97,9 @@ class TestCase extends PhpUnitTestCase
     {
         $reflector = new ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
-        $property->setAccessible(true);
+        if (self::REFLECTION_NEEDS_ACCESSIBLE) {
+            $property->setAccessible(true);
+        }
         return $property;
     }
 
@@ -104,7 +114,9 @@ class TestCase extends PhpUnitTestCase
     {
         $reflector = new ReflectionClass($object);
         $property = $reflector->getProperty($propertyName);
-        $property->setAccessible(true);
+        if (self::REFLECTION_NEEDS_ACCESSIBLE) {
+            $property->setAccessible(true);
+        }
         return $property;
     }
 
@@ -119,7 +131,9 @@ class TestCase extends PhpUnitTestCase
     {
         $reflector = new ReflectionClass($className);
         $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
+        if (self::REFLECTION_NEEDS_ACCESSIBLE) {
+            $method->setAccessible(true);
+        }
         return $method;
     }
 
@@ -134,7 +148,9 @@ class TestCase extends PhpUnitTestCase
     {
         $reflector = new ReflectionClass($object);
         $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
+        if (self::REFLECTION_NEEDS_ACCESSIBLE) {
+            $method->setAccessible(true);
+        }
         return $method;
     }
 

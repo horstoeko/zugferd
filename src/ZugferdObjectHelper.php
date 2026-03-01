@@ -1794,7 +1794,7 @@ class ZugferdObjectHelper
     public static function isAllNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
-            if ($arg instanceof DateTime) {
+            if ($arg instanceof DateTimeInterface) {
                 return false;
             }
 
@@ -1815,7 +1815,7 @@ class ZugferdObjectHelper
     public static function isOneNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
-            if ($arg instanceof DateTime) {
+            if ($arg instanceof DateTimeInterface) {
                 if ($arg == null) {
                     return true;
                 }

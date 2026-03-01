@@ -8,6 +8,7 @@
         <testsuite name="ObjectHelper">
             <file>../tests/testcases/ObjectHelperEn16931Test.php</file>
             <file>../tests/testcases/ObjectHelperExtendedTest.php</file>
+            <file>../tests/testcases/ObjectHelperDateTimeInterfaceTest.php</file>
         </testsuite>
         <testsuite name="Base">
             <file>../tests/testcases/ProfileResolverTest.php</file>
@@ -22,6 +23,7 @@
             <file>../tests/testcases/ReaderExtended2Test.php</file>
             <file>../tests/testcases/ReaderXRechnungTest.php</file>
             <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+            <file>../tests/testcases/ReaderExtendedPositionDeliveryTest.php</file>
         </testsuite>
         <testsuite name="Builder">
             <file>../tests/testcases/BuilderMinimumTest.php</file>
