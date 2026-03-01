@@ -20,11 +20,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - `setasign/fpdi`: `^2` → `^2.6.3` (CVE-2025-54869, DoS via memory exhaustion)
   - `symfony/process`: `^5|^6|^7|^8` → `^5.4.46|^6.4.14|^7.1.7|^8` (CVE-2024-51736, command execution hijack on Windows)
   - `symfony/validator`: `^5|^6|^7|^8` → `^5.4.43|^6.4.11|^7.1.4|^8` (CVE-2024-50343, regex validation bypass)
-- Raised minimum PHP version to `>=8.1 <9.0` (previously `>=7.3`) to support enums and modern language features.
-- Updated Symfony dependencies from 5.4/6.0 to 6.4 LTS (finder, process, validator, yaml), enabled by the PHP 8.1 minimum.
+  - `smalot/pdfparser`: `^0|^2` → `^2.12.3` (Memory-Exhaustion via crafted PDF, dropped insecure 0.x-line)
+- Raised minimum PHP version to `>=8.3 <9.0` (previously `>=7.3`) to support modern language features and current dependency requirements.
+- Upgraded PHPUnit from `^9` (EOL since Feb 2024) to `^10|^11` and migrated `phpunit.xml` to PHPUnit 11 schema
+- Replaced abandoned dev dependencies with maintained forks:
+  - `phploc/phploc: ^7` (archived) → `cmgmyr/phploc: ^8`
+  - `sebastian/phpcpd: ^6` (archived) → `systemsdk/phpcpd: ^8`
 
 ### Changed
-- performance improvement: grouped logical xor as such
+- Simplified consecutive `if`-blocks with identical actions into combined expressions (`||`) in `ZugferdObjectHelper`, `ZugferdDocumentPdfBuilderAbstract`, `ZugferdKositValidator`, and `ZugferdPdfValidator`.
+- Replaced 7 consecutive `if ($format == ...)` blocks with a `match()` expression in `ZugferdObjectHelper::toDateTime()`.
+- Performance improvement: grouped logical xor as such.
 
 ### Fixed
 
@@ -32,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fixed `getDocumentPositionDespatchAdviceReferencedDocument()`, `getDocumentPositionReceivingAdviceReferencedDocument()`, and `getDocumentPositionDeliveryNoteReferencedDocument()` using `getInvoiceValueByPath()` (document-level) instead of `getInvoiceValueByPathFrom($tradeLineItem, ...)` (position-level) for date fields, which caused dates to always return as null.
 - Fixed `isAllNullOrEmpty()` and `isOneNullOrEmpty()` in `ZugferdObjectHelper` checking `instanceof DateTime` instead of `instanceof DateTimeInterface`, which caused incorrect early-return behavior for `DateTimeImmutable` arguments.
 - Fixed fragile PDF test assertions in `PdfBuilderEn16931Test` that compared exact FlateDecode compressed byte lengths, which differ across PHP/zlib versions.
+- Fixed `expectNoticeOrWarningExt()` in test base class not restoring the error handler when the expected exception is thrown, causing 125 risky tests under PHPUnit 11. Added `try/finally` to ensure `restore_error_handler()` is always called. Removed unused `expectNoticeOrWarning()` method.
 
 ### Tests
 

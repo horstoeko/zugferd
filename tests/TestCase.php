@@ -42,22 +42,7 @@ class TestCase extends PhpUnitTestCase
     }
 
     /**
-     * Expect notice on php version smaller than 8
-     * Expect warning on php version greater or equal than 8
-     *
-     * @return void
-     */
-    public function expectNoticeOrWarning(): void
-    {
-        if (version_compare(phpversion(), '8', '>=')) {
-            $this->expectWarning();
-        } else {
-            $this->expectNotice();
-        }
-    }
-
-    /**
-     * Use this with PHPunit 10
+     * Expect a notice or warning from the closure
      *
      * @param  \Closure $run
      * @return void
@@ -73,9 +58,11 @@ class TestCase extends PhpUnitTestCase
 
         $this->expectException(\Exception::class);
 
-        call_user_func($run);
-
-        restore_error_handler();
+        try {
+            call_user_func($run);
+        } finally {
+            restore_error_handler();
+        }
     }
 
     /**
