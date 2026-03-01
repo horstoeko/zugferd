@@ -75,8 +75,7 @@ class TestCase extends PhpUnitTestCase
     public function getPrivatePropertyFromClassname(string $className, string $propertyName): ReflectionProperty
     {
         $reflector = new ReflectionClass($className);
-        $property = $reflector->getProperty($propertyName);
-        return $property;
+        return $reflector->getProperty($propertyName);
     }
 
     /**
@@ -89,8 +88,7 @@ class TestCase extends PhpUnitTestCase
     public function getPrivatePropertyFromObject(object $object, string $propertyName): ReflectionProperty
     {
         $reflector = new ReflectionClass($object);
-        $property = $reflector->getProperty($propertyName);
-        return $property;
+        return $reflector->getProperty($propertyName);
     }
 
     /**
@@ -103,8 +101,7 @@ class TestCase extends PhpUnitTestCase
     public function getPrivateMethodFromClassname(string $className, string $methodName): ReflectionMethod
     {
         $reflector = new ReflectionClass($className);
-        $method = $reflector->getMethod($methodName);
-        return $method;
+        return $reflector->getMethod($methodName);
     }
 
     /**
@@ -117,8 +114,7 @@ class TestCase extends PhpUnitTestCase
     public function getPrivateMethodFromObject(object $object, string $methodName): ReflectionMethod
     {
         $reflector = new ReflectionClass($object);
-        $method = $reflector->getMethod($methodName);
-        return $method;
+        return $reflector->getMethod($methodName);
     }
 
     /**

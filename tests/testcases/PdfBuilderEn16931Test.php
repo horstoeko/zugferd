@@ -796,6 +796,8 @@ class PdfBuilderEn16931Test extends TestCase
                 if ($which === 'subject') {
                     return "DummySubject";
                 }
+
+                return null;
             }
         );
         $pdfBuilder->generateDocument();
@@ -853,17 +855,11 @@ class PdfBuilderEn16931Test extends TestCase
         $pdfBuilder = new ZugferdDocumentPdfBuilder(self::$document, self::$sourcePdfFilename);
         $pdfBuilder->setMetaInformationCallback(
             function ($which) {
-                if ($which === 'title') {
-                    return "";
+                if (in_array($which, ['title', 'author', 'subject'], true)) {
+                    return '';
                 }
 
-                if ($which === 'author') {
-                    return "";
-                }
-
-                if ($which === 'subject') {
-                    return "";
-                }
+                return null;
             }
         );
         $pdfBuilder->setTitleTemplate('%3$s : %2$s %1$s');

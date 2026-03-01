@@ -63,7 +63,7 @@ class ZugferdDocumentJsonExporter
     /**
      * Returns the invoice object as a pretty printed json string
      *
-     * @return string|boolean
+     * @return string|bool
      */
     public function toPrettyJsonString()
     {

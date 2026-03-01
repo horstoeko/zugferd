@@ -13,16 +13,6 @@ class KositValidatorTest extends TestCase
 {
     use RunsOnlyWithJavaEnvironmentTrait;
 
-    /**
-     * @inheritDoc
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        //$this->markAsSkippedIfJavaIsNotAvailable();
-    }
-
     public function testMessageBag(): void
     {
         $kositValidator = ZugferdKositValidator::fromString(file_get_contents(__DIR__ . '/../assets/xml_en16931_1.xml'));

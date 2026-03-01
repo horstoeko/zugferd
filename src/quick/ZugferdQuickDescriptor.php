@@ -69,16 +69,16 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     protected $totalPrepaidAmount = 0.0;
 
     /**
-     * Internal flag to see if the totals are alread calculated
+     * Internal flag to see if the totals are already calculated
      *
-     * @var boolean
+     * @var bool
      */
     protected $totalsAreCalculated = false;
 
     /**
      * Returns the profile of the descriptor
      *
-     * @return integer
+     * @return int
      */
     protected static function getProfile(): int
     {
@@ -153,10 +153,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set payment means to "direct debit"
      *
-     * If $isSEPA is true code __31__ wil be useed for payment means code.
-     * If $isSEPA is false code __59__ wil be useed for payment means code.
+     * If $isSEPA is true code __31__ will be used for payment means code.
+     * If $isSEPA is false code __59__ will be used for payment means code.
      *
-     * @param  boolean $isSEPA    __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param  bool $isSEPA    __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * @param  string  $buyerIban __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @return ZugferdQuickDescriptor
      */
@@ -169,10 +169,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set payment means to "credit transfer"
      *
-     * If $isSEPA is true code __58__ wil be useed for payment means code.
-     * If $isSEPA is false code __30__ wil be useed for payment means code.
+     * If $isSEPA is true code __58__ will be used for payment means code.
+     * If $isSEPA is false code __30__ will be used for payment means code.
      *
-     * @param  boolean     $isSEPA           __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param  bool     $isSEPA           __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * @param  string      $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
@@ -382,13 +382,13 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Add detailed information on the buyers's tax information
+     * Add detailed information on the buyer's tax information
      *
-     * The local identification (defined by the buyers's address) of the buyers for tax purposes or a reference that enables the buyers
-     * to indicate his reporting status for tax purposes The sales tax identification number of the buyers
-     * Note: This information may affect how the buyer the invoice settled (such as in relation to social security contributions). So
-     * e.g. In some countries, if the buyers is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the
-     * buyers. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
+     * The local identification (defined by the buyer's address) of the buyer for tax purposes or a reference that enables the buyer
+     * to indicate his reporting status for tax purposes. The sales tax identification number of the buyer.
+     * Note: This information may affect how the buyer settles the invoice (such as in relation to social security contributions). So
+     * e.g. in some countries, if the buyer is not reported for tax, the buyer will withhold the tax amount and pay it on behalf of the
+     * buyer. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
      * @param  string $no       __BT-48-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
@@ -402,7 +402,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Set Buyers electronic communication information
+     * Set buyer's electronic communication information
      *
      * @param  string $uri       __BT-49, From BASIC WL__ Specifies the buyer's electronic address to which the invoice is sent
      * @param  string $uriScheme __BT-49-1, From BASIC WL__ The identifier for the identification scheme of the buyer's electronic address (Default: EM)
@@ -420,7 +420,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param  string      $name           __BT-27, From MINIMUM__ The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
      * @param  string      $postcode       __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
      * @param  string      $city           __BT-37, From BASIC WL__ Usual name of the city or municipality in which the seller's address is located
-     * @param  string      $street         __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
+     * @param  string      $street         __BT-35, From BASIC WL__ The main line in the seller's address. This is usually the street name and house number or the post office box
      * @param  string      $country        __BT-40, From MINIMUM__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their
      *                                     subdivisions”
      * @param  string|null $id             __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
@@ -473,7 +473,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Set Sellers electronic communication information
+     * Set seller's electronic communication information
      *
      * @param  string $uri       __BT-34, From BASIC WL__ Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
      * @param  string $uriScheme __BT-34-1, From BASIC WL__ The identifier for the identification scheme of the seller's electronic address (Default: EM)
@@ -532,7 +532,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $this->addDocumentPositionTax($taxCategoryCode, $taxTypeCode, $taxPercent);
         $this->setDocumentPositionLineSummation($lineTotalAmount);
 
-        if ($hasChargeAmountIsAllowance == true) {
+        if ($hasChargeAmountIsAllowance) {
             $this->addDocumentPositionAllowanceCharge($allowanceChargeAmount, $allowanceChargeAmountIsAllowance === false, null, null, null, $allowanceChargeReason);
         }
 
@@ -607,7 +607,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Add a logistical service fees (On document level)
+     * Add a logistical service fee (on document level)
      *
      * @param  float  $amount          __BT-X-272, From EXTENDED__ Amount of the service fee
      * @param  string $description     __BT-X-271, From EXTENDED__ Identification of the service fee
@@ -747,7 +747,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
-     * Insert into internal vat table for later using, e.g. when creating
+     * Insert into internal vat table for later use, e.g. when creating
      * the vat breakdown
      *
      * @param  string $taxCategoryCode
@@ -820,7 +820,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Summarizes an array element in the internal vat table
      *
-     * @param  integer $index
+     * @param  int $index
      * @return float
      */
     protected function summarizeVatTableElement(int $index): float

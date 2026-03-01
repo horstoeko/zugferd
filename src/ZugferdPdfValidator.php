@@ -23,7 +23,7 @@ use Symfony\Component\Process\Process;
 
 /**
  * Class representing the validator against PDF files using VeraPDF.
- * This class requires a JAVA running setup
+ * This class requires a running JAVA setup
  *
  * @category Zugferd
  * @package  Zugferd
@@ -84,9 +84,9 @@ class ZugferdPdfValidator
     private $fileToValidateFilename = "";
 
     /**
-     * Internal flag which indicates that the cleanup of the base directory is disables
+     * Internal flag which indicates that the cleanup of the base directory is disabled
      *
-     * @var boolean
+     * @var bool
      */
     private $cleanupBaseDirectoryIsDisabled = false;
 
@@ -289,7 +289,7 @@ class ZugferdPdfValidator
      * Set the Ruleset to use for validation.
      * Allowed values are 0, 1a, 1b, 2a, 2b, 2u, 3a, 3b, 3u, 4, 4f, 4e, ua1, ua2
      *
-     * @param  string $newVlidatorRuleset
+     * @param  string $newValidatorRuleset
      * @return ZugferdPdfValidator
      */
     public function setValidatorRuleset(string $newVlidatorRuleset): ZugferdPdfValidator
@@ -452,7 +452,7 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Get messages from messagebag filtered by message type
+     * Get messages from message bag filtered by message type
      *
      * @param  string $messageType
      * @return array
@@ -485,7 +485,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if __no__ validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationErrors(): bool
     {
@@ -495,7 +495,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationErrors(): bool
     {
@@ -515,7 +515,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if __no__ validation warnings are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationWarnings(): bool
     {
@@ -525,7 +525,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if validation warnings are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationWarnings(): bool
     {
@@ -543,9 +543,9 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Returns true if __no__ validation information are present otherwise false
+     * Returns true if __no__ validation information is present, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationInformation(): bool
     {
@@ -553,9 +553,9 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Returns true if validation Information are present otherwise false
+     * Returns true if validation information is present, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationInformation(): bool
     {
@@ -575,7 +575,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if there are __no__ system errors (e.g. exceptions before the validation app was called)
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoProcessErrors(): bool
     {
@@ -585,7 +585,7 @@ class ZugferdPdfValidator
     /**
      * Returns true if there are any system errors (e.g. exceptions before the validation app was called)
      *
-     * @return boolean
+     * @return bool
      */
     public function hasProcessErrors(): bool
     {
@@ -605,7 +605,7 @@ class ZugferdPdfValidator
     /**
      * Check Requirements
      *
-     * @return boolean
+     * @return bool
      */
     private function checkRequirements(): bool
     {
@@ -632,7 +632,7 @@ class ZugferdPdfValidator
     /**
      * Download required files
      *
-     * @return boolean
+     * @return bool
      */
     private function downloadRequiredFiles(): bool
     {
@@ -647,7 +647,7 @@ class ZugferdPdfValidator
     /**
      * Unpack required files
      *
-     * @return boolean
+     * @return bool
      */
     private function unpackRequiredFiles(): bool
     {
@@ -830,7 +830,7 @@ class ZugferdPdfValidator
     /**
      * Runs the validator java application
      *
-     * @return boolean
+     * @return bool
      */
     private function performValidation(): bool
     {
@@ -995,7 +995,7 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Runs a process. If the process runned successfully this method
+     * Runs a process. If the process ran successfully this method
      * returns true, otherwise false
      *
      * @param  array  $command
@@ -1008,8 +1008,8 @@ class ZugferdPdfValidator
     }
 
     /**
-     * Runs a process. If the process runned successfully this method
-     * returns true, otherwise false. The output of the process wil be
+     * Runs a process. If the process ran successfully this method
+     * returns true, otherwise false. The output of the process will be
      * returned in $processOutput
      *
      * @param  array       $command

@@ -163,7 +163,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     }
 
     /**
-     * Create an instance by cpntent
+     * Create an instance by content
      *
      * @param  string $fromContent
      * @param  int    $newProfileId

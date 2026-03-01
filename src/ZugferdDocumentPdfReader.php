@@ -67,7 +67,7 @@ class ZugferdDocumentPdfReader
     }
 
     /**
-     * Returns a XML content from a PDF file
+     * Returns the XML content from a PDF file
      *
      * @param  string $pdfFilename
      * @return string
@@ -82,7 +82,7 @@ class ZugferdDocumentPdfReader
     }
 
     /**
-     * Returns a XML content from a PDF binary stream (string)
+     * Returns the XML content from a PDF binary stream (string)
      *
      * @param  string $pdfContent
      * @return string

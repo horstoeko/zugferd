@@ -26,11 +26,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Replaced abandoned dev dependencies with maintained forks:
   - `phploc/phploc: ^7` (archived) → `cmgmyr/phploc: ^8`
   - `sebastian/phpcpd: ^6` (archived) → `systemsdk/phpcpd: ^8`
+- added editor config file as it was already realized in this project
 
 ### Changed
 - Simplified consecutive `if`-blocks with identical actions into combined expressions (`||`) in `ZugferdObjectHelper`, `ZugferdDocumentPdfBuilderAbstract`, `ZugferdKositValidator`, and `ZugferdPdfValidator`.
 - Replaced 7 consecutive `if ($format == ...)` blocks with a `match()` expression in `ZugferdObjectHelper::toDateTime()`.
 - Performance improvement: grouped logical xor as such.
+- Normalized all PHPDoc types to PSR-12 short forms: `boolean` → `bool` (139 occurrences) and `integer` → `int` (69 occurrences) across 21 files.
+- Fixed ~200 grammar errors, typos, and spelling mistakes in PHPDoc comments and inline comments across 22 source files, including spelling, grammar, wrong descriptions, capitalization and copy & paste errors
+- static code analysis fixes
 
 ### Fixed
 

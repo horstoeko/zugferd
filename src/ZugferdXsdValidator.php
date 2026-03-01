@@ -15,8 +15,6 @@ use LibXMLError;
 use Throwable;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
-use horstoeko\zugferd\ZugferdDocument;
-use horstoeko\zugferd\ZugferdSettings;
 
 /**
  * Class representing the validator against XSD for documents
@@ -80,7 +78,7 @@ class ZugferdXsdValidator
      * Returns true if validation passed otherwise false
      *
      * @deprecated 1.0.65 Use hasNoValidationErrors instead
-     * @return     boolean
+     * @return     bool
      */
     public function validationPased(): bool
     {
@@ -91,17 +89,17 @@ class ZugferdXsdValidator
      * Returns true if validation failed otherwise false
      *
      * @deprecated 1.0.65 Use hasValidationErrors instead
-     * @return     boolean
+     * @return     bool
      */
     public function validationFailed(): bool
     {
-        return !$this->validationPased();
+        return !$this->hasNoValidationErrors();
     }
 
     /**
      * Returns true if validation passed otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationErrors(): bool
     {
@@ -111,7 +109,7 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationErrors(): bool
     {
