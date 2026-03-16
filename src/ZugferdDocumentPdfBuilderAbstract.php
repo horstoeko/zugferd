@@ -706,10 +706,14 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
         $docTypeCode = $docTypeXpath->item(0)->nodeValue;
 
-        $docTypeName = match ($docTypeCode) {
-            ZugferdInvoiceType::CREDITNOTE => 'Credit Note',
-            default => 'Invoice',
-        };
+        switch ($docTypeCode) {
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
+        }
 
         return [
             'invoiceId' => $invoiceId,

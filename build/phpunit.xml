@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd" bootstrap="../vendor/autoload.php" cacheDirectory=".phpunit.cache">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php">
     <testsuites>
         <testsuite name="General">
             <file>../tests/testcases/SettingsTest.php</file>
@@ -78,7 +78,16 @@
             <file>../tests/testcases/issues/Issue337Test.php</file>
         </testsuite>
     </testsuites>
-    <coverage>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">../src</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">../src/codelists</directory>
+            <directory suffix=".php">../src/codelistsenum</directory>
+            <directory suffix=".php">../src/exception</directory>
+            <file>../src/ZugferdProfiles.php</file>
+        </exclude>
         <report>
             <xml outputDirectory="coverage"/>
             <html outputDirectory="coverage-html"/>
@@ -90,15 +99,4 @@
         <junit outputFile="logs/junit.xml"/>
         <testdoxHtml outputFile="logs/testdox.html"/>
     </logging>
-    <source>
-        <include>
-            <directory suffix=".php">../src</directory>
-        </include>
-        <exclude>
-            <directory suffix=".php">../src/codelists</directory>
-            <directory suffix=".php">../src/codelistsenum</directory>
-            <directory suffix=".php">../src/exception</directory>
-            <file>../src/ZugferdProfiles.php</file>
-        </exclude>
-    </source>
 </phpunit>

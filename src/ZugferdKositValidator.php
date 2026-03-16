@@ -786,6 +786,9 @@ class ZugferdKositValidator
             return false;
         }
 
+        $httpConnection = null;
+        $bRw = true;
+
         try {
             $httpConnection = curl_init($this->getRemoteModeUrl());
 
@@ -802,25 +805,28 @@ class ZugferdKositValidator
             if ($response === false) {
                 $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
                 $this->addToMessageBag(curl_error($httpConnection));
+                curl_close($httpConnection);
                 return false;
             }
 
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
-            $responseError = curl_error($httpConnection);
-
-            unset($httpConnection);
 
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
                 $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
-                $this->addToMessageBag($responseError);
+                $this->addToMessageBag(curl_error($httpConnection));
+                curl_close($httpConnection);
                 return false;
             }
         } catch (Throwable $throwable) {
             $this->addToMessageBag($throwable);
-            return false;
+            $bRw = false;
+        } finally {
+            if ($httpConnection !== null) {
+                curl_close($httpConnection);
+            }
         }
 
-        return true;
+        return $bRw;
     }
 
     /**
@@ -980,6 +986,9 @@ class ZugferdKositValidator
             return true;
         }
 
+        $httpConnection = null;
+        $bRw = true;
+
         try {
             $httpConnection = curl_init($this->getRemoteModeUrl());
 
@@ -999,26 +1008,30 @@ class ZugferdKositValidator
             if ($response === false) {
                 $this->addToMessageBag("Failed to connect to the host where the Validator is running in daemon mode");
                 $this->addToMessageBag(curl_error($httpConnection));
+                curl_close($httpConnection);
                 return false;
             }
 
             $responseStatusCode = curl_getinfo($httpConnection, CURLINFO_HTTP_CODE);
-
-            unset($httpConnection);
 
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
                 if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {
                     $this->parseValidatorXmlReportByContent($matches[0]);
                 }
 
+                curl_close($httpConnection);
                 return false;
             }
         } catch (Throwable $throwable) {
             $this->addToMessageBag($throwable);
-            return false;
+            $bRw = false;
+        } finally {
+            if ($httpConnection !== null) {
+                curl_close($httpConnection);
+            }
         }
 
-        return true;
+        return $bRw;
     }
 
     /**

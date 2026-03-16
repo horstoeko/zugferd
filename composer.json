@@ -34,7 +34,7 @@
         }
     },
     "require": {
-        "php": ">=8.3 <9.0",
+        "php": ">=7.3 <9.0",
         "ext-simplexml": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "horstoeko/mimedb": "^1",
@@ -42,7 +42,7 @@
         "jms/serializer": "^3",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2.6.3",
-        "smalot/pdfparser": "^2.12.3",
+        "smalot/pdfparser": "^0|^2",
         "symfony/finder": "^5|^6|^7|^8",
         "symfony/process": "^5.4.46|^6.4.14|^7.1.7|^8",
         "symfony/validator": "^5.4.43|^6.4.11|^7.1.4|^8",
@@ -53,12 +53,12 @@
         "nette/php-generator": "*",
         "pdepend/pdepend": "^2",
         "phpdocumentor/reflection-docblock": "^5",
-        "cmgmyr/phploc": "^8",
+        "phploc/phploc": "^7",
         "phpmd/phpmd": "^2",
         "phpstan/phpstan": "^1|^2",
-        "phpunit/phpunit": "^10|^11",
+        "phpunit/phpunit": "^9",
         "rector/rector": "*",
-        "systemsdk/phpcpd": "^8",
+        "sebastian/phpcpd": "^6",
         "squizlabs/php_codesniffer": "^3"
     },
     "scripts": {
