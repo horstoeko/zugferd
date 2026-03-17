@@ -93,6 +93,8 @@ class DocumentTest extends TestCase
     public function getPrivateProperty($className, $propertyName): ReflectionProperty
     {
         $reflector = new ReflectionClass($className);
-        return $reflector->getProperty($propertyName);
+        $property = $reflector->getProperty($propertyName);
+        $property->setAccessible(true);
+        return $property;
     }
 }
