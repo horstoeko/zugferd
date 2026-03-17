@@ -172,8 +172,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     }
 
     /**
-     * Serialize Anount type
-     * The amounts will be serialized (by default) with a precission of 2 digits
+     * Serialize Amount type
+     * The amounts will be serialized (by default) with a precision of 2 digits
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
@@ -200,7 +200,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
 
     /**
      * Serialize quantity type
-     * The quantity will be serialized (by default) with a precission of 2 digits
+     * The quantity will be serialized (by default) with a precision of 2 digits
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
@@ -226,8 +226,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     }
 
     /**
-     * Serialize a percantage value
-     * The valze will be serialized (by default) with a precission of 2 digits
+     * Serialize a percentage value
+     * The value will be serialized (by default) with a precision of 2 digits
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
@@ -245,8 +245,8 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     }
 
     /**
-     * Serialize a meassure value
-     * The valze will be serialized (by default) with a precission of 2 digits
+     * Serialize a measure value
+     * The value will be serialized (by default) with a precision of 2 digits
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
@@ -272,7 +272,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     }
 
     /**
-     * Serialize a inditcator
+     * Serialize an indicator
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
@@ -281,6 +281,6 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
     {
-        return $visitor->getDocument()->createElement('udt:Indicator', $data->getIndicator() == false ? 'false' : 'true');
+        return $visitor->getDocument()->createElement('udt:Indicator', !$data->getIndicator() ? 'false' : 'true');
     }
 }

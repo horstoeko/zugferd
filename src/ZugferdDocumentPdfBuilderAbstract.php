@@ -21,13 +21,10 @@ use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
 use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
-use horstoeko\zugferd\ZugferdPackageVersion;
-use horstoeko\zugferd\ZugferdPdfWriter;
-use horstoeko\zugferd\ZugferdSettings;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 /**
- * Class representing the base facillity adding XML data
+ * Class representing the base facility adding XML data
  * to an existing PDF with conversion to PDF/A
  *
  * @category Zugferd
@@ -60,7 +57,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $additionalCreatorTool = "";
 
     /**
-     * The relationship type to use for the XML attachment. Detault is Data
+     * The relationship type to use for the XML attachment. Default is Data
      *
      * @var string
      */
@@ -123,9 +120,9 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $metaInformationCallback;
 
     /**
-     * Internal flag which indicate, that attachment pane should be opened
+     * Internal flag which indicates that the attachment pane should be opened
      *
-     * @var boolean
+     * @var bool
      */
     private $attachmentPaneVisibility = true;
 
@@ -134,7 +131,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @param string $pdfData
      * The full filename or a string containing the binary pdf data. This
-     * is the original PDF (e.g. created by a ERP system)
+     * is the original PDF (e.g. created by an ERP system)
      */
     public function __construct(string $pdfData)
     {
@@ -157,7 +154,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Saves the generated PDF document to a file
      *
-     * @param  string $toFilename The full qualified filename to which the generated PDF (with attachment)is stored
+     * @param  string $toFilename The fully qualified filename to which the generated PDF (with attachment) is stored
      * @return static
      */
     public function saveDocument(string $toFilename)
@@ -168,7 +165,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Starts a HTTP download of the generated PDF document
+     * Starts an HTTP download of the generated PDF document
      *
      * @param  string $toFilename
      * @return string
@@ -179,7 +176,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Returns the content of the generared PDF as a string
+     * Returns the content of the generated PDF as a string
      *
      * @return string
      */
@@ -278,7 +275,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
     /**
      * Attach an additional file to PDF. The file that is specified in $fullFilename
-     * must exists
+     * must exist
      *
      * @param  string $fullFilename
      * @param  string $displayName
@@ -354,17 +351,16 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             throw new ZugferdUnknownMimetype();
         }
 
-        // Sanatize relationship type
+        // Sanitize relationship type
 
-        if ($relationshipType === '') {
+        if (
+            $relationshipType === ''
+            || !in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])
+        ) {
             $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])) {
-            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
-        }
-
-        // Sanatize displayname
+        // Sanitize display name
 
         if ($displayName === '') {
             $displayName = FileUtils::getFilenameWithExtension($filename);
@@ -384,7 +380,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Set the the deterministic mode. This mode should only be used
+     * Set the deterministic mode. This mode should only be used
      * for testing purposes
      *
      * @param  bool $deterministicModeEnabled
@@ -466,7 +462,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Sets the flag that indicates, that the attachment pane should be visible on start (True)
      * or hidden (False)
      *
-     * @param boolean $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @param bool $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
      * @return static
      */
     public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
@@ -479,7 +475,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Returns true if the attachment pane is visible, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function getAttachmentPaneIsVisible(): bool
     {
@@ -601,13 +597,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $this->pdfWriter->setPdfVersion('1.7', true);
 
-        // Update meta data (e.g. such as author, producer, title)
+        // Update metadata (e.g. such as author, producer, title)
 
         $this->updatePdfMetadata();
     }
 
     /**
-     * Update PDF metadata to according to FacturX/ZUGFeRD XML data.
+     * Update PDF metadata according to FacturX/ZUGFeRD XML data.
      *
      * @return void
      */
@@ -660,27 +656,27 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Prepare PDF Metadata informations from FacturX/ZUGFeRD XML.
+     * Prepare PDF metadata information from FacturX/ZUGFeRD XML.
      *
      * @return array
      */
     private function preparePdfMetadata(): array
     {
-        $invoiceInformations = $this->extractInvoiceInformations();
+        $invoiceInformation = $this->extractInvoiceInformation();
 
-        $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
+        $dateString = date('Y-m-d', strtotime($invoiceInformation['date']));
 
-        $author = $invoiceInformations['seller'];
-        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']);
-        $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
-        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
+        $author = $invoiceInformation['seller'];
+        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformation['docTypeName']);
+        $title = sprintf('%s : %s %s', $invoiceInformation['seller'], $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId']);
+        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId'], $dateString, $invoiceInformation['seller']);
 
         return [
-            'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
-            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
-            'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
-            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformations),
-            'createdDate' => $invoiceInformations['date'],
+            'author' => $this->buildMetadataField('author', $author, $invoiceInformation),
+            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformation),
+            'title' => $this->buildMetadataField('title', $title, $invoiceInformation),
+            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformation),
+            'createdDate' => $invoiceInformation['date'],
             'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
         ];
     }
@@ -690,7 +686,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @return array
      */
-    protected function extractInvoiceInformations(): array
+    protected function extractInvoiceInformation(): array
     {
         $domDocument = new DOMDocument();
         $domDocument->loadXML($this->getXmlContent());
@@ -728,11 +724,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Returns true if the submittet parameter $pdfData is a valid file.
+     * Returns true if the submitted parameter $pdfData is a valid file.
      * Otherwise it will return false
      *
      * @param  string $pdfData
-     * @return boolean
+     * @return bool
      */
     protected function isFile($pdfData): bool
     {

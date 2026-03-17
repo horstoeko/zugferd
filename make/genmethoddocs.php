@@ -472,7 +472,7 @@ class MarkDownGenerator
      * Add an H2-Line to internal container
      *
      * @param string $string
-     * @param boolean $newLine
+     * @param bool $newLine
      * @return MarkDownGenerator
      */
     private function addLineH2(string $string, bool $newLine = true): MarkDownGenerator
@@ -490,7 +490,7 @@ class MarkDownGenerator
      * Add an H3-Line to internal container
      *
      * @param string $string
-     * @param boolean $newLine
+     * @param bool $newLine
      * @return MarkDownGenerator
      */
     private function addLineH3(string $string, bool $newLine = true): MarkDownGenerator
@@ -508,7 +508,7 @@ class MarkDownGenerator
      * Add an H4-Line to internal container
      *
      * @param string $string
-     * @param boolean $newLine
+     * @param bool $newLine
      * @return MarkDownGenerator
      */
     private function addLineH4(string $string, bool $newLine = true): MarkDownGenerator

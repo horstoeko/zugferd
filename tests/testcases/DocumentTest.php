@@ -63,8 +63,6 @@ class DocumentTest extends TestCase
     public function testDocumentInternals(): void
     {
         $doc = ZugferdDocumentBuilder::createNew(ZugferdProfiles::PROFILE_EXTENDED);
-        $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'serializerBuilder');
-        $this->assertNotNull($property->getValue($doc));
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'serializer');
         $this->assertNotNull($property->getValue($doc));
         $property = $this->getPrivateProperty('horstoeko\zugferd\ZugferdDocument', 'invoiceObject');

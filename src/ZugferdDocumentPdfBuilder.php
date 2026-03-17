@@ -9,12 +9,10 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 
 /**
- * Class representing the facillity adding XML data from ZugferdDocumentBuilder
+ * Class representing the facility adding XML data from ZugferdDocumentBuilder
  * to an existing PDF with conversion to PDF/A
  *
  * @category Zugferd
@@ -63,7 +61,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
-     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by an ERP system)
      */
     public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfData)
     {

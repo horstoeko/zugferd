@@ -11,7 +11,6 @@ namespace horstoeko\zugferd;
 
 use Throwable;
 use SimpleXMLElement;
-use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
@@ -99,7 +98,7 @@ class ZugferdProfileResolver
     }
 
     /**
-     * Resolve profile id and profile definition by it's id
+     * Resolve profile id and profile definition by its id
      *
      * @param  int $profileId
      * @return array
@@ -115,7 +114,7 @@ class ZugferdProfileResolver
     }
 
     /**
-     * Resolve profile profile definition by it's id
+     * Resolve profile definition by its id
      *
      * @param  int $profileId
      * @return array

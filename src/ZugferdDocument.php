@@ -15,8 +15,6 @@ use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\jms\ZugferdTypesHandler;
-use horstoeko\zugferd\ZugferdObjectHelper;
-use horstoeko\zugferd\ZugferdProfileResolver;
 use JMS\Serializer\Exception\InvalidArgumentException;
 use JMS\Serializer\Exception\RuntimeException;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
@@ -35,7 +33,7 @@ use JMS\Serializer\SerializerInterface;
 class ZugferdDocument
 {
     /**
-     * @var integer $profileId Internal profile id
+     * @var int $profileId Internal profile id
      */
     private $profileId = -1;
 
@@ -43,11 +41,6 @@ class ZugferdDocument
      * @var array $profileDefinition Internal profile definition
      */
     private $profileDefinition = [];
-
-    /**
-     * @var SerializerBuilder $serializerBuilder Serializer builder
-     */
-    private $serializerBuilder;
 
     /**
      * @var SerializerInterface $serializer Serializer
@@ -67,7 +60,7 @@ class ZugferdDocument
     /**
      * Constructor
      *
-     * @param  integer $profile The ID of the profile of the document
+     * @param  int $profile The ID of the profile of the document
      * @return void
      * @throws ZugferdUnknownProfileIdException
      * @throws ZugferdUnknownProfileParameterException
@@ -78,7 +71,7 @@ class ZugferdDocument
     {
         $this->initProfile($profile);
         $this->initObjectHelper();
-        $this->initSerialzer();
+        $this->initSerializer();
     }
 
     /**
@@ -104,7 +97,7 @@ class ZugferdDocument
     }
 
     /**
-     * Get the instance of the internal serializuer
+     * Get the instance of the internal serializer
      *
      * @return SerializerInterface
      */
@@ -126,7 +119,7 @@ class ZugferdDocument
     /**
      * Returns the selected profile id
      *
-     * @return integer
+     * @return int
      */
     public function getProfileId(): int
     {
@@ -189,18 +182,18 @@ class ZugferdDocument
     }
 
     /**
-     * Build the internal serialzer
+     * Build the internal serializer
      *
      * @return ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    protected function initSerialzer(): ZugferdDocument
+    protected function initSerializer(): ZugferdDocument
     {
-        $this->serializerBuilder = SerializerBuilder::create();
+        $serializerBuilder = SerializerBuilder::create();
 
-        $this->serializerBuilder->addMetadataDir(
+        $serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
                 $this->getProfileDefinitionParameter("name"),
@@ -211,7 +204,7 @@ class ZugferdDocument
                 $this->getProfileDefinitionParameter("name")
             )
         );
-        $this->serializerBuilder->addMetadataDir(
+        $serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
                 $this->getProfileDefinitionParameter("name"),
@@ -222,7 +215,7 @@ class ZugferdDocument
                 $this->getProfileDefinitionParameter("name")
             )
         );
-        $this->serializerBuilder->addMetadataDir(
+        $serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
                 $this->getProfileDefinitionParameter("name"),
@@ -233,7 +226,7 @@ class ZugferdDocument
                 $this->getProfileDefinitionParameter("name")
             )
         );
-        $this->serializerBuilder->addMetadataDir(
+        $serializerBuilder->addMetadataDir(
             PathUtils::combineAllPaths(
                 ZugferdSettings::getYamlDirectory(),
                 $this->getProfileDefinitionParameter("name"),
@@ -246,13 +239,13 @@ class ZugferdDocument
         );
 
         if (ZugferdSettings::hasSerializerCacheDirectory()) {
-            $this->serializerBuilder->setCacheDir(ZugferdSettings::getSerializerCacheDirectory());
+            $serializerBuilder->setCacheDir(ZugferdSettings::getSerializerCacheDirectory());
         }
 
-        $this->serializerBuilder->addDefaultListeners();
-        $this->serializerBuilder->addDefaultHandlers();
+        $serializerBuilder->addDefaultListeners();
+        $serializerBuilder->addDefaultHandlers();
 
-        $this->serializerBuilder->configureHandlers(
+        $serializerBuilder->configureHandlers(
             function (HandlerRegistryInterface $handler) {
                 $handler->registerSubscribingHandler(new BaseTypesHandler());
                 $handler->registerSubscribingHandler(new XmlSchemaDateHandler());
@@ -260,7 +253,7 @@ class ZugferdDocument
             }
         );
 
-        $this->serializer = $this->serializerBuilder->build();
+        $this->serializer = $serializerBuilder->build();
 
         return $this;
     }

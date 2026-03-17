@@ -41,22 +41,22 @@ class ZugferdProfiles
     public const PROFILE_EXTENDED = 3;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile (germany only)
+     * Internal constant that identifies the XRECHNUNG profile (Germany only)
      */
     public const PROFILE_XRECHNUNG = 4;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 2.0 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 2.0 (Germany only)
      */
     public const PROFILE_XRECHNUNG_2 = 5;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 2.1 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 2.1 (Germany only)
      */
     public const PROFILE_XRECHNUNG_2_1 = 6;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 2.2 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 2.2 (Germany only)
      */
     public const PROFILE_XRECHNUNG_2_2 = 7;
 
@@ -66,12 +66,12 @@ class ZugferdProfiles
     public const PROFILE_MINIMUM = 8;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 2.3 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 2.3 (Germany only)
      */
     public const PROFILE_XRECHNUNG_2_3 = 9;
 
     /**
-     * Internal constant that identifies the XRECHNUNG profile version 3.0 (germany only)
+     * Internal constant that identifies the XRECHNUNG profile version 3.0 (Germany only)
      */
     public const PROFILE_XRECHNUNG_3 = 10;
 
@@ -208,7 +208,7 @@ class ZugferdProfiles
             'name' => 'minimum',
             'altname' => 'MINIMUM',
             'description' => 'The MINIMUM profile includes the main information about the purchaser and vendor, the total invoice amount, and the total sales tax (VAT).' .
-                'Only the purchaser s reference can be given at item level. A breakdown of the sales tax (VAT) is not supported. It is therefore a booking aid.',
+                'Only the purchaser\'s reference can be given at item level. A breakdown of the sales tax (VAT) is not supported. It is therefore a booking aid.',
             'contextparameter' => 'urn:factur-x.eu:1p0:minimum',
             'alternativecontextparameters' => ['urn:zugferd.de:2p0:minimum'],
             'businessprocess' => null,

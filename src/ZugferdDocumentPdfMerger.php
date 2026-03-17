@@ -10,15 +10,13 @@
 namespace horstoeko\zugferd;
 
 use Throwable;
-use horstoeko\zugferd\ZugferdProfileResolver;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
 use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 
 /**
- * Class representing the facillity adding existing XML data (file or data-string)
+ * Class representing the facility adding existing XML data (file or data-string)
  * to an existing PDF with conversion to PDF/A
  *
  * @category Zugferd
@@ -51,7 +49,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      * containing the XML-data
      * @param string $pdfData
      * The full filename or a string containing the binary pdf data. This
-     * is the original PDF (e.g. created by a ERP system)
+     * is the original PDF (e.g. created by an ERP system)
      */
     public function __construct(string $xmlDataOrFilename, string $pdfData)
     {
@@ -111,7 +109,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
      * Returns true if the submitted $xmlDataOrFilename is a valid file.
      * Otherwise it will return false
      *
-     * @return boolean
+     * @return bool
      */
     protected function xmlDataIsFile(): bool
     {
@@ -123,7 +121,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Guess the profile type of the readden xml document
+     * Guess the profile type of the read XML document
      *
      * @return array
      * @throws ZugferdFileNotReadableException

@@ -69,8 +69,8 @@ function strComment(string $str): string
  * Create an identifier
  *
  * @param  string  $str
- * @param  boolean $shortIdentifier
- * @param  integer $partLength
+ * @param  bool $shortIdentifier
+ * @param  int $partLength
  * @return string
  */
 function strIdentifier(string $str, bool $shortIdentifier, int $partLength = 4): string
@@ -337,7 +337,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
 
         $phpClassMethod->addBody('];');
 
-        // Add method which returns an boolean true when code exists otherwise false
+        // Add method which returns an bool true when code exists otherwise false
 
         $phpClassMethod = $phpClass->addMethod('checkCodeExists');
         $phpClassMethod->setFinal();
@@ -345,7 +345,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
         $phpClassMethod->setReturnType('bool');
         $phpClassMethod->addComment("Returns true if a code exists in the list, otherwise false\n");
         $phpClassMethod->addComment("@param string \$code");
-        $phpClassMethod->addComment("@return boolean");
+        $phpClassMethod->addComment("@return bool");
         $phpClassMethod->addComment("@codeCoverageIgnore");
         $phpClassMethod->addParameter('code')->setType("string");
         $phpClassMethod->addBody('return isset(static::getAllCodes()[$code]);');
@@ -560,7 +560,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
 
         $phpClassMethod->addBody('];');
 
-        // Add method which returns an boolean true when code exists otherwise false
+        // Add method which returns an bool true when code exists otherwise false
 
         $phpClassMethod = $phpClass->addMethod('checkCodeExists');
         $phpClassMethod->setFinal();
@@ -568,7 +568,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
         $phpClassMethod->setReturnType('bool');
         $phpClassMethod->addComment("Returns true if a code exists in the list, otherwise false\n");
         $phpClassMethod->addComment("@param string \$code");
-        $phpClassMethod->addComment("@return boolean");
+        $phpClassMethod->addComment("@return bool");
         $phpClassMethod->addComment("@codeCoverageIgnore");
         $phpClassMethod->addParameter('code')->setType("string");
         $phpClassMethod->addBody('return isset(static::getAllCodes()[$code]);');

@@ -194,7 +194,7 @@ class ObjectHelperExtendedTest extends TestCase
          * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
          */
         $indicatortype = self::$objectHelper->getIndicatorType(true);
-        $this->assertTrue($indicatortype->getIndicator());
+        self::assertTrue($indicatortype->getIndicator());
     }
 
     public function testGetIndicatorTypeWithFalseValue(): void
@@ -1136,7 +1136,7 @@ class ObjectHelperExtendedTest extends TestCase
         $sequenceNumeric = $allowancecharge->getCalculationPercent();
 
         $this->assertEqualsWithDelta(10.0, $allowancecharge->getActualAmount()->value(), PHP_FLOAT_EPSILON);
-        $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
+        self::assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
         $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);

@@ -26,28 +26,28 @@ class ZugferdSettings
     /**
      * The number of decimals for amount values
      *
-     * @var integer
+     * @var int
      */
     protected static $amountDecimals = 2;
 
     /**
      * The number of decimals for quantity values
      *
-     * @var integer
+     * @var int
      */
     protected static $quantityDecimals = 2;
 
     /**
      * The number of decimals for percent values
      *
-     * @var integer
+     * @var int
      */
     protected static $percentDecimals = 2;
 
     /**
      * The number of decimals for measure values
      *
-     * @var integer
+     * @var int
      */
     protected static $measureDecimals = 2;
 
@@ -59,14 +59,14 @@ class ZugferdSettings
     protected static $decimalSeparator = ".";
 
     /**
-     * The thousands seperator
+     * The thousands separator
      *
      * @var string
      */
     protected static $thousandsSeparator = "";
 
     /**
-     * The filename of a ICC profile
+     * The filename of an ICC profile
      *
      * @var string
      */
@@ -82,7 +82,7 @@ class ZugferdSettings
     /**
      * Node paths which present an amount. Used for special amount formatting
      *
-     * @var array<string,integer>
+     * @var array<string,int>
      */
     protected static $specialDecimalPlacesMaps = [];
 
@@ -96,7 +96,7 @@ class ZugferdSettings
     /**
      * Get the number of decimals to use for amount values
      *
-     * @return integer
+     * @return int
      */
     public static function getAmountDecimals(): int
     {
@@ -106,7 +106,7 @@ class ZugferdSettings
     /**
      * Set the number of decimals to use for amount values
      *
-     * @param  integer $amountDecimals
+     * @param  int $amountDecimals
      * @return void
      */
     public static function setAmountDecimals(int $amountDecimals): void
@@ -115,9 +115,9 @@ class ZugferdSettings
     }
 
     /**
-     * Get the number of decimals to use for amount values
+     * Get the number of decimals to use for quantity values
      *
-     * @return integer
+     * @return int
      */
     public static function getQuantityDecimals(): int
     {
@@ -127,7 +127,7 @@ class ZugferdSettings
     /**
      * Set the number of decimals to use for quantity values
      *
-     * @param  integer $quantityDecimals
+     * @param  int $quantityDecimals
      * @return void
      */
     public static function setQuantityDecimals(int $quantityDecimals): void
@@ -138,7 +138,7 @@ class ZugferdSettings
     /**
      * Get the number of decimals to use for percent values
      *
-     * @return integer
+     * @return int
      */
     public static function getPercentDecimals(): int
     {
@@ -148,7 +148,7 @@ class ZugferdSettings
     /**
      * Set the number of decimals to use for percent values
      *
-     * @param  integer $percentDecimals
+     * @param  int $percentDecimals
      * @return void
      */
     public static function setPercentDecimals(int $percentDecimals): void
@@ -159,7 +159,7 @@ class ZugferdSettings
     /**
      * Get the number of decimals to use for measure values
      *
-     * @return integer
+     * @return int
      */
     public static function getMeasureDecimals(): int
     {
@@ -169,7 +169,7 @@ class ZugferdSettings
     /**
      * Set the number of decimals to use for measure values
      *
-     * @param  integer $measureDecimals
+     * @param  int $measureDecimals
      * @return void
      */
     public static function setMeasureDecimals(int $measureDecimals): void
@@ -272,12 +272,12 @@ class ZugferdSettings
     }
 
     /**
-     * Get a specific map for node paths with a special number of decimal places. If not map
-     * is found then the default value is returns
+     * Get a specific map for node paths with a special number of decimal places. If no map
+     * is found then the default value is returned
      *
      * @param  string  $nodePath
-     * @param  integer $defaultDecimalPlaces
-     * @return integer
+     * @param  int $defaultDecimalPlaces
+     * @return int
      */
     public static function getSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): int
     {
@@ -300,7 +300,7 @@ class ZugferdSettings
      * Add a new map for a node path with a special number of decimal places
      *
      * @param  string  $nodePath
-     * @param  integer $defaultDecimalPlaces
+     * @param  int $defaultDecimalPlaces
      * @return void
      */
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
@@ -312,7 +312,7 @@ class ZugferdSettings
     /**
      * Set the number of decimals to use for unit single amount (unit prices) values
      *
-     * @param  integer $defaultDecimalPlaces
+     * @param  int $defaultDecimalPlaces
      * @return void
      */
     public static function setUnitAmountDecimals(int $defaultDecimalPlaces): void
@@ -324,12 +324,12 @@ class ZugferdSettings
     /**
      * Set the cache directory for the internal serializer
      *
-     * @param  string $serializerCacheDirectoty
+     * @param  string $serializerCacheDirectory
      * @return void
      */
-    public static function setSerializerCacheDirectory(string $serializerCacheDirectoty): void
+    public static function setSerializerCacheDirectory(string $serializerCacheDirectory): void
     {
-        static::$serializerCacheDirectory = $serializerCacheDirectoty;
+        static::$serializerCacheDirectory = $serializerCacheDirectory;
     }
 
     /**
@@ -345,7 +345,7 @@ class ZugferdSettings
     /**
      * Returns true if a cache directory for the internal serializer is configured, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public static function hasSerializerCacheDirectory(): bool
     {
@@ -383,7 +383,7 @@ class ZugferdSettings
     }
 
     /**
-     * Get the directory where all the assets are stored
+     * Get the directory where the YAML metadata files are stored
      *
      * @return string
      */
@@ -443,7 +443,7 @@ class ZugferdSettings
     }
 
     /**
-     * Get the full filename containg the XNP information to user
+     * Get the full filename containing the XMP information to use
      *
      * @return string
      */

@@ -46,28 +46,26 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
-    protected $fileSpecDictionnaryIndex = 0;
-
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $descriptionIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $outputIntentIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $filesIndex;
 
@@ -75,15 +73,15 @@ class ZugferdPdfWriter extends PdfFpdi
      * Internal flag that indicates that the attachment
      * pane should be shown by default
      *
-     * @var boolean
+     * @var bool
      */
     protected $openAttachmentPane = false;
 
     /**
-     * Internal flag deterministic mode. This mode should only be used
+     * Internal flag for deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @var boolean
+     * @var bool
      */
     protected $deterministicModeEnabled = false;
 
@@ -98,7 +96,7 @@ class ZugferdPdfWriter extends PdfFpdi
     {
         $this->PDFVersion = sprintf('%.1F', $version);
 
-        if (true == $binary_data) {
+        if ($binary_data) {
             if ($this->deterministicModeEnabled === true) {
                 $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
             } else {
@@ -228,7 +226,6 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function putFileSpecification(array $file_info): void
     {
         $this->_newobj();
-        $this->fileSpecDictionnaryIndex = $this->n;
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
@@ -293,7 +290,7 @@ class ZugferdPdfWriter extends PdfFpdi
     }
 
     /**
-     * Put file dictionnary.
+     * Put file dictionary.
      *
      * @return void
      */
@@ -377,7 +374,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/Type /OutputIntent');
         $this->_put('/S /GTS_PDFA1');
-        $this->_put('/OuputCondition (sRGB)');
+        $this->_put('/OutputCondition (sRGB)');
         $this->_put('/OutputConditionIdentifier (Custom)');
         $this->_put('/DestOutputProfile ' . ($this->n + 1) . ' 0 R');
         $this->_put('/Info (sRGB V4 ICC)');

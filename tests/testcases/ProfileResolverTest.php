@@ -432,7 +432,7 @@ HDR;
 
         try {
             libxml_clear_errors();
-            $xmldocument = new SimpleXMLElement($this->deliverStringWhichIsNotXml());
+            new SimpleXMLElement($this->deliverStringWhichIsNotXml());
         } catch (Throwable $throwable) {
             // Do nothing
         } finally {

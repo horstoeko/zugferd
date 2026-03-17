@@ -8,6 +8,7 @@
         <testsuite name="ObjectHelper">
             <file>../tests/testcases/ObjectHelperEn16931Test.php</file>
             <file>../tests/testcases/ObjectHelperExtendedTest.php</file>
+            <file>../tests/testcases/ObjectHelperDateTimeInterfaceTest.php</file>
         </testsuite>
         <testsuite name="Base">
             <file>../tests/testcases/ProfileResolverTest.php</file>
@@ -22,6 +23,8 @@
             <file>../tests/testcases/ReaderExtended2Test.php</file>
             <file>../tests/testcases/ReaderXRechnungTest.php</file>
             <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+            <file>../tests/testcases/ReaderExtendedPositionDeliveryTest.php</file>
+            <file>../tests/testcases/ReaderExtendedBuyerTaxRepresentativeTest.php</file>
         </testsuite>
         <testsuite name="Builder">
             <file>../tests/testcases/BuilderMinimumTest.php</file>
@@ -51,6 +54,13 @@
         <testsuite name="Validator">
             <file>../tests/testcases/ValidatorValidTest.php</file>
             <file>../tests/testcases/ValidatorInvalidTest.php</file>
+            <file>../tests/testcases/XsdValidatorTest.php</file>
+        </testsuite>
+        <testsuite name="QuickDescriptor">
+            <file>../tests/testcases/QuickDescriptorTest.php</file>
+        </testsuite>
+        <testsuite name="SpecificationVersions">
+            <file>../tests/testcases/SpecificationVersionsTest.php</file>
         </testsuite>
         <testsuite name="Exporter">
             <file>../tests/testcases/JsonExporterTest.php</file>
