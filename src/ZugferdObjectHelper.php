@@ -940,9 +940,12 @@ class ZugferdObjectHelper
 
         $creditorFinancialAccountType = $this->createClassInstance('ram\CreditorFinancialAccountType');
 
-        $this->tryCall($creditorFinancialAccountType, "setIBANID", $this->getIdType($iban));
+	    if (!self::isNullOrEmpty($iban)) {
+		    $this->tryCall($creditorFinancialAccountType, "setIBANID", $this->getIdType($iban));
+	    } elseif (!self::isNullOrEmpty($proprietaryId)) {
+		    $this->tryCall($creditorFinancialAccountType, "setProprietaryID", $this->getIdType($proprietaryId));
+	    }
         $this->tryCall($creditorFinancialAccountType, "setAccountName", $this->getTextType($accountName));
-        $this->tryCall($creditorFinancialAccountType, "setProprietaryID", $this->getIdType($proprietaryId));
 
         return $creditorFinancialAccountType;
     }
