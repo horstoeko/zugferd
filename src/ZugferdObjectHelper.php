@@ -938,14 +938,17 @@ class ZugferdObjectHelper
             return null;
         }
 
-        $creditorFinancialAccountType = $this->createClassInstance('ram\CreditorFinancialAccountType');
+        $creditorFinancialAccountType = $this->createClassInstance('ram\\CreditorFinancialAccountType');
 
-	    if (!self::isNullOrEmpty($iban)) {
-		    $this->tryCall($creditorFinancialAccountType, "setIBANID", $this->getIdType($iban));
-	    } elseif (!self::isNullOrEmpty($proprietaryId)) {
-		    $this->tryCall($creditorFinancialAccountType, "setProprietaryID", $this->getIdType($proprietaryId));
-	    }
+        if (!self::isNullOrEmpty($iban)) {
+            $this->tryCall($creditorFinancialAccountType, 'setIBANID', $this->getIdType($iban));
+        }
+
         $this->tryCall($creditorFinancialAccountType, "setAccountName", $this->getTextType($accountName));
+
+        if (!self::isNullOrEmpty($proprietaryId)) {
+            $this->tryCall($creditorFinancialAccountType, 'setProprietaryID', $this->getIdType($proprietaryId));
+        }
 
         return $creditorFinancialAccountType;
     }
