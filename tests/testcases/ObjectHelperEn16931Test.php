@@ -952,6 +952,28 @@ class ObjectHelperEn16931Test extends TestCase
         $finacc = self::$objectHelper->getCreditorFinancialAccountType("iban", "accname", "propid");
         $this->assertEquals("iban", $finacc->getIBANID());
         $this->assertEquals("accname", $finacc->getAccountName());
+        $this->assertNull($finacc->getProprietaryID());
+    }
+
+    public function testGetCreditorFinancialAccountTypeWithIbanOnly(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->getCreditorFinancialAccountType("iban", "accname", null);
+        $this->assertEquals("iban", $finacc->getIBANID());
+        $this->assertEquals("accname", $finacc->getAccountName());
+        $this->assertNull($finacc->getProprietaryID());
+    }
+
+    public function testGetCreditorFinancialAccountTypeWithProprietaryIdOnly(): void
+    {
+        /**
+         * @var \horstoeko\zugferd\entities\en16931\ram\CreditorFinancialAccountType
+         */
+        $finacc = self::$objectHelper->getCreditorFinancialAccountType(null, "accname", "propid");
+        $this->assertNull($finacc->getIBANID());
+        $this->assertEquals("accname", $finacc->getAccountName());
         $this->assertEquals("propid", $finacc->getProprietaryID());
     }
 
