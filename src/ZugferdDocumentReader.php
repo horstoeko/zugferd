@@ -99,6 +99,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $documentBuyerContactPointer = 0;
 
     /**
+     * Internal pointer for buyer tax representative party contacts
+     *
+     * @var integer
+     */
+    private $documentBuyerTaxRepresentativeContactPointer = 0;
+
+    /**
      * Internal pointer for seller tax representativ party contacts
      *
      * @var integer
@@ -239,6 +246,13 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $positionReferencedProductPointer = 0;
 
     /**
+     * Internal pointer for the position ultimate customer order referenced documents
+     *
+     * @var integer
+     */
+    private $positionUltimateCustomerOrderReferencedDocumentPointer = 0;
+
+    /**
      * @var string
      */
     private $binarydatadirectory = "";
@@ -347,6 +361,51 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString", ""),
             $this->getInvoiceValueByPath("getExchangedDocument.getEffectiveSpecifiedPeriod.getDateTimeString.getFormat", "")
         );
+
+        return $this;
+    }
+
+    /**
+     * Get the business process specified in the document context.
+     *
+     * @param  string|null $businessProcess __BT-23, From BASIC WL__ Identifies the business process context in which the transaction appears
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBusinessProcess(?string &$businessProcess): ZugferdDocumentReader
+    {
+        $businessProcess = $this->getInvoiceValueByPath("getExchangedDocumentContext.getBusinessProcessSpecifiedDocumentContextParameter.getID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get information about the foreign currency used in the document.
+     * This is the counterpart to ZugferdDocumentBuilder::setForeignCurrency.
+     *
+     * @param  string|null $foreignCurrencyCode __BT-6, From BASIC WL__ Foreign currency code
+     * @param  float|null  $foreignTaxAmount    __BT-X-260, From EXTENDED__ Tax total amount in the foreign currency
+     * @param  float|null  $exchangeRate        __BT-X-260, From EXTENDED__ Exchange rate from invoice currency to foreign currency
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentForeignCurrency(?string &$foreignCurrencyCode, ?float &$foreignTaxAmount, ?float &$exchangeRate): ZugferdDocumentReader
+    {
+        $foreignCurrencyCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxCurrencyCode.value", "");
+        $foreignTaxAmount = 0.0;
+        $exchangeRate = 0.0;
+
+        if ($foreignCurrencyCode !== '') {
+            $taxTotalAmountElements = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getSpecifiedTradeSettlementHeaderMonetarySummation.getTaxTotalAmount", []);
+
+            foreach ($taxTotalAmountElements as $taxTotalAmountElement) {
+                $currencyId = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElement, "getCurrencyID") ?? '';
+                if ($currencyId === $foreignCurrencyCode) {
+                    $foreignTaxAmount = $this->getObjectHelper()->tryCallAndReturn($taxTotalAmountElement, "value") ?? 0.0;
+                    break;
+                }
+            }
+
+            $exchangeRate = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getTaxApplicableTradeCurrencyExchange.getConversionRate.value", 0.0);
+        }
 
         return $this;
     }
@@ -891,6 +950,150 @@ class ZugferdDocumentReader extends ZugferdDocument
         $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getSellerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
 
         $contact = $contacts[$this->documentSellerTaxRepresentativeContactPointer];
+
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get information about the buyer's tax representative party BG-X-54.
+     *
+     * @param  string|null $name        __BT-X-362, From EXTENDED__ The full name of the buyer's tax representative
+     * @param  array|null  $id          __BT-X-364, From EXTENDED__ An array of identifiers of the buyer's tax representative
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the buyer's tax representative
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentative(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
+    {
+        $name = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getName.value", "");
+        $id = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getID", []);
+        $description = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getDescription.value", "");
+
+        $id = $this->convertToArray($id, ["id" => "value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get document buyer tax representative global ids.
+     *
+     * @param  array|null $globalID __BT-X-365/BT-X-365-0, From EXTENDED__ Returns an array of the buyer's tax representative identifiers indexed by the identification scheme.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentativeGlobalId(?array &$globalID): ZugferdDocumentReader
+    {
+        $globalID = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getGlobalID", []);
+        $globalID = $this->convertToAssociativeArray($globalID, "getSchemeID", "value");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the buyer's tax representative tax information.
+     *
+     * @param  array|null $taxReg __BT-X-367/BT-X-367-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentativeTaxRegistration(?array &$taxReg): ZugferdDocumentReader
+    {
+        $taxReg = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
+
+        return $this;
+    }
+
+    /**
+     * Get the address of the buyer's tax representative.
+     *
+     * @param  string|null $lineOne     __BT-X-383, From EXTENDED__ The main line in the buyer's tax representative address
+     * @param  string|null $lineTwo     __BT-X-384, From EXTENDED__ Line 2 of the buyer's tax representative address
+     * @param  string|null $lineThree   __BT-X-385, From EXTENDED__ Line 3 of the buyer's tax representative address
+     * @param  string|null $postCode    __BT-X-382, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-386, From EXTENDED__ Usual name of the city or municipality in which the buyer's tax representative address is located
+     * @param  string|null $country     __BT-X-387, From EXTENDED__ Code used to identify the country. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency "Codes for the representation of names of countries and their subdivisions"
+     * @param  array|null  $subDivision __BT-X-388, From EXTENDED__ The buyer's tax representative state
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentativeAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
+    {
+        $lineOne = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $city = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getCityName.value", "");
+        $country = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getCountryID.value", "");
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get the legal organisation of the buyer's tax representative.
+     *
+     * @param  string|null $legalOrgId   __BT-, From __ An identifier issued by an official registrar that identifies the buyer's tax representative as a legal entity or legal person.
+     * @param  string|null $legalOrgType __BT-, From __ The identifier for the identification scheme of the legal registration of the buyer's tax representative. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param  string|null $legalOrgName __BT-, From __ A name by which the buyer's tax representative is known, if different from the buyer's tax representative name (also known as the company name)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentativeLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
+    {
+        $legalOrgId = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first buyer tax representative contact of the document. Returns true if a first contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentBuyerTaxRepresentativeContact.
+     *
+     * @return boolean
+     */
+    public function firstDocumentBuyerTaxRepresentativeContact(): bool
+    {
+        $this->documentBuyerTaxRepresentativeContactPointer = 0;
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->documentBuyerTaxRepresentativeContactPointer]);
+    }
+
+    /**
+     * Seek to the next available buyer tax representative contact of the document. Returns true if another contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentBuyerTaxRepresentativeContact.
+     *
+     * @return boolean
+     */
+    public function nextDocumentBuyerTaxRepresentativeContact(): bool
+    {
+        $this->documentBuyerTaxRepresentativeContactPointer++;
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->documentBuyerTaxRepresentativeContactPointer]);
+    }
+
+    /**
+     * Get contact information of the buyer's tax representative.
+     *
+     * @param  string|null $contactPersonName     __BT-X-369, From EXTENDED__ Such as personal name, name of contact person or department or office
+     * @param  string|null $contactDepartmentName __BT-X-370, From EXTENDED__ If a contact person is specified, either the name or the department must be transmitted.
+     * @param  string|null $contactPhoneNo        __BT-X-372, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-373, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-374, From EXTENDED__ An e-mail address of the contact point
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentBuyerTaxRepresentativeContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
+    {
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getBuyerTaxRepresentativeTradeParty.getDefinedTradeContact", []));
+
+        $contact = $contacts[$this->documentBuyerTaxRepresentativeContactPointer];
 
         $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
         $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
@@ -2252,13 +2455,27 @@ class ZugferdDocumentReader extends ZugferdDocument
     }
 
     /**
-     * Details of the ultimate customer order.
+     * Get all ultimate customer order referenced documents as an array.
      *
+     * @param  array|null $refdocs Returns an array of referenced documents, each containing keys: _issuerAssignedId_ and _issueDate_
      * @return ZugferdDocumentReader
      */
-    public function getDocumentUltimateCustomerOrderReferencedDocuments(/*?array $refdocs*/): ZugferdDocumentReader
+    public function getDocumentUltimateCustomerOrderReferencedDocuments(?array &$refdocs): ZugferdDocumentReader
     {
-        // TODO: Implemente method getDocumentUltimateCustomerOrderReferencedDocuments
+        $refdocs = [];
+        $allRefDocs = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getUltimateCustomerOrderReferencedDocument", []);
+        $allRefDocs = $this->getObjectHelper()->ensureArray($allRefDocs);
+
+        foreach ($allRefDocs as $refDoc) {
+            $refdocs[] = [
+                'issuerAssignedId' => $this->getInvoiceValueByPathFrom($refDoc, "getIssuerAssignedID.value", ""),
+                'issueDate' => $this->getObjectHelper()->toDateTime(
+                    $this->getInvoiceValueByPathFrom($refDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+                    $this->getInvoiceValueByPathFrom($refDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+                ),
+            ];
+        }
+
         return $this;
     }
 
@@ -3488,7 +3705,67 @@ class ZugferdDocumentReader extends ZugferdDocument
         return $this;
     }
 
-    //TODO: DocumentPositionUltimateCustomerOrderReferencedDocument
+    /**
+     * Seek to the first ultimate customer order referenced document at position level. Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionUltimateCustomerOrderReferencedDocument.
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionUltimateCustomerOrderReferencedDocument(): bool
+    {
+        $this->positionUltimateCustomerOrderReferencedDocumentPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getUltimateCustomerOrderReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionUltimateCustomerOrderReferencedDocumentPointer]);
+    }
+
+    /**
+     * Seek to the next ultimate customer order referenced document at position level. Returns true if another position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionUltimateCustomerOrderReferencedDocument.
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionUltimateCustomerOrderReferencedDocument(): bool
+    {
+        $this->positionUltimateCustomerOrderReferencedDocumentPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getUltimateCustomerOrderReferencedDocument", []));
+
+        return isset($addRefDoc[$this->positionUltimateCustomerOrderReferencedDocumentPointer]);
+    }
+
+    /**
+     * Get details of the ultimate customer order referenced document at position level.
+     *
+     * @param  string|null   $issuerAssignedId __BT-X-43, From EXTENDED__ Order number of the end customer
+     * @param  string|null   $lineId           __BT-X-44, From EXTENDED__ Order item (end customer)
+     * @param  DateTime|null $issueDate        __BT-X-45, From EXTENDED__ Document date of end customer order
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateCustomerOrderReferencedDocument(?string &$issuerAssignedId, ?string &$lineId, ?DateTime &$issueDate): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $addRefDoc = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeAgreement.getUltimateCustomerOrderReferencedDocument", []));
+        $addRefDoc = $addRefDoc[$this->positionUltimateCustomerOrderReferencedDocumentPointer];
+
+        $issuerAssignedId = $this->getInvoiceValueByPathFrom($addRefDoc, "getIssuerAssignedID.value", "");
+        $lineId = $this->getInvoiceValueByPathFrom($addRefDoc, "getLineID.value", "");
+        $issueDate = $this->getObjectHelper()->toDateTime(
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.value", ""),
+            $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
+        );
+
+        return $this;
+    }
 
     /**
      * Get the unit price excluding sales tax before deduction of the discount on the item price.
