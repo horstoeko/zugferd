@@ -86,7 +86,7 @@ class ZugferdDocumentValidator
      * Helper for find all files by pattern
      *
      * @param  string  $pattern
-     * @param  integer $flags
+     * @param  int $flags
      * @return array
      */
     private function globRecursive(string $pattern, int $flags = 0): array

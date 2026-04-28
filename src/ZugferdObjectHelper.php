@@ -33,7 +33,7 @@ class ZugferdObjectHelper
     /**
      * Internal profile id
      *
-     * @var integer
+     * @var int
      */
     public $profile = -1;
 
@@ -59,7 +59,7 @@ class ZugferdObjectHelper
     /**
      * Constructor
      *
-     * @param integer $profile
+     * @param int $profile
      */
     public function __construct(int $profile)
     {
@@ -1131,7 +1131,7 @@ class ZugferdObjectHelper
      * Zu- und Abschläge
      *
      * @param  float|null   $actualAmount
-     * @param  boolean|null $isCharge
+     * @param  bool|null $isCharge
      * @param  string|null  $taxTypeCode
      * @param  string|null  $taxCategoryCode
      * @param  float|null   $rateApplicablePercent
@@ -1290,7 +1290,7 @@ class ZugferdObjectHelper
      * @param  string|null $lineId
      * @param  string|null $lineStatusCode
      * @param  string|null $lineStatusReasonCode
-     * @param  boolean     $isTextPosition
+     * @param  bool     $isTextPosition
      * @return object|null
      */
     public function getSupplyChainTradeLineItemType(?string $lineId = null, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null, bool $isTextPosition = false): ?object
@@ -1792,7 +1792,7 @@ class ZugferdObjectHelper
      * Test if a value is null or empty
      *
      * @param  mixed $value
-     * @return boolean
+     * @return bool
      */
     public static function isNullOrEmpty($value)
     {
@@ -1807,7 +1807,7 @@ class ZugferdObjectHelper
      * Checks if all function arguments are null or empty
      *
      * @param  array $args
-     * @return boolean
+     * @return bool
      */
     public static function isAllNullOrEmpty(array $args): bool
     {
@@ -1828,7 +1828,7 @@ class ZugferdObjectHelper
      * Checks if all function arguments are null or empty
      *
      * @param  array $args
-     * @return boolean
+     * @return bool
      */
     public static function isOneNullOrEmpty(array $args): bool
     {
@@ -1850,7 +1850,7 @@ class ZugferdObjectHelper
      *
      * @param  string|object $instance
      * @param  string        $method
-     * @return boolean
+     * @return bool
      */
     public function methodExists($instance, $method): bool
     {

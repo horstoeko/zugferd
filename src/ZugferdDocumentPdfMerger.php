@@ -108,10 +108,10 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Returns true if the submitted $xmlDataOrFilename is a valid file.
-     * Otherwise it will return false
+     * Returns true, if the submitted $xmlDataOrFilename is a valid file.
+     * Otherwise, it will return false
      *
-     * @return boolean
+     * @return bool
      */
     protected function xmlDataIsFile(): bool
     {
@@ -123,7 +123,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Guess the profile type of the readden xml document
+     * Guess the profile type of the read xml document
      *
      * @return array
      * @throws ZugferdFileNotReadableException

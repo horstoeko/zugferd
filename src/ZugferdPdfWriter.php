@@ -46,28 +46,37 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
-    protected $fileSpecDictionnaryIndex = 0;
+    protected $fileSpecDictionaryIndex = 0;
+
+    /**
+     * Map of deprecated property names to their corrected replacements.
+     *
+     * @var array<string, string>
+     */
+    private static $deprecatedPropertyAliases = [
+        'fileSpecDictionnaryIndex' => 'fileSpecDictionaryIndex',
+    ];
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $descriptionIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $outputIntentIndex = 0;
 
     /**
      * Internal index
      *
-     * @var integer
+     * @var int
      */
     protected $filesIndex;
 
@@ -75,7 +84,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * Internal flag that indicates that the attachment
      * pane should be shown by default
      *
-     * @var boolean
+     * @var bool
      */
     protected $openAttachmentPane = false;
 
@@ -83,7 +92,7 @@ class ZugferdPdfWriter extends PdfFpdi
      * Internal flag deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @var boolean
+     * @var bool
      */
     protected $deterministicModeEnabled = false;
 
@@ -228,7 +237,7 @@ class ZugferdPdfWriter extends PdfFpdi
     protected function putFileSpecification(array $file_info): void
     {
         $this->_newobj();
-        $this->fileSpecDictionnaryIndex = $this->n;
+        $this->fileSpecDictionaryIndex = $this->n;
         $this->_put('<<');
         $this->_put('/F (' . $this->_escape($file_info['name']) . ')');
         $this->_put('/Type /Filespec');
@@ -293,7 +302,7 @@ class ZugferdPdfWriter extends PdfFpdi
     }
 
     /**
-     * Put file dictionnary.
+     * Put file dictionary.
      *
      * @return void
      */
@@ -377,7 +386,7 @@ class ZugferdPdfWriter extends PdfFpdi
         $this->_put('<<');
         $this->_put('/Type /OutputIntent');
         $this->_put('/S /GTS_PDFA1');
-        $this->_put('/OuputCondition (sRGB)');
+        $this->_put('/OutputCondition (sRGB)');
         $this->_put('/OutputConditionIdentifier (Custom)');
         $this->_put('/DestOutputProfile ' . ($this->n + 1) . ' 0 R');
         $this->_put('/Info (sRGB V4 ICC)');
@@ -574,5 +583,74 @@ class ZugferdPdfWriter extends PdfFpdi
         }
 
         return $metaDataString;
+    }
+
+    /**
+     * Fallback getter for deprecated property names.
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function __get(string $name)
+    {
+        if (isset(self::$deprecatedPropertyAliases[$name])) {
+            $newName = self::$deprecatedPropertyAliases[$name];
+
+            trigger_error(
+                sprintf(
+                    'Property %s::$%s is deprecated, use $%s instead',
+                    static::class,
+                    $name,
+                    $newName
+                ),
+                E_USER_DEPRECATED
+            );
+
+            return $this->{$newName};
+        }
+
+        trigger_error(
+            sprintf('Undefined property: %s::$%s', static::class, $name),
+            E_USER_NOTICE
+        );
+
+        return null;
+    }
+
+    /**
+     * Fallback setter for deprecated property names.
+     *
+     * @param  string $name
+     * @param  mixed  $value
+     * @return void
+     */
+    public function __set(string $name, $value): void
+    {
+        if (isset(self::$deprecatedPropertyAliases[$name])) {
+            $currentName = self::$deprecatedPropertyAliases[$name];
+
+            trigger_error(
+                sprintf(
+                    'Property %s::$%s is deprecated, use $%s instead',
+                    static::class,
+                    $name,
+                    $currentName
+                ),
+                E_USER_DEPRECATED
+            );
+
+            $this->{$currentName} = $value;
+
+            return;
+        }
+
+        if (!property_exists($this, $name)) {
+            trigger_error(
+                sprintf('Dynamic property declaration: %s::$%s', static::class, $name),
+                E_USER_NOTICE
+            );
+        }
+
+        $this->{$name} = $value;
     }
 }

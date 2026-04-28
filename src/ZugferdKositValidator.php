@@ -104,14 +104,14 @@ class ZugferdKositValidator
     /**
      * Internal flag which indicates that the cleanup of the base directory is disables
      *
-     * @var boolean
+     * @var bool
      */
     private $cleanupBaseDirectoryIsDisabled = false;
 
     /**
      * Use remote validation (JAVA application is running in daemon mode on a remote host)
      *
-     * @var boolean
+     * @var bool
      */
     private $remoteModeEnabled = false;
 
@@ -125,7 +125,7 @@ class ZugferdKositValidator
     /**
      * The remote host port
      *
-     * @var integer
+     * @var int
      */
     private $remoteModePort = 0;
 
@@ -372,7 +372,7 @@ class ZugferdKositValidator
      * Set the port of the remote host where the validation application
      * is running in daemon mode
      *
-     * @param  integer $remoteModePort
+     * @param  int $remoteModePort
      * @return ZugferdKositValidator
      */
     public function setRemoteModePort(int $remoteModePort): ZugferdKositValidator
@@ -473,7 +473,7 @@ class ZugferdKositValidator
      *
      * @return string
      */
-    private function resolveScenatioZipFilename(): string
+    private function resolveScenarioZipFilename(): string
     {
         return PathUtils::combinePathWithFile($this->resolveBaseDirectory(), $this->validatorScenarioZipFilename);
     }
@@ -583,7 +583,7 @@ class ZugferdKositValidator
     /**
      * Returns true if __no__ validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationErrors(): bool
     {
@@ -593,7 +593,7 @@ class ZugferdKositValidator
     /**
      * Returns true if validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationErrors(): bool
     {
@@ -613,7 +613,7 @@ class ZugferdKositValidator
     /**
      * Returns true if __no__ validation warnings are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationWarnings(): bool
     {
@@ -623,7 +623,7 @@ class ZugferdKositValidator
     /**
      * Returns true if validation warnings are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationWarnings(): bool
     {
@@ -643,7 +643,7 @@ class ZugferdKositValidator
     /**
      * Returns true if __no__ validation information are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationInformation(): bool
     {
@@ -653,7 +653,7 @@ class ZugferdKositValidator
     /**
      * Returns true if validation Information are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationInformation(): bool
     {
@@ -673,7 +673,7 @@ class ZugferdKositValidator
     /**
      * Returns true if there are __no__ system errors (e.g. exceptions before the validation app was called)
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoProcessErrors(): bool
     {
@@ -683,7 +683,7 @@ class ZugferdKositValidator
     /**
      * Returns true if there are any system errors (e.g. exceptions before the validation app was called)
      *
-     * @return boolean
+     * @return bool
      */
     public function hasProcessErrors(): bool
     {
@@ -703,7 +703,7 @@ class ZugferdKositValidator
     /**
      * Check Requirements
      *
-     * @return boolean
+     * @return bool
      */
     private function checkRequirements(): bool
     {
@@ -721,7 +721,7 @@ class ZugferdKositValidator
     /**
      * CHeck general requirements (common for local and remote validation)
      *
-     * @return boolean
+     * @return bool
      */
     private function checkRequirementsGeneral(): bool
     {
@@ -736,7 +736,7 @@ class ZugferdKositValidator
     /**
      * CHeck requirements for usage on a local installation
      *
-     * @return boolean
+     * @return bool
      */
     private function checkRequirementsLocal(): bool
     {
@@ -763,7 +763,7 @@ class ZugferdKositValidator
      * CHeck requirements for usage on a remote host which is running the application
      * in daemon mode
      *
-     * @return boolean
+     * @return bool
      */
     private function checkRequirementsRemote(): bool
     {
@@ -830,7 +830,7 @@ class ZugferdKositValidator
     /**
      * Download required files
      *
-     * @return boolean
+     * @return bool
      */
     private function downloadRequiredFiles(): bool
     {
@@ -843,7 +843,7 @@ class ZugferdKositValidator
             return false;
         }
 
-        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenatioZipFilename())) {
+        if (!$this->runFileDownload($this->validatorScenarioDownloadUrl, $this->resolveScenarioZipFilename())) {
             $this->addToMessageBag(sprintf("Unable to download from %s containing the validation scenarios", $this->validatorScenarioDownloadUrl));
             return false;
         }
@@ -854,7 +854,7 @@ class ZugferdKositValidator
     /**
      * Unpack required files
      *
-     * @return boolean
+     * @return bool
      */
     private function unpackRequiredFiles(): bool
     {
@@ -863,7 +863,7 @@ class ZugferdKositValidator
         }
 
         $validatorAppFile = $this->resolveAppZipFilename();
-        $validatorScenarioFile = $this->resolveScenatioZipFilename();
+        $validatorScenarioFile = $this->resolveScenarioZipFilename();
 
         if (!$this->unpackRequiredFile($validatorAppFile)) {
             $this->addToMessageBag(sprintf("Unable to unpack archive %s containing the JAVA-Application", $validatorAppFile));
@@ -882,7 +882,7 @@ class ZugferdKositValidator
      * Unpack single required file
      *
      * @param  string $filename
-     * @return boolean
+     * @return bool
      */
     private function unpackRequiredFile(string $filename): bool
     {
@@ -925,7 +925,7 @@ class ZugferdKositValidator
     /**
      * Runs the validator java application
      *
-     * @return boolean
+     * @return bool
      */
     private function performValidation(): bool
     {
@@ -939,7 +939,7 @@ class ZugferdKositValidator
     /**
      * Runs the validator java application locally
      *
-     * @return boolean
+     * @return bool
      */
     private function performValidationLocal(): bool
     {
@@ -976,7 +976,7 @@ class ZugferdKositValidator
     /**
      * Runs the validator java application on the remote host
      *
-     * @return boolean
+     * @return bool
      */
     private function performValidationRemote(): bool
     {
@@ -1167,7 +1167,7 @@ class ZugferdKositValidator
      *
      * @param  array  $command
      * @param  string $workingdirectory
-     * @return boolean
+     * @return bool
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool
     {
@@ -1209,8 +1209,8 @@ class ZugferdKositValidator
      *
      * @param  string  $url
      * @param  string  $toFilePath
-     * @param  boolean $forceOverwrite
-     * @return boolean
+     * @param  bool $forceOverwrite
+     * @return bool
      */
     private function runFileDownload(string $url, string $toFilePath, bool $forceOverwrite = false): bool
     {

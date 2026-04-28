@@ -4,6 +4,7 @@
         <testsuite name="General">
             <file>../tests/testcases/SettingsTest.php</file>
             <file>../tests/testcases/PackageVersionTest.php</file>
+            <file>../tests/testcases/DeprecatedMethodAliasTraitTest.php</file>
         </testsuite>
         <testsuite name="ObjectHelper">
             <file>../tests/testcases/ObjectHelperEn16931Test.php</file>

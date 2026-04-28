@@ -84,7 +84,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
-     * @param  integer $profileId
+     * @param  int $profileId
      * @return ZugferdDocumentBuilder
      */
     public static function createNew(int $profileId): ZugferdDocumentBuilder
@@ -2613,7 +2613,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * such as for withheld taxes may also be specified in this group
      *
      * @param float       $actualAmount          __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount at document level
-     * @param boolean     $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param bool     $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to a surcharge or a discount, true means that this is a charge
      * @param string      $taxCategoryCode       __BT-95/BT-102, From BASIC WL__ A coded indication of which sales tax category applies to the surcharge or deduction at document level
      *
      *                                           The following entries from UNTDID 5305 are used (details in brackets):
@@ -2764,7 +2764,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add a payment term in XRechnung-Style (in the Form #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#)
      *
      * @param  string                 $description                __BT-20, From _EN 16931 XRECHNUNG__ Text to add
-     * @param  int[]                  $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of integer)
+     * @param  int[]                  $paymentDiscountDays        __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount days (array of int)
      * @param  float[]                $paymentDiscountPercents    __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount percents (array of decimal)
      * @param  float[]                $paymentDiscountBaseAmounts __BT-20, BR-DE-18, From _EN 16931 XRECHNUNG__ Array of Payment discount base amounts (array of decimal)
      * @param  DateTimeInterface|null $dueDate                    __BT-9, From EN 16931 XRECHNUNG__ The date by which payment is due Note: The payment due date reflects the net payment due date. In the case of partial payments, this indicates the first due date of a net payment. The corresponding description of more complex payment terms can be given in BT-20.
@@ -2899,9 +2899,27 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param      string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
      * @param      string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
      * @return     ZugferdDocumentBuilder
-     * @deprecated 1.0.75
+     * @deprecated 1.0.75 Please use addDocumentPositionComment() instead
      */
     public function addNewTextPosition(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
+    {
+        trigger_error(
+            'Method ZugferdDocumentBuilder::addNewTextPosition() is deprecated, use addDocumentPositionComment() instead',
+            E_USER_DEPRECATED
+        );
+
+        return $this->addDocumentPositionComment($lineid, $lineStatusCode, $lineStatusReasonCode);
+    }
+
+    /**
+     * Adds a new text-only position (line) to document
+     *
+     * @param  string      $lineid               __BT-126, From BASIC__ Identification of the invoice item
+     * @param  string|null $lineStatusCode       __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included.
+     * @param  string|null $lineStatusReasonCode __BT-X-8, From EXTENDED__ Adds the type to specify whether the invoice line is:
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPositionComment(string $lineid, ?string $lineStatusCode = null, ?string $lineStatusReasonCode = null): ZugferdDocumentBuilder
     {
         $position = $this->getObjectHelper()->getSupplyChainTradeLineItemType($lineid, $lineStatusCode, $lineStatusReasonCode, true);
 
@@ -3176,7 +3194,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Detailed information on surcharges and discounts on item gross price.
      *
      * @param  float       $actualAmount          __BT-147, From BASIC__ Discount on the item price. The total discount subtracted from the gross price to calculate the net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
-     * @param  boolean     $isCharge              __BT-147-02, From BASIC__ Switch for surcharge/discount, if true then its an charge
+     * @param  bool        $isCharge              __BT-147-02, From BASIC__ Switch for surcharge/discount, if true then it is a charge
      * @param  float|null  $calculationPercent    __BT-X-34, From EXTENDED__Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount) is transferred
      * @param  float|null  $basisAmount           __BT-X-35, From EXTENDED__ Base amount of the discount/surcharge
      * @param  string|null $reason                __BT-X-36, From EXTENDED__ Reason for surcharge/discount (free text)
@@ -3648,7 +3666,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Add surcharges and discounts on position level.
      *
      * @param  float       $actualAmount       __BT-136/BT-141, From BASIC__ The surcharge/discount amount excluding sales tax
-     * @param  boolean     $isCharge           __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
+     * @param  bool        $isCharge           __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
      * @param  float|null  $calculationPercent __BT-138, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
      * @param  float|null  $basisAmount        __BT-137, From EN 16931__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
      * @param  string|null $reasonCode         __BT-140/BT-145, From BASIC__ The reason given as a code for the invoice line discount
@@ -3733,10 +3751,15 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param      string      $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
      * @param      string|null $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @return     ZugferdDocumentBuilder
-     * @deprecated v1.0.110 Please use addDocumentPositionAdditionalReferencedObjDocument instead
+     * @deprecated v1.0.110 Please use addDocumentPositionAdditionalReferencedObjDocument() instead
      */
     public function addDocumentPositionAdditionalReferencedDocumentObj(string $issuerAssignedId, string $typeCode, ?string $refTypeCode = null): ZugferdDocumentBuilder
     {
+        trigger_error(
+            'Method ZugferdDocumentBuilder::addDocumentPositionAdditionalReferencedDocumentObj() is deprecated, use addDocumentPositionAdditionalReferencedObjDocument() instead',
+            E_USER_DEPRECATED
+        );
+
         return $this->addDocumentPositionAdditionalReferencedObjDocument($issuerAssignedId, $typeCode, $refTypeCode);
     }
 
