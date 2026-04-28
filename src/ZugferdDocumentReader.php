@@ -384,10 +384,10 @@ class ZugferdDocumentReader extends ZugferdDocument
      *
      * This is an alias-method for getDocumentBuyerReference.
      *
-     * @param  string $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
+     * @param  string|null $routingId __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return ZugferdDocumentReader
      */
-    public function getDocumentRoutingId(string $routingId): ZugferdDocumentReader
+    public function getDocumentRoutingId(?string &$routingId): ZugferdDocumentReader
     {
         return $this->getDocumentBuyerReference($routingId);
     }
