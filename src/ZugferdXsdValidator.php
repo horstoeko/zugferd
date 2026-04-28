@@ -26,9 +26,12 @@ use horstoeko\zugferd\ZugferdSettings;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ * @method   bool validationPased()
  */
 class ZugferdXsdValidator
 {
+    use \horstoeko\zugferd\traits\ZugferdDeprecatedMethodAliasTrait;
+
     /**
      * The invoice document reference
      *
@@ -79,29 +82,39 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation passed otherwise false
      *
-     * @deprecated 1.0.65 Use hasNoValidationErrors instead
-     * @return     boolean
+     * @deprecated 1.0.65 Please use hasNoValidationErrors() instead
+     * @return     bool
      */
-    public function validationPased(): bool
+    public function validationPassed(): bool
     {
-        return $this->errorBag === [];
+        trigger_error(
+            'Method ZugferdXsdValidator::validationPassed() is deprecated, use hasNoValidationErrors() instead',
+            E_USER_DEPRECATED
+        );
+
+        return $this->hasNoValidationErrors();
     }
 
     /**
      * Returns true if validation failed otherwise false
      *
-     * @deprecated 1.0.65 Use hasValidationErrors instead
-     * @return     boolean
+     * @deprecated 1.0.65 Please use hasValidationErrors() instead
+     * @return     bool
      */
     public function validationFailed(): bool
     {
-        return !$this->validationPased();
+        trigger_error(
+            'Method ZugferdXsdValidator::validationFailed() is deprecated, use hasValidationErrors() instead',
+            E_USER_DEPRECATED
+        );
+
+        return $this->hasValidationErrors();
     }
 
     /**
      * Returns true if validation passed otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationErrors(): bool
     {
@@ -111,7 +124,7 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationErrors(): bool
     {
@@ -126,6 +139,18 @@ class ZugferdXsdValidator
     public function validationErrors(): array
     {
         return $this->errorBag;
+    }
+
+    /**
+     * Returns a map of deprecated method names to their correct replacements.
+     *
+     * @return array<string, string>
+     */
+    protected function getDeprecatedMethodAliases(): array
+    {
+        return [
+            'validationPased' => 'hasNoValidationErrors',
+        ];
     }
 
     /**

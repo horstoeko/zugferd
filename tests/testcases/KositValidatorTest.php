@@ -479,7 +479,7 @@ class KositValidatorTest extends TestCase
         $this->assertInitialValues($kositValidator);
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $this->registerFileForTeardown($filenameAppZip);
         $this->registerFileForTeardown($filenameScenarioZip);
@@ -504,7 +504,7 @@ class KositValidatorTest extends TestCase
         $kositValidator->setRemoteModePort(8080);
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $this->registerFileForTeardown($filenameAppZip);
         $this->registerFileForTeardown($filenameScenarioZip);
@@ -527,7 +527,7 @@ class KositValidatorTest extends TestCase
         $kositValidator->setValidatorDownloadUrl('https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution-unknown.zip');
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $this->registerFileForTeardown($filenameAppZip);
         $this->registerFileForTeardown($filenameScenarioZip);
@@ -553,7 +553,7 @@ class KositValidatorTest extends TestCase
         $kositValidator->setValidatorScenarioDownloadUrl('https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2024-10-31-unknown.zip');
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $this->registerFileForTeardown($filenameAppZip);
         $this->registerFileForTeardown($filenameScenarioZip);
@@ -577,7 +577,7 @@ class KositValidatorTest extends TestCase
         $this->assertInitialValues($kositValidator);
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $baseDirectory = $this->getPrivateMethodFromObject($kositValidator, 'resolveBaseDirectory')->invokeArgs($kositValidator, []);
 
@@ -612,7 +612,7 @@ class KositValidatorTest extends TestCase
         $kositValidator->setRemoteModePort(8080);
 
         $filenameAppZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []);
-        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []);
+        $filenameScenarioZip = $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []);
 
         $baseDirectory = $this->getPrivateMethodFromObject($kositValidator, 'resolveBaseDirectory')->invokeArgs($kositValidator, []);
 
@@ -733,7 +733,7 @@ class KositValidatorTest extends TestCase
 
         $this->assertStringStartsWith(sys_get_temp_dir(), $this->getPrivateMethodFromObject($kositValidator, 'resolveBaseDirectory')->invokeArgs($kositValidator, []));
         $this->assertStringEndsWith('validator.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppZipFilename')->invokeArgs($kositValidator, []));
-        $this->assertStringEndsWith('validator-configuration.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveScenatioZipFilename')->invokeArgs($kositValidator, []));
+        $this->assertStringEndsWith('validator-configuration.zip', $this->getPrivateMethodFromObject($kositValidator, 'resolveScenarioZipFilename')->invokeArgs($kositValidator, []));
         $this->assertStringEndsWith('validationtool-1.5.0-standalone.jar', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppJarFilename')->invokeArgs($kositValidator, []));
         $this->assertStringEndsWith('scenarios.xml', $this->getPrivateMethodFromObject($kositValidator, 'resolveAppScenarioFilename')->invokeArgs($kositValidator, []));
         $this->assertStringStartsWith(sys_get_temp_dir(), $this->getPrivateMethodFromObject($kositValidator, 'resolveFileToValidateFilename')->invokeArgs($kositValidator, []));

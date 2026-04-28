@@ -34,8 +34,10 @@ use JMS\Serializer\SerializerInterface;
  */
 class ZugferdDocument
 {
+    use \horstoeko\zugferd\traits\ZugferdDeprecatedMethodAliasTrait;
+
     /**
-     * @var integer $profileId Internal profile id
+     * @var int $profileId Internal profile id
      */
     private $profileId = -1;
 
@@ -67,7 +69,7 @@ class ZugferdDocument
     /**
      * Constructor
      *
-     * @param  integer $profile The ID of the profile of the document
+     * @param  int $profile The ID of the profile of the document
      * @return void
      * @throws ZugferdUnknownProfileIdException
      * @throws ZugferdUnknownProfileParameterException
@@ -78,7 +80,7 @@ class ZugferdDocument
     {
         $this->initProfile($profile);
         $this->initObjectHelper();
-        $this->initSerialzer();
+        $this->initSerializer();
     }
 
     /**
@@ -104,7 +106,7 @@ class ZugferdDocument
     }
 
     /**
-     * Get the instance of the internal serializuer
+     * Get the instance of the internal serializer
      *
      * @return SerializerInterface
      */
@@ -126,7 +128,7 @@ class ZugferdDocument
     /**
      * Returns the selected profile id
      *
-     * @return integer
+     * @return int
      */
     public function getProfileId(): int
     {
@@ -189,14 +191,26 @@ class ZugferdDocument
     }
 
     /**
-     * Build the internal serialzer
+     * Returns a map of deprecated method names to their correct replacements.
+     *
+     * @return array<string, string>
+     */
+    protected function getDeprecatedMethodAliases(): array
+    {
+        return [
+            'initSerialzer' => 'initSerializer',
+        ];
+    }
+
+    /**
+     * Build the internal serializer
      *
      * @return ZugferdDocument
      * @throws ZugferdUnknownProfileParameterException
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    protected function initSerialzer(): ZugferdDocument
+    protected function initSerializer(): ZugferdDocument
     {
         $this->serializerBuilder = SerializerBuilder::create();
 

@@ -38,6 +38,8 @@ use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
  */
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
+    use \horstoeko\zugferd\traits\ZugferdDeprecatedMethodAliasTrait;
+
     /**
      * Constants for Relationship types
      * 'Data', 'Alternative', 'Source', 'Supplement', 'Unspecified'
@@ -125,7 +127,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Internal flag which indicate, that attachment pane should be opened
      *
-     * @var boolean
+     * @var bool
      */
     private $attachmentPaneVisibility = true;
 
@@ -466,7 +468,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Sets the flag that indicates, that the attachment pane should be visible on start (True)
      * or hidden (False)
      *
-     * @param boolean $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @param bool $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
      * @return static
      */
     public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
@@ -479,7 +481,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Returns true if the attachment pane is visible, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function getAttachmentPaneIsVisible(): bool
     {
@@ -660,28 +662,40 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Prepare PDF Metadata informations from FacturX/ZUGFeRD XML.
+     * Prepare PDF metadata information from FacturX/ZUGFeRD XML.
      *
      * @return array
      */
     private function preparePdfMetadata(): array
     {
-        $invoiceInformations = $this->extractInvoiceInformations();
+        $invoiceInformation = $this->extractInvoiceInformation();
 
-        $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
+        $dateString = date('Y-m-d', strtotime($invoiceInformation['date']));
 
-        $author = $invoiceInformations['seller'];
-        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']);
-        $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
-        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
+        $author = $invoiceInformation['seller'];
+        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformation['docTypeName']);
+        $title = sprintf('%s : %s %s', $invoiceInformation['seller'], $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId']);
+        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformation['docTypeName'], $invoiceInformation['invoiceId'], $dateString, $invoiceInformation['seller']);
 
         return [
-            'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
-            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
-            'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
-            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformations),
-            'createdDate' => $invoiceInformations['date'],
+            'author' => $this->buildMetadataField('author', $author, $invoiceInformation),
+            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformation),
+            'title' => $this->buildMetadataField('title', $title, $invoiceInformation),
+            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformation),
+            'createdDate' => $invoiceInformation['date'],
             'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
+        ];
+    }
+
+    /**
+     * Returns a map of deprecated method names to their correct replacements.
+     *
+     * @return array<string, string>
+     */
+    protected function getDeprecatedMethodAliases(): array
+    {
+        return [
+            'extractInvoiceInformations' => 'extractInvoiceInformation',
         ];
     }
 
@@ -690,7 +704,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @return array
      */
-    protected function extractInvoiceInformations(): array
+    protected function extractInvoiceInformation(): array
     {
         $domDocument = new DOMDocument();
         $domDocument->loadXML($this->getXmlContent());
@@ -728,11 +742,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Returns true if the submittet parameter $pdfData is a valid file.
-     * Otherwise it will return false
+     * Returns true, if the submitted parameter $pdfData is a valid file.
+     * Otherwise, it will return false
      *
      * @param  string $pdfData
-     * @return boolean
+     * @return bool
      */
     protected function isFile($pdfData): bool
     {

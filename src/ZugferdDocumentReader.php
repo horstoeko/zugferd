@@ -38,203 +38,203 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Internal pointer for documents additional documents
      *
-     * @var integer
+     * @var int
      */
     private $documentAddRefDocPointer = 0;
 
     /**
      * Undocumented variable
      *
-     * @var integer
+     * @var int
      */
     private $documentUltimateCustomerOrderReferencedDocumentPointer = 0;
 
     /**
      * Internal pointer for documents allowance charges
      *
-     * @var integer
+     * @var int
      */
     private $documentAllowanceChargePointer = 0;
 
     /**
      * Internal pointer for documents logistic service charges
      *
-     * @var integer
+     * @var int
      */
     private $documentLogisticServiceChargePointer = 0;
 
     /**
      * Internal pointer for documents payment terms
      *
-     * @var integer
+     * @var int
      */
     private $documentPaymentTermsPointer = 0;
 
     /**
      * Internal pointer for document payment means
      *
-     * @var integer
+     * @var int
      */
     private $documentPaymentMeansPointer = 0;
 
     /**
      * Internal pointer for the document taxes
      *
-     * @var integer
+     * @var int
      */
     private $documentTaxPointer = 0;
 
     /**
      * Internal pointer for seller contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentSellerContactPointer = 0;
 
     /**
      * Internal pointer for byuer contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentBuyerContactPointer = 0;
 
     /**
      * Internal pointer for seller tax representativ party contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentSellerTaxRepresentativeContactPointer = 0;
 
     /**
      * Internal pointer for product enduser contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentProductEndUserContactPointer = 0;
 
     /**
      * Internal pointer for Ship-To contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentShipToContactPointer = 0;
 
     /**
      * Internal pointer for Ultimate-Ship-To contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentUltimateShipToContactPointer = 0;
 
     /**
      * Internal pointer for Ship-From contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentShipFromContactPointer = 0;
 
     /**
      * Internal pointer for invoicer contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentInvoicerContactPointer = 0;
 
     /**
      * Internal pointer for invoicee contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentInvoiceeContactPointer = 0;
 
     /**
      * Internal pointer for payee contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentPayeeContactPointer = 0;
 
     /**
      * Internal pointer for documents invoice reference documents
      *
-     * @var integer
+     * @var int
      */
     private $documentInvRefDocPointer = 0;
 
     /**
      * Internal pointer for documents trade accounting accounts
      *
-     * @var integer
+     * @var int
      */
     private $documentTradeAccountingAccountPointer = 0;
 
     /**
      * Internal pointer for the position
      *
-     * @var integer
+     * @var int
      */
     private $positionPointer = 0;
 
     /**
      * Internal pointer for the position note
      *
-     * @var integer
+     * @var int
      */
     private $positionNotePointer = 0;
 
     /**
      * Internal pointer for the position's gross price allowances/charges
      *
-     * @var integer
+     * @var int
      */
     private $positionGrossPriceAllowanceChargePointer = 0;
 
     /**
      * Internal pointer for the position taxes
      *
-     * @var integer
+     * @var int
      */
     private $positionTaxPointer = 0;
 
     /**
      * Internal pointer for the position's allowances/charges
      *
-     * @var integer
+     * @var int
      */
     private $positionAllowanceChargePointer = 0;
 
     /**
      * Internal pointer for the position's additional referenced document
      *
-     * @var integer
+     * @var int
      */
     private $positionAddRefDocPointer = 0;
 
     /**
      * Internal pointer for the position's additional referenced document (Object reference)
      *
-     * @var integer
+     * @var int
      */
     private $positionAddRefObjDocPointer = 0;
 
     /**
      * Internal pointer for the positions product characteristics
      *
-     * @var integer
+     * @var int
      */
     private $positionProductCharacteristicPointer = 0;
 
     /**
      * Internal pointer for the positions product classification
      *
-     * @var integer
+     * @var int
      */
     private $positionProductClassificationPointer = 0;
 
     /**
      * Internal pointer for the positions referenced product
      *
-     * @var integer
+     * @var int
      */
     private $positionReferencedProductPointer = 0;
 
@@ -395,7 +395,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the copy-identifier.
      *
-     * @param  boolean|null $copyIndicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
+     * @param  bool|null $copyIndicator __BT-X-3-00, BT-X-3, From EXTENDED__ Returns true if this document is a copy from the original document
      * @return ZugferdDocumentReader
      */
     public function getIsDocumentCopy(?bool &$copyIndicator): ZugferdDocumentReader
@@ -408,7 +408,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get the test-docukent-identifier.
      *
-     * @param  boolean|null $testDocumentIndicator Returns true if this document is only for test purposes
+     * @param  bool|null $testDocumentIndicator Returns true if this document is only for test purposes
      * @return ZugferdDocumentReader
      */
     public function getIsTestDocument(?bool &$testDocumentIndicator): ZugferdDocumentReader
@@ -532,7 +532,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first seller contact of the document. Returns true if a first seller contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerContact(): bool
     {
@@ -547,7 +547,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available seller contact of the document. Returns true if another seller contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerContact(): bool
     {
@@ -691,7 +691,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first buyer contact of the document. Returns true if a first buyer contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentBuyerContact
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentBuyerContact(): bool
     {
@@ -706,7 +706,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available Buyer contact of the document. Returns true if another Buyer contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentBuyerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentBuyerContact(): bool
     {
@@ -850,7 +850,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first seller tax representative contact of the document. Returns true if a first Seller Tax Representative contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerTaxRepresentativeContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentSellerTaxRepresentativeContact(): bool
     {
@@ -865,7 +865,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available seller tax representative contact of the document. Returns true if another seller contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentSellerTaxRepresentativeContact(): bool
     {
@@ -994,7 +994,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first product end-user contact of the document. Returns true if a first product end-user contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentProductEndUserContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentProductEndUserContactContact(): bool
     {
@@ -1009,7 +1009,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available product end-user contact of the document. Returns true if another product end-user contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentProductEndUserContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentProductEndUserContactContact(): bool
     {
@@ -1138,7 +1138,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first Ship-To contact of the document. Returns true if a first ship-to contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentShipToContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipToContact(): bool
     {
@@ -1153,7 +1153,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available ship-to contact of the document. Returns true if another ship-to contact is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentShipToContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipToContact(): bool
     {
@@ -1282,7 +1282,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first contact person of the different end recipient party. Returns true if a first contact person of the different end recipient party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentUltimateShipToContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateShipToContact(): bool
     {
@@ -1297,7 +1297,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available contact person of the different end recipient party. Returns true if another contact person of the different end recipient party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentUltimateShipToContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateShipToContact(): bool
     {
@@ -1426,7 +1426,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first contact information of the deviating consignor party of the document. Returns true if a first contact information of the deviating consignor party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentShipFromContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentShipFromContact(): bool
     {
@@ -1441,7 +1441,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available contact information of the deviating consignor party of the document. Returns true if another contact information of the deviating consignor party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentShipFromContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentShipFromContact(): bool
     {
@@ -1570,7 +1570,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first contact information of the invoicer party of the document. Returns true if a first contact information of the invoicer party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentInvoicerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoicerContact(): bool
     {
@@ -1585,7 +1585,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available contact information of the invoicer party of the document. Returns true if another contact information of the invoicer party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentInvoicerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoicerContact(): bool
     {
@@ -1715,7 +1715,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first contact information of the different invoice recipient party of the document. Returns true if a first contact information of the different invoice recipient party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentInvoiceeContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceeContact(): bool
     {
@@ -1730,7 +1730,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available contact information of the different invoice recipient party of the document. Returns true if another contact information of the different invoice recipient party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentInvoiceeContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceeContact(): bool
     {
@@ -1861,7 +1861,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first contact information of the payee party of the document. Returns true if a first contact information of the payee party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentPayeeContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPayeeContact(): bool
     {
@@ -1876,7 +1876,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next available contact information of the payee party of the document. Returns true if another contact information of the payee party is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentPayeeContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPayeeContact(): bool
     {
@@ -2001,7 +2001,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get first additional referenced document for the document. Returns true if an additional referenced document is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentAdditionalReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentAdditionalReferencedDocument(): bool
     {
@@ -2016,7 +2016,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get next additional referenced document for the document. Returns true when another additional referenced document is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentAdditionalReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentAdditionalReferencedDocument(): bool
     {
@@ -2114,7 +2114,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get first reference to the previous invoice. Returns true if an invoice reference document is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentInvoiceReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentInvoiceReferencedDocument(): bool
     {
@@ -2129,7 +2129,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get next reference to the previous invoice Returns true when another invoice reference document is available, otherwise false
      * You may use this together with ZugferdDocumentReader::getDocumentInvoiceReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentInvoiceReferencedDocument(): bool
     {
@@ -2204,7 +2204,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get first additional referenced document for the document. Returns true if the first position is available, otherwise false.
      * Use wuth getDocumentUltimateCustomerOrderReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentUltimateCustomerOrderReferencedDocument(): bool
     {
@@ -2219,7 +2219,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get next additional referenced document for the document. Returns true if the first position is available, otherwise false
      * Use wuth getDocumentUltimateCustomerOrderReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentUltimateCustomerOrderReferencedDocument(): bool
     {
@@ -2336,7 +2336,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first payment means of the document. Returns true if a first payment mean is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstGetDocumentPaymentMeans(): bool
     {
@@ -2351,7 +2351,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next payment means of the document. Returns true if another payment mean is available, otherwise false
      * You may use this together with ZugferdDocumentReader::getDocumentPaymentMeans
      *
-     * @return boolean
+     * @return bool
      */
     public function nextGetDocumentPaymentMeans(): bool
     {
@@ -2410,7 +2410,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document tax. Returns true if a first tax (at document level) is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentTax.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentTax(): bool
     {
@@ -2425,7 +2425,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document tax. Returns true if another tax (at document level) is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentTax.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentTax(): bool
     {
@@ -2541,7 +2541,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents allowance charge. Returns true if the first position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentAllowanceCharge(): bool
     {
@@ -2556,7 +2556,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents allowance charge. Returns true if a other position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentAllowanceCharge(): bool
     {
@@ -2571,7 +2571,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get information about the currently seeked surcharges and charges applicable to the bill as a whole, Deductions, such as for withheld taxes may also be specified in this group.
      *
      * @param  float|null   $actualAmount          __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount at document level
-     * @param  boolean|null $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  bool|null $isCharge              __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to a surcharge or a discount, true means that this is a charge
      * @param  string|null  $taxCategoryCode       __BT-95/BT-102, From BASIC WL__ A coded indication of which sales tax category applies to the surcharge or deduction at document level
      * @param  string|null  $taxTypeCode           __BT-95-0/BT-102-0, From BASIC WL__ Code for the VAT category of the surcharge or charge at document level. Note: Fixed value = "VAT"
      * @param  float|null   $rateApplicablePercent __BT-96/BT-103, From BASIC WL__ VAT rate for the surcharge or discount on document level. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
@@ -2609,7 +2609,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents service charge position. Returns true if the first position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentLogisticsServiceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentLogisticsServiceCharge(): bool
     {
@@ -2624,7 +2624,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents service charge position. Returns true if a other position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentLogisticsServiceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentLogisticsServiceCharge(): bool
     {
@@ -2706,7 +2706,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents payment terms position. Returns true if the first position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPaymentTerms(): bool
     {
@@ -2721,7 +2721,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents payment terms position. Returns true if a other position is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentPaymentTerm.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPaymentTerms(): bool
     {
@@ -2817,7 +2817,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first trade accounting account of the document. Returns true if a first account is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentReceivableSpecifiedTradeAccountingAccount(): bool
     {
@@ -2832,7 +2832,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next trade accounting account of the document. Returns true if another account is available, otherwise false.
      * You may use this together with ZugferdDocumentReader::getDocumentSellerContact.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentReceivableSpecifiedTradeAccountingAccount(): bool
     {
@@ -2904,7 +2904,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionGenerals.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPosition(): bool
     {
@@ -2929,7 +2929,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position. Returns true if another position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionGenerals.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPosition(): bool
     {
@@ -2974,7 +2974,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionNote.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionNote(): bool
     {
@@ -2992,7 +2992,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionNote.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionNote(): bool
     {
@@ -3096,7 +3096,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position's product characteristic. Returns true if the first position propduct characteristic is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionProductCharacteristic.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionProductCharacteristic(): bool
     {
@@ -3114,7 +3114,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position's product characteristic. Returns true if more position propduct characteristics are available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionProductCharacteristic.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionProductCharacteristic(): bool
     {
@@ -3159,7 +3159,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position's product classification. Returns true if the first position propduct classification is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionProductClassification.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionProductClassification(): bool
     {
@@ -3177,7 +3177,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position's product classification. Returns true if more position propduct classifications are available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionProductClassification.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionProductClassification(): bool
     {
@@ -3220,7 +3220,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position's referenced product. Returns true if the first position referenced product is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionReferencedProduct.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionReferencedProduct(): bool
     {
@@ -3238,7 +3238,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position's referenced product. Returns true if more position referenced products are available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionReferencedProduct.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionReferencedProduct(): bool
     {
@@ -3398,7 +3398,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents position additional referenced document. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionAdditionalReferencedDocument(): bool
     {
@@ -3416,7 +3416,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents position additional referenced document. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionAdditionalReferencedDocument(): bool
     {
@@ -3514,7 +3514,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents position gross price allowance charge position. Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionGrossPriceAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
     {
@@ -3530,7 +3530,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents position gross price allowance charge position. Returns true if a other position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionGrossPriceAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
     {
@@ -3548,7 +3548,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Get Detailed information on surcharges and discounts on item gross price.
      *
      * @param  float       $actualAmount          __BT-147, From BASIC__ Discount on the item price. The total discount subtracted from the gross price to calculate the net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
-     * @param  boolean     $isCharge              __BT-147-02, From BASIC__ Switch for surcharge/discount, if true then its an charge
+     * @param  bool     $isCharge              __BT-147-02, From BASIC__ Switch for surcharge/discount, if true then it is a charge
      * @param  float|null  $calculationPercent    __BT-X-34, From EXTENDED__Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount) is transferred
      * @param  float|null  $basisAmount           __BT-X-35, From EXTENDED__ Base amount of the discount/surcharge
      * @param  string|null $reason                __BT-X-36, From EXTENDED__ Reason for surcharge/discount (free text)
@@ -3752,7 +3752,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first document position tax. Returns true if the first tax position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionTax.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionTax(): bool
     {
@@ -3770,7 +3770,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next document position tax. Returns true if another tax position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionTax.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionTax(): bool
     {
@@ -3841,7 +3841,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first allowance charge (on position level). Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionAllowanceCharge(): bool
     {
@@ -3859,7 +3859,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next allowance charge (on position level). Returns true if another position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionAllowanceCharge(): bool
     {
@@ -3877,7 +3877,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Detailed information on currentley seeked surcharges and discounts on position level.
      *
      * @param  float|null   $actualAmount          __BT-136/BT-141, From BASIC__ The surcharge/discount amount excluding sales tax
-     * @param  boolean|null $isCharge              __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
+     * @param  bool|null $isCharge              __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
      * @param  float|null   $calculationPercent    __BT-138, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
      * @param  float|null   $basisAmount           __BT-137, From EN 16931__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
      * @param  string|null  $reason                __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
@@ -3919,7 +3919,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * This is the simplified version of ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
      *
      * @param  float|null   $actualAmount       __BT-136/BT-141, From BASIC__ The surcharge/discount amount excluding sales tax
-     * @param  boolean|null $isCharge           __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
+     * @param  bool|null $isCharge           __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
      * @param  float|null   $calculationPercent __BT-138, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
      * @param  float|null   $basisAmount        __BT-137, From EN 16931__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
      * @param  string|null  $reasonCode         __BT-140/BT-145, From BASIC__ The reason given as a code for the invoice line discount
@@ -3950,10 +3950,15 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param      float|null $lineTotalAmount            __BT-131, From BASIC__ The total amount of the invoice item.
      * @param      float|null $totalAllowanceChargeAmount __BT-, From __ Total amount of item surcharges and discounts
      * @return     ZugferdDocumentReader
-     * @deprecated 1.0.88
+     * @deprecated 1.0.88 Please use getDocumentPositionLineSummationSimple() instead
      */
     public function getDocumentPositionLineSummation(?float &$lineTotalAmount, ?float &$totalAllowanceChargeAmount): ZugferdDocumentReader
     {
+        trigger_error(
+            'Method ZugferdDocumentReader::getDocumentPositionLineSummation() is deprecated, use getDocumentPositionLineSummationSimple() instead',
+            E_USER_DEPRECATED
+        );
+
         $totalAllowanceChargeAmount = 0.0;
 
         $this->getDocumentPositionLineSummationSimple($lineTotalAmount);
@@ -3964,7 +3969,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on item totals.
      *
-     * @param  float $lineTotalAmount __BT-131, From BASIC__ The total amount of the invoice item.
+     * @param  float|null $lineTotalAmount __BT-131, From BASIC__ The total amount of the invoice item.
      * @return ZugferdDocumentReader
      */
     public function getDocumentPositionLineSummationSimple(?float &$lineTotalAmount): ZugferdDocumentReader
@@ -4032,7 +4037,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the first documents position additional referenced document (Object detection at the level of the accounting position). Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedObjDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function firstDocumentPositionAdditionalReferencedObjDocument(): bool
     {
@@ -4049,7 +4054,7 @@ class ZugferdDocumentReader extends ZugferdDocument
      * Seek to the next documents position additional referenced document (Object detection at the level of the accounting position). Returns true if the first position is available, otherwise false.
      * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedObjDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function nextDocumentPositionAdditionalReferencedObjDocument(): bool
     {

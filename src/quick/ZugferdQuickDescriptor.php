@@ -30,6 +30,8 @@ use horstoeko\zugferd\ZugferdProfiles;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @method ZugferdQuickDescriptor doAddTradeLineCommentItem(string $lineId, string $comment)
  */
 class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 {
@@ -71,14 +73,14 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Internal flag to see if the totals are alread calculated
      *
-     * @var boolean
+     * @var bool
      */
     protected $totalsAreCalculated = false;
 
     /**
      * Returns the profile of the descriptor
      *
-     * @return integer
+     * @return int
      */
     protected static function getProfile(): int
     {
@@ -156,7 +158,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * If $isSEPA is true code __31__ wil be useed for payment means code.
      * If $isSEPA is false code __59__ wil be useed for payment means code.
      *
-     * @param  boolean $isSEPA    __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param  bool $isSEPA    __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * @param  string  $buyerIban __BT-91, From BASIC WL__ The account to be debited by the direct debit
      * @return ZugferdQuickDescriptor
      */
@@ -172,7 +174,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * If $isSEPA is true code __58__ wil be useed for payment means code.
      * If $isSEPA is false code __30__ wil be useed for payment means code.
      *
-     * @param  boolean     $isSEPA           __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
+     * @param  bool     $isSEPA           __BT-81, From BASIC WL__ The expected or used means of payment, expressed as a code. The entries from the UNTDID 4461 code list must be used. A distinction should be made between SEPA and non-SEPA payments as well as between credit payments, direct debits, card payments and other means of payment In particular, the following codes can be used:
      * @param  string      $payeeIban        __BT-84, From BASIC WL__ A unique identifier for the financial account held with a payment service provider to which the payment should be made
      * @param  string|null $payeeAccountName __BT-85, From BASIC WL__ The name of the payment account held with a payment service provider to which the payment should be made
      * @param  string|null $payeePropId      __BT-BT-84-0, From BASIC WL__ National account number (not for SEPA)
@@ -488,15 +490,15 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Add a new text position
      *
-     * @param      string $lineId  __BT-126, From BASIC__ Identification of the invoice item
-     * @param      string $comment __BT-127, From BASIC__ A free text that contains unstructured information that is relevant to the invoice item
-     * @return     ZugferdQuickDescriptor
-     * @deprecated 1.0.75
+     * @param  string $lineId  __BT-126, From BASIC__ Identification of the invoice item
+     * @param  string $comment __BT-127, From BASIC__ A free text that contains unstructured information that is relevant to the invoice item
+     * @return ZugferdQuickDescriptor
      */
-    public function doAddTradeLineCommentItem(string $lineId, string $comment): ZugferdQuickDescriptor
+    public function doAddTradeLineComment(string $lineId, string $comment): ZugferdQuickDescriptor
     {
-        $this->addNewTextPosition($lineId);
+        $this->addDocumentPositionComment($lineId);
         $this->setDocumentPositionNote($comment);
+
         return $this;
     }
 
@@ -820,7 +822,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Summarizes an array element in the internal vat table
      *
-     * @param  integer $index
+     * @param  int $index
      * @return float
      */
     protected function summarizeVatTableElement(int $index): float
@@ -832,5 +834,17 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         }
 
         return $sum;
+    }
+
+    /**
+     * Returns a map of deprecated method names to their correct replacements.
+     *
+     * @return array<string, string>
+     */
+    protected function getDeprecatedMethodAliases(): array
+    {
+        return array_merge(parent::getDeprecatedMethodAliases(), [
+            'doAddTradeLineCommentItem' => 'doAddTradeLineComment',
+        ]);
     }
 }
