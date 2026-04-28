@@ -49,7 +49,10 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
             ->setDocumentPositionLineSummation(100.00)
             ->setDocumentSummation(119.00, 119.00, 100.00, 0.0, 0.0, 100.00, 19.00)
             ->addDocumentTax("S", "VAT", 100.00, 19.00, 19.0)
-            ->setForeignCurrency("USD", 22.61, 1.19);
+            ->setForeignCurrency("USD", 22.61, 1.19)
+            ->addDocumentUltimateCustomerOrderReferencedDocument("UCO-001", \DateTime::createFromFormat("Ymd", "20250501"))
+            ->addDocumentUltimateCustomerOrderReferencedDocument("UCO-002", \DateTime::createFromFormat("Ymd", "20250515"))
+            ->addDocumentPositionUltimateCustomerOrderReferencedDocument("POS-UCO-001", "10", \DateTime::createFromFormat("Ymd", "20250520"));
 
         $xml = $builder->getContent();
         self::$document = ZugferdDocumentReader::readAndGuessFromContent($xml);
@@ -59,16 +62,16 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
     {
         self::$document->getDocumentBusinessProcess($businessProcess);
 
-        self::assertSame("urn:fdc:peppol.eu:2017:poacc:billing:01:1.0", $businessProcess);
+        $this->assertSame("urn:fdc:peppol.eu:2017:poacc:billing:01:1.0", $businessProcess);
     }
 
     public function testGetDocumentForeignCurrency(): void
     {
         self::$document->getDocumentForeignCurrency($foreignCurrencyCode, $foreignTaxAmount, $exchangeRate);
 
-        self::assertSame("USD", $foreignCurrencyCode);
-        self::assertEqualsWithDelta(22.61, $foreignTaxAmount, 0.01);
-        self::assertEqualsWithDelta(1.19, $exchangeRate, 0.01);
+        $this->assertSame("USD", $foreignCurrencyCode);
+        $this->assertEqualsWithDelta(22.61, $foreignTaxAmount, 0.01);
+        $this->assertEqualsWithDelta(1.19, $exchangeRate, 0.01);
     }
 
     public function testGetDocumentForeignCurrencyEmptyWhenNotSet(): void
@@ -92,66 +95,66 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
         $reader = ZugferdDocumentReader::readAndGuessFromContent($emptyBuilder->getContent());
         $reader->getDocumentForeignCurrency($code, $amount, $rate);
 
-        self::assertSame("", $code);
-        self::assertEqualsWithDelta(0.0, $amount, 0.01);
-        self::assertEqualsWithDelta(0.0, $rate, 0.01);
+        $this->assertSame("", $code);
+        $this->assertEqualsWithDelta(0.0, $amount, 0.01);
+        $this->assertEqualsWithDelta(0.0, $rate, 0.01);
     }
 
     public function testGetDocumentBuyerTaxRepresentative(): void
     {
         self::$document->getDocumentBuyerTaxRepresentative($name, $id, $description);
 
-        self::assertEquals("Tax Rep GmbH", $name);
-        self::assertIsArray($id);
-        self::assertNotEmpty($id);
-        self::assertEquals("TAXREP-01", $id[0]);
-        self::assertEquals("", $description);
+        $this->assertEquals("Tax Rep GmbH", $name);
+        $this->assertIsArray($id);
+        $this->assertNotEmpty($id);
+        $this->assertEquals("TAXREP-01", $id[0]);
+        $this->assertEquals("", $description);
     }
 
     public function testGetDocumentBuyerTaxRepresentativeGlobalId(): void
     {
         self::$document->getDocumentBuyerTaxRepresentativeGlobalId($globalID);
 
-        self::assertIsArray($globalID);
-        self::assertArrayHasKey("0088", $globalID);
-        self::assertEquals("4000001123452", $globalID["0088"]);
+        $this->assertIsArray($globalID);
+        $this->assertArrayHasKey("0088", $globalID);
+        $this->assertEquals("4000001123452", $globalID["0088"]);
     }
 
     public function testGetDocumentBuyerTaxRepresentativeTaxRegistration(): void
     {
         self::$document->getDocumentBuyerTaxRepresentativeTaxRegistration($taxReg);
 
-        self::assertIsArray($taxReg);
-        self::assertArrayHasKey("VA", $taxReg);
-        self::assertEquals("DE999888777", $taxReg["VA"]);
+        $this->assertIsArray($taxReg);
+        $this->assertArrayHasKey("VA", $taxReg);
+        $this->assertEquals("DE999888777", $taxReg["VA"]);
     }
 
     public function testGetDocumentBuyerTaxRepresentativeAddress(): void
     {
         self::$document->getDocumentBuyerTaxRepresentativeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
 
-        self::assertEquals("Steuerstr. 42", $lineOne);
-        self::assertEquals("Gebäude B", $lineTwo);
-        self::assertEquals("3. OG", $lineThree);
-        self::assertEquals("50667", $postCode);
-        self::assertEquals("Köln", $city);
-        self::assertEquals("DE", $country);
-        self::assertIsArray($subDivision);
-        self::assertContains("NRW", $subDivision);
+        $this->assertEquals("Steuerstr. 42", $lineOne);
+        $this->assertEquals("Gebäude B", $lineTwo);
+        $this->assertEquals("3. OG", $lineThree);
+        $this->assertEquals("50667", $postCode);
+        $this->assertEquals("Köln", $city);
+        $this->assertEquals("DE", $country);
+        $this->assertIsArray($subDivision);
+        $this->assertContains("NRW", $subDivision);
     }
 
     public function testGetDocumentBuyerTaxRepresentativeLegalOrganisation(): void
     {
         self::$document->getDocumentBuyerTaxRepresentativeLegalOrganisation($legalOrgId, $legalOrgType, $legalOrgName);
 
-        self::assertEquals("REG-12345", $legalOrgId);
-        self::assertEquals("0002", $legalOrgType);
-        self::assertEquals("Tax Rep Trading", $legalOrgName);
+        $this->assertEquals("REG-12345", $legalOrgId);
+        $this->assertEquals("0002", $legalOrgType);
+        $this->assertEquals("Tax Rep Trading", $legalOrgName);
     }
 
     public function testFirstDocumentBuyerTaxRepresentativeContact(): void
     {
-        self::assertTrue(self::$document->firstDocumentBuyerTaxRepresentativeContact());
+        $this->assertTrue(self::$document->firstDocumentBuyerTaxRepresentativeContact());
     }
 
     public function testGetDocumentBuyerTaxRepresentativeContactFirst(): void
@@ -159,17 +162,17 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
         self::$document->firstDocumentBuyerTaxRepresentativeContact();
         self::$document->getDocumentBuyerTaxRepresentativeContact($personName, $deptName, $phone, $fax, $email);
 
-        self::assertEquals("Max Steuer", $personName);
-        self::assertEquals("Steuerabteilung", $deptName);
-        self::assertEquals("+49 221 555 0001", $phone);
-        self::assertEquals("+49 221 555 0002", $fax);
-        self::assertEquals("max@taxrep.de", $email);
+        $this->assertEquals("Max Steuer", $personName);
+        $this->assertEquals("Steuerabteilung", $deptName);
+        $this->assertEquals("+49 221 555 0001", $phone);
+        $this->assertEquals("+49 221 555 0002", $fax);
+        $this->assertEquals("max@taxrep.de", $email);
     }
 
     public function testNextDocumentBuyerTaxRepresentativeContact(): void
     {
         self::$document->firstDocumentBuyerTaxRepresentativeContact();
-        self::assertTrue(self::$document->nextDocumentBuyerTaxRepresentativeContact());
+        $this->assertTrue(self::$document->nextDocumentBuyerTaxRepresentativeContact());
     }
 
     public function testGetDocumentBuyerTaxRepresentativeContactSecond(): void
@@ -178,17 +181,85 @@ class ReaderExtendedBuyerTaxRepresentativeTest extends TestCase
         self::$document->nextDocumentBuyerTaxRepresentativeContact();
         self::$document->getDocumentBuyerTaxRepresentativeContact($personName, $deptName, $phone, $fax, $email);
 
-        self::assertEquals("Lisa Abgabe", $personName);
-        self::assertEquals("Buchhaltung", $deptName);
-        self::assertEquals("+49 221 555 0003", $phone);
-        self::assertEquals("+49 221 555 0004", $fax);
-        self::assertEquals("lisa@taxrep.de", $email);
+        $this->assertEquals("Lisa Abgabe", $personName);
+        $this->assertEquals("Buchhaltung", $deptName);
+        $this->assertEquals("+49 221 555 0003", $phone);
+        $this->assertEquals("+49 221 555 0004", $fax);
+        $this->assertEquals("lisa@taxrep.de", $email);
     }
 
     public function testNoThirdContact(): void
     {
         self::$document->firstDocumentBuyerTaxRepresentativeContact();
         self::$document->nextDocumentBuyerTaxRepresentativeContact();
-        self::assertFalse(self::$document->nextDocumentBuyerTaxRepresentativeContact());
+        $this->assertFalse(self::$document->nextDocumentBuyerTaxRepresentativeContact());
+    }
+
+    public function testGetDocumentUltimateCustomerOrderReferencedDocuments(): void
+    {
+        self::$document->getDocumentUltimateCustomerOrderReferencedDocuments($refdocs);
+
+        $this->assertIsArray($refdocs);
+        $this->assertCount(2, $refdocs);
+        $this->assertEquals("UCO-001", $refdocs[0]['issuerAssignedId']);
+        $this->assertEquals("UCO-002", $refdocs[1]['issuerAssignedId']);
+    }
+
+    public function testFirstDocumentUltimateCustomerOrderReferencedDocument(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentUltimateCustomerOrderReferencedDocument());
+    }
+
+    public function testGetDocumentUltimateCustomerOrderReferencedDocumentFirst(): void
+    {
+        self::$document->firstDocumentUltimateCustomerOrderReferencedDocument();
+        self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerAssignedId, $issueDate);
+
+        $this->assertEquals("UCO-001", $issuerAssignedId);
+        $this->assertInstanceOf(\DateTime::class, $issueDate);
+        $this->assertEquals("20250501", $issueDate->format("Ymd"));
+    }
+
+    public function testNextDocumentUltimateCustomerOrderReferencedDocument(): void
+    {
+        self::$document->firstDocumentUltimateCustomerOrderReferencedDocument();
+        $this->assertTrue(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
+
+        self::$document->getDocumentUltimateCustomerOrderReferencedDocument($issuerAssignedId, $issueDate);
+
+        $this->assertEquals("UCO-002", $issuerAssignedId);
+        $this->assertEquals("20250515", $issueDate->format("Ymd"));
+    }
+
+    public function testNoThirdDocumentUltimateCustomerOrderReferencedDocument(): void
+    {
+        self::$document->firstDocumentUltimateCustomerOrderReferencedDocument();
+        self::$document->nextDocumentUltimateCustomerOrderReferencedDocument();
+        $this->assertFalse(self::$document->nextDocumentUltimateCustomerOrderReferencedDocument());
+    }
+
+    public function testFirstDocumentPositionUltimateCustomerOrderReferencedDocument(): void
+    {
+        self::$document->firstDocumentPosition();
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument());
+    }
+
+    public function testGetDocumentPositionUltimateCustomerOrderReferencedDocument(): void
+    {
+        self::$document->firstDocumentPosition();
+        self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument();
+        self::$document->getDocumentPositionUltimateCustomerOrderReferencedDocument($issuerAssignedId, $lineId, $issueDate);
+
+        $this->assertEquals("POS-UCO-001", $issuerAssignedId);
+        $this->assertEquals("10", $lineId);
+        $this->assertInstanceOf(\DateTime::class, $issueDate);
+        $this->assertEquals("20250520", $issueDate->format("Ymd"));
+    }
+
+    public function testNoSecondDocumentPositionUltimateCustomerOrderReferencedDocument(): void
+    {
+        self::$document->firstDocumentPosition();
+        self::$document->firstDocumentPositionUltimateCustomerOrderReferencedDocument();
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateCustomerOrderReferencedDocument());
     }
 }
