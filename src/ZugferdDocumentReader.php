@@ -2051,10 +2051,12 @@ class ZugferdDocumentReader extends ZugferdDocument
      * @param  array|null    $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param  string|null   $refTypeCode        __BT-, From __ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTime|null $issueDate          __BT-X-149, From EXTENDED__ Document date
-     * @param  string|null   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string|null   $binaryDataFilename __BT-125, From EN 16931__ Contains the content located at the path $this->binarydatadirectory + filename of the embedded binary object Attachment
+     * @param  string|null   $binaryMimeCode     __BT-125-1 From _EN 16931__ Contains the mime code of the embedded binary object Attachment
+     * @param  string|null   $binaryFilename     __BT-125-2 From _EN 16931__ Contains the filename of the embedded binary object Attachment
      * @return ZugferdDocumentReader
      */
-    public function getDocumentAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate, ?string &$binaryDataFilename): ZugferdDocumentReader
+    public function getDocumentAdditionalReferencedDocument(?string &$issuerAssignedId, ?string &$typeCode, ?string &$uriId, ?array &$name, ?string &$refTypeCode, ?DateTime &$issueDate, ?string &$binaryDataFilename, ?string &$binaryMimeCode = null, ?string &$binaryFilename = null): ZugferdDocumentReader
     {
         $addRefDoc = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.getAdditionalReferencedDocument", []);
         $addRefDoc = $addRefDoc[$this->documentAddRefDocPointer];
@@ -2069,16 +2071,17 @@ class ZugferdDocumentReader extends ZugferdDocument
             $this->getInvoiceValueByPathFrom($addRefDoc, "getFormattedIssueDateTime.getDateTimeString.getFormat", "")
         );
 
-        $binaryDataFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", "");
-        $binarydata = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", "");
+        $binaryMimeCode = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getMimeCode", null);
+        $binaryFilename = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.getFilename", null);
+        $binaryObject = $this->getInvoiceValueByPathFrom($addRefDoc, "getAttachmentBinaryObject.value", null);
 
         if (
-            StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false
-            && StringUtils::stringIsNullOrEmpty($binarydata) === false
+            StringUtils::stringIsNullOrEmpty($binaryFilename) === false
+            && StringUtils::stringIsNullOrEmpty($binaryObject) === false
             && StringUtils::stringIsNullOrEmpty($this->binarydatadirectory) === false
         ) {
-            $binaryDataFilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binaryDataFilename);
-            FileUtils::base64ToFile($binarydata, $binaryDataFilename);
+            $binaryDataFilename = PathUtils::combinePathWithFile($this->binarydatadirectory, $binaryFilename);
+            FileUtils::base64ToFile($binaryObject, $binaryDataFilename);
         } else {
             $binaryDataFilename = "";
         }
