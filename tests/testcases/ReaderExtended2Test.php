@@ -865,7 +865,7 @@ class ReaderExtended2Test extends TestCase
     public function testGetDocumentAdditionalReferencedDocument(): void
     {
         $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
-        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
+        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename, $binarymimecode, $binaryfilename);
         $this->assertSame("SUPPort doc", $issuerassignedid);
         $this->assertSame("916", $typecode);
         $this->assertSame("url:gffter", $uriid);
@@ -876,6 +876,8 @@ class ReaderExtended2Test extends TestCase
         $this->assertSame("", $reftypecode);
         $this->assertNotInstanceOf(\DateTime::class, $issueddate);
         $this->assertSame("", $binarydatafilename);
+        $this->assertNull($binarymimecode);
+        $this->assertNull($binaryfilename);
     }
 
     public function testDocumentUltimateCustomerOrderReferencedDocumentLoop(): void

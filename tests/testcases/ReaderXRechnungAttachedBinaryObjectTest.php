@@ -71,7 +71,7 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
 
     public function testGetDocumentAdditionalReferencedDocumentNoDirectorySet(): void
     {
-        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
+        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename, $binarymimecode, $binaryfilename);
         $this->assertSame("01_15_Anhang_01.pdf", $issuerassignedid);
         $this->assertSame("916", $typecode);
         $this->assertArrayHasKey(0, $name);
@@ -79,12 +79,14 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertEquals("Aufschlüsselung der einzelnen Leistungspositionen", $name[0]);
         $this->assertSame("", $binarydatafilename);
         $this->assertFileDoesNotExist($binarydatafilename);
+        $this->assertSame("application/pdf", $binarymimecode);
+        $this->assertSame("01_15_Anhang_01.pdf", $binaryfilename);
     }
 
     public function testGetDocumentAdditionalReferencedDocument(): void
     {
         self::$document->setBinaryDataDirectory(__DIR__);
-        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
+        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename, $binarymimecode, $binaryfilename);
         $this->assertSame("01_15_Anhang_01.pdf", $issuerassignedid);
         $this->assertSame("916", $typecode);
         $this->assertArrayHasKey(0, $name);
@@ -95,6 +97,8 @@ class ReaderXRechnungAttachedBinaryObjectTest extends TestCase
         $this->assertFileExists($binarydatafilename);
         $this->assertSame(150128, filesize($binarydatafilename));
         $this->assertSame("%PDF", substr(file_get_contents($binarydatafilename), 0, 4));
+        $this->assertSame("application/pdf", $binarymimecode);
+        $this->assertSame("01_15_Anhang_01.pdf", $binaryfilename);
         @unlink($binarydatafilename);
     }
 
