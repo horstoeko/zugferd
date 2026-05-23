@@ -234,11 +234,13 @@ jobs:
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
+        continue-on-error: true
         with:
           files: "build/logs/junit.xml"
 
       - name: Publish Build Logs
         uses: actions/upload-artifact@v7
+        continue-on-error: true
         with:
           name: Build log artifacts for ubuntu-24.04 PHP 8.3 (Release)
           path: build/logs

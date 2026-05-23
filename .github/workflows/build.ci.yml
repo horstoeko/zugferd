@@ -239,12 +239,14 @@ jobs:
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: github.event_name != 'pull_request'
+        continue-on-error: true
         with:
           files: "build/logs/junit.xml"
           comment_mode: ${{ ((github.event.workflow_run && github.event.workflow_run.event == 'pull_request') || github.event_name == 'pull_request') && 'failures' || 'always' }}
 
       - name: Publish Build Logs
         uses: actions/upload-artifact@v7
+        continue-on-error: true
         with:
           name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
           path: build/logs
