@@ -1,3 +1,19 @@
+## v1.0.123
+
+``Previous version v1.0.122``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [043bc25](https://github.com/horstoeko/zugferd/commit/043bc25) | 2026-05-23 08:50:32 CEST | HorstOeko | [ENH]  Added method to allow configuring the PDF/A conformance | [#364](https://github.com/horstoeko/zugferd/issues/364)
+| :new_moon:  | [952d642](https://github.com/horstoeko/zugferd/commit/952d642) | 2026-05-04 17:05:04 CEST | Andreas Wunderwald | feat: extend `getDocumentAdditionalReferencedDocument` to include binary mime code and filename handling in both logic and tests. | 
+| :new_moon:  | [bf84893](https://github.com/horstoeko/zugferd/commit/bf84893) | 2026-04-27 18:00:30 CEST | Andreas Wunderwald | Removed the invalid MIME type “application/xml” | 
+| :new_moon:  | [15253ee](https://github.com/horstoeko/zugferd/commit/15253ee) | 2026-04-27 18:00:30 CEST | Andreas Wunderwald | Removed the invalid MIME type “application/xml” | 
+| :new_moon:  | [ac6da1c](https://github.com/horstoeko/zugferd/commit/ac6da1c) | 2026-04-27 17:27:34 CEST | Andreas Wunderwald | Add support for XML mimetype in supported formats, we should remove this separately | 
+| :new_moon:  | [a628c9f](https://github.com/horstoeko/zugferd/commit/a628c9f) | 2026-04-27 17:20:48 CEST | Andreas Wunderwald | Normalize PHP 8.0 CSV mimetype misdetection and remove redundant XML mimetype from supported list | 
+| :new_moon:  | [b632bf7](https://github.com/horstoeko/zugferd/commit/b632bf7) | 2026-04-27 16:38:59 CEST | Andreas Wunderwald | Improve mimetype handling and add tests and fix for CSV attachments | 
+
+:exclamation: _There are 3 internal commit(s)_
+
 ## v1.0.122
 
 :exclamation: _There are 2 internal commit(s)_
