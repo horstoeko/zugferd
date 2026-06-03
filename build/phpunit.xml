@@ -22,6 +22,7 @@
             <file>../tests/testcases/ReaderExtended2Test.php</file>
             <file>../tests/testcases/ReaderXRechnungTest.php</file>
             <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+            <file>../tests/testcases/ReaderExtendedBuyerTaxRepresentativeTest.php</file>
         </testsuite>
         <testsuite name="Builder">
             <file>../tests/testcases/BuilderMinimumTest.php</file>

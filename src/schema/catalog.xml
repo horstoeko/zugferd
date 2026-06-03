@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XML Catalog for Factur-X / ZUGFeRD / XRechnung namespace resolution.
+
+  Maps the UN/CEFACT URN namespaces to the local Factur-X EXTENDED profile XSD files,
+  which contain the most complete set of elements across all profiles.
+
+  The original UN/CEFACT schemas for namespace version :100 (D16B+) were never published
+  as individual XSD files on unece.org. The Factur-X XSD files distributed by FNFE-MPE
+  (Forum National de la Facture Electronique) are the authoritative local representations.
+
+  Source of XSD files: Factur-X 1.0 Technical Specification Package
+  Original distribution: https://fnfe-mpe.org/factur-x/ (FNFE-MPE / FeRD)
+  Specification: https://www.ferd-net.de/standards/zugferd/index.html
+
+  Usage:
+  - PHPStorm: Settings > Languages & Frameworks > Schemas and DTDs > XML Catalog
+    Add this file as an XML Catalog.
+  - Other XML tools: Pass this catalog via XML_CATALOG_FILES environment variable
+    or tool-specific catalog configuration.
+-->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <!-- CrossIndustryInvoice (CII) root schema -->
+    <uri name="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+         uri="FACTUR-X_EXTENDED.xsd"/>
+
+    <!-- Qualified Data Type definitions -->
+    <uri name="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+         uri="FACTUR-X_EXTENDED_urn_un_unece_uncefact_data_standard_QualifiedDataType_100.xsd"/>
+
+    <!-- Reusable Aggregate Business Information Entity definitions -->
+    <uri name="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+         uri="FACTUR-X_EXTENDED_urn_un_unece_uncefact_data_standard_ReusableAggregateBusinessInformationEntity_100.xsd"/>
+
+    <!-- Unqualified Data Type definitions -->
+    <uri name="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+         uri="FACTUR-X_EXTENDED_urn_un_unece_uncefact_data_standard_UnqualifiedDataType_100.xsd"/>
+</catalog>
