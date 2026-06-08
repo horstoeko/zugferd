@@ -1,0 +1,7 @@
+.github export-ignore
+build export-ignore
+examples export-ignore
+make export-ignore
+tests export-ignore
+build.ant.xml export-ignore
+build.xml export-ignore
