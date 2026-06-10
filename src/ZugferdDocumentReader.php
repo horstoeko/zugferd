@@ -246,6 +246,20 @@ class ZugferdDocumentReader extends ZugferdDocument
     private $positionReferencedProductPointer = 0;
 
     /**
+     * Internal pointer for the position Ship-To contacts
+     *
+     * @var int
+     */
+    private $positionShipToContactPointer = 0;
+
+    /**
+     * Internal pointer for the position Ultimate-Ship-To contacts
+     *
+     * @var int
+     */
+    private $positionUltimateShipToContactPointer = 0;
+
+    /**
      * Internal pointer for the position ultimate customer order referenced documents
      *
      * @var integer
@@ -3937,8 +3951,345 @@ class ZugferdDocumentReader extends ZugferdDocument
         return $this;
     }
 
-    //TODO: GetDocumentPositionShipTo
-    //TODO: GetDocumentPositionUltimateShipTo
+    /**
+     * Get detailed information on the Ship-To party at position level.
+     *
+     * @param  string|null $name        __BT-X-50, From EXTENDED__ The name of the party to whom the goods are being delivered or for whom the services are being performed
+     * @param  array|null  $id          __BT-X-48, From EXTENDED__ An array of identifiers for the party
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipTo(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $name = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getName.value", "");
+        $id = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getID", []);
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getDescription.value", "");
+
+        $id = $this->convertToArray($id, ["id" => "value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get global identifier for the Ship-To party at position level.
+     *
+     * @param  array|null $globalID __BT-X-49/BT-X-49-0, From EXTENDED__ Array of global ids indexed by the identification scheme.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipToGlobalId(?array &$globalID): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $globalID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getGlobalID", []);
+        $globalID = $this->convertToAssociativeArray($globalID, "getSchemeID", "value");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on tax details of the Ship-To party at position level.
+     *
+     * @param  array|null $taxReg __BT-X-66/BT-X-66-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipToTaxRegistration(?array &$taxReg): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $taxReg = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
+
+        return $this;
+    }
+
+    /**
+     * Get the postal address of the Ship-To party at position level.
+     *
+     * @param  string|null $lineOne     __BG-X-59, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BG-X-60, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BG-X-61, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BG-X-58, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BG-X-62, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BG-X-63, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency "Codes for the representation of names of countries and their subdivisions"
+     * @param  array|null  $subDivision __BG-X-64, From EXTENDED__ The party's state
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipToAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $lineOne = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $city = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCityName.value", "");
+        $country = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCountryID.value", "");
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get legal organisation of the Ship-To party at position level.
+     *
+     * @param  string|null $legalOrgId   __BT-X-51, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-51-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-52, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipToLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $legalOrgId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first Ship-To contact at position level.
+     * Returns true if a first ship-to contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPositionShipToContact.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionShipToContact(): bool
+    {
+        $this->positionShipToContactPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->positionShipToContactPointer]);
+    }
+
+    /**
+     * Seek to the next available Ship-To contact at position level.
+     * Returns true if another ship-to contact is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPositionShipToContact.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionShipToContact(): bool
+    {
+        $this->positionShipToContactPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->positionShipToContactPointer]);
+    }
+
+    /**
+     * Get detailed information on the contact person of the Ship-To party at position level.
+     *
+     * @param  string|null $contactPersonName     __BT-X-54, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-54-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-55, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-56, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-57, From EXTENDED__ An e-mail address of the contact point
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getShipToTradeParty.getDefinedTradeContact", []));
+
+        $contact = $contacts[$this->positionShipToContactPointer];
+
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the different end recipient at position level.
+     *
+     * @param  string|null $name        __BT-X-69, From EXTENDED__ Name or company name of the different end recipient
+     * @param  array|null  $id          __BT-X-67, From EXTENDED__ An array of identifiers for the party
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the different end recipient
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipTo(?string &$name, ?array &$id, ?string &$description): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $name = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getName.value", "");
+        $id = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getID", []);
+        $description = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getDescription.value", "");
+
+        $id = $this->convertToArray($id, ["id" => "value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get global identifiers of the different end recipient party at position level.
+     *
+     * @param  array|null $globalID __BT-X-68/BT-X-68-0, From EXTENDED__ Array of global ids indexed by the identification scheme.
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipToGlobalId(?array &$globalID): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $globalID = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getGlobalID", []);
+        $globalID = $this->convertToAssociativeArray($globalID, "getSchemeID", "value");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on tax details of the different end recipient party at position level.
+     *
+     * @param  array|null $taxReg __BT-X-84/BT-X-84-0, From EXTENDED__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipToTaxRegistration(?array &$taxReg): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $taxReg = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getSpecifiedTaxRegistration", []);
+        $taxReg = $this->convertToAssociativeArray($taxReg, "getID.getSchemeID", "getID.value");
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the address of the different end recipient party at position level.
+     *
+     * @param  string|null $lineOne     __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT_X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  string|null $country     __BT_X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency "Codes for the representation of names of countries and their subdivisions"
+     * @param  array|null  $subDivision __BT_X-82, From EXTENDED__ The party's state
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipToAddress(?string &$lineOne, ?string &$lineTwo, ?string &$lineThree, ?string &$postCode, ?string &$city, ?string &$country, ?array &$subDivision): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $lineOne = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineOne.value", "");
+        $lineTwo = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineTwo.value", "");
+        $lineThree = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getLineThree.value", "");
+        $postCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getPostcodeCode.value", "");
+        $city = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCityName.value", "");
+        $country = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCountryID.value", "");
+        $subDivision = $this->convertToArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getPostalTradeAddress.getCountrySubDivisionName", []), ["value"]);
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information about the legal organisation of the different end recipient party at position level.
+     *
+     * @param  string|null $legalOrgId   __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipToLegalOrganisation(?string &$legalOrgId, ?string &$legalOrgType, ?string &$legalOrgName): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $legalOrgId = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.value", "");
+        $legalOrgType = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getID.getSchemeID", "");
+        $legalOrgName = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getSpecifiedLegalOrganization.getTradingBusinessName.value", "");
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first contact person of the different end recipient party at position level.
+     * Returns true if a first contact person is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPositionUltimateShipToContact.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionUltimateShipToContact(): bool
+    {
+        $this->positionUltimateShipToContactPointer = 0;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->positionUltimateShipToContactPointer]);
+    }
+
+    /**
+     * Seek to the next available contact person of the different end recipient party at position level.
+     * Returns true if another contact person is available, otherwise false.
+     * You may use this together with ZugferdDocumentReader::getDocumentPositionUltimateShipToContact.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionUltimateShipToContact(): bool
+    {
+        $this->positionUltimateShipToContactPointer++;
+
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
+        return isset($contacts[$this->positionUltimateShipToContactPointer]);
+    }
+
+    /**
+     * Get detailed information on the contact person of the different end recipient party at position level.
+     *
+     * @param  string|null $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT_X-73, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT_X-74, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT_X-75, From EXTENDED__ An e-mail address of the contact point
+     * @return ZugferdDocumentReader
+     */
+    public function getDocumentPositionUltimateShipToContact(?string &$contactPersonName, ?string &$contactDepartmentName, ?string &$contactPhoneNo, ?string &$contactFaxNo, ?string &$contactEmailAddress): ZugferdDocumentReader
+    {
+        $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
+        $tradeLineItem = $tradeLineItem[$this->positionPointer];
+
+        $contacts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeDelivery.getUltimateShipToTradeParty.getDefinedTradeContact", []));
+
+        $contact = $contacts[$this->positionUltimateShipToContactPointer];
+
+        $contactPersonName = $this->getInvoiceValueByPathFrom($contact, "getPersonName.value", "");
+        $contactDepartmentName = $this->getInvoiceValueByPathFrom($contact, "getDepartmentName.value", "");
+        $contactPhoneNo = $this->getInvoiceValueByPathFrom($contact, "getTelephoneUniversalCommunication.getCompleteNumber.value", "");
+        $contactFaxNo = $this->getInvoiceValueByPathFrom($contact, "getFaxUniversalCommunication.getCompleteNumber.value", "");
+        $contactEmailAddress = $this->getInvoiceValueByPathFrom($contact, "getEmailURIUniversalCommunication.getURIID.value", "");
+
+        return $this;
+    }
 
     /**
      * Get detailed information on the actual delivery (on position level).
