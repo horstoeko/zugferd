@@ -101,7 +101,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Internal pointer for buyer tax representative party contacts
      *
-     * @var integer
+     * @var int
      */
     private $documentBuyerTaxRepresentativeContactPointer = 0;
 
