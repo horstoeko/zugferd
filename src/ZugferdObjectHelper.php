@@ -753,9 +753,10 @@ class ZugferdObjectHelper
      * @param  string|null $contactPhoneNo
      * @param  string|null $contactFaxNo
      * @param  string|null $contactEmailAddress
+     * @param  string|null $contactTypeCode
      * @return object|null
      */
-    public function getTradeContact(?string $contactPersonName = null, ?string $contactDepartmentName = null, ?string $contactPhoneNo = null, ?string $contactFaxNo = null, ?string $contactEmailAddress = null): ?object
+    public function getTradeContact(?string $contactPersonName = null, ?string $contactDepartmentName = null, ?string $contactPhoneNo = null, ?string $contactFaxNo = null, ?string $contactEmailAddress = null, ?string $contactTypeCode = null): ?object
     {
         if (self::isAllNullOrEmpty(func_get_args())) {
             return null;
@@ -769,6 +770,7 @@ class ZugferdObjectHelper
 
         $this->tryCall($tradeContactType, "setPersonName", $this->getTextType($contactPersonName));
         $this->tryCall($tradeContactType, "setDepartmentName", $this->getTextType($contactDepartmentName));
+        $this->tryCall($tradeContactType, "setTypeCode", $this->getCodeType($contactTypeCode));
         $this->tryCall($tradeContactType, "setTelephoneUniversalCommunication", $contactPhoneNo);
         $this->tryCall($tradeContactType, "setFaxUniversalCommunication", $contactFaxNo);
         $this->tryCall($tradeContactType, "setEmailURIUniversalCommunication", $contactEmailAddress);

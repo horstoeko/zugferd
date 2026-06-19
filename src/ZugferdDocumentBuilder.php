@@ -2023,6 +2023,137 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Detailed information about the payer, i.e. about the party who is liable for the payment.
+     * The role of the payer may also be performed by a party other than the buyer.
+     *
+     * @param  string      $name        __BT-X-476, From EXTENDED__ The name/company name of the payer
+     * @param  string|null $id          __BT-X-478, From EXTENDED__ An identifier for the payer. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPayer(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPayerTradeParty", $payerTradeParty);
+
+        return $this;
+    }
+
+    /**
+     * Add an id to the payer trade party
+     *
+     * @param  string $id __BT-X-478, From EXTENDED__ An identifier for the payer. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPayerId(string $id): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+
+        $this->getObjectHelper()->tryCall($payerTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
+        return $this;
+    }
+
+    /**
+     * Add a global id for the payer trade party
+     *
+     * @param  string|null $globalID     __BT-X-479, From EXTENDED__ Global identification number of the payer
+     * @param  string|null $globalIDType __BT-X-479-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPayerGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+
+        $this->getObjectHelper()->tryCall($payerTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the payer trade party
+     *
+     * @param  string|null $legalOrgId   __BT-X-480, From EXTENDED__ The company registration number that identifies the payer as a legal entity. If no identification scheme ($legalOrgType) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-480-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the payer. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-477, From EXTENDED__ The trading business name by which the payer is known, if different from the payer's name (also known as the company name)
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPayerLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
+        $this->getObjectHelper()->tryCall($payerTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the payer trade party
+     *
+     * @param  string|null $lineOne     __BT-X-491, From EXTENDED__ The main line in the payer's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-492, From EXTENDED__ Line 2 of the payer's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-493, From EXTENDED__ Line 3 of the payer's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-490, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-494, From EXTENDED__ Usual name of the city or municipality in which the payer's address is located
+     * @param  string|null $country     __BT-X-495, From EXTENDED__ Code used to identify the country. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param  string|null $subDivision __BT-X-496, From EXTENDED__ The payer's state
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPayerAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
+        $this->getObjectHelper()->tryCall($payerTradeParty, "setPostalTradeAddress", $address);
+
+        return $this;
+    }
+
+    /**
+     * Set contact of the payer trade party (BG-X-74)
+     *
+     * @param  string|null $contactPersonName     __BT-X-484, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-485, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-487, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-488, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-489, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactTypeCode       __BT-X-486, From EXTENDED__ The code specifying the type of trade contact. To be chosen from the entries of UNTDID 3139
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentPayerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress, ?string $contactTypeCode = null): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress, $contactTypeCode);
+
+        $this->getObjectHelper()->tryCallIfMethodExists($payerTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
+        return $this;
+    }
+
+    /**
+     * Add an (additional) contact to the payer trade party (BG-X-74)
+     *
+     * @param  string|null $contactPersonName     __BT-X-484, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-485, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-487, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-488, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-489, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactTypeCode       __BT-X-486, From EXTENDED__ The code specifying the type of trade contact. To be chosen from the entries of UNTDID 3139
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentPayerContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress, ?string $contactTypeCode = null): ZugferdDocumentBuilder
+    {
+        $payerTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeSettlement, "getPayerTradeParty");
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress, $contactTypeCode);
+
+        $this->getObjectHelper()->tryCall($payerTradeParty, "addToDefinedTradeContact", $contact);
+
+        return $this;
+    }
+
+    /**
      * Set information on the delivery conditions
      *
      * @param  string|null $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
