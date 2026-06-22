@@ -2154,6 +2154,186 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     }
 
     /**
+     * Detailed information about the sales agent (BG-X-49 / EXT-FR-FE-BG-03), i.e. the party
+     * that sells, receives/processes the order, or even issues the invoice on behalf of the seller.
+     *
+     * @param  string      $name        __BT-X-335, From EXTENDED__ The name/company name of the sales agent
+     * @param  string|null $id          __BT-X-337, From EXTENDED__ An identifier for the sales agent. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @param  string|null $description __BT-, From __ Further legal information that is relevant for the party
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgent(string $name, ?string $id = null, ?string $description = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->getTradeParty($name, $id, $description);
+
+        $this->getObjectHelper()->tryCall($this->headerTradeAgreement, "setSalesAgentTradeParty", $salesAgentTradeParty);
+
+        return $this;
+    }
+
+    /**
+     * Add an id to the sales agent trade party
+     *
+     * @param  string $id __BT-X-337, From EXTENDED__ An identifier for the sales agent. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSalesAgentId(string $id): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "addToID", $this->getObjectHelper()->getIdType($id));
+
+        return $this;
+    }
+
+    /**
+     * Add a global id for the sales agent trade party
+     *
+     * @param  string|null $globalID     __BT-X-338, From EXTENDED__ Global identification number of the sales agent
+     * @param  string|null $globalIDType __BT-X-338-0, From EXTENDED__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSalesAgentGlobalId(?string $globalID = null, ?string $globalIDType = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "addToGlobalID", $this->getObjectHelper()->getIdType($globalID, $globalIDType));
+
+        return $this;
+    }
+
+    /**
+     * Set the role (code) of the sales agent trade party
+     *
+     * @param  string|null $roleCode __BT-X-545, From EXTENDED__ The code specifying the role of the sales agent
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgentRoleCode(?string $roleCode = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "setRoleCode", $roleCode);
+
+        return $this;
+    }
+
+    /**
+     * Add Tax registration to the sales agent trade party
+     *
+     * @param  string|null $taxRegType __BT-X-340-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param  string|null $taxRegId   __BT-X-340, From EXTENDED__ Tax number or sales tax identification number of the sales agent
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSalesAgentTaxRegistration(?string $taxRegType = null, ?string $taxRegId = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $taxReg = $this->getObjectHelper()->getTaxRegistrationType($taxRegType, $taxRegId);
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "addToSpecifiedTaxRegistration", $taxReg);
+
+        return $this;
+    }
+
+    /**
+     * Set legal organisation of the sales agent trade party (BG-X-50)
+     *
+     * @param  string|null $legalOrgId   __BT-X-339, From EXTENDED__ The registration number that identifies the sales agent as a legal entity. If no identification scheme ($legalOrgType) is provided, it should be known to the buyer or seller party
+     * @param  string|null $legalOrgType __BT-X-339-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the sales agent. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  string|null $legalOrgName __BT-X-336, From EXTENDED__ The trading business name by which the sales agent is known, if different from the sales agent's name (also known as the company name)
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgentLegalOrganisation(?string $legalOrgId, ?string $legalOrgType, ?string $legalOrgName): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $legalOrg = $this->getObjectHelper()->getLegalOrganization($legalOrgId, $legalOrgType, $legalOrgName);
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "setSpecifiedLegalOrganization", $legalOrg);
+
+        return $this;
+    }
+
+    /**
+     * Sets the postal address of the sales agent trade party (BG-X-52)
+     *
+     * @param  string|null $lineOne     __BT-X-349, From EXTENDED__ The main line in the sales agent's address. This is usually the street name and house number or the post office box
+     * @param  string|null $lineTwo     __BT-X-350, From EXTENDED__ Line 2 of the sales agent's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $lineThree   __BT-X-351, From EXTENDED__ Line 3 of the sales agent's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  string|null $postCode    __BT-X-348, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  string|null $city        __BT-X-352, From EXTENDED__ Usual name of the city or municipality in which the sales agent's address is located
+     * @param  string|null $country     __BT-X-353, From EXTENDED__ Code used to identify the country. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param  string|null $subDivision __BT-X-354, From EXTENDED__ The sales agent's state
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgentAddress(?string $lineOne = null, ?string $lineTwo = null, ?string $lineThree = null, ?string $postCode = null, ?string $city = null, ?string $country = null, ?string $subDivision = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $address = $this->getObjectHelper()->getTradeAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "setPostalTradeAddress", $address);
+
+        return $this;
+    }
+
+    /**
+     * Set the sales agent's electronic communication information
+     *
+     * @param  string|null $uriScheme __BT-X-341-0, From EXTENDED__ The identifier for the identification scheme of the sales agent's electronic address
+     * @param  string|null $uri       __BT-X-341, From EXTENDED__ Specifies the electronic address of the sales agent
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgentCommunication(?string $uriScheme, ?string $uri): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $communication = $this->getObjectHelper()->getUniversalCommunicationType(null, $uri, $uriScheme);
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "setURIUniversalCommunication", $communication);
+
+        return $this;
+    }
+
+    /**
+     * Set contact of the sales agent trade party (BG-X-51)
+     *
+     * @param  string|null $contactPersonName     __BT-X-342, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-343, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-344, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-345, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-346, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactTypeCode       __BT-X-347, From EXTENDED__ The code specifying the type of trade contact. To be chosen from the entries of UNTDID 3139
+     * @return ZugferdDocumentBuilder
+     */
+    public function setDocumentSalesAgentContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress, ?string $contactTypeCode = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress, $contactTypeCode);
+
+        $this->getObjectHelper()->tryCallIfMethodExists($salesAgentTradeParty, "addToDefinedTradeContact", "setDefinedTradeContact", [$contact], $contact);
+
+        return $this;
+    }
+
+    /**
+     * Add an (additional) contact to the sales agent trade party (BG-X-51)
+     *
+     * @param  string|null $contactPersonName     __BT-X-342, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  string|null $contactDepartmentName __BT-X-343, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  string|null $contactPhoneNo        __BT-X-344, From EXTENDED__ A telephone number for the contact point
+     * @param  string|null $contactFaxNo          __BT-X-345, From EXTENDED__ A fax number of the contact point
+     * @param  string|null $contactEmailAddress   __BT-X-346, From EXTENDED__ An e-mail address of the contact point
+     * @param  string|null $contactTypeCode       __BT-X-347, From EXTENDED__ The code specifying the type of trade contact. To be chosen from the entries of UNTDID 3139
+     * @return ZugferdDocumentBuilder
+     */
+    public function addDocumentSalesAgentContact(?string $contactPersonName, ?string $contactDepartmentName, ?string $contactPhoneNo, ?string $contactFaxNo, ?string $contactEmailAddress, ?string $contactTypeCode = null): ZugferdDocumentBuilder
+    {
+        $salesAgentTradeParty = $this->getObjectHelper()->tryCallAndReturn($this->headerTradeAgreement, "getSalesAgentTradeParty");
+        $contact = $this->getObjectHelper()->getTradeContact($contactPersonName, $contactDepartmentName, $contactPhoneNo, $contactFaxNo, $contactEmailAddress, $contactTypeCode);
+
+        $this->getObjectHelper()->tryCall($salesAgentTradeParty, "addToDefinedTradeContact", $contact);
+
+        return $this;
+    }
+
+    /**
      * Set information on the delivery conditions
      *
      * @param  string|null $code __BT-X-145, From EXTENDED__ The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS

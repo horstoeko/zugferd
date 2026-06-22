@@ -29,6 +29,7 @@
             <file>../tests/testcases/BuilderEn16931Test.php</file>
             <file>../tests/testcases/BuilderExtendedTest.php</file>
             <file>../tests/testcases/BuilderExtendedPayerTest.php</file>
+            <file>../tests/testcases/BuilderExtendedSalesAgentTest.php</file>
         </testsuite>
         <testsuite name="ProfileConverter">
             <file>../tests/testcases/ProfileConverterTest.php</file>
