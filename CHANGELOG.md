@@ -1,3 +1,19 @@
+## v1.0.124
+
+``Previous version v1.0.123``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [a8a8fac](https://github.com/horstoeko/zugferd/commit/a8a8fac) | 2026-06-08 10:25:03 CEST | Kevin Papst | prefix with / and exclude more textfiles | 
+| :new_moon:  | [8fde0de](https://github.com/horstoeko/zugferd/commit/8fde0de) | 2026-06-08 10:08:31 CEST | Kevin Papst | prevent non-prod files from being release with composer | 
+| :new_moon:  | [1b44f73](https://github.com/horstoeko/zugferd/commit/1b44f73) | 2026-06-03 10:28:12 CEST | Thomas Wunner | feat: add missing test | 
+| :new_moon:  | [18d652e](https://github.com/horstoeko/zugferd/commit/18d652e) | 2026-04-28 18:23:52 CEST | Thomas Wunner | fix: correct getDocumentRoutingId pass-by-reference and DateTimeInterface checks | 
+| :new_moon:  | [a1216ad](https://github.com/horstoeko/zugferd/commit/a1216ad) | 2026-04-28 09:16:31 CEST | Thomas Wunner | feat: add XML catalog for UN/CEFACT namespace resolution | 
+| :new_moon:  | [f9b13e1](https://github.com/horstoeko/zugferd/commit/f9b13e1) | 2026-04-28 18:23:52 CEST | Thomas Wunner | fix: correct getDocumentRoutingId pass-by-reference and DateTimeInterface checks | 
+| :new_moon:  | [8006a51](https://github.com/horstoeko/zugferd/commit/8006a51) | 2026-04-28 08:52:14 CEST | Thomas Wunner | feat: add new fork features (BuyerTaxRepresentative, BusinessProcess/ForeignCurrency reader, UltimateCustomerOrder) | 
+
+:exclamation: _There is one internal commit_
+
 ## v1.0.123
 
 ``Previous version v1.0.122``
