@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: Checkout Sources
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
@@ -64,7 +64,7 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
@@ -152,7 +152,7 @@ jobs:
 
       - name: Cache Application (Schematron)
         id: cache-validator
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ env.VALIDATORPATH }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
@@ -184,7 +184,7 @@ jobs:
 
       - name: Cache Application (VeraPDF)
         id: cache-verapdf
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ env.VERAPDFPATH }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}

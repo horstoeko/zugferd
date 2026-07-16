@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout Sources
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -55,7 +55,7 @@ jobs:
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.json') }}
@@ -132,7 +132,7 @@ jobs:
 
       - name: Cache Application (Schematron)
         id: cache-validator
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ env.VALIDATORPATH }}
           key: ${{ runner.os }}-8.3-validator-${{ steps.hash-validator.outputs.hash }}
@@ -164,7 +164,7 @@ jobs:
 
       - name: Cache Application (VeraPDF)
         id: cache-verapdf
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ env.VERAPDFPATH }}
           key: ${{ runner.os }}-8.3-verapdf-${{ steps.hash-verapdf.outputs.hash }}
