@@ -1133,14 +1133,14 @@ class ObjectHelperExtendedTest extends TestCase
         /**
          * @var \horstoeko\zugferd\entities\extended\udt\NumericType $sequenceNumeric
          */
-        $sequenceNumeric = $allowancecharge->getCalculationPercent();
+        $sequenceNumeric = $allowancecharge->getSequenceNumeric();
 
         $this->assertEqualsWithDelta(10.0, $allowancecharge->getActualAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertTrue($allowancecharge->getChargeIndicator()->getIndicator());
         $this->assertEquals("taxtype", $allowancecharge->getCategoryTradeTax()->getTypeCode());
         $this->assertEquals("taxcategory", $allowancecharge->getCategoryTradeTax()->getCategoryCode());
         $this->assertEqualsWithDelta(19.0, $rateapplicablepercent->value(), PHP_FLOAT_EPSILON);
-        $this->assertEquals(2, $sequenceNumeric->value());
+        $this->assertEqualsWithDelta(1.0, $sequenceNumeric->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(2.0, $calculationpercent->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(1.0, $allowancecharge->getBasisQuantity()->value(), PHP_FLOAT_EPSILON);
         $this->assertEquals("C62", $allowancecharge->getBasisQuantity()->getUnitCode());
