@@ -207,6 +207,21 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType:
                 getter: getSpecifiedTradeSettlementHeaderMonetarySummation
                 setter: setSpecifiedTradeSettlementHeaderMonetarySummation
             type: horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
+        specifiedFinancialAdjustment:
+            expose: true
+            access_type: public_method
+            serialized_name: SpecifiedFinancialAdjustment
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getSpecifiedFinancialAdjustment
+                setter: setSpecifiedFinancialAdjustment
+            xml_list:
+                inline: true
+                entry_name: SpecifiedFinancialAdjustment
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            type: array<horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType>
         invoiceReferencedDocument:
             expose: true
             access_type: public_method

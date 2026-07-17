@@ -4276,7 +4276,8 @@ class ZugferdDocumentReader extends ZugferdDocument
         $lineTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getLineTotalAmount.value", 0.0);
         $chargeTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getChargeTotalAmount.value", 0.0);
         $allowanceTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getAllowanceTotalAmount.value", 0.0);
-        $taxTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTaxTotalAmount.value", 0.0);
+        $taxTotalAmounts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTaxTotalAmount", []));
+        $taxTotalAmount = $this->getInvoiceValueByPathFrom($taxTotalAmounts[0] ?? null, "value", 0.0);
         $grandTotalAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getGrandTotalAmount.value", 0.0);
         $totalAllowanceChargeAmount = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getSpecifiedTradeSettlementLineMonetarySummation.getTotalAllowanceChargeAmount.value", 0.0);
 
@@ -4378,8 +4379,11 @@ class ZugferdDocumentReader extends ZugferdDocument
         $tradeLineItem = $this->getInvoiceValueByPath("getSupplyChainTradeTransaction.getIncludedSupplyChainTradeLineItem", []);
         $tradeLineItem = $tradeLineItem[$this->positionPointer];
 
-        $id = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getReceivableSpecifiedTradeAccountingAccount.getId.value", "");
-        $typeCode = $this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getReceivableSpecifiedTradeAccountingAccount.getTypeCode.value", "");
+        $acccounts = $this->getObjectHelper()->ensureArray($this->getInvoiceValueByPathFrom($tradeLineItem, "getSpecifiedLineTradeSettlement.getReceivableSpecifiedTradeAccountingAccount", []));
+        $acccount = $acccounts[0] ?? null;
+
+        $id = $this->getInvoiceValueByPathFrom($acccount, "getId.value", "");
+        $typeCode = $this->getInvoiceValueByPathFrom($acccount, "getTypeCode.value", "");
 
         return $this;
     }

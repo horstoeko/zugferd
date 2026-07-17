@@ -26,9 +26,11 @@ class TradeSettlementLineMonetarySummationType
     private $allowanceTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType[] $taxTotalAmount
      */
-    private $taxTotalAmount = null;
+    private $taxTotalAmount = [
+        
+    ];
 
     /**
      * @var \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
@@ -56,7 +58,7 @@ class TradeSettlementLineMonetarySummationType
      * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
      * @return self
      */
-    public function setLineTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount)
+    public function setLineTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount = null)
     {
         $this->lineTotalAmount = $lineTotalAmount;
         return $this;
@@ -107,9 +109,43 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
+     * Adds as taxTotalAmount
+     *
+     * @return self
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
+     */
+    public function addToTaxTotalAmount(\horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount)
+    {
+        $this->taxTotalAmount[] = $taxTotalAmount;
+        return $this;
+    }
+
+    /**
+     * isset taxTotalAmount
+     *
+     * @param  int|string $index
+     * @return bool
+     */
+    public function issetTaxTotalAmount($index)
+    {
+        return isset($this->taxTotalAmount[$index]);
+    }
+
+    /**
+     * unset taxTotalAmount
+     *
+     * @param  int|string $index
+     * @return void
+     */
+    public function unsetTaxTotalAmount($index)
+    {
+        unset($this->taxTotalAmount[$index]);
+    }
+
+    /**
      * Gets as taxTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType[]
      */
     public function getTaxTotalAmount()
     {
@@ -119,11 +155,18 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount
+     * Factur-X 1.09 raised TaxTotalAmount to [0..2]. A single AmountType is still
+     * accepted so callers written against the pre-1.09 signature keep working.
+     *
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|\horstoeko\zugferd\entities\extended\udt\AmountType[]|null $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $taxTotalAmount = null)
+    public function setTaxTotalAmount($taxTotalAmount = null)
     {
+        if ($taxTotalAmount !== null && !is_array($taxTotalAmount)) {
+            $taxTotalAmount = [$taxTotalAmount];
+        }
+
         $this->taxTotalAmount = $taxTotalAmount;
         return $this;
     }

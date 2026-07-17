@@ -1,10 +1,5 @@
 horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
     properties:
-        billedQuantity:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules
         shipToTradeParty:
             -
                 Valid: null

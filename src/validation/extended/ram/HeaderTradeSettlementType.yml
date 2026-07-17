@@ -49,6 +49,9 @@ horstoeko\zugferd\entities\extended\ram\HeaderTradeSettlementType:
                         - xsd_rules
             -
                 Valid: null
+        specifiedFinancialAdjustment:
+            -
+                Valid: null
         invoiceReferencedDocument:
             -
                 Valid: null

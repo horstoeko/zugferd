@@ -29,8 +29,12 @@
     },
     "require": {
         "php": ">=7.3",
+        "ext-dom": "*",
         "ext-fileinfo": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
         "ext-simplexml": "*",
+        "ext-zip": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.13",
         "horstoeko/mimedb": "^1",
         "horstoeko/stringmanagement": "^1",

@@ -16,7 +16,9 @@
   </xs:simpleType>
   <xs:complexType name="AllowanceChargeReasonCodeType">
     <xs:simpleContent>
-      <xs:extension base="qdt:AllowanceChargeReasonCodeContentType"/>
+      <xs:extension base="qdt:AllowanceChargeReasonCodeContentType">
+        <xs:attribute name="listID" type="xs:token" default="4465_AllowanceChargeReasonCode"/>
+      </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
   <xs:simpleType name="ContactTypeCodeContentType">

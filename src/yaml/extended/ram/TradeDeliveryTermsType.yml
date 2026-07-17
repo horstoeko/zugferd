@@ -11,3 +11,14 @@ horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType:
                 getter: getDeliveryTypeCode
                 setter: setDeliveryTypeCode
             type: horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType
+        relevantTradeLocation:
+            expose: true
+            access_type: public_method
+            serialized_name: RelevantTradeLocation
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getRelevantTradeLocation
+                setter: setRelevantTradeLocation
+            type: horstoeko\zugferd\entities\extended\ram\TradeLocationType

@@ -36,6 +36,11 @@ class TradeSettlementPaymentMeansType
     private $payeePartyCreditorFinancialAccount = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialInstitutionType $payerSpecifiedDebtorFinancialInstitution
+     */
+    private $payerSpecifiedDebtorFinancialInstitution = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
      */
     private $payeeSpecifiedCreditorFinancialInstitution = null;
@@ -147,6 +152,28 @@ class TradeSettlementPaymentMeansType
     public function setPayeePartyCreditorFinancialAccount(?\horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null)
     {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
+        return $this;
+    }
+
+    /**
+     * Gets as payerSpecifiedDebtorFinancialInstitution
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\DebtorFinancialInstitutionType
+     */
+    public function getPayerSpecifiedDebtorFinancialInstitution()
+    {
+        return $this->payerSpecifiedDebtorFinancialInstitution;
+    }
+
+    /**
+     * Sets a new payerSpecifiedDebtorFinancialInstitution
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\DebtorFinancialInstitutionType $payerSpecifiedDebtorFinancialInstitution
+     * @return self
+     */
+    public function setPayerSpecifiedDebtorFinancialInstitution(?\horstoeko\zugferd\entities\extended\ram\DebtorFinancialInstitutionType $payerSpecifiedDebtorFinancialInstitution = null)
+    {
+        $this->payerSpecifiedDebtorFinancialInstitution = $payerSpecifiedDebtorFinancialInstitution;
         return $this;
     }
 

@@ -16,6 +16,11 @@ class DebtorFinancialAccountType
     private $iBANID = null;
 
     /**
+     * @var string $accountName
+     */
+    private $accountName = null;
+
+    /**
      * Gets as iBANID
      *
      * @return \horstoeko\zugferd\entities\extended\udt\IDType
@@ -34,6 +39,28 @@ class DebtorFinancialAccountType
     public function setIBANID(\horstoeko\zugferd\entities\extended\udt\IDType $iBANID)
     {
         $this->iBANID = $iBANID;
+        return $this;
+    }
+
+    /**
+     * Gets as accountName
+     *
+     * @return string
+     */
+    public function getAccountName()
+    {
+        return $this->accountName;
+    }
+
+    /**
+     * Sets a new accountName
+     *
+     * @param  string $accountName
+     * @return self
+     */
+    public function setAccountName($accountName)
+    {
+        $this->accountName = $accountName;
         return $this;
     }
 }

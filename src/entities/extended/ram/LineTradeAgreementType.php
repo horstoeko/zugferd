@@ -11,6 +11,11 @@ class LineTradeAgreementType
 {
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms
+     */
+    private $applicableTradeDeliveryTerms = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $sellerOrderReferencedDocument
      */
     private $sellerOrderReferencedDocument = null;
@@ -48,11 +53,38 @@ class LineTradeAgreementType
     private $netPriceProductTradePrice = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $itemSellerTradeParty
+     */
+    private $itemSellerTradeParty = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $ultimateCustomerOrderReferencedDocument
      */
     private $ultimateCustomerOrderReferencedDocument = [
         
     ];
+
+    /**
+     * Gets as applicableTradeDeliveryTerms
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
+     */
+    public function getApplicableTradeDeliveryTerms()
+    {
+        return $this->applicableTradeDeliveryTerms;
+    }
+
+    /**
+     * Sets a new applicableTradeDeliveryTerms
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms
+     * @return self
+     */
+    public function setApplicableTradeDeliveryTerms(?\horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $applicableTradeDeliveryTerms = null)
+    {
+        $this->applicableTradeDeliveryTerms = $applicableTradeDeliveryTerms;
+        return $this;
+    }
 
     /**
      * Gets as sellerOrderReferencedDocument
@@ -236,9 +268,31 @@ class LineTradeAgreementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice
      * @return self
      */
-    public function setNetPriceProductTradePrice(\horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice)
+    public function setNetPriceProductTradePrice(?\horstoeko\zugferd\entities\extended\ram\TradePriceType $netPriceProductTradePrice = null)
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
+        return $this;
+    }
+
+    /**
+     * Gets as itemSellerTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getItemSellerTradeParty()
+    {
+        return $this->itemSellerTradeParty;
+    }
+
+    /**
+     * Sets a new itemSellerTradeParty
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $itemSellerTradeParty
+     * @return self
+     */
+    public function setItemSellerTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $itemSellerTradeParty = null)
+    {
+        $this->itemSellerTradeParty = $itemSellerTradeParty;
         return $this;
     }
 

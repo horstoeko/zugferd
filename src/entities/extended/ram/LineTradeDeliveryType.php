@@ -26,6 +26,11 @@ class LineTradeDeliveryType
     private $packageQuantity = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\udt\QuantityType $perPackageUnitQuantity
+     */
+    private $perPackageUnitQuantity = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $shipToTradeParty
      */
     private $shipToTradeParty = null;
@@ -71,7 +76,7 @@ class LineTradeDeliveryType
      * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity
      * @return self
      */
-    public function setBilledQuantity(\horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity)
+    public function setBilledQuantity(?\horstoeko\zugferd\entities\extended\udt\QuantityType $billedQuantity = null)
     {
         $this->billedQuantity = $billedQuantity;
         return $this;
@@ -118,6 +123,28 @@ class LineTradeDeliveryType
     public function setPackageQuantity(?\horstoeko\zugferd\entities\extended\udt\QuantityType $packageQuantity = null)
     {
         $this->packageQuantity = $packageQuantity;
+        return $this;
+    }
+
+    /**
+     * Gets as perPackageUnitQuantity
+     *
+     * @return \horstoeko\zugferd\entities\extended\udt\QuantityType
+     */
+    public function getPerPackageUnitQuantity()
+    {
+        return $this->perPackageUnitQuantity;
+    }
+
+    /**
+     * Sets a new perPackageUnitQuantity
+     *
+     * @param  \horstoeko\zugferd\entities\extended\udt\QuantityType $perPackageUnitQuantity
+     * @return self
+     */
+    public function setPerPackageUnitQuantity(?\horstoeko\zugferd\entities\extended\udt\QuantityType $perPackageUnitQuantity = null)
+    {
+        $this->perPackageUnitQuantity = $perPackageUnitQuantity;
         return $this;
     }
 

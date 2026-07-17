@@ -30,6 +30,12 @@
   <xs:complexType name="DebtorFinancialAccountType">
     <xs:sequence>
       <xs:element name="IBANID" type="udt:IDType"/>
+      <xs:element name="AccountName" type="udt:TextType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DebtorFinancialInstitutionType">
+    <xs:sequence>
+      <xs:element name="BICID" type="udt:IDType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DocumentContextParameterType">
@@ -63,6 +69,12 @@
       <xs:element name="LanguageID" type="udt:IDType" minOccurs="0"/>
       <xs:element name="IncludedNote" type="ram:NoteType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="EffectiveSpecifiedPeriod" type="ram:SpecifiedPeriodType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialAdjustmentType">
+    <xs:sequence>
+      <xs:element name="Reason" type="udt:TextType"/>
+      <xs:element name="ActualAmount" type="udt:AmountType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="HeaderTradeAgreementType">
@@ -116,6 +128,7 @@
       <xs:element name="SpecifiedLogisticsServiceCharge" type="ram:LogisticsServiceChargeType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="SpecifiedTradePaymentTerms" type="ram:TradePaymentTermsType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="SpecifiedTradeSettlementHeaderMonetarySummation" type="ram:TradeSettlementHeaderMonetarySummationType"/>
+      <xs:element name="SpecifiedFinancialAdjustment" type="ram:FinancialAdjustmentType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="InvoiceReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="ReceivableSpecifiedTradeAccountingAccount" type="ram:TradeAccountingAccountType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="SpecifiedAdvancePayment" type="ram:AdvancePaymentType" minOccurs="0" maxOccurs="unbounded"/>
@@ -130,21 +143,24 @@
   </xs:complexType>
   <xs:complexType name="LineTradeAgreementType">
     <xs:sequence>
+      <xs:element name="ApplicableTradeDeliveryTerms" type="ram:TradeDeliveryTermsType" minOccurs="0"/>
       <xs:element name="SellerOrderReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0"/>
       <xs:element name="BuyerOrderReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0"/>
       <xs:element name="QuotationReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0"/>
       <xs:element name="ContractReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0"/>
       <xs:element name="AdditionalReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="GrossPriceProductTradePrice" type="ram:TradePriceType" minOccurs="0"/>
-      <xs:element name="NetPriceProductTradePrice" type="ram:TradePriceType"/>
+      <xs:element name="NetPriceProductTradePrice" type="ram:TradePriceType" minOccurs="0"/>
+      <xs:element name="ItemSellerTradeParty" type="ram:TradePartyType" minOccurs="0"/>
       <xs:element name="UltimateCustomerOrderReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LineTradeDeliveryType">
     <xs:sequence>
-      <xs:element name="BilledQuantity" type="udt:QuantityType"/>
+      <xs:element name="BilledQuantity" type="udt:QuantityType" minOccurs="0"/>
       <xs:element name="ChargeFreeQuantity" type="udt:QuantityType" minOccurs="0"/>
       <xs:element name="PackageQuantity" type="udt:QuantityType" minOccurs="0"/>
+      <xs:element name="PerPackageUnitQuantity" type="udt:QuantityType" minOccurs="0"/>
       <xs:element name="ShipToTradeParty" type="ram:TradePartyType" minOccurs="0"/>
       <xs:element name="UltimateShipToTradeParty" type="ram:TradePartyType" minOccurs="0"/>
       <xs:element name="ActualDeliverySupplyChainEvent" type="ram:SupplyChainEventType" minOccurs="0"/>
@@ -155,13 +171,13 @@
   </xs:complexType>
   <xs:complexType name="LineTradeSettlementType">
     <xs:sequence>
-      <xs:element name="ApplicableTradeTax" type="ram:TradeTaxType" maxOccurs="unbounded"/>
+      <xs:element name="ApplicableTradeTax" type="ram:TradeTaxType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="BillingSpecifiedPeriod" type="ram:SpecifiedPeriodType" minOccurs="0"/>
       <xs:element name="SpecifiedTradeAllowanceCharge" type="ram:TradeAllowanceChargeType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="SpecifiedTradeSettlementLineMonetarySummation" type="ram:TradeSettlementLineMonetarySummationType"/>
+      <xs:element name="SpecifiedTradeSettlementLineMonetarySummation" type="ram:TradeSettlementLineMonetarySummationType" minOccurs="0"/>
       <xs:element name="InvoiceReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0"/>
       <xs:element name="AdditionalReferencedDocument" type="ram:ReferencedDocumentType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="ReceivableSpecifiedTradeAccountingAccount" type="ram:TradeAccountingAccountType" minOccurs="0"/>
+      <xs:element name="ReceivableSpecifiedTradeAccountingAccount" type="ram:TradeAccountingAccountType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LogisticsServiceChargeType">
@@ -192,9 +208,9 @@
   <xs:complexType name="ProductCharacteristicType">
     <xs:sequence>
       <xs:element name="TypeCode" type="udt:CodeType" minOccurs="0"/>
-      <xs:element name="Description" type="udt:TextType"/>
+      <xs:element name="Description" type="udt:TextType" minOccurs="0"/>
       <xs:element name="ValueMeasure" type="udt:MeasureType" minOccurs="0"/>
-      <xs:element name="Value" type="udt:TextType"/>
+      <xs:element name="Value" type="udt:TextType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ProductClassificationType">
@@ -249,8 +265,8 @@
     <xs:sequence>
       <xs:element name="AssociatedDocumentLineDocument" type="ram:DocumentLineDocumentType"/>
       <xs:element name="SpecifiedTradeProduct" type="ram:TradeProductType"/>
-      <xs:element name="SpecifiedLineTradeAgreement" type="ram:LineTradeAgreementType"/>
-      <xs:element name="SpecifiedLineTradeDelivery" type="ram:LineTradeDeliveryType"/>
+      <xs:element name="SpecifiedLineTradeAgreement" type="ram:LineTradeAgreementType" minOccurs="0"/>
+      <xs:element name="SpecifiedLineTradeDelivery" type="ram:LineTradeDeliveryType" minOccurs="0"/>
       <xs:element name="SpecifiedLineTradeSettlement" type="ram:LineTradeSettlementType"/>
     </xs:sequence>
   </xs:complexType>
@@ -323,6 +339,13 @@
   <xs:complexType name="TradeDeliveryTermsType">
     <xs:sequence>
       <xs:element name="DeliveryTypeCode" type="qdt:DeliveryTermsCodeType"/>
+      <xs:element name="RelevantTradeLocation" type="ram:TradeLocationType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TradeLocationType">
+    <xs:sequence>
+      <xs:element name="CountryID" type="qdt:CountryIDType" minOccurs="0"/>
+      <xs:element name="Name" type="udt:TextType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TradePartyType">
@@ -399,6 +422,7 @@
       <xs:element name="DesignatedProductClassification" type="ram:ProductClassificationType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="IndividualTradeProductInstance" type="ram:TradeProductInstanceType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="OriginTradeCountry" type="ram:TradeCountryType" minOccurs="0"/>
+      <xs:element name="ManufacturerTradeParty" type="ram:TradePartyType" minOccurs="0"/>
       <xs:element name="IncludedReferencedProduct" type="ram:ReferencedProductType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -423,10 +447,10 @@
   </xs:complexType>
   <xs:complexType name="TradeSettlementLineMonetarySummationType">
     <xs:sequence>
-      <xs:element name="LineTotalAmount" type="udt:AmountType"/>
+      <xs:element name="LineTotalAmount" type="udt:AmountType" minOccurs="0"/>
       <xs:element name="ChargeTotalAmount" type="udt:AmountType" minOccurs="0"/>
       <xs:element name="AllowanceTotalAmount" type="udt:AmountType" minOccurs="0"/>
-      <xs:element name="TaxTotalAmount" type="udt:AmountType" minOccurs="0"/>
+      <xs:element name="TaxTotalAmount" type="udt:AmountType" minOccurs="0" maxOccurs="2"/>
       <xs:element name="GrandTotalAmount" type="udt:AmountType" minOccurs="0"/>
       <xs:element name="TotalAllowanceChargeAmount" type="udt:AmountType" minOccurs="0"/>
     </xs:sequence>
@@ -438,6 +462,7 @@
       <xs:element name="ApplicableTradeSettlementFinancialCard" type="ram:TradeSettlementFinancialCardType" minOccurs="0"/>
       <xs:element name="PayerPartyDebtorFinancialAccount" type="ram:DebtorFinancialAccountType" minOccurs="0"/>
       <xs:element name="PayeePartyCreditorFinancialAccount" type="ram:CreditorFinancialAccountType" minOccurs="0"/>
+      <xs:element name="PayerSpecifiedDebtorFinancialInstitution" type="ram:DebtorFinancialInstitutionType" minOccurs="0"/>
       <xs:element name="PayeeSpecifiedCreditorFinancialInstitution" type="ram:CreditorFinancialInstitutionType" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>

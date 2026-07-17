@@ -1,24 +1,24 @@
-horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType:
+horstoeko\zugferd\entities\extended\ram\TradeLocationType:
     properties:
-        iBANID:
+        countryID:
             expose: true
             access_type: public_method
-            serialized_name: IBANID
+            serialized_name: CountryID
             xml_element:
                 cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
-                getter: getIBANID
-                setter: setIBANID
-            type: horstoeko\zugferd\entities\extended\udt\IDType
-        accountName:
+                getter: getCountryID
+                setter: setCountryID
+            type: horstoeko\zugferd\entities\extended\qdt\CountryIDType
+        name:
             expose: true
             access_type: public_method
-            serialized_name: AccountName
+            serialized_name: Name
             xml_element:
                 cdata: false
                 namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
             accessor:
-                getter: getAccountName
-                setter: setAccountName
+                getter: getName
+                setter: setName
             type: horstoeko\zugferd\entities\extended\udt\TextType

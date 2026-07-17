@@ -106,6 +106,13 @@ class HeaderTradeSettlementType
     private $specifiedTradeSettlementHeaderMonetarySummation = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType[] $specifiedFinancialAdjustment
+     */
+    private $specifiedFinancialAdjustment = [
+        
+    ];
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType[] $invoiceReferencedDocument
      */
     private $invoiceReferencedDocument = [
@@ -667,6 +674,62 @@ class HeaderTradeSettlementType
     public function setSpecifiedTradeSettlementHeaderMonetarySummation(\horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation)
     {
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
+        return $this;
+    }
+
+    /**
+     * Adds as specifiedFinancialAdjustment
+     *
+     * @return self
+     * @param  \horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType $specifiedFinancialAdjustment
+     */
+    public function addToSpecifiedFinancialAdjustment(\horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType $specifiedFinancialAdjustment)
+    {
+        $this->specifiedFinancialAdjustment[] = $specifiedFinancialAdjustment;
+        return $this;
+    }
+
+    /**
+     * isset specifiedFinancialAdjustment
+     *
+     * @param  int|string $index
+     * @return bool
+     */
+    public function issetSpecifiedFinancialAdjustment($index)
+    {
+        return isset($this->specifiedFinancialAdjustment[$index]);
+    }
+
+    /**
+     * unset specifiedFinancialAdjustment
+     *
+     * @param  int|string $index
+     * @return void
+     */
+    public function unsetSpecifiedFinancialAdjustment($index)
+    {
+        unset($this->specifiedFinancialAdjustment[$index]);
+    }
+
+    /**
+     * Gets as specifiedFinancialAdjustment
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType[]
+     */
+    public function getSpecifiedFinancialAdjustment()
+    {
+        return $this->specifiedFinancialAdjustment;
+    }
+
+    /**
+     * Sets a new specifiedFinancialAdjustment
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType[] $specifiedFinancialAdjustment
+     * @return self
+     */
+    public function setSpecifiedFinancialAdjustment(?array $specifiedFinancialAdjustment = null)
+    {
+        $this->specifiedFinancialAdjustment = $specifiedFinancialAdjustment;
         return $this;
     }
 

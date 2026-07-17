@@ -94,6 +94,11 @@ class TradeProductType
     private $originTradeCountry = null;
 
     /**
+     * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $manufacturerTradeParty
+     */
+    private $manufacturerTradeParty = null;
+
+    /**
      * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType[] $includedReferencedProduct
      */
     private $includedReferencedProduct = [
@@ -563,6 +568,28 @@ class TradeProductType
     public function setOriginTradeCountry(?\horstoeko\zugferd\entities\extended\ram\TradeCountryType $originTradeCountry = null)
     {
         $this->originTradeCountry = $originTradeCountry;
+        return $this;
+    }
+
+    /**
+     * Gets as manufacturerTradeParty
+     *
+     * @return \horstoeko\zugferd\entities\extended\ram\TradePartyType
+     */
+    public function getManufacturerTradeParty()
+    {
+        return $this->manufacturerTradeParty;
+    }
+
+    /**
+     * Sets a new manufacturerTradeParty
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradePartyType $manufacturerTradeParty
+     * @return self
+     */
+    public function setManufacturerTradeParty(?\horstoeko\zugferd\entities\extended\ram\TradePartyType $manufacturerTradeParty = null)
+    {
+        $this->manufacturerTradeParty = $manufacturerTradeParty;
         return $this;
     }
 

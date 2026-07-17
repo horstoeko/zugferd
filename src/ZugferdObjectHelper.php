@@ -1490,7 +1490,7 @@ class ZugferdObjectHelper
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setLineTotalAmount", $this->getAmountType($lineTotalAmount));
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setChargeTotalAmount", $this->getAmountType($chargeTotalAmount));
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setAllowanceTotalAmount", $this->getAmountType($allowanceTotalAmount));
-        $this->tryCall($tradeSettlementLineMonetarySummationType, "setTaxTotalAmount", $this->getAmountType($taxTotalAmount));
+        $this->tryCallAll($tradeSettlementLineMonetarySummationType, ["addToTaxTotalAmount", "setTaxTotalAmount"], $this->getAmountType($taxTotalAmount));
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setGrandTotalAmount", $this->getAmountType($grandTotalAmount));
         $this->tryCall($tradeSettlementLineMonetarySummationType, "setTotalAllowanceChargeAmount", $this->getAmountType($totalAllowanceChargeAmount));
 

@@ -1,5 +1,16 @@
 horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
     properties:
+        applicableTradeDeliveryTerms:
+            expose: true
+            access_type: public_method
+            serialized_name: ApplicableTradeDeliveryTerms
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getApplicableTradeDeliveryTerms
+                setter: setApplicableTradeDeliveryTerms
+            type: horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
         sellerOrderReferencedDocument:
             expose: true
             access_type: public_method
@@ -81,6 +92,17 @@ horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
                 getter: getNetPriceProductTradePrice
                 setter: setNetPriceProductTradePrice
             type: horstoeko\zugferd\entities\extended\ram\TradePriceType
+        itemSellerTradeParty:
+            expose: true
+            access_type: public_method
+            serialized_name: ItemSellerTradeParty
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getItemSellerTradeParty
+                setter: setItemSellerTradeParty
+            type: horstoeko\zugferd\entities\extended\ram\TradePartyType
         ultimateCustomerOrderReferencedDocument:
             expose: true
             access_type: public_method
