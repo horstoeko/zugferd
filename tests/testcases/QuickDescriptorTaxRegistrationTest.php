@@ -39,7 +39,7 @@ class QuickDescriptorTaxRegistrationTest extends TestCase
         $domDocument->loadXML($document->getContent());
 
         $domXpath = new DOMXPath($domDocument);
-        $domXpath->registerNamespace('ram', static::NS_RAM);
+        $domXpath->registerNamespace('ram', self::NS_RAM);
 
         $this->assertTaxRegistration($domXpath, 'SellerTradeParty', 'DE111111111', 'VA');
         $this->assertTaxRegistration($domXpath, 'BuyerTradeParty', 'DE999999999', 'VA');
