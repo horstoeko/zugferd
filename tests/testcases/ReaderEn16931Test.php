@@ -54,7 +54,7 @@ class ReaderEn16931Test extends TestCase
         $this->assertSame('471102', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertInstanceOf(\DateTime::class, $documentdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180305'))->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertEquals('20180305', $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
@@ -785,7 +785,7 @@ class ReaderEn16931Test extends TestCase
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(\DateTime::class, $supplychainevent);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180305'))->format('Ymd'), $supplychainevent->format('Ymd'));
+        $this->assertEquals('20180305', $supplychainevent->format('Ymd'));
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void

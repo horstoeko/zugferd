@@ -54,7 +54,7 @@ class ReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertSame('471102', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertInstanceOf(\DateTime::class, $documentdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180605'))->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertEquals('20180605', $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
