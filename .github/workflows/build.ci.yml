@@ -139,6 +139,14 @@ jobs:
         run: |
           vendor/bin/phpcpd --log-pmd build/logs/pmd-cpd.xml --exclude src/entities/ src
 
+      # Not continue-on-error: a path which no longer resolves is silent data loss.
+      # The reader falls back to the default value instead of raising, so a broken path
+      # only surfaces as a field which is quietly empty - including after a schema
+      # release changes a cardinality under the hand written paths.
+      - name: Run Reader Path Check
+        run: |
+          php make/checkreaderpaths.php
+
       - name: Run Tests (PHPUnit)
         run: |
           vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
