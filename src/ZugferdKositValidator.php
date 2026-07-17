@@ -41,7 +41,7 @@ class ZugferdKositValidator
     /**
      * Internal message bag
      *
-     * @var array
+     * @var array<int, array{type: string, message: string}>
      */
     private $messageBag = [];
 
@@ -564,7 +564,7 @@ class ZugferdKositValidator
      * Get messages from messagebag filtered by message type
      *
      * @param  string $messageType
-     * @return array
+     * @return array<int, string>
      */
     private function getMessageBagFiltered(string $messageType): array
     {
@@ -584,7 +584,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationErrors(): array
     {
@@ -625,7 +625,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation warnings
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationWarnings(): array
     {
@@ -655,7 +655,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all validation information
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationInformation(): array
     {
@@ -685,7 +685,7 @@ class ZugferdKositValidator
     /**
      * Return an array of all internal errors (such as download error or system exceptions)
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getProcessErrors(): array
     {
@@ -715,7 +715,7 @@ class ZugferdKositValidator
     /**
      * Returns an array of all messages from process system (calling external applications)
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getProcessOutput(): array
     {
@@ -1199,8 +1199,8 @@ class ZugferdKositValidator
      * Runs a process. If the process runned successfully this method
      * returns true, otherwise false
      *
-     * @param  array  $command
-     * @param  string $workingdirectory
+     * @param  array<int, string> $command
+     * @param  string             $workingdirectory
      * @return boolean
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool

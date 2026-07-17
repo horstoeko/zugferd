@@ -16,6 +16,7 @@ use horstoeko\zugferd\exception\ZugferdUnknownProfileIdException;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
 use horstoeko\zugferd\jms\ZugferdTypesHandler;
 use horstoeko\zugferd\ZugferdObjectHelper;
+use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdProfileResolver;
 use JMS\Serializer\Exception\InvalidArgumentException;
 use JMS\Serializer\Exception\RuntimeException;
@@ -31,6 +32,8 @@ use JMS\Serializer\SerializerInterface;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-import-type ZugferdProfileDefinition from ZugferdProfiles
  */
 class ZugferdDocument
 {
@@ -40,7 +43,7 @@ class ZugferdDocument
     private $profileId = -1;
 
     /**
-     * @var array $profileDefinition Internal profile definition
+     * @var ZugferdProfileDefinition|array{} $profileDefinition Internal profile definition
      */
     private $profileDefinition = [];
 
@@ -136,7 +139,7 @@ class ZugferdDocument
     /**
      * Returns the profile definition
      *
-     * @return array
+     * @return ZugferdProfileDefinition|array{}
      */
     public function getProfileDefinition(): array
     {

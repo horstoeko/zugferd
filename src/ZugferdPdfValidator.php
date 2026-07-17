@@ -43,7 +43,7 @@ class ZugferdPdfValidator
     /**
      * Internal message bag
      *
-     * @var array
+     * @var array<int, array{type: string, message: string}>
      */
     private $messageBag = [];
 
@@ -455,7 +455,7 @@ class ZugferdPdfValidator
      * Get messages from messagebag filtered by message type
      *
      * @param  string $messageType
-     * @return array
+     * @return array<int, string>
      */
     private function getMessageBagFiltered(string $messageType): array
     {
@@ -475,7 +475,7 @@ class ZugferdPdfValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationErrors(): array
     {
@@ -505,7 +505,7 @@ class ZugferdPdfValidator
     /**
      * Returns an array of all validation warnings
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationWarnings(): array
     {
@@ -535,7 +535,7 @@ class ZugferdPdfValidator
     /**
      * Returns an array of all validation information
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getValidationInformation(): array
     {
@@ -565,7 +565,7 @@ class ZugferdPdfValidator
     /**
      * Return an array of all internal errors (such as download error or system exceptions)
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getProcessErrors(): array
     {
@@ -595,7 +595,7 @@ class ZugferdPdfValidator
     /**
      * Returns an array of all messages from process system (calling external applications)
      *
-     * @return array
+     * @return array<int, string>
      */
     public function getProcessOutput(): array
     {
@@ -999,8 +999,8 @@ class ZugferdPdfValidator
      * Runs a process. If the process runned successfully this method
      * returns true, otherwise false
      *
-     * @param  array  $command
-     * @param  string $workingdirectory
+     * @param  array<int, string> $command
+     * @param  string             $workingdirectory
      * @return bool
      */
     private function runProcess(array $command, string $workingdirectory): bool
@@ -1013,9 +1013,9 @@ class ZugferdPdfValidator
      * returns true, otherwise false. The output of the process wil be
      * returned in $processOutput
      *
-     * @param  array       $command
-     * @param  string      $workingdirectory
-     * @param  null|string &$processOutput
+     * @param  array<int, string> $command
+     * @param  string             $workingdirectory
+     * @param  null|string        &$processOutput
      * @return bool
      */
     private function runProcessAndGetOutput(array $command, string $workingdirectory, ?string &$processOutput): bool

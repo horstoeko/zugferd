@@ -9,6 +9,8 @@
 
 namespace horstoeko\zugferd\jms;
 
+use DOMElement;
+use DOMText;
 use horstoeko\zugferd\ZugferdSettings;
 use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
@@ -37,7 +39,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *          ),
      *      )
      *
-     * @return array
+     * @return array<int, array{direction: int, format: string, type: string, method: string}>
      */
     public static function getSubscribingMethods()
     {
@@ -177,6 +179,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     * @return DOMText
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data)
     {
@@ -204,6 +207,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     * @return DOMText
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data)
     {
@@ -231,6 +235,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     * @return DOMText
      */
     public function serializePercentType(XmlSerializationVisitor $visitor, $data)
     {
@@ -250,6 +255,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     * @return DOMText
      */
     public function serializeMeasureType(XmlSerializationVisitor $visitor, $data)
     {
@@ -278,6 +284,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     * @return DOMElement|false
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data)
     {

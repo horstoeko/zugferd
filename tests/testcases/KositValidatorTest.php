@@ -29,7 +29,8 @@ class KositValidatorTest extends TestCase
 
         $this->assertEmpty($this->getPrivatePropertyFromObject($kositValidator, 'messageBag')->getValue($kositValidator));
         $this->assertEmpty($kositValidator->getProcessOutput());
-        $this->assertEmpty($kositValidator->getProcessErrors());
+        $processErrors = $kositValidator->getProcessErrors();
+        $this->assertEmpty($processErrors);
         $this->assertTrue($kositValidator->hasNoProcessErrors());
         $this->assertFalse($kositValidator->hasProcessErrors());
         $this->assertEmpty($kositValidator->getValidationErrors());
@@ -59,8 +60,9 @@ class KositValidatorTest extends TestCase
         $this->assertEmpty($kositValidator->getValidationInformation());
         $this->assertTrue($kositValidator->hasNoValidationInformation());
         $this->assertFalse($kositValidator->hasValidationInformation());
-        $this->assertArrayHasKey(0, $kositValidator->getProcessErrors());
-        $this->assertSame('SomeError', $kositValidator->getProcessErrors()[0] ?? "");
+        $processErrors = $kositValidator->getProcessErrors();
+        $this->assertArrayHasKey(0, $processErrors);
+        $this->assertSame('SomeError', $processErrors[0]);
 
         $this->getPrivateMethodFromObject($kositValidator, 'addToMessageBag')->invokeArgs($kositValidator, ['SomeError', 'validationerror']);
 

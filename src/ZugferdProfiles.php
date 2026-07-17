@@ -17,6 +17,21 @@ namespace horstoeko\zugferd;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-type ZugferdProfileDefinition array{
+ *     name: string,
+ *     altname: string,
+ *     description: string,
+ *     contextparameter: string,
+ *     alternativecontextparameters: array<int, string>,
+ *     businessprocess: string|null,
+ *     attachmentfilename: string,
+ *     xmpname: string,
+ *     xmpversion: string,
+ *     xsdfilename: string,
+ *     schematronfilename: string,
+ *     xsltfilename: string
+ * }
  */
 class ZugferdProfiles
 {

@@ -40,7 +40,6 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
-        $this->assertIsString($converterResult);
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
         $this->assertStringContainsString('<ram:GuidelineSpecifiedDocumentContextParameter>', $converterResult);
         $this->assertStringContainsString('<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>', $converterResult);
@@ -81,7 +80,6 @@ class ProfileConverterTest extends TestCase
 
         $converterResult = ZugferdDocumentProfileConverter::convertFromContentToString($fromfileContent, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
-        $this->assertIsString($converterResult);
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
         $this->assertStringContainsString('<ram:GuidelineSpecifiedDocumentContextParameter>', $converterResult);
         $this->assertStringContainsString('<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>', $converterResult);
@@ -119,7 +117,6 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_EN16931);
 
-        $this->assertIsString($converterResult);
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
         $this->assertStringContainsString('<ram:GuidelineSpecifiedDocumentContextParameter>', $converterResult);
         $this->assertStringContainsString('<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', $converterResult);
@@ -159,7 +156,6 @@ class ProfileConverterTest extends TestCase
         $fromfileContent = file_get_contents($fromfile);
         $converterResult = ZugferdDocumentProfileConverter::convertFromContentToString($fromfileContent, ZugferdProfiles::PROFILE_EN16931);
 
-        $this->assertIsString($converterResult);
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
         $this->assertStringContainsString('<ram:GuidelineSpecifiedDocumentContextParameter>', $converterResult);
         $this->assertStringContainsString('<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', $converterResult);
@@ -184,7 +180,6 @@ class ProfileConverterTest extends TestCase
         $fromfile = __DIR__ . "/../assets/xml_extended_1.xml";
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_EN16931);
 
-        $this->assertIsString($converterResult);
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
         $this->assertStringContainsString('<ram:GuidelineSpecifiedDocumentContextParameter>', $converterResult);
         $this->assertStringContainsString('<ram:ID>urn:cen.eu:en16931:2017</ram:ID>', $converterResult);
