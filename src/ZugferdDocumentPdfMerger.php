@@ -10,6 +10,7 @@
 namespace horstoeko\zugferd;
 
 use Throwable;
+use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdProfileResolver;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileException;
@@ -26,6 +27,8 @@ use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-import-type ZugferdProfileDefinition from ZugferdProfiles
  */
 class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
 {
@@ -125,7 +128,7 @@ class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
     /**
      * Guess the profile type of the readden xml document
      *
-     * @return array
+     * @return ZugferdProfileDefinition
      * @throws ZugferdFileNotReadableException
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException

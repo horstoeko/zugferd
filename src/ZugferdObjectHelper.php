@@ -28,6 +28,8 @@ use horstoeko\zugferd\ZugferdProfileResolver;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-import-type ZugferdProfileDefinition from ZugferdProfiles
  */
 class ZugferdObjectHelper
 {
@@ -41,9 +43,9 @@ class ZugferdObjectHelper
     /**
      * Internal profile definition
      *
-     * @var array
+     * @var ZugferdProfileDefinition
      */
-    public $profiledef = [];
+    public $profiledef;
 
     /**
      * A list of supported mimetypes by binaryattachments
@@ -493,7 +495,7 @@ class ZugferdObjectHelper
      * @param  string|null            $uriId
      * @param  string|null            $lineId
      * @param  string|null            $typeCode
-     * @param  string|array|null      $name
+     * @param  string|array<int, string>|null $name
      * @param  string|null            $refTypeCode
      * @param  DateTimeInterface|null $issueDate
      * @param  string|null            $binaryDataFilename
@@ -1176,11 +1178,11 @@ class ZugferdObjectHelper
     /**
      * Get instance of
      *
-     * @param  string|null $description
-     * @param  float|null  $appliedAmount
-     * @param  array|null  $taxTypeCodes
-     * @param  array|null  $taxCategoryCodes
-     * @param  array|null  $rateApplicablePercents
+     * @param  string|null            $description
+     * @param  float|null             $appliedAmount
+     * @param  array<int, string>|null $taxTypeCodes
+     * @param  array<int, string>|null $taxCategoryCodes
+     * @param  array<int, float>|null  $rateApplicablePercents
      * @return object|null
      */
     public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategoryCodes = null, ?array $rateApplicablePercents = null): ?object
@@ -1762,8 +1764,8 @@ class ZugferdObjectHelper
     /**
      * Ensure that $input is an array
      *
-     * @param  mixed $input
-     * @return array
+     * @param  string|array<int, string>|null $input
+     * @return array<int, string>
      */
     public function ensureStringArray($input): array
     {
@@ -1778,7 +1780,7 @@ class ZugferdObjectHelper
      * Ensure array
      *
      * @param  mixed $value
-     * @return array
+     * @return array<mixed, mixed>
      */
     public function ensureArray($value): array
     {
@@ -1811,7 +1813,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @param  array $args
+     * @param  array<int, mixed> $args
      * @return boolean
      */
     public static function isAllNullOrEmpty(array $args): bool
@@ -1832,7 +1834,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @param  array $args
+     * @param  array<int, mixed> $args
      * @return boolean
      */
     public static function isOneNullOrEmpty(array $args): bool

@@ -133,6 +133,10 @@ class PdfReaderExtGeneralTest extends TestCase
         $this->checkAdditionalAttachments($additionalDocuments);
     }
 
+    /**
+     * @param  ZugferdDocumentReader $documentReader
+     * @return void
+     */
     private function checkDocumentReader($documentReader): void
     {
         $this->assertNotNull($documentReader);
@@ -140,6 +144,10 @@ class PdfReaderExtGeneralTest extends TestCase
         $this->assertInstanceOf(ZugferdDocumentReader::class, $documentReader);
     }
 
+    /**
+     * @param  string $xmlString
+     * @return void
+     */
     private function checkInvoiceDocumentXml($xmlString): void
     {
         $this->assertNotNull($xmlString);
@@ -149,7 +157,11 @@ class PdfReaderExtGeneralTest extends TestCase
         $this->assertStringContainsString("</rsm:CrossIndustryInvoice>", $xmlString);
     }
 
-    private function checkAdditionalAttachments($additionalDocuments): void
+    /**
+     * @param  array<int, array{type: int, content: string, filename: string, mimetype: string}> $additionalDocuments
+     * @return void
+     */
+    private function checkAdditionalAttachments(array $additionalDocuments): void
     {
         $this->assertNotEmpty($additionalDocuments);
         $this->assertCount(2, $additionalDocuments);

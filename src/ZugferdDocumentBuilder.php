@@ -2119,7 +2119,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *                                                    to reference an identifier for an object specified by the seller.
      * @param  string|null            $uriId              __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
      *                                                    supporting documents for the invoiced amounts. External documents are not part of the invoice. Invoice processing should be possible without access to external documents. Access to external documents can entail certain risks.
-     * @param  string|array|null      $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|array<int, string>|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @param  string|null            $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  DateTimeInterface|null $issueDate          __BT-X-149, From EXTENDED__ Document date
      * @param  string|null            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
@@ -2143,7 +2143,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string            $issuerAssignedId __BT-122, From EN 16931__ Identification of the document supporting the invoice
      * @param  string            $uriId            __BT-124, From EN 16931__ A means of locating the resource, including the primary access method intended for it, e.g. http:// or ftp://. The storage location of the external document must be used if the buyer requires further information as
-     * @param  string|array|null $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|array<int, string>|null $name             __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentInvoiceSupportingDocumentWithUri(string $issuerAssignedId, string $uriId, $name = null): ZugferdDocumentBuilder
@@ -2157,7 +2157,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
      * @param  string            $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
-     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|array<int, string>|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return ZugferdDocumentBuilder
      * @throws ZugferdUnsupportedMimetype
      */
@@ -2196,7 +2196,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string            $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
      * @param  string            $attachmentFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
      * @param  string            $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
-     * @param  string|array|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  string|array<int, string>|null $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
      * @return ZugferdDocumentBuilder
      * @throws ZugferdUnsupportedMimetype
      */
@@ -2686,9 +2686,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      *
      * @param  string     $description            __BT-X-271, From EXTENDED__ Identification of the service fee
      * @param  float      $appliedAmount          __BT-X-272, From EXTENDED__ Amount of the service fee
-     * @param  array|null $taxTypeCodes           __BT-X-273-0, From EXTENDED__ Code of the Tax type. Note: Fixed value = "VAT"
-     * @param  array|null $taxCategoryCodes       __BT-X-273, From EXTENDED__ Code of the VAT category
-     * @param  array|null $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  array<int, string>|null $taxTypeCodes           __BT-X-273-0, From EXTENDED__ Code of the Tax type. Note: Fixed value = "VAT"
+     * @param  array<int, string>|null $taxCategoryCodes       __BT-X-273, From EXTENDED__ Code of the VAT category
+     * @param  array<int, float>|null $rateApplicablePercents __BT-X-274, From EXTENDED__ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentLogisticsServiceCharge(string $description, float $appliedAmount, ?array $taxTypeCodes = null, ?array $taxCategoryCodes = null, ?array $rateApplicablePercents = null): ZugferdDocumentBuilder

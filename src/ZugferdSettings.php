@@ -264,7 +264,7 @@ class ZugferdSettings
     /**
      * Returns a list of node paths which have a special number of decimal places
      *
-     * @return array
+     * @return array<string,integer>
      */
     public static function getSpecialDecimalPlacesMaps(): array
     {
@@ -288,7 +288,7 @@ class ZugferdSettings
     /**
      * Update the map of node paths which have a special number of decimal places
      *
-     * @param  array $specialDecimalPlacesMaps
+     * @param  array<string,integer> $specialDecimalPlacesMaps
      * @return void
      */
     public static function setSpecialDecimalPlacesMaps(array $specialDecimalPlacesMaps): void
