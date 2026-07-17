@@ -11,44 +11,44 @@ class TradeAddressType
 {
 
     /**
-     * @var string $postcodeCode
+     * @var string|null $postcodeCode
      */
     private $postcodeCode = null;
 
     /**
-     * @var string $lineOne
+     * @var string|null $lineOne
      */
     private $lineOne = null;
 
     /**
-     * @var string $lineTwo
+     * @var string|null $lineTwo
      */
     private $lineTwo = null;
 
     /**
-     * @var string $lineThree
+     * @var string|null $lineThree
      */
     private $lineThree = null;
 
     /**
-     * @var string $cityName
+     * @var string|null $cityName
      */
     private $cityName = null;
 
     /**
-     * @var string $countryID
+     * @var string|null $countryID
      */
     private $countryID = null;
 
     /**
-     * @var string $countrySubDivisionName
+     * @var string|null $countrySubDivisionName
      */
     private $countrySubDivisionName = null;
 
     /**
      * Gets as postcodeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getPostcodeCode()
     {
@@ -70,7 +70,7 @@ class TradeAddressType
     /**
      * Gets as lineOne
      *
-     * @return string
+     * @return string|null
      */
     public function getLineOne()
     {
@@ -92,7 +92,7 @@ class TradeAddressType
     /**
      * Gets as lineTwo
      *
-     * @return string
+     * @return string|null
      */
     public function getLineTwo()
     {
@@ -114,7 +114,7 @@ class TradeAddressType
     /**
      * Gets as lineThree
      *
-     * @return string
+     * @return string|null
      */
     public function getLineThree()
     {
@@ -136,7 +136,7 @@ class TradeAddressType
     /**
      * Gets as cityName
      *
-     * @return string
+     * @return string|null
      */
     public function getCityName()
     {
@@ -158,7 +158,7 @@ class TradeAddressType
     /**
      * Gets as countryID
      *
-     * @return string
+     * @return string|null
      */
     public function getCountryID()
     {
@@ -180,7 +180,7 @@ class TradeAddressType
     /**
      * Gets as countrySubDivisionName
      *
-     * @return string
+     * @return string|null
      */
     public function getCountrySubDivisionName()
     {

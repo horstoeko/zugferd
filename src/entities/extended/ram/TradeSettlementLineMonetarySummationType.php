@@ -11,17 +11,17 @@ class TradeSettlementLineMonetarySummationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $chargeTotalAmount
      */
     private $chargeTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $allowanceTotalAmount
      */
     private $allowanceTotalAmount = null;
 
@@ -33,19 +33,19 @@ class TradeSettlementLineMonetarySummationType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $grandTotalAmount
      */
     private $grandTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $totalAllowanceChargeAmount
      */
     private $totalAllowanceChargeAmount = null;
 
     /**
      * Gets as lineTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getLineTotalAmount()
     {
@@ -55,7 +55,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new lineTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $lineTotalAmount
      * @return self
      */
     public function setLineTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $lineTotalAmount = null)
@@ -67,7 +67,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Gets as chargeTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getChargeTotalAmount()
     {
@@ -77,7 +77,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new chargeTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $chargeTotalAmount
      * @return self
      */
     public function setChargeTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $chargeTotalAmount = null)
@@ -89,7 +89,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Gets as allowanceTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getAllowanceTotalAmount()
     {
@@ -99,7 +99,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new allowanceTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $allowanceTotalAmount
      * @return self
      */
     public function setAllowanceTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $allowanceTotalAmount = null)
@@ -174,7 +174,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Gets as grandTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getGrandTotalAmount()
     {
@@ -184,7 +184,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new grandTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $grandTotalAmount
      * @return self
      */
     public function setGrandTotalAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $grandTotalAmount = null)
@@ -196,7 +196,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Gets as totalAllowanceChargeAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getTotalAllowanceChargeAmount()
     {
@@ -206,7 +206,7 @@ class TradeSettlementLineMonetarySummationType
     /**
      * Sets a new totalAllowanceChargeAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $totalAllowanceChargeAmount
      * @return self
      */
     public function setTotalAllowanceChargeAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $totalAllowanceChargeAmount = null)

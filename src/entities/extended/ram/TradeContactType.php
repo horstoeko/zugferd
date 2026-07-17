@@ -11,39 +11,39 @@ class TradeContactType
 {
 
     /**
-     * @var string $personName
+     * @var string|null $personName
      */
     private $personName = null;
 
     /**
-     * @var string $departmentName
+     * @var string|null $departmentName
      */
     private $departmentName = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
+     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $telephoneUniversalCommunication
      */
     private $telephoneUniversalCommunication = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication
+     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $faxUniversalCommunication
      */
     private $faxUniversalCommunication = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication
+     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $emailURIUniversalCommunication
      */
     private $emailURIUniversalCommunication = null;
 
     /**
      * Gets as personName
      *
-     * @return string
+     * @return string|null
      */
     public function getPersonName()
     {
@@ -65,7 +65,7 @@ class TradeContactType
     /**
      * Gets as departmentName
      *
-     * @return string
+     * @return string|null
      */
     public function getDepartmentName()
     {
@@ -87,7 +87,7 @@ class TradeContactType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -109,7 +109,7 @@ class TradeContactType
     /**
      * Gets as telephoneUniversalCommunication
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null
      */
     public function getTelephoneUniversalCommunication()
     {
@@ -119,7 +119,7 @@ class TradeContactType
     /**
      * Sets a new telephoneUniversalCommunication
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $telephoneUniversalCommunication
      * @return self
      */
     public function setTelephoneUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $telephoneUniversalCommunication = null)
@@ -131,7 +131,7 @@ class TradeContactType
     /**
      * Gets as faxUniversalCommunication
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null
      */
     public function getFaxUniversalCommunication()
     {
@@ -141,7 +141,7 @@ class TradeContactType
     /**
      * Sets a new faxUniversalCommunication
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $faxUniversalCommunication
      * @return self
      */
     public function setFaxUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $faxUniversalCommunication = null)
@@ -153,7 +153,7 @@ class TradeContactType
     /**
      * Gets as emailURIUniversalCommunication
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null
      */
     public function getEmailURIUniversalCommunication()
     {
@@ -163,7 +163,7 @@ class TradeContactType
     /**
      * Sets a new emailURIUniversalCommunication
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $emailURIUniversalCommunication
      * @return self
      */
     public function setEmailURIUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $emailURIUniversalCommunication = null)

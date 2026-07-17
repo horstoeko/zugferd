@@ -11,49 +11,49 @@ class TradeTaxType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType|null $calculatedAmount
      */
     private $calculatedAmount = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var string $exemptionReason
+     * @var string|null $exemptionReason
      */
     private $exemptionReason = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType|null $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @var string $categoryCode
+     * @var string|null $categoryCode
      */
     private $categoryCode = null;
 
     /**
-     * @var string $exemptionReasonCode
+     * @var string|null $exemptionReasonCode
      */
     private $exemptionReasonCode = null;
 
     /**
-     * @var string $dueDateTypeCode
+     * @var string|null $dueDateTypeCode
      */
     private $dueDateTypeCode = null;
 
     /**
-     * @var float $rateApplicablePercent
+     * @var float|null $rateApplicablePercent
      */
     private $rateApplicablePercent = null;
 
     /**
      * Gets as calculatedAmount
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType|null
      */
     public function getCalculatedAmount()
     {
@@ -63,7 +63,7 @@ class TradeTaxType
     /**
      * Sets a new calculatedAmount
      *
-     * @param  \horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount
+     * @param  \horstoeko\zugferd\entities\basic\udt\AmountType|null $calculatedAmount
      * @return self
      */
     public function setCalculatedAmount(?\horstoeko\zugferd\entities\basic\udt\AmountType $calculatedAmount = null)
@@ -75,7 +75,7 @@ class TradeTaxType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -97,7 +97,7 @@ class TradeTaxType
     /**
      * Gets as exemptionReason
      *
-     * @return string
+     * @return string|null
      */
     public function getExemptionReason()
     {
@@ -119,7 +119,7 @@ class TradeTaxType
     /**
      * Gets as basisAmount
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType|null
      */
     public function getBasisAmount()
     {
@@ -129,7 +129,7 @@ class TradeTaxType
     /**
      * Sets a new basisAmount
      *
-     * @param  \horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\basic\udt\AmountType|null $basisAmount
      * @return self
      */
     public function setBasisAmount(?\horstoeko\zugferd\entities\basic\udt\AmountType $basisAmount = null)
@@ -141,7 +141,7 @@ class TradeTaxType
     /**
      * Gets as categoryCode
      *
-     * @return string
+     * @return string|null
      */
     public function getCategoryCode()
     {
@@ -163,7 +163,7 @@ class TradeTaxType
     /**
      * Gets as exemptionReasonCode
      *
-     * @return string
+     * @return string|null
      */
     public function getExemptionReasonCode()
     {
@@ -185,7 +185,7 @@ class TradeTaxType
     /**
      * Gets as dueDateTypeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getDueDateTypeCode()
     {
@@ -207,7 +207,7 @@ class TradeTaxType
     /**
      * Gets as rateApplicablePercent
      *
-     * @return float
+     * @return float|null
      */
     public function getRateApplicablePercent()
     {

@@ -11,7 +11,7 @@ class TradeSettlementHeaderMonetarySummationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType $taxBasisTotalAmount
+     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType|null $taxBasisTotalAmount
      */
     private $taxBasisTotalAmount = null;
 
@@ -23,19 +23,19 @@ class TradeSettlementHeaderMonetarySummationType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType $grandTotalAmount
+     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType|null $grandTotalAmount
      */
     private $grandTotalAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType $duePayableAmount
+     * @var \horstoeko\zugferd\entities\minimum\udt\AmountType|null $duePayableAmount
      */
     private $duePayableAmount = null;
 
     /**
      * Gets as taxBasisTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType
+     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType|null
      */
     public function getTaxBasisTotalAmount()
     {
@@ -101,7 +101,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Sets a new taxTotalAmount
      *
-     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType[] $taxTotalAmount
+     * @param  \horstoeko\zugferd\entities\minimum\udt\AmountType[]|null $taxTotalAmount
      * @return self
      */
     public function setTaxTotalAmount(?array $taxTotalAmount = null)
@@ -113,7 +113,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as grandTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType
+     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType|null
      */
     public function getGrandTotalAmount()
     {
@@ -135,7 +135,7 @@ class TradeSettlementHeaderMonetarySummationType
     /**
      * Gets as duePayableAmount
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType
+     * @return \horstoeko\zugferd\entities\minimum\udt\AmountType|null
      */
     public function getDuePayableAmount()
     {

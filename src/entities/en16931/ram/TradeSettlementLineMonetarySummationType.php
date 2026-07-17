@@ -11,14 +11,14 @@ class TradeSettlementLineMonetarySummationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\AmountType $lineTotalAmount
+     * @var \horstoeko\zugferd\entities\en16931\udt\AmountType|null $lineTotalAmount
      */
     private $lineTotalAmount = null;
 
     /**
      * Gets as lineTotalAmount
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\AmountType
+     * @return \horstoeko\zugferd\entities\en16931\udt\AmountType|null
      */
     public function getLineTotalAmount()
     {

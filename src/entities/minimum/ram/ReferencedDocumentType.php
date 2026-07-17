@@ -11,14 +11,14 @@ class ReferencedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\IDType $issuerAssignedID
+     * @var \horstoeko\zugferd\entities\minimum\udt\IDType|null $issuerAssignedID
      */
     private $issuerAssignedID = null;
 
     /**
      * Gets as issuerAssignedID
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\IDType
+     * @return \horstoeko\zugferd\entities\minimum\udt\IDType|null
      */
     public function getIssuerAssignedID()
     {

@@ -11,24 +11,24 @@ class TradeSettlementPaymentMeansType
 {
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+     * @var \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType|null $payerPartyDebtorFinancialAccount
      */
     private $payerPartyDebtorFinancialAccount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+     * @var \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType|null $payeePartyCreditorFinancialAccount
      */
     private $payeePartyCreditorFinancialAccount = null;
 
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -50,7 +50,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Gets as payerPartyDebtorFinancialAccount
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType|null
      */
     public function getPayerPartyDebtorFinancialAccount()
     {
@@ -60,7 +60,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payerPartyDebtorFinancialAccount
      *
-     * @param  \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType|null $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(?\horstoeko\zugferd\entities\basicwl\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null)
@@ -72,7 +72,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Gets as payeePartyCreditorFinancialAccount
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType|null
      */
     public function getPayeePartyCreditorFinancialAccount()
     {
@@ -82,7 +82,7 @@ class TradeSettlementPaymentMeansType
     /**
      * Sets a new payeePartyCreditorFinancialAccount
      *
-     * @param  \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType|null $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(?\horstoeko\zugferd\entities\basicwl\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null)

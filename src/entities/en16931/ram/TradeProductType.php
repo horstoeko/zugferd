@@ -11,27 +11,27 @@ class TradeProductType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $globalID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $globalID
      */
     private $globalID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $sellerAssignedID
      */
     private $sellerAssignedID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $buyerAssignedID
      */
     private $buyerAssignedID = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
@@ -50,14 +50,14 @@ class TradeProductType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry
+     * @var \horstoeko\zugferd\entities\en16931\ram\TradeCountryType|null $originTradeCountry
      */
     private $originTradeCountry = null;
 
     /**
      * Gets as globalID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getGlobalID()
     {
@@ -67,7 +67,7 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType|null $globalID
      * @return self
      */
     public function setGlobalID(?\horstoeko\zugferd\entities\en16931\udt\IDType $globalID = null)
@@ -79,7 +79,7 @@ class TradeProductType
     /**
      * Gets as sellerAssignedID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getSellerAssignedID()
     {
@@ -89,7 +89,7 @@ class TradeProductType
     /**
      * Sets a new sellerAssignedID
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType|null $sellerAssignedID
      * @return self
      */
     public function setSellerAssignedID(?\horstoeko\zugferd\entities\en16931\udt\IDType $sellerAssignedID = null)
@@ -101,7 +101,7 @@ class TradeProductType
     /**
      * Gets as buyerAssignedID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getBuyerAssignedID()
     {
@@ -111,7 +111,7 @@ class TradeProductType
     /**
      * Sets a new buyerAssignedID
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType|null $buyerAssignedID
      * @return self
      */
     public function setBuyerAssignedID(?\horstoeko\zugferd\entities\en16931\udt\IDType $buyerAssignedID = null)
@@ -123,7 +123,7 @@ class TradeProductType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -145,7 +145,7 @@ class TradeProductType
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -211,7 +211,7 @@ class TradeProductType
     /**
      * Sets a new applicableProductCharacteristic
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType[] $applicableProductCharacteristic
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductCharacteristicType[]|null $applicableProductCharacteristic
      * @return self
      */
     public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null)
@@ -267,7 +267,7 @@ class TradeProductType
     /**
      * Sets a new designatedProductClassification
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType[] $designatedProductClassification
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ProductClassificationType[]|null $designatedProductClassification
      * @return self
      */
     public function setDesignatedProductClassification(?array $designatedProductClassification = null)
@@ -279,7 +279,7 @@ class TradeProductType
     /**
      * Gets as originTradeCountry
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\TradeCountryType
+     * @return \horstoeko\zugferd\entities\en16931\ram\TradeCountryType|null
      */
     public function getOriginTradeCountry()
     {
@@ -289,7 +289,7 @@ class TradeProductType
     /**
      * Sets a new originTradeCountry
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradeCountryType|null $originTradeCountry
      * @return self
      */
     public function setOriginTradeCountry(?\horstoeko\zugferd\entities\en16931\ram\TradeCountryType $originTradeCountry = null)

@@ -11,19 +11,19 @@ class NoteType
 {
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private $content = null;
 
     /**
-     * @var string $subjectCode
+     * @var string|null $subjectCode
      */
     private $subjectCode = null;
 
     /**
      * Gets as content
      *
-     * @return string
+     * @return string|null
      */
     public function getContent()
     {
@@ -45,7 +45,7 @@ class NoteType
     /**
      * Gets as subjectCode
      *
-     * @return string
+     * @return string|null
      */
     public function getSubjectCode()
     {

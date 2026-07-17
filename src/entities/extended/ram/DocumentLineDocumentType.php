@@ -11,22 +11,22 @@ class DocumentLineDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $lineID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $lineID
      */
     private $lineID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $parentLineID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $parentLineID
      */
     private $parentLineID = null;
 
     /**
-     * @var string $lineStatusCode
+     * @var string|null $lineStatusCode
      */
     private $lineStatusCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode
+     * @var \horstoeko\zugferd\entities\extended\udt\CodeType|null $lineStatusReasonCode
      */
     private $lineStatusReasonCode = null;
 
@@ -40,7 +40,7 @@ class DocumentLineDocumentType
     /**
      * Gets as lineID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getLineID()
     {
@@ -62,7 +62,7 @@ class DocumentLineDocumentType
     /**
      * Gets as parentLineID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getParentLineID()
     {
@@ -72,7 +72,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new parentLineID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $parentLineID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $parentLineID
      * @return self
      */
     public function setParentLineID(?\horstoeko\zugferd\entities\extended\udt\IDType $parentLineID = null)
@@ -84,7 +84,7 @@ class DocumentLineDocumentType
     /**
      * Gets as lineStatusCode
      *
-     * @return string
+     * @return string|null
      */
     public function getLineStatusCode()
     {
@@ -106,7 +106,7 @@ class DocumentLineDocumentType
     /**
      * Gets as lineStatusReasonCode
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\CodeType
+     * @return \horstoeko\zugferd\entities\extended\udt\CodeType|null
      */
     public function getLineStatusReasonCode()
     {
@@ -116,7 +116,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new lineStatusReasonCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType|null $lineStatusReasonCode
      * @return self
      */
     public function setLineStatusReasonCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $lineStatusReasonCode = null)
@@ -172,7 +172,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
+     * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[]|null $includedNote
      * @return self
      */
     public function setIncludedNote(?array $includedNote = null)

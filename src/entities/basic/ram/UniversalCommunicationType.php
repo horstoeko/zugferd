@@ -11,14 +11,14 @@ class UniversalCommunicationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType|null $uRIID
      */
     private $uRIID = null;
 
     /**
      * Gets as uRIID
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType|null
      */
     public function getURIID()
     {

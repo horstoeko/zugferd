@@ -11,12 +11,12 @@ class LogisticsServiceChargeType
 {
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $appliedAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $appliedAmount
      */
     private $appliedAmount = null;
 
@@ -30,7 +30,7 @@ class LogisticsServiceChargeType
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -52,7 +52,7 @@ class LogisticsServiceChargeType
     /**
      * Gets as appliedAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getAppliedAmount()
     {

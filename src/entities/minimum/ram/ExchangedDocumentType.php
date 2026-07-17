@@ -11,24 +11,24 @@ class ExchangedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\minimum\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\DateTimeType $issueDateTime
+     * @var \horstoeko\zugferd\entities\minimum\udt\DateTimeType|null $issueDateTime
      */
     private $issueDateTime = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\IDType
+     * @return \horstoeko\zugferd\entities\minimum\udt\IDType|null
      */
     public function getID()
     {
@@ -50,7 +50,7 @@ class ExchangedDocumentType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -72,7 +72,7 @@ class ExchangedDocumentType
     /**
      * Gets as issueDateTime
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\minimum\udt\DateTimeType|null
      */
     public function getIssueDateTime()
     {

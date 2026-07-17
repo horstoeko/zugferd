@@ -9,12 +9,12 @@ class DateTimeStringAType
 {
 
     /**
-     * @var string $__value
+     * @var string|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $format
+     * @var string|null $format
      */
     private $format = null;
 
@@ -32,7 +32,7 @@ class DateTimeStringAType
      * Gets or sets the inner value
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function value()
     {
@@ -55,7 +55,7 @@ class DateTimeStringAType
     /**
      * Gets as format
      *
-     * @return string
+     * @return string|null
      */
     public function getFormat()
     {

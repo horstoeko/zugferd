@@ -11,14 +11,14 @@ class LineTradeDeliveryType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\QuantityType $billedQuantity
+     * @var \horstoeko\zugferd\entities\en16931\udt\QuantityType|null $billedQuantity
      */
     private $billedQuantity = null;
 
     /**
      * Gets as billedQuantity
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\QuantityType
+     * @return \horstoeko\zugferd\entities\en16931\udt\QuantityType|null
      */
     public function getBilledQuantity()
     {

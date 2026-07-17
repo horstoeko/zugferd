@@ -11,14 +11,14 @@ class FormattedDateTimeType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
+     * @var \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType\DateTimeStringAType|null $dateTimeString
      */
     private $dateTimeString = null;
 
     /**
      * Gets as dateTimeString
      *
-     * @return \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType\DateTimeStringAType
+     * @return \horstoeko\zugferd\entities\basicwl\qdt\FormattedDateTimeType\DateTimeStringAType|null
      */
     public function getDateTimeString()
     {

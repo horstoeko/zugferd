@@ -11,32 +11,32 @@ class ExchangedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $issueDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $issueDateTime
      */
     private $issueDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator
+     * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType|null $copyIndicator
      */
     private $copyIndicator = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $languageID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $languageID
      */
     private $languageID = null;
 
@@ -48,14 +48,14 @@ class ExchangedDocumentType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
+     * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType|null $effectiveSpecifiedPeriod
      */
     private $effectiveSpecifiedPeriod = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getID()
     {
@@ -77,7 +77,7 @@ class ExchangedDocumentType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -99,7 +99,7 @@ class ExchangedDocumentType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -121,7 +121,7 @@ class ExchangedDocumentType
     /**
      * Gets as issueDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getIssueDateTime()
     {
@@ -143,7 +143,7 @@ class ExchangedDocumentType
     /**
      * Gets as copyIndicator
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IndicatorType
+     * @return \horstoeko\zugferd\entities\extended\udt\IndicatorType|null
      */
     public function getCopyIndicator()
     {
@@ -153,7 +153,7 @@ class ExchangedDocumentType
     /**
      * Sets a new copyIndicator
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator
+     * @param  \horstoeko\zugferd\entities\extended\udt\IndicatorType|null $copyIndicator
      * @return self
      */
     public function setCopyIndicator(?\horstoeko\zugferd\entities\extended\udt\IndicatorType $copyIndicator = null)
@@ -165,7 +165,7 @@ class ExchangedDocumentType
     /**
      * Gets as languageID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getLanguageID()
     {
@@ -175,7 +175,7 @@ class ExchangedDocumentType
     /**
      * Sets a new languageID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $languageID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $languageID
      * @return self
      */
     public function setLanguageID(?\horstoeko\zugferd\entities\extended\udt\IDType $languageID = null)
@@ -231,7 +231,7 @@ class ExchangedDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[] $includedNote
+     * @param  \horstoeko\zugferd\entities\extended\ram\NoteType[]|null $includedNote
      * @return self
      */
     public function setIncludedNote(?array $includedNote = null)
@@ -243,7 +243,7 @@ class ExchangedDocumentType
     /**
      * Gets as effectiveSpecifiedPeriod
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType
+     * @return \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType|null
      */
     public function getEffectiveSpecifiedPeriod()
     {
@@ -253,7 +253,7 @@ class ExchangedDocumentType
     /**
      * Sets a new effectiveSpecifiedPeriod
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
+     * @param  \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType|null $effectiveSpecifiedPeriod
      * @return self
      */
     public function setEffectiveSpecifiedPeriod(?\horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod = null)

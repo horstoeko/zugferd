@@ -11,29 +11,29 @@ class SpecifiedPeriodType
 {
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $startDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $startDateTime
      */
     private $startDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $endDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $endDateTime
      */
     private $endDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $completeDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $completeDateTime
      */
     private $completeDateTime = null;
 
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -55,7 +55,7 @@ class SpecifiedPeriodType
     /**
      * Gets as startDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getStartDateTime()
     {
@@ -65,7 +65,7 @@ class SpecifiedPeriodType
     /**
      * Sets a new startDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $startDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $startDateTime
      * @return self
      */
     public function setStartDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $startDateTime = null)
@@ -77,7 +77,7 @@ class SpecifiedPeriodType
     /**
      * Gets as endDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getEndDateTime()
     {
@@ -87,7 +87,7 @@ class SpecifiedPeriodType
     /**
      * Sets a new endDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $endDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $endDateTime
      * @return self
      */
     public function setEndDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $endDateTime = null)
@@ -99,7 +99,7 @@ class SpecifiedPeriodType
     /**
      * Gets as completeDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getCompleteDateTime()
     {
@@ -109,7 +109,7 @@ class SpecifiedPeriodType
     /**
      * Sets a new completeDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $completeDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $completeDateTime
      * @return self
      */
     public function setCompleteDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $completeDateTime = null)

@@ -64,7 +64,7 @@ class SupplyChainConsignmentType
     /**
      * Sets a new specifiedLogisticsTransportMovement
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[] $specifiedLogisticsTransportMovement
+     * @param  \horstoeko\zugferd\entities\extended\ram\LogisticsTransportMovementType[]|null $specifiedLogisticsTransportMovement
      * @return self
      */
     public function setSpecifiedLogisticsTransportMovement(?array $specifiedLogisticsTransportMovement = null)

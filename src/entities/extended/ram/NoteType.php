@@ -11,24 +11,24 @@ class NoteType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\CodeType $contentCode
+     * @var \horstoeko\zugferd\entities\extended\udt\CodeType|null $contentCode
      */
     private $contentCode = null;
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private $content = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode
+     * @var \horstoeko\zugferd\entities\extended\udt\CodeType|null $subjectCode
      */
     private $subjectCode = null;
 
     /**
      * Gets as contentCode
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\CodeType
+     * @return \horstoeko\zugferd\entities\extended\udt\CodeType|null
      */
     public function getContentCode()
     {
@@ -38,7 +38,7 @@ class NoteType
     /**
      * Sets a new contentCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $contentCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType|null $contentCode
      * @return self
      */
     public function setContentCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $contentCode = null)
@@ -50,7 +50,7 @@ class NoteType
     /**
      * Gets as content
      *
-     * @return string
+     * @return string|null
      */
     public function getContent()
     {
@@ -72,7 +72,7 @@ class NoteType
     /**
      * Gets as subjectCode
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\CodeType
+     * @return \horstoeko\zugferd\entities\extended\udt\CodeType|null
      */
     public function getSubjectCode()
     {
@@ -82,7 +82,7 @@ class NoteType
     /**
      * Sets a new subjectCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType|null $subjectCode
      * @return self
      */
     public function setSubjectCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $subjectCode = null)

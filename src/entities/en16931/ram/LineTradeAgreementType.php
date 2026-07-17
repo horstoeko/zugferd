@@ -11,24 +11,24 @@ class LineTradeAgreementType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      */
     private $buyerOrderReferencedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice
+     * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType|null $grossPriceProductTradePrice
      */
     private $grossPriceProductTradePrice = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType $netPriceProductTradePrice
+     * @var \horstoeko\zugferd\entities\en16931\ram\TradePriceType|null $netPriceProductTradePrice
      */
     private $netPriceProductTradePrice = null;
 
     /**
      * Gets as buyerOrderReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null
      */
     public function getBuyerOrderReferencedDocument()
     {
@@ -38,7 +38,7 @@ class LineTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(?\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $buyerOrderReferencedDocument = null)
@@ -50,7 +50,7 @@ class LineTradeAgreementType
     /**
      * Gets as grossPriceProductTradePrice
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\TradePriceType
+     * @return \horstoeko\zugferd\entities\en16931\ram\TradePriceType|null
      */
     public function getGrossPriceProductTradePrice()
     {
@@ -60,7 +60,7 @@ class LineTradeAgreementType
     /**
      * Sets a new grossPriceProductTradePrice
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePriceType|null $grossPriceProductTradePrice
      * @return self
      */
     public function setGrossPriceProductTradePrice(?\horstoeko\zugferd\entities\en16931\ram\TradePriceType $grossPriceProductTradePrice = null)
@@ -72,7 +72,7 @@ class LineTradeAgreementType
     /**
      * Gets as netPriceProductTradePrice
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\TradePriceType
+     * @return \horstoeko\zugferd\entities\en16931\ram\TradePriceType|null
      */
     public function getNetPriceProductTradePrice()
     {

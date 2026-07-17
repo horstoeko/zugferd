@@ -11,14 +11,14 @@ class IndicatorType
 {
 
     /**
-     * @var bool $indicator
+     * @var bool|null $indicator
      */
     private $indicator = null;
 
     /**
      * Gets as indicator
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIndicator()
     {

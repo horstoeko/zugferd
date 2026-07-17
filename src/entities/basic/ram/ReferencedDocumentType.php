@@ -11,19 +11,19 @@ class ReferencedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\IDType $issuerAssignedID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType|null $issuerAssignedID
      */
     private $issuerAssignedID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @var \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      */
     private $formattedIssueDateTime = null;
 
     /**
      * Gets as issuerAssignedID
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType|null
      */
     public function getIssuerAssignedID()
     {
@@ -45,7 +45,7 @@ class ReferencedDocumentType
     /**
      * Gets as formattedIssueDateTime
      *
-     * @return \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType
+     * @return \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType|null
      */
     public function getFormattedIssueDateTime()
     {
@@ -55,7 +55,7 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param  \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param  \horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(?\horstoeko\zugferd\entities\basic\qdt\FormattedDateTimeType $formattedIssueDateTime = null)

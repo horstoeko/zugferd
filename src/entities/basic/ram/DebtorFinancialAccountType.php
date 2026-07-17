@@ -11,14 +11,14 @@ class DebtorFinancialAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType|null $iBANID
      */
     private $iBANID = null;
 
     /**
      * Gets as iBANID
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType|null
      */
     public function getIBANID()
     {

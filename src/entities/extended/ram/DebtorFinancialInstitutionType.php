@@ -11,14 +11,14 @@ class DebtorFinancialInstitutionType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $bICID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $bICID
      */
     private $bICID = null;
 
     /**
      * Gets as bICID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getBICID()
     {
@@ -28,7 +28,7 @@ class DebtorFinancialInstitutionType
     /**
      * Sets a new bICID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $bICID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $bICID
      * @return self
      */
     public function setBICID(?\horstoeko\zugferd\entities\extended\udt\IDType $bICID = null)

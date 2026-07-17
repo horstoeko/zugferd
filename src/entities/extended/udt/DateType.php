@@ -11,14 +11,14 @@ class DateType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType $dateString
+     * @var \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType|null $dateString
      */
     private $dateString = null;
 
     /**
      * Gets as dateString
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType|null
      */
     public function getDateString()
     {
@@ -28,7 +28,7 @@ class DateType
     /**
      * Sets a new dateString
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType $dateString
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType|null $dateString
      * @return self
      */
     public function setDateString(?\horstoeko\zugferd\entities\extended\udt\DateType\DateStringAType $dateString = null)

@@ -11,17 +11,17 @@ class BinaryObjectType
 {
 
     /**
-     * @var string $__value
+     * @var string|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $mimeCode
+     * @var string|null $mimeCode
      */
     private $mimeCode = null;
 
     /**
-     * @var string $filename
+     * @var string|null $filename
      */
     private $filename = null;
 
@@ -39,7 +39,7 @@ class BinaryObjectType
      * Gets or sets the inner value
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function value()
     {
@@ -62,7 +62,7 @@ class BinaryObjectType
     /**
      * Gets as mimeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getMimeCode()
     {
@@ -84,7 +84,7 @@ class BinaryObjectType
     /**
      * Gets as filename
      *
-     * @return string
+     * @return string|null
      */
     public function getFilename()
     {

@@ -11,12 +11,12 @@ class AmountType
 {
 
     /**
-     * @var float $__value
+     * @var float|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $currencyID
+     * @var string|null $currencyID
      */
     private $currencyID = null;
 
@@ -34,7 +34,7 @@ class AmountType
      * Gets or sets the inner value
      *
      * @param  float $value
-     * @return float
+     * @return float|null
      */
     public function value()
     {
@@ -57,7 +57,7 @@ class AmountType
     /**
      * Gets as currencyID
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrencyID()
     {

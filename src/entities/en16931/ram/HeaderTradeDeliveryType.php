@@ -11,29 +11,29 @@ class HeaderTradeDeliveryType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty
+     * @var \horstoeko\zugferd\entities\en16931\ram\TradePartyType|null $shipToTradeParty
      */
     private $shipToTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @var \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      */
     private $actualDeliverySupplyChainEvent = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      */
     private $despatchAdviceReferencedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @var \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $receivingAdviceReferencedDocument
      */
     private $receivingAdviceReferencedDocument = null;
 
     /**
      * Gets as shipToTradeParty
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\en16931\ram\TradePartyType|null
      */
     public function getShipToTradeParty()
     {
@@ -43,7 +43,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\en16931\ram\TradePartyType|null $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(?\horstoeko\zugferd\entities\en16931\ram\TradePartyType $shipToTradeParty = null)
@@ -55,7 +55,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as actualDeliverySupplyChainEvent
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType
+     * @return \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType|null
      */
     public function getActualDeliverySupplyChainEvent()
     {
@@ -65,7 +65,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(?\horstoeko\zugferd\entities\en16931\ram\SupplyChainEventType $actualDeliverySupplyChainEvent = null)
@@ -77,7 +77,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as despatchAdviceReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null
      */
     public function getDespatchAdviceReferencedDocument()
     {
@@ -87,7 +87,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(?\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $despatchAdviceReferencedDocument = null)
@@ -99,7 +99,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as receivingAdviceReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null
      */
     public function getReceivingAdviceReferencedDocument()
     {
@@ -109,7 +109,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new receivingAdviceReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType|null $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(?\horstoeko\zugferd\entities\en16931\ram\ReferencedDocumentType $receivingAdviceReferencedDocument = null)

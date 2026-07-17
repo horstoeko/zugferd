@@ -11,14 +11,14 @@ class LegalOrganizationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\minimum\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\IDType
+     * @return \horstoeko\zugferd\entities\minimum\udt\IDType|null
      */
     public function getID()
     {
@@ -28,7 +28,7 @@ class LegalOrganizationType
     /**
      * Sets a new iD
      *
-     * @param  \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\minimum\udt\IDType|null $iD
      * @return self
      */
     public function setID(?\horstoeko\zugferd\entities\minimum\udt\IDType $iD = null)

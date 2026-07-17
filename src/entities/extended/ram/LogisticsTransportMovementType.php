@@ -11,14 +11,14 @@ class LogisticsTransportMovementType
 {
 
     /**
-     * @var string $modeCode
+     * @var string|null $modeCode
      */
     private $modeCode = null;
 
     /**
      * Gets as modeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getModeCode()
     {
