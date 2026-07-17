@@ -39,7 +39,7 @@ class ZugferdXsdValidator
     /**
      * Internal error bag
      *
-     * @var array
+     * @var array<int, string>
      */
     private $errorBag = [];
 
@@ -121,7 +121,7 @@ class ZugferdXsdValidator
     /**
      * Returns an array of all validation errors
      *
-     * @return array
+     * @return array<int, string>
      */
     public function validationErrors(): array
     {

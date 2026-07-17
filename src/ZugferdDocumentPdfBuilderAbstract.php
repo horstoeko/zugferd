@@ -93,7 +93,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * List of files which should be additionally attached to PDF
      *
-     * @var array
+     * @var array<int, array{PdfStreamReader, string, string, string, string}>
      */
     private $additionalFilesToAttach = [];
 
@@ -737,7 +737,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Prepare PDF Metadata informations from FacturX/ZUGFeRD XML.
      *
-     * @return array
+     * @return array{author: string, keywords: string, title: string, subject: string, createdDate: string, modifiedDate: string}
      */
     private function preparePdfMetadata(): array
     {
@@ -763,7 +763,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Extract major invoice information from FacturX/ZUGFeRD XML.
      *
-     * @return array
+     * @return array{invoiceId: string|null, docTypeName: string, seller: string|null, date: string}
      */
     protected function extractInvoiceInformations(): array
     {
@@ -823,7 +823,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @param  string $which
      * @param  string $default
-     * @param  array  $invoiceInformation
+     * @param  array{invoiceId: string|null, docTypeName: string, seller: string|null, date: string} $invoiceInformation
      * @return string
      */
     private function buildMetadataField(string $which, string $default, array $invoiceInformation): string

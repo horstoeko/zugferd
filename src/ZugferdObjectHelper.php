@@ -15,6 +15,7 @@ use finfo;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
 use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;
 use horstoeko\zugferd\ZugferdProfileResolver;
@@ -27,6 +28,8 @@ use horstoeko\zugferd\ZugferdProfileResolver;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-import-type ZugferdProfileDefinition from ZugferdProfiles
  */
 class ZugferdObjectHelper
 {
@@ -40,9 +43,9 @@ class ZugferdObjectHelper
     /**
      * Internal profile definition
      *
-     * @var array
+     * @var ZugferdProfileDefinition
      */
-    public $profiledef = [];
+    public $profiledef;
 
     /**
      * A list of supported mimetypes by binaryattachments
@@ -492,7 +495,7 @@ class ZugferdObjectHelper
      * @param  string|null            $uriId
      * @param  string|null            $lineId
      * @param  string|null            $typeCode
-     * @param  string|array|null      $name
+     * @param  string|array<int, string>|null $name
      * @param  string|null            $refTypeCode
      * @param  DateTimeInterface|null $issueDate
      * @param  string|null            $binaryDataFilename
@@ -522,11 +525,15 @@ class ZugferdObjectHelper
 
         if (
             StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false &&
-            StringUtils::stringIsNullOrEmpty($base64EncodedData) === false &&
-            base64_encode($base64EncodedData) !== false
+            StringUtils::stringIsNullOrEmpty($base64EncodedData) === false
         ) {
+            $decodedData = base64_decode($base64EncodedData, true);
+            if ($decodedData === false) {
+                throw new ZugferdInvalidArgumentException('The data of ' . $binaryDataFilename . ' is not valid Base64-encoded data');
+            }
+
             $finfo = new finfo();
-            $mimetype = $finfo->buffer(base64_decode($base64EncodedData), FILEINFO_MIME_TYPE);
+            $mimetype = $finfo->buffer($decodedData, FILEINFO_MIME_TYPE);
             if ($mimetype === false) {
                 throw new ZugferdUnsupportedMimetype('of ' . $binaryDataFilename);
             }
@@ -539,7 +546,7 @@ class ZugferdObjectHelper
             /**
              * PHP 8.0 may misdetect CSV files as "application/csv"; normalize to the standard "text/csv"
              */
-            if (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 81000 && $mimetype === 'application/csv') {
+            if (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 80100 && $mimetype === 'application/csv') {
                 $mimetype = 'text/csv';
             }
 
@@ -1171,11 +1178,11 @@ class ZugferdObjectHelper
     /**
      * Get instance of
      *
-     * @param  string|null $description
-     * @param  float|null  $appliedAmount
-     * @param  array|null  $taxTypeCodes
-     * @param  array|null  $taxCategoryCodes
-     * @param  array|null  $rateApplicablePercents
+     * @param  string|null            $description
+     * @param  float|null             $appliedAmount
+     * @param  array<int, string>|null $taxTypeCodes
+     * @param  array<int, string>|null $taxCategoryCodes
+     * @param  array<int, float>|null  $rateApplicablePercents
      * @return object|null
      */
     public function getLogisticsServiceChargeType(?string $description = null, ?float $appliedAmount = null, ?array $taxTypeCodes = null, ?array $taxCategoryCodes = null, ?array $rateApplicablePercents = null): ?object
@@ -1597,9 +1604,9 @@ class ZugferdObjectHelper
     /**
      * Tries to call a method
      *
-     * @param  object $instance
-     * @param  string $method
-     * @param  mixed  $value
+     * @param  object|null $instance
+     * @param  string      $method
+     * @param  mixed       $value
      * @return ZugferdObjectHelper
      */
     public function tryCall($instance, string $method, $value): ZugferdObjectHelper
@@ -1626,9 +1633,9 @@ class ZugferdObjectHelper
     /**
      * Try call all methods
      *
-     * @param  object   $instance
-     * @param  string[] $methods
-     * @param  mixed    $value
+     * @param  object|null $instance
+     * @param  string[]    $methods
+     * @param  mixed       $value
      * @return ZugferdObjectHelper
      */
     public function tryCallAll($instance, array $methods, $value): ZugferdObjectHelper
@@ -1655,7 +1662,7 @@ class ZugferdObjectHelper
      * Tries to call a method and return the returnvalue from call to $method
      * in object $instance
      *
-     * @param  object $instance
+     * @param  mixed  $instance
      * @param  string $method
      * @return mixed
      */
@@ -1679,9 +1686,9 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @param  object $instance
-     * @param  string $methods
-     * @param  mixed  $value
+     * @param  object|null $instance
+     * @param  string      $methods
+     * @param  mixed       $value
      * @return void
      */
     public function tryCallByPath($instance, string $methods, $value)
@@ -1700,7 +1707,7 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @param  object $instance
+     * @param  mixed  $instance
      * @param  string $methods
      * @return mixed
      */
@@ -1720,11 +1727,11 @@ class ZugferdObjectHelper
     /**
      * Call $method if exists, otherwise $method2 is calles with $value
      *
-     * @param  object $instance
-     * @param  string $methodToLookFor
-     * @param  string $methodToCall
-     * @param  mixed  $value
-     * @param  mixed  $value2
+     * @param  object|null $instance
+     * @param  string      $methodToLookFor
+     * @param  string      $methodToCall
+     * @param  mixed       $value
+     * @param  mixed       $value2
      * @return ZugferdObjectHelper
      */
     public function tryCallIfMethodExists($instance, string $methodToLookFor, string $methodToCall, $value, $value2): ZugferdObjectHelper
@@ -1757,8 +1764,8 @@ class ZugferdObjectHelper
     /**
      * Ensure that $input is an array
      *
-     * @param  mixed $input
-     * @return array
+     * @param  string|array<int, string>|null $input
+     * @return array<int, string>
      */
     public function ensureStringArray($input): array
     {
@@ -1773,7 +1780,7 @@ class ZugferdObjectHelper
      * Ensure array
      *
      * @param  mixed $value
-     * @return array
+     * @return array<mixed, mixed>
      */
     public function ensureArray($value): array
     {
@@ -1806,7 +1813,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @param  array $args
+     * @param  array<int, mixed> $args
      * @return boolean
      */
     public static function isAllNullOrEmpty(array $args): bool
@@ -1827,7 +1834,7 @@ class ZugferdObjectHelper
     /**
      * Checks if all function arguments are null or empty
      *
-     * @param  array $args
+     * @param  array<int, mixed> $args
      * @return boolean
      */
     public static function isOneNullOrEmpty(array $args): bool
@@ -1848,8 +1855,8 @@ class ZugferdObjectHelper
     /**
      * Wrapper for method_exists for use in PHP8
      *
-     * @param  string|object $instance
-     * @param  string        $method
+     * @param  string|object|null $instance
+     * @param  string             $method
      * @return boolean
      */
     public function methodExists($instance, $method): bool

@@ -10,6 +10,7 @@ use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use horstoeko\zugferd\codelists\ZugferdCurrencyCodes;
 use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;
+use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
 
 class Issue337Test extends TestCase
 {
@@ -72,6 +73,14 @@ class Issue337Test extends TestCase
         self::$document->addDocumentInvoiceSupportingDocumentWithBase64Data('REFDOC-2024/00001-1', '00_AdditionalDocument.unknwon', $this->deliverBase64UnknownMimeType(), 'Attachment 1');
     }
 
+    public function testBase64InvalidData(): void
+    {
+        $this->expectException(ZugferdInvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('/is not valid Base64-encoded data/');
+
+        self::$document->addDocumentInvoiceSupportingDocumentWithBase64Data('REFDOC-2024/00001-1', '00_AdditionalDocument.pdf', $this->deliverInvalidBase64(), 'Attachment 1');
+    }
+
     private function deliverBase64EncodedPdf(): string
     {
         $content = file_get_contents(__DIR__ . '/../../assets/pdf_plain.pdf');
@@ -94,5 +103,10 @@ class Issue337Test extends TestCase
     {
         $content = file_get_contents(__DIR__ . '/../../assets/xml_dummy.xml');
         return base64_encode($content);
+    }
+
+    private function deliverInvalidBase64(): string
+    {
+        return 'This is not valid Base64 data!!';
     }
 }

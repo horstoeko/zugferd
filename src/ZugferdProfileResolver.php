@@ -24,6 +24,8 @@ use horstoeko\zugferd\exception\ZugferdUnknownXmlContentException;
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/zugferd
+ *
+ * @phpstan-import-type ZugferdProfileDefinition from ZugferdProfiles
  */
 class ZugferdProfileResolver
 {
@@ -31,7 +33,7 @@ class ZugferdProfileResolver
      * Resolve profile id and profile definition by the content of $xmlContent
      *
      * @param  string $xmlContent
-     * @return array
+     * @return array{int, ZugferdProfileDefinition}
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      */
@@ -89,7 +91,7 @@ class ZugferdProfileResolver
      * Resolve profile definition by the content of $xmlContent
      *
      * @param  string $xmlContent
-     * @return array
+     * @return ZugferdProfileDefinition
      * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
      */
@@ -102,7 +104,7 @@ class ZugferdProfileResolver
      * Resolve profile id and profile definition by it's id
      *
      * @param  int $profileId
-     * @return array
+     * @return array{int, ZugferdProfileDefinition}
      * @throws ZugferdUnknownProfileIdException
      */
     public static function resolveById(int $profileId): array
@@ -118,7 +120,7 @@ class ZugferdProfileResolver
      * Resolve profile profile definition by it's id
      *
      * @param  int $profileId
-     * @return array
+     * @return ZugferdProfileDefinition
      * @throws ZugferdUnknownProfileIdException
      */
     public static function resolveProfileDefById(int $profileId): array

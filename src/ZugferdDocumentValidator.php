@@ -13,6 +13,7 @@ use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\ZugferdSettings;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class representing the document validator for incoming documents
@@ -27,11 +28,15 @@ class ZugferdDocumentValidator
 {
     /**
      * The invoice document reference
+     *
+     * @var ZugferdDocument
      */
     private $document;
 
     /**
      * The validator instance
+     *
+     * @var ValidatorInterface
      */
     private $validator;
 
@@ -87,7 +92,7 @@ class ZugferdDocumentValidator
      *
      * @param  string  $pattern
      * @param  integer $flags
-     * @return array
+     * @return array<int, string>
      */
     private function globRecursive(string $pattern, int $flags = 0): array
     {

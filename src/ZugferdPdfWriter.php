@@ -25,21 +25,21 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Contains all attached files
      *
-     * @var array
+     * @var array<int, array{file: mixed, name: string, desc: string, relationship: string, subtype: string, file_index?: int}>
      */
     protected $files = [];
 
     /**
      * Contains meta data
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $metaDataDescriptions = [];
 
     /**
      * Contains meta data
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $metaDataInfos = [];
 
@@ -175,7 +175,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Set PDF metadata infos.
      *
-     * @param  array $metaDataInfos
+     * @param  array<string, string> $metaDataInfos
      * The array with metadata information applied to the pdf
      * @return void
      */
@@ -222,7 +222,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put file attachment specification.
      *
-     * @param array $file_info
+     * @param array{file: mixed, name: string, desc: string, relationship: string, subtype: string, file_index?: int} $file_info
      * @return void
      */
     protected function putFileSpecification(array $file_info): void
@@ -252,7 +252,7 @@ class ZugferdPdfWriter extends PdfFpdi
     /**
      * Put file stream.
      *
-     * @param array $file_info
+     * @param array{file: mixed, name: string, desc: string, relationship: string, subtype: string, file_index?: int} $file_info
      */
     protected function putFileStream(array $file_info): void
     {
