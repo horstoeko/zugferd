@@ -46,6 +46,15 @@ class ZugferdKositValidator
     private $messageBag = [];
 
     /**
+     * Internal flag which indicates that the validation application was
+     * actually executed. As long as this is false the document was never
+     * checked, so no statement about its validity can be made
+     *
+     * @var boolean
+     */
+    private $validationExecuted = false;
+
+    /**
      * Base directory (download)
      *
      * @var string
@@ -405,6 +414,8 @@ class ZugferdKositValidator
     {
         $this->clearMessageBag();
 
+        $this->validationExecuted = false;
+
         if ($this->checkRequirements() === false) {
             return $this;
         }
@@ -581,12 +592,23 @@ class ZugferdKositValidator
     }
 
     /**
-     * Returns true if __no__ validation errors are present otherwise false
+     * Returns true if the document was actually validated and __no__ validation
+     * errors are present, otherwise false.
+     *
+     * If the validation application never ran - for example because JAVA is missing,
+     * a required file could not be downloaded or the remote host is unreachable - this
+     * returns false, because no statement about the document can be made. Use
+     * ZugferdKositValidator::hasProcessErrors to tell such an infrastructure failure
+     * apart from a document which was really rejected.
      *
      * @return boolean
      */
     public function hasNoValidationErrors(): bool
     {
+        if ($this->validationExecuted === false) {
+            return false;
+        }
+
         return $this->getValidationErrors() === [];
     }
 
@@ -965,7 +987,14 @@ class ZugferdKositValidator
             $this->resolveFileToValidateFilename()
         ];
 
-        if (!$this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory())) {
+        $validationApplicationSucceeded = $this->runValidationApplication($applicationOptions, $this->resolveBaseDirectory());
+
+        // The validation application was invoked and returned a verdict. Every unsuccessful
+        // outcome of runValidationApplication already added a validation error to the message bag
+
+        $this->validationExecuted = true;
+
+        if (!$validationApplicationSucceeded) {
             $this->parseValidatorXmlReportByFile();
             return false;
         }
@@ -1017,6 +1046,7 @@ class ZugferdKositValidator
             if (($responseStatusCode < 200) || ($responseStatusCode >= 400)) {
                 if (preg_match('/<\?xml.*?\?>.*<\/.+>/s', $response, $matches)) {
                     $this->parseValidatorXmlReportByContent($matches[0]);
+                    $this->validationExecuted = true;
                 }
 
                 return false;
@@ -1025,6 +1055,10 @@ class ZugferdKositValidator
             $this->addToMessageBag($throwable);
             return false;
         }
+
+        // The remote validator answered with a success status code, so the document was checked
+
+        $this->validationExecuted = true;
 
         return true;
     }

@@ -33,8 +33,9 @@ class KositValidatorTest extends TestCase
         $this->assertTrue($kositValidator->hasNoProcessErrors());
         $this->assertFalse($kositValidator->hasProcessErrors());
         $this->assertEmpty($kositValidator->getValidationErrors());
-        $this->assertTrue($kositValidator->hasNoValidationErrors());
-        $this->assertFalse($kositValidator->hasValidationErrors());
+        // The validation was never executed, so no statement about the document can be made
+        $this->assertFalse($kositValidator->hasNoValidationErrors());
+        $this->assertTrue($kositValidator->hasValidationErrors());
         $this->assertEmpty($kositValidator->getValidationWarnings());
         $this->assertTrue($kositValidator->hasNoValidationWarnings());
         $this->assertFalse($kositValidator->hasValidationWarnings());
@@ -49,8 +50,9 @@ class KositValidatorTest extends TestCase
         $this->assertFalse($kositValidator->hasNoProcessErrors());
         $this->assertTrue($kositValidator->hasProcessErrors());
         $this->assertEmpty($kositValidator->getValidationErrors());
-        $this->assertTrue($kositValidator->hasNoValidationErrors());
-        $this->assertFalse($kositValidator->hasValidationErrors());
+        // The validation was never executed, so no statement about the document can be made
+        $this->assertFalse($kositValidator->hasNoValidationErrors());
+        $this->assertTrue($kositValidator->hasValidationErrors());
         $this->assertEmpty($kositValidator->getValidationWarnings());
         $this->assertTrue($kositValidator->hasNoValidationWarnings());
         $this->assertFalse($kositValidator->hasValidationWarnings());
@@ -658,8 +660,10 @@ class KositValidatorTest extends TestCase
         } else {
             $this->assertFalse($kositValidator->hasNoProcessErrors());
             $this->assertTrue($kositValidator->hasProcessErrors());
-            $this->assertTrue($kositValidator->hasNoValidationErrors());
-            $this->assertFalse($kositValidator->hasValidationErrors());
+            // Without JAVA the validation never ran, so the document must not be reported as clean
+            $this->assertFalse($kositValidator->hasNoValidationErrors());
+            $this->assertTrue($kositValidator->hasValidationErrors());
+            $this->assertEmpty($kositValidator->getValidationErrors());
             $this->assertTrue($kositValidator->hasNoValidationWarnings());
             $this->assertFalse($kositValidator->hasValidationWarnings());
             $this->assertTrue($kositValidator->hasNoValidationInformation());
@@ -694,8 +698,9 @@ class KositValidatorTest extends TestCase
         } else {
             $this->assertFalse($kositValidator->hasNoProcessErrors());
             $this->assertTrue($kositValidator->hasProcessErrors());
-            $this->assertTrue($kositValidator->hasNoValidationErrors());
-            $this->assertFalse($kositValidator->hasValidationErrors());
+            // Without JAVA the validation never ran, so the document must not be reported as clean
+            $this->assertFalse($kositValidator->hasNoValidationErrors());
+            $this->assertTrue($kositValidator->hasValidationErrors());
             $this->assertTrue($kositValidator->hasNoValidationWarnings());
             $this->assertFalse($kositValidator->hasValidationWarnings());
             $this->assertTrue($kositValidator->hasNoValidationInformation());
