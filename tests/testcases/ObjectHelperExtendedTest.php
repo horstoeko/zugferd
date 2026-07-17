@@ -1372,9 +1372,43 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEqualsWithDelta(1.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(6.0, $summation->getChargeTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(3.0, $summation->getAllowanceTotalAmount()->value(), PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(4.0, $summation->getTaxTotalAmount()->value(), PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(4.0, $summation->getTaxTotalAmount()[0]->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(5.0, $summation->getGrandTotalAmount()->value(), PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(2.0, $summation->getTotalAllowanceChargeAmount()->value(), PHP_FLOAT_EPSILON);
+    }
+
+    /**
+     * Factur-X 1.09 turned TaxTotalAmount [0..1] -> [0..2] and
+     * ReceivableSpecifiedTradeAccountingAccount [0..1] -> [0..unbounded]. Both setters
+     * must keep accepting the single value that callers passed before 1.09.
+     *
+     * @return void
+     */
+    public function testCollectionSettersRaisedIn109StillAcceptASingleValue(): void
+    {
+        $summation = self::$objectHelper->createClassInstance('ram\TradeSettlementLineMonetarySummationType');
+        $summation->setTaxTotalAmount(self::$objectHelper->getAmountType(19.0));
+        $this->assertCount(1, $summation->getTaxTotalAmount());
+        $this->assertEqualsWithDelta(19.0, $summation->getTaxTotalAmount()[0]->value(), PHP_FLOAT_EPSILON);
+
+        $summation->setTaxTotalAmount([self::$objectHelper->getAmountType(1.0), self::$objectHelper->getAmountType(2.0)]);
+        $this->assertCount(2, $summation->getTaxTotalAmount());
+
+        $summation->setTaxTotalAmount(null);
+        $this->assertNull($summation->getTaxTotalAmount());
+
+        $settlement = self::$objectHelper->createClassInstance('ram\LineTradeSettlementType');
+        $settlement->setReceivableSpecifiedTradeAccountingAccount(self::$objectHelper->getTradeAccountingAccountType("A-1"));
+        $this->assertCount(1, $settlement->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertSame("A-1", $settlement->getReceivableSpecifiedTradeAccountingAccount()[0]->getID()->value());
+
+        $settlement->setReceivableSpecifiedTradeAccountingAccount(
+            [self::$objectHelper->getTradeAccountingAccountType("A-1"), self::$objectHelper->getTradeAccountingAccountType("A-2")]
+        );
+        $this->assertCount(2, $settlement->getReceivableSpecifiedTradeAccountingAccount());
+
+        $settlement->setReceivableSpecifiedTradeAccountingAccount(null);
+        $this->assertNull($settlement->getReceivableSpecifiedTradeAccountingAccount());
     }
 
     public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void

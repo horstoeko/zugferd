@@ -1,11 +1,11 @@
-horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType:
+horstoeko\zugferd\entities\extended\ram\FinancialAdjustmentType:
     properties:
-        description:
+        reason:
             -
                 NotNull:
                     groups:
                         - xsd_rules
-        value:
+        actualAmount:
             -
                 NotNull:
                     groups:

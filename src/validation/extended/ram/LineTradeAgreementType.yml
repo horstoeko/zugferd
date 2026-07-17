@@ -1,5 +1,8 @@
 horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
     properties:
+        applicableTradeDeliveryTerms:
+            -
+                Valid: null
         sellerOrderReferencedDocument:
             -
                 Valid: null
@@ -20,9 +23,8 @@ horstoeko\zugferd\entities\extended\ram\LineTradeAgreementType:
                 Valid: null
         netPriceProductTradePrice:
             -
-                NotNull:
-                    groups:
-                        - xsd_rules
+                Valid: null
+        itemSellerTradeParty:
             -
                 Valid: null
         ultimateCustomerOrderReferencedDocument:

@@ -55,6 +55,17 @@ horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType:
                 getter: getPayeePartyCreditorFinancialAccount
                 setter: setPayeePartyCreditorFinancialAccount
             type: horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType
+        payerSpecifiedDebtorFinancialInstitution:
+            expose: true
+            access_type: public_method
+            serialized_name: PayerSpecifiedDebtorFinancialInstitution
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPayerSpecifiedDebtorFinancialInstitution
+                setter: setPayerSpecifiedDebtorFinancialInstitution
+            type: horstoeko\zugferd\entities\extended\ram\DebtorFinancialInstitutionType
         payeeSpecifiedCreditorFinancialInstitution:
             expose: true
             access_type: public_method

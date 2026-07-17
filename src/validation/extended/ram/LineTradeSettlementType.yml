@@ -2,10 +2,6 @@ horstoeko\zugferd\entities\extended\ram\LineTradeSettlementType:
     properties:
         applicableTradeTax:
             -
-                NotNull:
-                    groups:
-                        - xsd_rules
-            -
                 Valid: null
         billingSpecifiedPeriod:
             -
@@ -14,10 +10,6 @@ horstoeko\zugferd\entities\extended\ram\LineTradeSettlementType:
             -
                 Valid: null
         specifiedTradeSettlementLineMonetarySummation:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules
             -
                 Valid: null
         invoiceReferencedDocument:

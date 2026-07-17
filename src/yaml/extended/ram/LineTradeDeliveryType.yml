@@ -33,6 +33,17 @@ horstoeko\zugferd\entities\extended\ram\LineTradeDeliveryType:
                 getter: getPackageQuantity
                 setter: setPackageQuantity
             type: horstoeko\zugferd\entities\extended\udt\QuantityType
+        perPackageUnitQuantity:
+            expose: true
+            access_type: public_method
+            serialized_name: PerPackageUnitQuantity
+            xml_element:
+                cdata: false
+                namespace: 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100'
+            accessor:
+                getter: getPerPackageUnitQuantity
+                setter: setPerPackageUnitQuantity
+            type: horstoeko\zugferd\entities\extended\udt\QuantityType
         shipToTradeParty:
             expose: true
             access_type: public_method

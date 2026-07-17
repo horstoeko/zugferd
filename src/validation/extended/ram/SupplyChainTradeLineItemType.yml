@@ -16,16 +16,8 @@ horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType:
                 Valid: null
         specifiedLineTradeAgreement:
             -
-                NotNull:
-                    groups:
-                        - xsd_rules
-            -
                 Valid: null
         specifiedLineTradeDelivery:
-            -
-                NotNull:
-                    groups:
-                        - xsd_rules
             -
                 Valid: null
         specifiedLineTradeSettlement:

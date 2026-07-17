@@ -47,9 +47,11 @@ class LineTradeSettlementType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[] $receivableSpecifiedTradeAccountingAccount
      */
-    private $receivableSpecifiedTradeAccountingAccount = null;
+    private $receivableSpecifiedTradeAccountingAccount = [
+        
+    ];
 
     /**
      * Adds as applicableTradeTax
@@ -101,7 +103,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeTaxType[] $applicableTradeTax
      * @return self
      */
-    public function setApplicableTradeTax(array $applicableTradeTax)
+    public function setApplicableTradeTax(?array $applicableTradeTax = null)
     {
         $this->applicableTradeTax = $applicableTradeTax;
         return $this;
@@ -201,7 +203,7 @@ class LineTradeSettlementType
      * @param  \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
-    public function setSpecifiedTradeSettlementLineMonetarySummation(\horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation)
+    public function setSpecifiedTradeSettlementLineMonetarySummation(?\horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation = null)
     {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
         return $this;
@@ -286,9 +288,43 @@ class LineTradeSettlementType
     }
 
     /**
+     * Adds as receivableSpecifiedTradeAccountingAccount
+     *
+     * @return self
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     */
+    public function addToReceivableSpecifiedTradeAccountingAccount(\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount)
+    {
+        $this->receivableSpecifiedTradeAccountingAccount[] = $receivableSpecifiedTradeAccountingAccount;
+        return $this;
+    }
+
+    /**
+     * isset receivableSpecifiedTradeAccountingAccount
+     *
+     * @param  int|string $index
+     * @return bool
+     */
+    public function issetReceivableSpecifiedTradeAccountingAccount($index)
+    {
+        return isset($this->receivableSpecifiedTradeAccountingAccount[$index]);
+    }
+
+    /**
+     * unset receivableSpecifiedTradeAccountingAccount
+     *
+     * @param  int|string $index
+     * @return void
+     */
+    public function unsetReceivableSpecifiedTradeAccountingAccount($index)
+    {
+        unset($this->receivableSpecifiedTradeAccountingAccount[$index]);
+    }
+
+    /**
      * Gets as receivableSpecifiedTradeAccountingAccount
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[]
      */
     public function getReceivableSpecifiedTradeAccountingAccount()
     {
@@ -298,11 +334,19 @@ class LineTradeSettlementType
     /**
      * Sets a new receivableSpecifiedTradeAccountingAccount
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * Factur-X 1.09 raised ReceivableSpecifiedTradeAccountingAccount to [0..unbounded].
+     * A single TradeAccountingAccountType is still accepted so callers written against
+     * the pre-1.09 signature keep working.
+     *
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType|\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType[]|null $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
-    public function setReceivableSpecifiedTradeAccountingAccount(?\horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount = null)
+    public function setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccount = null)
     {
+        if ($receivableSpecifiedTradeAccountingAccount !== null && !is_array($receivableSpecifiedTradeAccountingAccount)) {
+            $receivableSpecifiedTradeAccountingAccount = [$receivableSpecifiedTradeAccountingAccount];
+        }
+
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
         return $this;
     }
