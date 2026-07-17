@@ -1604,9 +1604,9 @@ class ZugferdObjectHelper
     /**
      * Tries to call a method
      *
-     * @param  object $instance
-     * @param  string $method
-     * @param  mixed  $value
+     * @param  object|null $instance
+     * @param  string      $method
+     * @param  mixed       $value
      * @return ZugferdObjectHelper
      */
     public function tryCall($instance, string $method, $value): ZugferdObjectHelper
@@ -1633,9 +1633,9 @@ class ZugferdObjectHelper
     /**
      * Try call all methods
      *
-     * @param  object   $instance
-     * @param  string[] $methods
-     * @param  mixed    $value
+     * @param  object|null $instance
+     * @param  string[]    $methods
+     * @param  mixed       $value
      * @return ZugferdObjectHelper
      */
     public function tryCallAll($instance, array $methods, $value): ZugferdObjectHelper
@@ -1662,7 +1662,7 @@ class ZugferdObjectHelper
      * Tries to call a method and return the returnvalue from call to $method
      * in object $instance
      *
-     * @param  object $instance
+     * @param  mixed  $instance
      * @param  string $method
      * @return mixed
      */
@@ -1686,9 +1686,9 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @param  object $instance
-     * @param  string $methods
-     * @param  mixed  $value
+     * @param  object|null $instance
+     * @param  string      $methods
+     * @param  mixed       $value
      * @return void
      */
     public function tryCallByPath($instance, string $methods, $value)
@@ -1707,7 +1707,7 @@ class ZugferdObjectHelper
     /**
      * Try call methods in a form .object.method1.method2.method3
      *
-     * @param  object $instance
+     * @param  mixed  $instance
      * @param  string $methods
      * @return mixed
      */
@@ -1727,11 +1727,11 @@ class ZugferdObjectHelper
     /**
      * Call $method if exists, otherwise $method2 is calles with $value
      *
-     * @param  object $instance
-     * @param  string $methodToLookFor
-     * @param  string $methodToCall
-     * @param  mixed  $value
-     * @param  mixed  $value2
+     * @param  object|null $instance
+     * @param  string      $methodToLookFor
+     * @param  string      $methodToCall
+     * @param  mixed       $value
+     * @param  mixed       $value2
      * @return ZugferdObjectHelper
      */
     public function tryCallIfMethodExists($instance, string $methodToLookFor, string $methodToCall, $value, $value2): ZugferdObjectHelper
@@ -1855,8 +1855,8 @@ class ZugferdObjectHelper
     /**
      * Wrapper for method_exists for use in PHP8
      *
-     * @param  string|object $instance
-     * @param  string        $method
+     * @param  string|object|null $instance
+     * @param  string             $method
      * @return boolean
      */
     public function methodExists($instance, $method): bool
