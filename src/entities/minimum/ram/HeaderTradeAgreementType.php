@@ -11,29 +11,29 @@ class HeaderTradeAgreementType
 {
 
     /**
-     * @var string $buyerReference
+     * @var string|null $buyerReference
      */
     private $buyerReference = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\TradePartyType $sellerTradeParty
+     * @var \horstoeko\zugferd\entities\minimum\ram\TradePartyType|null $sellerTradeParty
      */
     private $sellerTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\TradePartyType $buyerTradeParty
+     * @var \horstoeko\zugferd\entities\minimum\ram\TradePartyType|null $buyerTradeParty
      */
     private $buyerTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @var \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      */
     private $buyerOrderReferencedDocument = null;
 
     /**
      * Gets as buyerReference
      *
-     * @return string
+     * @return string|null
      */
     public function getBuyerReference()
     {
@@ -55,7 +55,7 @@ class HeaderTradeAgreementType
     /**
      * Gets as sellerTradeParty
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\minimum\ram\TradePartyType|null
      */
     public function getSellerTradeParty()
     {
@@ -77,7 +77,7 @@ class HeaderTradeAgreementType
     /**
      * Gets as buyerTradeParty
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\minimum\ram\TradePartyType|null
      */
     public function getBuyerTradeParty()
     {
@@ -99,7 +99,7 @@ class HeaderTradeAgreementType
     /**
      * Gets as buyerOrderReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType|null
      */
     public function getBuyerOrderReferencedDocument()
     {
@@ -109,7 +109,7 @@ class HeaderTradeAgreementType
     /**
      * Sets a new buyerOrderReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param  \horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      * @return self
      */
     public function setBuyerOrderReferencedDocument(?\horstoeko\zugferd\entities\minimum\ram\ReferencedDocumentType $buyerOrderReferencedDocument = null)

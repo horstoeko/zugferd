@@ -11,14 +11,14 @@ class TradeCountryType
 {
 
     /**
-     * @var string $iD
+     * @var string|null $iD
      */
     private $iD = null;
 
     /**
      * Gets as iD
      *
-     * @return string
+     * @return string|null
      */
     public function getID()
     {

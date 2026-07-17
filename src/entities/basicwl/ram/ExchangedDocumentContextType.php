@@ -11,19 +11,19 @@ class ExchangedDocumentContextType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @var \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType|null $businessProcessSpecifiedDocumentContextParameter
      */
     private $businessProcessSpecifiedDocumentContextParameter = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+     * @var \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType|null $guidelineSpecifiedDocumentContextParameter
      */
     private $guidelineSpecifiedDocumentContextParameter = null;
 
     /**
      * Gets as businessProcessSpecifiedDocumentContextParameter
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType|null
      */
     public function getBusinessProcessSpecifiedDocumentContextParameter()
     {
@@ -33,7 +33,7 @@ class ExchangedDocumentContextType
     /**
      * Sets a new businessProcessSpecifiedDocumentContextParameter
      *
-     * @param  \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType|null $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(?\horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter = null)
@@ -45,7 +45,7 @@ class ExchangedDocumentContextType
     /**
      * Gets as guidelineSpecifiedDocumentContextParameter
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\DocumentContextParameterType|null
      */
     public function getGuidelineSpecifiedDocumentContextParameter()
     {

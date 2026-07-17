@@ -11,19 +11,19 @@ class NoteType
 {
 
     /**
-     * @var string $content
+     * @var string|null $content
      */
     private $content = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode
+     * @var \horstoeko\zugferd\entities\en16931\udt\CodeType|null $subjectCode
      */
     private $subjectCode = null;
 
     /**
      * Gets as content
      *
-     * @return string
+     * @return string|null
      */
     public function getContent()
     {
@@ -45,7 +45,7 @@ class NoteType
     /**
      * Gets as subjectCode
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\CodeType
+     * @return \horstoeko\zugferd\entities\en16931\udt\CodeType|null
      */
     public function getSubjectCode()
     {
@@ -55,7 +55,7 @@ class NoteType
     /**
      * Sets a new subjectCode
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode
+     * @param  \horstoeko\zugferd\entities\en16931\udt\CodeType|null $subjectCode
      * @return self
      */
     public function setSubjectCode(?\horstoeko\zugferd\entities\en16931\udt\CodeType $subjectCode = null)

@@ -11,19 +11,19 @@ class FinancialAdjustmentType
 {
 
     /**
-     * @var string $reason
+     * @var string|null $reason
      */
     private $reason = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $actualAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $actualAmount
      */
     private $actualAmount = null;
 
     /**
      * Gets as reason
      *
-     * @return string
+     * @return string|null
      */
     public function getReason()
     {
@@ -45,7 +45,7 @@ class FinancialAdjustmentType
     /**
      * Gets as actualAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getActualAmount()
     {

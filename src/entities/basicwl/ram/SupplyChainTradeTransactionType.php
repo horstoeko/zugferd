@@ -11,24 +11,24 @@ class SupplyChainTradeTransactionType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType|null $applicableHeaderTradeAgreement
      */
     private $applicableHeaderTradeAgreement = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType|null $applicableHeaderTradeDelivery
      */
     private $applicableHeaderTradeDelivery = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @var \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType|null $applicableHeaderTradeSettlement
      */
     private $applicableHeaderTradeSettlement = null;
 
     /**
      * Gets as applicableHeaderTradeAgreement
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeAgreementType|null
      */
     public function getApplicableHeaderTradeAgreement()
     {
@@ -50,7 +50,7 @@ class SupplyChainTradeTransactionType
     /**
      * Gets as applicableHeaderTradeDelivery
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeDeliveryType|null
      */
     public function getApplicableHeaderTradeDelivery()
     {
@@ -72,7 +72,7 @@ class SupplyChainTradeTransactionType
     /**
      * Gets as applicableHeaderTradeSettlement
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\HeaderTradeSettlementType|null
      */
     public function getApplicableHeaderTradeSettlement()
     {

@@ -11,12 +11,12 @@ class IDType
 {
 
     /**
-     * @var string $__value
+     * @var string|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $schemeID
+     * @var string|null $schemeID
      */
     private $schemeID = null;
 
@@ -34,7 +34,7 @@ class IDType
      * Gets or sets the inner value
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function value()
     {
@@ -57,7 +57,7 @@ class IDType
     /**
      * Gets as schemeID
      *
-     * @return string
+     * @return string|null
      */
     public function getSchemeID()
     {

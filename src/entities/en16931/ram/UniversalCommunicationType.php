@@ -11,19 +11,19 @@ class UniversalCommunicationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $uRIID
      */
     private $uRIID = null;
 
     /**
-     * @var string $completeNumber
+     * @var string|null $completeNumber
      */
     private $completeNumber = null;
 
     /**
      * Gets as uRIID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getURIID()
     {
@@ -33,7 +33,7 @@ class UniversalCommunicationType
     /**
      * Sets a new uRIID
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType|null $uRIID
      * @return self
      */
     public function setURIID(?\horstoeko\zugferd\entities\en16931\udt\IDType $uRIID = null)
@@ -45,7 +45,7 @@ class UniversalCommunicationType
     /**
      * Gets as completeNumber
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteNumber()
     {

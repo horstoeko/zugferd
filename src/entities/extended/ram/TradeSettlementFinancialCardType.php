@@ -11,19 +11,19 @@ class TradeSettlementFinancialCardType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $cardholderName
+     * @var string|null $cardholderName
      */
     private $cardholderName = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getID()
     {
@@ -45,7 +45,7 @@ class TradeSettlementFinancialCardType
     /**
      * Gets as cardholderName
      *
-     * @return string
+     * @return string|null
      */
     public function getCardholderName()
     {

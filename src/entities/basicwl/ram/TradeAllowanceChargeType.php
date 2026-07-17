@@ -11,44 +11,44 @@ class TradeAllowanceChargeType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\IndicatorType $chargeIndicator
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IndicatorType|null $chargeIndicator
      */
     private $chargeIndicator = null;
 
     /**
-     * @var float $calculationPercent
+     * @var float|null $calculationPercent
      */
     private $calculationPercent = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType|null $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType $actualAmount
+     * @var \horstoeko\zugferd\entities\basicwl\udt\AmountType|null $actualAmount
      */
     private $actualAmount = null;
 
     /**
-     * @var string $reasonCode
+     * @var string|null $reasonCode
      */
     private $reasonCode = null;
 
     /**
-     * @var string $reason
+     * @var string|null $reason
      */
     private $reason = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType $categoryTradeTax
+     * @var \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType|null $categoryTradeTax
      */
     private $categoryTradeTax = null;
 
     /**
      * Gets as chargeIndicator
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\IndicatorType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IndicatorType|null
      */
     public function getChargeIndicator()
     {
@@ -70,7 +70,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as calculationPercent
      *
-     * @return float
+     * @return float|null
      */
     public function getCalculationPercent()
     {
@@ -92,7 +92,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as basisAmount
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType|null
      */
     public function getBasisAmount()
     {
@@ -102,7 +102,7 @@ class TradeAllowanceChargeType
     /**
      * Sets a new basisAmount
      *
-     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\basicwl\udt\AmountType|null $basisAmount
      * @return self
      */
     public function setBasisAmount(?\horstoeko\zugferd\entities\basicwl\udt\AmountType $basisAmount = null)
@@ -114,7 +114,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as actualAmount
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\AmountType|null
      */
     public function getActualAmount()
     {
@@ -136,7 +136,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as reasonCode
      *
-     * @return string
+     * @return string|null
      */
     public function getReasonCode()
     {
@@ -158,7 +158,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as reason
      *
-     * @return string
+     * @return string|null
      */
     public function getReason()
     {
@@ -180,7 +180,7 @@ class TradeAllowanceChargeType
     /**
      * Gets as categoryTradeTax
      *
-     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType
+     * @return \horstoeko\zugferd\entities\basicwl\ram\TradeTaxType|null
      */
     public function getCategoryTradeTax()
     {

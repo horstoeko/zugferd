@@ -11,19 +11,19 @@ class ProductCharacteristicType
 {
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var string $value
+     * @var string|null $value
      */
     private $value = null;
 
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -45,7 +45,7 @@ class ProductCharacteristicType
     /**
      * Gets as value
      *
-     * @return string
+     * @return string|null
      */
     public function getValue()
     {

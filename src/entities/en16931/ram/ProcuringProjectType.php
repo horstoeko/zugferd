@@ -11,19 +11,19 @@ class ProcuringProjectType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getID()
     {
@@ -45,7 +45,7 @@ class ProcuringProjectType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {

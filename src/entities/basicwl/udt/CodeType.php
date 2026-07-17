@@ -11,7 +11,7 @@ class CodeType
 {
 
     /**
-     * @var string $__value
+     * @var string|null $__value
      */
     private $__value = null;
 
@@ -29,7 +29,7 @@ class CodeType
      * Gets or sets the inner value
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function value()
     {

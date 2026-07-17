@@ -11,19 +11,19 @@ class LegalOrganizationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $tradingBusinessName
+     * @var string|null $tradingBusinessName
      */
     private $tradingBusinessName = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType|null
      */
     public function getID()
     {
@@ -33,7 +33,7 @@ class LegalOrganizationType
     /**
      * Sets a new iD
      *
-     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $iD
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType|null $iD
      * @return self
      */
     public function setID(?\horstoeko\zugferd\entities\basic\udt\IDType $iD = null)
@@ -45,7 +45,7 @@ class LegalOrganizationType
     /**
      * Gets as tradingBusinessName
      *
-     * @return string
+     * @return string|null
      */
     public function getTradingBusinessName()
     {

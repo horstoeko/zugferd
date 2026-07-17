@@ -11,17 +11,17 @@ class TradePartyType
 {
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @var \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType|null $specifiedLegalOrganization
      */
     private $specifiedLegalOrganization = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress
+     * @var \horstoeko\zugferd\entities\minimum\ram\TradeAddressType|null $postalTradeAddress
      */
     private $postalTradeAddress = null;
 
@@ -35,7 +35,7 @@ class TradePartyType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -57,7 +57,7 @@ class TradePartyType
     /**
      * Gets as specifiedLegalOrganization
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType
+     * @return \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType|null
      */
     public function getSpecifiedLegalOrganization()
     {
@@ -67,7 +67,7 @@ class TradePartyType
     /**
      * Sets a new specifiedLegalOrganization
      *
-     * @param  \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param  \horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType|null $specifiedLegalOrganization
      * @return self
      */
     public function setSpecifiedLegalOrganization(?\horstoeko\zugferd\entities\minimum\ram\LegalOrganizationType $specifiedLegalOrganization = null)
@@ -79,7 +79,7 @@ class TradePartyType
     /**
      * Gets as postalTradeAddress
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\TradeAddressType
+     * @return \horstoeko\zugferd\entities\minimum\ram\TradeAddressType|null
      */
     public function getPostalTradeAddress()
     {
@@ -89,7 +89,7 @@ class TradePartyType
     /**
      * Sets a new postalTradeAddress
      *
-     * @param  \horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TradeAddressType|null $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(?\horstoeko\zugferd\entities\minimum\ram\TradeAddressType $postalTradeAddress = null)
@@ -145,7 +145,7 @@ class TradePartyType
     /**
      * Sets a new specifiedTaxRegistration
      *
-     * @param  \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType[] $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\minimum\ram\TaxRegistrationType[]|null $specifiedTaxRegistration
      * @return self
      */
     public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null)

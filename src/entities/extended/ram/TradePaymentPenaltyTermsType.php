@@ -11,34 +11,34 @@ class TradePaymentPenaltyTermsType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $basisDateTime
      */
     private $basisDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure
+     * @var \horstoeko\zugferd\entities\extended\udt\MeasureType|null $basisPeriodMeasure
      */
     private $basisPeriodMeasure = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $basisAmount
      */
     private $basisAmount = null;
 
     /**
-     * @var float $calculationPercent
+     * @var float|null $calculationPercent
      */
     private $calculationPercent = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $actualPenaltyAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $actualPenaltyAmount
      */
     private $actualPenaltyAmount = null;
 
     /**
      * Gets as basisDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getBasisDateTime()
     {
@@ -48,7 +48,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Sets a new basisDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $basisDateTime
      * @return self
      */
     public function setBasisDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $basisDateTime = null)
@@ -60,7 +60,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Gets as basisPeriodMeasure
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\MeasureType
+     * @return \horstoeko\zugferd\entities\extended\udt\MeasureType|null
      */
     public function getBasisPeriodMeasure()
     {
@@ -70,7 +70,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Sets a new basisPeriodMeasure
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure
+     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType|null $basisPeriodMeasure
      * @return self
      */
     public function setBasisPeriodMeasure(?\horstoeko\zugferd\entities\extended\udt\MeasureType $basisPeriodMeasure = null)
@@ -82,7 +82,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Gets as basisAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getBasisAmount()
     {
@@ -92,7 +92,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Sets a new basisAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $basisAmount
      * @return self
      */
     public function setBasisAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $basisAmount = null)
@@ -104,7 +104,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Gets as calculationPercent
      *
-     * @return float
+     * @return float|null
      */
     public function getCalculationPercent()
     {
@@ -126,7 +126,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Gets as actualPenaltyAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getActualPenaltyAmount()
     {
@@ -136,7 +136,7 @@ class TradePaymentPenaltyTermsType
     /**
      * Sets a new actualPenaltyAmount
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType $actualPenaltyAmount
+     * @param  \horstoeko\zugferd\entities\extended\udt\AmountType|null $actualPenaltyAmount
      * @return self
      */
     public function setActualPenaltyAmount(?\horstoeko\zugferd\entities\extended\udt\AmountType $actualPenaltyAmount = null)

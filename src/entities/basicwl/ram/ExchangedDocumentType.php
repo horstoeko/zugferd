@@ -11,17 +11,17 @@ class ExchangedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\basicwl\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\DateTimeType $issueDateTime
+     * @var \horstoeko\zugferd\entities\basicwl\udt\DateTimeType|null $issueDateTime
      */
     private $issueDateTime = null;
 
@@ -35,7 +35,7 @@ class ExchangedDocumentType
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\IDType|null
      */
     public function getID()
     {
@@ -57,7 +57,7 @@ class ExchangedDocumentType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -79,7 +79,7 @@ class ExchangedDocumentType
     /**
      * Gets as issueDateTime
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\DateTimeType|null
      */
     public function getIssueDateTime()
     {
@@ -145,7 +145,7 @@ class ExchangedDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param  \horstoeko\zugferd\entities\basicwl\ram\NoteType[] $includedNote
+     * @param  \horstoeko\zugferd\entities\basicwl\ram\NoteType[]|null $includedNote
      * @return self
      */
     public function setIncludedNote(?array $includedNote = null)

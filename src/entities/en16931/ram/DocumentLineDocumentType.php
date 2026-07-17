@@ -11,19 +11,19 @@ class DocumentLineDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $lineID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $lineID
      */
     private $lineID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
+     * @var \horstoeko\zugferd\entities\en16931\ram\NoteType|null $includedNote
      */
     private $includedNote = null;
 
     /**
      * Gets as lineID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getLineID()
     {
@@ -45,7 +45,7 @@ class DocumentLineDocumentType
     /**
      * Gets as includedNote
      *
-     * @return \horstoeko\zugferd\entities\en16931\ram\NoteType
+     * @return \horstoeko\zugferd\entities\en16931\ram\NoteType|null
      */
     public function getIncludedNote()
     {
@@ -55,7 +55,7 @@ class DocumentLineDocumentType
     /**
      * Sets a new includedNote
      *
-     * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote
+     * @param  \horstoeko\zugferd\entities\en16931\ram\NoteType|null $includedNote
      * @return self
      */
     public function setIncludedNote(?\horstoeko\zugferd\entities\en16931\ram\NoteType $includedNote = null)

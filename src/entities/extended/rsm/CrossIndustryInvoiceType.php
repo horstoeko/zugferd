@@ -11,24 +11,24 @@ class CrossIndustryInvoiceType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @var \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType|null $exchangedDocumentContext
      */
     private $exchangedDocumentContext = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType $exchangedDocument
+     * @var \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType|null $exchangedDocument
      */
     private $exchangedDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType|null $supplyChainTradeTransaction
      */
     private $supplyChainTradeTransaction = null;
 
     /**
      * Gets as exchangedDocumentContext
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType
+     * @return \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentContextType|null
      */
     public function getExchangedDocumentContext()
     {
@@ -50,7 +50,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as exchangedDocument
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType
+     * @return \horstoeko\zugferd\entities\extended\ram\ExchangedDocumentType|null
      */
     public function getExchangedDocument()
     {
@@ -72,7 +72,7 @@ class CrossIndustryInvoiceType
     /**
      * Gets as supplyChainTradeTransaction
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType
+     * @return \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeTransactionType|null
      */
     public function getSupplyChainTradeTransaction()
     {

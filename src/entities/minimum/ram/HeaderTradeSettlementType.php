@@ -11,19 +11,19 @@ class HeaderTradeSettlementType
 {
 
     /**
-     * @var string $invoiceCurrencyCode
+     * @var string|null $invoiceCurrencyCode
      */
     private $invoiceCurrencyCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
+     * @var \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType|null $specifiedTradeSettlementHeaderMonetarySummation
      */
     private $specifiedTradeSettlementHeaderMonetarySummation = null;
 
     /**
      * Gets as invoiceCurrencyCode
      *
-     * @return string
+     * @return string|null
      */
     public function getInvoiceCurrencyCode()
     {
@@ -45,7 +45,7 @@ class HeaderTradeSettlementType
     /**
      * Gets as specifiedTradeSettlementHeaderMonetarySummation
      *
-     * @return \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType
+     * @return \horstoeko\zugferd\entities\minimum\ram\TradeSettlementHeaderMonetarySummationType|null
      */
     public function getSpecifiedTradeSettlementHeaderMonetarySummation()
     {

@@ -11,19 +11,19 @@ class TradeAccountingAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getID()
     {
@@ -45,7 +45,7 @@ class TradeAccountingAccountType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {

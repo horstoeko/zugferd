@@ -11,24 +11,24 @@ class TradePriceType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\AmountType $chargeAmount
+     * @var \horstoeko\zugferd\entities\basic\udt\AmountType|null $chargeAmount
      */
     private $chargeAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity
+     * @var \horstoeko\zugferd\entities\basic\udt\QuantityType|null $basisQuantity
      */
     private $basisQuantity = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType|null $appliedTradeAllowanceCharge
      */
     private $appliedTradeAllowanceCharge = null;
 
     /**
      * Gets as chargeAmount
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\AmountType
+     * @return \horstoeko\zugferd\entities\basic\udt\AmountType|null
      */
     public function getChargeAmount()
     {
@@ -50,7 +50,7 @@ class TradePriceType
     /**
      * Gets as basisQuantity
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\QuantityType
+     * @return \horstoeko\zugferd\entities\basic\udt\QuantityType|null
      */
     public function getBasisQuantity()
     {
@@ -60,7 +60,7 @@ class TradePriceType
     /**
      * Sets a new basisQuantity
      *
-     * @param  \horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity
+     * @param  \horstoeko\zugferd\entities\basic\udt\QuantityType|null $basisQuantity
      * @return self
      */
     public function setBasisQuantity(?\horstoeko\zugferd\entities\basic\udt\QuantityType $basisQuantity = null)
@@ -72,7 +72,7 @@ class TradePriceType
     /**
      * Gets as appliedTradeAllowanceCharge
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType|null
      */
     public function getAppliedTradeAllowanceCharge()
     {
@@ -82,7 +82,7 @@ class TradePriceType
     /**
      * Sets a new appliedTradeAllowanceCharge
      *
-     * @param  \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType|null $appliedTradeAllowanceCharge
      * @return self
      */
     public function setAppliedTradeAllowanceCharge(?\horstoeko\zugferd\entities\basic\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge = null)

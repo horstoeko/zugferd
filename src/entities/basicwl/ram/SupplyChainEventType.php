@@ -11,14 +11,14 @@ class SupplyChainEventType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basicwl\udt\DateTimeType $occurrenceDateTime
+     * @var \horstoeko\zugferd\entities\basicwl\udt\DateTimeType|null $occurrenceDateTime
      */
     private $occurrenceDateTime = null;
 
     /**
      * Gets as occurrenceDateTime
      *
-     * @return \horstoeko\zugferd\entities\basicwl\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\basicwl\udt\DateTimeType|null
      */
     public function getOccurrenceDateTime()
     {

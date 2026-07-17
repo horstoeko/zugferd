@@ -11,29 +11,29 @@ class TradeCurrencyExchangeType
 {
 
     /**
-     * @var string $sourceCurrencyCode
+     * @var string|null $sourceCurrencyCode
      */
     private $sourceCurrencyCode = null;
 
     /**
-     * @var string $targetCurrencyCode
+     * @var string|null $targetCurrencyCode
      */
     private $targetCurrencyCode = null;
 
     /**
-     * @var float $conversionRate
+     * @var float|null $conversionRate
      */
     private $conversionRate = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime
+     * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $conversionRateDateTime
      */
     private $conversionRateDateTime = null;
 
     /**
      * Gets as sourceCurrencyCode
      *
-     * @return string
+     * @return string|null
      */
     public function getSourceCurrencyCode()
     {
@@ -55,7 +55,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as targetCurrencyCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTargetCurrencyCode()
     {
@@ -77,7 +77,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as conversionRate
      *
-     * @return float
+     * @return float|null
      */
     public function getConversionRate()
     {
@@ -99,7 +99,7 @@ class TradeCurrencyExchangeType
     /**
      * Gets as conversionRateDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\extended\udt\DateTimeType|null
      */
     public function getConversionRateDateTime()
     {
@@ -109,7 +109,7 @@ class TradeCurrencyExchangeType
     /**
      * Sets a new conversionRateDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime
+     * @param  \horstoeko\zugferd\entities\extended\udt\DateTimeType|null $conversionRateDateTime
      * @return self
      */
     public function setConversionRateDateTime(?\horstoeko\zugferd\entities\extended\udt\DateTimeType $conversionRateDateTime = null)

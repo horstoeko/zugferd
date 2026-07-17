@@ -11,49 +11,49 @@ class ReferencedDocumentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $issuerAssignedID
      */
     private $issuerAssignedID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $uRIID
      */
     private $uRIID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $lineID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $lineID
      */
     private $lineID = null;
 
     /**
-     * @var string $typeCode
+     * @var string|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
+     * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType|null $attachmentBinaryObject
      */
     private $attachmentBinaryObject = null;
 
     /**
-     * @var string $referenceTypeCode
+     * @var string|null $referenceTypeCode
      */
     private $referenceTypeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      */
     private $formattedIssueDateTime = null;
 
     /**
      * Gets as issuerAssignedID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getIssuerAssignedID()
     {
@@ -63,7 +63,7 @@ class ReferencedDocumentType
     /**
      * Sets a new issuerAssignedID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $issuerAssignedID
      * @return self
      */
     public function setIssuerAssignedID(?\horstoeko\zugferd\entities\extended\udt\IDType $issuerAssignedID = null)
@@ -75,7 +75,7 @@ class ReferencedDocumentType
     /**
      * Gets as uRIID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getURIID()
     {
@@ -85,7 +85,7 @@ class ReferencedDocumentType
     /**
      * Sets a new uRIID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $uRIID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $uRIID
      * @return self
      */
     public function setURIID(?\horstoeko\zugferd\entities\extended\udt\IDType $uRIID = null)
@@ -97,7 +97,7 @@ class ReferencedDocumentType
     /**
      * Gets as lineID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getLineID()
     {
@@ -107,7 +107,7 @@ class ReferencedDocumentType
     /**
      * Sets a new lineID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $lineID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $lineID
      * @return self
      */
     public function setLineID(?\horstoeko\zugferd\entities\extended\udt\IDType $lineID = null)
@@ -119,7 +119,7 @@ class ReferencedDocumentType
     /**
      * Gets as typeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getTypeCode()
     {
@@ -141,7 +141,7 @@ class ReferencedDocumentType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -163,7 +163,7 @@ class ReferencedDocumentType
     /**
      * Gets as attachmentBinaryObject
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+     * @return \horstoeko\zugferd\entities\extended\udt\BinaryObjectType|null
      */
     public function getAttachmentBinaryObject()
     {
@@ -173,7 +173,7 @@ class ReferencedDocumentType
     /**
      * Sets a new attachmentBinaryObject
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject
+     * @param  \horstoeko\zugferd\entities\extended\udt\BinaryObjectType|null $attachmentBinaryObject
      * @return self
      */
     public function setAttachmentBinaryObject(?\horstoeko\zugferd\entities\extended\udt\BinaryObjectType $attachmentBinaryObject = null)
@@ -185,7 +185,7 @@ class ReferencedDocumentType
     /**
      * Gets as referenceTypeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getReferenceTypeCode()
     {
@@ -207,7 +207,7 @@ class ReferencedDocumentType
     /**
      * Gets as formattedIssueDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
+     * @return \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null
      */
     public function getFormattedIssueDateTime()
     {
@@ -217,7 +217,7 @@ class ReferencedDocumentType
     /**
      * Sets a new formattedIssueDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      * @return self
      */
     public function setFormattedIssueDateTime(?\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedIssueDateTime = null)

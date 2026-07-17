@@ -11,24 +11,24 @@ class CreditorFinancialAccountType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $iBANID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $iBANID
      */
     private $iBANID = null;
 
     /**
-     * @var string $accountName
+     * @var string|null $accountName
      */
     private $accountName = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $proprietaryID
      */
     private $proprietaryID = null;
 
     /**
      * Gets as iBANID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getIBANID()
     {
@@ -38,7 +38,7 @@ class CreditorFinancialAccountType
     /**
      * Sets a new iBANID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $iBANID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $iBANID
      * @return self
      */
     public function setIBANID(?\horstoeko\zugferd\entities\extended\udt\IDType $iBANID = null)
@@ -50,7 +50,7 @@ class CreditorFinancialAccountType
     /**
      * Gets as accountName
      *
-     * @return string
+     * @return string|null
      */
     public function getAccountName()
     {
@@ -72,7 +72,7 @@ class CreditorFinancialAccountType
     /**
      * Gets as proprietaryID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getProprietaryID()
     {
@@ -82,7 +82,7 @@ class CreditorFinancialAccountType
     /**
      * Sets a new proprietaryID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $proprietaryID
      * @return self
      */
     public function setProprietaryID(?\horstoeko\zugferd\entities\extended\udt\IDType $proprietaryID = null)

@@ -11,19 +11,19 @@ class ProductClassificationType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\CodeType $classCode
+     * @var \horstoeko\zugferd\entities\extended\udt\CodeType|null $classCode
      */
     private $classCode = null;
 
     /**
-     * @var string $className
+     * @var string|null $className
      */
     private $className = null;
 
     /**
      * Gets as classCode
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\CodeType
+     * @return \horstoeko\zugferd\entities\extended\udt\CodeType|null
      */
     public function getClassCode()
     {
@@ -33,7 +33,7 @@ class ProductClassificationType
     /**
      * Sets a new classCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $classCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType|null $classCode
      * @return self
      */
     public function setClassCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $classCode = null)
@@ -45,7 +45,7 @@ class ProductClassificationType
     /**
      * Gets as className
      *
-     * @return string
+     * @return string|null
      */
     public function getClassName()
     {

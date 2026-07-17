@@ -11,12 +11,12 @@ class MeasureType
 {
 
     /**
-     * @var float $__value
+     * @var float|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $unitCode
+     * @var string|null $unitCode
      */
     private $unitCode = null;
 
@@ -34,7 +34,7 @@ class MeasureType
      * Gets or sets the inner value
      *
      * @param  float $value
-     * @return float
+     * @return float|null
      */
     public function value()
     {
@@ -57,7 +57,7 @@ class MeasureType
     /**
      * Gets as unitCode
      *
-     * @return string
+     * @return string|null
      */
     public function getUnitCode()
     {

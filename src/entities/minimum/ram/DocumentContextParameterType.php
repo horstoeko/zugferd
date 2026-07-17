@@ -11,14 +11,14 @@ class DocumentContextParameterType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\minimum\udt\IDType $iD
+     * @var \horstoeko\zugferd\entities\minimum\udt\IDType|null $iD
      */
     private $iD = null;
 
     /**
      * Gets as iD
      *
-     * @return \horstoeko\zugferd\entities\minimum\udt\IDType
+     * @return \horstoeko\zugferd\entities\minimum\udt\IDType|null
      */
     public function getID()
     {

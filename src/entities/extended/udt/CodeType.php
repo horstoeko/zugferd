@@ -11,17 +11,17 @@ class CodeType
 {
 
     /**
-     * @var string $__value
+     * @var string|null $__value
      */
     private $__value = null;
 
     /**
-     * @var string $listID
+     * @var string|null $listID
      */
     private $listID = null;
 
     /**
-     * @var string $listVersionID
+     * @var string|null $listVersionID
      */
     private $listVersionID = null;
 
@@ -39,7 +39,7 @@ class CodeType
      * Gets or sets the inner value
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function value()
     {
@@ -62,7 +62,7 @@ class CodeType
     /**
      * Gets as listID
      *
-     * @return string
+     * @return string|null
      */
     public function getListID()
     {
@@ -84,7 +84,7 @@ class CodeType
     /**
      * Gets as listVersionID
      *
-     * @return string
+     * @return string|null
      */
     public function getListVersionID()
     {

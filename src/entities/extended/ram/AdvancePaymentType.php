@@ -11,12 +11,12 @@ class AdvancePaymentType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\AmountType $paidAmount
+     * @var \horstoeko\zugferd\entities\extended\udt\AmountType|null $paidAmount
      */
     private $paidAmount = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime
+     * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null $formattedReceivedDateTime
      */
     private $formattedReceivedDateTime = null;
 
@@ -28,14 +28,14 @@ class AdvancePaymentType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType|null $invoiceSpecifiedReferencedDocument
      */
     private $invoiceSpecifiedReferencedDocument = null;
 
     /**
      * Gets as paidAmount
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\AmountType
+     * @return \horstoeko\zugferd\entities\extended\udt\AmountType|null
      */
     public function getPaidAmount()
     {
@@ -57,7 +57,7 @@ class AdvancePaymentType
     /**
      * Gets as formattedReceivedDateTime
      *
-     * @return \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
+     * @return \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null
      */
     public function getFormattedReceivedDateTime()
     {
@@ -67,7 +67,7 @@ class AdvancePaymentType
     /**
      * Sets a new formattedReceivedDateTime
      *
-     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime
+     * @param  \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType|null $formattedReceivedDateTime
      * @return self
      */
     public function setFormattedReceivedDateTime(?\horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $formattedReceivedDateTime = null)
@@ -135,7 +135,7 @@ class AdvancePaymentType
     /**
      * Gets as invoiceSpecifiedReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType|null
      */
     public function getInvoiceSpecifiedReferencedDocument()
     {
@@ -145,7 +145,7 @@ class AdvancePaymentType
     /**
      * Sets a new invoiceSpecifiedReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     * @param  \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType|null $invoiceSpecifiedReferencedDocument
      * @return self
      */
     public function setInvoiceSpecifiedReferencedDocument(?\horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument = null)

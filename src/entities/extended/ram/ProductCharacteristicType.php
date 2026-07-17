@@ -11,29 +11,29 @@ class ProductCharacteristicType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\CodeType $typeCode
+     * @var \horstoeko\zugferd\entities\extended\udt\CodeType|null $typeCode
      */
     private $typeCode = null;
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure
+     * @var \horstoeko\zugferd\entities\extended\udt\MeasureType|null $valueMeasure
      */
     private $valueMeasure = null;
 
     /**
-     * @var string $value
+     * @var string|null $value
      */
     private $value = null;
 
     /**
      * Gets as typeCode
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\CodeType
+     * @return \horstoeko\zugferd\entities\extended\udt\CodeType|null
      */
     public function getTypeCode()
     {
@@ -43,7 +43,7 @@ class ProductCharacteristicType
     /**
      * Sets a new typeCode
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType $typeCode
+     * @param  \horstoeko\zugferd\entities\extended\udt\CodeType|null $typeCode
      * @return self
      */
     public function setTypeCode(?\horstoeko\zugferd\entities\extended\udt\CodeType $typeCode = null)
@@ -55,7 +55,7 @@ class ProductCharacteristicType
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -77,7 +77,7 @@ class ProductCharacteristicType
     /**
      * Gets as valueMeasure
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\MeasureType
+     * @return \horstoeko\zugferd\entities\extended\udt\MeasureType|null
      */
     public function getValueMeasure()
     {
@@ -87,7 +87,7 @@ class ProductCharacteristicType
     /**
      * Sets a new valueMeasure
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure
+     * @param  \horstoeko\zugferd\entities\extended\udt\MeasureType|null $valueMeasure
      * @return self
      */
     public function setValueMeasure(?\horstoeko\zugferd\entities\extended\udt\MeasureType $valueMeasure = null)
@@ -99,7 +99,7 @@ class ProductCharacteristicType
     /**
      * Gets as value
      *
-     * @return string
+     * @return string|null
      */
     public function getValue()
     {

@@ -11,19 +11,19 @@ class LineTradeAgreementType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice
+     * @var \horstoeko\zugferd\entities\basic\ram\TradePriceType|null $grossPriceProductTradePrice
      */
     private $grossPriceProductTradePrice = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradePriceType $netPriceProductTradePrice
+     * @var \horstoeko\zugferd\entities\basic\ram\TradePriceType|null $netPriceProductTradePrice
      */
     private $netPriceProductTradePrice = null;
 
     /**
      * Gets as grossPriceProductTradePrice
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradePriceType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradePriceType|null
      */
     public function getGrossPriceProductTradePrice()
     {
@@ -33,7 +33,7 @@ class LineTradeAgreementType
     /**
      * Sets a new grossPriceProductTradePrice
      *
-     * @param  \horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradePriceType|null $grossPriceProductTradePrice
      * @return self
      */
     public function setGrossPriceProductTradePrice(?\horstoeko\zugferd\entities\basic\ram\TradePriceType $grossPriceProductTradePrice = null)
@@ -45,7 +45,7 @@ class LineTradeAgreementType
     /**
      * Gets as netPriceProductTradePrice
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradePriceType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradePriceType|null
      */
     public function getNetPriceProductTradePrice()
     {

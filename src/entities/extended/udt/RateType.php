@@ -11,7 +11,7 @@ class RateType
 {
 
     /**
-     * @var float $__value
+     * @var float|null $__value
      */
     private $__value = null;
 
@@ -29,7 +29,7 @@ class RateType
      * Gets or sets the inner value
      *
      * @param  float $value
-     * @return float
+     * @return float|null
      */
     public function value()
     {

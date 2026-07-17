@@ -25,22 +25,22 @@ class TradePartyType
     ];
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
-     * @var string $roleCode
+     * @var string|null $roleCode
      */
     private $roleCode = null;
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType|null $specifiedLegalOrganization
      */
     private $specifiedLegalOrganization = null;
 
@@ -52,12 +52,12 @@ class TradePartyType
     ];
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType|null $postalTradeAddress
      */
     private $postalTradeAddress = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $uRIUniversalCommunication
      */
     private $uRIUniversalCommunication = null;
 
@@ -115,7 +115,7 @@ class TradePartyType
     /**
      * Sets a new iD
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $iD
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[]|null $iD
      * @return self
      */
     public function setID(?array $iD = null)
@@ -171,7 +171,7 @@ class TradePartyType
     /**
      * Sets a new globalID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[] $globalID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType[]|null $globalID
      * @return self
      */
     public function setGlobalID(?array $globalID = null)
@@ -183,7 +183,7 @@ class TradePartyType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -205,7 +205,7 @@ class TradePartyType
     /**
      * Gets as roleCode
      *
-     * @return string
+     * @return string|null
      */
     public function getRoleCode()
     {
@@ -227,7 +227,7 @@ class TradePartyType
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -249,7 +249,7 @@ class TradePartyType
     /**
      * Gets as specifiedLegalOrganization
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType
+     * @return \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType|null
      */
     public function getSpecifiedLegalOrganization()
     {
@@ -259,7 +259,7 @@ class TradePartyType
     /**
      * Sets a new specifiedLegalOrganization
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param  \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType|null $specifiedLegalOrganization
      * @return self
      */
     public function setSpecifiedLegalOrganization(?\horstoeko\zugferd\entities\extended\ram\LegalOrganizationType $specifiedLegalOrganization = null)
@@ -315,7 +315,7 @@ class TradePartyType
     /**
      * Sets a new definedTradeContact
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\TradeContactType[] $definedTradeContact
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeContactType[]|null $definedTradeContact
      * @return self
      */
     public function setDefinedTradeContact(?array $definedTradeContact = null)
@@ -327,7 +327,7 @@ class TradePartyType
     /**
      * Gets as postalTradeAddress
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\TradeAddressType
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeAddressType|null
      */
     public function getPostalTradeAddress()
     {
@@ -337,7 +337,7 @@ class TradePartyType
     /**
      * Sets a new postalTradeAddress
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeAddressType|null $postalTradeAddress
      * @return self
      */
     public function setPostalTradeAddress(?\horstoeko\zugferd\entities\extended\ram\TradeAddressType $postalTradeAddress = null)
@@ -349,7 +349,7 @@ class TradePartyType
     /**
      * Gets as uRIUniversalCommunication
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+     * @return \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null
      */
     public function getURIUniversalCommunication()
     {
@@ -359,7 +359,7 @@ class TradePartyType
     /**
      * Sets a new uRIUniversalCommunication
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @param  \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType|null $uRIUniversalCommunication
      * @return self
      */
     public function setURIUniversalCommunication(?\horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $uRIUniversalCommunication = null)
@@ -415,7 +415,7 @@ class TradePartyType
     /**
      * Sets a new specifiedTaxRegistration
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType[] $specifiedTaxRegistration
+     * @param  \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType[]|null $specifiedTaxRegistration
      * @return self
      */
     public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null)

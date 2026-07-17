@@ -11,34 +11,34 @@ class SupplyChainTradeLineItemType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType $associatedDocumentLineDocument
+     * @var \horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType|null $associatedDocumentLineDocument
      */
     private $associatedDocumentLineDocument = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradeProductType $specifiedTradeProduct
+     * @var \horstoeko\zugferd\entities\basic\ram\TradeProductType|null $specifiedTradeProduct
      */
     private $specifiedTradeProduct = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType $specifiedLineTradeAgreement
+     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType|null $specifiedLineTradeAgreement
      */
     private $specifiedLineTradeAgreement = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
+     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType|null $specifiedLineTradeDelivery
      */
     private $specifiedLineTradeDelivery = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType $specifiedLineTradeSettlement
+     * @var \horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType|null $specifiedLineTradeSettlement
      */
     private $specifiedLineTradeSettlement = null;
 
     /**
      * Gets as associatedDocumentLineDocument
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType
+     * @return \horstoeko\zugferd\entities\basic\ram\DocumentLineDocumentType|null
      */
     public function getAssociatedDocumentLineDocument()
     {
@@ -60,7 +60,7 @@ class SupplyChainTradeLineItemType
     /**
      * Gets as specifiedTradeProduct
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradeProductType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradeProductType|null
      */
     public function getSpecifiedTradeProduct()
     {
@@ -82,7 +82,7 @@ class SupplyChainTradeLineItemType
     /**
      * Gets as specifiedLineTradeAgreement
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType
+     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeAgreementType|null
      */
     public function getSpecifiedLineTradeAgreement()
     {
@@ -104,7 +104,7 @@ class SupplyChainTradeLineItemType
     /**
      * Gets as specifiedLineTradeDelivery
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType
+     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeDeliveryType|null
      */
     public function getSpecifiedLineTradeDelivery()
     {
@@ -126,7 +126,7 @@ class SupplyChainTradeLineItemType
     /**
      * Gets as specifiedLineTradeSettlement
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType
+     * @return \horstoeko\zugferd\entities\basic\ram\LineTradeSettlementType|null
      */
     public function getSpecifiedLineTradeSettlement()
     {

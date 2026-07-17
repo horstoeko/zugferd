@@ -11,24 +11,24 @@ class TradePaymentTermsType
 {
 
     /**
-     * @var string $description
+     * @var string|null $description
      */
     private $description = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime
+     * @var \horstoeko\zugferd\entities\en16931\udt\DateTimeType|null $dueDateDateTime
      */
     private $dueDateDateTime = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID
+     * @var \horstoeko\zugferd\entities\en16931\udt\IDType|null $directDebitMandateID
      */
     private $directDebitMandateID = null;
 
     /**
      * Gets as description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -50,7 +50,7 @@ class TradePaymentTermsType
     /**
      * Gets as dueDateDateTime
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\DateTimeType
+     * @return \horstoeko\zugferd\entities\en16931\udt\DateTimeType|null
      */
     public function getDueDateDateTime()
     {
@@ -60,7 +60,7 @@ class TradePaymentTermsType
     /**
      * Sets a new dueDateDateTime
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime
+     * @param  \horstoeko\zugferd\entities\en16931\udt\DateTimeType|null $dueDateDateTime
      * @return self
      */
     public function setDueDateDateTime(?\horstoeko\zugferd\entities\en16931\udt\DateTimeType $dueDateDateTime = null)
@@ -72,7 +72,7 @@ class TradePaymentTermsType
     /**
      * Gets as directDebitMandateID
      *
-     * @return \horstoeko\zugferd\entities\en16931\udt\IDType
+     * @return \horstoeko\zugferd\entities\en16931\udt\IDType|null
      */
     public function getDirectDebitMandateID()
     {
@@ -82,7 +82,7 @@ class TradePaymentTermsType
     /**
      * Sets a new directDebitMandateID
      *
-     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID
+     * @param  \horstoeko\zugferd\entities\en16931\udt\IDType|null $directDebitMandateID
      * @return self
      */
     public function setDirectDebitMandateID(?\horstoeko\zugferd\entities\en16931\udt\IDType $directDebitMandateID = null)

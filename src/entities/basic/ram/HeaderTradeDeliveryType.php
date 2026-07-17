@@ -11,24 +11,24 @@ class HeaderTradeDeliveryType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty
+     * @var \horstoeko\zugferd\entities\basic\ram\TradePartyType|null $shipToTradeParty
      */
     private $shipToTradeParty = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @var \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      */
     private $actualDeliverySupplyChainEvent = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @var \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      */
     private $despatchAdviceReferencedDocument = null;
 
     /**
      * Gets as shipToTradeParty
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\TradePartyType
+     * @return \horstoeko\zugferd\entities\basic\ram\TradePartyType|null
      */
     public function getShipToTradeParty()
     {
@@ -38,7 +38,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new shipToTradeParty
      *
-     * @param  \horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty
+     * @param  \horstoeko\zugferd\entities\basic\ram\TradePartyType|null $shipToTradeParty
      * @return self
      */
     public function setShipToTradeParty(?\horstoeko\zugferd\entities\basic\ram\TradePartyType $shipToTradeParty = null)
@@ -50,7 +50,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as actualDeliverySupplyChainEvent
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType
+     * @return \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType|null
      */
     public function getActualDeliverySupplyChainEvent()
     {
@@ -60,7 +60,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new actualDeliverySupplyChainEvent
      *
-     * @param  \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param  \horstoeko\zugferd\entities\basic\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      * @return self
      */
     public function setActualDeliverySupplyChainEvent(?\horstoeko\zugferd\entities\basic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent = null)
@@ -72,7 +72,7 @@ class HeaderTradeDeliveryType
     /**
      * Gets as despatchAdviceReferencedDocument
      *
-     * @return \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType
+     * @return \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType|null
      */
     public function getDespatchAdviceReferencedDocument()
     {
@@ -82,7 +82,7 @@ class HeaderTradeDeliveryType
     /**
      * Sets a new despatchAdviceReferencedDocument
      *
-     * @param  \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param  \horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(?\horstoeko\zugferd\entities\basic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument = null)

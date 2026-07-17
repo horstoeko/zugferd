@@ -11,19 +11,19 @@ class TradeLocationType
 {
 
     /**
-     * @var string $countryID
+     * @var string|null $countryID
      */
     private $countryID = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
      * Gets as countryID
      *
-     * @return string
+     * @return string|null
      */
     public function getCountryID()
     {
@@ -45,7 +45,7 @@ class TradeLocationType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {

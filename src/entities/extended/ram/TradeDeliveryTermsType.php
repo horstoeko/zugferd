@@ -11,19 +11,19 @@ class TradeDeliveryTermsType
 {
 
     /**
-     * @var string $deliveryTypeCode
+     * @var string|null $deliveryTypeCode
      */
     private $deliveryTypeCode = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\ram\TradeLocationType $relevantTradeLocation
+     * @var \horstoeko\zugferd\entities\extended\ram\TradeLocationType|null $relevantTradeLocation
      */
     private $relevantTradeLocation = null;
 
     /**
      * Gets as deliveryTypeCode
      *
-     * @return string
+     * @return string|null
      */
     public function getDeliveryTypeCode()
     {
@@ -45,7 +45,7 @@ class TradeDeliveryTermsType
     /**
      * Gets as relevantTradeLocation
      *
-     * @return \horstoeko\zugferd\entities\extended\ram\TradeLocationType
+     * @return \horstoeko\zugferd\entities\extended\ram\TradeLocationType|null
      */
     public function getRelevantTradeLocation()
     {
@@ -55,7 +55,7 @@ class TradeDeliveryTermsType
     /**
      * Sets a new relevantTradeLocation
      *
-     * @param  \horstoeko\zugferd\entities\extended\ram\TradeLocationType $relevantTradeLocation
+     * @param  \horstoeko\zugferd\entities\extended\ram\TradeLocationType|null $relevantTradeLocation
      * @return self
      */
     public function setRelevantTradeLocation(?\horstoeko\zugferd\entities\extended\ram\TradeLocationType $relevantTradeLocation = null)

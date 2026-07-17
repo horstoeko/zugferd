@@ -11,19 +11,19 @@ class TradeProductType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\basic\udt\IDType $globalID
+     * @var \horstoeko\zugferd\entities\basic\udt\IDType|null $globalID
      */
     private $globalID = null;
 
     /**
-     * @var string $name
+     * @var string|null $name
      */
     private $name = null;
 
     /**
      * Gets as globalID
      *
-     * @return \horstoeko\zugferd\entities\basic\udt\IDType
+     * @return \horstoeko\zugferd\entities\basic\udt\IDType|null
      */
     public function getGlobalID()
     {
@@ -33,7 +33,7 @@ class TradeProductType
     /**
      * Sets a new globalID
      *
-     * @param  \horstoeko\zugferd\entities\basic\udt\IDType $globalID
+     * @param  \horstoeko\zugferd\entities\basic\udt\IDType|null $globalID
      * @return self
      */
     public function setGlobalID(?\horstoeko\zugferd\entities\basic\udt\IDType $globalID = null)
@@ -45,7 +45,7 @@ class TradeProductType
     /**
      * Gets as name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {

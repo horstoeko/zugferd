@@ -11,19 +11,19 @@ class TradeProductInstanceType
 {
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $batchID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $batchID
      */
     private $batchID = null;
 
     /**
-     * @var \horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID
+     * @var \horstoeko\zugferd\entities\extended\udt\IDType|null $supplierAssignedSerialID
      */
     private $supplierAssignedSerialID = null;
 
     /**
      * Gets as batchID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getBatchID()
     {
@@ -33,7 +33,7 @@ class TradeProductInstanceType
     /**
      * Sets a new batchID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $batchID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $batchID
      * @return self
      */
     public function setBatchID(?\horstoeko\zugferd\entities\extended\udt\IDType $batchID = null)
@@ -45,7 +45,7 @@ class TradeProductInstanceType
     /**
      * Gets as supplierAssignedSerialID
      *
-     * @return \horstoeko\zugferd\entities\extended\udt\IDType
+     * @return \horstoeko\zugferd\entities\extended\udt\IDType|null
      */
     public function getSupplierAssignedSerialID()
     {
@@ -55,7 +55,7 @@ class TradeProductInstanceType
     /**
      * Sets a new supplierAssignedSerialID
      *
-     * @param  \horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID
+     * @param  \horstoeko\zugferd\entities\extended\udt\IDType|null $supplierAssignedSerialID
      * @return self
      */
     public function setSupplierAssignedSerialID(?\horstoeko\zugferd\entities\extended\udt\IDType $supplierAssignedSerialID = null)
