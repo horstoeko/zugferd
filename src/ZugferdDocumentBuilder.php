@@ -85,7 +85,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
      * @param  integer $profileId
-     * @return ZugferdDocumentBuilder
+     * @return static
      */
     public static function createNew(int $profileId): ZugferdDocumentBuilder
     {
@@ -95,7 +95,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Initialized a new document with profile settings
      *
-     * @return ZugferdDocumentBuilder
+     * Returns $this, so a derived builder such as ZugferdQuickDescriptor keeps its own
+     * type through createNew(). The native return type cannot say static: the package
+     * still supports PHP 7.3.
+     *
+     * @return static
      */
     public function initNewDocument(): ZugferdDocumentBuilder
     {

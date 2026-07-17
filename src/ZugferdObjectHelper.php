@@ -1846,11 +1846,12 @@ class ZugferdObjectHelper
     public static function isOneNullOrEmpty(array $args): bool
     {
         foreach ($args as $arg) {
+            // A date is never null or empty, and isNullOrEmpty() would cast it to string.
             if ($arg instanceof DateTimeInterface) {
-                if ($arg == null) {
-                    return true;
-                }
-            } elseif (self::isNullOrEmpty($arg)) {
+                continue;
+            }
+
+            if (self::isNullOrEmpty($arg)) {
                 return true;
             }
         }
