@@ -2,7 +2,7 @@ parameters:
     paths:
         - ../src
         - ../tests
-    level: 3
+    level: 4
     treatPhpDocTypesAsCertain: false
     excludePaths:
         - ../src/entities/*

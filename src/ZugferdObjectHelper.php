@@ -15,6 +15,7 @@ use finfo;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
+use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
 use horstoeko\zugferd\exception\ZugferdUnknownDateFormatException;
 use horstoeko\zugferd\exception\ZugferdUnsupportedMimetype;
 use horstoeko\zugferd\ZugferdProfileResolver;
@@ -522,11 +523,15 @@ class ZugferdObjectHelper
 
         if (
             StringUtils::stringIsNullOrEmpty($binaryDataFilename) === false &&
-            StringUtils::stringIsNullOrEmpty($base64EncodedData) === false &&
-            base64_encode($base64EncodedData) !== false
+            StringUtils::stringIsNullOrEmpty($base64EncodedData) === false
         ) {
+            $decodedData = base64_decode($base64EncodedData, true);
+            if ($decodedData === false) {
+                throw new ZugferdInvalidArgumentException('The data of ' . $binaryDataFilename . ' is not valid Base64-encoded data');
+            }
+
             $finfo = new finfo();
-            $mimetype = $finfo->buffer(base64_decode($base64EncodedData), FILEINFO_MIME_TYPE);
+            $mimetype = $finfo->buffer($decodedData, FILEINFO_MIME_TYPE);
             if ($mimetype === false) {
                 throw new ZugferdUnsupportedMimetype('of ' . $binaryDataFilename);
             }
@@ -539,7 +544,7 @@ class ZugferdObjectHelper
             /**
              * PHP 8.0 may misdetect CSV files as "application/csv"; normalize to the standard "text/csv"
              */
-            if (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 81000 && $mimetype === 'application/csv') {
+            if (PHP_VERSION_ID >= 80000 && PHP_VERSION_ID < 80100 && $mimetype === 'application/csv') {
                 $mimetype = 'text/csv';
             }
 
