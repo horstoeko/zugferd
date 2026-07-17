@@ -13,6 +13,7 @@ use DOMElement;
 use DOMText;
 use horstoeko\zugferd\ZugferdSettings;
 use JMS\Serializer\GraphNavigator;
+use JMS\Serializer\GraphNavigatorInterface;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\XmlSerializationVisitor;
 
@@ -45,127 +46,127 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
     {
         return [
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\minimum\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basicwl\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\en16931\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\extended\udt\AmountType',
                 'method' => 'serializeAmountType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basicwl\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\en16931\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\extended\udt\QuantityType',
                 'method' => 'serializeQuantityType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basicwl\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\en16931\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\extended\udt\PercentType',
                 'method' => 'serializePercentType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basicwl\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\en16931\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\extended\udt\IndicatorType',
                 'method' => 'serializeIndicatorType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basic\udt\MeasureType',
                 'method' => 'serializeMeasureType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\basicwl\udt\MeasureType',
                 'method' => 'serializeMeasureType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\en16931\udt\MeasureType',
                 'method' => 'serializeMeasureType'
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'direction' => GraphNavigatorInterface::DIRECTION_SERIALIZATION,
                 'format' => 'xml',
                 'type' => 'horstoeko\zugferd\entities\extended\udt\MeasureType',
                 'method' => 'serializeMeasureType'
