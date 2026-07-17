@@ -833,7 +833,7 @@ class ReaderBasicTest extends TestCase
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
         $this->assertEquals("", $docpaymentterms[0]["description"]);
         $this->assertNotNull($docpaymentterms[0]["duedate"]);
-        $this->assertInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
+        $this->assertInstanceOf(\DateTime::class, $docpaymentterms[0]["duedate"]);
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]["partialpaymentamount"], PHP_FLOAT_EPSILON);
     }

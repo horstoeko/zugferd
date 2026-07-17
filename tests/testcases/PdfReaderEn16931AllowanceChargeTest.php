@@ -828,7 +828,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
         $this->assertEquals("Zahlbar innerhalb 30 Tagen netto bis 04.07.2018, 3% Skonto innerhalb 10 Tagen bis 15.06.2018", $docpaymentterms[0]["description"]);
         $this->assertNull($docpaymentterms[0]["duedate"]);
-        $this->assertNotInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
+        $this->assertNotInstanceOf(\DateTime::class, $docpaymentterms[0]["duedate"]);
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]["partialpaymentamount"], PHP_FLOAT_EPSILON);
     }
