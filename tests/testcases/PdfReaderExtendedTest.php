@@ -786,7 +786,6 @@ class PdfReaderExtendedTest extends TestCase
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(\DateTime::class, $supplychainevent);
-        $this->assertInstanceOf("DateTime", $supplychainevent);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180930'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
@@ -839,7 +838,7 @@ class PdfReaderExtendedTest extends TestCase
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
         $this->assertEquals("Skontovereinbarung: 2% bei Zahlung innerhalb 10 Tagen nach Rechnungsdatum", $docpaymentterms[0]["description"]);
         $this->assertNull($docpaymentterms[0]["duedate"]);
-        $this->assertNotInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
+        $this->assertNotInstanceOf(\DateTime::class, $docpaymentterms[0]["duedate"]);
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]["partialpaymentamount"], PHP_FLOAT_EPSILON);
     }

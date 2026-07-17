@@ -36,7 +36,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertSame('471102', $documentno);
         $this->assertSame(ZugferdInvoiceType::INVOICE, $documenttypecode);
         $this->assertInstanceOf(\DateTime::class, $documentdate);
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180605'))->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertEquals('20180605', $documentdate->format('Ymd'));
         $this->assertSame("EUR", $invoiceCurrency);
         $this->assertSame("", $taxCurrency);
         $this->assertSame("", $documentname);
@@ -777,7 +777,6 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(\DateTime::class, $supplychainevent);
-        $this->assertInstanceOf("DateTime", $supplychainevent);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20180603'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
@@ -829,7 +828,7 @@ class PdfReaderEn16931AllowanceChargeTest extends TestCase
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
         $this->assertEquals("Zahlbar innerhalb 30 Tagen netto bis 04.07.2018, 3% Skonto innerhalb 10 Tagen bis 15.06.2018", $docpaymentterms[0]["description"]);
         $this->assertNull($docpaymentterms[0]["duedate"]);
-        $this->assertNotInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
+        $this->assertNotInstanceOf(\DateTime::class, $docpaymentterms[0]["duedate"]);
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]["partialpaymentamount"], PHP_FLOAT_EPSILON);
     }

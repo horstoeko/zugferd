@@ -1807,6 +1807,12 @@ class ZugferdObjectHelper
             return true;
         }
 
+        // (string)false is "", but false is a value: the ?bool arguments of this helper
+        // use null for "not supplied" and false for "supplied and false".
+        if (is_bool($value)) {
+            return false;
+        }
+
         return !is_object($value) && (string)$value === "";
     }
 

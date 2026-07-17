@@ -788,7 +788,6 @@ class ReaderExtended2Test extends TestCase
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(\DateTime::class, $supplychainevent);
-        $this->assertInstanceOf("DateTime", $supplychainevent);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200115'))->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
@@ -816,9 +815,9 @@ class ReaderExtended2Test extends TestCase
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
-        $this->assertInstanceOf("DateTime", $docbillingperiodstart);
+        $this->assertInstanceOf(\DateTime::class, $docbillingperiodstart);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docbillingperiodstart->format('Ymd'));
-        $this->assertInstanceOf("DateTime", $docbillingperiodend);
+        $this->assertInstanceOf(\DateTime::class, $docbillingperiodend);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docbillingperiodend->format('Ymd'));
     }
 
@@ -842,7 +841,7 @@ class ReaderExtended2Test extends TestCase
         $this->assertArrayHasKey("directdebitmandateid", $docpaymentterms[0]);
         $this->assertArrayHasKey("partialpaymentamount", $docpaymentterms[0]);
         $this->assertEquals("", $docpaymentterms[0]["description"]);
-        $this->assertInstanceOf("DateTime", $docpaymentterms[0]["duedate"]);
+        $this->assertInstanceOf(\DateTime::class, $docpaymentterms[0]["duedate"]);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200215'))->format('Ymd'), $docpaymentterms[0]["duedate"]->format('Ymd'));
         $this->assertEquals("", $docpaymentterms[0]["directdebitmandateid"]);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]["partialpaymentamount"], PHP_FLOAT_EPSILON);
@@ -987,7 +986,7 @@ class ReaderExtended2Test extends TestCase
         self::$document->getPenaltyTermsFromPaymentTerm($penaltypercent, $penaltybasedatetime, $penaltymeasureval, $penaltymeasureunit, $penaltybaseamount, $penaltyamount);
 
         $this->assertSame("", $termdescription);
-        $this->assertInstanceOf("DateTime", $termduedate);
+        $this->assertInstanceOf(\DateTime::class, $termduedate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200215'))->format('Ymd'), $termduedate->format('Ymd'));
         $this->assertSame("", $termmandate);
         $this->assertEqualsWithDelta(0.0, $dispercent, PHP_FLOAT_EPSILON);
@@ -1104,9 +1103,9 @@ class ReaderExtended2Test extends TestCase
         $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertInstanceOf("DateTime", $docposstartdate);
+        $this->assertInstanceOf(\DateTime::class, $docposstartdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docposstartdate->format('Ymd'));
-        $this->assertInstanceOf("DateTime", $docpostenddate);
+        $this->assertInstanceOf(\DateTime::class, $docpostenddate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docpostenddate->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
@@ -1213,7 +1212,7 @@ class ReaderExtended2Test extends TestCase
         $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertInstanceOf("DateTime", $docposstartdate);
+        $this->assertInstanceOf(\DateTime::class, $docposstartdate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191201'))->format('Ymd'), $docposstartdate->format('Ymd'));
         $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
 
@@ -1322,7 +1321,7 @@ class ReaderExtended2Test extends TestCase
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-        $this->assertInstanceOf("DateTime", $docpostenddate);
+        $this->assertInstanceOf(\DateTime::class, $docpostenddate);
         $this->assertEquals((\DateTime::createFromFormat('Ymd', '20191231'))->format('Ymd'), $docpostenddate->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
