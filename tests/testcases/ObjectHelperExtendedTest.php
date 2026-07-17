@@ -29,7 +29,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDocumentCodeTypeNotEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\DocumentCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\DocumentCodeType $codeType
          */
         $codeType = self::$objectHelper->getDocumentCodeType("380");
         $this->assertNotNull($codeType);
@@ -39,7 +39,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType("abc");
         $this->assertEquals("abc", $idtype->value());
@@ -49,7 +49,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeWithValueAndScheme(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType("abc", "0088");
         $this->assertEquals("abc", $idtype->value());
@@ -59,7 +59,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeAllEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType("", "");
         $this->assertNull($idtype);
@@ -68,7 +68,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType(null, null);
         $this->assertNull($idtype);
@@ -77,7 +77,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeEmptyValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType("");
         $this->assertNull($idtype);
@@ -86,7 +86,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType(null);
         $this->assertNull($idtype);
@@ -95,7 +95,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIdTypeEmptyValueWithScheme(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IDType
+         * @var \horstoeko\zugferd\entities\extended\udt\IDType $idtype
          */
         $idtype = self::$objectHelper->getIdType("", "0088");
         $this->assertNull($idtype);
@@ -104,7 +104,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTextTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getTextType("test");
         $this->assertEquals("test", $texttype->value());
@@ -113,7 +113,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTextTypeAllEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getTextType("");
         $this->assertNull($texttype);
@@ -122,7 +122,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTextTypeNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getTextType(null);
         $this->assertNull($texttype);
@@ -131,7 +131,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCodeTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getCodeType("test");
         $this->assertEquals("test", $texttype->value());
@@ -140,7 +140,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCodeType2WithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType $texttype
          */
         $texttype = self::$objectHelper->getCodeType2("test");
         $this->assertEquals("test", $texttype->value());
@@ -148,7 +148,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertNull($texttype->getListVersionID());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType $texttype
          */
         $texttype = self::$objectHelper->getCodeType2("test", "listid");
         $this->assertEquals("test", $texttype->value());
@@ -156,7 +156,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertNull($texttype->getListVersionID());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType $texttype
          */
         $texttype = self::$objectHelper->getCodeType2("test", "listid", "listversion");
         $this->assertEquals("test", $texttype->value());
@@ -164,7 +164,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("listversion", $texttype->getListVersionID());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\CodeType
+         * @var \horstoeko\zugferd\entities\extended\udt\CodeType $texttype
          */
         $texttype = self::$objectHelper->getCodeType2();
         $this->assertNull($texttype);
@@ -173,7 +173,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCodeTypeAllEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getCodeType("");
         $this->assertNull($texttype);
@@ -182,7 +182,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCodeTypeNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\TextType
+         * @var \horstoeko\zugferd\entities\extended\udt\TextType $texttype
          */
         $texttype = self::$objectHelper->getCodeType(null);
         $this->assertNull($texttype);
@@ -191,7 +191,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIndicatorTypeWithTrueValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
+         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType $indicatortype
          */
         $indicatortype = self::$objectHelper->getIndicatorType(true);
         $this->assertTrue($indicatortype->getIndicator());
@@ -200,21 +200,21 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetIndicatorTypeWithFalseValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
+         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType $indicatortype
          */
         $indicatortype = self::$objectHelper->getIndicatorType(false);
         $this->assertNotNull($indicatortype);
-        $this->assertEquals(false, $indicatortype->getIndicator());
+        $this->assertFalse($indicatortype->getIndicator());
 
         $indicatortype = self::$objectHelper->getIndicatorType(true);
         $this->assertNotNull($indicatortype);
-        $this->assertEquals(true, $indicatortype->getIndicator());
+        $this->assertTrue($indicatortype->getIndicator());
     }
 
     public function testGetIndicatorTypeNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType
+         * @var \horstoeko\zugferd\entities\extended\udt\IndicatorType $indicatortype
          */
         $indicatortype = self::$objectHelper->getIndicatorType(null);
         $this->assertNull($indicatortype);
@@ -223,7 +223,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNoteTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\NoteType
+         * @var \horstoeko\zugferd\entities\extended\ram\NoteType $notetype
          */
         $notetype = self::$objectHelper->getNoteType("content", "contentcode", "subjectcode");
         $this->assertEquals("content", $notetype->getContent());
@@ -234,7 +234,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNoteTypeAllNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\NoteType
+         * @var \horstoeko\zugferd\entities\extended\ram\NoteType $notetype
          */
         $notetype = self::$objectHelper->getNoteType(null, null, null);
         $this->assertNull($notetype);
@@ -243,7 +243,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNoteTypeWithEmptyContent(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\NoteType
+         * @var \horstoeko\zugferd\entities\extended\ram\NoteType $notetype
          */
         $notetype = self::$objectHelper->getNoteType("", "", "");
         $this->assertNull($notetype);
@@ -252,7 +252,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNoteTypeWithEmptyContentButWithSubjectCode(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\NoteType
+         * @var \horstoeko\zugferd\entities\extended\ram\NoteType $notetype
          */
         $notetype = self::$objectHelper->getNoteType("", "", "subjectcode");
         $this->assertNull($notetype);
@@ -261,7 +261,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetFormattedDateTimeType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $datetimetype
          */
         $datetimetype = self::$objectHelper->getFormattedDateTimeType(new \DateTime());
         $this->assertEquals((new \DateTime())->format("Ymd"), $datetimetype->getDateTimeString());
@@ -271,7 +271,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetFormattedDateTimeTypeWithNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\FormattedDateTimeType $datetimetype
          */
         $datetimetype = self::$objectHelper->getFormattedDateTimeType(null);
         $this->assertNull($datetimetype);
@@ -280,7 +280,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDateTimeType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType
+         * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $datetimetype
          */
         $datetimetype = self::$objectHelper->getDateTimeType(new \DateTime());
         $this->assertEquals((new \DateTime())->format("Ymd"), $datetimetype->getDateTimeString());
@@ -290,7 +290,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDateTimeTypeWithNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType
+         * @var \horstoeko\zugferd\entities\extended\udt\DateTimeType $datetimetype
          */
         $datetimetype = self::$objectHelper->getDateTimeType(null);
         $this->assertNull($datetimetype);
@@ -299,7 +299,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDateType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\DateType
+         * @var \horstoeko\zugferd\entities\extended\udt\DateType $datetimetype
          */
         $datetimetype = self::$objectHelper->getDateType(new \DateTime());
         $this->assertEquals((new \DateTime())->format("Ymd"), $datetimetype->getDateString());
@@ -309,7 +309,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDateTypeWithNullValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\DateType
+         * @var \horstoeko\zugferd\entities\extended\udt\DateType $datetimetype
          */
         $datetimetype = self::$objectHelper->getDateType(null);
         $this->assertNull($datetimetype);
@@ -318,7 +318,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetAmountTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\AmountType
+         * @var \horstoeko\zugferd\entities\extended\udt\AmountType $amounttype
          */
         $amounttype = self::$objectHelper->getAmountType(100.0);
         $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
@@ -328,7 +328,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetAmountTypeWithValueAndCurrency(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\AmountType
+         * @var \horstoeko\zugferd\entities\extended\udt\AmountType $amounttype
          */
         $amounttype = self::$objectHelper->getAmountType(100.0, "EUR");
         $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
@@ -338,7 +338,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetAmountTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\AmountType
+         * @var \horstoeko\zugferd\entities\extended\udt\AmountType $amounttype
          */
         $amounttype = self::$objectHelper->getAmountType(null, null);
         $this->assertNull($amounttype);
@@ -347,7 +347,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetAmountTypeWithValueAndEmptyCurrency(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\AmountType
+         * @var \horstoeko\zugferd\entities\extended\udt\AmountType $amounttype
          */
         $amounttype = self::$objectHelper->getAmountType(100, "");
         $this->assertEqualsWithDelta(100.0, $amounttype->value(), PHP_FLOAT_EPSILON);
@@ -357,7 +357,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetAmountTypeWithNullValueAndCurrency(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\AmountType
+         * @var \horstoeko\zugferd\entities\extended\udt\AmountType $amounttype
          */
         $amounttype = self::$objectHelper->getAmountType(null, "EUR");
         $this->assertNull($amounttype);
@@ -366,7 +366,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetPercentTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $percenttype
          */
         $percenttype = self::$objectHelper->getPercentType(100.0);
         $this->assertEqualsWithDelta(100.0, $percenttype->value(), PHP_FLOAT_EPSILON);
@@ -375,7 +375,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetPercentTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $percenttype
          */
         $percenttype = self::$objectHelper->getPercentType(null);
         $this->assertNull($percenttype);
@@ -384,7 +384,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetQuantityTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
+         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType $quantitytype
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0);
         $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
@@ -393,7 +393,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetQuantityTypeWithValueAndUnitCode(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
+         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType $quantitytype
          */
         $quantitytype = self::$objectHelper->getQuantityType(100.0, "C62");
         $this->assertEqualsWithDelta(100.0, $quantitytype->value(), PHP_FLOAT_EPSILON);
@@ -403,7 +403,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetQuantityTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
+         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType $quantitytype
          */
         $quantitytype = self::$objectHelper->getQuantityType(null, null);
         $this->assertNull($quantitytype);
@@ -412,7 +412,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetQuantityTypeWithNullValueAndUnitCode(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType
+         * @var \horstoeko\zugferd\entities\extended\udt\QuantityType $quantitytype
          */
         $quantitytype = self::$objectHelper->getQuantityType(null, "C62");
         $this->assertNull($quantitytype);
@@ -421,7 +421,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetMeasureTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
+         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $measuretype
          */
         $measuretype = self::$objectHelper->getMeasureType(100.0);
         $this->assertEqualsWithDelta(100.0, $measuretype->value(), PHP_FLOAT_EPSILON);
@@ -430,7 +430,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetMeasureTypeWithValueAndUnitCode(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
+         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $measuretype
          */
         $measuretype = self::$objectHelper->getMeasureType(100.0, "DAY");
         $this->assertEqualsWithDelta(100.0, $measuretype->value(), PHP_FLOAT_EPSILON);
@@ -440,7 +440,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetMeasureTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
+         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $measuretype
          */
         $measuretype = self::$objectHelper->getMeasureType(null, null);
         $this->assertNull($measuretype);
@@ -449,7 +449,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetMeasureTypeWithNullValueAndUnitCode(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType
+         * @var \horstoeko\zugferd\entities\extended\udt\MeasureType $measuretype
          */
         $measuretype = self::$objectHelper->getMeasureType(null, "DAY");
         $this->assertNull($measuretype);
@@ -458,7 +458,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNumericTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\NumericType
+         * @var \horstoeko\zugferd\entities\extended\udt\NumericType $numerictype
          */
         $numerictype = self::$objectHelper->getNumericType(100.0);
         $this->assertEquals(100, $numerictype->value());
@@ -467,7 +467,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetNumericTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\NumericType
+         * @var \horstoeko\zugferd\entities\extended\udt\NumericType $numerictype
          */
         $numerictype = self::$objectHelper->getNumericType(null);
         $this->assertNull($numerictype);
@@ -476,7 +476,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxCategoryCodeTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType $taxcategorycodetype
          */
         $taxcategorycodetype = self::$objectHelper->getTaxCategoryCodeType("VAT");
         $this->assertEquals("VAT", $taxcategorycodetype->value());
@@ -485,7 +485,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxCategoryCodeTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxCategoryCodeType $taxcategorycodetype
          */
         $taxcategorycodetype = self::$objectHelper->getTaxCategoryCodeType(null);
         $this->assertNull($taxcategorycodetype);
@@ -494,7 +494,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxTypeCodeTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType $taxtypecodetype
          */
         $taxtypecodetype = self::$objectHelper->getTaxTypeCodeType("S");
         $this->assertEquals("S", $taxtypecodetype->value());
@@ -503,7 +503,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxTypeCodeTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TaxTypeCodeType $taxtypecodetype
          */
         $taxtypecodetype = self::$objectHelper->getTaxTypeCodeType(null);
         $this->assertNull($taxtypecodetype);
@@ -512,7 +512,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTimeReferenceCodeTypeWithValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType $timereferencecodetype
          */
         $timereferencecodetype = self::$objectHelper->getTimeReferenceCodeType("REF");
         $this->assertEquals("REF", $timereferencecodetype->value());
@@ -521,7 +521,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTimeReferenceCodeTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\TimeReferenceCodeType $timereferencecodetype
          */
         $timereferencecodetype = self::$objectHelper->getTimeReferenceCodeType(null);
         $this->assertNull($timereferencecodetype);
@@ -530,7 +530,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSpecifiedPeriodTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType
+         * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $periodtype
          */
         $periodtype = self::$objectHelper->getSpecifiedPeriodType(new \DateTime(), new \DateTime(), new \DateTime(), "Description");
         $this->assertEquals("Description", $periodtype->getDescription());
@@ -545,7 +545,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSpecifiedPeriodTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType
+         * @var \horstoeko\zugferd\entities\extended\ram\SpecifiedPeriodType $periodtype
          */
         $periodtype = self::$objectHelper->getSpecifiedPeriodType(null, null, null, null);
         $this->assertNull($periodtype);
@@ -554,7 +554,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetBinaryObjectTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $binaryobject
          */
         $binaryobject = self::$objectHelper->getBinaryObjectType("data", "application/pdf", "mypdf.pdf");
         $this->assertEquals("data", $binaryobject->value());
@@ -565,7 +565,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetBinaryObjectTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $binaryobject
          */
         $binaryobject = self::$objectHelper->getBinaryObjectType(null, null, null);
         $this->assertNull($binaryobject);
@@ -574,7 +574,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetBinaryObjectTypeDataNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $binaryobject
          */
         $binaryobject = self::$objectHelper->getBinaryObjectType(null, "application/pdf", "mypdf.pdf");
         $this->assertNull($binaryobject);
@@ -583,7 +583,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetBinaryObjectTypeMimeTypeNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $binaryobject
          */
         $binaryobject = self::$objectHelper->getBinaryObjectType("data", null, "mypdf.pdf");
         $this->assertNull($binaryobject);
@@ -592,7 +592,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetBinaryObjectTypeFilenameNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType
+         * @var \horstoeko\zugferd\entities\extended\udt\BinaryObjectType $binaryobject
          */
         $binaryobject = self::$objectHelper->getBinaryObjectType("data", "application/pdf", null);
         $this->assertNull($binaryobject);
@@ -601,7 +601,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetReferencedDocumentTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $refdoctype
          */
         $refdoctype = self::$objectHelper->getReferencedDocumentType("issuerid", "uriid", "lineid", "typecode", "name", "reftypcode", new \DateTime(), __DIR__ . "/../assets/dummy_picture.jpg");
         $this->assertEquals("issuerid", $refdoctype->getIssuerAssignedID()->value());
@@ -617,7 +617,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetReferencedDocumentTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedDocumentType $refdoctype
          */
         $refdoctype = self::$objectHelper->getReferencedDocumentType(null, null, null, null, null, null, null, null, null);
         $this->assertNull($refdoctype);
@@ -626,7 +626,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testCrossIndustryInvoice(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice
+         * @var \horstoeko\zugferd\entities\extended\rsm\CrossIndustryInvoice $crossindusty
          */
         $crossindusty = self::$objectHelper->getCrossIndustryInvoice();
         $this->assertNotNull($crossindusty);
@@ -635,7 +635,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePartyAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $tradeparty
          */
         $tradeparty = self::$objectHelper->getTradeParty("name", "id", "description");
         $this->assertEquals("name", $tradeparty->getName());
@@ -648,7 +648,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePartyNullValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $tradeparty
          */
         $tradeparty = self::$objectHelper->getTradeParty(null, null, null);
         $this->assertNull($tradeparty);
@@ -657,7 +657,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePartyAllValuesWithAllowEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $tradeparty
          */
         $tradeparty = self::$objectHelper->getTradePartyAllowEmpty("name", "id", "description");
         $this->assertEquals("name", $tradeparty->getName());
@@ -670,7 +670,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePartyNullValuesWithAllowEmpty(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePartyType $tradeparty
          */
         $tradeparty = self::$objectHelper->getTradePartyAllowEmpty(null, null, null);
         $this->assertNotNull($tradeparty);
@@ -685,7 +685,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAddressAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType $tradeaddress
          */
         $tradeaddress = self::$objectHelper->getTradeAddress("lineone", "linetwo", "linethree", "00000", "city", "country", "county");
         $this->assertEquals("lineone", $tradeaddress->getLineOne());
@@ -700,7 +700,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAddressAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAddressType $tradeaddress
          */
         $tradeaddress = self::$objectHelper->getTradeAddress(null, null, null, null, null, null, null);
         $this->assertNull($tradeaddress);
@@ -709,7 +709,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetLegalOrganizationAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType
+         * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType $legalorg
          */
         $legalorg = self::$objectHelper->getLegalOrganization("orgid", "orgtype", "orgname");
         $this->assertEquals("orgid", $legalorg->getID());
@@ -720,7 +720,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetLegalOrganizationAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType
+         * @var \horstoeko\zugferd\entities\extended\ram\LegalOrganizationType $legalorg
          */
         $legalorg = self::$objectHelper->getLegalOrganization(null, null, null);
         $this->assertNull($legalorg);
@@ -729,7 +729,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeContactAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType $tradecontact
          */
         $tradecontact = self::$objectHelper->getTradeContact("personname", "departmentname", "phone", "fax", "mail");
         $this->assertEquals("personname", $tradecontact->getPersonName());
@@ -742,7 +742,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeContactAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeContactType $tradecontact
          */
         $tradecontact = self::$objectHelper->getTradeContact(null, null, null, null, null, null);
         $this->assertNull($tradecontact);
@@ -751,7 +751,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetUniversalCommunicationTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+         * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $commtype
          */
         $commtype = self::$objectHelper->getUniversalCommunicationType("number", "uriid", "smtp");
         $this->assertEquals("number", $commtype->getCompleteNumber());
@@ -762,7 +762,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetUniversalCommunicationTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType
+         * @var \horstoeko\zugferd\entities\extended\ram\UniversalCommunicationType $commtype
          */
         $commtype = self::$objectHelper->getUniversalCommunicationType(null, null, null);
         $this->assertNull($commtype);
@@ -771,7 +771,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxRegistrationTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType $taxregtype
          */
         $taxregtype = self::$objectHelper->getTaxRegistrationType("taxregtype", "taxid");
         $this->assertEquals("taxregtype", $taxregtype->getID()->getSchemeID());
@@ -781,7 +781,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxRegistrationTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType $taxregtype
          */
         $taxregtype = self::$objectHelper->getTaxRegistrationType(null, null);
         $this->assertNull($taxregtype);
@@ -790,7 +790,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxRegistrationTypeIdNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType $taxregtype
          */
         $taxregtype = self::$objectHelper->getTaxRegistrationType("taxregtype", null);
         $this->assertNull($taxregtype);
@@ -799,7 +799,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxRegistrationTypeTypeNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TaxRegistrationType $taxregtype
          */
         $taxregtype = self::$objectHelper->getTaxRegistrationType(null, "taxid");
         $this->assertNull($taxregtype);
@@ -808,7 +808,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeDeliveryTermsTypeCodeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType $devterms
          */
         $devterms = self::$objectHelper->getTradeDeliveryTermsCodeType('code');
         $this->assertEquals("code", $devterms->value());
@@ -817,7 +817,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeDeliveryTermsTypeCodeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType
+         * @var \horstoeko\zugferd\entities\extended\qdt\DeliveryTermsCodeType $devterms
          */
         $devterms = self::$objectHelper->getTradeDeliveryTermsCodeType(null);
         $this->assertNull($devterms);
@@ -826,7 +826,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeDeliveryTermsTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $devterms
          */
         $devterms = self::$objectHelper->getTradeDeliveryTermsType('code');
         $this->assertEquals("code", $devterms->getDeliveryTypeCode());
@@ -835,7 +835,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeDeliveryTermsTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeDeliveryTermsType $devterms
          */
         $devterms = self::$objectHelper->getTradeDeliveryTermsType(null);
         $this->assertNull($devterms);
@@ -844,7 +844,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProcuringProjectTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $project
          */
         $project = self::$objectHelper->getProcuringProjectType("projectid", "projectname");
         $this->assertEquals("projectid", $project->getID());
@@ -854,7 +854,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProcuringProjectTypeIdNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $project
          */
         $project = self::$objectHelper->getProcuringProjectType(null, "projectname");
         $this->assertNull($project);
@@ -863,7 +863,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProcuringProjectTypeNameNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $project
          */
         $project = self::$objectHelper->getProcuringProjectType("projectid", null);
         $this->assertNull($project);
@@ -872,7 +872,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProcuringProjectTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProcuringProjectType $project
          */
         $project = self::$objectHelper->getProcuringProjectType(null, null);
         $this->assertNull($project);
@@ -881,7 +881,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSupplyChainEventTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType
+         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $supplychainevent
          */
         $supplychainevent = self::$objectHelper->getSupplyChainEventType(new \DateTime());
         $this->assertEquals((new \DateTime())->format("Ymd"), $supplychainevent->getOccurrenceDateTime()->getDateTimeString());
@@ -891,7 +891,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSupplyChainEventTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType
+         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainEventType $supplychainevent
          */
         $supplychainevent = self::$objectHelper->getSupplyChainEventType(null);
         $this->assertNull($supplychainevent);
@@ -900,7 +900,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementFinancialCardTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType $fincard
          */
         $fincard = self::$objectHelper->getTradeSettlementFinancialCardType("type", "6759 6498 2643 8453", "name");
         $this->assertEquals("type", $fincard->getID()->getSchemeID());
@@ -911,7 +911,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementFinancialCardType4DigitValue(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType
+         * @var \horstoeko\zugferd\entities\en16931\ram\TradeSettlementFinancialCardType $fincard
          */
         $fincard = self::$objectHelper->getTradeSettlementFinancialCardType("type", "8453", "name");
         $this->assertEquals("type", $fincard->getID()->getSchemeID());
@@ -922,7 +922,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementFinancialCardTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementFinancialCardType $fincard
          */
         $fincard = self::$objectHelper->getTradeSettlementFinancialCardType(null, null, null);
         $this->assertNull($fincard);
@@ -931,7 +931,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDebtorFinancialAccountTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType $finacc
          */
         $finacc = self::$objectHelper->getDebtorFinancialAccountType("iban");
         $this->assertEquals("iban", $finacc->getIBANID());
@@ -940,7 +940,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDebtorFinancialAccountTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\DebtorFinancialAccountType $finacc
          */
         $finacc = self::$objectHelper->getDebtorFinancialAccountType(null);
         $this->assertNull($finacc);
@@ -949,7 +949,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCreditorFinancialAccountTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType $finacc
          */
         $finacc = self::$objectHelper->getCreditorFinancialAccountType("iban", "accname", "propid");
         $this->assertEquals("iban", $finacc->getIBANID());
@@ -960,7 +960,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCreditorFinancialAccountTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialAccountType $finacc
          */
         $finacc = self::$objectHelper->getCreditorFinancialAccountType(null, null, null);
         $this->assertNull($finacc);
@@ -969,7 +969,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCreditorFinancialInstitutionTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType
+         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType $fininst
          */
         $fininst = self::$objectHelper->getCreditorFinancialInstitutionType("bic");
         $this->assertEquals("bic", $fininst->getBICID());
@@ -978,7 +978,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetCreditorFinancialInstitutionTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType
+         * @var \horstoeko\zugferd\entities\extended\ram\CreditorFinancialInstitutionType $fininst
          */
         $fininst = self::$objectHelper->getCreditorFinancialInstitutionType(null);
         $this->assertNull($fininst);
@@ -987,7 +987,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementPaymentMeansTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType $paymentmeans
          */
         $paymentmeans = self::$objectHelper->getTradeSettlementPaymentMeansType("code", "info");
         $this->assertEquals("code", $paymentmeans->getTypeCode());
@@ -996,7 +996,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementPaymentMeansTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementPaymentMeansType $paymentmeans
          */
         $paymentmeans = self::$objectHelper->getTradeSettlementPaymentMeansType(null, null);
         $this->assertNull($paymentmeans);
@@ -1005,7 +1005,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentTermsTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType $paymentterms
          */
         $paymentterms = self::$objectHelper->getTradePaymentTermsType("description", new \DateTime(), "mandate");
         $this->assertEquals((new \DateTime())->format("Ymd"), $paymentterms->getDueDateDateTime()->getDateTimeString());
@@ -1015,7 +1015,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentTermsTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentTermsType $paymentmeans
          */
         $paymentmeans = self::$objectHelper->getTradePaymentTermsType(null, null, null);
         $this->assertNull($paymentmeans);
@@ -1024,12 +1024,12 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentDiscountTermsTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType $discountterms
          */
         $discountterms = self::$objectHelper->getTradePaymentDiscountTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $calculationpercent
          */
         $calculationpercent = $discountterms->getCalculationPercent();
 
@@ -1045,7 +1045,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentDiscountTermsTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentDiscountTermsType $discountterms
          */
         $discountterms = self::$objectHelper->getTradePaymentDiscountTermsType(null, null, null, null, null, null);
         $this->assertNull($discountterms);
@@ -1054,12 +1054,12 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentPenaltyTermsTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType $penaltyterms
          */
         $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(new \DateTime(), 2, "DAY", 1, 1, 1);
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $calculationpercent
          */
         $calculationpercent = $penaltyterms->getCalculationPercent();
 
@@ -1075,7 +1075,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePaymentPenaltyTermsTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePaymentPenaltyTermsType $penaltyterms
          */
         $penaltyterms = self::$objectHelper->getTradePaymentPenaltyTermsType(null, null, null, null, null, null);
         $this->assertNull($penaltyterms);
@@ -1084,12 +1084,12 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeTaxTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType $tax
          */
         $tax = self::$objectHelper->getTradeTaxType("category", "type", 100, 19, 19, "reason", "reasoncode", 100, 10, new \DateTime(), "duedatecode");
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $rateapplicablepercent
          */
         $rateapplicablepercent = $tax->getRateApplicablePercent();
 
@@ -1107,7 +1107,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeTaxTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeTaxType $tax
          */
         $tax = self::$objectHelper->getTradeTaxType(null, null, null, null, null, null, null, null, null, null, null);
         $this->assertNull($tax);
@@ -1116,22 +1116,22 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAllowanceChargeTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $allowancecharge
          */
         $allowancecharge = self::$objectHelper->getTradeAllowanceChargeType(10, true, "taxtype", "taxcategory", 19.0, 1, 2.0, 1.0, 1.0, "C62", "reasoncode", "reason");
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $rateapplicablepercent
          */
         $rateapplicablepercent = $allowancecharge->getCategoryTradeTax()->getRateApplicablePercent();
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\PercentType
+         * @var \horstoeko\zugferd\entities\extended\udt\PercentType $calculationpercent
          */
         $calculationpercent = $allowancecharge->getCalculationPercent();
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\NumericType
+         * @var \horstoeko\zugferd\entities\extended\udt\NumericType $sequenceNumeric
          */
         $sequenceNumeric = $allowancecharge->getCalculationPercent();
 
@@ -1151,7 +1151,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAllowanceChargeTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAllowanceChargeType $allowancecharge
          */
         $allowancecharge = self::$objectHelper->getTradeAllowanceChargeType(null, null, null, null, null, null, null, null, null, null, null, null);
         $this->assertNull($allowancecharge);
@@ -1160,7 +1160,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetLogisticsServiceChargeTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
+         * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType $logcharge
          */
         $logcharge = self::$objectHelper->getLogisticsServiceChargeType("description", 10.0, ["taxtype"], ["taxcategpry"], [19]);
         $this->assertEquals("description", $logcharge->getDescription());
@@ -1170,7 +1170,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetLogisticsServiceChargeTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType
+         * @var \horstoeko\zugferd\entities\extended\ram\LogisticsServiceChargeType $logcharge
          */
         $logcharge = self::$objectHelper->getLogisticsServiceChargeType(null, null, null, null, null);
         $this->assertNull($logcharge);
@@ -1179,7 +1179,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType $summation
          */
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationType(119, 100, 100, 1, 2, 99, 99 * 0.19, 0.0, 10);
         $this->assertEqualsWithDelta(119.0, $summation->getGrandTotalAmount()->value(), PHP_FLOAT_EPSILON);
@@ -1198,7 +1198,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementHeaderMonetarySummationTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementHeaderMonetarySummationType $summation
          */
         $summation = self::$objectHelper->getTradeSettlementHeaderMonetarySummationType(null, null, null, null, null, null, null, null, null);
         $this->assertNull($summation);
@@ -1213,7 +1213,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAccountingAccountTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $accaccount
          */
         $accaccount = self::$objectHelper->getTradeAccountingAccountType("accid", "acctype");
         $this->assertEquals("accid", $accaccount->getID());
@@ -1223,7 +1223,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeAccountingAccountTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeAccountingAccountType $accaccount
          */
         $accaccount = self::$objectHelper->getTradeAccountingAccountType(null, null);
         $this->assertNull($accaccount);
@@ -1232,7 +1232,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDocumentLineDocumentTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType
+         * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType $doclinedoctype
          */
         $doclinedoctype = self::$objectHelper->getDocumentLineDocumentType("lineid");
         $this->assertEquals("lineid", $doclinedoctype->getLineID());
@@ -1241,7 +1241,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetDocumentLineDocumentTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType
+         * @var \horstoeko\zugferd\entities\extended\ram\DocumentLineDocumentType $doclinedoctype
          */
         $doclinedoctype = self::$objectHelper->getDocumentLineDocumentType(null);
         $this->assertNull($doclinedoctype);
@@ -1250,7 +1250,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSupplyChainTradeLineItemTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType
+         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType $line
          */
         $line = self::$objectHelper->getSupplyChainTradeLineItemType("lineid", "linestatuscode", "linestatusreasoncode");
         $this->assertNotNull($line);
@@ -1260,7 +1260,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetSupplyChainTradeLineItemTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType
+         * @var \horstoeko\zugferd\entities\extended\ram\SupplyChainTradeLineItemType $line
          */
         $line = self::$objectHelper->getSupplyChainTradeLineItemType(null, null, null);
         $this->assertNull($line);
@@ -1269,7 +1269,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeProductTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType $product
          */
         $product = self::$objectHelper->getTradeProductType("name", "description", "sellerid", "buyerid", "globalidtype", "globalid");
         $this->assertEquals("name", $product->getName());
@@ -1283,7 +1283,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeProductTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeProductType $product
          */
         $product = self::$objectHelper->getTradeProductType(null, null, null, null, null, null);
         $this->assertNull($product);
@@ -1292,7 +1292,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProductCharacteristicType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType $productCharacteristic
          */
         $productCharacteristic = self::$objectHelper->getProductCharacteristicType("typecode", "description", 10.2, "valuemeasureunit", "value");
         $this->assertEquals("description", $productCharacteristic->getDescription());
@@ -1305,7 +1305,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetProductClassificationType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProductClassificationType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductClassificationType $productClassification
          */
         $productClassification = self::$objectHelper->getProductClassificationType("classcode", "classname", "listid", "listversionid");
         $this->assertEquals("classcode", $productClassification->getClassCode()->value());
@@ -1314,7 +1314,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("classname", $productClassification->getClassName());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType
+         * @var \horstoeko\zugferd\entities\extended\ram\ProductCharacteristicType $productCharacteristic
          */
         $productCharacteristic = self::$objectHelper->getProductCharacteristicType();
         $this->assertNull($productCharacteristic);
@@ -1323,7 +1323,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetReferencedProductType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType $referencedProduct
          */
         $referencedProduct = self::$objectHelper->getReferencedProductType("globalid", "globalidtype", "sellerid", "buyerid", "industryid", "name", "description", 10, "C62");
         $this->assertEquals("globalid", $referencedProduct->getGlobalID()[0]->value());
@@ -1337,7 +1337,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("C62", $referencedProduct->getUnitQuantity()->getUnitCode());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType
+         * @var \horstoeko\zugferd\entities\extended\ram\ReferencedProductType $referencedProduct
          */
         $referencedProduct = self::$objectHelper->getReferencedProductType(null, null, null, null, null, null, null, null, null);
         $this->assertNull($referencedProduct);
@@ -1346,7 +1346,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePriceTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType $price
          */
         $price = self::$objectHelper->getTradePriceType(1.0, 2.0, "C62");
         $this->assertEqualsWithDelta(1.0, $price->getChargeAmount()->value(), PHP_FLOAT_EPSILON);
@@ -1357,7 +1357,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradePriceTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradePriceType $price
          */
         $price = self::$objectHelper->getTradePriceType(null, null, null);
         $this->assertNull($price);
@@ -1366,7 +1366,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementLineMonetarySummationTypeAllValues(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $summation
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType(1.0, 6.0, 3.0, 4.0, 5.0, 2.0);
         $this->assertEqualsWithDelta(1.0, $summation->getLineTotalAmount()->value(), PHP_FLOAT_EPSILON);
@@ -1414,7 +1414,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTradeSettlementLineMonetarySummationTypeAllNull(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeSettlementLineMonetarySummationType $summation
          */
         $summation = self::$objectHelper->getTradeSettlementLineMonetarySummationType();
         $this->assertNull($summation);
@@ -1465,7 +1465,7 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetRateType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\RateType
+         * @var \horstoeko\zugferd\entities\extended\udt\RateType $rateType
          */
         $rateType = self::$objectHelper->getRateType(10);
         $this->assertEquals(10, $rateType->value());
@@ -1474,14 +1474,14 @@ class ObjectHelperExtendedTest extends TestCase
     public function testGetTaxApplicableTradeCurrencyExchangeType(): void
     {
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType $currencyExchangeType
          */
         $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType("EUR", "USD", 10.0, DateTime::createFromFormat("Ymd", "20180305"));
         $this->assertNotNull($currencyExchangeType);
         $this->assertEquals("EUR", $currencyExchangeType->getSourceCurrencyCode());
         $this->assertEquals("USD", $currencyExchangeType->getTargetCurrencyCode());
         /**
-         * @var \horstoeko\zugferd\entities\extended\udt\RateType
+         * @var \horstoeko\zugferd\entities\extended\udt\RateType $rate
          */
         $rate = $currencyExchangeType->getConversionRate();
         $this->assertEqualsWithDelta(10.0, $rate->value(), PHP_FLOAT_EPSILON);
@@ -1489,7 +1489,7 @@ class ObjectHelperExtendedTest extends TestCase
         $this->assertEquals("102", $currencyExchangeType->getConversionRateDateTime()->getDateTimeString()->getFormat());
 
         /**
-         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType
+         * @var \horstoeko\zugferd\entities\extended\ram\TradeCurrencyExchangeType $currencyExchangeType
          */
         $currencyExchangeType = self::$objectHelper->getTaxApplicableTradeCurrencyExchangeType(null, null, null, null);
         $this->assertNull($currencyExchangeType);
