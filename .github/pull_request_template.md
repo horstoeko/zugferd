@@ -1,51 +1,65 @@
-## Pull request requirements
+# Pull request requirements
 
-- Open or reference an accepted issue before starting larger changes.
+Please read and confirm the following requirements before submitting this pull request.
+
+Pull requests that do not contain the requested information, contain unchecked mandatory confirmations, or appear to be unreviewed bulk-generated submissions may be closed without further review.
+
 - Submit only one logical change per pull request.
-- Explain why the change is necessary.
-- Add or update meaningful tests.
-- Confirm that you have personally reviewed and tested every submitted change.
-- Unrequested bulk refactorings, formatting changes, generated documentation
-  changes, and repository-wide mechanical edits may be closed without review.
-- The submitter remains fully responsible for generated or automated content.
-- Automated or AI-supported changes are only permitted if the submitter has checked, 
-  tested and comprehensibly justified each change themselves.
+- Explain the problem being solved and why the change is necessary.
+- Reference an existing issue for larger changes, new features, broad refactorings, or other changes that have not previously been discussed with the maintainers.
+- Add or update meaningful tests where applicable.
+- Personally review, understand, and test every submitted change.
+- Do not submit unrelated formatting changes, generated documentation changes, repository-wide mechanical edits, or unsolicited bulk refactorings.
+- You remain fully responsible for all submitted content, including automated or AI-assisted changes.
+- Automated or AI-assisted changes are accepted only when every change has been personally reviewed, understood, tested, and clearly justified by the submitter.
 
 # Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+Describe the problem and the proposed solution.
 
-Fixes # (issue)
+Explain why this change is necessary and provide any relevant context. List any new dependencies introduced by this change.
 
-## Type of change
+Related issue: #
 
-Please delete options that are not relevant.
+# Type of change
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+Select all applicable options.
 
-# How Has This Been Tested?
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Refactoring without functional changes
+- [ ] Performance improvement
+- [ ] Documentation change
+- [ ] Breaking change
+- [ ] Other
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+# Testing
 
-- [ ] Test A
-- [ ] Test B
+Describe exactly how you tested the change.
 
-**Test Configuration**:
+Include the commands you ran, the relevant test cases, and any instructions required to reproduce the results.
 
-* OS:
-* OS Version:
-* PHP Version:
+**Test configuration**
 
-# Checklist:
+- Operating system:
+- Operating system version:
+- PHP version:
+- Relevant dependency versions:
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+# Mandatory checklist
+
+- [ ] This pull request contains one logical change.
+- [ ] I have explained why this change is necessary.
+- [ ] I have personally reviewed every changed file.
+- [ ] I understand the submitted code and can explain how it works.
+- [ ] I have tested the change locally.
+- [ ] Existing tests pass locally.
+- [ ] My changes introduce no new warnings or static-analysis errors.
+- [ ] I have added or updated meaningful tests where applicable.
+- [ ] I have updated the documentation where necessary.
+- [ ] I have not included unrelated formatting, generated, or mechanical changes.
+- [ ] I accept full responsibility for automated or AI-assisted content contained in this pull request.
+
+# Additional information
+
+Add screenshots, logs, benchmark results, migration notes, compatibility considerations, or other information that may help reviewers evaluate the change.
