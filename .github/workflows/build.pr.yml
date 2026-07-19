@@ -1,0 +1,149 @@
+name: Contributor eligibility
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+      - labeled
+      - unlabeled
+    branches:
+      - master
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  eligibility:
+    name: Contributor eligibility
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check contributor history
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const pullRequest = context.payload.pull_request;
+            const login = pullRequest.user.login;
+
+            const trustedAssociations = new Set([
+              'OWNER',
+              'MEMBER',
+              'COLLABORATOR'
+            ]);
+
+            if (trustedAssociations.has(pullRequest.author_association)) {
+              core.notice(
+                `${login} is trusted through association ` +
+                `${pullRequest.author_association}.`
+              );
+
+              return;
+            }
+
+            const labels = pullRequest.labels.map(label => label.name);
+
+            if (labels.includes('trusted-contributor')) {
+              core.notice(`${login} has been manually approved.`);
+
+              return;
+            }
+
+            const { data: user } = await github.rest.users.getByUsername({
+              username: login
+            });
+
+            const accountAgeInDays = Math.floor(
+              (Date.now() - new Date(user.created_at).getTime()) /
+              (1000 * 60 * 60 * 24)
+            );
+
+            const publicRepositories = user.public_repos;
+
+            const searchResult =
+              await github.rest.search.issuesAndPullRequests({
+                q: `is:pr is:merged author:${login}`,
+                per_page: 100
+              });
+
+            let mergedExternalPullRequests = 0;
+            const externalRepositoryOwners = new Set();
+
+            for (const item of searchResult.data.items) {
+              const repositoryUrlParts = item.repository_url.split('/');
+              const repositoryOwner =
+                repositoryUrlParts[repositoryUrlParts.length - 2];
+
+              if (
+                repositoryOwner.toLowerCase() === login.toLowerCase()
+              ) {
+                continue;
+              }
+
+              mergedExternalPullRequests++;
+              externalRepositoryOwners.add(
+                repositoryOwner.toLowerCase()
+              );
+            }
+
+            const requirements = [
+              {
+                name: 'Account age',
+                actual: `${accountAgeInDays} days`,
+                required: 'At least 180 days',
+                passed: accountAgeInDays >= 180
+              },
+              {
+                name: 'Public repositories',
+                actual: String(publicRepositories),
+                required: 'At least 2',
+                passed: publicRepositories >= 2
+              },
+              {
+                name: 'Merged external pull requests',
+                actual: String(mergedExternalPullRequests),
+                required: 'At least 3',
+                passed: mergedExternalPullRequests >= 3
+              },
+              {
+                name: 'Different external repository owners',
+                actual: String(externalRepositoryOwners.size),
+                required: 'At least 2',
+                passed: externalRepositoryOwners.size >= 2
+              }
+            ];
+
+            await core.summary
+              .addHeading('Contributor eligibility')
+              .addTable([
+                [
+                  { data: 'Requirement', header: true },
+                  { data: 'Actual', header: true },
+                  { data: 'Required', header: true },
+                  { data: 'Result', header: true }
+                ],
+                ...requirements.map(requirement => [
+                  requirement.name,
+                  requirement.actual,
+                  requirement.required,
+                  requirement.passed ? 'Passed' : 'Failed'
+                ])
+              ])
+              .write();
+
+            const failedRequirements = requirements.filter(
+              requirement => !requirement.passed
+            );
+
+            if (failedRequirements.length > 0) {
+              core.setFailed(
+                'Contributor does not currently meet the repository ' +
+                'eligibility requirements: ' +
+                failedRequirements
+                  .map(requirement => requirement.name)
+                  .join(', ')
+              );
+            }
