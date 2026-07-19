@@ -15,6 +15,8 @@ on:
     types:
       - opened
       - synchronize
+      - reopened
+      - ready_for_review
     branches:
       - "master"
   workflow_dispatch:
@@ -35,7 +37,10 @@ env:
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
