@@ -265,3 +265,24 @@ jobs:
         with:
           name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
           path: build/logs
+
+  ci-success:
+    name: CI success
+    needs:
+      - build
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Verify CI result
+        env:
+          BUILD_RESULT: ${{ needs.build.result }}
+        run: |
+          echo "Matrix build result: $BUILD_RESULT"
+
+          if [ "$BUILD_RESULT" != "success" ]; then
+            echo "At least one CI matrix job failed or was cancelled."
+            exit 1
+          fi
+
+          echo "All CI matrix jobs passed."
