@@ -1,3 +1,14 @@
+## Pull request requirements
+
+- Open or reference an accepted issue before starting larger changes.
+- Submit only one logical change per pull request.
+- Explain why the change is necessary.
+- Add or update meaningful tests.
+- Confirm that you have personally reviewed and tested every submitted change.
+- Unrequested bulk refactorings, formatting changes, generated documentation
+  changes, and repository-wide mechanical edits may be closed without review.
+- The submitter remains fully responsible for generated or automated content.
+
 # Description
 
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
