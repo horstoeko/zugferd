@@ -50,6 +50,8 @@ jobs:
     steps:
       - name: Checkout Sources
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2

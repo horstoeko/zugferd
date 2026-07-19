@@ -36,6 +36,7 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+          persist-credentials: false
 
       - name: Setup PHP with PECL extension
         uses: shivammathur/setup-php@v2
