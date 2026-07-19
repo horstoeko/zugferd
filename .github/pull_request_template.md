@@ -8,6 +8,8 @@
 - Unrequested bulk refactorings, formatting changes, generated documentation
   changes, and repository-wide mechanical edits may be closed without review.
 - The submitter remains fully responsible for generated or automated content.
+- Automated or AI-supported changes are only permitted if the submitter has checked, 
+  tested and comprehensibly justified each change themselves.
 
 # Description
 
