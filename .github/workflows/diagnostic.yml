@@ -1,0 +1,22 @@
+name: Tag Event Diagnostic
+
+on:
+  push:
+    tags:
+      - 'diagnostic-*'
+  create:
+
+jobs:
+  diagnostic:
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'create' &&
+       github.ref_type == 'tag' &&
+       startsWith(github.ref_name, 'diagnostic-'))
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show event
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref:   ${{ github.ref }}"
