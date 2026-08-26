@@ -1,3 +1,32 @@
+## v1.0.127
+
+``Previous version v1.0.124``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [ad104a0](https://github.com/horstoeko/zugferd/commit/ad104a0) | 2026-08-26 04:39:08 CEST | euphyra-dev | docs: add sourced EN 16931 / Factur-X map under Further information () | [#384](https://github.com/horstoeko/zugferd/issues/384)
+| :new:  | [1c01bc2](https://github.com/horstoeko/zugferd/commit/1c01bc2) | 2026-07-19 10:52:22 CEST | HorstOeko | [ENH] Added "Contributor eligibility" Workflow | 
+| :bug:  | [0312297](https://github.com/horstoeko/zugferd/commit/0312297) | 2026-07-17 10:47:19 CEST | Guillaume Sainthillier | [FIX] initNewDocument must keep the static type | 
+| :new_moon:  | [e382a89](https://github.com/horstoeko/zugferd/commit/e382a89) | 2026-07-17 09:46:02 CEST | Guillaume Sainthillier | use GraphNavigatorInterface for constants | 
+| :new_moon:  | [e569916](https://github.com/horstoeko/zugferd/commit/e569916) | 2026-07-17 09:40:06 CEST | Guillaume Sainthillier | remove always false condition | 
+| :bug:  | [20296ed](https://github.com/horstoeko/zugferd/commit/20296ed) | 2026-07-17 10:46:11 CEST | Guillaume Sainthillier | [FIX] isNullOrEmpty must not report false as null or empty | 
+| :bug:  | [5de5277](https://github.com/horstoeko/zugferd/commit/5de5277) | 2026-07-17 10:47:19 CEST | Guillaume Sainthillier | [FIX] testGetTradeAllowanceChargeTypeAllValues never read the sequence | 
+| :new_moon:  | [872bf02](https://github.com/horstoeko/zugferd/commit/872bf02) | 2026-07-17 10:15:09 CEST | Guillaume Sainthillier | add variable name to @var | 
+| :new_moon:  | [dc6cca2](https://github.com/horstoeko/zugferd/commit/dc6cca2) | 2026-07-17 10:16:07 CEST | Guillaume Sainthillier | simplify date format assert | 
+| :new_moon:  | [831e83e](https://github.com/horstoeko/zugferd/commit/831e83e) | 2026-07-17 09:43:50 CEST | Guillaume Sainthillier | use class FQCN for assert (not)instanceOf | 
+| :new_moon:  | [a4ad823](https://github.com/horstoeko/zugferd/commit/a4ad823) | 2026-07-17 09:42:57 CEST | Guillaume Sainthillier | remove redundant asserts | 
+| :new_moon:  | [4f89e86](https://github.com/horstoeko/zugferd/commit/4f89e86) | 2026-07-17 09:38:36 CEST | Guillaume Sainthillier | add required extensions to composer | 
+| :new:  | [d5afef1](https://github.com/horstoeko/zugferd/commit/d5afef1) | 2026-07-17 08:30:04 CEST | Guillaume Sainthillier | [ENH] Update Factur-X schema to 1.09 / ZUGFeRD 2.5 | 
+| :bug:  | [6be37c8](https://github.com/horstoeko/zugferd/commit/6be37c8) | 2026-07-17 08:16:31 CEST | Guillaume Sainthillier | [FIX] Repair the 11 broken entity paths in ZugferdDocumentReader | 
+| :new:  | [7487663](https://github.com/horstoeko/zugferd/commit/7487663) | 2026-07-17 08:04:59 CEST | Guillaume Sainthillier | [ENH] Verify the reader's entity paths against the generated JMS metadata | 
+| :bug:  | [bb14a2c](https://github.com/horstoeko/zugferd/commit/bb14a2c) | 2026-07-17 07:59:41 CEST | Guillaume Sainthillier | [FIX] KositValidator must not report unvalidated documents as clean | 
+| :new_moon:  | [40763be](https://github.com/horstoeko/zugferd/commit/40763be) | 2026-07-17 09:55:18 CEST | Guillaume Sainthillier | Cover the Base64 validation added with the level 4 fix | 
+| :new_moon:  | [48ec5c5](https://github.com/horstoeko/zugferd/commit/48ec5c5) | 2026-07-17 08:30:17 CEST | Guillaume Sainthillier | Correct the tryCall family's docblocks to admit null instances | 
+| :new_moon:  | [f520029](https://github.com/horstoeko/zugferd/commit/f520029) | 2026-07-17 08:24:40 CEST | Guillaume Sainthillier | Raise PHPStan to level 6 and add the missing type annotations | 
+| :new_moon:  | [00e1453](https://github.com/horstoeko/zugferd/commit/00e1453) | 2026-07-17 08:04:41 CEST | Guillaume Sainthillier | Raise PHPStan to level 4 and fix the errors it surfaced | 
+
+:exclamation: _There are 15 internal commit(s)_
+
 ## v1.0.124
 
 ``Previous version v1.0.123``
