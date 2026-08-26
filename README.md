@@ -81,6 +81,7 @@ With `horstoeko/zugferd` you can read and write xml files containing electronic 
 * [ZUGFeRD](https://de.wikipedia.org/wiki/ZUGFeRD) (German)
 * [XRechnung](https://de.wikipedia.org/wiki/XRechnung) (German)
 * [Factur-X](http://fnfe-mpe.org/factur-x/factur-x_en) (France)
+* [Awesome e-Invoicing](https://github.com/facturxapi/awesome-einvoicing) (EN 16931 / Factur-X / ZUGFeRD)
 
 ## Related projects
 
