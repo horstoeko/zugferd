@@ -77,7 +77,6 @@ _backup*
 /build/coverage-html/
 /build/doc/
 /build/logs/
-/build/pdepend/
 /build/phpdox/
 /build/phpdoc/
 /build/releasenotes.txt

@@ -48,7 +48,6 @@ jobs:
           mkdir build/coverage
           mkdir build/coverage-html
           mkdir build/logs
-          mkdir build/pdepend
           mkdir build/dist
           mkdir build/phpdoc
 
