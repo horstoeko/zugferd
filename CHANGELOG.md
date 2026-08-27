@@ -1,9 +1,10 @@
-## v1.0.127
+## v1.0.130
 
 ``Previous version v1.0.124``
 
 | Type | Hash    | Date    | Author  | Subject  | Issue(s)
 | :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [7c26d0f](https://github.com/horstoeko/zugferd/commit/7c26d0f) | 2026-08-26 17:56:35 CEST | HorstOeko | Added diagnostic.yml | 
 | :new_moon:  | [ad104a0](https://github.com/horstoeko/zugferd/commit/ad104a0) | 2026-08-26 04:39:08 CEST | euphyra-dev | docs: add sourced EN 16931 / Factur-X map under Further information () | [#384](https://github.com/horstoeko/zugferd/issues/384)
 | :new:  | [1c01bc2](https://github.com/horstoeko/zugferd/commit/1c01bc2) | 2026-07-19 10:52:22 CEST | HorstOeko | [ENH] Added "Contributor eligibility" Workflow | 
 | :bug:  | [0312297](https://github.com/horstoeko/zugferd/commit/0312297) | 2026-07-17 10:47:19 CEST | Guillaume Sainthillier | [FIX] initNewDocument must keep the static type | 
@@ -25,7 +26,7 @@
 | :new_moon:  | [f520029](https://github.com/horstoeko/zugferd/commit/f520029) | 2026-07-17 08:24:40 CEST | Guillaume Sainthillier | Raise PHPStan to level 6 and add the missing type annotations | 
 | :new_moon:  | [00e1453](https://github.com/horstoeko/zugferd/commit/00e1453) | 2026-07-17 08:04:41 CEST | Guillaume Sainthillier | Raise PHPStan to level 4 and fix the errors it surfaced | 
 
-:exclamation: _There are 15 internal commit(s)_
+:exclamation: _There are 16 internal commit(s)_
 
 ## v1.0.124
 
