@@ -33,7 +33,7 @@ class QuickDescriptorTaxRegistrationTest extends TestCase
             ->doSetSeller("Lieferant GmbH", "80333", "München", "Lieferantenstraße 20", "DE")
             ->doAddSellerTaxRegistration("VA", "DE111111111")
             ->doAddBuyerTaxRegistration("VA", "DE999999999")
-            ->doAddTradeLineItem(1, "PositionText", 10.0, 1.0, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
+            ->doAddTradeLineItem("1", "PositionText", 10.0, 1.0, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
 
         $domDocument = new DOMDocument();
         $domDocument->loadXML($document->getContent());
