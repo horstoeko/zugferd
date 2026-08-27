@@ -21,6 +21,7 @@ use horstoeko\zugferd\ZugferdPdfValidator;
 use horstoeko\zugferd\ZugferdSettings;
 use horstoeko\zugferd\ZugferdXsdValidator;
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\Printer;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
@@ -144,6 +145,7 @@ class ExtractClass
             $parameters = [];
             $returnDetails = [
                 'type' => 'void',
+                'signatureType' => 'void',
                 'description' => ''
             ];
             $methodDetails = [
@@ -189,6 +191,11 @@ class ExtractClass
                     $returnDetails['description'] = (string) $returnTag[0]->getDescription();
                 }
             }
+
+            $nativeReturnType = $method->getReturnType();
+            $returnDetails['signatureType'] = $nativeReturnType === null
+                ? $returnDetails['type']
+                : (string) $nativeReturnType;
 
             // Get method parameters and match them with DocBlock descriptions
             foreach ($method->getParameters() as $parameter) {
@@ -357,7 +364,7 @@ class MarkDownGenerator
             $phpMethod->setStatic($methodData["methodDetails"]["static"] === true);
             $phpMethod->setAbstract($methodData["methodDetails"]["abstract"] === true);
             $phpMethod->setFinal($methodData["methodDetails"]["final"] === true);
-            $phpMethod->setReturnType($this->fixPhpType($methodData["return"]["type"]));
+            $this->setSafeReturnType($phpMethod, $methodData["return"]["signatureType"]);
             //$phpMethod->setBody(null);
 
             foreach ($methodData["parameters"] as $parameter) {
@@ -624,19 +631,65 @@ class MarkDownGenerator
      */
     private function fixPhpType(string $string): string
     {
-        if (stripos($string, '[]') !== false) {
-            $string = 'array';
-        }
+        $string = trim($string);
 
-        if (stripos($string, 'array<') === 0) {
-            $string = 'array';
-        }
+        do {
+            $previousString = $string;
+            $string = preg_replace(
+                [
+                    '/\b(?:non-empty-)?(?:array|list)(?:<[^<>]*>|\{[^{}]*\})/i',
+                    '/\bobject\{[^{}]*\}/i',
+                    '/\bclass-string(?:<[^<>]*>)?/i',
+                    '/[^\s|&(),<>{}]+\[\]/',
+                ],
+                ['array', 'object', 'string', 'array'],
+                $string
+            ) ?? $string;
+        } while ($string !== $previousString);
+
+        $string = preg_replace(
+            [
+                '/\b(?:non-empty-)?list\b/i',
+                '/\bnon-empty-array\b/i',
+                '/\b(?:non-empty|non-falsy|numeric|literal|lowercase|uppercase)-string\b/i',
+                '/\b(?:positive|negative|non-negative|non-positive)-int\b/i',
+                '/\bint<[^<>]*>/i',
+            ],
+            ['array', 'array', 'string', 'int', 'int'],
+            $string
+        ) ?? $string;
 
         if ($string === '$this') {
             return 'static';
         }
 
         return $string;
+    }
+
+    /**
+     * Set a native return type without failing on unsupported PHPDoc types
+     *
+     * @param Method $method
+     * @param string $type
+     * @return void
+     */
+    private function setSafeReturnType(Method $method, string $type): void
+    {
+        try {
+            $method->setReturnType($this->fixPhpType($type));
+        } catch (\Nette\InvalidArgumentException $exception) {
+            fwrite(
+                STDERR,
+                sprintf(
+                    'Warning: Unsupported return type "%s" in %s::%s(); omitting it from the generated signature.%s',
+                    $type,
+                    $this->extractor->getClassName(),
+                    $method->getName(),
+                    PHP_EOL
+                )
+            );
+            $method->setReturnType(null);
+        }
     }
 
     /**
