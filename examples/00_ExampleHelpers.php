@@ -6,7 +6,7 @@ use horstoeko\zugferd\ZugferdKositValidator;
 /**
  * Enable/Disable example remote validation against the KOSiT-Validator.
  *
- * @return boolean
+ * @return bool
  */
 function validationEnabled(): bool
 {
@@ -20,13 +20,13 @@ function validationEnabled(): bool
  */
 function getKositValidatorRemoteHost(): string
 {
-    return "127.0.0.1";
+    return '127.0.0.1';
 }
 
 /**
  * Get the remote port of the machine where the KOSiT validator is running in daemon mode.
  *
- * @return integer
+ * @return int
  */
 function getKositValidatorRemotePort(): int
 {
@@ -62,15 +62,15 @@ function validateUsingKositValidator(ZugferdDocument $zugferdDocument): int
 /**
  * Outputs a line to CLI. It uses sprintf.
  *
- * @param string $message
- * @param mixed ...$args
+ * @param  string $message
+ * @param  mixed  ...$args
  * @return void
  */
 function writeLnToCli(string $message, ...$args): void
 {
     $output = sprintf($message, ...$args);
 
-    if (trim($output) !== '' && trim($output) !== '0') {
+    if ('' !== trim($output) && '0' !== trim($output)) {
         echo $output . PHP_EOL;
     }
 }
@@ -88,8 +88,8 @@ function writeNewLineToCli(): void
 /**
  * Implode an associative array to form key=value
  *
- * @param string $separator
- * @param array $array
+ * @param  string $separator
+ * @param  array  $array
  * @return string
  */
 function implodeAssocArray(string $separator, array $array): string
@@ -97,8 +97,8 @@ function implodeAssocArray(string $separator, array $array): string
     return
         implode(
             $separator,
-            array_map(function ($key, $value) {
-                return sprintf("%s=%s", $key, $value);
+            array_map(static function ($key, $value) {
+                return sprintf('%s=%s', $key, $value);
             }, array_keys($array), $array)
         );
 }

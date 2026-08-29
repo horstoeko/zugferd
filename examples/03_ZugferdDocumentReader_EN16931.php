@@ -2,9 +2,9 @@
 
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/../vendor/autoload.php';
 
-require __DIR__ . "/00_ExampleHelpers.php";
+require __DIR__ . '/00_ExampleHelpers.php';
 
 // First we try to load the invoice document from a XML file
 // This will recognize the correctnes and the profile
@@ -39,16 +39,16 @@ $documentReader->getDocumentSupplyChainEvent(
 );
 
 writeNewLineToCli();
-writeLnToCli("Document Information");
-writeLnToCli("--------------------------------------------------------------------------------");
-writeLnToCli(" - Profile ............ %s", $documentReader->getProfileDefinitionParameter("name"));
-writeLnToCli(" - Profile Context .... %s", $documentReader->getProfileDefinitionParameter("contextparameter"));
-writeLnToCli(" - Document No ........ %s", $documentNo);
-writeLnToCli(" - Document Type ...... %s", $documentTypeCode);
-writeLnToCli(" - Document Date ...... %s", $documentDate->format("Y-m-d"));
-writeLnToCli(" - Invoice currency: .. %s", $documentCurrency);
-writeLnToCli(" - Tax currency ....... %s", $documentTaxCurrency);
-writeLnToCli(" - Delivery date ...... %s", $documentDeliveryDate->format("Y-m-d"));
+writeLnToCli('Document Information');
+writeLnToCli('--------------------------------------------------------------------------------');
+writeLnToCli(' - Profile ............ %s', $documentReader->getProfileDefinitionParameter('name'));
+writeLnToCli(' - Profile Context .... %s', $documentReader->getProfileDefinitionParameter('contextparameter'));
+writeLnToCli(' - Document No ........ %s', $documentNo);
+writeLnToCli(' - Document Type ...... %s', $documentTypeCode);
+writeLnToCli(' - Document Date ...... %s', $documentDate->format('Y-m-d'));
+writeLnToCli(' - Invoice currency: .. %s', $documentCurrency);
+writeLnToCli(' - Tax currency ....... %s', $documentTaxCurrency);
+writeLnToCli(' - Delivery date ...... %s', $documentDeliveryDate->format('Y-m-d'));
 
 // Now let's get information about the seller. In addition to the methods listed here,
 // there are a few more available, but these are rarely required
@@ -83,8 +83,8 @@ $documentReader->getDocumentSellerCommunication(
 );
 
 writeNewLineToCli();
-writeLnToCli("Seller Information");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('Seller Information');
+writeLnToCli('--------------------------------------------------------------------------------');
 writeLnToCli('%s', $sellerName);
 writeLnToCli('%s', $sellerAddressLineOne);
 writeLnToCli('%s', $sellerAddressLineTwo);
@@ -93,17 +93,17 @@ writeLnToCli('%s %s %s', $sellerAddressCountry, $sellerAddressPostCode, $sellerA
 writeLnToCli('%s %s', $sellerCommunicationUriScheme, $sellerCommunicationUri);
 writeLnToCli('%s', implode(PHP_EOL, $sellerAddressSubDivisions));
 writeNewLineToCli();
-writeLnToCli('%s', implodeAssocArray(", ", $sellerTaxRegistations));
+writeLnToCli('%s', implodeAssocArray(', ', $sellerTaxRegistations));
 writeNewLineToCli();
-writeLnToCli('Seller identifications: %s', implode(",", $sellerIds));
-writeLnToCli('Seller global identifications: %s', implodeAssocArray(",", $sellerGlobalIds));
+writeLnToCli('Seller identifications: %s', implode(',', $sellerIds));
+writeLnToCli('Seller global identifications: %s', implodeAssocArray(',', $sellerGlobalIds));
 
 // We now want to read out the contact information of our seller. Theoretically, there can be more than one contact,
 // which is why we have to iterate over the transmitted contacts:
 
 writeNewLineToCli();
-writeLnToCli("  Seller contact Information");
-writeLnToCli("  ------------------------------------------------------------------------------");
+writeLnToCli('  Seller contact Information');
+writeLnToCli('  ------------------------------------------------------------------------------');
 
 if ($documentReader->firstDocumentSellerContact()) {
     do {
@@ -158,8 +158,8 @@ $documentReader->getDocumentbuyerCommunication(
 );
 
 writeNewLineToCli();
-writeLnToCli("Buyer Information");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('Buyer Information');
+writeLnToCli('--------------------------------------------------------------------------------');
 writeLnToCli('%s', $buyerName);
 writeLnToCli('%s', $buyerAddressLineOne);
 writeLnToCli('%s', $buyerAddressLineTwo);
@@ -168,17 +168,17 @@ writeLnToCli('%s %s %s', $buyerAddressCountry, $buyerAddressPostCode, $buyerAddr
 writeLnToCli('%s', implode(PHP_EOL, $buyerAddressSubDivisions));
 writeLnToCli('%s %s', $buyerCommunicationUriScheme, $buyerCommunicationUri);
 writeNewLineToCli();
-writeLnToCli('%s', implodeAssocArray(", ", $buyerTaxRegistations));
+writeLnToCli('%s', implodeAssocArray(', ', $buyerTaxRegistations));
 writeNewLineToCli();
-writeLnToCli('Buyer identifications: %s', implode(",", $buyerIds));
-writeLnToCli('Buyer global identifications: %s', implodeAssocArray(",", $buyerGlobalIds));
+writeLnToCli('Buyer identifications: %s', implode(',', $buyerIds));
+writeLnToCli('Buyer global identifications: %s', implodeAssocArray(',', $buyerGlobalIds));
 
 // We now want to read out the contact information of our buyer. Theoretically, there can be more than one contact,
 // which is why we have to iterate over the transmitted contacts:
 
 writeNewLineToCli();
-writeLnToCli("  Buyer contact Information");
-writeLnToCli("  ------------------------------------------------------------------------------");
+writeLnToCli('  Buyer contact Information');
+writeLnToCli('  ------------------------------------------------------------------------------');
 
 if ($documentReader->firstDocumentBuyerContact()) {
     do {
@@ -227,8 +227,8 @@ $documentReader->getDocumentShipToAddress(
 );
 
 writeNewLineToCli();
-writeLnToCli("Shipping location Information");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('Shipping location Information');
+writeLnToCli('--------------------------------------------------------------------------------');
 writeLnToCli('%s', $shipToName);
 writeLnToCli('%s', $shipToAddressLineOne);
 writeLnToCli('%s', $shipToAddressLineTwo);
@@ -236,17 +236,17 @@ writeLnToCli('%s', $shipToAddressLineThree);
 writeLnToCli('%s %s %s', $shipToAddressCountry, $shipToAddressPostCode, $shipToAddressCity);
 writeLnToCli('%s', implode(PHP_EOL, $shipToAddressSubDivisions));
 writeNewLineToCli();
-writeLnToCli('%s', implodeAssocArray(", ", $shipToTaxRegistations));
+writeLnToCli('%s', implodeAssocArray(', ', $shipToTaxRegistations));
 writeNewLineToCli();
-writeLnToCli('Shipping location identifications: %s', implode(",", $shipToIds));
-writeLnToCli('Shipping location global identifications: %s', implodeAssocArray(",", $shipToGlobalIds));
+writeLnToCli('Shipping location identifications: %s', implode(',', $shipToIds));
+writeLnToCli('Shipping location global identifications: %s', implodeAssocArray(',', $shipToGlobalIds));
 
 // We now want to read out the contact information of our shipping location. Theoretically, there can be more than one contact,
 // which is why we have to iterate over the transmitted contacts:
 
 writeNewLineToCli();
-writeLnToCli("  Shipping location contact Information");
-writeLnToCli("  ------------------------------------------------------------------------------");
+writeLnToCli('  Shipping location contact Information');
+writeLnToCli('  ------------------------------------------------------------------------------');
 
 if ($documentReader->firstDocumentShipToContact()) {
     do {
@@ -272,8 +272,8 @@ if ($documentReader->firstDocumentShipToContact()) {
 // here are the most frequently used. We have to use a loop to iterate over the position, similar how we retrieved the party contacts.
 
 writeNewLineToCli();
-writeLnToCli("Document positions");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('Document positions');
+writeLnToCli('--------------------------------------------------------------------------------');
 
 if ($documentReader->firstDocumentPosition()) {
     do {
@@ -324,7 +324,7 @@ if ($documentReader->firstDocumentPosition()) {
         // Write the position information to CLI
 
         writeLnToCli('  Position %s', $positionLineId);
-        writeLnToCli("  ------------------------------------------------------------------------------");
+        writeLnToCli('  ------------------------------------------------------------------------------');
         writeLnToCli('  %s', $positionProductName);
         writeLnToCli('  %s', $positionProductDescription);
         writeLnToCli('  Unit Price        %s %s', number_format($positionNetUnitPrice, 2), $documentCurrency);
@@ -362,12 +362,12 @@ if ($documentReader->firstDocumentPosition()) {
 // Get the VAT statement
 
 writeNewLineToCli();
-writeLnToCli("VAT Statement");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('VAT Statement');
+writeLnToCli('--------------------------------------------------------------------------------');
 
 if ($documentReader->firstDocumentTax()) {
-    writeLnToCli("  Tax Category         Tax Type             Tax percent");
-    writeLnToCli("  ------------------------------------------------------------------------------");
+    writeLnToCli('  Tax Category         Tax Type             Tax percent');
+    writeLnToCli('  ------------------------------------------------------------------------------');
     do {
         $documentReader->getDocumentTax(
             $documentTaxcategoryCode,
@@ -385,9 +385,9 @@ if ($documentReader->firstDocumentTax()) {
 
         writeLnToCli(
             '  %s %s %s',
-            str_pad($documentTaxcategoryCode, 20, " ", STR_PAD_RIGHT),
-            str_pad($documentTaxTypeCode, 20, " ", STR_PAD_RIGHT),
-            str_pad(number_format($documentTaxRateApplicablePercent, 2), 10, " ", STR_PAD_RIGHT),
+            str_pad($documentTaxcategoryCode, 20, ' ', STR_PAD_RIGHT),
+            str_pad($documentTaxTypeCode, 20, ' ', STR_PAD_RIGHT),
+            str_pad(number_format($documentTaxRateApplicablePercent, 2), 10, ' ', STR_PAD_RIGHT),
         );
     } while ($documentReader->nextDocumentTax());
 } else {
@@ -397,8 +397,8 @@ if ($documentReader->firstDocumentTax()) {
 // Get the document totals (summation)
 
 writeNewLineToCli();
-writeLnToCli("Document totals");
-writeLnToCli("--------------------------------------------------------------------------------");
+writeLnToCli('Document totals');
+writeLnToCli('--------------------------------------------------------------------------------');
 
 $documentReader->getDocumentSummation(
     $documentGrandTotalAmount,
@@ -412,9 +412,9 @@ $documentReader->getDocumentSummation(
     $documentTotalPrepaidAmount
 );
 
-writeLnToCli('Total Net Amount          %s %s', str_pad(number_format($documentLineTotalAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
-writeLnToCli('Total Tax Basis Amount    %s %s', str_pad(number_format($documentTaxBasisTotalAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
-writeLnToCli('Total Tax Amount          %s %s', str_pad(number_format($documentTaxTotalAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
-writeLnToCli('Total Gross Amount        %s %s', str_pad(number_format($documentGrandTotalAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
-writeLnToCli('Amount already paid       %s %s', str_pad(number_format($documentTotalPrepaidAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
-writeLnToCli('Amount to pay             %s %s', str_pad(number_format($documentDuePayableAmount, 2), 10, " ", STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Total Net Amount          %s %s', str_pad(number_format($documentLineTotalAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Total Tax Basis Amount    %s %s', str_pad(number_format($documentTaxBasisTotalAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Total Tax Amount          %s %s', str_pad(number_format($documentTaxTotalAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Total Gross Amount        %s %s', str_pad(number_format($documentGrandTotalAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Amount already paid       %s %s', str_pad(number_format($documentTotalPrepaidAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);
+writeLnToCli('Amount to pay             %s %s', str_pad(number_format($documentDuePayableAmount, 2), 10, ' ', STR_PAD_LEFT), $documentCurrency);

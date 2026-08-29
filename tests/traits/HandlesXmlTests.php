@@ -1,30 +1,36 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\traits;
+
+use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use SimpleXMLElement;
 
 trait HandlesXmlTests
 {
     /**
-     * @var \horstoeko\zugferd\ZugferdDocumentBuilder|\horstoeko\zugferd\quick\ZugferdQuickDescriptor
+     * @var ZugferdDocumentBuilder|ZugferdQuickDescriptor
      */
     protected static $document;
 
     /**
      * Cache for latest rendered XML
      *
-     * @var \SimpleXMLElement
+     * @var SimpleXMLElement
      */
     protected $latestXml;
 
     /**
      * Dont render xml content
      *
-     * @var boolean
+     * @var bool
      */
     protected $renderingOfXmlDisabled = false;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {
@@ -41,15 +47,20 @@ trait HandlesXmlTests
         $this->assertTrue(true);
     }
 
+    public function debugWriteFile(): void
+    {
+        self::$document->writeFile(getcwd() . '/myfile_dbg.xml');
+    }
+
     /**
      * Get XML-Object from documents content
      *
-     * @return \SimpleXMLElement
+     * @return SimpleXMLElement
      */
-    protected function getXml(): \SimpleXMLElement
+    protected function getXml(): SimpleXMLElement
     {
-        if ($this->renderingOfXmlDisabled === false) {
-            $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
+        if (false === $this->renderingOfXmlDisabled) {
+            $this->latestXml = new SimpleXMLElement(self::$document->getContent());
         }
 
         return $this->latestXml;
@@ -62,7 +73,7 @@ trait HandlesXmlTests
      */
     protected function disableRenderXmlContent()
     {
-        $this->latestXml = new \SimpleXMLElement((self::$document)->getContent());
+        $this->latestXml = new SimpleXMLElement(self::$document->getContent());
         $this->renderingOfXmlDisabled = true;
     }
 
@@ -94,9 +105,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param  string  $xpath
-     * @param  integer $index
-     * @param  string  $expected
+     * @param  string $xpath
+     * @param  int    $index
+     * @param  string $expected
      * @return void
      */
     protected function assertXPathValueWithIndex(string $xpath, int $index, string $expected): void
@@ -110,9 +121,9 @@ trait HandlesXmlTests
     /**
      * Assert a xpath with $expected value in a multiple element resultset
      *
-     * @param  string  $xpath
-     * @param  integer $index
-     * @param  string  $expected
+     * @param  string $xpath
+     * @param  int    $index
+     * @param  string $expected
      * @return void
      */
     protected function assertXPathValueStartsWithIndex(string $xpath, int $index, string $expected): void
@@ -212,8 +223,8 @@ trait HandlesXmlTests
     /**
      * Test that an xml element does not exist at index
      *
-     * @param  string  $xpath
-     * @param  integer $index
+     * @param  string $xpath
+     * @param  int    $index
      * @return void
      */
     protected function assertXPathNotExistsWithIndex(string $xpath, int $index)
@@ -221,10 +232,5 @@ trait HandlesXmlTests
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayNotHasKey($index, $xmlvalue);
-    }
-
-    public function debugWriteFile(): void
-    {
-        (self::$document)->writeFile(getcwd() . "/myfile_dbg.xml");
     }
 }

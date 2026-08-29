@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -22,27 +24,12 @@ use JMS\Serializer\Exception\RuntimeException;
  * Class representing a converter to change a document's profile to another profile
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdDocumentProfileConverter extends ZugferdDocument
 {
-    /**
-     * The source
-     *
-     * @var string
-     */
-    protected $convertFromContent = "";
-
-    /**
-     * The new profile ID
-     *
-     * @var int
-     */
-    protected $convertToProfileId = -1;
-
     /**
      * Path to the profile id
      */
@@ -59,12 +46,27 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     protected const PATH_3 = 'getExchangedDocumentContext.getBusinessProcessSpecifiedDocumentContextParameter.setID';
 
     /**
+     * The source
+     *
+     * @var string
+     */
+    protected $convertFromContent = '';
+
+    /**
+     * The new profile ID
+     *
+     * @var int
+     */
+    protected $convertToProfileId = -1;
+
+    /**
      * Convert from file to file
      *
      * @param  string $fromFilename
      * @param  string $toFile
      * @param  int    $newProfileId
      * @return void
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdFileNotFoundException
@@ -85,6 +87,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @param  string $fromFilename
      * @param  int    $newProfileId
      * @return string
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdFileNotFoundException
@@ -106,6 +109,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @param  string $toFile
      * @param  int    $newProfileId
      * @return void
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdUnknownProfileException
@@ -124,6 +128,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * @param  string $fromContent
      * @param  int    $newProfileId
      * @return string
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdUnknownProfileException
@@ -139,15 +144,20 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Create an instance by filename
      *
-     * @param  string $fromFilename
-     * @param  int    $newProfileId
+     * @param  string                          $fromFilename
+     * @param  int                             $newProfileId
      * @return ZugferdDocumentProfileConverter
+     *
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
-     * @throws ZugferdUnknownXmlContentException
      * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileIdException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws ZugferdUnknownXmlContentException
      */
-    protected static function convertFromFile(string $fromFilename, int $newProfileId): ZugferdDocumentProfileConverter
+    protected static function convertFromFile(string $fromFilename, int $newProfileId): self
     {
         if (!file_exists($fromFilename)) {
             throw new ZugferdFileNotFoundException($fromFilename);
@@ -155,7 +165,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
 
         $fromContent = file_get_contents($fromFilename);
 
-        if ($fromContent === false) {
+        if (false === $fromContent) {
             throw new ZugferdFileNotReadableException($fromFilename);
         }
 
@@ -165,13 +175,18 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Create an instance by cpntent
      *
-     * @param  string $fromContent
-     * @param  int    $newProfileId
+     * @param  string                          $fromContent
+     * @param  int                             $newProfileId
      * @return ZugferdDocumentProfileConverter
-     * @throws ZugferdUnknownXmlContentException
+     *
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
      * @throws ZugferdUnknownProfileException
+     * @throws ZugferdUnknownProfileIdException
+     * @throws ZugferdUnknownProfileParameterException
+     * @throws ZugferdUnknownXmlContentException
      */
-    protected static function convertFromContent(string $fromContent, int $newProfileId): ZugferdDocumentProfileConverter
+    protected static function convertFromContent(string $fromContent, int $newProfileId): self
     {
         $fromProfileId = ZugferdProfileResolver::resolveProfileId($fromContent);
 
@@ -185,10 +200,10 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Set the destination (the new) profile id
      *
-     * @param  int $toProfileId
+     * @param  int                             $toProfileId
      * @return ZugferdDocumentProfileConverter
      */
-    protected function setConvertToProfileId(int $toProfileId): ZugferdDocumentProfileConverter
+    protected function setConvertToProfileId(int $toProfileId): self
     {
         $this->convertToProfileId = $toProfileId;
 
@@ -198,10 +213,10 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Set the source-content
      *
-     * @param  string $fromContent
+     * @param  string                          $fromContent
      * @return ZugferdDocumentProfileConverter
      */
-    protected function setConvertFromContent(string $fromContent): ZugferdDocumentProfileConverter
+    protected function setConvertFromContent(string $fromContent): self
     {
         $this->convertFromContent = $fromContent;
 
@@ -211,14 +226,15 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
     /**
      * Convert and save to file
      *
-     * @param  string $toFile
+     * @param  string                          $toFile
      * @return ZugferdDocumentProfileConverter
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdUnknownProfileIdException
      * @throws ZugferdUnknownProfileParameterException
      */
-    protected function convertToFile(string $toFile): ZugferdDocumentProfileConverter
+    protected function convertToFile(string $toFile): self
     {
         file_put_contents($toFile, $this->performConversion()->convertToString());
 
@@ -229,6 +245,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * Convert and get xml content as string
      *
      * @return string
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdUnknownProfileIdException
@@ -243,12 +260,13 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * Internal conversion method
      *
      * @return ZugferdDocumentProfileConverter
+     *
      * @throws InvalidArgumentException
      * @throws RuntimeException
      * @throws ZugferdUnknownProfileIdException
      * @throws ZugferdUnknownProfileParameterException
      */
-    protected function performConversion(): ZugferdDocumentProfileConverter
+    protected function performConversion(): self
     {
         $this->initProfile($this->convertToProfileId);
         $this->initObjectHelper();
@@ -263,6 +281,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      * Update profile parameters in the internal invoice object
      *
      * @return void
+     *
      * @throws ZugferdUnknownProfileIdException
      */
     protected function updateProfileInInvoiceObject()
@@ -275,7 +294,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
             $this->getObjectHelper()->getIdType($profileDef['contextparameter'])
         );
 
-        if ($profileDef['businessprocess']) {
+        if (null !== $profileDef['businessprocess'] && '' !== $profileDef['businessprocess']) {
             $this->getObjectHelper()->tryCallByPath(
                 $this->getInvoiceObject(),
                 static::PATH_2,

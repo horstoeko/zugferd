@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdDocumentValidator;
 
-class ValidatorInvalidTest extends TestCase
+final class ValidatorInvalidTest extends TestCase
 {
     /**
      * The document instance
@@ -17,7 +19,7 @@ class ValidatorInvalidTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . "/../assets/xml_en16931_5.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../assets/xml_en16931_5.xml');
     }
 
     public function testValidateDocument(): void
@@ -26,7 +28,7 @@ class ValidatorInvalidTest extends TestCase
         $validationResult = $validator->validateDocument();
         $this->assertCount(1, $validationResult);
         $this->assertArrayHasKey(0, $validationResult);
-        $this->assertEquals("This value should not be null.", $validationResult[0]->getMessage());
-        $this->assertEquals("supplyChainTradeTransaction.applicableHeaderTradeAgreement.sellerTradeParty", $validationResult[0]->getPropertyPath());
+        $this->assertEquals('This value should not be null.', $validationResult[0]->getMessage());
+        $this->assertEquals('supplyChainTradeTransaction.applicableHeaderTradeAgreement.sellerTradeParty', $validationResult[0]->getPropertyPath());
     }
 }

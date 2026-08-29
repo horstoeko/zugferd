@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases\issues;
 
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\tests\traits\HandlesXmlTests;
-use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdProfiles;
 
-class Issue18Test extends TestCase
+final class Issue18Test extends TestCase
 {
     use HandlesXmlTests;
 
@@ -18,6 +20,7 @@ class Issue18Test extends TestCase
 
     /**
      * @return void
+     *
      * @issue  #18
      */
     public function testBusinessProcessSpecifiedDocumentContextParameter(): void

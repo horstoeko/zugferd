@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -11,30 +13,28 @@ namespace horstoeko\zugferd;
 
 use DateTime;
 use DOMDocument;
-use DOMXpath;
-use Throwable;
+use DOMXPath;
+use Exception;
 use horstoeko\mimedb\MimeDb;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\StringUtils;
 use horstoeko\zugferd\codelists\ZugferdInvoiceType;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\exception\ZugferdFileNotReadableException;
-use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
 use horstoeko\zugferd\exception\ZugferdInvalidArgumentException;
-use horstoeko\zugferd\ZugferdPackageVersion;
-use horstoeko\zugferd\ZugferdPdfWriter;
-use horstoeko\zugferd\ZugferdSettings;
+use horstoeko\zugferd\exception\ZugferdUnknownMimetype;
+use setasign\Fpdi\PdfParser\PdfParserException;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
+use setasign\Fpdi\PdfReader\PdfReaderException;
 
 /**
  * Class representing the base facillity adding XML data
  * to an existing PDF with conversion to PDF/A
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 abstract class ZugferdDocumentPdfBuilderAbstract
 {
@@ -42,32 +42,32 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Constants for Relationship types
      * 'Data', 'Alternative', 'Source', 'Supplement', 'Unspecified'
      */
-    public const AF_RELATIONSHIP_DATA = "Data";
+    public const AF_RELATIONSHIP_DATA = 'Data';
 
-    public const AF_RELATIONSHIP_ALTERNATIVE = "Alternative";
+    public const AF_RELATIONSHIP_ALTERNATIVE = 'Alternative';
 
-    public const AF_RELATIONSHIP_SOURCE = "Source";
+    public const AF_RELATIONSHIP_SOURCE = 'Source';
 
-    public const AF_RELATIONSHIP_SUPPLEMENT = "Supplement";
+    public const AF_RELATIONSHIP_SUPPLEMENT = 'Supplement';
 
-    public const AF_RELATIONSHIP_UNSPECIFIED = "Unspecified";
+    public const AF_RELATIONSHIP_UNSPECIFIED = 'Unspecified';
 
     /**
      * Constants for PDF Conformance Levels
      * 'Accessible', 'Basic', 'Unicode
      */
-    public const PDFA_CONFORMANCE_LEVEL_ACCESSIBLE = "A";
+    public const PDFA_CONFORMANCE_LEVEL_ACCESSIBLE = 'A';
 
-    public const PDFA_CONFORMANCE_LEVEL_BASIC = "B";
+    public const PDFA_CONFORMANCE_LEVEL_BASIC = 'B';
 
-    public const PDFA_CONFORMANCE_LEVEL_UNICODE = "U";
+    public const PDFA_CONFORMANCE_LEVEL_UNICODE = 'U';
 
     /**
      * Additional creator tool (e.g. the ERP software that called the PHP library)
      *
      * @var string
      */
-    private $additionalCreatorTool = "";
+    private $additionalCreatorTool = '';
 
     /**
      * The relationship type to use for the XML attachment. Detault is Data
@@ -88,7 +88,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @var string
      */
-    private $pdfData = "";
+    private $pdfData = '';
 
     /**
      * List of files which should be additionally attached to PDF
@@ -102,40 +102,40 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @var string
      */
-    private $authorTemplate = "";
+    private $authorTemplate = '';
 
     /**
      * User-defined template for the keyword-metainformation
      *
      * @var string
      */
-    private $keywordTemplate = "";
+    private $keywordTemplate = '';
 
     /**
      * User-defined template for the title-metainformation
      *
      * @var string
      */
-    private $titleTemplate = "";
+    private $titleTemplate = '';
 
     /**
      * User-defined template for the subject-metainformation
      *
      * @var string
      */
-    private $subjectTemplate = "";
+    private $subjectTemplate = '';
 
     /**
      * User-defined callback function for all metainformation
      *
-     * @var callable|null
+     * @var null|callable
      */
     private $metaInformationCallback;
 
     /**
      * Internal flag which indicate, that attachment pane should be opened
      *
-     * @var boolean
+     * @var bool
      */
     private $attachmentPaneVisibility = true;
 
@@ -144,14 +144,14 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      *
      * @var string
      */
-    private $pdfAConformanceLevel = "B";
+    private $pdfAConformanceLevel = 'B';
 
     /**
      * Constructor
      *
      * @param string $pdfData
-     * The full filename or a string containing the binary pdf data. This
-     * is the original PDF (e.g. created by a ERP system)
+     *                        The full filename or a string containing the binary pdf data. This
+     *                        is the original PDF (e.g. created by a ERP system)
      */
     public function __construct(string $pdfData)
     {
@@ -163,6 +163,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Generates the final document
      *
      * @return static
+     *
+     * @throws Exception
+     * @throws PdfParserException
+     * @throws PdfReaderException
      */
     public function generateDocument()
     {
@@ -227,7 +231,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     {
         $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', ZugferdPackageVersion::getInstalledVersion());
 
-        if ($this->additionalCreatorTool) {
+        if ('' !== $this->additionalCreatorTool) {
             return $this->additionalCreatorTool . ' / ' . $toolName;
         }
 
@@ -243,7 +247,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipType(string $relationshipType)
     {
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE])) {
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE], true)) {
             $relationshipType = static::AF_RELATIONSHIP_DATA;
         }
 
@@ -301,7 +305,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setPdfAConformanceLevel(string $pdfAConformanceLevel)
     {
-        if (!in_array($pdfAConformanceLevel, [self::PDFA_CONFORMANCE_LEVEL_ACCESSIBLE, self::PDFA_CONFORMANCE_LEVEL_BASIC, self::PDFA_CONFORMANCE_LEVEL_UNICODE])) {
+        if (!in_array($pdfAConformanceLevel, [self::PDFA_CONFORMANCE_LEVEL_ACCESSIBLE, self::PDFA_CONFORMANCE_LEVEL_BASIC, self::PDFA_CONFORMANCE_LEVEL_UNICODE], true)) {
             $pdfAConformanceLevel = self::PDFA_CONFORMANCE_LEVEL_BASIC;
         }
 
@@ -358,17 +362,18 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
-     * @throws ZugferdInvalidArgumentException
+     *
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
+     * @throws ZugferdInvalidArgumentException
      * @throws ZugferdUnknownMimetype
      */
-    public function attachAdditionalFileByRealFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
+    public function attachAdditionalFileByRealFile(string $fullFilename, string $displayName = '', string $relationshipType = '')
     {
         // Checks that the file really exists
 
-        if ($fullFilename === '') {
-            throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
+        if ('' === $fullFilename) {
+            throw new ZugferdInvalidArgumentException('You must specify a filename for the content to attach');
         }
 
         if (!file_exists($fullFilename)) {
@@ -379,7 +384,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         $content = file_get_contents($fullFilename);
 
-        if ($content === false) {
+        if (false === $content) {
             throw new ZugferdFileNotReadableException($fullFilename);
         }
 
@@ -403,21 +408,22 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $displayName
      * @param  string $relationshipType
      * @return static
+     *
      * @throws ZugferdInvalidArgumentException
      * @throws ZugferdUnknownMimetype
      */
-    public function attachAdditionalFileByContent(string $content, string $filename, string $displayName = "", string $relationshipType = "")
+    public function attachAdditionalFileByContent(string $content, string $filename, string $displayName = '', string $relationshipType = '')
     {
         // Check content. The content must not be empty
 
-        if ($content === '') {
-            throw new ZugferdInvalidArgumentException("You must specify a content to attach");
+        if ('' === $content) {
+            throw new ZugferdInvalidArgumentException('You must specify a content to attach');
         }
 
         // Check filename. The filename must not be empty
 
-        if ($filename === '') {
-            throw new ZugferdInvalidArgumentException("You must specify a filename for the content to attach");
+        if ('' === $filename) {
+            throw new ZugferdInvalidArgumentException('You must specify a filename for the content to attach');
         }
 
         // Mimetype for the file must exist
@@ -430,17 +436,17 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         // Sanatize relationship type
 
-        if ($relationshipType === '') {
+        if ('' === $relationshipType) {
             $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])) {
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED], true)) {
             $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
         // Sanatize displayname
 
-        if ($displayName === '') {
+        if ('' === $displayName) {
             $displayName = FileUtils::getFilenameWithExtension($filename);
         }
 
@@ -451,7 +457,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
             FileUtils::getFilenameWithExtension($filename),
             $displayName,
             $relationshipType,
-            str_replace('/', '#2F', $mimeType)
+            str_replace('/', '#2F', $mimeType),
         ];
 
         return $this;
@@ -461,7 +467,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the the deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @param  bool $deterministicModeEnabled
+     * @param  bool   $deterministicModeEnabled
      * @return static
      */
     public function setDeterministicModeEnabled(bool $deterministicModeEnabled)
@@ -526,7 +532,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the user defined callback for generating custom meta information
      *
-     * @param  callable|null $callback
+     * @param  null|callable $callback
      * @return static
      */
     public function setMetaInformationCallback(?callable $callback = null)
@@ -540,7 +546,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Sets the flag that indicates, that the attachment pane should be visible on start (True)
      * or hidden (False)
      *
-     * @param boolean $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @param  bool   $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
      * @return static
      */
     public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
@@ -553,7 +559,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Returns true if the attachment pane is visible, otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function getAttachmentPaneIsVisible(): bool
     {
@@ -613,9 +619,67 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     abstract protected function getXmlAttachmentXmpVersion(): string;
 
     /**
+     * Extract major invoice information from FacturX/ZUGFeRD XML.
+     *
+     * @return array{invoiceId: null|string, docTypeName: string, seller: null|string, date: string}
+     */
+    protected function extractInvoiceInformations(): array
+    {
+        $domDocument = new DOMDocument();
+        $domDocument->loadXML($this->getXmlContent());
+
+        $xpath = new DOMXPath($domDocument);
+
+        $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
+        $date = $dateXpath->item(0)->nodeValue;
+        $dateReformatted = (new DateTime())->setTimestamp(strtotime($date))->format('Y-m-d\TH:i:sP');
+
+        $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
+        $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
+
+        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
+        $sellerName = $sellerXpath->item(0)->nodeValue;
+
+        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
+        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
+
+        switch ($docTypeCode) {
+            case ZugferdInvoiceType::CREDITNOTE:
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
+        }
+
+        return [
+            'invoiceId' => $invoiceId,
+            'docTypeName' => $docTypeName,
+            'seller' => $sellerName,
+            'date' => $dateReformatted,
+        ];
+    }
+
+    /**
+     * Returns true if the submittet parameter $pdfData is a valid file.
+     * Otherwise it will return false
+     *
+     * @param  string $pdfData
+     * @return bool
+     */
+    protected function isFile($pdfData): bool
+    {
+        return @is_file($pdfData);
+    }
+
+    /**
      * Internal function which sets up the PDF
      *
      * @return void
+     *
+     * @throws Exception
+     * @throws PdfParserException
+     * @throws PdfReaderException
      */
     private function startCreatePdf(): void
     {
@@ -761,69 +825,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Extract major invoice information from FacturX/ZUGFeRD XML.
-     *
-     * @return array{invoiceId: string|null, docTypeName: string, seller: string|null, date: string}
-     */
-    protected function extractInvoiceInformations(): array
-    {
-        $domDocument = new DOMDocument();
-        $domDocument->loadXML($this->getXmlContent());
-
-        $xpath = new DOMXPath($domDocument);
-
-        $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
-        $date = $dateXpath->item(0)->nodeValue;
-        $dateReformatted = (new DateTime())->setTimestamp(strtotime($date))->format('Y-m-d\TH:i:sP');
-
-        $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
-        $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
-
-        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
-        $sellerName = $sellerXpath->item(0)->nodeValue;
-
-        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
-        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
-
-        switch ($docTypeCode) {
-            case ZugferdInvoiceType::CREDITNOTE:
-                $docTypeName = 'Credit Note';
-                break;
-            default:
-                $docTypeName = 'Invoice';
-                break;
-        }
-
-        return [
-            'invoiceId' => $invoiceId,
-            'docTypeName' => $docTypeName,
-            'seller' => $sellerName,
-            'date' => $dateReformatted,
-        ];
-    }
-
-    /**
-     * Returns true if the submittet parameter $pdfData is a valid file.
-     * Otherwise it will return false
-     *
-     * @param  string $pdfData
-     * @return boolean
-     */
-    protected function isFile($pdfData): bool
-    {
-        try {
-            return @is_file($pdfData);
-        } catch (Throwable $throwable) {
-            return false;
-        }
-    }
-
-    /**
      * Returns the parsed meta-field content
      *
-     * @param  string $which
-     * @param  string $default
-     * @param  array{invoiceId: string|null, docTypeName: string, seller: string|null, date: string} $invoiceInformation
+     * @param  string                                                                                $which
+     * @param  string                                                                                $default
+     * @param  array{invoiceId: null|string, docTypeName: string, seller: null|string, date: string} $invoiceInformation
      * @return string
      */
     private function buildMetadataField(string $which, string $default, array $invoiceInformation): string
@@ -832,6 +838,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
 
         if (is_callable($this->metaInformationCallback)) {
             $callbackResult = call_user_func($this->metaInformationCallback, $which, $xmlContent, $invoiceInformation, $default);
+
             if (!StringUtils::stringIsNullOrEmpty($callbackResult)) {
                 return $callbackResult;
             }

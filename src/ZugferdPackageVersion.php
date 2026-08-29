@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -10,17 +12,15 @@
 namespace horstoeko\zugferd;
 
 use Composer\InstalledVersions as ComposerInstalledVersions;
-use OutOfBoundsException;
 
 /**
  * Class representing some tools for getting the package version
  * of this package
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 final class ZugferdPackageVersion
 {
@@ -31,11 +31,7 @@ final class ZugferdPackageVersion
      */
     public static function getInstalledVersion(): string
     {
-        try {
-            return ComposerInstalledVersions::getVersion('horstoeko/zugferd') ?? self::getDefaultVersion();
-        } catch (OutOfBoundsException $outOfBoundsException) {
-            return self::getDefaultVersion();
-        }
+        return ComposerInstalledVersions::getVersion('horstoeko/zugferd') ?? self::getDefaultVersion();
     }
 
     /**
@@ -45,6 +41,6 @@ final class ZugferdPackageVersion
      */
     private static function getDefaultVersion(): string
     {
-        return "1.0.x";
+        return '1.0.x';
     }
 }

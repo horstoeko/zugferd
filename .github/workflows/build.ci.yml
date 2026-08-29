@@ -9,6 +9,7 @@ on:
     paths-ignore:
       - "**.md"
       - ".github/**"
+      - ".vscode/**"
       - "examples/**"
       - "make/**"
   pull_request:
@@ -18,10 +19,22 @@ on:
       - reopened
       - ready_for_review
     branches:
-      - "master"
+      - master
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
 env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  XDEBUG_MODE: off
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip
   VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2025-03-21.zip
   VALIDATORPATH: build/validator
@@ -29,233 +42,286 @@ env:
   VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
   VALIDATORJARFILENAME: validationtool-1.5.0-standalone.jar
   VALIDATORSCENARIOFILENAME: scenarios.xml
-  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
-  PHPDOCUMENTORFILENAME: phpDocumentor.phar
   VERAPDFURL: https://software.verapdf.org/rel/verapdf-installer.zip
   VERAPDFPATH: build/verapdf
   VERAPDFZIPFILENAME: verapdf.zip
 
 jobs:
-  build:
+  compatibility:
+    name: PHP ${{ matrix.phpversion }} compatibility
     permissions:
       contents: read
       checks: write
-      pull-requests: write
-    runs-on: ${{ matrix.operating-system }}
+    runs-on: ubuntu-24.04
     strategy:
+      fail-fast: false
       matrix:
-        operating-system: ["ubuntu-22.04", "ubuntu-24.04"]
-        phpversion: ["7.3", "7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
+        phpversion: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
 
     steps:
-      - name: Checkout Sources
+      - name: Checkout sources
         uses: actions/checkout@v7
         with:
           persist-credentials: false
 
-      - name: Setup PHP with PECL extension
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.phpversion }}
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, intl, gd, iconv, json
+          coverage: none
+          tools: composer:v2, phpunit:9.6
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install runtime dependencies
+        run: composer update --no-dev --prefer-dist
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+
+      - name: Prepare test directories
+        run: mkdir -p build/logs build/phpunit-cache
+
+      - name: Lint PHP 7.3-compatible sources
+        if: ${{ matrix.phpversion < '8.1' }}
+        run: |
+          find src tests -type f -name '*.php' \
+            -not -path 'src/codelistsenum/*' \
+            -print0 \
+            | xargs -0 -n1 php -l
+
+      - name: Lint all sources
+        if: ${{ matrix.phpversion >= '8.1' }}
+        run: find src tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Run PHPUnit tests
+        run: phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+
+      - name: Publish unit test results
+        if: always()
+        continue-on-error: true
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: build/logs/junit.xml
+          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
+
+  quality:
+    name: Code quality
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           coverage: xdebug
+          tools: composer:v2
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up JDK 11
         uses: actions/setup-java@v6
         with:
-          java-version: "11"
-          distribution: "temurin"
+          java-version: '11'
+          distribution: temurin
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
+      - name: Install Composer dependencies
+        run: composer update --prefer-dist
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+
+      - name: Prepare build directories
         run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+          mkdir -p build/coverage
+          mkdir -p build/coverage-html
+          mkdir -p build/logs
+          mkdir -p build/phpcsfixer-cache
+          mkdir -p build/phpstan-cache
+          mkdir -p build/phpunit-cache
+          mkdir -p build/rector-cache
 
-      - uses: actions/cache@v6
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-${{ matrix.phpversion }}-composer-
+      - name: Run parallel lint
+        run: vendor/bin/parallel-lint src tests
 
-      - name: Install composer dependencies
-        run: |
-          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
-
-      - name: Prepare Directories
-        run: |
-          mkdir build/builddoc
-          mkdir build/doc
-          mkdir build/coverage
-          mkdir build/coverage-html
-          mkdir build/logs
-          mkdir build/dist
-          mkdir build/phpdoc
-
-      - name: Run Lint (PHP 8.0 and lower)
-        if: ${{ matrix.phpversion < '8.1' }}
-        run: |
-          for afile in $(find . -type f -name '*.php' -path './src*/*' -not -path "*codes*" -not -path "*codelistsenum*" -print); do
-             php -l $afile
-          done
-          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
-             php -l $afile
-          done
-
-      - name: Run Lint (PHP 8.1 and higher)
-        if: ${{ matrix.phpversion >= '8.1' }}
-        run: |
-          for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
-             php -l $afile
-          done
-          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
-             php -l $afile
-          done
-
-      - name: Run PHPSTAN
+      - name: Restore quality tools cache
+        id: quality-cache-restore
         continue-on-error: true
-        run: |
-          vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
+        uses: actions/cache/restore@v6
+        with:
+          path: |
+            build/phpcsfixer-cache
+            build/phpstan-cache
+            build/phpunit-cache
+            build/rector-cache
+          key: ${{ runner.os }}-quality-php-7.4-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-quality-php-7.4-
 
-      # Not continue-on-error: a path which no longer resolves is silent data loss.
-      # The reader falls back to the default value instead of raising, so a broken path
-      # only surfaces as a field which is quietly empty - including after a schema
-      # release changes a cardinality under the hand written paths.
-      - name: Run Reader Path Check
-        run: |
-          php make/checkreaderpaths.php
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction --diff
 
-      - name: Run Tests (PHPUnit)
-        run: |
-          vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+      - name: Run PHPStan
+        run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+
+      - name: Run Rector
+        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
+
+      - name: Run reader path check
+        run: php make/checkreaderpaths.php
+
+      - name: Run PHPUnit tests
         env:
           XDEBUG_MODE: coverage
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
 
-      - name: Cache Key (Schematron)
+      - name: Save quality tools cache
+        if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
+        continue-on-error: true
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            build/phpcsfixer-cache
+            build/phpstan-cache
+            build/phpunit-cache
+            build/rector-cache
+          key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
+
+      - name: Cache key for Schematron validator
         id: hash-validator
-        run: |
-          echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
+        run: echo "hash=$(printf '%s' "$VALIDATORURL $VALIDATORSCENARIOURL" | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
 
-      - name: Cache Application (Schematron)
+      - name: Cache Schematron validator
         id: cache-validator
         uses: actions/cache@v6
         with:
           path: ${{ env.VALIDATORPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-validator-${{ steps.hash-validator.outputs.hash }}
+          key: ${{ runner.os }}-validator-${{ steps.hash-validator.outputs.hash }}
 
-      - name: Download Application (Schematron)
+      - name: Download Schematron validator
         if: steps.cache-validator.outputs.cache-hit != 'true'
         run: |
-          rm -rf $VALIDATORPATH
-          mkdir -p $VALIDATORPATH
-          wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
-          wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
-          unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
-          unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
+          rm -rf "$VALIDATORPATH"
+          mkdir -p "$VALIDATORPATH"
+          wget "$VALIDATORURL" -O "$VALIDATORPATH/$VALIDATORZIPFILENAME"
+          wget "$VALIDATORSCENARIOURL" -O "$VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME"
+          unzip "$VALIDATORPATH/$VALIDATORZIPFILENAME" -d "$VALIDATORPATH"
+          unzip "$VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME" -d "$VALIDATORPATH"
 
-      - name: Run Tests (Schematron)
+      - name: Run Schematron tests
         run: |
-          set -e
-          rm -f examples/factur-x.xml
-          php -f examples/01_ZugferdDocumentBuilder_EN16931.php
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
-          rm -f examples/factur-x.xml
-          php -f examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
+          set -euo pipefail
+          for generator in \
+            examples/01_ZugferdDocumentBuilder_EN16931.php \
+            examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
+          do
+            rm -f examples/factur-x.xml
+            php -f "$generator"
+            test -s examples/factur-x.xml
+            java -jar "$VALIDATORPATH/$VALIDATORJARFILENAME" \
+              -r "$VALIDATORPATH" \
+              -s "$VALIDATORPATH/$VALIDATORSCENARIOFILENAME" \
+              examples/factur-x.xml
+          done
 
-      - name: Cache Key (VeraPDF)
+      - name: Cache key for veraPDF
         id: hash-verapdf
-        run: |
-          echo "hash=$(echo '${{ env.VERAPDFURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
+        run: echo "hash=$(printf '%s' "$VERAPDFURL" | sha256sum | cut -c1-16)" >> "$GITHUB_OUTPUT"
 
-      - name: Cache Application (VeraPDF)
+      - name: Cache veraPDF
         id: cache-verapdf
         uses: actions/cache@v6
         with:
           path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
+          key: ${{ runner.os }}-verapdf-${{ steps.hash-verapdf.outputs.hash }}
 
-      - name: Download Application (VeraPDF)
+      - name: Download veraPDF
         if: steps.cache-verapdf.outputs.cache-hit != 'true'
         run: |
-          rm -rf $VERAPDFPATH
-          mkdir -p $VERAPDFPATH
-          wget $VERAPDFURL -O $VERAPDFPATH/$VERAPDFZIPFILENAME
-          unzip -j $VERAPDFPATH/$VERAPDFZIPFILENAME -d $VERAPDFPATH
-          rm -f $VERAPDFPATH/$VERAPDFZIPFILENAME
+          rm -rf "$VERAPDFPATH"
+          mkdir -p "$VERAPDFPATH"
+          wget "$VERAPDFURL" -O "$VERAPDFPATH/$VERAPDFZIPFILENAME"
+          unzip -j "$VERAPDFPATH/$VERAPDFZIPFILENAME" -d "$VERAPDFPATH"
+          rm -f "$VERAPDFPATH/$VERAPDFZIPFILENAME"
 
-      - name: Run Tests (VeraPDF)
-        continue-on-error: true
+      - name: Run veraPDF tests
         run: |
-          set -e
-          echo "Creating veraPDF install config"
-          echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>
-            <AutomatedInstallation langpack=\"eng\">
-                <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id=\"welcome\"/>
-                <com.izforge.izpack.panels.target.TargetPanel id=\"install_dir\">
-                    <installpath>$(pwd)/$VERAPDFPATH</installpath>
-                </com.izforge.izpack.panels.target.TargetPanel>
-                <com.izforge.izpack.panels.packs.PacksPanel id=\"sdk_pack_select\">
-                    <pack index=\"0\" name=\"veraPDF Mac and *nix Scripts\" selected=\"true\"/>
-                    <pack index=\"1\" name=\"veraPDF Validation model\" selected=\"true\"/>
-                    <pack index=\"2\" name=\"veraPDF Documentation\" selected=\"true\"/>
-                    <pack index=\"3\" name=\"veraPDF Sample Plugins\" selected=\"true\"/>
-                </com.izforge.izpack.panels.packs.PacksPanel>
-                <com.izforge.izpack.panels.install.InstallPanel id=\"install\"/>
-                <com.izforge.izpack.panels.finish.FinishPanel id=\"finish\"/>
-            </AutomatedInstallation>" > $VERAPDFPATH/install.xml
-          echo "Installing veraPDF"
-          VERAPDFINSTALLJAR=$(find $VERAPDFPATH -type f -name "*.jar" | head -n 1); [[ -z "$VERAPDFINSTALLJAR" ]] && { echo "No veraPDF installer found" >&2; exit 1; } || echo "veraPDF installer fount at $VERAPDFINSTALLJAR"
-          java -jar $VERAPDFINSTALLJAR $VERAPDFPATH/install.xml
-          echo "Creating test PDF (1)"
-          php -f examples/02_ZugferdDocumentPdfBuilder_EN16931.php
-          echo "Running PDF validation"
-          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
-          echo "Result of validation"
-          echo $VERAPDFRESULT
-          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
-          echo "Creating test PDF (2)"
-          php -f examples/02_ZugferdDocumentPdfBuilder_XRECHNUNG.php
-          echo "Running PDF validation"
-          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
-          echo "Result of validation"
-          echo $VERAPDFRESULT
-          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
+          set -euo pipefail
+          cat > "$VERAPDFPATH/install.xml" <<EOF
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <AutomatedInstallation langpack="eng">
+              <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
+              <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
+                  <installpath>$(pwd)/$VERAPDFPATH</installpath>
+              </com.izforge.izpack.panels.target.TargetPanel>
+              <com.izforge.izpack.panels.packs.PacksPanel id="sdk_pack_select">
+                  <pack index="0" name="veraPDF Mac and *nix Scripts" selected="true"/>
+                  <pack index="1" name="veraPDF Validation model" selected="true"/>
+                  <pack index="2" name="veraPDF Documentation" selected="true"/>
+                  <pack index="3" name="veraPDF Sample Plugins" selected="true"/>
+              </com.izforge.izpack.panels.packs.PacksPanel>
+              <com.izforge.izpack.panels.install.InstallPanel id="install"/>
+              <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
+          </AutomatedInstallation>
+          EOF
 
-      - name: Publish Unit Test Results
+          veraPdfInstallerJar=$(find "$VERAPDFPATH" -type f -name '*.jar' | head -n 1)
+          test -n "$veraPdfInstallerJar"
+          java -jar "$veraPdfInstallerJar" "$VERAPDFPATH/install.xml"
+
+          for generator in \
+            examples/02_ZugferdDocumentPdfBuilder_EN16931.php \
+            examples/02_ZugferdDocumentPdfBuilder_XRECHNUNG.php
+          do
+            php -f "$generator"
+            pdfFilename=examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf
+            test -s "$pdfFilename"
+            veraPdfResult=$("$VERAPDFPATH/verapdf" --format text --flavour 3b --loglevel 0 "$pdfFilename")
+            echo "$veraPdfResult"
+            [[ "$veraPdfResult" == PASS* ]]
+          done
+
+      - name: Publish unit test results
+        if: always()
+        continue-on-error: true
         uses: EnricoMi/publish-unit-test-result-action@v2
-        if: github.event_name != 'pull_request'
-        continue-on-error: true
         with:
-          files: "build/logs/junit.xml"
-          comment_mode: ${{ ((github.event.workflow_run && github.event.workflow_run.event == 'pull_request') || github.event_name == 'pull_request') && 'failures' || 'always' }}
+          files: build/logs/junit.xml
+          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
-      - name: Publish Build Logs
-        uses: actions/upload-artifact@v7
+      - name: Publish build logs
+        if: always()
         continue-on-error: true
+        uses: actions/upload-artifact@v7
         with:
-          name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
+          name: Build log artifacts for PHP 7.4
           path: build/logs
+          if-no-files-found: error
 
   ci-success:
     name: CI success
     needs:
-      - build
+      - compatibility
+      - quality
     if: ${{ always() }}
     runs-on: ubuntu-24.04
 
     steps:
       - name: Verify CI result
         env:
-          BUILD_RESULT: ${{ needs.build.result }}
+          COMPATIBILITY_RESULT: ${{ needs.compatibility.result }}
+          QUALITY_RESULT: ${{ needs.quality.result }}
         run: |
-          echo "Matrix build result: $BUILD_RESULT"
-
-          if [ "$BUILD_RESULT" != "success" ]; then
-            echo "At least one CI matrix job failed or was cancelled."
-            exit 1
-          fi
-
-          echo "All CI matrix jobs passed."
+          echo "Compatibility result: $COMPATIBILITY_RESULT"
+          echo "Quality result: $QUALITY_RESULT"
+          test "$COMPATIBILITY_RESULT" = success
+          test "$QUALITY_RESULT" = success

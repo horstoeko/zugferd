@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases\issues;
 
+use DateTime;
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class Issue206Test extends TestCase
+final class Issue206Test extends TestCase
 {
     public function testDateTimeString(): void
     {
@@ -21,6 +24,6 @@ class Issue206Test extends TestCase
             $effectiveSpecifiedPeriod
         );
 
-        $this->assertEquals((\DateTime::createFromFormat('Ymd', '20200305'))->format('Ymd'), $documentDate->format('Ymd'));
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200305')->format('Ymd'), $documentDate->format('Ymd'));
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases\issues;
 
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class Issue270Test extends TestCase
+final class Issue270Test extends TestCase
 {
     public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
@@ -15,8 +17,8 @@ class Issue270Test extends TestCase
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('', $accountType);
 
         $this->assertFalse($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
@@ -29,22 +31,22 @@ class Issue270Test extends TestCase
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('', $accountType);
 
         $this->assertTrue($document->nextDocumentPosition());
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('', $accountType);
 
         $this->assertTrue($document->nextDocumentPosition());
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("740", $accountId);
-        $this->assertSame("", $accountType);
+        $this->assertSame('740', $accountId);
+        $this->assertSame('', $accountType);
     }
 
     public function testDocumentReceivableSpecifiedTradeAccountingAccountExtended(): void
@@ -55,15 +57,15 @@ class Issue270Test extends TestCase
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("1", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('1', $accountType);
 
         $this->assertTrue($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
 
         $document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("740", $accountId);
-        $this->assertSame("2", $accountType);
+        $this->assertSame('740', $accountId);
+        $this->assertSame('2', $accountType);
 
         $this->assertFalse($document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
@@ -76,21 +78,21 @@ class Issue270Test extends TestCase
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("1", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('1', $accountType);
 
         $this->assertTrue($document->nextDocumentPosition());
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("567", $accountId);
-        $this->assertSame("2", $accountType);
+        $this->assertSame('567', $accountId);
+        $this->assertSame('2', $accountType);
 
         $this->assertTrue($document->nextDocumentPosition());
 
         $document->getDocumentPositionReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
 
-        $this->assertSame("740", $accountId);
-        $this->assertSame("3", $accountType);
+        $this->assertSame('740', $accountId);
+        $this->assertSame('3', $accountType);
     }
 }

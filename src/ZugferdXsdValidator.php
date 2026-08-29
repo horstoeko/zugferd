@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -11,21 +13,20 @@ namespace horstoeko\zugferd;
 
 use DOMDocument;
 use Exception;
-use LibXMLError;
-use Throwable;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
-use horstoeko\zugferd\ZugferdDocument;
-use horstoeko\zugferd\ZugferdSettings;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use JMS\Serializer\Exception\RuntimeException;
+use LibXMLError;
+use Throwable;
 
 /**
  * Class representing the validator against XSD for documents
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdXsdValidator
 {
@@ -57,8 +58,12 @@ class ZugferdXsdValidator
      * Perform validation of document
      *
      * @return ZugferdXsdValidator
+     *
+     * @throws RuntimeException
+     * @throws ZugferdFileNotFoundException
+     * @throws ZugferdUnknownProfileParameterException
      */
-    public function validate(): ZugferdXsdValidator
+    public function validate(): self
     {
         $this->clearErrorBag();
         $this->initLibXml();
@@ -67,8 +72,6 @@ class ZugferdXsdValidator
             if (!$this->getDocumentContentAsDomDocument()->schemaValidate($this->getDocumentXsdFilename())) {
                 $this->pushLibXmlErrorsToErrorBag();
             }
-        } catch (Exception $exception) {
-            $this->addToErrorBag($exception);
         } finally {
             $this->finalizeLibXml();
         }
@@ -80,18 +83,20 @@ class ZugferdXsdValidator
      * Returns true if validation passed otherwise false
      *
      * @deprecated 1.0.65 Use hasNoValidationErrors instead
-     * @return     boolean
+     *
+     * @return bool
      */
     public function validationPased(): bool
     {
-        return $this->errorBag === [];
+        return [] === $this->errorBag;
     }
 
     /**
      * Returns true if validation failed otherwise false
      *
      * @deprecated 1.0.65 Use hasValidationErrors instead
-     * @return     boolean
+     *
+     * @return bool
      */
     public function validationFailed(): bool
     {
@@ -101,17 +106,17 @@ class ZugferdXsdValidator
     /**
      * Returns true if validation passed otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasNoValidationErrors(): bool
     {
-        return $this->errorBag === [];
+        return [] === $this->errorBag;
     }
 
     /**
      * Returns true if validation errors are present otherwise false
      *
-     * @return boolean
+     * @return bool
      */
     public function hasValidationErrors(): bool
     {
@@ -153,6 +158,8 @@ class ZugferdXsdValidator
      * Get the content of the document
      *
      * @return string
+     *
+     * @throws RuntimeException
      */
     private function getDocumentContent(): string
     {
@@ -163,6 +170,8 @@ class ZugferdXsdValidator
      * Get the content of the document as a DOMDocument
      *
      * @return DOMDocument
+     *
+     * @throws RuntimeException
      */
     private function getDocumentContentAsDomDocument(): DOMDocument
     {
@@ -176,6 +185,9 @@ class ZugferdXsdValidator
      * Get the XSD file (schema definition) for the document
      *
      * @return string
+     *
+     * @throws ZugferdFileNotFoundException
+     * @throws ZugferdUnknownProfileParameterException
      */
     private function getDocumentXsdFilename(): string
     {
@@ -204,7 +216,7 @@ class ZugferdXsdValidator
     /**
      * Add message to error bag
      *
-     * @param  string|Exception|Throwable|LibXMLError $error
+     * @param  Exception|LibXMLError|string|Throwable $error
      * @return void
      */
     private function addToErrorBag($error): void

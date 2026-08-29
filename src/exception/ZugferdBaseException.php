@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -7,17 +9,16 @@
  * file that was distributed with this source code.
  */
 
- namespace horstoeko\zugferd\exception;
+namespace horstoeko\zugferd\exception;
+
+use Exception;
 
 /**
  * Class representing an exception for missing a file
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
-class ZugferdBaseException extends \Exception
-{
-}
+class ZugferdBaseException extends Exception {}

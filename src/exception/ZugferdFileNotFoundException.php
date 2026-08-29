@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -15,10 +17,9 @@ use Throwable;
  * Class representing an exception for missing a file
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdFileNotFoundException extends ZugferdBaseException
 {
@@ -26,10 +27,10 @@ class ZugferdFileNotFoundException extends ZugferdBaseException
      * Constructor
      *
      * @param string         $filename
-     * @param Throwable|null $previous
+     * @param null|Throwable $previous
      */
     public function __construct(string $filename, ?Throwable $previous = null)
     {
-        parent::__construct(sprintf("The file %s was not found", $filename), ZugferdExceptionCodes::FILENOTFOUND, $previous);
+        parent::__construct(sprintf('The file %s was not found', $filename), ZugferdExceptionCodes::FILENOTFOUND, $previous);
     }
 }

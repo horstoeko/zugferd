@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
@@ -8,7 +10,7 @@ use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdObjectHelper;
 
-class BugfixRegressionTest extends TestCase
+final class BugfixRegressionTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader

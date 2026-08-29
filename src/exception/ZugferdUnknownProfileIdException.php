@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -15,10 +17,9 @@ use Throwable;
  * Class representing an exception for unknown profile id
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdUnknownProfileIdException extends ZugferdBaseException
 {
@@ -26,10 +27,10 @@ class ZugferdUnknownProfileIdException extends ZugferdBaseException
      * Constructor
      *
      * @param int            $profileId
-     * @param Throwable|null $previous
+     * @param null|Throwable $previous
      */
     public function __construct(int $profileId, ?Throwable $previous = null)
     {
-        parent::__construct(sprintf("The profile id %s is uknown", $profileId), ZugferdExceptionCodes::UNKNOWNPROFILE, $previous);
+        parent::__construct(sprintf('The profile id %s is uknown', $profileId), ZugferdExceptionCodes::UNKNOWNPROFILE, $previous);
     }
 }

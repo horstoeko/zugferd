@@ -1,12 +1,27 @@
+includes:
+    - ../vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - ../vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ../vendor/phpstan/phpstan-deprecation-rules/rules.neon
 parameters:
+    tmpDir: ./phpstan-cache
     paths:
         - ../src
-        - ../tests
+    excludePaths:
+        - ../src/entities
+        - ../src/codelistsenum
+        - ../src/quick/ZugferdQuickDescriptor.php
     level: 6
     treatPhpDocTypesAsCertain: false
-    excludePaths:
-        - ../src/entities/*
-        - ../src/codelistsenum/*
-        - ../tests/testcases/issues/Issue32Test.php
-        - ../src/quick/ZugferdQuickDescriptor.php
-        - ../tests/traits/HandlesXmlTests.php
+    phpVersion: 70300
+    exceptions:
+        implicitThrows: false
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+        uncheckedExceptionClasses: []
+        uncheckedExceptionRegexes: []
+    checkTooWideThrowTypesInProtectedAndPublicMethods: true
+    parallel:
+        jobSize: 20
+        maximumNumberOfProcesses: 32
+        minimumNumberOfJobsPerProcess: 2

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
 use DateTime;
@@ -9,6 +11,7 @@ use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
+use Iterator;
 
 /**
  * Round-trip guard for entity paths in ZugferdDocumentReader which no fixture populated.
@@ -29,7 +32,7 @@ use horstoeko\zugferd\ZugferdProfiles;
  * make/checkreaderpaths.php prevents the paths from breaking again structurally; this
  * test pins the values that actually have to come back.
  */
-class ReaderPathRoundtripTest extends TestCase
+final class ReaderPathRoundtripTest extends TestCase
 {
     /** @var ZugferdDocumentReader */
     private static $reader;
@@ -45,28 +48,28 @@ class ReaderPathRoundtripTest extends TestCase
 
         $builder
             ->setDocumentInformation(
-                "R-2024-1",
+                'R-2024-1',
                 ZugferdInvoiceType::INVOICE,
-                DateTime::createFromFormat("Ymd", "20240301"),
-                "EUR",
-                "Rechnung",
-                "de",
-                DateTime::createFromFormat("Ymd", "20240331")
+                DateTime::createFromFormat('Ymd', '20240301'),
+                'EUR',
+                'Rechnung',
+                'de',
+                DateTime::createFromFormat('Ymd', '20240331')
             )
-            ->setDocumentSeller("Lieferant GmbH")
-            ->setDocumentBuyer("Kunden AG", "GE2020211")
-            ->setDocumentShipFrom("Lager Sued")
-            ->setDocumentShipFromAddress("Lagerstrasse 1", null, null, "80333", "Muenchen", "FR")
-            ->setDocumentUltimateShipTo("Endkunde GmbH")
-            ->addDocumentUltimateShipToId("END-CUST-42")
-            ->addNewPosition("1")
-            ->setDocumentPositionProductDetails("Produkt")
+            ->setDocumentSeller('Lieferant GmbH')
+            ->setDocumentBuyer('Kunden AG', 'GE2020211')
+            ->setDocumentShipFrom('Lager Sued')
+            ->setDocumentShipFromAddress('Lagerstrasse 1', null, null, '80333', 'Muenchen', 'FR')
+            ->setDocumentUltimateShipTo('Endkunde GmbH')
+            ->addDocumentUltimateShipToId('END-CUST-42')
+            ->addNewPosition('1')
+            ->setDocumentPositionProductDetails('Produkt')
             ->setDocumentPositionNetPrice(10.0)
             ->setDocumentPositionQuantity(1.0, ZugferdUnitCodes::REC20_PIECE)
-            ->setDocumentPositionSupplyChainEvent(DateTime::createFromFormat("Ymd", "20240302"))
-            ->setDocumentPositionDespatchAdviceReferencedDocument("DESP-1", "1", DateTime::createFromFormat("Ymd", "20240303"))
-            ->setDocumentPositionReceivingAdviceReferencedDocument("RECV-1", "1", DateTime::createFromFormat("Ymd", "20240304"))
-            ->setDocumentPositionDeliveryNoteReferencedDocument("DELN-1", "1", DateTime::createFromFormat("Ymd", "20240305"));
+            ->setDocumentPositionSupplyChainEvent(DateTime::createFromFormat('Ymd', '20240302'))
+            ->setDocumentPositionDespatchAdviceReferencedDocument('DESP-1', '1', DateTime::createFromFormat('Ymd', '20240303'))
+            ->setDocumentPositionReceivingAdviceReferencedDocument('RECV-1', '1', DateTime::createFromFormat('Ymd', '20240304'))
+            ->setDocumentPositionDeliveryNoteReferencedDocument('DELN-1', '1', DateTime::createFromFormat('Ymd', '20240305'));
 
         self::$reader = ZugferdDocumentReader::readAndGuessFromContent($builder->getContent());
     }
@@ -90,7 +93,7 @@ class ReaderPathRoundtripTest extends TestCase
         );
 
         $this->assertInstanceOf(DateTime::class, $effectiveSpecifiedPeriod);
-        $this->assertSame("20240331", $effectiveSpecifiedPeriod->format("Ymd"));
+        $this->assertSame('20240331', $effectiveSpecifiedPeriod->format('Ymd'));
     }
 
     /**
@@ -102,9 +105,9 @@ class ReaderPathRoundtripTest extends TestCase
     {
         self::$reader->getDocumentShipFromAddress($lineOne, $lineTwo, $lineThree, $postCode, $city, $country, $subDivision);
 
-        $this->assertSame("Lagerstrasse 1", $lineOne);
-        $this->assertSame("Muenchen", $city);
-        $this->assertSame("FR", $country);
+        $this->assertSame('Lagerstrasse 1', $lineOne);
+        $this->assertSame('Muenchen', $city);
+        $this->assertSame('FR', $country);
     }
 
     /**
@@ -116,9 +119,9 @@ class ReaderPathRoundtripTest extends TestCase
     {
         self::$reader->getDocumentUltimateShipTo($name, $id, $description);
 
-        $this->assertSame("Endkunde GmbH", $name);
+        $this->assertSame('Endkunde GmbH', $name);
         // convertToArray flattens when the map has a single entry, same as getDocumentShipTo
-        $this->assertSame(["END-CUST-42"], $id);
+        $this->assertSame(['END-CUST-42'], $id);
     }
 
     /**
@@ -133,7 +136,7 @@ class ReaderPathRoundtripTest extends TestCase
         self::$reader->getDocumentPositionSupplyChainEvent($date);
 
         $this->assertInstanceOf(DateTime::class, $date);
-        $this->assertSame("20240302", $date->format("Ymd"));
+        $this->assertSame('20240302', $date->format('Ymd'));
     }
 
     /**
@@ -156,23 +159,21 @@ class ReaderPathRoundtripTest extends TestCase
         $lineId = null;
         $issueDate = null;
 
-        self::$reader->$method($issuerAssignedId, $lineId, $issueDate);
+        self::$reader->{$method}($issuerAssignedId, $lineId, $issueDate);
 
         $this->assertSame($expectedIssuerAssignedId, $issuerAssignedId);
-        $this->assertSame("1", $lineId);
+        $this->assertSame('1', $lineId);
         $this->assertInstanceOf(DateTime::class, $issueDate, sprintf('%s() lost the issue date', $method));
-        $this->assertSame($expectedIssueDate, $issueDate->format("Ymd"));
+        $this->assertSame($expectedIssueDate, $issueDate->format('Ymd'));
     }
 
     /**
-     * @return array<string,array{0:string,1:string,2:string}>
+     * @return Iterator<string, array{string, string, string}>
      */
-    public function positionReferencedDocumentProvider(): array
+    public function positionReferencedDocumentProvider(): Iterator
     {
-        return [
-            'despatch advice' => ['getDocumentPositionDespatchAdviceReferencedDocument', 'DESP-1', '20240303'],
-            'receiving advice' => ['getDocumentPositionReceivingAdviceReferencedDocument', 'RECV-1', '20240304'],
-            'delivery note' => ['getDocumentPositionDeliveryNoteReferencedDocument', 'DELN-1', '20240305'],
-        ];
+        yield 'despatch advice' => ['getDocumentPositionDespatchAdviceReferencedDocument', 'DESP-1', '20240303'];
+        yield 'receiving advice' => ['getDocumentPositionReceivingAdviceReferencedDocument', 'RECV-1', '20240304'];
+        yield 'delivery note' => ['getDocumentPositionDeliveryNoteReferencedDocument', 'DELN-1', '20240305'];
     }
 }

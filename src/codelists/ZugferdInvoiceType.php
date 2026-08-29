@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -13,73 +15,71 @@ namespace horstoeko\zugferd\codelists;
  * Class representing the different invoice types
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
-
 class ZugferdInvoiceType
 {
     /**
      * Debit note related to goods or services (80)
      * is an Invoice
      */
-    public const DEBITNOTERELATEDTOGOODSSERVICES = "80";
+    public const DEBITNOTERELATEDTOGOODSSERVICES = '80';
 
     /**
      * Credit note related to goods or services (81)
      * is a Credit Note
      */
-    public const CREDITNOTERELATEDTOGOODSSERVICES = "81";
+    public const CREDITNOTERELATEDTOGOODSSERVICES = '81';
 
     /**
      * Metered services invoice (82)
      * is an Invoice
      */
-    public const METEREDSERVICESINVOICE = "82";
+    public const METEREDSERVICESINVOICE = '82';
 
     /**
      * Credit note related to financial adjustments (83)
      * is a Credit Note
      */
-    public const CREDITNOTERELATEDTOFINANCIALADJUSTMENTS = "83";
+    public const CREDITNOTERELATEDTOFINANCIALADJUSTMENTS = '83';
 
     /**
      * Debit note related to financial adjustments (84)
      * is an Invoice
      */
-    public const DEBITNOTERELATEDTOFINANCIALADJUSTMENTS = "84";
+    public const DEBITNOTERELATEDTOFINANCIALADJUSTMENTS = '84';
 
     /**
      * Invoicing data sheet (130)
      * is an Invoice
      */
-    public const INVOICINGDATASHEET = "130";
+    public const INVOICINGDATASHEET = '130';
 
     /**
      * Direct payment valuation (202)
      * is an Invoice
      */
-    public const DIRECTPAYMENTVALUATION = "202";
+    public const DIRECTPAYMENTVALUATION = '202';
 
     /**
      * Provisional payment valuation (203)
      * is an Invoice
      */
-    public const PROVISIONALPAYMENTVALUATION = "203";
+    public const PROVISIONALPAYMENTVALUATION = '203';
 
     /**
      * Payment valuation (204)
      * is an Invoice
      */
-    public const PAYMENTVALUATION = "204";
+    public const PAYMENTVALUATION = '204';
 
     /**
      * Interim application for payment (211)
      * is an Invoice
      */
-    public const INTERIMAPPLICATIONFORPAYMENT = "211";
+    public const INTERIMAPPLICATIONFORPAYMENT = '211';
 
     /**
      * Self billed credit note (261)
@@ -88,37 +88,37 @@ class ZugferdInvoiceType
      * A document which indicates that the customer
      * is claiming credit in a self billing environment
      */
-    public const SELFBILLEDCREDITNOTE = "261";
+    public const SELFBILLEDCREDITNOTE = '261';
 
     /**
      * Consolidated credit note - goods and services (262)
      * is a Credit Note
      */
-    public const CONSOLIDATEDCREDITNOTESGOODSERVICES = "262";
+    public const CONSOLIDATEDCREDITNOTESGOODSERVICES = '262';
 
     /**
      * Price variation invoice (295)
      * is an Invoice
      */
-    public const PRICEVARIATIONINVOICE = "295";
+    public const PRICEVARIATIONINVOICE = '295';
 
     /**
      * Credit note for price variation (296)
      * is a Credit Note
      */
-    public const CREDITNOTEPRICEVARIATION = "296";
+    public const CREDITNOTEPRICEVARIATION = '296';
 
     /**
      * Delcredere credit note (308)
      * is a Credit Note
      */
-    public const DELCREDERECREDITNOTE = "308";
+    public const DELCREDERECREDITNOTE = '308';
 
     /**
      * Proforma invoice (325)
      * is an Invoice
      */
-    public const PROFORMAINVOICE = "325";
+    public const PROFORMAINVOICE = '325';
 
     /**
      * Partial invoice (326)
@@ -126,7 +126,7 @@ class ZugferdInvoiceType
      *
      * Teilrechnung
      */
-    public const PARTIALINVOICE = "326";
+    public const PARTIALINVOICE = '326';
 
     /**
      * Commercial invoice (380)
@@ -136,7 +136,7 @@ class ZugferdInvoiceType
      *
      * Handelsrechnung
      */
-    public const INVOICE = "380";
+    public const INVOICE = '380';
 
     /**
      * Credit note (381)
@@ -146,7 +146,7 @@ class ZugferdInvoiceType
      *
      * Gutschriftanzeige
      */
-    public const CREDITNOTE = "381";
+    public const CREDITNOTE = '381';
 
     /**
      * Debit note (383)
@@ -154,7 +154,7 @@ class ZugferdInvoiceType
      *
      * Belastungsanzeige
      */
-    public const DEBITNOTE = "383";
+    public const DEBITNOTE = '383';
 
     /**
      * Corrected invoice (384)
@@ -162,13 +162,13 @@ class ZugferdInvoiceType
      *
      * Rechnungskorrektur
      */
-    public const CORRECTION = "384";
+    public const CORRECTION = '384';
 
     /**
      * Consolidated invoice (385)
      * is an Invoice
      */
-    public const CONSOLIDATEDINVOICE = "385";
+    public const CONSOLIDATEDINVOICE = '385';
 
     /**
      * Prepayment invoice (386)
@@ -183,19 +183,19 @@ class ZugferdInvoiceType
      * The amounts contained therein will be deducted from the final
      * invoice.
      */
-    public const PREPAYMENTINVOICE = "386";
+    public const PREPAYMENTINVOICE = '386';
 
     /**
      * Hire invoice (387)
      * is an Invoice
      */
-    public const HIREINVOICE = "387";
+    public const HIREINVOICE = '387';
 
     /**
      * Tax invoice (388)
      * is an Invoice
      */
-    public const TAXINVOICE = "388";
+    public const TAXINVOICE = '388';
 
     /**
      * Self-billed invoice (389)
@@ -210,85 +210,85 @@ class ZugferdInvoiceType
      * An invoice that the debtor issues himself instead of the
      * seller.
      */
-    public const SELFBILLEDINVOICE = "389";
+    public const SELFBILLEDINVOICE = '389';
 
     /**
      * Delcredere invoice (390)
      * is an Invoice
      */
-    public const DELCREDEREINVOICE = "390";
+    public const DELCREDEREINVOICE = '390';
 
     /**
      * Factored invoice (393)
      * is an Invoice
      */
-    public const FACTOREDINVOICE = "393";
+    public const FACTOREDINVOICE = '393';
 
     /**
      * Lease invoice (394)
      * is an Invoice
      */
-    public const LEASEINVOICE = "394";
+    public const LEASEINVOICE = '394';
 
     /**
      * Consignment invoice (395)
      * is an Invoice
      */
-    public const CONSIGNMENTINVOICE = "395";
+    public const CONSIGNMENTINVOICE = '395';
 
     /**
      * Factored credit note (396)
      * is a Credit Note
      */
-    public const FACTOREDCREDITNOTE = "396";
+    public const FACTOREDCREDITNOTE = '396';
 
     /**
      * Optical Character Reading (OCR) payment credit note (420)
      * is a Credit Note
      */
-    public const OCRPAYMENTCREDITNOTE = "420";
+    public const OCRPAYMENTCREDITNOTE = '420';
 
     /**
      * Debit advice (456)
      * is an Invoice
      */
-    public const DEBITADVICE = "456";
+    public const DEBITADVICE = '456';
 
     /**
      * Reversal of debit (457)
      * is an Invoice
      */
-    public const REVERSALOFDEBIT = "457";
+    public const REVERSALOFDEBIT = '457';
 
     /**
      * Reversal of credit (458)
      * is a Credit Note
      */
-    public const REVERSALOFCREDIT = "458";
+    public const REVERSALOFCREDIT = '458';
 
     /**
      * Self billed debit note (527)
      * is an Invoice
      */
-    public const SELFBILLEDDEBITNOTE = "527";
+    public const SELFBILLEDDEBITNOTE = '527';
 
     /**
      * Insurer's invoice (575)
      * is an Invoice
      */
-    public const INSURERSINVOICE = "575";
+    public const INSURERSINVOICE = '575';
 
     /**
      * Forwarder's invoice (623)
      * is an Invoice
      */
-    public const FORWARDERSINVOICE = "623";
+    public const FORWARDERSINVOICE = '623';
 
     /**
      * Port charges documents (633)
      * is an Invoice
      */
-    public const PORTCHARGESDOCUMENTS = "633";
+    public const PORTCHARGESDOCUMENTS = '633';
 
     /**
      * Invoice information for accounting purposes (751)
@@ -304,19 +304,19 @@ class ZugferdInvoiceType
      * aid - NO invoice" may be used, since these profiles do not represent
      * invoices for tax purposes in DE!
      */
-    public const INVOICEINFORMATION = "751";
+    public const INVOICEINFORMATION = '751';
 
     /**
      * Freight invoice (780)
      * is an Invoice
      */
-    public const FREIGHTINVOICE = "780";
+    public const FREIGHTINVOICE = '780';
 
     /**
      * Customs invoice (935)
      * is an Invoice
      */
-    public const CUSTOMSINVOICE = "935";
+    public const CUSTOMSINVOICE = '935';
 
     /**
      * Corrected invoice (1380)
@@ -324,5 +324,5 @@ class ZugferdInvoiceType
      *
      * Old ZUGFeRD variant, use Corrected Invoice (384) instead
      */
-    public const CORRECTIONOLD = "1380";
+    public const CORRECTIONOLD = '1380';
 }

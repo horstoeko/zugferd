@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -10,21 +12,19 @@
 namespace horstoeko\zugferd\quick;
 
 use horstoeko\zugferd\ZugferdProfiles;
-use horstoeko\zugferd\quick\ZugferdQuickDescriptor;
 
 /**
  * Class representing the document descriptor for outgoing documents in XRECHNUNG 2.x profile
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdQuickDescriptorXRechnung2 extends ZugferdQuickDescriptor
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected static function getProfile(): int
     {

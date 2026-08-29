@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -15,10 +17,9 @@ use Throwable;
  * Class representing an exception if an argument is invalid or an argument is not of the expected type
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdInvalidArgumentException extends ZugferdBaseException
 {
@@ -26,7 +27,7 @@ class ZugferdInvalidArgumentException extends ZugferdBaseException
      * Constructor
      *
      * @param string         $message
-     * @param Throwable|null $previous
+     * @param null|Throwable $previous
      */
     public function __construct(string $message, ?Throwable $previous = null)
     {

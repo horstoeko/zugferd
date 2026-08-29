@@ -42,7 +42,7 @@ final class ReaderPathChecker
      */
     private const PROFILE = 'extended';
 
-    private const ROOT_CLASS = 'horstoeko\\zugferd\\entities\\%s\\rsm\\CrossIndustryInvoiceType';
+    private const ROOT_CLASS = 'horstoeko\zugferd\entities\%s\rsm\CrossIndustryInvoiceType';
 
     private const YAML_DIR = __DIR__ . '/../src/yaml/%s';
 
@@ -75,13 +75,14 @@ final class ReaderPathChecker
 
         $source = file_get_contents(self::READER_FILE);
 
-        if ($source === false) {
-            fwrite(STDERR, "Cannot read " . self::READER_FILE . "\n");
+        if (false === $source) {
+            fwrite(STDERR, 'Cannot read ' . self::READER_FILE . "\n");
+
             return 1;
         }
 
         foreach ($this->extractPaths($source) as $usage) {
-            $this->checked++;
+            ++$this->checked;
             $this->checkPath($usage);
         }
 
@@ -100,7 +101,7 @@ final class ReaderPathChecker
         $directoryIterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($yamlDirectory));
 
         foreach ($directoryIterator as $fileInfo) {
-            if (!$fileInfo->isFile() || $fileInfo->getExtension() !== 'yml') {
+            if (!$fileInfo->isFile() || 'yml' !== $fileInfo->getExtension()) {
                 continue;
             }
 
@@ -123,7 +124,7 @@ final class ReaderPathChecker
                     $type = (string) $property['type'];
                     $collection = false;
 
-                    if (preg_match('/^array<(.+)>$/', $type, $matches) === 1) {
+                    if (1 === preg_match('/^array<(.+)>$/', $type, $matches)) {
                         $collection = true;
                         $type = $matches[1];
                     }
@@ -143,7 +144,7 @@ final class ReaderPathChecker
      * getInvoiceValueByPath("a.b")         -> absolute, resolvable from the document root
      * getInvoiceValueByPathFrom($x, "a.b") -> relative, root not known statically
      *
-     * @param  string $source
+     * @param  string                                               $source
      * @return array<int,array{line:int,path:string,absolute:bool}>
      */
     private function extractPaths(string $source): array
@@ -156,7 +157,7 @@ final class ReaderPathChecker
         ];
 
         foreach ($patterns as $pattern) {
-            if (preg_match_all($pattern['regex'], $source, $matches, PREG_OFFSET_CAPTURE) === false) {
+            if (false === preg_match_all($pattern['regex'], $source, $matches, PREG_OFFSET_CAPTURE)) {
                 continue;
             }
 
@@ -171,7 +172,7 @@ final class ReaderPathChecker
 
         usort(
             $usages,
-            function (array $a, array $b): int {
+            static function (array $a, array $b): int {
                 return $a['line'] <=> $b['line'];
             }
         );
@@ -191,13 +192,14 @@ final class ReaderPathChecker
         // containing a comma is the classic "getA,getB" typo - a PHP method name cannot
         // contain one, so the lookup silently misses and the default value is returned.
         foreach ($segments as $segment) {
-            if (preg_match('/^(get[A-Za-z0-9_]+|value)$/i', $segment) !== 1) {
+            if (1 !== preg_match('/^(get[A-Za-z0-9_]+|value)$/i', $segment)) {
                 $this->addProblem($usage, sprintf('segment "%s" is not a valid accessor name', $segment));
+
                 return;
             }
         }
 
-        if ($usage['absolute'] === true) {
+        if (true === $usage['absolute']) {
             $this->resolveAbsolute($usage, $segments);
         }
     }
@@ -218,9 +220,10 @@ final class ReaderPathChecker
             $next = $segments[$index + 1] ?? null;
 
             // "value" unwraps a udt/qdt leaf object into its scalar. Nothing may follow it.
-            if (strtolower($segment) === 'value') {
+            if ('value' === strtolower($segment)) {
                 if (!method_exists($currentClass, 'value')) {
                     $this->addProblem($usage, sprintf('%s has no value() method, so ".value" cannot be read here', $this->shortName($currentClass)));
+
                     return;
                 }
 
@@ -233,13 +236,15 @@ final class ReaderPathChecker
 
             if (!isset($this->graph[$currentClass])) {
                 $this->addProblem($usage, sprintf('%s is a leaf type; it has no property "%s"', $this->shortName($currentClass), $segment));
+
                 return;
             }
 
             $property = $this->graph[$currentClass][strtolower($segment)] ?? null;
 
-            if ($property === null) {
+            if (null === $property) {
                 $this->addProblem($usage, sprintf('%s has no mapped getter %s()', $this->shortName($currentClass), $segment));
+
                 return;
             }
 
@@ -247,7 +252,7 @@ final class ReaderPathChecker
                 return;
             }
 
-            if ($property['collection'] === true) {
+            if (true === $property['collection']) {
                 $this->addProblem(
                     $usage,
                     sprintf(
@@ -258,6 +263,7 @@ final class ReaderPathChecker
                         $next
                     )
                 );
+
                 return;
             }
 
@@ -269,7 +275,7 @@ final class ReaderPathChecker
     {
         $position = strrpos($className, '\\');
 
-        return $position === false ? $className : substr($className, $position + 1);
+        return false === $position ? $className : substr($className, $position + 1);
     }
 
     /**
@@ -290,8 +296,9 @@ final class ReaderPathChecker
     {
         printf("Checked %d entity paths in ZugferdDocumentReader against profile \"%s\".\n", $this->checked, $this->profile);
 
-        if ($this->problems === []) {
-            print("No broken paths found.\n");
+        if ([] === $this->problems) {
+            echo "No broken paths found.\n";
+
             return 0;
         }
 
