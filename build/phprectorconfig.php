@@ -47,29 +47,13 @@ return RectorConfig::configure()
     ])
     ->withPhpVersion(PhpVersion::PHP_73)
     ->withPhpSets(false, false, false, false, false, true)
-    ->withPreparedSets(
-        deadCode: true,
-        codeQuality: true,
-        codingStyle: true,
-        instanceOf: true,
-        phpunitCodeQuality: true,
-    )
-    ->withComposerBased(phpunit: true)
+    ->withPreparedSets(true, true, true, false, false, false, false, false, true, false, false, false, false, true)
+    ->withComposerBased(false, false, true)
     ->withRules([
         DeclareStrictTypesRector::class,
     ])
-    ->withImportNames(
-        importShortClasses: true,
-        removeUnusedImports: true,
-    )
-    ->withCache(
-        cacheClass: FileCacheStorage::class,
-        cacheDirectory: __DIR__ . '/rector-cache',
-    )
-    ->withParallel(
-        timeoutSeconds: 60000,
-        maxNumberOfProcess: 2,
-        jobSize: 10,
-    )
+    ->withImportNames(false, false, true, true)
+    ->withCache(__DIR__ . '/rector-cache', FileCacheStorage::class)
+    ->withParallel(60000, 2, 10)
     ->withTypeCoverageLevel(0)
     ->withTypeCoverageDocblockLevel(0);
