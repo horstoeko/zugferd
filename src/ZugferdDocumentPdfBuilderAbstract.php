@@ -162,7 +162,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Generates the final document
      *
-     * @return static
+     * @return self
      *
      * @throws Exception
      * @throws PdfParserException
@@ -179,7 +179,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Saves the generated PDF document to a file
      *
      * @param  string $toFilename The full qualified filename to which the generated PDF (with attachment)is stored
-     * @return static
+     * @return self
      */
     public function saveDocument(string $toFilename)
     {
@@ -213,7 +213,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
      *
      * @param  string $additionalCreatorTool The name of the creator
-     * @return static
+     * @return self
      */
     public function setAdditionalCreatorTool(string $additionalCreatorTool)
     {
@@ -243,7 +243,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * types are 'Data', 'Alternative' and 'Source'
      *
      * @param  string $relationshipType Type of relationship
-     * @return static
+     * @return self
      */
     public function setAttachmentRelationshipType(string $relationshipType)
     {
@@ -270,7 +270,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the type of relationship for the XML attachment to "Data"
      *
-     * @return static
+     * @return self
      */
     public function setAttachmentRelationshipTypeToData()
     {
@@ -280,7 +280,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the type of relationship for the XML attachment to "Alternative"
      *
-     * @return static
+     * @return self
      */
     public function setAttachmentRelationshipTypeToAlternative()
     {
@@ -290,7 +290,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the type of relationship for the XML attachment to "Source"
      *
-     * @return static
+     * @return self
      */
     public function setAttachmentRelationshipTypeToSource()
     {
@@ -301,7 +301,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the PDF/A Conformance Level. Valid values are "A", "B" and "U"
      *
      * @param  string $pdfAConformanceLevel
-     * @return static
+     * @return self
      */
     public function setPdfAConformanceLevel(string $pdfAConformanceLevel)
     {
@@ -327,7 +327,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the PDF/A Conformane Level to "Accessible" (A)
      *
-     * @return static
+     * @return self
      */
     public function setPdfAConformanceLevelToAccessible()
     {
@@ -337,7 +337,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the PDF/A Conformane Level to "Basic" (B)
      *
-     * @return static
+     * @return self
      */
     public function setPdfAConformanceLevelToBasic()
     {
@@ -347,7 +347,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Set the PDF/A Conformane Level to "Unicode" (U)
      *
-     * @return static
+     * @return self
      */
     public function setPdfAConformanceLevelToUnicode()
     {
@@ -361,7 +361,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $fullFilename
      * @param  string $displayName
      * @param  string $relationshipType
-     * @return static
+     * @return self
      *
      * @throws ZugferdFileNotFoundException
      * @throws ZugferdFileNotReadableException
@@ -407,7 +407,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * @param  string $filename
      * @param  string $displayName
      * @param  string $relationshipType
-     * @return static
+     * @return self
      *
      * @throws ZugferdInvalidArgumentException
      * @throws ZugferdUnknownMimetype
@@ -467,8 +467,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the the deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @param  bool   $deterministicModeEnabled
-     * @return static
+     * @param  bool $deterministicModeEnabled
+     * @return self
      */
     public function setDeterministicModeEnabled(bool $deterministicModeEnabled)
     {
@@ -481,7 +481,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the template for the author meta information
      *
      * @param  string $authorTemplate
-     * @return static
+     * @return self
      */
     public function setAuthorTemplate(string $authorTemplate)
     {
@@ -494,7 +494,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the template for the keyword meta information
      *
      * @param  string $keywordTemplate
-     * @return static
+     * @return self
      */
     public function setKeywordTemplate(string $keywordTemplate)
     {
@@ -507,7 +507,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the template for the title meta information
      *
      * @param  string $titleTemplate
-     * @return static
+     * @return self
      */
     public function setTitleTemplate(string $titleTemplate)
     {
@@ -520,7 +520,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the template for the subject meta information
      *
      * @param  string $subjectTemplate
-     * @return static
+     * @return self
      */
     public function setSubjectTemplate(string $subjectTemplate)
     {
@@ -533,7 +533,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Set the user defined callback for generating custom meta information
      *
      * @param  null|callable $callback
-     * @return static
+     * @return self
      */
     public function setMetaInformationCallback(?callable $callback = null)
     {
@@ -546,8 +546,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      * Sets the flag that indicates, that the attachment pane should be visible on start (True)
      * or hidden (False)
      *
-     * @param  bool   $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
-     * @return static
+     * @param  bool $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @return self
      */
     public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
     {
@@ -569,7 +569,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Show attachment pane on startup
      *
-     * @return static
+     * @return self
      */
     public function showAttachmentPane()
     {
@@ -581,7 +581,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Hide attachment pane on startup
      *
-     * @return static
+     * @return self
      */
     public function hideAttachmentPane()
     {

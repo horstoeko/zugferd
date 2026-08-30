@@ -94,8 +94,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Creates a new ZugferdDocumentBuilder with profile $profile
      *
-     * @param  int    $profileId
-     * @return static
+     * @param  int  $profileId
+     * @return self
      *
      * @throws InvalidArgumentException
      * @throws RuntimeException
@@ -114,7 +114,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * type through createNew(). The native return type cannot say static: the package
      * still supports PHP 7.3.
      *
-     * @return static
+     * @return self
      */
     public function initNewDocument(): self
     {
