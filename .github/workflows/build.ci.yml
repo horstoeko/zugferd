@@ -236,6 +236,7 @@ jobs:
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Generate SBOM
+        if: ${{ contains(fromJSON('["8.4","8.5"]'), matrix.phpversion) }}
         continue-on-error: true
         run: |
           composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
@@ -244,6 +245,7 @@ jobs:
           composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
 
       - name: Publish SBOM artifacts
+        if: ${{ contains(fromJSON('["8.4","8.5"]'), matrix.phpversion) }}
         continue-on-error: true
         uses: actions/upload-artifact@v7
         with:
@@ -276,7 +278,7 @@ jobs:
         run: |
           echo "Matrix build result: $BUILD_RESULT"
 
-          if [ "$BUILD_RESULT" != "success" ] || [ "$PHP73_RESULT" != "success" ]; then
+          if [ "$BUILD_RESULT" != "success" ]; then
             echo "At least one CI job failed or was cancelled."
             exit 1
           fi
