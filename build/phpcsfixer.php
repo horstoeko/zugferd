@@ -173,6 +173,7 @@ if (PHP_VERSION_ID < 80100 ) {
     unset($rules['modifier_keywords']);
     unset($rules['ordered_attributes']);
     unset($rules['attribute_block_no_spaces']);
+    unset($rules['phpdoc_order']);
     $config->setRules($rules);
 }
 

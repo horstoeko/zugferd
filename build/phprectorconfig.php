@@ -46,7 +46,7 @@ return RectorConfig::configure()
         RemoveMixedDocblockOverruledByNativeTypeRector::class,
     ])
     ->withPhpVersion(PhpVersion::PHP_73)
-    ->withPhpSets(php73: true)
+    ->withPhpSets(false, false, false, false, false, true)
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,
