@@ -59,7 +59,7 @@
         "nette/php-generator": "*",
         "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpdocumentor/reflection-docblock": "^5",
-        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan": "^1|^2.1",
         "phpstan/phpstan-deprecation-rules": "^2",
         "phpstan/phpstan-strict-rules": "^2",
         "phpunit/phpunit": "^9.6",
