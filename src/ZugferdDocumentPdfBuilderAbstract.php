@@ -247,8 +247,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipType(string $relationshipType)
     {
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE], true)) {
-            $relationshipType = static::AF_RELATIONSHIP_DATA;
+        if (!in_array($relationshipType, [self::AF_RELATIONSHIP_DATA, self::AF_RELATIONSHIP_ALTERNATIVE, self::AF_RELATIONSHIP_SOURCE], true)) {
+            $relationshipType = self::AF_RELATIONSHIP_DATA;
         }
 
         $this->attachmentRelationshipType = $relationshipType;
@@ -274,7 +274,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToData()
     {
-        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_DATA);
+        return $this->setAttachmentRelationshipType(self::AF_RELATIONSHIP_DATA);
     }
 
     /**
@@ -284,7 +284,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToAlternative()
     {
-        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_ALTERNATIVE);
+        return $this->setAttachmentRelationshipType(self::AF_RELATIONSHIP_ALTERNATIVE);
     }
 
     /**
@@ -294,7 +294,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     public function setAttachmentRelationshipTypeToSource()
     {
-        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_SOURCE);
+        return $this->setAttachmentRelationshipType(self::AF_RELATIONSHIP_SOURCE);
     }
 
     /**
@@ -437,11 +437,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         // Sanatize relationship type
 
         if ('' === $relationshipType) {
-            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+            $relationshipType = self::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED], true)) {
-            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+        if (!in_array($relationshipType, [self::AF_RELATIONSHIP_DATA, self::AF_RELATIONSHIP_ALTERNATIVE, self::AF_RELATIONSHIP_SOURCE, self::AF_RELATIONSHIP_SUPPLEMENT, self::AF_RELATIONSHIP_UNSPECIFIED], true)) {
+            $relationshipType = self::AF_RELATIONSHIP_SUPPLEMENT;
         }
 
         // Sanatize displayname

@@ -300,7 +300,7 @@ class ZugferdPdfValidator
     {
         $newVlidatorRuleset = strtolower($newVlidatorRuleset);
 
-        if (in_array($newVlidatorRuleset, [static::RULESET_PDF_A_0, static::RULESET_PDF_A_1A, static::RULESET_PDF_A_1B, static::RULESET_PDF_A_2A, static::RULESET_PDF_A_2B, static::RULESET_PDF_A_2U, static::RULESET_PDF_A_3A, static::RULESET_PDF_A_3B, static::RULESET_PDF_A_3U, static::RULESET_PDF_A_4, static::RULESET_PDF_A_4E, static::RULESET_PDF_A_4F, static::RULESET_PDF_UA_1, static::RULESET_PDF_UA_2], true)) {
+        if (in_array($newVlidatorRuleset, [self::RULESET_PDF_A_0, self::RULESET_PDF_A_1A, self::RULESET_PDF_A_1B, self::RULESET_PDF_A_2A, self::RULESET_PDF_A_2B, self::RULESET_PDF_A_2U, self::RULESET_PDF_A_3A, self::RULESET_PDF_A_3B, self::RULESET_PDF_A_3U, self::RULESET_PDF_A_4, self::RULESET_PDF_A_4E, self::RULESET_PDF_A_4F, self::RULESET_PDF_UA_1, self::RULESET_PDF_UA_2], true)) {
             $this->validatorRuleset = $newVlidatorRuleset;
         }
 
@@ -379,7 +379,7 @@ class ZugferdPdfValidator
      */
     public function getValidationErrors(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONERROR);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONERROR);
     }
 
     /**
@@ -409,7 +409,7 @@ class ZugferdPdfValidator
      */
     public function getValidationWarnings(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONWARNING);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONWARNING);
     }
 
     /**
@@ -439,7 +439,7 @@ class ZugferdPdfValidator
      */
     public function getValidationInformation(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONINFORMATION);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONINFORMATION);
     }
 
     /**
@@ -469,7 +469,7 @@ class ZugferdPdfValidator
      */
     public function getProcessErrors(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_INTERNALERROR);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_INTERNALERROR);
     }
 
     /**
@@ -499,7 +499,7 @@ class ZugferdPdfValidator
      */
     public function getProcessOutput(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_PROCESSOUTPUT);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_PROCESSOUTPUT);
     }
 
     /**
@@ -582,7 +582,7 @@ class ZugferdPdfValidator
      */
     private function addToMessageBag($error, string $messageType = ''): void
     {
-        $messageType = StringUtils::stringIsNullOrEmpty($messageType) ? static::MSG_TYPE_INTERNALERROR : $messageType;
+        $messageType = StringUtils::stringIsNullOrEmpty($messageType) ? self::MSG_TYPE_INTERNALERROR : $messageType;
 
         if (is_string($error)) {
             $this->messageBag[] = ['type' => $messageType, 'message' => $error];
@@ -903,31 +903,31 @@ class ZugferdPdfValidator
         $validatorExecutableOutputObject = json_decode($validatorExecutableOutput);
 
         if (null === $validatorExecutableOutputObject && JSON_ERROR_NONE !== json_last_error()) {
-            $this->addToMessageBag(sprintf('Cannot decode JSON result. Error %s', json_last_error_msg()), static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag(sprintf('Cannot decode JSON result. Error %s', json_last_error_msg()), self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!isset($validatorExecutableOutputObject->report)) {
-            $this->addToMessageBag('Invalid report response - no report property found', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - no report property found', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!isset($validatorExecutableOutputObject->report->jobs)) {
-            $this->addToMessageBag('Invalid report response - no jobs property found', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - no jobs property found', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!is_array($validatorExecutableOutputObject->report->jobs)) {
-            $this->addToMessageBag('Invalid report response - jobs property is not an array', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - jobs property is not an array', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (1 !== count($validatorExecutableOutputObject->report->jobs)) {
-            $this->addToMessageBag('Invalid report response - jobs property should be an array with one element', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - jobs property should be an array with one element', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
@@ -935,25 +935,25 @@ class ZugferdPdfValidator
         $validatorExecutableOutputJobObject = $validatorExecutableOutputObject->report->jobs[0];
 
         if (!isset($validatorExecutableOutputJobObject->validationResult)) {
-            $this->addToMessageBag('Invalid report response - job has not a validationResult property', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - job has not a validationResult property', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!isset($validatorExecutableOutputJobObject->validationResult->details)) {
-            $this->addToMessageBag('Invalid report response - job has not a details property', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - job has not a details property', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!isset($validatorExecutableOutputJobObject->validationResult->details->failedRules)) {
-            $this->addToMessageBag('Invalid report response - job has not a failedRules property', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - job has not a failedRules property', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
 
         if (!isset($validatorExecutableOutputJobObject->validationResult->details->failedChecks)) {
-            $this->addToMessageBag('Invalid report response - job has not a failedChecks property', static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag('Invalid report response - job has not a failedChecks property', self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
@@ -968,7 +968,7 @@ class ZugferdPdfValidator
                 $validatorExecutableOutputJobObject->validationResult->details->failedRules,
                 $validatorExecutableOutputJobObject->validationResult->details->failedChecks
             ),
-            static::MSG_TYPE_VALIDATIONERROR
+            self::MSG_TYPE_VALIDATIONERROR
         );
 
         foreach ($validatorExecutableOutputJobObject->validationResult->details->ruleSummaries ?? [] as $ruleSummary) {
@@ -980,7 +980,7 @@ class ZugferdPdfValidator
                     $ruleSummary->object,
                     $ruleSummary->description
                 ),
-                static::MSG_TYPE_VALIDATIONERROR
+                self::MSG_TYPE_VALIDATIONERROR
             );
         }
 
@@ -1070,14 +1070,14 @@ class ZugferdPdfValidator
             $processOutput = $process->getOutput();
 
             foreach (preg_split("/\r\n|\n|\r/", $processOutput) as $outputLine) {
-                $this->addToMessageBag($outputLine, static::MSG_TYPE_PROCESSOUTPUT);
+                $this->addToMessageBag($outputLine, self::MSG_TYPE_PROCESSOUTPUT);
             }
 
             if (!$process->isSuccessful()) {
                 return false;
             }
         } catch (Throwable $throwable) {
-            $this->addToMessageBag($throwable, static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag($throwable, self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }

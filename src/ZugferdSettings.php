@@ -112,7 +112,7 @@ class ZugferdSettings
      */
     public static function setAmountDecimals(int $amountDecimals): void
     {
-        static::$amountDecimals = $amountDecimals;
+        self::$amountDecimals = $amountDecimals;
     }
 
     /**
@@ -133,7 +133,7 @@ class ZugferdSettings
      */
     public static function setQuantityDecimals(int $quantityDecimals): void
     {
-        static::$quantityDecimals = $quantityDecimals;
+        self::$quantityDecimals = $quantityDecimals;
     }
 
     /**
@@ -154,7 +154,7 @@ class ZugferdSettings
      */
     public static function setPercentDecimals(int $percentDecimals): void
     {
-        static::$percentDecimals = $percentDecimals;
+        self::$percentDecimals = $percentDecimals;
     }
 
     /**
@@ -175,7 +175,7 @@ class ZugferdSettings
      */
     public static function setMeasureDecimals(int $measureDecimals): void
     {
-        static::$measureDecimals = $measureDecimals;
+        self::$measureDecimals = $measureDecimals;
     }
 
     /**
@@ -196,7 +196,7 @@ class ZugferdSettings
      */
     public static function setDecimalSeparator(string $decimalSeparator): void
     {
-        static::$decimalSeparator = $decimalSeparator;
+        self::$decimalSeparator = $decimalSeparator;
     }
 
     /**
@@ -217,7 +217,7 @@ class ZugferdSettings
      */
     public static function setThousandsSeparator(string $thousandsSeparator): void
     {
-        static::$thousandsSeparator = $thousandsSeparator;
+        self::$thousandsSeparator = $thousandsSeparator;
     }
 
     /**
@@ -238,7 +238,7 @@ class ZugferdSettings
      */
     public static function setIccProfileFilename(string $iccProfileFilename): void
     {
-        static::$iccProfileFilename = $iccProfileFilename;
+        self::$iccProfileFilename = $iccProfileFilename;
     }
 
     /**
@@ -259,7 +259,7 @@ class ZugferdSettings
      */
     public static function setXmpMetaDataFilename(string $xmpMetaDataFilename): void
     {
-        static::$xmpMetaDataFilename = $xmpMetaDataFilename;
+        self::$xmpMetaDataFilename = $xmpMetaDataFilename;
     }
 
     /**
@@ -295,7 +295,7 @@ class ZugferdSettings
      */
     public static function setSpecialDecimalPlacesMaps(array $specialDecimalPlacesMaps): void
     {
-        static::$specialDecimalPlacesMaps = $specialDecimalPlacesMaps;
+        self::$specialDecimalPlacesMaps = $specialDecimalPlacesMaps;
     }
 
     /**
@@ -308,7 +308,7 @@ class ZugferdSettings
     public static function addSpecialDecimalPlacesMap(string $nodePath, int $defaultDecimalPlaces): void
     {
         $nodePath = preg_replace('@\[\d+\]@', '', $nodePath);
-        static::$specialDecimalPlacesMaps[$nodePath] = $defaultDecimalPlaces;
+        self::$specialDecimalPlacesMaps[$nodePath] = $defaultDecimalPlaces;
     }
 
     /**
@@ -319,8 +319,8 @@ class ZugferdSettings
      */
     public static function setUnitAmountDecimals(int $defaultDecimalPlaces): void
     {
-        static::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', $defaultDecimalPlaces);
-        static::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', $defaultDecimalPlaces);
+        self::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount', $defaultDecimalPlaces);
+        self::addSpecialDecimalPlacesMap('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount', $defaultDecimalPlaces);
     }
 
     /**
@@ -331,7 +331,7 @@ class ZugferdSettings
      */
     public static function setSerializerCacheDirectory(string $serializerCacheDirectoty): void
     {
-        static::$serializerCacheDirectory = $serializerCacheDirectoty;
+        self::$serializerCacheDirectory = $serializerCacheDirectoty;
     }
 
     /**
@@ -351,7 +351,7 @@ class ZugferdSettings
      */
     public static function hasSerializerCacheDirectory(): bool
     {
-        return false === StringUtils::stringIsNullOrEmpty(static::$serializerCacheDirectory);
+        return false === StringUtils::stringIsNullOrEmpty(self::$serializerCacheDirectory);
     }
 
     /**
@@ -371,7 +371,7 @@ class ZugferdSettings
      */
     public static function getSourceDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getRootDirectory(), 'src');
+        return PathUtils::combineAllPaths(self::getRootDirectory(), 'src');
     }
 
     /**
@@ -381,7 +381,7 @@ class ZugferdSettings
      */
     public static function getAssetDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSourceDirectory(), 'assets');
+        return PathUtils::combineAllPaths(self::getSourceDirectory(), 'assets');
     }
 
     /**
@@ -391,7 +391,7 @@ class ZugferdSettings
      */
     public static function getYamlDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSourceDirectory(), 'yaml');
+        return PathUtils::combineAllPaths(self::getSourceDirectory(), 'yaml');
     }
 
     /**
@@ -401,7 +401,7 @@ class ZugferdSettings
      */
     public static function getValidationDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSourceDirectory(), 'validation');
+        return PathUtils::combineAllPaths(self::getSourceDirectory(), 'validation');
     }
 
     /**
@@ -411,7 +411,7 @@ class ZugferdSettings
      */
     public static function getSchemaDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSourceDirectory(), 'schema');
+        return PathUtils::combineAllPaths(self::getSourceDirectory(), 'schema');
     }
 
     /**
@@ -421,7 +421,7 @@ class ZugferdSettings
      */
     public static function getSchematronDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSchemaDirectory(), 'schematron');
+        return PathUtils::combineAllPaths(self::getSchemaDirectory(), 'schematron');
     }
 
     /**
@@ -431,7 +431,7 @@ class ZugferdSettings
      */
     public static function getXsltDirectory(): string
     {
-        return PathUtils::combineAllPaths(static::getSchemaDirectory(), 'xslt');
+        return PathUtils::combineAllPaths(self::getSchemaDirectory(), 'xslt');
     }
 
     /**
@@ -441,7 +441,7 @@ class ZugferdSettings
      */
     public static function getFullIccProfileFilename(): string
     {
-        return PathUtils::combinePathWithFile(static::getAssetDirectory(), static::$iccProfileFilename);
+        return PathUtils::combinePathWithFile(self::getAssetDirectory(), self::$iccProfileFilename);
     }
 
     /**
@@ -451,6 +451,6 @@ class ZugferdSettings
      */
     public static function getFullXmpMetaDataFilename(): string
     {
-        return PathUtils::combinePathWithFile(static::getAssetDirectory(), static::$xmpMetaDataFilename);
+        return PathUtils::combinePathWithFile(self::getAssetDirectory(), self::$xmpMetaDataFilename);
     }
 }

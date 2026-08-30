@@ -131,7 +131,7 @@ class ZugferdProfileResolver
      */
     public static function resolveProfileDefById(int $profileId): array
     {
-        $resolved = static::resolveById($profileId);
+        $resolved = self::resolveById($profileId);
 
         return $resolved[1];
     }

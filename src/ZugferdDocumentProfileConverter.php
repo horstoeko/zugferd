@@ -78,7 +78,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     public static function convertFromFileToFile(string $fromFilename, string $toFile, int $newProfileId): void
     {
-        static::convertFromFile($fromFilename, $newProfileId)->convertToFile($toFile);
+        self::convertFromFile($fromFilename, $newProfileId)->convertToFile($toFile);
     }
 
     /**
@@ -119,7 +119,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     public static function convertFromContentToFile(string $fromContent, string $toFile, int $newProfileId): void
     {
-        static::convertFromContent($fromContent, $newProfileId)->convertToFile($toFile);
+        self::convertFromContent($fromContent, $newProfileId)->convertToFile($toFile);
     }
 
     /**
@@ -290,19 +290,19 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
 
         $this->getObjectHelper()->tryCallByPath(
             $this->getInvoiceObject(),
-            static::PATH_1,
+            self::PATH_1,
             $this->getObjectHelper()->getIdType($profileDef['contextparameter'])
         );
 
         if (null !== $profileDef['businessprocess'] && '' !== $profileDef['businessprocess']) {
             $this->getObjectHelper()->tryCallByPath(
                 $this->getInvoiceObject(),
-                static::PATH_2,
+                self::PATH_2,
                 $this->getObjectHelper()->createClassInstance('ram\DocumentContextParameterType')
             );
             $this->getObjectHelper()->tryCallByPath(
                 $this->getInvoiceObject(),
-                static::PATH_3,
+                self::PATH_3,
                 $this->getObjectHelper()->getIdType($profileDef['businessprocess'])
             );
         }

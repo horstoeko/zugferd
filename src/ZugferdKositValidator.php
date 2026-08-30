@@ -450,7 +450,7 @@ class ZugferdKositValidator
      */
     public function getValidationErrors(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONERROR);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONERROR);
     }
 
     /**
@@ -491,7 +491,7 @@ class ZugferdKositValidator
      */
     public function getValidationWarnings(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONWARNING);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONWARNING);
     }
 
     /**
@@ -521,7 +521,7 @@ class ZugferdKositValidator
      */
     public function getValidationInformation(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_VALIDATIONINFORMATION);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_VALIDATIONINFORMATION);
     }
 
     /**
@@ -551,7 +551,7 @@ class ZugferdKositValidator
      */
     public function getProcessErrors(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_INTERNALERROR);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_INTERNALERROR);
     }
 
     /**
@@ -581,7 +581,7 @@ class ZugferdKositValidator
      */
     public function getProcessOutput(): array
     {
-        return $this->getMessageBagFiltered(static::MSG_TYPE_PROCESSOUTPUT);
+        return $this->getMessageBagFiltered(self::MSG_TYPE_PROCESSOUTPUT);
     }
 
     /**
@@ -700,7 +700,7 @@ class ZugferdKositValidator
      */
     private function addToMessageBag($error, string $messageType = ''): void
     {
-        $messageType = StringUtils::stringIsNullOrEmpty($messageType) ? static::MSG_TYPE_INTERNALERROR : $messageType;
+        $messageType = StringUtils::stringIsNullOrEmpty($messageType) ? self::MSG_TYPE_INTERNALERROR : $messageType;
 
         if (is_string($error)) {
             $this->messageBag[] = ['type' => $messageType, 'message' => $error];
@@ -1132,9 +1132,9 @@ class ZugferdKositValidator
         $domXPath = new DOMXPath($domDocument);
 
         $messageTypeMaps = [
-            static::MSG_TYPE_VALIDATIONERROR => 'error',
-            static::MSG_TYPE_VALIDATIONWARNING => 'warning',
-            static::MSG_TYPE_VALIDATIONINFORMATION => 'information',
+            self::MSG_TYPE_VALIDATIONERROR => 'error',
+            self::MSG_TYPE_VALIDATIONWARNING => 'warning',
+            self::MSG_TYPE_VALIDATIONINFORMATION => 'information',
         ];
 
         $resultAreas = [
@@ -1233,26 +1233,26 @@ class ZugferdKositValidator
             $process->run();
 
             foreach (preg_split("/\r\n|\n|\r/", $process->getOutput()) as $outputLine) {
-                $this->addToMessageBag($outputLine, static::MSG_TYPE_PROCESSOUTPUT);
+                $this->addToMessageBag($outputLine, self::MSG_TYPE_PROCESSOUTPUT);
             }
 
             if (!$process->isSuccessful()) {
                 if (-1 === $process->getExitCode()) {
-                    $this->addToMessageBag('Parsing error. The commandline arguments specified are incorrect', static::MSG_TYPE_VALIDATIONERROR);
+                    $this->addToMessageBag('Parsing error. The commandline arguments specified are incorrect', self::MSG_TYPE_VALIDATIONERROR);
                 }
 
                 if (-2 === $process->getExitCode()) {
-                    $this->addToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets', static::MSG_TYPE_VALIDATIONERROR);
+                    $this->addToMessageBag('Configuration error. There is an error loading the configuration and/or validation targets', self::MSG_TYPE_VALIDATIONERROR);
                 }
 
                 if ($process->getExitCode() > 0) {
-                    $this->addToMessageBag('Validation error. One ore more files were rejected', static::MSG_TYPE_VALIDATIONERROR);
+                    $this->addToMessageBag('Validation error. One ore more files were rejected', self::MSG_TYPE_VALIDATIONERROR);
                 }
 
                 return false;
             }
         } catch (Throwable $throwable) {
-            $this->addToMessageBag($throwable, static::MSG_TYPE_VALIDATIONERROR);
+            $this->addToMessageBag($throwable, self::MSG_TYPE_VALIDATIONERROR);
 
             return false;
         }
