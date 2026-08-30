@@ -1145,9 +1145,15 @@ class ZugferdKositValidator
 
         foreach ($resultAreas as $resultArea) {
             $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/s:resource/s:name", $resultArea));
-            $resourceName = isset($queryResult[0]) ? $queryResult[0]->nodeValue : $resultArea;
+            $resourceNameNode = false === $queryResult ? null : $queryResult->item(0);
+            $resourceName = null !== $resourceNameNode && null !== $resourceNameNode->nodeValue ? $resourceNameNode->nodeValue : $resultArea;
             foreach ($messageTypeMaps as $messageType => $reportMessageType) {
                 $queryResult = $domXPath->query(sprintf("//rep:report/rep:scenarioMatched/rep:validationStepResult[@id='%s']/rep:message[@level='%s']", $resultArea, $reportMessageType));
+
+                if (false === $queryResult) {
+                    continue;
+                }
+
                 foreach ($queryResult as $queryItem) {
                     $this->addToMessageBag(sprintf('%s: %s', $resourceName, $queryItem->nodeValue), $messageType);
                 }

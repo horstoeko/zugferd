@@ -780,10 +780,10 @@ class ZugferdPdfValidator
     /**
      * Install the validator
      *
+     * @return bool
+     *
      * @throws DirectoryNotFoundException
      * @throws LogicException
-     *
-     * @return bool
      */
     private function installValidator(): bool
     {
@@ -880,6 +880,8 @@ class ZugferdPdfValidator
             $this->validatorRuleset,
             $this->resolveFileToValidateFilename(),
         ];
+
+        $validatorExecutableOutput = '';
 
         if (false === $this->runProcessAndGetOutput($validatorExecutableOptions, $this->resolveBaseDirectory(), $validatorExecutableOutput)) {
             $this->checkValidatorExecutableOutput($validatorExecutableOutput);
@@ -1042,7 +1044,9 @@ class ZugferdPdfValidator
      */
     private function runProcess(array $command, string $workingdirectory): bool
     {
-        return $this->runProcessAndGetOutput($command, $workingdirectory, $_);
+        $processOutput = '';
+
+        return $this->runProcessAndGetOutput($command, $workingdirectory, $processOutput);
     }
 
     /**
@@ -1052,10 +1056,10 @@ class ZugferdPdfValidator
      *
      * @param  array<int, string> $command
      * @param  string             $workingdirectory
-     * @param  null|string        &$processOutput
+     * @param  string             &$processOutput
      * @return bool
      */
-    private function runProcessAndGetOutput(array $command, string $workingdirectory, ?string &$processOutput): bool
+    private function runProcessAndGetOutput(array $command, string $workingdirectory, string &$processOutput): bool
     {
         try {
             $process = new Process($command);
