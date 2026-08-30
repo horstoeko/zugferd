@@ -168,4 +168,12 @@ if (PHP_VERSION_ID >= 70400) {
     $config->setParallelConfig(new ParallelConfig(4, 20, 60000));
 }
 
+if (PHP_VERSION_ID < 80100 ) {
+    $rules = $config->getRules();
+    unset($rules['modifier_keywords']);
+    unset($rules['ordered_attributes']);
+    unset($rules['attribute_block_no_spaces']);
+    $config->setRules($rules);
+}
+
 return $config;
