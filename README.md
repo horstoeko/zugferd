@@ -14,31 +14,29 @@
 <!-- omit in toc -->
 ## Searching for contributors
 
-> [!IMPORTANT]
-> ## Zukunft / Nachfolger-Projekt
-> Dieses Projekt hat lange gute Dienste geleistet, aber die Codebasis ist inzwischen in die Jahre gekommen – es ist Zeit für eine grundlegende Modernisierung.
->
-> **Keine Sorge:** `horstoeko/zugferd` wird weiterhin betreut. Ich werde bestmöglich Bugfixes liefern und Pull Requests prüfen, sodass bestehende Anwender sich weiterhin darauf verlassen können.
->
-> Parallel entsteht eine neue, modernere Codebasis. Sie wird einen **Legacy-Support** erhalten, damit die Migration für bestehende Nutzer so reibungslos wie möglich abläuft.
->
-> Ich suche einfach **helfende Hände**, die mich wegen **Zeitmangels** bei der Weiterentwicklung und Pflege unterstützen können – ganz egal ob Code, Tests, Doku, Reviews, Beispiele, Issue-Triage oder einfach Feedback.
->
-> **Kontakt (gern auch unverbindlich):** horstoeko-invoicesuite@erling.com.de
-> Schreib kurz, wobei du unterstützen möchtest und wie viel Zeit du grob hast.
+<!-- omit in toc -->
+## Projektstatus und offizieller Nachfolger
 
 > [!IMPORTANT]
-> ## Future / Successor project
-> This project has served well for a long time, but the codebase is getting old and it’s time for a major modernization.
+> `horstoeko/zugferd` wurde technisch umfassend modernisiert. Die Entwicklungsinfrastruktur, CI- und Release-Workflows, Nightly-Builds, Tests sowie die automatisierten Qualitätsprüfungen mit PHPStan, PHP-CS-Fixer und Rector wurden aktualisiert und vereinheitlicht. Die Bibliothek bleibt für bestehende Projekte verfügbar und wird weiterhin gepflegt.
 >
-> **No worries:** `horstoeko/zugferd` will continue to be maintained. I will keep providing best-effort bugfixes and reviewing PRs so existing users can continue to rely on it.
+> **Diese Modernisierung ändert nichts an der strategischen Ausrichtung: Der offizielle Nachfolger und Schwerpunkt der zukünftigen Weiterentwicklung ist [horstoeko/invoicesuite](https://github.com/horstoeko/invoicesuite). Für neue Projekte wird ausdrücklich InvoiceSuite empfohlen.**
 >
-> In parallel, a new, modern codebase is being built. It will include **legacy support** to make migration as smooth as possible for current users.
+> InvoiceSuite bietet eine moderne, erweiterbare Architektur für verschiedene Formate und Syntaxen elektronischer Rechnungen – darunter ZUGFeRD, Factur-X und XRechnung in CII und UBL. Die enthaltene [Legacy-Kompatibilität](https://github.com/horstoeko/invoicesuite/wiki/Legacy-support) erleichtert die Migration bestehender Anwendungen von `horstoeko/zugferd`.
 >
-> I’m simply looking for **helping hands** because my time is limited — whether it’s code, tests, docs, reviews, examples, issue triage, or just feedback.
+> Bestehende Anwendungen müssen nicht sofort migriert werden. Bei neuen Implementierungen oder größeren Weiterentwicklungen sollte jedoch InvoiceSuite als Grundlage verwendet werden.
+
+<!-- omit in toc -->
+## Project status and official successor
+
+> [!IMPORTANT]
+> `horstoeko/zugferd` has undergone extensive technical modernization. The development infrastructure, CI and release workflows, nightly builds, tests, and automated quality checks using PHPStan, PHP-CS-Fixer, and Rector have been updated and standardized. The library remains available and maintained for existing projects.
 >
-> **Contact (also just for an informal chat):** horstoeko-invoicesuite@erling.com.de
-> Please share what you’d like to help with and roughly how much time you have.
+> **This modernization does not change the strategic direction: The official successor and primary focus of future development is [horstoeko/invoicesuite](https://github.com/horstoeko/invoicesuite). InvoiceSuite is strongly recommended for all new projects.**
+>
+> InvoiceSuite provides a modern, extensible architecture for different electronic invoice formats and syntaxes, including ZUGFeRD, Factur-X, and XRechnung in both CII and UBL. Its [legacy compatibility layer](https://github.com/horstoeko/invoicesuite/wiki/Legacy-support) facilitates the migration of existing applications from `horstoeko/zugferd`.
+>
+> Existing applications do not need to migrate immediately. However, InvoiceSuite should be used as the foundation for new implementations and major future developments.
 
 <!-- omit in toc -->
 ## Table of Contents
