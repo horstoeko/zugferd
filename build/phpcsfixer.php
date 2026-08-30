@@ -175,6 +175,7 @@ if (PHP_VERSION_ID < 80100 ) {
     unset($rules['attribute_block_no_spaces']);
     unset($rules['phpdoc_order']);
     unset($rules['phpdoc_align']);
+    unset($rules['phpdoc_separation']);
     $config->setRules($rules);
 }
 

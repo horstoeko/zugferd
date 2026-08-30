@@ -15,6 +15,9 @@ use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessUnionReturnDocblockRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
+use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Set\ValueObject\LevelSetList;
+use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 use Rector\ValueObject\PhpVersion;
 
@@ -46,9 +49,15 @@ return RectorConfig::configure()
         RemoveMixedDocblockOverruledByNativeTypeRector::class,
     ])
     ->withPhpVersion(PhpVersion::PHP_73)
-    ->withPhpSets(false, false, false, false, false, true)
-    ->withPreparedSets(true, true, true, false, false, false, false, false, true, false, false, false, false, true)
-    ->withComposerBased(false, false, true)
+    ->withSets([
+        LevelSetList::UP_TO_PHP_73,
+        SetList::DEAD_CODE,
+        SetList::CODE_QUALITY,
+        SetList::CODING_STYLE,
+        SetList::INSTANCEOF,
+        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+        PHPUnitSetList::COMPOSER_BASED,
+    ])
     ->withRules([
         DeclareStrictTypesRector::class,
     ])
