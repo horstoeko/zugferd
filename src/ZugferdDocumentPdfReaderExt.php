@@ -109,7 +109,7 @@ class ZugferdDocumentPdfReaderExt
             throw new ZugferdFileNotReadableException($pdfFilename);
         }
 
-        return static::fromContent($pdfContent);
+        return self::fromContent($pdfContent);
     }
 
     /**
@@ -144,7 +144,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function readAndGuessFromFile(string $pdfFilename): ZugferdDocumentReader
     {
-        return static::fromFile($pdfFilename)->resolveInvoiceDocumentReader();
+        return self::fromFile($pdfFilename)->resolveInvoiceDocumentReader();
     }
 
     /**
@@ -164,7 +164,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function readAndGuessFromContent(string $pdfContent): ZugferdDocumentReader
     {
-        return static::fromContent($pdfContent)->resolveInvoiceDocumentReader();
+        return self::fromContent($pdfContent)->resolveInvoiceDocumentReader();
     }
 
     /**
@@ -183,7 +183,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function getInvoiceDocumentContentFromFile(string $pdfFilename): string
     {
-        return static::fromFile($pdfFilename)->resolveInvoiceDocumentContent();
+        return self::fromFile($pdfFilename)->resolveInvoiceDocumentContent();
     }
 
     /**
@@ -199,7 +199,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function getInvoiceDocumentContentFromContent(string $pdfContent): string
     {
-        return static::fromContent($pdfContent)->resolveInvoiceDocumentContent();
+        return self::fromContent($pdfContent)->resolveInvoiceDocumentContent();
     }
 
     /**
@@ -214,7 +214,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function getAdditionalDocumentContentsFromFile(string $pdfFilename): array
     {
-        return static::fromFile($pdfFilename)->resolveAdditionalDocumentContents();
+        return self::fromFile($pdfFilename)->resolveAdditionalDocumentContents();
     }
 
     /**
@@ -227,7 +227,7 @@ class ZugferdDocumentPdfReaderExt
      */
     public static function getAdditionalDocumentContentsFromContent(string $pdfContent): array
     {
-        return static::fromContent($pdfContent)->resolveAdditionalDocumentContents();
+        return self::fromContent($pdfContent)->resolveAdditionalDocumentContents();
     }
 
     /**

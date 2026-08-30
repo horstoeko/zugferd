@@ -87,7 +87,7 @@ class ZugferdProfileResolver
      */
     public static function resolveProfileId(string $xmlContent): int
     {
-        return static::resolve($xmlContent)[0];
+        return self::resolve($xmlContent)[0];
     }
 
     /**
@@ -101,7 +101,7 @@ class ZugferdProfileResolver
      */
     public static function resolveProfileDef(string $xmlContent): array
     {
-        return static::resolve($xmlContent)[1];
+        return self::resolve($xmlContent)[1];
     }
 
     /**

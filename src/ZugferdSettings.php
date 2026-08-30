@@ -101,7 +101,7 @@ class ZugferdSettings
      */
     public static function getAmountDecimals(): int
     {
-        return static::$amountDecimals;
+        return self::$amountDecimals;
     }
 
     /**
@@ -122,7 +122,7 @@ class ZugferdSettings
      */
     public static function getQuantityDecimals(): int
     {
-        return static::$quantityDecimals;
+        return self::$quantityDecimals;
     }
 
     /**
@@ -143,7 +143,7 @@ class ZugferdSettings
      */
     public static function getPercentDecimals(): int
     {
-        return static::$percentDecimals;
+        return self::$percentDecimals;
     }
 
     /**
@@ -164,7 +164,7 @@ class ZugferdSettings
      */
     public static function getMeasureDecimals(): int
     {
-        return static::$measureDecimals;
+        return self::$measureDecimals;
     }
 
     /**
@@ -185,7 +185,7 @@ class ZugferdSettings
      */
     public static function getDecimalSeparator(): string
     {
-        return static::$decimalSeparator;
+        return self::$decimalSeparator;
     }
 
     /**
@@ -206,7 +206,7 @@ class ZugferdSettings
      */
     public static function getThousandsSeparator(): string
     {
-        return static::$thousandsSeparator;
+        return self::$thousandsSeparator;
     }
 
     /**
@@ -227,7 +227,7 @@ class ZugferdSettings
      */
     public static function getIccProfileFilename(): string
     {
-        return static::$iccProfileFilename;
+        return self::$iccProfileFilename;
     }
 
     /**
@@ -248,7 +248,7 @@ class ZugferdSettings
      */
     public static function getXmpMetaDataFilename(): string
     {
-        return static::$xmpMetaDataFilename;
+        return self::$xmpMetaDataFilename;
     }
 
     /**
@@ -269,7 +269,7 @@ class ZugferdSettings
      */
     public static function getSpecialDecimalPlacesMaps(): array
     {
-        return static::$specialDecimalPlacesMaps;
+        return self::$specialDecimalPlacesMaps;
     }
 
     /**
@@ -284,7 +284,7 @@ class ZugferdSettings
     {
         $nodePath = preg_replace('@\[\d+\]@', '', $nodePath);
 
-        return static::$specialDecimalPlacesMaps[$nodePath] ?? $defaultDecimalPlaces;
+        return self::$specialDecimalPlacesMaps[$nodePath] ?? $defaultDecimalPlaces;
     }
 
     /**
@@ -341,7 +341,7 @@ class ZugferdSettings
      */
     public static function getSerializerCacheDirectory(): string
     {
-        return static::$serializerCacheDirectory;
+        return self::$serializerCacheDirectory;
     }
 
     /**

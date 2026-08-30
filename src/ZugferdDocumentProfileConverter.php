@@ -99,7 +99,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     public static function convertFromFileToString(string $fromFilename, int $newProfileId): string
     {
-        return static::convertFromFile($fromFilename, $newProfileId)->convertToString();
+        return self::convertFromFile($fromFilename, $newProfileId)->convertToString();
     }
 
     /**
@@ -138,7 +138,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
      */
     public static function convertFromContentToString(string $fromContent, int $newProfileId): string
     {
-        return static::convertFromContent($fromContent, $newProfileId)->convertToString();
+        return self::convertFromContent($fromContent, $newProfileId)->convertToString();
     }
 
     /**
@@ -169,7 +169,7 @@ class ZugferdDocumentProfileConverter extends ZugferdDocument
             throw new ZugferdFileNotReadableException($fromFilename);
         }
 
-        return static::convertFromContent($fromContent, $newProfileId);
+        return self::convertFromContent($fromContent, $newProfileId);
     }
 
     /**

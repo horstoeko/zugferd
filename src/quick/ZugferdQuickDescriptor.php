@@ -83,7 +83,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      */
     public static function doCreateNew(): self
     {
-        return static::createNew(static::getProfile());
+        return self::createNew(static::getProfile());
     }
 
     /**
