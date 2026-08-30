@@ -79,8 +79,9 @@ jobs:
           mkdir -p build/phpcsfixer-cache
           mkdir -p build/phpstan-cache
           mkdir -p build/phpunit-cache
+          mkdir -p build/rector-cache
 
-      - name: Run parallel lint
+      - name: Run parallel lint (PHP 8.x)
         run: vendor/bin/parallel-lint src tests
 
       - name: Restore quality tools cache
@@ -92,6 +93,7 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
+            build/rector-cache
           key: ${{ runner.os }}-quality-php-8.5-${{ github.run_id }}
           restore-keys: |
             ${{ runner.os }}-quality-php-8.5-

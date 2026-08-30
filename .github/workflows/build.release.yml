@@ -68,12 +68,8 @@ jobs:
           mkdir -p build/phpunit-cache
           mkdir -p build/rector-cache
 
-      - name: Run parallel lint
-        run: vendor/bin/parallel-lint --exclude src/codelistsenum src tests
-
-      - name: Run PHP 8.1 enum lint
-        if: ${{ contains(fromJSON('["8.1","8.2","8.3","8.4","8.5"]'), matrix.phpversion) }}
-        run: vendor/bin/parallel-lint src/codelistsenum
+      - name: Run parallel lint (PHP 8.x)
+        run: vendor/bin/parallel-lint src tests
 
       - name: Restore quality tools cache
         id: quality-cache-restore

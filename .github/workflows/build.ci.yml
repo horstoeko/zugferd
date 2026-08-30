@@ -90,11 +90,11 @@ jobs:
           mkdir -p build/phpunit-cache
           mkdir -p build/rector-cache
 
-      - name: Run parallel lint
+      - name: Run parallel lint (PHP 7.x)
         if: ${{ contains(fromJSON('["7.3","7.4","8.0"]'), matrix.phpversion) }}
         run: vendor/bin/parallel-lint --exclude src/codelistsenum src tests
 
-      - name: Run PHP 8.1 enum lint
+      - name: Run parallel lint (PHP 8.x)
         if: ${{ contains(fromJSON('["8.1","8.2","8.3","8.4","8.5"]'), matrix.phpversion) }}
         run: vendor/bin/parallel-lint src tests
 
