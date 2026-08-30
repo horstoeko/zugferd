@@ -131,7 +131,7 @@ trait HandlesXmlTests
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, substr($xmlvalue[$index], 0, strlen($expected)));
+        $this->assertEquals($expected, substr((string) $xmlvalue[$index], 0, strlen($expected)));
     }
 
     /**
@@ -188,7 +188,7 @@ trait HandlesXmlTests
         $xml = $this->getXml();
         $xmlvalue = $xml->xpath($xpath);
         $this->assertArrayHasKey($index, $xmlvalue);
-        $this->assertEquals($expected, substr($xmlvalue[$index], 0, strlen($expected)));
+        $this->assertEquals($expected, substr((string) $xmlvalue[$index], 0, strlen($expected)));
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute]);
         $this->assertNotNull($xmlvalue[$index]->attributes()[$expectedAttribute][0]);
         $this->assertEquals($expectedAttributeValue, $xmlvalue[$index]->attributes()[$expectedAttribute][0]);

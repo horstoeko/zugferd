@@ -13,6 +13,9 @@ parameters:
     level: 6
     treatPhpDocTypesAsCertain: false
     phpVersion: 70300
+    scanFiles:
+        - phpstan-compat/SymfonyProcess.php
+        - phpstan-compat/RandomException.php
     exceptions:
         implicitThrows: false
         check:

@@ -44,7 +44,7 @@ final class Issue32Test extends TestCase
             ->doAddSellerTaxRegistration('VA', 'DE123456789')
             ->doSetSellerContact('Horst Meier', null, 'horst@nowhere.all', '+49-0000-8888888')
             ->doSetSellerElectronicCommunication('lieferant@lieferant.de')
-            ->doAddTradeLineItem(1, 'PositionText', 31.67, 61.64, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
+            ->doAddTradeLineItem('1', 'PositionText', 31.67, 61.64, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
 
         $this->disableRenderXmlContent();
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:Name', 'Kunden AG Mitte');

@@ -346,7 +346,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $documentNo = $this->getInvoiceValueByPath('getExchangedDocument.getID.value', '');
         $documentTypeCode = $this->getInvoiceValueByPath('getExchangedDocument.getTypeCode.value', '');
         $documentDate = $this->getObjectHelper()->toDateTime(
-            $this->getInvoiceValueByPath('getExchangedDocument.getIssueDateTime.getDateTimeString', ''),
+            $this->getInvoiceValueByPath('getExchangedDocument.getIssueDateTime.getDateTimeString.value', ''),
             $this->getInvoiceValueByPath('getExchangedDocument.getIssueDateTime.getDateTimeString.getFormat', '')
         );
         $invoiceCurrency = $this->getInvoiceValueByPath('getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.getInvoiceCurrencyCode.value', '');
@@ -354,7 +354,7 @@ class ZugferdDocumentReader extends ZugferdDocument
         $documentName = $this->getInvoiceValueByPath('getExchangedDocument.getName.value', '');
         $documentLanguage = $this->getInvoiceValueByPath('getExchangedDocument.getLanguageID.value', '');
         $effectiveSpecifiedPeriod = $this->getObjectHelper()->toDateTime(
-            $this->getInvoiceValueByPath('getExchangedDocument.getEffectiveSpecifiedPeriod.getCompleteDateTime.getDateTimeString', ''),
+            $this->getInvoiceValueByPath('getExchangedDocument.getEffectiveSpecifiedPeriod.getCompleteDateTime.getDateTimeString.value', ''),
             $this->getInvoiceValueByPath('getExchangedDocument.getEffectiveSpecifiedPeriod.getCompleteDateTime.getDateTimeString.getFormat', '')
         );
 

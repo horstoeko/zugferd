@@ -141,8 +141,8 @@ final class ReaderPathChecker
     /**
      * Pull every path literal out of the reader source together with its line number.
      *
-     * getInvoiceValueByPath("a.b")         -> absolute, resolvable from the document root
-     * getInvoiceValueByPathFrom($x, "a.b") -> relative, root not known statically
+     * getInvoiceValueByPath('a.b')          -> absolute, resolvable from the document root
+     * getInvoiceValueByPathFrom($x, 'a.b')  -> relative, root not known statically
      *
      * @param  string                                               $source
      * @return array<int,array{line:int,path:string,absolute:bool}>
@@ -152,8 +152,8 @@ final class ReaderPathChecker
         $usages = [];
 
         $patterns = [
-            ['regex' => '/getInvoiceValueByPathFrom\s*\(\s*[^,]+,\s*"([^"]+)"/', 'absolute' => false],
-            ['regex' => '/getInvoiceValueByPath\s*\(\s*"([^"]+)"/', 'absolute' => true],
+            ['regex' => '~getInvoiceValueByPathFrom\s*\(\s*[^,]+,\s*(?<quote>["\'])(?<path>[^"\']+)\k<quote>~', 'absolute' => false],
+            ['regex' => '~getInvoiceValueByPath\s*\(\s*(?<quote>["\'])(?<path>[^"\']+)\k<quote>~', 'absolute' => true],
         ];
 
         foreach ($patterns as $pattern) {
@@ -161,7 +161,7 @@ final class ReaderPathChecker
                 continue;
             }
 
-            foreach ($matches[1] as $match) {
+            foreach ($matches['path'] as $match) {
                 $usages[] = [
                     'line' => substr_count(substr($source, 0, $match[1]), "\n") + 1,
                     'path' => $match[0],
