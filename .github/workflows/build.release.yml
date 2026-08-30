@@ -126,7 +126,7 @@ jobs:
             examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
           do
             rm -f examples/factur-x.xml
-            php -f "$generator"
+            php -f "$generator" >/dev/null
             test -s examples/factur-x.xml
 
             if ! kositValidationResult=$(curl \

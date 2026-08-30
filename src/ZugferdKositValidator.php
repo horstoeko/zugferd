@@ -822,7 +822,7 @@ class ZugferdKositValidator
             return false;
         }
 
-        $httpConnection = curl_init($this->getRemoteModeUrl());
+        $httpConnection = curl_init($this->getRemoteModeUrl() . '/server/health');
 
         curl_setopt($httpConnection, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($httpConnection, CURLOPT_HEADER, true);
