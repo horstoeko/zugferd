@@ -33,14 +33,13 @@ $finder = (new Finder())
         ]
     );
 
-return (new Config())
+$config = (new Config())
     ->setRiskyAllowed(true)
     ->setUsingCache(true)
     ->setCacheFile($rootDir . '/build/phpcsfixer-cache/.php-cs-fixer.cache')
     ->setFinder($finder)
     ->setIndent("    ")
     ->setLineEnding("\n")
-    ->setParallelConfig(new ParallelConfig(4, 20, 60000))
     ->setRules(
         [
             '@PSR12' => true,
@@ -164,3 +163,9 @@ return (new Config())
             'attribute_block_no_spaces' => true,
         ]
     );
+
+if (PHP_VERSION_ID >= 70400) {
+    $config->setParallelConfig(new ParallelConfig(4, 20, 60000));
+}
+
+return $config;
