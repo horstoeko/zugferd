@@ -239,26 +239,6 @@ jobs:
           check_name: Test Results (PHP ${{ matrix.phpversion }})
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
-      - name: Generate SBOM
-        if: ${{ contains(fromJSON('["8.4","8.5"]'), matrix.phpversion) }}
-        continue-on-error: true
-        run: |
-          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
-          composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
-          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.json
-          composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
-
-      - name: Publish SBOM artifacts
-        if: ${{ contains(fromJSON('["8.4","8.5"]'), matrix.phpversion) }}
-        continue-on-error: true
-        uses: actions/upload-artifact@v7
-        with:
-          name: SBOM artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
-          path: |
-            build/dist/sbom.json
-            build/dist/sbom.xml
-          if-no-files-found: error
-
       - name: Publish build log artifacts
         continue-on-error: true
         if: always()
