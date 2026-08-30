@@ -669,6 +669,10 @@ abstract class ZugferdDocumentPdfBuilderAbstract
      */
     protected function isFile($pdfData): bool
     {
+        if (!is_string($pdfData) || false !== strpos($pdfData, "\0")) {
+            return false;
+        }
+
         return @is_file($pdfData);
     }
 

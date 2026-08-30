@@ -3,10 +3,8 @@
 declare(strict_types=1);
 
 return [
-    // PHP-CS-Fixer 3.4 is the newest 3.x release installable on PHP 7.3.
-    // Avoid evolving rule sets such as @PSR12/@PhpCsFixer here, because their
-    // contents differ substantially across the 3.x line and would make the
-    // PHP 7.3 job format the same source differently from newer jobs.
+    '@PSR12' => true,
+    '@PhpCsFixer' => true,
     'ordered_imports' => [
         'sort_algorithm' => 'alpha',
         'imports_order'  => [
@@ -26,6 +24,7 @@ return [
             'arrays',
         ],
     ],
+    // PHP-CS-Fixer 3.66 (used on PHP 8.0) still uses visibility_required.
     'visibility_required' => [
         'elements' => ['property', 'method', 'const'],
     ],
@@ -53,10 +52,17 @@ return [
             'type',
             'var',
             'throws',
+            'see',
+            'license',
+            'todo',
+            '@phpstan-param',
+            '@phpstan-param-out',
+            'param-out',
         ],
     ],
-    // PHP-CS-Fixer 3.4 does not offer the configurable order used by newer 3.x releases.
-    'phpdoc_order' => false,
+    'phpdoc_order' => [
+        'order' => ['param', 'return', 'throws'],
+    ],
     'phpdoc_order_by_value' => [
         'annotations' => ['throws'],
     ],
@@ -65,8 +71,16 @@ return [
     'phpdoc_trim_consecutive_blank_line_separation' => true,
     'phpdoc_summary' => false,
     'phpdoc_no_empty_return' => false,
-    // PHP-CS-Fixer 3.4 has no configurable annotation groups for this rule.
-    'phpdoc_separation' => false,
+    'phpdoc_separation' => [
+        'groups' => [
+            ['category', 'package', 'author', 'license', 'subpackage', 'copyright', 'link', 'see'],
+            ['param', 'return'],
+            ['throws'],
+            ['deprecated', 'since'],
+            ['var', 'JMS\\*'],
+        ],
+        'skip_unlisted_annotations' => false,
+    ],
     'elseif' => true,
     'blank_line_before_statement' => [
         'statements' => [
@@ -97,8 +111,9 @@ return [
         'less_and_greater' => null,
         'always_move_variable' => false,
     ],
-    // PHP-CS-Fixer 3.4 has no case_sensitive option for ordered_traits.
-    'ordered_traits' => true,
+    'ordered_traits' => [
+        'case_sensitive' => false,
+    ],
     'concat_space' => [
         'spacing' => 'one',
     ],
@@ -106,4 +121,5 @@ return [
     'short_scalar_cast' => true,
     'cast_spaces' => ['space' => 'single'],
     'phpdoc_to_comment' => false,
+    'ordered_attributes' => true,
 ];
