@@ -155,9 +155,11 @@ jobs:
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
 
       - name: Start validation services
+        if: ${{ matrix.phpversion == '8.5' }}
         run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Run remote Schematron tests
+        if: ${{ matrix.phpversion == '8.5' }}
         run: |
           expectedResultAnchor='<rep:assessment><rep:accept>'
 
@@ -193,6 +195,7 @@ jobs:
           echo 'Remote Schematron tests passed.'
 
       - name: Run remote veraPDF tests
+        if: ${{ matrix.phpversion == '8.5' }}
         run: |
           expectedResultAnchor='<validationReports compliant="1" nonCompliant="0" failedJobs="0">1</validationReports>'
 
@@ -233,6 +236,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: build/logs/junit.xml
+          check_name: Test Results (PHP ${{ matrix.phpversion }})
           comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
 
       - name: Generate SBOM
