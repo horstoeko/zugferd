@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -13,25 +15,24 @@ namespace horstoeko\zugferd;
  * Class representing the information source of the used specification versions
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdSpecificationVersions
 {
     /**
      * The latest ZUGFeRD version used
      */
-    public const VERSION_ZUGFERD = "2.5";
+    public const VERSION_ZUGFERD = '2.5';
 
     /**
      * The latest Factur-X version used
      */
-    public const VERSION_FACTURX = "1.09";
+    public const VERSION_FACTURX = '1.09';
 
     /**
      * The latest XRechnung version used
      */
-    public const VERSION_XRECHNUNG = "3.0.2";
+    public const VERSION_XRECHNUNG = '3.0.2';
 }

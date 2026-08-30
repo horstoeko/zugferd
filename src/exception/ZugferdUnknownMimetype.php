@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -15,20 +17,19 @@ use Throwable;
  * Class representing an exception for unknown mimetype
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdUnknownMimetype extends ZugferdBaseException
 {
     /**
      * Constructor
      *
-     * @param Throwable|null $previous
+     * @param null|Throwable $previous
      */
     public function __construct(?Throwable $previous = null)
     {
-        parent::__construct("No mimetype found", ZugferdExceptionCodes::UNKNOWNMIMETYPE, $previous);
+        parent::__construct('No mimetype found', ZugferdExceptionCodes::UNKNOWNMIMETYPE, $previous);
     }
 }

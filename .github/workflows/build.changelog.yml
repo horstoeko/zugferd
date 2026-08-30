@@ -1,4 +1,4 @@
-name: Update ChangeLog
+name: Update CHANGELOG
 
 on:
   workflow_run:
@@ -9,59 +9,71 @@ on:
   workflow_dispatch:
 
 env:
-  GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  XDEBUG_MODE: off
+  TARGET_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.ref_type == 'branch' && github.ref_name || github.event.repository.default_branch }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   updatechangelog:
-    permissions: write-all
-    runs-on: "ubuntu-24.04"
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout Sources
+      - name: Checkout sources
         uses: actions/checkout@v7
         with:
           token: ${{ secrets.UPDATEWIKITOKEN }}
           fetch-depth: 0
-          fetch-tags: true
-          ref: ${{ github.head_ref }}
+          ref: ${{ env.TARGET_BRANCH }}
 
-      - name: Setup PHP with PECL extension
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          coverage: xdebug
+          php-version: '8.5'
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, intl, gd, iconv, json
+          coverage: none
+          tools: composer:v2
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Install Composer dependencies
+        run: composer update --prefer-dist
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
 
-      - uses: actions/cache@v6
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-8.4-composer-
-
-      - name: Install composer dependencies
-        run: |
-          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
-
-      - name: Update ChangeLog
-        continue-on-error: true
+      - name: Update CHANGELOG.md
         run: |
           php -f make/genchangelog.php all
+
+          if [ ! -f make/CHANGELOG.md ]; then
+            echo "No CHANGELOG.md was generated. Skipping update."
+            exit 0
+          fi
+
           rm -f CHANGELOG.md
           mv -f make/CHANGELOG.md .
+
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
+
           if [ -n "$(git status --porcelain)" ]; then
-            git add ./CHANGELOG.md
-            git commit -m "[DOC] Updated CHANGELOG.md"
-            git push
+            git add CHANGELOG.md
+            git commit -m "[DOC] Update CHANGELOG.md"
+            git push origin "HEAD:${TARGET_BRANCH}"
           else
             echo "No changes found. Skipping."
           fi

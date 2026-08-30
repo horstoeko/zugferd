@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -10,19 +12,21 @@
 namespace horstoeko\zugferd;
 
 use horstoeko\stringmanagement\PathUtils;
-use horstoeko\zugferd\ZugferdSettings;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use ReflectionClass;
+use ReflectionException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Throwable;
 
 /**
  * Class representing the document validator for incoming documents
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdDocumentValidator
 {
@@ -44,6 +48,8 @@ class ZugferdDocumentValidator
      * Constructor
      *
      * @param ZugferdDocument $document
+     *
+     * @throws ZugferdUnknownProfileParameterException
      */
     public function __construct(ZugferdDocument $document)
     {
@@ -55,6 +61,8 @@ class ZugferdDocumentValidator
      * Perform the validation of the document
      *
      * @return ConstraintViolationListInterface
+     *
+     * @throws ReflectionException
      */
     public function validateDocument(): ConstraintViolationListInterface
     {
@@ -65,6 +73,8 @@ class ZugferdDocumentValidator
      * Initialize the internal validator object
      *
      * @return void
+     *
+     * @throws ZugferdUnknownProfileParameterException
      */
     private function initValidator(): void
     {
@@ -90,8 +100,8 @@ class ZugferdDocumentValidator
     /**
      * Helper for find all files by pattern
      *
-     * @param  string  $pattern
-     * @param  integer $flags
+     * @param  string             $pattern
+     * @param  int                $flags
      * @return array<int, string>
      */
     private function globRecursive(string $pattern, int $flags = 0): array
@@ -109,14 +119,22 @@ class ZugferdDocumentValidator
      * Returns the internal invoice object from the document
      *
      * @return object
+     *
+     * @throws ReflectionException
      */
     private function getDocumentInvoiceObject()
     {
-        $reflector = new \ReflectionClass($this->document);
-
+        $reflector = new ReflectionClass($this->document);
         $method = $reflector->getMethod('getInvoiceObject');
-        $method->setAccessible(true);
 
-        return $method->invoke($this->document);
+        try {
+            return $method->getClosure($this->document)();
+        } catch (Throwable $throwable) {
+            throw new ReflectionException(
+                'Unable to access the internal invoice object.',
+                0,
+                $throwable
+            );
+        }
     }
 }

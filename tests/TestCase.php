@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests;
 
+use Closure;
+use Exception;
+use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
-use PHPUnit\Framework\TestCase as PhpUnitTestCase;
 
 class TestCase extends PhpUnitTestCase
 {
@@ -14,11 +18,10 @@ class TestCase extends PhpUnitTestCase
      *
      * @var array<string>
      */
-
     private $registeredFiles = [];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {
@@ -28,7 +31,7 @@ class TestCase extends PhpUnitTestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function tearDown(): void
     {
@@ -59,19 +62,19 @@ class TestCase extends PhpUnitTestCase
     /**
      * Use this with PHPunit 10
      *
-     * @param  \Closure $run
+     * @param  Closure $run
      * @return void
      */
-    public function expectNoticeOrWarningExt(\Closure $run): void
+    public function expectNoticeOrWarningExt(Closure $run): void
     {
         set_error_handler(
             static function (int $errno, string $errstr): void {
-                throw new \Exception($errstr, $errno);
+                throw new Exception($errstr, $errno);
             },
             E_ALL
         );
 
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
 
         call_user_func($run);
 
@@ -81,60 +84,76 @@ class TestCase extends PhpUnitTestCase
     /**
      * Access to private properties
      *
-     * @param  string $className
-     * @param  string $propertyName
+     * @param  string             $className
+     * @param  string             $propertyName
      * @return ReflectionProperty
      */
     public function getPrivatePropertyFromClassname(string $className, string $propertyName): ReflectionProperty
     {
         $reflector = new ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
-        $property->setAccessible(true);
+
+        if (PHP_VERSION_ID < 80100) {
+            $property->setAccessible(true);
+        }
+
         return $property;
     }
 
     /**
      * Access to private properties
      *
-     * @param  object $object
-     * @param  string $propertyName
+     * @param  object             $object
+     * @param  string             $propertyName
      * @return ReflectionProperty
      */
     public function getPrivatePropertyFromObject(object $object, string $propertyName): ReflectionProperty
     {
         $reflector = new ReflectionClass($object);
         $property = $reflector->getProperty($propertyName);
-        $property->setAccessible(true);
+
+        if (PHP_VERSION_ID < 80100) {
+            $property->setAccessible(true);
+        }
+
         return $property;
     }
 
     /**
      * Access to private method
      *
-     * @param  string $className
-     * @param  string $methodName
+     * @param  string           $className
+     * @param  string           $methodName
      * @return ReflectionMethod
      */
     public function getPrivateMethodFromClassname(string $className, string $methodName): ReflectionMethod
     {
         $reflector = new ReflectionClass($className);
         $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
+
+        if (PHP_VERSION_ID < 80100) {
+            $method->setAccessible(true);
+        }
+
         return $method;
     }
 
     /**
      * Access to private method
      *
-     * @param  object $object
-     * @param  string $methodName
+     * @param  object           $object
+     * @param  string           $methodName
      * @return ReflectionMethod
      */
     public function getPrivateMethodFromObject(object $object, string $methodName): ReflectionMethod
     {
         $reflector = new ReflectionClass($object);
         $method = $reflector->getMethod($methodName);
-        $method->setAccessible(true);
+
+        if (PHP_VERSION_ID < 80100) {
+            $method->setAccessible(true);
+        }
+
         return $method;
     }
 
@@ -149,6 +168,7 @@ class TestCase extends PhpUnitTestCase
     public function invokePrivateMethodFromObject($object, string $methodName, ...$args)
     {
         $method = $this->getPrivateMethodFromObject($object, $methodName);
+
         return $method->invoke($object, ...$args);
     }
 

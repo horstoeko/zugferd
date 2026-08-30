@@ -1,6 +1,12 @@
 {
     "name": "horstoeko/zugferd",
-    "keywords": ["zugferd","xrechnung","factur-x","electronic","invoice"],
+    "keywords": [
+        "zugferd",
+        "xrechnung",
+        "factur-x",
+        "electronic",
+        "invoice"
+    ],
     "description": "A library for creating and reading european electronic invoices",
     "homepage": "https://github.com/horstoeko/zugferd",
     "type": "package",
@@ -48,19 +54,190 @@
         "symfony/yaml": "^5|^6|^7|^8"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3",
         "goetas-webservices/xsd2php": "^0",
         "nette/php-generator": "*",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpdocumentor/reflection-docblock": "^5",
-        "phpstan/phpstan": "^1|^2",
-        "phpunit/phpunit": "^9",
-        "rector/rector": "*"
+        "phpstan/phpstan": "^1|^2.1",
+        "phpstan/phpstan-deprecation-rules": "^1|^2",
+        "phpstan/phpstan-strict-rules": "^1|^2",
+        "phpunit/phpunit": "^9.6",
+        "rector/rector": "^2"
     },
     "scripts": {
-        "tests": "./vendor/bin/phpunit ./tests/",
-        "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
-        "phpstan": "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress",
-        "makedoc": "phing -f ./build.xml projectdoc",
-        "rector": "vendor/bin/rector --config=./build/phprectorconfig.php",
+        "tests": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit ./tests/"
+        ],
+        "testsreal": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml"
+        ],
+        "testsreal:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --no-coverage"
+        ],
+        "testsreal:general": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite General"
+        ],
+        "testsreal:general:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite General --no-coverage"
+        ],
+        "testsreal:objecthelper": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite ObjectHelper"
+        ],
+        "testsreal:objecthelper:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite ObjectHelper --no-coverage"
+        ],
+        "testsreal:base": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Base"
+        ],
+        "testsreal:base:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Base --no-coverage"
+        ],
+        "testsreal:reader": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Reader"
+        ],
+        "testsreal:reader:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Reader --no-coverage"
+        ],
+        "testsreal:builder": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Builder"
+        ],
+        "testsreal:builder:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Builder --no-coverage"
+        ],
+        "testsreal:profileconverter": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite ProfileConverter"
+        ],
+        "testsreal:profileconverter:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite ProfileConverter --no-coverage"
+        ],
+        "testsreal:pdfreader": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFReader"
+        ],
+        "testsreal:pdfreader:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFReader --no-coverage"
+        ],
+        "testsreal:pdfbuilder": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFBuilder"
+        ],
+        "testsreal:pdfbuilder:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFBuilder --no-coverage"
+        ],
+        "testsreal:pdfmerger": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFMerger"
+        ],
+        "testsreal:pdfmerger:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite PDFMerger --no-coverage"
+        ],
+        "testsreal:validator": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Validator"
+        ],
+        "testsreal:validator:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Validator --no-coverage"
+        ],
+        "testsreal:exporter": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Exporter"
+        ],
+        "testsreal:exporter:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Exporter --no-coverage"
+        ],
+        "testsreal:regression": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Regression"
+        ],
+        "testsreal:regression:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite Regression --no-coverage"
+        ],
+        "testsreal:issues": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite issues"
+        ],
+        "testsreal:issues:quick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite issues --no-coverage"
+        ],
+        "phpstan:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G"
+        ],
+        "phpstan:clearcache": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpstan clear-result-cache"
+        ],
+        "rector:dryrun": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/rector --config=./build/phprectorconfig.php --dry-run"
+        ],
+        "rector:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/rector --config=./build/phprectorconfig.php"
+        ],
+        "rector:dryrun:xd": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d xdebug.mode=off -d realpath_cache_size=64M -d realpath_cache_ttl=600 -d opcache.enable_cli=1 -d opcache.file_cache_only=0 -d opcache.file_cache= vendor/bin/rector process --config build/phprectorconfig.php --dry-run"
+        ],
+        "rector:run:xd": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d xdebug.mode=off -d realpath_cache_size=64M -d realpath_cache_ttl=600 -d opcache.enable_cli=1 -d opcache.file_cache_only=0 -d opcache.file_cache= vendor/bin/rector process --config build/phprectorconfig.php"
+        ],
+        "phpcsfixer:dryrun": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/php-cs-fixer fix --config=./build/phpcsfixer.php --dry-run --diff"
+        ],
+        "phpcsfixer:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/php-cs-fixer fix --config=./build/phpcsfixer.php"
+        ],
+        "lint:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/parallel-lint src tests"
+        ],
+        "audit:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer audit --locked"
+        ],
+        "checkstyle:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "@lint:run",
+            "@phpcsfixer:dryrun",
+            "@phpstan:run",
+            "@audit:run"
+        ],
+        "refactor:run": [
+            "@rector:run",
+            "@phpcsfixer:run"
+        ],
+        "gencodelists:run": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./make/gencodelists.php",
+            "@phpcsfixer:run"
+        ],
         "checkreaderpaths": "php ./make/checkreaderpaths.php"
     }
 }

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentJsonExporter;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class JsonExporterTest extends TestCase
+final class JsonExporterTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
@@ -15,7 +17,7 @@ class JsonExporterTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . "/../assets/xml_xrechnung_2.xml");
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__ . '/../assets/xml_xrechnung_2.xml');
     }
 
     public function testToJsonString(): void
@@ -40,7 +42,7 @@ class JsonExporterTest extends TestCase
         $exporter = new ZugferdDocumentJsonExporter(static::$document);
         $jsonObject = $exporter->toJsonObject();
 
-        $this->assertInstanceOf("stdClass", $jsonObject);
+        $this->assertInstanceOf('stdClass', $jsonObject);
         $this->assertTrue(isset($jsonObject->ExchangedDocumentContext));
         $this->assertTrue(isset($jsonObject->ExchangedDocumentContext->GuidelineSpecifiedDocumentContextParameter));
     }

@@ -9,55 +9,71 @@ on:
   workflow_dispatch:
 
 env:
+  COMPOSER_NO_AUDIT: "1"
+  COMPOSER_NO_INTERACTION: "1"
+  COMPOSER_PROCESS_TIMEOUT: "0"
+  XDEBUG_MODE: off
+  SOURCE_REF: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.ref }}
   GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   updatewiki:
-    permissions: write-all
-    runs-on: "ubuntu-24.04"
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout Sources
+      - name: Checkout sources
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: ${{ env.SOURCE_REF }}
 
-      - name: Setup PHP with PECL extension
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          coverage: xdebug
+          php-version: '8.5'
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, intl, gd, iconv, json
+          coverage: none
+          tools: composer:v2
+          ini-values: memory_limit=-1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: Install Composer dependencies
+        run: composer update --prefer-dist
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
 
-      - uses: actions/cache@v6
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-8.4-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-8.4-composer-
-
-      - name: Install composer dependencies
-        run: |
-          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
-
-      - name: Update Wiki
-        continue-on-error: true
+      - name: Update wiki
         run: |
           php -f make/genmethoddocs.php
-          git clone https://$GH_PAT@github.com/horstoeko/zugferd.wiki.git wiki
-          mv make/*.md wiki
+          git clone "https://$GH_PAT@github.com/horstoeko/zugferd.wiki.git" wiki
+
+          if compgen -G 'make/*.md' > /dev/null; then
+            mv make/*.md wiki/
+          else
+            echo 'No method documentation files were generated. Skipping copy step.'
+          fi
+
           cd wiki
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
+
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "Automatische Aktualisierung des Wikis"
+            git commit -m 'Update wiki documentation'
             git push
           else
-            echo "No changes found. Skipping."
+            echo 'No changes found. Skipping.'
           fi

@@ -13,235 +13,52 @@ defaults:
   run:
     shell: bash
 
-env:
-  VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.5.0/validator-1.5.0-distribution.zip
-  VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-03-21/validator-configuration-xrechnung_3.0.2_2025-03-21.zip
-  VALIDATORPATH: build/validator
-  VALIDATORZIPFILENAME: validator.zip
-  VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
-  VALIDATORJARFILENAME: validationtool-1.5.0-standalone.jar
-  VALIDATORSCENARIOFILENAME: scenarios.xml
-  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
-  PHPDOCUMENTORFILENAME: phpDocumentor.phar
-  VERAPDFURL: https://software.verapdf.org/rel/verapdf-installer.zip
-  VERAPDFPATH: build/verapdf
-  VERAPDFZIPFILENAME: verapdf.zip
-  GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
-
 jobs:
-  build:
-    permissions: write-all
-    runs-on: "ubuntu-24.04"
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout Sources
-        uses: actions/checkout@v7
+      - name: Checkout sources
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-          fetch-tags: true
           persist-credentials: false
 
-      - name: Setup PHP with PECL extension
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.3"
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
-          coverage: xdebug
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v6
-        with:
-          java-version: "11"
-          distribution: "temurin"
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
+      - name: Generate release notes
         run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+          mkdir -p build
 
-      - uses: actions/cache@v6
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-8.3-composer-${{ hashFiles('**/composer.json') }}
-            ${{ runner.os }}-8.3-composer-
+          currentTag="$GITHUB_REF_NAME"
+          currentCommit=$(git rev-list -n 1 "$currentTag")
+          previousTag=$(git describe --tags --match 'v*' --abbrev=0 "${currentCommit}^" 2>/dev/null || true)
 
-      - name: Install composer dependencies
-        run: |
-          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --no-interaction --prefer-dist
+          echo "Previous tag .... ${previousTag:-<none>}"
+          echo "Current tag ..... $currentTag"
 
-      - name: Prepare Directories
-        run: |
-          mkdir build/builddoc
-          mkdir build/doc
-          mkdir build/coverage
-          mkdir build/coverage-html
-          mkdir build/logs
-          mkdir build/dist
-          mkdir build/phpdoc
-
-      - name: Run Lint (PHP 8.1 and higher)
-        run: |
-          for afile in $(find . -type f -name '*.php' -path './src*/*' -print); do
-             php -l $afile
-          done
-          for afile in $(find . -type f -name '*.php' -path './tests*/*' -print); do
-             php -l $afile
-          done
-
-      - name: Run PHPSTAN
-        continue-on-error: true
-        run: |
-          vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
-
-      - name: Run Tests (PHPUnit)
-        run: |
-          vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
-        env:
-          XDEBUG_MODE: coverage
-
-      - name: Cache Key (Schematron)
-        id: hash-validator
-        run: |
-          echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
-
-      - name: Cache Application (Schematron)
-        id: cache-validator
-        uses: actions/cache@v6
-        with:
-          path: ${{ env.VALIDATORPATH }}
-          key: ${{ runner.os }}-8.3-validator-${{ steps.hash-validator.outputs.hash }}
-
-      - name: Download Application (Schematron)
-        if: steps.cache-validator.outputs.cache-hit != 'true'
-        run: |
-          rm -rf $VALIDATORPATH
-          mkdir -p $VALIDATORPATH
-          wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
-          wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
-          unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
-          unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
-
-      - name: Run Tests (Schematron)
-        run: |
-          set -e
-          rm -f examples/factur-x.xml
-          php -f examples/01_ZugferdDocumentBuilder_EN16931.php
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
-          rm -f examples/factur-x.xml
-          php -f examples/01_ZugferdDocumentBuilder_XRECHNUNG3.php
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME examples/factur-x.xml
-
-      - name: Cache Key (VeraPDF)
-        id: hash-verapdf
-        run: |
-          echo "hash=$(echo '${{ env.VERAPDFURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
-
-      - name: Cache Application (VeraPDF)
-        id: cache-verapdf
-        uses: actions/cache@v6
-        with:
-          path: ${{ env.VERAPDFPATH }}
-          key: ${{ runner.os }}-8.3-verapdf-${{ steps.hash-verapdf.outputs.hash }}
-
-      - name: Download Application (VeraPDF)
-        if: steps.cache-verapdf.outputs.cache-hit != 'true'
-        run: |
-          rm -rf $VERAPDFPATH
-          mkdir -p $VERAPDFPATH
-          wget $VERAPDFURL -O $VERAPDFPATH/$VERAPDFZIPFILENAME
-          unzip -j $VERAPDFPATH/$VERAPDFZIPFILENAME -d $VERAPDFPATH
-          rm -f $VERAPDFPATH/$VERAPDFZIPFILENAME
-
-      - name: Run Tests (VeraPDF)
-        continue-on-error: true
-        run: |
-          set -e
-          echo "Creating veraPDF install config"
-          echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>
-            <AutomatedInstallation langpack=\"eng\">
-                <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id=\"welcome\"/>
-                <com.izforge.izpack.panels.target.TargetPanel id=\"install_dir\">
-                    <installpath>$(pwd)/$VERAPDFPATH</installpath>
-                </com.izforge.izpack.panels.target.TargetPanel>
-                <com.izforge.izpack.panels.packs.PacksPanel id=\"sdk_pack_select\">
-                    <pack index=\"0\" name=\"veraPDF Mac and *nix Scripts\" selected=\"true\"/>
-                    <pack index=\"1\" name=\"veraPDF Validation model\" selected=\"true\"/>
-                    <pack index=\"2\" name=\"veraPDF Documentation\" selected=\"true\"/>
-                    <pack index=\"3\" name=\"veraPDF Sample Plugins\" selected=\"true\"/>
-                </com.izforge.izpack.panels.packs.PacksPanel>
-                <com.izforge.izpack.panels.install.InstallPanel id=\"install\"/>
-                <com.izforge.izpack.panels.finish.FinishPanel id=\"finish\"/>
-            </AutomatedInstallation>" > $VERAPDFPATH/install.xml
-          echo "Installing veraPDF"
-          VERAPDFINSTALLJAR=$(find $VERAPDFPATH -type f -name "*.jar" | head -n 1); [[ -z "$VERAPDFINSTALLJAR" ]] && { echo "No veraPDF installer found" >&2; exit 1; } || echo "veraPDF installer fount at $VERAPDFINSTALLJAR"
-          java -jar $VERAPDFINSTALLJAR $VERAPDFPATH/install.xml
-          echo "Creating test PDF (1)"
-          php -f examples/02_ZugferdDocumentPdfBuilder_EN16931.php
-          echo "Running PDF validation"
-          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
-          echo "Result of validation"
-          echo $VERAPDFRESULT
-          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
-          echo "Creating test PDF (2)"
-          php -f examples/02_ZugferdDocumentPdfBuilder_XRECHNUNG.php
-          echo "Running PDF validation"
-          VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 examples/02_ZugferdDocumentPdfBuilder_PrintLayout_Merged.pdf)
-          echo "Result of validation"
-          echo $VERAPDFRESULT
-          [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
-
-      - name: Documentation
-        continue-on-error: true
-        run: |
-          wget $PHPDOCUMENTORURL -O $PHPDOCUMENTORFILENAME
-          chmod +x $PHPDOCUMENTORFILENAME
-          cd build
-          php ../$PHPDOCUMENTORFILENAME
-          cd ..
-          rm -f $PHPDOCUMENTORFILENAME
-
-      - name: Deploy
-        continue-on-error: true
-        run: |
-          zip -r build/dist/doc.zip build/doc
-          zip -r build/dist/builddoc.zip build/builddoc build/coverage build/coverage-html build/logs build/phpdoc
-
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        continue-on-error: true
-        with:
-          files: "build/logs/junit.xml"
-
-      - name: Publish Build Logs
-        uses: actions/upload-artifact@v7
-        continue-on-error: true
-        with:
-          name: Build log artifacts for ubuntu-24.04 PHP 8.3 (Release)
-          path: build/logs
-
-      - name: Generate Release Notes
-        id: changelog
-        run: |
-          prev_tag=$(git tag -l --sort=-v:refname | sed -n '2p')
-          curr_tag=$(git tag -l --sort=-v:refname | sed -n '1p')
-          if [ -z "$prev_tag" ]; then
-            prev_tag=$(git rev-list --max-parents=0 HEAD)
+          if [ -n "$previousTag" ]; then
+            releaseRange="$previousTag..$currentTag"
+          else
+            releaseRange="$currentTag"
           fi
-          if [ -z "$curr_tag" ]; then
-            curr_tag=$(git rev-parse HEAD)
-          fi
-          echo "Previous Tag .... $prev_tag"
-          echo "Current Tag ..... $curr_tag"
-          git log --no-merges --pretty=format:"- %s (%an)" $prev_tag..$curr_tag | grep -Ev '^\- \[INFR\]|\- \[CS\] |\- \[DOC\] ' | sed -E 's/^- (#.*)/- [ENH] \1/' > build/releasenotes.txt
-          ls -l build/
-          ls -l build/releasenotes.txt
+
+          git log --no-merges --pretty=format:'- %s (%an)' "$releaseRange" \
+            | awk '
+                /^- \[(INFR|CS|DOC)\] / { next }
+                /^- #/ { sub(/^- /, "- [ENH] ") }
+                { print }
+              ' \
+            > build/releasenotes.txt
+
+          touch build/releasenotes.txt
           cat build/releasenotes.txt
 
-      - name: Make Release
-        uses: ncipollo/release-action@v1
+      - name: Create GitHub release
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
         with:
-          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip"
-          bodyFile: "build/releasenotes.txt"
+          tag: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          immutableCreate: true
+          skipIfReleaseExists: true
+          bodyFile: build/releasenotes.txt

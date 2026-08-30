@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -15,15 +17,14 @@ use Throwable;
  * Class representing an exception for unknown date formates
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdUnknownDateFormatException extends ZugferdBaseException
 {
     public function __construct(string $dateFormatCode, ?Throwable $previous = null)
     {
-        parent::__construct(sprintf("Invalid date format %s", $dateFormatCode), ZugferdExceptionCodes::UNKNOWNDATEFORMAT, $previous);
+        parent::__construct(sprintf('Invalid date format %s', $dateFormatCode), ZugferdExceptionCodes::UNKNOWNDATEFORMAT, $previous);
     }
 }

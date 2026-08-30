@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -14,10 +16,9 @@ namespace horstoeko\zugferd\codelists;
  * Name of list: UNTDID 1001 Document name code
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  * @see      https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.1001
  */
 class ZugferdDocumentType

@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases\issues;
 
+use DateTime;
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class Issue268Test extends TestCase
+final class Issue268Test extends TestCase
 {
     public function testBTX27(): void
     {
@@ -22,9 +25,9 @@ class Issue268Test extends TestCase
 
         $document->getDocumentPositionAdditionalReferencedObjDocument($issuerAssignedId, $typeCode, $refTypeCode);
 
-        $this->assertSame("WAT PL 120", $issuerAssignedId);
-        $this->assertSame("130", $typeCode);
-        $this->assertSame("ABZ", $refTypeCode);
+        $this->assertSame('WAT PL 120', $issuerAssignedId);
+        $this->assertSame('130', $typeCode);
+        $this->assertSame('ABZ', $refTypeCode);
 
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedObjDocument());
     }
@@ -37,10 +40,10 @@ class Issue268Test extends TestCase
 
         $document->getDocumentPositionInvoiceReferencedDocument($issuerAssignedId, $lineid, $typeCode, $issueDate);
 
-        $this->assertSame("", $issuerAssignedId);
-        $this->assertSame("", $lineid);
-        $this->assertSame("", $typeCode);
-        $this->assertNotInstanceOf(\DateTime::class, $issueDate);
+        $this->assertSame('', $issuerAssignedId);
+        $this->assertSame('', $lineid);
+        $this->assertSame('', $typeCode);
+        $this->assertNotInstanceOf(DateTime::class, $issueDate);
     }
 
     public function testBTX27Extended(): void
@@ -51,9 +54,9 @@ class Issue268Test extends TestCase
 
         $document->getDocumentPositionAdditionalReferencedDocument($issuerAssignedId, $typeCode, $uriId, $lineId, $name, $refTypeCode, $issueDate, $binaryDataFilename);
 
-        $this->assertSame("WAT PL 120", $issuerAssignedId);
-        $this->assertSame("130", $typeCode);
-        $this->assertSame("ABZ", $refTypeCode);
+        $this->assertSame('WAT PL 120', $issuerAssignedId);
+        $this->assertSame('130', $typeCode);
+        $this->assertSame('ABZ', $refTypeCode);
 
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedDocument());
     }
@@ -66,17 +69,17 @@ class Issue268Test extends TestCase
 
         $document->getDocumentPositionAdditionalReferencedObjDocument($issuerAssignedId, $typeCode, $refTypeCode);
 
-        $this->assertSame("WAT PL 120", $issuerAssignedId);
-        $this->assertSame("130", $typeCode);
-        $this->assertSame("ABZ", $refTypeCode);
+        $this->assertSame('WAT PL 120', $issuerAssignedId);
+        $this->assertSame('130', $typeCode);
+        $this->assertSame('ABZ', $refTypeCode);
 
         $this->assertTrue($document->nextDocumentPositionAdditionalReferencedObjDocument());
 
         $document->getDocumentPositionAdditionalReferencedObjDocument($issuerAssignedId, $typeCode, $refTypeCode);
 
-        $this->assertSame("WAT PL 120 (2)", $issuerAssignedId);
-        $this->assertSame("130 (2)", $typeCode);
-        $this->assertSame("ABZ (2)", $refTypeCode);
+        $this->assertSame('WAT PL 120 (2)', $issuerAssignedId);
+        $this->assertSame('130 (2)', $typeCode);
+        $this->assertSame('ABZ (2)', $refTypeCode);
 
         $this->assertFalse($document->nextDocumentPositionAdditionalReferencedObjDocument());
     }
@@ -89,9 +92,9 @@ class Issue268Test extends TestCase
 
         $document->getDocumentPositionInvoiceReferencedDocument($issuerAssignedId, $lineid, $typeCode, $issueDate);
 
-        $this->assertSame("INV-1", $issuerAssignedId);
-        $this->assertSame("1", $lineid);
-        $this->assertSame("71", $typeCode);
-        $this->assertInstanceOf(\DateTime::class, $issueDate);
+        $this->assertSame('INV-1', $issuerAssignedId);
+        $this->assertSame('1', $lineid);
+        $this->assertSame('71', $typeCode);
+        $this->assertInstanceOf(DateTime::class, $issueDate);
     }
 }

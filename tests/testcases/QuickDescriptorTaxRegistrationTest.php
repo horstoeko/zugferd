@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
+use DateTime;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\zugferd\codelists\ZugferdUnitCodes;
@@ -17,7 +20,7 @@ use horstoeko\zugferd\tests\TestCase;
  * opposite order than the seller variant, which turned BT-48 into schemeID="DE999999999"
  * carrying the literal value "VA".
  */
-class QuickDescriptorTaxRegistrationTest extends TestCase
+final class QuickDescriptorTaxRegistrationTest extends TestCase
 {
     private const NS_RAM = 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100';
 
@@ -28,12 +31,12 @@ class QuickDescriptorTaxRegistrationTest extends TestCase
     {
         $document = ZugferdQuickDescriptorEn16931::doCreateNew();
         $document
-            ->doCreateInvoice("R-1", \DateTime::createFromFormat("Ymd", "20240101"), "EUR")
-            ->doSetBuyer("Kunden AG Mitte", "69876", "Frankfurt", "Lieferantenstraße 20", "DE")
-            ->doSetSeller("Lieferant GmbH", "80333", "München", "Lieferantenstraße 20", "DE")
-            ->doAddSellerTaxRegistration("VA", "DE111111111")
-            ->doAddBuyerTaxRegistration("VA", "DE999999999")
-            ->doAddTradeLineItem("1", "PositionText", 10.0, 1.0, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
+            ->doCreateInvoice('R-1', DateTime::createFromFormat('Ymd', '20240101'), 'EUR')
+            ->doSetBuyer('Kunden AG Mitte', '69876', 'Frankfurt', 'Lieferantenstraße 20', 'DE')
+            ->doSetSeller('Lieferant GmbH', '80333', 'München', 'Lieferantenstraße 20', 'DE')
+            ->doAddSellerTaxRegistration('VA', 'DE111111111')
+            ->doAddBuyerTaxRegistration('VA', 'DE999999999')
+            ->doAddTradeLineItem('1', 'PositionText', 10.0, 1.0, ZugferdUnitCodes::REC20_PIECE, 0.0, '', 'S', 'VAT', 19);
 
         $domDocument = new DOMDocument();
         $domDocument->loadXML($document->getContent());

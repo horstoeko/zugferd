@@ -1,23 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\traits;
 
-use Throwable;
 use Symfony\Component\Process\ExecutableFinder;
+use Throwable;
 
 trait RunsOnlyWithJavaEnvironmentTrait
 {
     /**
      * Status of JAVA checks
      *
-     * @var null|boolean
+     * @var null|bool
      */
     private $javaAvailable;
 
     /**
      * Checking availability of Java
      *
-     * @return boolean
+     * @return bool
      */
     private function isJavaAvailable(): bool
     {
@@ -42,7 +44,7 @@ trait RunsOnlyWithJavaEnvironmentTrait
      */
     private function markAsSkippedIfJavaIsNotAvailable(): void
     {
-        if ($this->isJavaAvailable() === false) {
+        if (false === $this->isJavaAvailable()) {
             $this->markTestSkipped('Java environment not available. Test is skipped.');
         }
     }

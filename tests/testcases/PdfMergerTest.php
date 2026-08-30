@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
-use horstoeko\zugferd\tests\TestCase;
-use Smalot\PdfParser\Parser as PdfParser;
-use horstoeko\zugferd\ZugferdDocumentPdfMerger;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
+use horstoeko\zugferd\ZugferdDocumentPdfMerger;
+use Smalot\PdfParser\Parser as PdfParser;
 
-class PdfMergerTest extends TestCase
+final class PdfMergerTest extends TestCase
 {
     public function testConstructByXmlFileAndPdfFile(): void
     {
@@ -67,7 +69,7 @@ class PdfMergerTest extends TestCase
 
     private function checkAndValidateMerger(ZugferdDocumentPdfMerger $pdfMerger): void
     {
-        $this->assertSame("", $this->getPrivatePropertyFromObject($pdfMerger, 'xmlDataCache')->getValue($pdfMerger));
+        $this->assertSame('', $this->getPrivatePropertyFromObject($pdfMerger, 'xmlDataCache')->getValue($pdfMerger));
 
         $pdfMerger->generateDocument();
         $pdfContent = $pdfMerger->downloadString();
@@ -79,23 +81,23 @@ class PdfMergerTest extends TestCase
         $pdfFilespecs = $pdfParsed->getObjectsByType('Filespec');
 
         $this->assertCount(1, $pdfFilespecs);
-        $this->assertArrayHasKey("8_0", $pdfFilespecs);
+        $this->assertArrayHasKey('8_0', $pdfFilespecs);
 
-        $pdfFilespec = $pdfFilespecs["8_0"];
+        $pdfFilespec = $pdfFilespecs['8_0'];
         $pdfFilespecDetails = $pdfFilespec->getDetails();
 
         $this->assertIsArray($pdfFilespecDetails);
-        $this->assertArrayHasKey("F", $pdfFilespecDetails);
-        $this->assertArrayHasKey("Type", $pdfFilespecDetails);
-        $this->assertArrayHasKey("UF", $pdfFilespecDetails);
-        $this->assertArrayHasKey("AFRelationship", $pdfFilespecDetails);
-        $this->assertArrayHasKey("Desc", $pdfFilespecDetails);
-        $this->assertArrayHasKey("EF", $pdfFilespecDetails);
-        $this->assertEquals("factur-x.xml", $pdfFilespecDetails["F"]);
-        $this->assertEquals("Filespec", $pdfFilespecDetails["Type"]);
-        $this->assertEquals("factur-x.xml", $pdfFilespecDetails["UF"]);
-        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfFilespecDetails["AFRelationship"]);
-        $this->assertEquals("Factur-X Invoice", $pdfFilespecDetails["Desc"]);
+        $this->assertArrayHasKey('F', $pdfFilespecDetails);
+        $this->assertArrayHasKey('Type', $pdfFilespecDetails);
+        $this->assertArrayHasKey('UF', $pdfFilespecDetails);
+        $this->assertArrayHasKey('AFRelationship', $pdfFilespecDetails);
+        $this->assertArrayHasKey('Desc', $pdfFilespecDetails);
+        $this->assertArrayHasKey('EF', $pdfFilespecDetails);
+        $this->assertEquals('factur-x.xml', $pdfFilespecDetails['F']);
+        $this->assertEquals('Filespec', $pdfFilespecDetails['Type']);
+        $this->assertEquals('factur-x.xml', $pdfFilespecDetails['UF']);
+        $this->assertEquals(ZugferdDocumentPdfBuilder::AF_RELATIONSHIP_DATA, $pdfFilespecDetails['AFRelationship']);
+        $this->assertEquals('Factur-X Invoice', $pdfFilespecDetails['Desc']);
 
         $this->assertSame('EN 16931', $this->getPrivateMethodFromObject($pdfMerger, 'getProfileDefinitionParameter')->invokeArgs($pdfMerger, ['xmpname']));
         $this->assertSame('EN 16931 (COMFORT)', $this->getPrivateMethodFromObject($pdfMerger, 'getProfileDefinitionParameter')->invokeArgs($pdfMerger, ['altname']));

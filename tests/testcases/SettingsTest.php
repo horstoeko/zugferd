@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
-use horstoeko\zugferd\ZugferdSettings;
-use horstoeko\zugferd\tests\TestCase;
 use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
+use horstoeko\zugferd\tests\TestCase;
+use horstoeko\zugferd\ZugferdSettings;
 
-class SettingsTest extends TestCase
+final class SettingsTest extends TestCase
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function tearDownAfterClass(): void
     {
@@ -18,9 +20,9 @@ class SettingsTest extends TestCase
         ZugferdSettings::setQuantityDecimals(2);
         ZugferdSettings::setPercentDecimals(2);
         ZugferdSettings::setMeasureDecimals(2);
-        ZugferdSettings::setDecimalSeparator(".");
-        ZugferdSettings::setThousandsSeparator("");
-        ZugferdSettings::setIccProfileFilename("sRGB2014.icc");
+        ZugferdSettings::setDecimalSeparator('.');
+        ZugferdSettings::setThousandsSeparator('');
+        ZugferdSettings::setIccProfileFilename('sRGB2014.icc');
     }
 
     public function testAmountDecimals(): void
@@ -31,7 +33,7 @@ class SettingsTest extends TestCase
 
         $this->assertSame(3, ZugferdSettings::getAmountDecimals());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "amountDecimals");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'amountDecimals');
 
         $this->assertEquals(3, $property->getValue());
     }
@@ -44,7 +46,7 @@ class SettingsTest extends TestCase
 
         $this->assertSame(3, ZugferdSettings::getQuantityDecimals());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "quantityDecimals");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'quantityDecimals');
 
         $this->assertEquals(3, $property->getValue());
     }
@@ -57,7 +59,7 @@ class SettingsTest extends TestCase
 
         $this->assertSame(3, ZugferdSettings::getPercentDecimals());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "percentDecimals");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'percentDecimals');
 
         $this->assertEquals(3, $property->getValue());
     }
@@ -70,52 +72,52 @@ class SettingsTest extends TestCase
 
         $this->assertSame(3, ZugferdSettings::getMeasureDecimals());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "measureDecimals");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'measureDecimals');
 
         $this->assertEquals(3, $property->getValue());
     }
 
     public function testDecimalSeparator(): void
     {
-        $this->assertSame(".", ZugferdSettings::getDecimalSeparator());
+        $this->assertSame('.', ZugferdSettings::getDecimalSeparator());
 
-        ZugferdSettings::setDecimalSeparator(",");
+        ZugferdSettings::setDecimalSeparator(',');
 
-        $this->assertSame(",", ZugferdSettings::getDecimalSeparator());
+        $this->assertSame(',', ZugferdSettings::getDecimalSeparator());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "decimalSeparator");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'decimalSeparator');
 
-        $this->assertEquals(",", $property->getValue());
+        $this->assertEquals(',', $property->getValue());
     }
 
     public function testThousandsSeparator(): void
     {
-        $this->assertSame("", ZugferdSettings::getThousandsSeparator());
+        $this->assertSame('', ZugferdSettings::getThousandsSeparator());
 
-        ZugferdSettings::setThousandsSeparator(",");
+        ZugferdSettings::setThousandsSeparator(',');
 
-        $this->assertSame(",", ZugferdSettings::getThousandsSeparator());
+        $this->assertSame(',', ZugferdSettings::getThousandsSeparator());
 
-        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "thousandsSeparator");
+        $property = $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'thousandsSeparator');
 
-        $this->assertEquals(",", $property->getValue());
+        $this->assertEquals(',', $property->getValue());
     }
 
     public function testIccProfileFilename(): void
     {
-        $this->assertSame("sRGB2014.icc", ZugferdSettings::getIccProfileFilename());
+        $this->assertSame('sRGB2014.icc', ZugferdSettings::getIccProfileFilename());
 
-        ZugferdSettings::setIccProfileFilename("sRGB_v5_ICC.icc");
+        ZugferdSettings::setIccProfileFilename('sRGB_v5_ICC.icc');
 
-        $this->assertSame("sRGB_v5_ICC.icc", ZugferdSettings::getIccProfileFilename());
+        $this->assertSame('sRGB_v5_ICC.icc', ZugferdSettings::getIccProfileFilename());
 
-        $this->getPrivatePropertyFromClassname(ZugferdSettings::class, "iccProfileFilename");
+        $this->getPrivatePropertyFromClassname(ZugferdSettings::class, 'iccProfileFilename');
     }
 
     public function testGetRootDirectory(): void
     {
         $this->assertEquals(
-            realpath(__DIR__ . "/../../"),
+            realpath(__DIR__ . '/../../'),
             realpath(ZugferdSettings::getRootDirectory())
         );
     }
@@ -123,7 +125,7 @@ class SettingsTest extends TestCase
     public function testGetSourceDirectory(): void
     {
         $this->assertEquals(
-            realpath(__DIR__ . "/../../src/"),
+            realpath(__DIR__ . '/../../src/'),
             realpath(ZugferdSettings::getSourceDirectory())
         );
     }
@@ -131,7 +133,7 @@ class SettingsTest extends TestCase
     public function testGetAssetDirectory(): void
     {
         $this->assertEquals(
-            realpath(__DIR__ . "/../../src/assets/"),
+            realpath(__DIR__ . '/../../src/assets/'),
             realpath(ZugferdSettings::getAssetDirectory())
         );
     }
@@ -139,7 +141,7 @@ class SettingsTest extends TestCase
     public function testGetYamlDirectory(): void
     {
         $this->assertEquals(
-            realpath(__DIR__ . "/../../src/yaml/"),
+            realpath(__DIR__ . '/../../src/yaml/'),
             realpath(ZugferdSettings::getYamlDirectory())
         );
     }
@@ -147,7 +149,7 @@ class SettingsTest extends TestCase
     public function testGetValidationDirectory(): void
     {
         $this->assertEquals(
-            realpath(__DIR__ . "/../../src/validation/"),
+            realpath(__DIR__ . '/../../src/validation/'),
             realpath(ZugferdSettings::getValidationDirectory())
         );
     }
@@ -155,12 +157,12 @@ class SettingsTest extends TestCase
     public function testGetFullIccProfileFilename(): void
     {
         $expected = PathUtils::combinePathWithFile(
-            realpath(__DIR__ . "/../../src/assets/"),
-            "sRGB_v5_ICC.icc"
+            realpath(__DIR__ . '/../../src/assets/'),
+            'sRGB_v5_ICC.icc'
         );
         $actual = PathUtils::combinePathWithFile(
             realpath(FileUtils::getFileDirectory(ZugferdSettings::getFullIccProfileFilename())),
-            "sRGB_v5_ICC.icc"
+            'sRGB_v5_ICC.icc'
         );
 
         $this->assertSame(
@@ -181,8 +183,8 @@ class SettingsTest extends TestCase
 
         ZugferdSettings::setSpecialDecimalPlacesMaps(
             [
-            '/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount' => 6,
-            '/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount' => 6
+                '/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:ChargeAmount' => 6,
+                '/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount' => 6,
             ]
         );
 

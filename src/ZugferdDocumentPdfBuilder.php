@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -9,19 +11,18 @@
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdDocumentBuilder;
-use horstoeko\zugferd\ZugferdDocumentPdfBuilderAbstract;
 use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the facillity adding XML data from ZugferdDocumentBuilder
  * to an existing PDF with conversion to PDF/A
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
 {
@@ -37,10 +38,25 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
      *
      * @var string
      */
-    private $xmlDataCache = "";
+    private $xmlDataCache = '';
+
+    /**
+     * Constructor
+     *
+     * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
+     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     */
+    public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfData)
+    {
+        $this->documentBuilder = $documentBuilder;
+
+        parent::__construct($pdfData);
+    }
 
     /**
      * @see self::__construct
+     *
+     * @throws ZugferdFileNotFoundException
      */
     public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): self
     {
@@ -60,24 +76,13 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * Constructor
+     * {@inheritDoc}
      *
-     * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
-     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
-     */
-    public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfData)
-    {
-        $this->documentBuilder = $documentBuilder;
-
-        parent::__construct($pdfData);
-    }
-
-    /**
-     * @inheritDoc
+     * @throws RuntimeException
      */
     protected function getXmlContent(): string
     {
-        if ($this->xmlDataCache) {
+        if ('' !== $this->xmlDataCache) {
             return $this->xmlDataCache;
         }
 
@@ -87,7 +92,9 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws ZugferdUnknownProfileParameterException
      */
     protected function getXmlAttachmentFilename(): string
     {
@@ -95,18 +102,22 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws ZugferdUnknownProfileParameterException
      */
     protected function getXmlAttachmentXmpName(): string
     {
-        return $this->documentBuilder->getProfileDefinitionParameter("xmpname");
+        return $this->documentBuilder->getProfileDefinitionParameter('xmpname');
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws ZugferdUnknownProfileParameterException
      */
     protected function getXmlAttachmentXmpVersion(): string
     {
-        return $this->documentBuilder->getProfileDefinitionParameter("xmpversion");
+        return $this->documentBuilder->getProfileDefinitionParameter('xmpversion');
     }
 }

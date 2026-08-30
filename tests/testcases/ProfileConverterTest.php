@@ -1,21 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\zugferd\tests\testcases;
 
+use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
 use horstoeko\zugferd\tests\TestCase;
-use horstoeko\zugferd\ZugferdProfiles;
 use horstoeko\zugferd\tests\traits\HandlesXmlTests;
 use horstoeko\zugferd\ZugferdDocumentProfileConverter;
-use horstoeko\zugferd\exception\ZugferdFileNotFoundException;
+use horstoeko\zugferd\ZugferdProfiles;
 
-class ProfileConverterTest extends TestCase
+final class ProfileConverterTest extends TestCase
 {
     use HandlesXmlTests;
 
     public function testComvertFromFileToFileXRechnung3(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
-        $tofile = __DIR__ . "/../assets/converterresult.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
+        $tofile = __DIR__ . '/../assets/converterresult.xml';
 
         ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
@@ -37,7 +39,7 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromFileToStringXRechnung3(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
 
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
@@ -51,8 +53,8 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromContentToFileXRechnung3(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
-        $tofile = __DIR__ . "/../assets/converterresult.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
+        $tofile = __DIR__ . '/../assets/converterresult.xml';
         $fromfileContent = file_get_contents($fromfile);
 
         ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
@@ -75,7 +77,7 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromContentToStringXRechnung3(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
         $fromfileContent = file_get_contents($fromfile);
 
         $converterResult = ZugferdDocumentProfileConverter::convertFromContentToString($fromfileContent, ZugferdProfiles::PROFILE_XRECHNUNG_3);
@@ -91,8 +93,8 @@ class ProfileConverterTest extends TestCase
 
     public function testComvertFromFileToFileEn16931(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
-        $tofile = __DIR__ . "/../assets/converterresult.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
+        $tofile = __DIR__ . '/../assets/converterresult.xml';
 
         ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_EN16931);
 
@@ -114,7 +116,7 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromFileToStringEn16931(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_EN16931);
 
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);
@@ -128,8 +130,8 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromContentToFileEn16931(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
-        $tofile = __DIR__ . "/../assets/converterresult.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
+        $tofile = __DIR__ . '/../assets/converterresult.xml';
         $fromfileContent = file_get_contents($fromfile);
 
         ZugferdDocumentProfileConverter::convertFromContentToFile($fromfileContent, $tofile, ZugferdProfiles::PROFILE_EN16931);
@@ -152,7 +154,7 @@ class ProfileConverterTest extends TestCase
 
     public function testConvertFromContentToStringEn16931(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_en16931_1.xml";
+        $fromfile = __DIR__ . '/../assets/xml_en16931_1.xml';
         $fromfileContent = file_get_contents($fromfile);
         $converterResult = ZugferdDocumentProfileConverter::convertFromContentToString($fromfileContent, ZugferdProfiles::PROFILE_EN16931);
 
@@ -169,15 +171,15 @@ class ProfileConverterTest extends TestCase
     {
         $this->expectException(ZugferdFileNotFoundException::class);
 
-        $fromfile = __DIR__ . "/../assets/not_existing_file.xml";
-        $tofile = __DIR__ . "/../assets/converterresult.xml";
+        $fromfile = __DIR__ . '/../assets/not_existing_file.xml';
+        $tofile = __DIR__ . '/../assets/converterresult.xml';
 
         ZugferdDocumentProfileConverter::convertFromFileToFile($fromfile, $tofile, ZugferdProfiles::PROFILE_XRECHNUNG_3);
     }
 
     public function testComvertFromFileToFileExtendedToEn16931(): void
     {
-        $fromfile = __DIR__ . "/../assets/xml_extended_1.xml";
+        $fromfile = __DIR__ . '/../assets/xml_extended_1.xml';
         $converterResult = ZugferdDocumentProfileConverter::convertFromFileToString($fromfile, ZugferdProfiles::PROFILE_EN16931);
 
         $this->assertStringStartsWith('<?xml version="1.0" encoding="UTF-8"?>', $converterResult);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -13,1260 +15,1259 @@ namespace horstoeko\zugferd\codelists;
  * Class representing the Country Codes
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdCountryCodes
 {
     /**
      * Andorra
      */
-    public const ANDORRA = "AD";
+    public const ANDORRA = 'AD';
 
     /**
      * United Arab Emirates (the)
      */
-    public const UNITED_ARAB_EMIRATES_THE = "AE";
+    public const UNITED_ARAB_EMIRATES_THE = 'AE';
 
     /**
      * Afghanistan
      */
-    public const AFGHANISTAN = "AF";
+    public const AFGHANISTAN = 'AF';
 
     /**
      * Antigua and Barbuda
      */
-    public const ANTIGUA_AND_BARBUDA = "AG";
+    public const ANTIGUA_AND_BARBUDA = 'AG';
 
     /**
      * Anguilla
      */
-    public const ANGUILLA = "AI";
+    public const ANGUILLA = 'AI';
 
     /**
      * Albania
      */
-    public const ALBANIA = "AL";
+    public const ALBANIA = 'AL';
 
     /**
      * Armenia
      */
-    public const ARMENIA = "AM";
+    public const ARMENIA = 'AM';
 
     /**
      * Angola
      */
-    public const ANGOLA = "AO";
+    public const ANGOLA = 'AO';
 
     /**
      * Antarctica
      */
-    public const ANTARCTICA = "AQ";
+    public const ANTARCTICA = 'AQ';
 
     /**
      * Argentina
      */
-    public const ARGENTINA = "AR";
+    public const ARGENTINA = 'AR';
 
     /**
      * American Samoa
      */
-    public const AMERICAN_SAMOA = "AS";
+    public const AMERICAN_SAMOA = 'AS';
 
     /**
      * Austria
      */
-    public const AUSTRIA = "AT";
+    public const AUSTRIA = 'AT';
 
     /**
      * Australia
      */
-    public const AUSTRALIA = "AU";
+    public const AUSTRALIA = 'AU';
 
     /**
      * Aruba
      */
-    public const ARUBA = "AW";
+    public const ARUBA = 'AW';
 
     /**
      * Åland Islands
      */
-    public const LAND_ISLANDS = "AX";
+    public const LAND_ISLANDS = 'AX';
 
     /**
      * Azerbaijan
      */
-    public const AZERBAIJAN = "AZ";
+    public const AZERBAIJAN = 'AZ';
 
     /**
      * Bosnia and Herzegovina
      */
-    public const BOSNIA_AND_HERZEGOVINA = "BA";
+    public const BOSNIA_AND_HERZEGOVINA = 'BA';
 
     /**
      * Barbados
      */
-    public const BARBADOS = "BB";
+    public const BARBADOS = 'BB';
 
     /**
      * Bangladesh
      */
-    public const BANGLADESH = "BD";
+    public const BANGLADESH = 'BD';
 
     /**
      * Belgium
      */
-    public const BELGIUM = "BE";
+    public const BELGIUM = 'BE';
 
     /**
      * Burkina Faso
      */
-    public const BURKINA_FASO = "BF";
+    public const BURKINA_FASO = 'BF';
 
     /**
      * Bulgaria
      */
-    public const BULGARIA = "BG";
+    public const BULGARIA = 'BG';
 
     /**
      * Bahrain
      */
-    public const BAHRAIN = "BH";
+    public const BAHRAIN = 'BH';
 
     /**
      * Burundi
      */
-    public const BURUNDI = "BI";
+    public const BURUNDI = 'BI';
 
     /**
      * Benin
      */
-    public const BENIN = "BJ";
+    public const BENIN = 'BJ';
 
     /**
      * Saint Barthélemy
      */
-    public const SAINT_BARTHLEMY = "BL";
+    public const SAINT_BARTHLEMY = 'BL';
 
     /**
      * Bermuda
      */
-    public const BERMUDA = "BM";
+    public const BERMUDA = 'BM';
 
     /**
      * Brunei Darussalam
      */
-    public const BRUNEI_DARUSSALAM = "BN";
+    public const BRUNEI_DARUSSALAM = 'BN';
 
     /**
      * Bolivia (Plurinational State of)
      */
-    public const BOLIVIA_PLURINATIONAL_STATE_OF = "BO";
+    public const BOLIVIA_PLURINATIONAL_STATE_OF = 'BO';
 
     /**
      * Bonaire, Sint Eustatius and Saba
      */
-    public const BONAIRE_SINT_EUSTATIUS_AND_SABA = "BQ";
+    public const BONAIRE_SINT_EUSTATIUS_AND_SABA = 'BQ';
 
     /**
      * Brazil
      */
-    public const BRAZIL = "BR";
+    public const BRAZIL = 'BR';
 
     /**
      * Bahamas (the)
      */
-    public const BAHAMAS_THE = "BS";
+    public const BAHAMAS_THE = 'BS';
 
     /**
      * Bhutan
      */
-    public const BHUTAN = "BT";
+    public const BHUTAN = 'BT';
 
     /**
      * Bouvet Island
      */
-    public const BOUVET_ISLAND = "BV";
+    public const BOUVET_ISLAND = 'BV';
 
     /**
      * Botswana
      */
-    public const BOTSWANA = "BW";
+    public const BOTSWANA = 'BW';
 
     /**
      * Belarus
      */
-    public const BELARUS = "BY";
+    public const BELARUS = 'BY';
 
     /**
      * Belize
      */
-    public const BELIZE = "BZ";
+    public const BELIZE = 'BZ';
 
     /**
      * Canada
      */
-    public const CANADA = "CA";
+    public const CANADA = 'CA';
 
     /**
      * Cocos (Keeling) Islands (the)
      */
-    public const COCOS_KEELING_ISLANDS_THE = "CC";
+    public const COCOS_KEELING_ISLANDS_THE = 'CC';
 
     /**
      * Congo (the Democratic Republic of the)
      */
-    public const CONGO_THE_DEMOCRATIC_REPUBLIC_OF_THE = "CD";
+    public const CONGO_THE_DEMOCRATIC_REPUBLIC_OF_THE = 'CD';
 
     /**
      * Central African Republic (the)
      */
-    public const CENTRAL_AFRICAN_REPUBLIC_THE = "CF";
+    public const CENTRAL_AFRICAN_REPUBLIC_THE = 'CF';
 
     /**
      * Congo (the)
      */
-    public const CONGO_THE = "CG";
+    public const CONGO_THE = 'CG';
 
     /**
      * Switzerland
      */
-    public const SWITZERLAND = "CH";
+    public const SWITZERLAND = 'CH';
 
     /**
      * Côte d'Ivoire
      */
-    public const CTE_DIVOIRE = "CI";
+    public const CTE_DIVOIRE = 'CI';
 
     /**
      * Cook Islands (the)
      */
-    public const COOK_ISLANDS_THE = "CK";
+    public const COOK_ISLANDS_THE = 'CK';
 
     /**
      * Chile
      */
-    public const CHILE = "CL";
+    public const CHILE = 'CL';
 
     /**
      * Cameroon
      */
-    public const CAMEROON = "CM";
+    public const CAMEROON = 'CM';
 
     /**
      * China
      */
-    public const CHINA = "CN";
+    public const CHINA = 'CN';
 
     /**
      * Colombia
      */
-    public const COLOMBIA = "CO";
+    public const COLOMBIA = 'CO';
 
     /**
      * Costa Rica
      */
-    public const COSTA_RICA = "CR";
+    public const COSTA_RICA = 'CR';
 
     /**
      * Cuba
      */
-    public const CUBA = "CU";
+    public const CUBA = 'CU';
 
     /**
      * Cabo Verde
      */
-    public const CABO_VERDE = "CV";
+    public const CABO_VERDE = 'CV';
 
     /**
      * Curaçao
      */
-    public const CURAAO = "CW";
+    public const CURAAO = 'CW';
 
     /**
      * Christmas Island
      */
-    public const CHRISTMAS_ISLAND = "CX";
+    public const CHRISTMAS_ISLAND = 'CX';
 
     /**
      * Cyprus
      */
-    public const CYPRUS = "CY";
+    public const CYPRUS = 'CY';
 
     /**
      * Czechia
      */
-    public const CZECHIA = "CZ";
+    public const CZECHIA = 'CZ';
 
     /**
      * Germany
      */
-    public const GERMANY = "DE";
+    public const GERMANY = 'DE';
 
     /**
      * Djibouti
      */
-    public const DJIBOUTI = "DJ";
+    public const DJIBOUTI = 'DJ';
 
     /**
      * Denmark
      */
-    public const DENMARK = "DK";
+    public const DENMARK = 'DK';
 
     /**
      * Dominica
      */
-    public const DOMINICA = "DM";
+    public const DOMINICA = 'DM';
 
     /**
      * Dominican Republic (the)
      */
-    public const DOMINICAN_REPUBLIC_THE = "DO";
+    public const DOMINICAN_REPUBLIC_THE = 'DO';
 
     /**
      * Algeria
      */
-    public const ALGERIA = "DZ";
+    public const ALGERIA = 'DZ';
 
     /**
      * Ecuador
      */
-    public const ECUADOR = "EC";
+    public const ECUADOR = 'EC';
 
     /**
      * Estonia
      */
-    public const ESTONIA = "EE";
+    public const ESTONIA = 'EE';
 
     /**
      * Egypt
      */
-    public const EGYPT = "EG";
+    public const EGYPT = 'EG';
 
     /**
      * Western Sahara*
      */
-    public const WESTERN_SAHARA = "EH";
+    public const WESTERN_SAHARA = 'EH';
 
     /**
      * Eritrea
      */
-    public const ERITREA = "ER";
+    public const ERITREA = 'ER';
 
     /**
      * Spain
      */
-    public const SPAIN = "ES";
+    public const SPAIN = 'ES';
 
     /**
      * Ethiopia
      */
-    public const ETHIOPIA = "ET";
+    public const ETHIOPIA = 'ET';
 
     /**
      * Finland
      */
-    public const FINLAND = "FI";
+    public const FINLAND = 'FI';
 
     /**
      * Fiji
      */
-    public const FIJI = "FJ";
+    public const FIJI = 'FJ';
 
     /**
      * Falkland Islands (the) [Malvinas]
      */
-    public const FALKLAND_ISLANDS_THE_MALVINAS = "FK";
+    public const FALKLAND_ISLANDS_THE_MALVINAS = 'FK';
 
     /**
      * Micronesia (Federated States of)
      */
-    public const MICRONESIA_FEDERATED_STATES_OF = "FM";
+    public const MICRONESIA_FEDERATED_STATES_OF = 'FM';
 
     /**
      * Faroe Islands (the)
      */
-    public const FAROE_ISLANDS_THE = "FO";
+    public const FAROE_ISLANDS_THE = 'FO';
 
     /**
      * France
      */
-    public const FRANCE = "FR";
+    public const FRANCE = 'FR';
 
     /**
      * Gabon
      */
-    public const GABON = "GA";
+    public const GABON = 'GA';
 
     /**
      * United Kingdom of Great Britain and Northern Ireland (the)
      */
-    public const UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND_THE = "GB";
+    public const UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND_THE = 'GB';
 
     /**
      * Grenada
      */
-    public const GRENADA = "GD";
+    public const GRENADA = 'GD';
 
     /**
      * Georgia
      */
-    public const GEORGIA = "GE";
+    public const GEORGIA = 'GE';
 
     /**
      * French Guiana
      */
-    public const FRENCH_GUIANA = "GF";
+    public const FRENCH_GUIANA = 'GF';
 
     /**
      * Guernsey
      */
-    public const GUERNSEY = "GG";
+    public const GUERNSEY = 'GG';
 
     /**
      * Ghana
      */
-    public const GHANA = "GH";
+    public const GHANA = 'GH';
 
     /**
      * Gibraltar
      */
-    public const GIBRALTAR = "GI";
+    public const GIBRALTAR = 'GI';
 
     /**
      * Greenland
      */
-    public const GREENLAND = "GL";
+    public const GREENLAND = 'GL';
 
     /**
      * Gambia (the)
      */
-    public const GAMBIA_THE = "GM";
+    public const GAMBIA_THE = 'GM';
 
     /**
      * Guinea
      */
-    public const GUINEA = "GN";
+    public const GUINEA = 'GN';
 
     /**
      * Guadeloupe
      */
-    public const GUADELOUPE = "GP";
+    public const GUADELOUPE = 'GP';
 
     /**
      * Equatorial Guinea
      */
-    public const EQUATORIAL_GUINEA = "GQ";
+    public const EQUATORIAL_GUINEA = 'GQ';
 
     /**
      * Greece
      */
-    public const GREECE = "GR";
+    public const GREECE = 'GR';
 
     /**
      * South Georgia and the South Sandwich Islands
      */
-    public const SOUTH_GEORGIA_AND_THE_SOUTH_SANDWICH_ISLANDS = "GS";
+    public const SOUTH_GEORGIA_AND_THE_SOUTH_SANDWICH_ISLANDS = 'GS';
 
     /**
      * Guatemala
      */
-    public const GUATEMALA = "GT";
+    public const GUATEMALA = 'GT';
 
     /**
      * Guam
      */
-    public const GUAM = "GU";
+    public const GUAM = 'GU';
 
     /**
      * Guinea-Bissau
      */
-    public const GUINEABISSAU = "GW";
+    public const GUINEABISSAU = 'GW';
 
     /**
      * Guyana
      */
-    public const GUYANA = "GY";
+    public const GUYANA = 'GY';
 
     /**
      * Hong Kong
      */
-    public const HONG_KONG = "HK";
+    public const HONG_KONG = 'HK';
 
     /**
      * Heard Island and McDonald Islands
      */
-    public const HEARD_ISLAND_AND_MCDONALD_ISLANDS = "HM";
+    public const HEARD_ISLAND_AND_MCDONALD_ISLANDS = 'HM';
 
     /**
      * Honduras
      */
-    public const HONDURAS = "HN";
+    public const HONDURAS = 'HN';
 
     /**
      * Croatia
      */
-    public const CROATIA = "HR";
+    public const CROATIA = 'HR';
 
     /**
      * Haiti
      */
-    public const HAITI = "HT";
+    public const HAITI = 'HT';
 
     /**
      * Hungary
      */
-    public const HUNGARY = "HU";
+    public const HUNGARY = 'HU';
 
     /**
      * Indonesia
      */
-    public const INDONESIA = "ID";
+    public const INDONESIA = 'ID';
 
     /**
      * Ireland
      */
-    public const IRELAND = "IE";
+    public const IRELAND = 'IE';
 
     /**
      * Israel
      */
-    public const ISRAEL = "IL";
+    public const ISRAEL = 'IL';
 
     /**
      * Isle of Man
      */
-    public const ISLE_OF_MAN = "IM";
+    public const ISLE_OF_MAN = 'IM';
 
     /**
      * India
      */
-    public const INDIA = "IN";
+    public const INDIA = 'IN';
 
     /**
      * British Indian Ocean Territory (the)
      */
-    public const BRITISH_INDIAN_OCEAN_TERRITORY_THE = "IO";
+    public const BRITISH_INDIAN_OCEAN_TERRITORY_THE = 'IO';
 
     /**
      * Iraq
      */
-    public const IRAQ = "IQ";
+    public const IRAQ = 'IQ';
 
     /**
      * Iran (Islamic Republic of)
      */
-    public const IRAN_ISLAMIC_REPUBLIC_OF = "IR";
+    public const IRAN_ISLAMIC_REPUBLIC_OF = 'IR';
 
     /**
      * Iceland
      */
-    public const ICELAND = "IS";
+    public const ICELAND = 'IS';
 
     /**
      * Italy
      */
-    public const ITALY = "IT";
+    public const ITALY = 'IT';
 
     /**
      * Jersey
      */
-    public const JERSEY = "JE";
+    public const JERSEY = 'JE';
 
     /**
      * Jamaica
      */
-    public const JAMAICA = "JM";
+    public const JAMAICA = 'JM';
 
     /**
      * Jordan
      */
-    public const JORDAN = "JO";
+    public const JORDAN = 'JO';
 
     /**
      * Japan
      */
-    public const JAPAN = "JP";
+    public const JAPAN = 'JP';
 
     /**
      * Kenya
      */
-    public const KENYA = "KE";
+    public const KENYA = 'KE';
 
     /**
      * Kyrgyzstan
      */
-    public const KYRGYZSTAN = "KG";
+    public const KYRGYZSTAN = 'KG';
 
     /**
      * Cambodia
      */
-    public const CAMBODIA = "KH";
+    public const CAMBODIA = 'KH';
 
     /**
      * Kiribati
      */
-    public const KIRIBATI = "KI";
+    public const KIRIBATI = 'KI';
 
     /**
      * Comoros (the)
      */
-    public const COMOROS_THE = "KM";
+    public const COMOROS_THE = 'KM';
 
     /**
      * Saint Kitts and Nevis
      */
-    public const SAINT_KITTS_AND_NEVIS = "KN";
+    public const SAINT_KITTS_AND_NEVIS = 'KN';
 
     /**
      * Korea (the Democratic People's Republic of)
      */
-    public const KOREA_THE_DEMOCRATIC_PEOPLES_REPUBLIC_OF = "KP";
+    public const KOREA_THE_DEMOCRATIC_PEOPLES_REPUBLIC_OF = 'KP';
 
     /**
      * Korea (the Republic of)
      */
-    public const KOREA_THE_REPUBLIC_OF = "KR";
+    public const KOREA_THE_REPUBLIC_OF = 'KR';
 
     /**
      * Kuwait
      */
-    public const KUWAIT = "KW";
+    public const KUWAIT = 'KW';
 
     /**
      * Cayman Islands (the)
      */
-    public const CAYMAN_ISLANDS_THE = "KY";
+    public const CAYMAN_ISLANDS_THE = 'KY';
 
     /**
      * Kazakhstan
      */
-    public const KAZAKHSTAN = "KZ";
+    public const KAZAKHSTAN = 'KZ';
 
     /**
      * Lao People's Democratic Republic (the)
      */
-    public const LAO_PEOPLES_DEMOCRATIC_REPUBLIC_THE = "LA";
+    public const LAO_PEOPLES_DEMOCRATIC_REPUBLIC_THE = 'LA';
 
     /**
      * Lebanon
      */
-    public const LEBANON = "LB";
+    public const LEBANON = 'LB';
 
     /**
      * Saint Lucia
      */
-    public const SAINT_LUCIA = "LC";
+    public const SAINT_LUCIA = 'LC';
 
     /**
      * Liechtenstein
      */
-    public const LIECHTENSTEIN = "LI";
+    public const LIECHTENSTEIN = 'LI';
 
     /**
      * Sri Lanka
      */
-    public const SRI_LANKA = "LK";
+    public const SRI_LANKA = 'LK';
 
     /**
      * Liberia
      */
-    public const LIBERIA = "LR";
+    public const LIBERIA = 'LR';
 
     /**
      * Lesotho
      */
-    public const LESOTHO = "LS";
+    public const LESOTHO = 'LS';
 
     /**
      * Lithuania
      */
-    public const LITHUANIA = "LT";
+    public const LITHUANIA = 'LT';
 
     /**
      * Luxembourg
      */
-    public const LUXEMBOURG = "LU";
+    public const LUXEMBOURG = 'LU';
 
     /**
      * Latvia
      */
-    public const LATVIA = "LV";
+    public const LATVIA = 'LV';
 
     /**
      * Libya
      */
-    public const LIBYA = "LY";
+    public const LIBYA = 'LY';
 
     /**
      * Morocco
      */
-    public const MOROCCO = "MA";
+    public const MOROCCO = 'MA';
 
     /**
      * Monaco
      */
-    public const MONACO = "MC";
+    public const MONACO = 'MC';
 
     /**
      * Moldova (the Republic of)
      */
-    public const MOLDOVA_THE_REPUBLIC_OF = "MD";
+    public const MOLDOVA_THE_REPUBLIC_OF = 'MD';
 
     /**
      * Montenegro
      */
-    public const MONTENEGRO = "ME";
+    public const MONTENEGRO = 'ME';
 
     /**
      * Saint Martin (French part)
      */
-    public const SAINT_MARTIN_FRENCH_PART = "MF";
+    public const SAINT_MARTIN_FRENCH_PART = 'MF';
 
     /**
      * Madagascar
      */
-    public const MADAGASCAR = "MG";
+    public const MADAGASCAR = 'MG';
 
     /**
      * Marshall Islands (the)
      */
-    public const MARSHALL_ISLANDS_THE = "MH";
+    public const MARSHALL_ISLANDS_THE = 'MH';
 
     /**
      * North Macedonia
      */
-    public const NORTH_MACEDONIA = "MK";
+    public const NORTH_MACEDONIA = 'MK';
 
     /**
      * Mali
      */
-    public const MALI = "ML";
+    public const MALI = 'ML';
 
     /**
      * Myanmar
      */
-    public const MYANMAR = "MM";
+    public const MYANMAR = 'MM';
 
     /**
      * Mongolia
      */
-    public const MONGOLIA = "MN";
+    public const MONGOLIA = 'MN';
 
     /**
      * Macao
      */
-    public const MACAO = "MO";
+    public const MACAO = 'MO';
 
     /**
      * Northern Mariana Islands (the)
      */
-    public const NORTHERN_MARIANA_ISLANDS_THE = "MP";
+    public const NORTHERN_MARIANA_ISLANDS_THE = 'MP';
 
     /**
      * Martinique
      */
-    public const MARTINIQUE = "MQ";
+    public const MARTINIQUE = 'MQ';
 
     /**
      * Mauritania
      */
-    public const MAURITANIA = "MR";
+    public const MAURITANIA = 'MR';
 
     /**
      * Montserrat
      */
-    public const MONTSERRAT = "MS";
+    public const MONTSERRAT = 'MS';
 
     /**
      * Malta
      */
-    public const MALTA = "MT";
+    public const MALTA = 'MT';
 
     /**
      * Mauritius
      */
-    public const MAURITIUS = "MU";
+    public const MAURITIUS = 'MU';
 
     /**
      * Maldives
      */
-    public const MALDIVES = "MV";
+    public const MALDIVES = 'MV';
 
     /**
      * Malawi
      */
-    public const MALAWI = "MW";
+    public const MALAWI = 'MW';
 
     /**
      * Mexico
      */
-    public const MEXICO = "MX";
+    public const MEXICO = 'MX';
 
     /**
      * Malaysia
      */
-    public const MALAYSIA = "MY";
+    public const MALAYSIA = 'MY';
 
     /**
      * Mozambique
      */
-    public const MOZAMBIQUE = "MZ";
+    public const MOZAMBIQUE = 'MZ';
 
     /**
      * Namibia
      */
-    public const NAMIBIA = "NA";
+    public const NAMIBIA = 'NA';
 
     /**
      * New Caledonia
      */
-    public const NEW_CALEDONIA = "NC";
+    public const NEW_CALEDONIA = 'NC';
 
     /**
      * Niger (the)
      */
-    public const NIGER_THE = "NE";
+    public const NIGER_THE = 'NE';
 
     /**
      * Norfolk Island
      */
-    public const NORFOLK_ISLAND = "NF";
+    public const NORFOLK_ISLAND = 'NF';
 
     /**
      * Nigeria
      */
-    public const NIGERIA = "NG";
+    public const NIGERIA = 'NG';
 
     /**
      * Nicaragua
      */
-    public const NICARAGUA = "NI";
+    public const NICARAGUA = 'NI';
 
     /**
      * Netherlands (the)
      */
-    public const NETHERLANDS_THE = "NL";
+    public const NETHERLANDS_THE = 'NL';
 
     /**
      * Norway
      */
-    public const NORWAY = "NO";
+    public const NORWAY = 'NO';
 
     /**
      * Nepal
      */
-    public const NEPAL = "NP";
+    public const NEPAL = 'NP';
 
     /**
      * Nauru
      */
-    public const NAURU = "NR";
+    public const NAURU = 'NR';
 
     /**
      * Niue
      */
-    public const NIUE = "NU";
+    public const NIUE = 'NU';
 
     /**
      * New Zealand
      */
-    public const NEW_ZEALAND = "NZ";
+    public const NEW_ZEALAND = 'NZ';
 
     /**
      * Oman
      */
-    public const OMAN = "OM";
+    public const OMAN = 'OM';
 
     /**
      * Panama
      */
-    public const PANAMA = "PA";
+    public const PANAMA = 'PA';
 
     /**
      * Peru
      */
-    public const PERU = "PE";
+    public const PERU = 'PE';
 
     /**
      * French Polynesia
      */
-    public const FRENCH_POLYNESIA = "PF";
+    public const FRENCH_POLYNESIA = 'PF';
 
     /**
      * Papua New Guinea
      */
-    public const PAPUA_NEW_GUINEA = "PG";
+    public const PAPUA_NEW_GUINEA = 'PG';
 
     /**
      * Philippines (the)
      */
-    public const PHILIPPINES_THE = "PH";
+    public const PHILIPPINES_THE = 'PH';
 
     /**
      * Pakistan
      */
-    public const PAKISTAN = "PK";
+    public const PAKISTAN = 'PK';
 
     /**
      * Poland
      */
-    public const POLAND = "PL";
+    public const POLAND = 'PL';
 
     /**
      * Saint Pierre and Miquelon
      */
-    public const SAINT_PIERRE_AND_MIQUELON = "PM";
+    public const SAINT_PIERRE_AND_MIQUELON = 'PM';
 
     /**
      * Pitcairn
      */
-    public const PITCAIRN = "PN";
+    public const PITCAIRN = 'PN';
 
     /**
      * Puerto Rico
      */
-    public const PUERTO_RICO = "PR";
+    public const PUERTO_RICO = 'PR';
 
     /**
      * Palestine, State of
      */
-    public const PALESTINE_STATE_OF = "PS";
+    public const PALESTINE_STATE_OF = 'PS';
 
     /**
      * Portugal
      */
-    public const PORTUGAL = "PT";
+    public const PORTUGAL = 'PT';
 
     /**
      * Palau
      */
-    public const PALAU = "PW";
+    public const PALAU = 'PW';
 
     /**
      * Paraguay
      */
-    public const PARAGUAY = "PY";
+    public const PARAGUAY = 'PY';
 
     /**
      * Qatar
      */
-    public const QATAR = "QA";
+    public const QATAR = 'QA';
 
     /**
      * Réunion
      */
-    public const RUNION = "RE";
+    public const RUNION = 'RE';
 
     /**
      * Romania
      */
-    public const ROMANIA = "RO";
+    public const ROMANIA = 'RO';
 
     /**
      * Serbia
      */
-    public const SERBIA = "RS";
+    public const SERBIA = 'RS';
 
     /**
      * Russian Federation (the)
      */
-    public const RUSSIAN_FEDERATION_THE = "RU";
+    public const RUSSIAN_FEDERATION_THE = 'RU';
 
     /**
      * Rwanda
      */
-    public const RWANDA = "RW";
+    public const RWANDA = 'RW';
 
     /**
      * Saudi Arabia
      */
-    public const SAUDI_ARABIA = "SA";
+    public const SAUDI_ARABIA = 'SA';
 
     /**
      * Solomon Islands
      */
-    public const SOLOMON_ISLANDS = "SB";
+    public const SOLOMON_ISLANDS = 'SB';
 
     /**
      * Seychelles
      */
-    public const SEYCHELLES = "SC";
+    public const SEYCHELLES = 'SC';
 
     /**
      * Sudan (the)
      */
-    public const SUDAN_THE = "SD";
+    public const SUDAN_THE = 'SD';
 
     /**
      * Sweden
      */
-    public const SWEDEN = "SE";
+    public const SWEDEN = 'SE';
 
     /**
      * Singapore
      */
-    public const SINGAPORE = "SG";
+    public const SINGAPORE = 'SG';
 
     /**
      * Saint Helena, Ascension and Tristan da Cunha
      */
-    public const SAINT_HELENA_ASCENSION_AND_TRISTAN_DA_CUNHA = "SH";
+    public const SAINT_HELENA_ASCENSION_AND_TRISTAN_DA_CUNHA = 'SH';
 
     /**
      * Slovenia
      */
-    public const SLOVENIA = "SI";
+    public const SLOVENIA = 'SI';
 
     /**
      * Svalbard and Jan Mayen
      */
-    public const SVALBARD_AND_JAN_MAYEN = "SJ";
+    public const SVALBARD_AND_JAN_MAYEN = 'SJ';
 
     /**
      * Slovakia
      */
-    public const SLOVAKIA = "SK";
+    public const SLOVAKIA = 'SK';
 
     /**
      * Sierra Leone
      */
-    public const SIERRA_LEONE = "SL";
+    public const SIERRA_LEONE = 'SL';
 
     /**
      * San Marino
      */
-    public const SAN_MARINO = "SM";
+    public const SAN_MARINO = 'SM';
 
     /**
      * Senegal
      */
-    public const SENEGAL = "SN";
+    public const SENEGAL = 'SN';
 
     /**
      * Somalia
      */
-    public const SOMALIA = "SO";
+    public const SOMALIA = 'SO';
 
     /**
      * Suriname
      */
-    public const SURINAME = "SR";
+    public const SURINAME = 'SR';
 
     /**
      * South Sudan
      */
-    public const SOUTH_SUDAN = "SS";
+    public const SOUTH_SUDAN = 'SS';
 
     /**
      * Sao Tome and Principe
      */
-    public const SAO_TOME_AND_PRINCIPE = "ST";
+    public const SAO_TOME_AND_PRINCIPE = 'ST';
 
     /**
      * El Salvador
      */
-    public const EL_SALVADOR = "SV";
+    public const EL_SALVADOR = 'SV';
 
     /**
      * Sint Maarten (Dutch part)
      */
-    public const SINT_MAARTEN_DUTCH_PART = "SX";
+    public const SINT_MAARTEN_DUTCH_PART = 'SX';
 
     /**
      * Syrian Arab Republic (the)
      */
-    public const SYRIAN_ARAB_REPUBLIC_THE = "SY";
+    public const SYRIAN_ARAB_REPUBLIC_THE = 'SY';
 
     /**
      * Eswatini
      */
-    public const ESWATINI = "SZ";
+    public const ESWATINI = 'SZ';
 
     /**
      * Turks and Caicos Islands (the)
      */
-    public const TURKS_AND_CAICOS_ISLANDS_THE = "TC";
+    public const TURKS_AND_CAICOS_ISLANDS_THE = 'TC';
 
     /**
      * Chad
      */
-    public const CHAD = "TD";
+    public const CHAD = 'TD';
 
     /**
      * French Southern Territories (the)
      */
-    public const FRENCH_SOUTHERN_TERRITORIES_THE = "TF";
+    public const FRENCH_SOUTHERN_TERRITORIES_THE = 'TF';
 
     /**
      * Togo
      */
-    public const TOGO = "TG";
+    public const TOGO = 'TG';
 
     /**
      * Thailand
      */
-    public const THAILAND = "TH";
+    public const THAILAND = 'TH';
 
     /**
      * Tajikistan
      */
-    public const TAJIKISTAN = "TJ";
+    public const TAJIKISTAN = 'TJ';
 
     /**
      * Tokelau
      */
-    public const TOKELAU = "TK";
+    public const TOKELAU = 'TK';
 
     /**
      * Timor-Leste
      */
-    public const TIMORLESTE = "TL";
+    public const TIMORLESTE = 'TL';
 
     /**
      * Turkmenistan
      */
-    public const TURKMENISTAN = "TM";
+    public const TURKMENISTAN = 'TM';
 
     /**
      * Tunisia
      */
-    public const TUNISIA = "TN";
+    public const TUNISIA = 'TN';
 
     /**
      * Tonga
      */
-    public const TONGA = "TO";
+    public const TONGA = 'TO';
 
     /**
      * Turkey
      */
-    public const TURKEY = "TR";
+    public const TURKEY = 'TR';
 
     /**
      * Trinidad and Tobago
      */
-    public const TRINIDAD_AND_TOBAGO = "TT";
+    public const TRINIDAD_AND_TOBAGO = 'TT';
 
     /**
      * Tuvalu
      */
-    public const TUVALU = "TV";
+    public const TUVALU = 'TV';
 
     /**
      * Taiwan (Province of China)
      */
-    public const TAIWAN_PROVINCE_OF_CHINA = "TW";
+    public const TAIWAN_PROVINCE_OF_CHINA = 'TW';
 
     /**
      * Tanzania, the United Republic of
      */
-    public const TANZANIA_THE_UNITED_REPUBLIC_OF = "TZ";
+    public const TANZANIA_THE_UNITED_REPUBLIC_OF = 'TZ';
 
     /**
      * Ukraine
      */
-    public const UKRAINE = "UA";
+    public const UKRAINE = 'UA';
 
     /**
      * Uganda
      */
-    public const UGANDA = "UG";
+    public const UGANDA = 'UG';
 
     /**
      * United States Minor Outlying Islands (the)
      */
-    public const UNITED_STATES_MINOR_OUTLYING_ISLANDS_THE = "UM";
+    public const UNITED_STATES_MINOR_OUTLYING_ISLANDS_THE = 'UM';
 
     /**
      * United States of America (the)
      */
-    public const UNITED_STATES_OF_AMERICA_THE = "US";
+    public const UNITED_STATES_OF_AMERICA_THE = 'US';
 
     /**
      * Uruguay
      */
-    public const URUGUAY = "UY";
+    public const URUGUAY = 'UY';
 
     /**
      * Uzbekistan
      */
-    public const UZBEKISTAN = "UZ";
+    public const UZBEKISTAN = 'UZ';
 
     /**
      * Holy See (the)
      */
-    public const HOLY_SEE_THE = "VA";
+    public const HOLY_SEE_THE = 'VA';
 
     /**
      * Saint Vincent and the Grenadines
      */
-    public const SAINT_VINCENT_AND_THE_GRENADINES = "VC";
+    public const SAINT_VINCENT_AND_THE_GRENADINES = 'VC';
 
     /**
      * Venezuela (Bolivarian Republic of)
      */
-    public const VENEZUELA_BOLIVARIAN_REPUBLIC_OF = "VE";
+    public const VENEZUELA_BOLIVARIAN_REPUBLIC_OF = 'VE';
 
     /**
      * Virgin Islands (British)
      */
-    public const VIRGIN_ISLANDS_BRITISH = "VG";
+    public const VIRGIN_ISLANDS_BRITISH = 'VG';
 
     /**
      * Virgin Islands (U.S.)
      */
-    public const VIRGIN_ISLANDS_US = "VI";
+    public const VIRGIN_ISLANDS_US = 'VI';
 
     /**
      * Viet Nam
      */
-    public const VIET_NAM = "VN";
+    public const VIET_NAM = 'VN';
 
     /**
      * Vanuatu
      */
-    public const VANUATU = "VU";
+    public const VANUATU = 'VU';
 
     /**
      * Wallis and Futuna
      */
-    public const WALLIS_AND_FUTUNA = "WF";
+    public const WALLIS_AND_FUTUNA = 'WF';
 
     /**
      * Samoa
      */
-    public const SAMOA = "WS";
+    public const SAMOA = 'WS';
 
     /**
      * Yemen
      */
-    public const YEMEN = "YE";
+    public const YEMEN = 'YE';
 
     /**
      * Mayotte
      */
-    public const MAYOTTE = "YT";
+    public const MAYOTTE = 'YT';
 
     /**
      * South Africa
      */
-    public const SOUTH_AFRICA = "ZA";
+    public const SOUTH_AFRICA = 'ZA';
 
     /**
      * Zambia
      */
-    public const ZAMBIA = "ZM";
+    public const ZAMBIA = 'ZM';
 
     /**
      * Zimbabwe
      */
-    public const ZIMBABWE = "ZW";
+    public const ZIMBABWE = 'ZW';
 
     /**
      * Kosovo
      */
-    public const KOSOVO = "1A";
+    public const KOSOVO = '1A';
 }

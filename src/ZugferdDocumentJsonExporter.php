@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is a part of horstoeko/zugferd.
  *
@@ -9,6 +11,7 @@
 
 namespace horstoeko\zugferd;
 
+use JMS\Serializer\Exception\RuntimeException;
 use stdClass;
 
 /**
@@ -16,10 +19,9 @@ use stdClass;
  * in JSON format
  *
  * @category Zugferd
- * @package  Zugferd
  * @author   D. Erling <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @link     https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/zugferd
  */
 class ZugferdDocumentJsonExporter
 {
@@ -44,6 +46,8 @@ class ZugferdDocumentJsonExporter
      * Returns the invoice object as a json string
      *
      * @return string
+     *
+     * @throws RuntimeException
      */
     public function toJsonString(): string
     {
@@ -54,8 +58,10 @@ class ZugferdDocumentJsonExporter
      * Returns the invoice object as a json object
      *
      * @return null|stdClass
+     *
+     * @throws RuntimeException
      */
-    public function toJsonObject(): ?\stdClass
+    public function toJsonObject(): ?stdClass
     {
         return json_decode($this->toJsonString());
     }
@@ -63,7 +69,9 @@ class ZugferdDocumentJsonExporter
     /**
      * Returns the invoice object as a pretty printed json string
      *
-     * @return string|boolean
+     * @return bool|string
+     *
+     * @throws RuntimeException
      */
     public function toPrettyJsonString()
     {
