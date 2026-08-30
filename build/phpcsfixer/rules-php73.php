@@ -32,7 +32,10 @@ return [
     'constant_case' => [
         'case' => 'lower',
     ],
-    'self_accessor' => true,
+    // PHP-CS-Fixer 3.4 traverses closure bodies for this fixer and replaces
+    // references to the current class with self::. Newer 3.x releases skip
+    // closures here, which would make PHP 7.3 format the same source differently.
+    'self_accessor' => false,
     'static_lambda' => true,
     'function_declaration' => [
         'closure_function_spacing' => 'one',
