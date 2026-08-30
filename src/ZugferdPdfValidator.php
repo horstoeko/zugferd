@@ -780,6 +780,9 @@ class ZugferdPdfValidator
     /**
      * Install the validator
      *
+     * @throws DirectoryNotFoundException
+     * @throws LogicException
+     *
      * @return bool
      */
     private function installValidator(): bool
