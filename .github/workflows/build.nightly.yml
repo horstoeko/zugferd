@@ -1,30 +1,14 @@
-name: Continuous Integration
+name: Nightly Build
 
 on:
-  push:
-    tags-ignore:
-      - "**"
-    branches:
-      - "**"
-    paths-ignore:
-      - "**.md"
-      - ".github/**"
-      - ".vscode/**"
-      - "examples/**"
-      - "make/**"
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
-    branches:
-      - master
+  schedule:
+    - cron: '17 3 * * *'
+      timezone: Europe/Berlin
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 defaults:
   run:
@@ -44,28 +28,39 @@ jobs:
   build:
     permissions:
       contents: read
-      checks: write
-      pull-requests: write
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      fail-fast: false
-      matrix:
-        operating-system: [ubuntu-24.04]
-        phpversion: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Determine nightly build metadata
+        id: nightly-build
+        run: |
+          nightlyBuildDate=$(TZ=Europe/Berlin date +%Y-%m-%d)
+          nightlyCommitSha=$(git rev-parse HEAD)
+          nightlyShortCommitSha=${nightlyCommitSha:0:12}
+          nightlyArtifactName="zugferd-nightly-$nightlyBuildDate-$nightlyShortCommitSha"
+          nightlyPackageFilename="$nightlyArtifactName.zip"
+          nightlyChecksumFilename="$nightlyPackageFilename.sha256"
+
+          echo "artifact_name=$nightlyArtifactName" >> "$GITHUB_OUTPUT"
+          echo "build_date=$nightlyBuildDate" >> "$GITHUB_OUTPUT"
+          echo "commit_sha=$nightlyCommitSha" >> "$GITHUB_OUTPUT"
+          echo "short_commit_sha=$nightlyShortCommitSha" >> "$GITHUB_OUTPUT"
+          echo "package_filename=$nightlyPackageFilename" >> "$GITHUB_OUTPUT"
+          echo "checksum_filename=$nightlyChecksumFilename" >> "$GITHUB_OUTPUT"
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.phpversion }}
-          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
+          php-version: '8.5'
+          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
           tools: composer:v2
-          coverage: xdebug
+          coverage: none
           ini-values: memory_limit=-1
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -80,22 +75,12 @@ jobs:
 
       - name: Prepare build directories
         run: |
-          mkdir -p build/builddoc
-          mkdir -p build/coverage
-          mkdir -p build/coverage-html
           mkdir -p build/dist
-          mkdir -p build/logs
           mkdir -p build/phpcsfixer-cache
           mkdir -p build/phpstan-cache
           mkdir -p build/phpunit-cache
-          mkdir -p build/rector-cache
 
       - name: Run parallel lint
-        if: ${{ contains(fromJSON('["7.3","7.4","8.0"]'), matrix.phpversion) }}
-        run: vendor/bin/parallel-lint --exclude src/codelistsenum src tests
-
-      - name: Run PHP 8.1 enum lint
-        if: ${{ contains(fromJSON('["8.1","8.2","8.3","8.4","8.5"]'), matrix.phpversion) }}
         run: vendor/bin/parallel-lint src tests
 
       - name: Restore quality tools cache
@@ -107,10 +92,9 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
-            build/rector-cache
-          key: ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-${{ github.run_id }}
+          key: ${{ runner.os }}-quality-php-8.5-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-quality-php-${{ matrix.phpversion }}-
+            ${{ runner.os }}-quality-php-8.5-
 
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --config=build/phpcsfixer.php --dry-run --no-interaction
@@ -118,16 +102,11 @@ jobs:
       - name: Run PHPStan
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
-      - name: Run Rector
-        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
-
       - name: Run reader path check
         run: php make/checkreaderpaths.php
 
       - name: Run PHPUnit tests
-        env:
-          XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
 
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
@@ -138,7 +117,6 @@ jobs:
             build/phpcsfixer-cache
             build/phpstan-cache
             build/phpunit-cache
-            build/rector-cache
           key: ${{ steps.quality-cache-restore.outputs.cache-primary-key }}
 
       - name: Start validation services
@@ -214,58 +192,50 @@ jobs:
 
           echo 'Remote veraPDF tests passed.'
 
-      - name: Publish unit test results
-        continue-on-error: true
-        if: always()
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        with:
-          files: build/logs/junit.xml
-          comment_mode: ${{ github.event_name == 'pull_request' && 'failures' || 'always' }}
-
-      - name: Generate SBOM
-        continue-on-error: true
-        run: |
-          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
-          composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
-          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.json
-          composer CycloneDX:make-sbom --omit=dev --output-format=XML --output-file=build/dist/sbom.xml
-
-      - name: Publish SBOM artifacts
-        continue-on-error: true
-        uses: actions/upload-artifact@v7
-        with:
-          name: SBOM artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
-          path: |
-            build/dist/sbom.json
-            build/dist/sbom.xml
-          if-no-files-found: error
-
-      - name: Publish build log artifacts
-        continue-on-error: true
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: Build log artifacts for ${{ matrix.operating-system }} PHP ${{ matrix.phpversion }}
-          path: build/logs
-          if-no-files-found: error
-
-  ci-success:
-    name: CI success
-    needs:
-      - build
-    if: ${{ always() }}
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: Verify CI result
+      - name: Create nightly package
         env:
-          BUILD_RESULT: ${{ needs.build.result }}
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
+          NIGHTLY_BUILD_DATE: ${{ steps.nightly-build.outputs.build_date }}
+          NIGHTLY_CHECKSUM_FILENAME: ${{ steps.nightly-build.outputs.checksum_filename }}
+          NIGHTLY_COMMIT_SHA: ${{ steps.nightly-build.outputs.commit_sha }}
+          NIGHTLY_PACKAGE_FILENAME: ${{ steps.nightly-build.outputs.package_filename }}
         run: |
-          echo "Matrix build result: $BUILD_RESULT"
+          nightlyPackageDirectory=build/nightly/zugferd
 
-          if [ "$BUILD_RESULT" != "success" ] || [ "$PHP73_RESULT" != "success" ]; then
-            echo "At least one CI job failed or was cancelled."
-            exit 1
-          fi
+          mkdir -p "$nightlyPackageDirectory"
+          git archive HEAD | tar -x -C "$nightlyPackageDirectory"
 
-          echo "All CI matrix jobs passed."
+          {
+            echo 'ZUGFeRD nightly build'
+            echo "Build date: $NIGHTLY_BUILD_DATE"
+            echo "Commit: $NIGHTLY_COMMIT_SHA"
+            echo 'Warning: This is an unstable development snapshot.'
+          } > "$nightlyPackageDirectory/NIGHTLY-BUILD.txt"
+
+          composer install \
+            --working-dir="$nightlyPackageDirectory" \
+            --no-dev \
+            --prefer-dist \
+            --optimize-autoloader \
+            --no-progress
+
+          (
+            cd build/nightly
+            zip -q -r "../dist/$NIGHTLY_PACKAGE_FILENAME" zugferd
+          )
+
+          (
+            cd build/dist
+            sha256sum "$NIGHTLY_PACKAGE_FILENAME" > "$NIGHTLY_CHECKSUM_FILENAME"
+          )
+
+      - name: Upload nightly build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.nightly-build.outputs.artifact_name }}
+          path: |
+            build/dist/${{ steps.nightly-build.outputs.package_filename }}
+            build/dist/${{ steps.nightly-build.outputs.checksum_filename }}
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0

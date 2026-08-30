@@ -47,13 +47,9 @@ jobs:
           ini-values: memory_limit=-1
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare Composer definition for quality tools
-        run: jq '.config.platform.php = "7.4.0"' composer.json > composer.release.json
-
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
-          composer-filename: composer.release
           dependency-versions: highest
           composer-options: --prefer-dist
           require-lock-file: false
@@ -73,7 +69,11 @@ jobs:
           mkdir -p build/rector-cache
 
       - name: Run parallel lint
-        run: vendor/bin/parallel-lint src tests
+        run: vendor/bin/parallel-lint --exclude src/codelistsenum src tests
+
+      - name: Run PHP 8.1 enum lint
+        if: ${{ contains(fromJSON('["8.1","8.2","8.3","8.4","8.5"]'), matrix.phpversion) }}
+        run: vendor/bin/parallel-lint src/codelistsenum
 
       - name: Restore quality tools cache
         id: quality-cache-restore
