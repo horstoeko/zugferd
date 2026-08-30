@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use Exception;
 use setasign\Fpdi\Fpdi as PdfFpdi;
 
 /**
@@ -95,8 +94,6 @@ class ZugferdPdfWriter extends PdfFpdi
      * @param  string $version     contains the PDF version number
      * @param  bool   $binary_data This is true for binary data
      * @return void
-     *
-     * @throws Exception
      */
     public function setPdfVersion($version = '1.3', $binary_data = false): void
     {
@@ -106,7 +103,7 @@ class ZugferdPdfWriter extends PdfFpdi
             if (true === $this->deterministicModeEnabled) {
                 $this->PDFVersion .= "\n" . '%' . chr(128) . chr(129) . chr(130) . chr(131);
             } else {
-                $this->PDFVersion .= "\n" . '%' . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255)) . chr(random_int(128, 255));
+                $this->PDFVersion .= "\n" . '%' . chr(mt_rand(128, 255)) . chr(mt_rand(128, 255)) . chr(mt_rand(128, 255)) . chr(mt_rand(128, 255));
             }
         }
     }

@@ -69,6 +69,10 @@ jobs:
           ini-values: memory_limit=-1
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Remove unsupported Rector dependency on PHP 7.3
+        if: ${{ matrix.phpversion == '7.3' }}
+        run: composer remove rector/rector --dev --no-update
+
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
         with:
@@ -119,6 +123,7 @@ jobs:
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
       - name: Run Rector
+        if: ${{ matrix.phpversion != '7.3' }}
         run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
 
       - name: Run reader path check
