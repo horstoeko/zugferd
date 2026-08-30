@@ -44,17 +44,10 @@ return [
     'binary_operator_spaces' => [
         'default' => 'single_space',
     ],
-    'phpdoc_align' => [
-        'tags' => [
-            'method',
-            'param',
-            'property',
-            'return',
-            'type',
-            'var',
-            'throws',
-        ],
-    ],
+    // PHP-CS-Fixer 3.4 aligns complex PHPDoc types differently from newer
+    // 3.x releases (notably array shapes and nested generic array types).
+    // Keep it disabled on PHP 7.3 to avoid version-dependent formatting.
+    'phpdoc_align' => false,
     // PHP-CS-Fixer 3.4 does not offer the configurable order used by newer 3.x releases.
     'phpdoc_order' => false,
     'phpdoc_order_by_value' => [
