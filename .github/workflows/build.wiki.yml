@@ -17,7 +17,7 @@ env:
   GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
 
 concurrency:
-  group: ${{ github.workflow }}-${{ env.SOURCE_REF }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
