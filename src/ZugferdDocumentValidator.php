@@ -13,9 +13,12 @@ namespace horstoeko\zugferd;
 
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\exception\ZugferdUnknownProfileParameterException;
+use ReflectionClass;
+use ReflectionException;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Throwable;
 
 /**
  * Class representing the document validator for incoming documents
@@ -58,6 +61,8 @@ class ZugferdDocumentValidator
      * Perform the validation of the document
      *
      * @return ConstraintViolationListInterface
+     *
+     * @throws ReflectionException
      */
     public function validateDocument(): ConstraintViolationListInterface
     {
@@ -114,9 +119,22 @@ class ZugferdDocumentValidator
      * Returns the internal invoice object from the document
      *
      * @return object
+     *
+     * @throws ReflectionException
      */
     private function getDocumentInvoiceObject()
     {
-        return $this->document->getInvoiceObject();
+        $reflector = new ReflectionClass($this->document);
+        $method = $reflector->getMethod('getInvoiceObject');
+
+        try {
+            return $method->getClosure($this->document)();
+        } catch (Throwable $throwable) {
+            throw new ReflectionException(
+                'Unable to access the internal invoice object.',
+                0,
+                $throwable
+            );
+        }
     }
 }

@@ -167,7 +167,7 @@ class ZugferdDocument
      *
      * @return CrossIndustryInvoice|entities\basicwl\rsm\CrossIndustryInvoice|entities\en16931\rsm\CrossIndustryInvoice|entities\extended\rsm\CrossIndustryInvoice|entities\minimum\rsm\CrossIndustryInvoice
      */
-    public function getInvoiceObject()
+    protected function getInvoiceObject()
     {
         return $this->invoiceObject;
     }
