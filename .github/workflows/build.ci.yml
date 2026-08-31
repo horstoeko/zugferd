@@ -78,6 +78,7 @@ jobs:
           phpstan/phpstan-deprecation-rules
           phpstan/phpstan-strict-rules
           rector/rector
+          phpdocumentor/reflection-docblock
 
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v4
