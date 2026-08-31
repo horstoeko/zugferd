@@ -58,7 +58,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
-          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json
+          extensions: amqp, apcu, ast, bcmath, bz2, calendar, ctype, curl, dba, dom, ds, enchant, exif, fileinfo, ftp, gd, gettext, gmp, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mbstring, memcache, memcached, mongodb, msgpack, mysqli, mysqlnd, odbc, openssl, pcntl, pcre, pdo, pdo_dblib, pdo_firebird, pdo_mysql, pdo_odbc, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pgsql, posix, readline, redis, shmop, simplexml, snmp, soap, sockets, sqlite3, sqlsrv, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, xml, xmlreader, xmlwriter, xsl, yaml, opcache, zip, zmq
           tools: composer:v2
           coverage: none
           ini-values: memory_limit=-1
