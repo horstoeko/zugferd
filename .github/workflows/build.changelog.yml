@@ -16,7 +16,7 @@ env:
   TARGET_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.ref_type == 'branch' && github.ref_name || github.event.repository.default_branch }}
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name == 'workflow_dispatch' && github.ref_type == 'branch' && github.ref_name || github.event.repository.default_branch }}
   cancel-in-progress: true
 
 defaults:
@@ -38,20 +38,25 @@ jobs:
         with:
           token: ${{ secrets.UPDATEWIKITOKEN }}
           fetch-depth: 0
+          fetch-tags: true
           ref: ${{ env.TARGET_BRANCH }}
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
-          extensions: dom, curl, fileinfo, libxml, mbstring, simplexml, zip, intl, gd, iconv, json
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, bcmath, intl, gd, exif, iconv, imagick, json, xdebug
           coverage: none
           tools: composer:v2
           ini-values: memory_limit=-1
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Composer dependencies
-        run: composer update --prefer-dist
+        uses: ramsey/composer-install@v4
+        with:
+          dependency-versions: highest
+          composer-options: --prefer-dist
+          require-lock-file: false
         env:
           COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.GITHUB_TOKEN }}"}}'
 
@@ -73,7 +78,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git add CHANGELOG.md
             git commit -m "[DOC] Update CHANGELOG.md"
-            git push origin "HEAD:${TARGET_BRANCH}"
+            git push origin HEAD:${{ env.TARGET_BRANCH }}
           else
             echo "No changes found. Skipping."
           fi
