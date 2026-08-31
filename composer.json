@@ -58,7 +58,7 @@
         "goetas-webservices/xsd2php": "^0",
         "nette/php-generator": "*",
         "php-parallel-lint/php-parallel-lint": "^1.4",
-        "phpdocumentor/reflection-docblock": "^5",
+        "phpdocumentor/reflection-docblock": "^6",
         "phpstan/phpstan": "^1|^2.1",
         "phpstan/phpstan-deprecation-rules": "^1|^2",
         "phpstan/phpstan-strict-rules": "^1|^2",
