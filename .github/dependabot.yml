@@ -1,4 +1,4 @@
-# Keep GitHub Actions up to date with GitHub's Dependabot...
+# Keep GitHub Actions, Docker Compose and Composer dependencies up to date with Dependabot.
 # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
 # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#package-ecosystem
 version: 2
@@ -8,7 +8,29 @@ updates:
     groups:
       github-actions:
         patterns:
-          - "*"  # Group all Actions updates into a single larger pull request
+          - '*' # Group all Actions updates into a single larger pull request.
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "[INFR] "
+
+  - package-ecosystem: docker-compose
+    directory: /.github/services
+    groups:
+      validation-services:
+        patterns:
+          - '*' # Group all validation service updates into a single larger pull request.
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "[INFR] "
+
+  - package-ecosystem: composer
+    directory: /
+    groups:
+      composer:
+        patterns:
+          - '*' # Group all Composer updates into a single larger pull request.
     schedule:
       interval: weekly
     commit-message:
