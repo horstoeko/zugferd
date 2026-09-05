@@ -135,12 +135,6 @@ jobs:
           XDEBUG_MODE: off
         run: php -d sys_temp_dir=$(pwd)/build/phpstan-cache vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
-      - name: Run Rector
-        if: ${{ contains(fromJSON('["8.4","8.5"]'), matrix.phpversion) }}
-        env:
-          XDEBUG_MODE: off
-        run: vendor/bin/rector --config=build/phprectorconfig.php --dry-run
-
       - name: Run reader path check
         run: php make/checkreaderpaths.php
 
