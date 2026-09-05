@@ -42,7 +42,7 @@ class ZugferdTypesHandler implements SubscribingHandlerInterface
      *          ),
      *      )
      *
-     * @return array<int, array{direction: int, format: string, type: string, method: string}>
+     * @return array<int, array{direction: 1|2, format: string, type: string, method: string}>
      */
     public static function getSubscribingMethods()
     {
