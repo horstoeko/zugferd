@@ -534,6 +534,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set detailed information on the seller's contact person
      *
+     * For EN 16931-compliant CII output, `$contactPersonName` and `$contactDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
+     *
      * @param  null|string            $contactPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
      * @param  null|string            $contactDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted
      * @param  null|string            $contactPhoneNo        __BT-42, From EN 16931__ A telephone number for the contact point
@@ -553,6 +556,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
     /**
      * Add an (additional) contact to the seller party (EXTENDED Profile only)
+     *
+     * For EN 16931-compliant CII output, `$contactPersonName` and `$contactDepartmentName` are alternative CII representations
+     * of the seller contact point (BT-41) and must not both be populated (CII-SR-465). The builder does not apply any precedence.
      *
      * @param  null|string            $contactPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
      * @param  null|string            $contactDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted
@@ -725,6 +731,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
     /**
      * Set contact of the buyer party
      *
+     * For EN 16931-compliant CII output, `$contactPersonName` and `$contactDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
+     *
      * @param  null|string            $contactPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
      * @param  null|string            $contactDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
      * @param  null|string            $contactPhoneNo        __BT-57, From EN 16931__ A telephone number for the contact point
@@ -744,6 +753,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
 
     /**
      * Add an (additional) contact to the buyer party contact person (EXTENDED Profile only)
+     *
+     * For EN 16931-compliant CII output, `$contactPersonName` and `$contactDepartmentName` are alternative CII representations
+     * of the buyer contact point (BT-56) and must not both be populated (CII-SR-466). The builder does not apply any precedence.
      *
      * @param  null|string            $contactPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
      * @param  null|string            $contactDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office

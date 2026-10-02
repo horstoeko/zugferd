@@ -365,6 +365,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     /**
      * Set contact of the buyer party
      *
+     * For EN 16931-compliant CII output, `$name` and `$orgunit` must not both be populated (CII-SR-466).
+     * Since `$name` is mandatory in this convenience method, `$orgunit` must remain null for compliant CII output.
+     *
      * @param  string                 $name         __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
      * @param  null|string            $orgunit      __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
      * @param  null|string            $emailAddress __BT-58, From EN 16931__ An e-mail address of the contact point
@@ -439,6 +442,9 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     /**
      * Set contact of the seller party
+     *
+     * For EN 16931-compliant CII output, `$name` and `$orgunit` must not both be populated (CII-SR-465).
+     * Since `$name` is mandatory in this convenience method, `$orgunit` must remain null for compliant CII output.
      *
      * @param  string                 $name         __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
      * @param  null|string            $orgunit      __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted
