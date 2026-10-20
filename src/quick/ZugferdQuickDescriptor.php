@@ -54,6 +54,10 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
 
     private const VT_LOGSERVICECHARGE = 9;
 
+    private const VT_EXCEPTIONREASONCODE = 10;
+
+    private const VT_EXCEPTIONREASON = 11;
+
     /**
      * Used for internal vat summation
      *
@@ -722,6 +726,29 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Set VAT Exceptions
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @param  string $taxExcemptionReasonCode
+     * @param  string $taxExcemptionReason
+     * @return self
+     */
+    public function doSetVatExcemptionReason(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, string $taxExcemptionReasonCode, string $taxExcemptionReason): self
+    {
+        $this->updateVatExcemptionReasonsInInternalVatBuffer(
+            $taxCategoryCode,
+            $taxTypeCode,
+            $taxPercent,
+            $taxExcemptionReasonCode,
+            $taxExcemptionReason
+        );
+
+        return $this;
+    }
+
+    /**
      * Sets the prepaid amount
      *
      * @param  float                  $totalPrepaidAmount __BT-113, From BASIC WL__ Prepayment amount
@@ -793,11 +820,12 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * @param  float  $lineTotalAmount
      * @param  float  $chargeAmount
      * @param  float  $allowanceAmount
+     * @param  float  $logisticServiceCharge
      * @return void
      */
     protected function addToInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, float $lineTotalAmount, float $chargeAmount, float $allowanceAmount, float $logisticServiceCharge)
     {
-        $vatGroup = md5($taxCategoryCode . '_' . $taxTypeCode . '_' . number_format($taxPercent, 10, '_', '__'));
+        $vatGroup = $this->getKeyForInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent);
 
         if (!isset($this->vatBreakdown[$vatGroup])) {
             $this->vatBreakdown[$vatGroup] = [
@@ -810,6 +838,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
                 self::VT_ALLOWANCECHARGEAMOUNT => 0.0,
                 self::VT_CALCULATEDAMOUNT => 0.0,
                 self::VT_LOGSERVICECHARGE => 0.0,
+                self::VT_EXCEPTIONREASONCODE => '',
+                self::VT_EXCEPTIONREASON => '',
             ];
         }
 
@@ -833,6 +863,32 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
     }
 
     /**
+     * Update VAT Exceptions in internal VAT buffer
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @param  string $taxExcemptionReasonCode
+     * @param  string $taxExcemptionReason
+     * @return void
+     */
+    protected function updateVatExcemptionReasonsInInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent, string $taxExcemptionReasonCode, string $taxExcemptionReason): void
+    {
+        $vatGroup = $this->getKeyForInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent);
+
+        if (!isset($this->vatBreakdown[$vatGroup])) {
+            return;
+        }
+
+        if (StringUtils::stringIsNullOrEmpty($taxExcemptionReasonCode) && StringUtils::stringIsNullOrEmpty($taxExcemptionReason)) {
+            return;
+        }
+
+        $this->vatBreakdown[$vatGroup][self::VT_EXCEPTIONREASONCODE] = $taxExcemptionReasonCode;
+        $this->vatBreakdown[$vatGroup][self::VT_EXCEPTIONREASON] = $taxExcemptionReason;
+    }
+
+    /**
      * Writes the document vat breakdown from the internal vat buffer
      *
      * @return void
@@ -846,8 +902,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
                 $item[self::VT_BASISAMOUNT],
                 $item[self::VT_CALCULATEDAMOUNT],
                 $item[self::VT_TAXPERCENT],
-                null,
-                null,
+                $item[self::VT_EXCEPTIONREASON],
+                $item[self::VT_EXCEPTIONREASONCODE],
                 $item[self::VT_LINETOTALBASISAMOUNT],
                 $item[self::VT_ALLOWANCECHARGEAMOUNT]
             );
@@ -869,5 +925,18 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         }
 
         return $sum;
+    }
+
+    /**
+     * Create the key for the internal VAT Buffer
+     *
+     * @param  string $taxCategoryCode
+     * @param  string $taxTypeCode
+     * @param  float  $taxPercent
+     * @return string
+     */
+    protected function getKeyForInternalVatBuffer(string $taxCategoryCode, string $taxTypeCode, float $taxPercent): string
+    {
+        return md5($taxCategoryCode . '_' . $taxTypeCode . '_' . number_format($taxPercent, 10, '_', '__'));
     }
 }
