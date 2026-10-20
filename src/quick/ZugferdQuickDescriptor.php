@@ -901,7 +901,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
                 $item[self::VT_TAXTYPE],
                 $item[self::VT_BASISAMOUNT],
                 $item[self::VT_CALCULATEDAMOUNT],
-                $item[self::VT_TAXPERCENT],
+                $item[self::VT_TAXCATEGORY] === "O" ? null : $item[self::VT_TAXPERCENT],
                 $item[self::VT_EXCEPTIONREASON],
                 $item[self::VT_EXCEPTIONREASONCODE],
                 $item[self::VT_LINETOTALBASISAMOUNT],
