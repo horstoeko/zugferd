@@ -1,3 +1,13 @@
+## v1.0.133
+
+``Previous version v1.0.132``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [7ae8164](https://github.com/horstoeko/zugferd/commit/7ae8164) | 2026-10-20 14:44:04 CEST | HorstOeko | ZugferdQuickDescriptor: VAT breakdown for E / AE / K / G / O never gets an exemption reason () | [#391](https://github.com/horstoeko/zugferd/issues/391)
+
+:exclamation: _There are 14 internal commit(s)_
+
 ## v1.0.132
 
 :exclamation: _There are 5 internal commit(s)_
