@@ -3713,9 +3713,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument
      * @param  string                 $categoryCode          __BT-151, From BASIC__ Coded description of a sales tax category
      * @param  string                 $typeCode              __BT-151-0, From BASIC__ In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for the tax type must then be taken from the code list UNTDID 5153.
      * @param  float                  $rateApplicablePercent __BT-152, From BASIC__ The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales tax category and the category-specific sales tax rate  must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
-     * @param  null|float             $calculatedAmount      __BT-, From __ Tax amount. Information only for taxes that are not VAT (Obsolete)
-     * @param  null|string            $exemptionReason       __BT-, From __ Reason for tax exemption (free text) (Obsolete)
-     * @param  null|string            $exemptionReasonCode   __BT-, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility. (Obsolete)
+     * @param  null|float             $calculatedAmount      __BT-X-95, From EXTENDED__ Tax amount. Information only for taxes that are not VAT (Obsolete)
+     * @param  null|string            $exemptionReason       __BT-X-96, From EXTENDED__ Reason for tax exemption (free text) (Obsolete)
+     * @param  null|string            $exemptionReasonCode   __BT-X-97, From EXTENDED__ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility. (Obsolete)
      * @return ZugferdDocumentBuilder
      */
     public function addDocumentPositionTax(string $categoryCode, string $typeCode, ?float $rateApplicablePercent, ?float $calculatedAmount = null, ?string $exemptionReason = null, ?string $exemptionReasonCode = null): self
