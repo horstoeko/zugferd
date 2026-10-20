@@ -118,7 +118,6 @@ Handelsregisternummer: H A 123
         <ram:Name>Lieferant GmbH</ram:Name>
         <ram:DefinedTradeContact>
           <ram:PersonName>H. Müller</ram:PersonName>
-          <ram:DepartmentName>Verkauf</ram:DepartmentName>
           <ram:TelephoneUniversalCommunication>
             <ram:CompleteNumber>+49-111-2222222</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
@@ -147,7 +146,6 @@ Handelsregisternummer: H A 123
         <ram:Name>Kunden AG Mitte</ram:Name>
         <ram:DefinedTradeContact>
           <ram:PersonName>H. Meier</ram:PersonName>
-          <ram:DepartmentName>Einkauf</ram:DepartmentName>
           <ram:TelephoneUniversalCommunication>
             <ram:CompleteNumber>+49-333-4444444</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
@@ -176,7 +174,7 @@ Handelsregisternummer: H A 123
       </ram:ContractReferencedDocument>
       <ram:AdditionalReferencedDocument>
         <ram:IssuerAssignedID>REFDOC-2024/00001-1</ram:IssuerAssignedID>
-        <ram:URIID>http.//some.url</ram:URIID>
+        <ram:URIID>http://some.url</ram:URIID>
         <ram:TypeCode>916</ram:TypeCode>
         <ram:Name>Inhaltsstoffe Joghurt</ram:Name>
       </ram:AdditionalReferencedDocument>
