@@ -882,7 +882,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
         $vatGroup = $this->getKeyForInternalVatBuffer($taxCategoryCode, $taxTypeCode, $taxPercent);
 
         if (!isset($this->vatBreakdown[$vatGroup])) {
-            throw new RuntimeException(sprintf('No VAT-Table-Entry found for VAT-Category %s, VAT-Type %s and VAT-Rate %s'));
+            throw new RuntimeException(sprintf('No VAT-Table-Entry found for VAT-Category %s, VAT-Type %s and VAT-Rate %s', $taxCategoryCode, $taxTypeCode, $taxPercent));
         }
 
         if (StringUtils::stringIsNullOrEmpty($taxExemptionReasonCode) && StringUtils::stringIsNullOrEmpty($taxExemptionReason)) {
