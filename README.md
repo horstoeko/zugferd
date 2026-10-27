@@ -49,6 +49,8 @@
 - [Dependencies](#dependencies)
 - [Resources](#resources)
 - [Guide](#guide)
+- [Community integrations](#community-integrations)
+  - [VAMPIRE PHP: e-invoice validation in pure PHP](#vampire-php-e-invoice-validation-in-pure-php)
 
 ## License
 
@@ -117,3 +119,14 @@ The following parts are documentated in our [Wiki](https://github.com/horstoeko/
 - [Write a pdf file with attached xml file file](https://github.com/horstoeko/zugferd/wiki/Creating-PDF-Documents)
 - [Merge existing PDF and XML](https://github.com/horstoeko/zugferd/wiki/Merging-XML-and-PDF-Documents)
 - [Validation](https://github.com/horstoeko/zugferd/wiki/Validation)
+
+
+## Community integrations
+
+### VAMPIRE PHP: e-invoice validation in pure PHP
+
+Looking for e-invoice validation without Java? [VAMPIRE PHP](https://github.com/invoicePress/vampire-php), an independent community project by invoicePress, validates invoice XML against supported XML schemas and official business rule sets entirely in PHP, without external validation services.
+
+The dedicated [invoicepress/vampire-zugferd](https://github.com/invoicePress/vampire-zugferd) package connects VAMPIRE PHP with `horstoeko/zugferd`. Its `ZugferdVampireValidator` follows the familiar API of `ZugferdKositValidator`, making it easy to add validation to existing invoice workflows.
+
+See the project documentation for installation, supported profiles, and usage examples.
