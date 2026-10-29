@@ -1,3 +1,14 @@
+## v1.0.134
+
+``Previous version v1.0.133``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new_moon:  | [3ced211](https://github.com/horstoeko/zugferd/commit/3ced211) | 2026-10-29 10:21:40 CET | Stefan Linke | Allow passing in optional Smalot\PdfParser config () | [#395](https://github.com/horstoeko/zugferd/issues/395)
+| :bug:  | [2ac2246](https://github.com/horstoeko/zugferd/commit/2ac2246) | 2026-10-21 05:06:20 CEST | ThirdCoffe3 | [FIX] XRECHNUNG3 reader example asset for the current KoSIT rules () | [#392](https://github.com/horstoeko/zugferd/issues/392)
+
+:exclamation: _There are 2 internal commit(s)_
+
 ## v1.0.133
 
 ``Previous version v1.0.132``
