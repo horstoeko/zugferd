@@ -8,6 +8,7 @@ use horstoeko\stringmanagement\FileUtils;
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\zugferd\tests\TestCase;
 use horstoeko\zugferd\ZugferdSettings;
+use Smalot\PdfParser\Config;
 
 final class SettingsTest extends TestCase
 {
@@ -206,5 +207,16 @@ final class SettingsTest extends TestCase
 
         $this->assertSame('', ZugferdSettings::getSerializerCacheDirectory());
         $this->assertFalse(ZugferdSettings::hasSerializerCacheDirectory());
+    }
+
+    public function testPdfParserConfig(): void
+    {
+        $this->assertNull(ZugferdSettings::getPdfParserConfig());
+
+        $config = new Config();
+        $config->setDecodeMemoryLimit(32 * 1024 * 1204);
+        ZugferdSettings::setPdfParserConfig($config);
+
+        $this->assertSame($config, ZugferdSettings::getPdfParserConfig());
     }
 }

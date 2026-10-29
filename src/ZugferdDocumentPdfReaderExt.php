@@ -305,7 +305,7 @@ class ZugferdDocumentPdfReaderExt
     {
         $this->attachmentContentList = [];
 
-        $pdfParser = new PdfParser();
+        $pdfParser = new PdfParser([], ZugferdSettings::getPdfParserConfig());
         $pdfParsed = $pdfParser->parseContent($pdfContent);
         $fileSpecs = $pdfParsed->getObjectsByType('Filespec');
 

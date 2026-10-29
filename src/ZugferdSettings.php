@@ -13,6 +13,7 @@ namespace horstoeko\zugferd;
 
 use horstoeko\stringmanagement\PathUtils;
 use horstoeko\stringmanagement\StringUtils;
+use Smalot\PdfParser\Config;
 
 /**
  * Class representing the general settings
@@ -93,6 +94,13 @@ class ZugferdSettings
      * @var string
      */
     protected static $serializerCacheDirectory = '';
+
+    /**
+     * An optional config for the Smalot\PdfParser
+     *
+     * @var ?Config
+     */
+    protected static $pdfParserConfig;
 
     /**
      * Get the number of decimals to use for amount values
@@ -452,5 +460,38 @@ class ZugferdSettings
     public static function getFullXmpMetaDataFilename(): string
     {
         return PathUtils::combinePathWithFile(self::getAssetDirectory(), self::$xmpMetaDataFilename);
+    }
+
+    /**
+     * Set a PdfParser config
+     *
+     * This is optional, to allow for customization of PdfParser used by
+     * PdfReader.
+     *
+     * Example:
+     *
+     * ```
+     * $config = new Config();
+     * $config->setDecodeMemoryLimit(16 * 1024 * 1024);
+     * $config->setRetainImageContent(false);
+     * ZugferdSettings::setPdfParserConfig($config);
+     * ```
+     *
+     * @param  Config $config Config object for Smalot\PdfParser
+     * @return void
+     */
+    public static function setPdfParserConfig(Config $config): void
+    {
+        self::$pdfParserConfig = $config;
+    }
+
+    /**
+     * Get the PdfParser config
+     *
+     * @return null|Config Config object for Smalot\PdfParser
+     */
+    public static function getPdfParserConfig(): ?Config
+    {
+        return self::$pdfParserConfig;
     }
 }
