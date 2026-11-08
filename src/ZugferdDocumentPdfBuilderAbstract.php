@@ -147,6 +147,13 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     private $pdfAConformanceLevel = 'B';
 
     /**
+     * Whether imported PDF pages should use transparency groups
+     *
+     * @var bool
+     */
+    private $importPagesAsTransparencyGroup = true;
+
+    /**
      * Constructor
      *
      * @param string $pdfData
@@ -352,6 +359,19 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     public function setPdfAConformanceLevelToUnicode()
     {
         return $this->setPdfAConformanceLevel(self::PDFA_CONFORMANCE_LEVEL_UNICODE);
+    }
+
+    /**
+     * Set whether imported PDF pages should use transparency groups
+     *
+     * @param  bool $importPagesAsTransparencyGroup
+     * @return self
+     */
+    public function setImportPagesAsTransparencyGroup(bool $importPagesAsTransparencyGroup)
+    {
+        $this->importPagesAsTransparencyGroup = $importPagesAsTransparencyGroup;
+
+        return $this;
     }
 
     /**
@@ -734,7 +754,7 @@ abstract class ZugferdDocumentPdfBuilderAbstract
         $pageCount = $this->pdfWriter->setSourceFile($pdfDataRef);
 
         for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
-            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', true, true);
+            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', $this->importPagesAsTransparencyGroup, true);
             $this->pdfWriter->AddPage();
             $this->pdfWriter->useTemplate($pageContent, 0, 0, null, null, true);
         }
