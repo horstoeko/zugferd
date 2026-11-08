@@ -1,3 +1,14 @@
+## v1.0.135
+
+``Previous version v1.0.134``
+
+| Type | Hash    | Date    | Author  | Subject  | Issue(s)
+| :--- | :------ | :------ | :------ | :------- | :-----------: 
+| :new:  | [b5e2dcc](https://github.com/horstoeko/zugferd/commit/b5e2dcc) | 2026-11-08 16:28:54 CET | HorstOeko | [ENH] Add configurable transparency groups for imported PDF pages () () | [#398](https://github.com/horstoeko/zugferd/issues/398), [#399](https://github.com/horstoeko/zugferd/issues/399)
+| :bug:  | [8305a27](https://github.com/horstoeko/zugferd/commit/8305a27) | 2026-11-08 10:05:55 CET | Pierre Grasswill | [FIX] PDF/A output intent: OutputCondition key was written as OuputCondition () | [#397](https://github.com/horstoeko/zugferd/issues/397)
+
+:exclamation: _There is one internal commit_
+
 ## v1.0.134
 
 ``Previous version v1.0.133``
