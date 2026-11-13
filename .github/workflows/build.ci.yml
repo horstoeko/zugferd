@@ -138,10 +138,17 @@ jobs:
       - name: Run reader path check
         run: php make/checkreaderpaths.php
 
-      - name: Run PHPUnit tests
+      - name: Run PHPUnit tests (PHP 7.3 - 8.0)
+        if: ${{ contains(fromJSON('["7.3","7.4","8.0"]'), matrix.phpversion) }}
         env:
           XDEBUG_MODE: coverage
         run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml
+
+      - name: Run PHPUnit tests (PHP 8.1+)
+        if: ${{ contains(fromJSON('["8.1","8.2","8.3","8.4","8.5"]'), matrix.phpversion) }}
+        env:
+          XDEBUG_MODE: coverage
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit-modern.xml
 
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}

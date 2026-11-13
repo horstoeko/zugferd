@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="../vendor/autoload.php" backupGlobals="false" backupStaticAttributes="false" colors="true" verbose="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" cacheResultFile="phpunit-cache/test-results">
+    <testsuites>
+        <testsuite name="General">
+            <file>../tests/testcases/SettingsTest.php</file>
+            <file>../tests/testcases/PackageVersionTest.php</file>
+        </testsuite>
+        <testsuite name="ObjectHelper">
+            <file>../tests/testcases/ObjectHelperEn16931Test.php</file>
+            <file>../tests/testcases/ObjectHelperExtendedTest.php</file>
+        </testsuite>
+        <testsuite name="Base">
+            <file>../tests/testcases/ProfileResolverTest.php</file>
+            <file>../tests/testcases/DocumentTest.php</file>
+        </testsuite>
+        <testsuite name="Reader">
+            <file>../tests/testcases/ReaderBasicTest.php</file>
+            <file>../tests/testcases/ReaderEn16931Test.php</file>
+            <file>../tests/testcases/ReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/testcases/ReaderEn16931Bank1Test.php</file>
+            <file>../tests/testcases/ReaderExtendedTest.php</file>
+            <file>../tests/testcases/ReaderExtended2Test.php</file>
+            <file>../tests/testcases/ReaderXRechnungTest.php</file>
+            <file>../tests/testcases/ReaderXRechnungAttachedBinaryObjectTest.php</file>
+            <file>../tests/testcases/ReaderExtendedBuyerTaxRepresentativeTest.php</file>
+        </testsuite>
+        <testsuite name="Builder">
+            <file>../tests/testcases/BuilderMinimumTest.php</file>
+            <file>../tests/testcases/BuilderEn16931Test.php</file>
+            <file>../tests/testcases/BuilderExtendedTest.php</file>
+        </testsuite>
+        <testsuite name="ProfileConverter">
+            <file>../tests/testcases/ProfileConverterTest.php</file>
+        </testsuite>
+        <testsuite name="PDFReader">
+            <file>../tests/testcases/PdfReaderGeneralTest.php</file>
+            <file>../tests/testcases/PdfReaderMinimumTest.php</file>
+            <file>../tests/testcases/PdfReaderEn16931Test.php</file>
+            <file>../tests/testcases/PdfReaderEn16931AllowanceChargeTest.php</file>
+            <file>../tests/testcases/PdfReaderExtendedTest.php</file>
+            <file>../tests/testcases/PdfReaderExtended2Test.php</file>
+            <file>../tests/testcases/PdfReaderXRechnungTest.php</file>
+            <file>../tests/testcases/PdfReaderMultipleAttachmentsTest.php</file>
+            <file>../tests/testcases/PdfReaderExtGeneralTest.php</file>
+        </testsuite>
+        <testsuite name="PDFBuilder">
+            <file>../tests/testcases/PdfBuilderEn16931Test.php</file>
+        </testsuite>
+        <testsuite name="PDFMerger">
+            <file>../tests/testcases/PdfMergerTest.php</file>
+        </testsuite>
+        <testsuite name="Validator">
+            <file>../tests/testcases/ValidatorValidTest.php</file>
+            <file>../tests/testcases/ValidatorInvalidTest.php</file>
+        </testsuite>
+        <testsuite name="Exporter">
+            <file>../tests/testcases/JsonExporterTest.php</file>
+        </testsuite>
+        <testsuite name="Regression">
+            <file>../tests/testcases/BugfixRegressionTest.php</file>
+        </testsuite>
+        <testsuite name="issues">
+            <file>../tests/testcases/issues/Issue10Test.php</file>
+            <file>../tests/testcases/issues/Issue18Test.php</file>
+            <file>../tests/testcases/issues/Issue32Test.php</file>
+            <file>../tests/testcases/issues/Issue43Test.php</file>
+            <file>../tests/testcases/issues/Issue104Test.php</file>
+            <file>../tests/testcases/issues/Issue113Test.php</file>
+            <file>../tests/testcases/issues/Issue206Test.php</file>
+            <file>../tests/testcases/issues/Issue268Test.php</file>
+            <file>../tests/testcases/issues/Issue270Test.php</file>
+            <file>../tests/testcases/issues/Issue337Test.php</file>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">../src</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">../src/codelists</directory>
+            <directory suffix=".php">../src/codelistsenum</directory>
+            <directory suffix=".php">../src/exception</directory>
+            <file>../src/ZugferdProfiles.php</file>
+        </exclude>
+    </source>
+    <coverage includeUncoveredFiles="true">
+        <report>
+            <xml outputDirectory="coverage"/>
+            <html outputDirectory="coverage-html"/>
+            <clover outputFile="logs/clover.xml"/>
+            <crap4j outputFile="logs/crap4j.xml" threshold="50"/>
+        </report>
+    </coverage>
+    <logging>
+        <junit outputFile="logs/junit.xml"/>
+        <testdoxHtml outputFile="logs/testdox.html"/>
+    </logging>
+</phpunit>

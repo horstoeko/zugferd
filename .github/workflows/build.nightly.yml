@@ -112,7 +112,7 @@ jobs:
         run: php make/checkreaderpaths.php
 
       - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit.xml --no-coverage
+        run: vendor/bin/phpunit --stop-on-failure --configuration build/phpunit-modern.xml --no-coverage
 
       - name: Save quality tools cache
         if: ${{ !cancelled() && steps.quality-cache-restore.outputs.cache-hit != 'true' }}
