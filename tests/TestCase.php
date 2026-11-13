@@ -67,18 +67,20 @@ class TestCase extends PhpUnitTestCase
      */
     public function expectNoticeOrWarningExt(Closure $run): void
     {
-        set_error_handler(
-            static function (int $errno, string $errstr): void {
-                throw new Exception($errstr, $errno);
-            },
-            E_ALL
-        );
+        try {
+            set_error_handler(
+                static function (int $errno, string $errstr): void {
+                    throw new Exception($errstr, $errno);
+                },
+                E_ALL
+            );
 
-        $this->expectException(Exception::class);
+            $this->expectException(Exception::class);
 
-        call_user_func($run);
-
-        restore_error_handler();
+            call_user_func($run);
+        } finally {
+            restore_error_handler();
+        }
     }
 
     /**
