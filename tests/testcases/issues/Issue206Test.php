@@ -24,6 +24,6 @@ final class Issue206Test extends TestCase
             $effectiveSpecifiedPeriod
         );
 
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200305')->format('Ymd'), $documentDate->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20200305')->format('Ymd'), $documentDate->format('Ymd'));
     }
 }

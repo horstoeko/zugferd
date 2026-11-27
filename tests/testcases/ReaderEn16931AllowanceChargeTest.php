@@ -797,7 +797,7 @@ final class ReaderEn16931AllowanceChargeTest extends TestCase
     {
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(DateTime::class, $supplychainevent);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20180603')->format('Ymd'), $supplychainevent->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20180603')->format('Ymd'), $supplychainevent->format('Ymd'));
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void

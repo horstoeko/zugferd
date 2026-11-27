@@ -38,7 +38,7 @@ final class PdfReaderMultipleAttachmentsTest extends TestCase
         $this->assertSame('181301674', $documentno);
         $this->assertSame('204', $documenttypecode);
         $this->assertInstanceOf(DateTime::class, $documentdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20180425')->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertSame(DateTime::createFromFormat('Ymd', '20180425')->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame('EUR', $invoiceCurrency);
         $this->assertSame('', $taxCurrency);
         $this->assertSame('', $documentname);
