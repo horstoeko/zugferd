@@ -1,11 +1,11 @@
 services:
   kosit-validator:
-    image: apps4everything/kosit-validator-xrechnung:3.0.2-2@sha256:8cee7d3b246725ac365fd2f13483d14a01f547f7a513a7c6bb298fc0ab243383
+    image: apps4everything/kosit-validator-xrechnung:3.0.2-3@sha256:1cb2405a0ec7300b9661c45891deef0436567eaaf89bbc00807930904e6bee3b
     ports:
       - '8081:8081'
 
   verapdf-validator:
-    image: verapdf/rest:v1.30.2@sha256:341359ac6af558f35f03c355a798fec57ba049dd04f0a503f300170e1696573b
+    image: verapdf/rest:v1.30.4@sha256:09ce9242f5ea27bfb464334cee5e984ef50d7b1f6f7d7e51fe6e933cfdd8d49d
     ports:
       - '8080:8080'
     healthcheck:
