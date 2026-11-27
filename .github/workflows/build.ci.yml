@@ -164,7 +164,7 @@ jobs:
 
       - name: Start validation services
         if: ${{ matrix.phpversion == '8.5' }}
-        run: docker compose --file .github/services/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
+        run: docker compose --file build/compose.yml up --detach --quiet-pull --wait --wait-timeout 120
 
       - name: Run remote Schematron tests
         if: ${{ matrix.phpversion == '8.5' }}

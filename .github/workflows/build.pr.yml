@@ -30,6 +30,11 @@ jobs:
             const pullRequest = context.payload.pull_request;
             const login = pullRequest.user.login;
 
+            if (login === 'dependabot[bot]') {
+              core.notice('Dependabot is exempt from contributor eligibility checks.');
+              return;
+            }
+
             const trustedAssociations = new Set([
               'OWNER',
               'MEMBER',

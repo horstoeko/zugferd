@@ -15,7 +15,7 @@ updates:
       prefix: "[INFR] "
 
   - package-ecosystem: docker-compose
-    directory: /.github/services
+    directory: /build
     groups:
       validation-services:
         patterns:
